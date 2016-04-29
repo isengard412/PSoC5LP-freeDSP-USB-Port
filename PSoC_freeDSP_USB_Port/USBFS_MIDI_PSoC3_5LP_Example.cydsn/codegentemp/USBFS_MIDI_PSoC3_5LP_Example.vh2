@@ -1,0 +1,2967 @@
+--
+--	Conversion of USBFS_MIDI_PSoC3_5LP_Example.v to vh2:
+--
+--	Cypress Semiconductor - WARP Version 6.3 IR 41
+--	Fri Apr 29 14:23:04 2016
+--
+
+USE cypress.cypress.all;
+USE cypress.rtlpkg.all;
+ENTITY top_RTL IS
+ATTRIBUTE part_name of top_RTL:TYPE IS "cpsoc3";
+END top_RTL;
+--------------------------------------------------------
+ARCHITECTURE R_T_L OF top_RTL IS
+SIGNAL tmpOE__SW2_net_0 : bit;
+SIGNAL zero : bit;
+SIGNAL tmpFB_0__SW2_net_0 : bit;
+SIGNAL tmpIO_0__SW2_net_0 : bit;
+TERMINAL tmpSIOVREF__SW2_net_0 : bit;
+TERMINAL Net_364 : bit;
+SIGNAL one : bit;
+SIGNAL tmpINTERRUPT_0__SW2_net_0 : bit;
+SIGNAL Net_317 : bit;
+SIGNAL tmpOE__SW1_net_0 : bit;
+SIGNAL tmpFB_0__SW1_net_0 : bit;
+SIGNAL tmpIO_0__SW1_net_0 : bit;
+TERMINAL tmpSIOVREF__SW1_net_0 : bit;
+TERMINAL Net_365 : bit;
+SIGNAL tmpINTERRUPT_0__SW1_net_0 : bit;
+SIGNAL Net_672 : bit;
+SIGNAL Net_671 : bit;
+SIGNAL Net_674 : bit;
+SIGNAL Net_673 : bit;
+SIGNAL tmpOE__MIDI_PWR_net_0 : bit;
+SIGNAL tmpFB_0__MIDI_PWR_net_0 : bit;
+SIGNAL tmpIO_0__MIDI_PWR_net_0 : bit;
+TERMINAL tmpSIOVREF__MIDI_PWR_net_0 : bit;
+TERMINAL Net_459 : bit;
+SIGNAL tmpINTERRUPT_0__MIDI_PWR_net_0 : bit;
+SIGNAL tmpOE__LED_OutB_net_0 : bit;
+SIGNAL tmpFB_0__LED_OutB_net_0 : bit;
+SIGNAL tmpIO_0__LED_OutB_net_0 : bit;
+TERMINAL tmpSIOVREF__LED_OutB_net_0 : bit;
+TERMINAL Net_352 : bit;
+SIGNAL tmpINTERRUPT_0__LED_OutB_net_0 : bit;
+SIGNAL tmpOE__LED_InB_net_0 : bit;
+SIGNAL tmpFB_0__LED_InB_net_0 : bit;
+SIGNAL tmpIO_0__LED_InB_net_0 : bit;
+TERMINAL tmpSIOVREF__LED_InB_net_0 : bit;
+TERMINAL Net_349 : bit;
+SIGNAL tmpINTERRUPT_0__LED_InB_net_0 : bit;
+SIGNAL tmpOE__LED_OutA_net_0 : bit;
+SIGNAL tmpFB_0__LED_OutA_net_0 : bit;
+SIGNAL tmpIO_0__LED_OutA_net_0 : bit;
+TERMINAL tmpSIOVREF__LED_OutA_net_0 : bit;
+TERMINAL Net_346 : bit;
+SIGNAL tmpINTERRUPT_0__LED_OutA_net_0 : bit;
+SIGNAL tmpOE__LED_InA_net_0 : bit;
+SIGNAL tmpFB_0__LED_InA_net_0 : bit;
+SIGNAL tmpIO_0__LED_InA_net_0 : bit;
+TERMINAL tmpSIOVREF__LED_InA_net_0 : bit;
+TERMINAL Net_2671 : bit;
+SIGNAL tmpINTERRUPT_0__LED_InA_net_0 : bit;
+SIGNAL tmpOE__MIDI_OUT1_net_0 : bit;
+SIGNAL tmpFB_0__MIDI_OUT1_net_0 : bit;
+SIGNAL tmpIO_0__MIDI_OUT1_net_0 : bit;
+TERMINAL tmpSIOVREF__MIDI_OUT1_net_0 : bit;
+TERMINAL Net_492 : bit;
+SIGNAL tmpINTERRUPT_0__MIDI_OUT1_net_0 : bit;
+SIGNAL tmpOE__MIDI_IN1_net_0 : bit;
+SIGNAL Net_675 : bit;
+SIGNAL tmpIO_0__MIDI_IN1_net_0 : bit;
+TERMINAL tmpSIOVREF__MIDI_IN1_net_0 : bit;
+TERMINAL Net_583 : bit;
+SIGNAL tmpINTERRUPT_0__MIDI_IN1_net_0 : bit;
+SIGNAL Net_680 : bit;
+SIGNAL Net_681 : bit;
+SIGNAL \MIDI1_UART:Net_61\ : bit;
+SIGNAL Net_355 : bit;
+SIGNAL \MIDI1_UART:BUART:clock_op\ : bit;
+SIGNAL \MIDI1_UART:BUART:reset_reg\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_hd_send_break\ : bit;
+SIGNAL \MIDI1_UART:BUART:HalfDuplexSend\ : bit;
+SIGNAL \MIDI1_UART:BUART:FinalParityType_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:FinalParityType_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:FinalAddrMode_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:FinalAddrMode_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:FinalAddrMode_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_ctrl_mark\ : bit;
+SIGNAL \MIDI1_UART:BUART:reset_sr\ : bit;
+SIGNAL \MIDI1_UART:BUART:HalfDuplexSend_last\ : bit;
+SIGNAL \MIDI1_UART:BUART:txn\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_interrupt_out\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_interrupt_out\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_state_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_state_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_bitclk_enable_pre\ : bit;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ce0\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ce0\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:cl0\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:cl0\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:z0\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:z0\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ff0\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ff0\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ce1\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ce1\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:cl1\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:cl1\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:z1\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:z1\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ff1\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ff1\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ov_msb\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:co_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:co_msb\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:cmsb\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:cmsb\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:tx_shift_out\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_fifo_notfull\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_fifo_empty\ : bit;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:f1_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:f1_bus_stat\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:f1_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:f1_blk_stat\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ce0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:cl0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:z0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ff0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ce1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:cl1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:z1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ff1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:so_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:so_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sTX:TxShifter:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sTX:TxShifter:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:counter_load_not\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_state_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_bitclk_dp\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_counter_dp\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_7\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sc_out_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_counter_tc\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_status_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_status_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_status_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_status_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_status_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_status_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_status_3\ : bit;
+SIGNAL Net_678 : bit;
+SIGNAL \MIDI1_UART:BUART:tx_bitclk\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_ctrl_mark_last\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_mark\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_parity_bit\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_addressmatch\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_addressmatch1\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_addressmatch2\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_bitclk_enable\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_postpoll\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_load_fifo\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:cl0\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:cl0\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:z0\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:z0\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ff0\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ff0\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:cl1\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:cl1\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:z1\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:z1\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ff1\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ff1\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ov_msb\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:co_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:co_msb\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:cmsb\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:cmsb\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:hd_shift_out\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_fifonotempty\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_fifofull\ : bit;
+SIGNAL \MIDI1_UART:BUART:hd_tx_fifo_notfull\ : bit;
+SIGNAL \MIDI1_UART:BUART:hd_tx_fifo_empty\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ce0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:cl0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:z0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ff0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ce1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:cl1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:z1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ff1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:so_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:so_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:RxShifter:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:RxShifter:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:rx_counter_load\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_bitclk_pre\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_bitclk_pre16x\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count7_tc\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_count7_bit8_wire\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_bitclk\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_stop1_reg\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_status_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_markspace_status\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_status_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_status_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_parity_error_status\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_status_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_stop_bit_error\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_status_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_status_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_status_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_addr_match_status\ : bit;
+SIGNAL Net_677 : bit;
+SIGNAL \MIDI1_UART:BUART:rx_markspace_pre\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_parity_error_pre\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_break_status\ : bit;
+SIGNAL cmp_vv_vv_MODGEN_1 : bit;
+SIGNAL \MIDI1_UART:BUART:rx_address_detected\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_last\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_parity_bit\ : bit;
+SIGNAL cmp_vv_vv_MODGEN_2 : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newa_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newa_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newa_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newa_3\ : bit;
+SIGNAL MODIN1_6 : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newa_2\ : bit;
+SIGNAL MODIN1_5 : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newa_1\ : bit;
+SIGNAL MODIN1_4 : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newa_0\ : bit;
+SIGNAL MODIN1_3 : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newb_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newb_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newb_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newb_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newb_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newb_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:newb_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:dataa_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:dataa_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:dataa_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:dataa_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:dataa_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:dataa_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:dataa_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:datab_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:datab_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:datab_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:datab_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:datab_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:datab_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:datab_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:lta_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:gta_6\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:lta_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:gta_5\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:lta_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:gta_4\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:lta_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:gta_3\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:lta_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:gta_2\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:lta_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:gta_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:lta_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_1:g2:a0:gta_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:newa_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:newb_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:dataa_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:datab_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:a_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:b_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:xnor_array_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:aeqb_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:eq_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:eqi_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:aeqb_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:albi_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:agbi_1\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:lt_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:gt_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:lti_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:gti_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:albi_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:gx:u0:agbi_0\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:xeq\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:xneq\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:xlt\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:xlte\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:xgt\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:g1:a0:xgte\ : bit;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:lt\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:MODULE_2:lt\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:eq\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:MODULE_2:eq\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:gt\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:MODULE_2:gt\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:gte\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:MODULE_2:gte\:SIGNAL IS 2;
+SIGNAL \MIDI1_UART:BUART:sRX:MODULE_2:lte\ : bit;
+ATTRIBUTE port_state_att of \MIDI1_UART:BUART:sRX:MODULE_2:lte\:SIGNAL IS 2;
+SIGNAL tmpOE__MIDI_OUT2_net_0 : bit;
+SIGNAL tmpFB_0__MIDI_OUT2_net_0 : bit;
+SIGNAL tmpIO_0__MIDI_OUT2_net_0 : bit;
+TERMINAL tmpSIOVREF__MIDI_OUT2_net_0 : bit;
+TERMINAL Net_493 : bit;
+SIGNAL tmpINTERRUPT_0__MIDI_OUT2_net_0 : bit;
+SIGNAL tmpOE__MIDI_IN2_net_0 : bit;
+SIGNAL Net_686 : bit;
+SIGNAL tmpIO_0__MIDI_IN2_net_0 : bit;
+TERMINAL tmpSIOVREF__MIDI_IN2_net_0 : bit;
+TERMINAL Net_582 : bit;
+SIGNAL tmpINTERRUPT_0__MIDI_IN2_net_0 : bit;
+SIGNAL Net_691 : bit;
+SIGNAL Net_692 : bit;
+SIGNAL \MIDI2_UART:Net_61\ : bit;
+SIGNAL \MIDI2_UART:BUART:clock_op\ : bit;
+SIGNAL \MIDI2_UART:BUART:reset_reg\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_hd_send_break\ : bit;
+SIGNAL \MIDI2_UART:BUART:HalfDuplexSend\ : bit;
+SIGNAL \MIDI2_UART:BUART:FinalParityType_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:FinalParityType_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:FinalAddrMode_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:FinalAddrMode_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:FinalAddrMode_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_ctrl_mark\ : bit;
+SIGNAL \MIDI2_UART:BUART:reset_sr\ : bit;
+SIGNAL \MIDI2_UART:BUART:HalfDuplexSend_last\ : bit;
+SIGNAL \MIDI2_UART:BUART:txn\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_interrupt_out\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_interrupt_out\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_state_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_state_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_bitclk_enable_pre\ : bit;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ce0\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ce0\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:cl0\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:cl0\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:z0\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:z0\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ff0\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ff0\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ce1\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ce1\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:cl1\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:cl1\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:z1\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:z1\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ff1\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ff1\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ov_msb\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:co_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:co_msb\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:cmsb\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:cmsb\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:tx_shift_out\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_fifo_notfull\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_fifo_empty\ : bit;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:f1_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:f1_bus_stat\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:f1_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:f1_blk_stat\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ce0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:cl0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:z0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ff0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ce1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:cl1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:z1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ff1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:so_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:so_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sTX:TxShifter:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sTX:TxShifter:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:counter_load_not\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_state_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_bitclk_dp\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_counter_dp\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_7\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sc_out_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_counter_tc\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_status_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_status_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_status_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_status_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_status_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_status_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_status_3\ : bit;
+SIGNAL Net_689 : bit;
+SIGNAL \MIDI2_UART:BUART:tx_bitclk\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_ctrl_mark_last\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_mark\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_parity_bit\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_addressmatch\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_addressmatch1\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_addressmatch2\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_bitclk_enable\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_postpoll\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_load_fifo\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:cl0\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:cl0\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:z0\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:z0\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ff0\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ff0\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:cl1\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:cl1\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:z1\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:z1\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ff1\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ff1\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ov_msb\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:co_msb\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:co_msb\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:cmsb\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:cmsb\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:hd_shift_out\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_fifonotempty\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_fifofull\ : bit;
+SIGNAL \MIDI2_UART:BUART:hd_tx_fifo_notfull\ : bit;
+SIGNAL \MIDI2_UART:BUART:hd_tx_fifo_empty\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ce0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:cl0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:z0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ff0_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ce1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:cl1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:z1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ff1_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:so_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:so_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:RxShifter:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:RxShifter:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:rx_counter_load\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_bitclk_pre\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_bitclk_pre16x\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count7_tc\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_count7_bit8_wire\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_bitclk\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_stop1_reg\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_status_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_markspace_status\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_status_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_status_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_parity_error_status\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_status_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_stop_bit_error\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_status_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_status_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_status_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_addr_match_status\ : bit;
+SIGNAL Net_688 : bit;
+SIGNAL \MIDI2_UART:BUART:rx_markspace_pre\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_parity_error_pre\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_break_status\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:cmp_vv_vv_MODGEN_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_address_detected\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_last\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_parity_bit\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:cmp_vv_vv_MODGEN_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newa_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newa_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newa_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newa_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODIN2_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newa_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODIN2_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newa_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODIN2_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newa_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODIN2_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newb_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newb_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newb_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newb_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newb_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newb_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:newb_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:dataa_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:dataa_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:dataa_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:dataa_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:dataa_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:dataa_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:dataa_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:datab_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:datab_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:datab_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:datab_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:datab_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:datab_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:datab_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:lta_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:gta_6\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:lta_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:gta_5\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:lta_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:gta_4\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:lta_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:gta_3\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:lta_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:gta_2\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:lta_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:gta_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:lta_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_3:g2:a0:gta_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:newa_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:newb_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:dataa_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:datab_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:a_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:b_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:xnor_array_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:aeqb_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:eq_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:eqi_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:aeqb_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:albi_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:agbi_1\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:lt_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:gt_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:lti_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:gti_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:albi_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:gx:u0:agbi_0\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:xeq\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:xneq\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:xlt\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:xlte\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:xgt\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:g1:a0:xgte\ : bit;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:lt\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:MODULE_4:lt\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:eq\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:MODULE_4:eq\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:gt\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:MODULE_4:gt\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:gte\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:MODULE_4:gte\:SIGNAL IS 2;
+SIGNAL \MIDI2_UART:BUART:sRX:MODULE_4:lte\ : bit;
+ATTRIBUTE port_state_att of \MIDI2_UART:BUART:sRX:MODULE_4:lte\:SIGNAL IS 2;
+SIGNAL \USB:Net_1010\ : bit;
+SIGNAL \USB:tmpOE__Dm_net_0\ : bit;
+SIGNAL \USB:tmpFB_0__Dm_net_0\ : bit;
+TERMINAL \USB:Net_597\ : bit;
+SIGNAL \USB:tmpIO_0__Dm_net_0\ : bit;
+TERMINAL \USB:tmpSIOVREF__Dm_net_0\ : bit;
+SIGNAL \USB:tmpINTERRUPT_0__Dm_net_0\ : bit;
+SIGNAL \USB:tmpOE__Dp_net_0\ : bit;
+SIGNAL \USB:tmpFB_0__Dp_net_0\ : bit;
+TERMINAL \USB:Net_1000\ : bit;
+SIGNAL \USB:tmpIO_0__Dp_net_0\ : bit;
+TERMINAL \USB:tmpSIOVREF__Dp_net_0\ : bit;
+SIGNAL Net_698 : bit;
+SIGNAL \USB:Net_1889\ : bit;
+SIGNAL \USB:Net_1876\ : bit;
+SIGNAL \USB:ep_int_8\ : bit;
+SIGNAL \USB:ep_int_7\ : bit;
+SIGNAL \USB:ep_int_6\ : bit;
+SIGNAL \USB:ep_int_5\ : bit;
+SIGNAL \USB:ep_int_4\ : bit;
+SIGNAL \USB:ep_int_3\ : bit;
+SIGNAL \USB:ep_int_2\ : bit;
+SIGNAL \USB:ep_int_1\ : bit;
+SIGNAL \USB:ep_int_0\ : bit;
+SIGNAL \USB:Net_95\ : bit;
+SIGNAL \USB:dma_request_7\ : bit;
+SIGNAL \USB:dma_request_6\ : bit;
+SIGNAL \USB:dma_request_5\ : bit;
+SIGNAL \USB:dma_request_4\ : bit;
+SIGNAL \USB:dma_request_3\ : bit;
+SIGNAL \USB:dma_request_2\ : bit;
+SIGNAL \USB:dma_request_1\ : bit;
+SIGNAL \USB:dma_request_0\ : bit;
+SIGNAL \USB:dma_terminate\ : bit;
+SIGNAL \USB:dma_complete_0\ : bit;
+SIGNAL \USB:Net_1922\ : bit;
+SIGNAL \USB:dma_complete_1\ : bit;
+SIGNAL \USB:Net_1921\ : bit;
+SIGNAL \USB:dma_complete_2\ : bit;
+SIGNAL \USB:Net_1920\ : bit;
+SIGNAL \USB:dma_complete_3\ : bit;
+SIGNAL \USB:Net_1919\ : bit;
+SIGNAL \USB:dma_complete_4\ : bit;
+SIGNAL \USB:Net_1918\ : bit;
+SIGNAL \USB:dma_complete_5\ : bit;
+SIGNAL \USB:Net_1917\ : bit;
+SIGNAL \USB:dma_complete_6\ : bit;
+SIGNAL \USB:Net_1916\ : bit;
+SIGNAL \USB:dma_complete_7\ : bit;
+SIGNAL \USB:Net_1915\ : bit;
+TERMINAL Net_372 : bit;
+TERMINAL Net_700 : bit;
+TERMINAL Net_354 : bit;
+TERMINAL Net_701 : bit;
+TERMINAL Net_702 : bit;
+TERMINAL Net_703 : bit;
+TERMINAL Net_386 : bit;
+TERMINAL Net_704 : bit;
+TERMINAL Net_389 : bit;
+TERMINAL Net_390 : bit;
+TERMINAL Net_402 : bit;
+TERMINAL Net_414 : bit;
+TERMINAL Net_407 : bit;
+TERMINAL Net_705 : bit;
+TERMINAL Net_409 : bit;
+TERMINAL Net_412 : bit;
+TERMINAL Net_413 : bit;
+TERMINAL Net_461 : bit;
+TERMINAL Net_426 : bit;
+TERMINAL Net_427 : bit;
+TERMINAL Net_456 : bit;
+TERMINAL Net_433 : bit;
+TERMINAL Net_441 : bit;
+TERMINAL Net_446 : bit;
+TERMINAL Net_447 : bit;
+TERMINAL Net_420 : bit;
+TERMINAL Net_448 : bit;
+TERMINAL Net_449 : bit;
+SIGNAL \MIDI1_UART:BUART:reset_reg\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:txn\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_state_1\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_state_0\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_state_2\\D\ : bit;
+SIGNAL Net_678D : bit;
+SIGNAL \MIDI1_UART:BUART:tx_bitclk\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_ctrl_mark_last\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_mark\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:tx_parity_bit\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_1\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_0\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_load_fifo\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_3\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_2\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_bitclk\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_state_stop1_reg\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_markspace_status\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_parity_error_status\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_stop_bit_error\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_addr_match_status\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_markspace_pre\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_parity_error_pre\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_break_status\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_address_detected\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_last\\D\ : bit;
+SIGNAL \MIDI1_UART:BUART:rx_parity_bit\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:reset_reg\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:txn\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_state_1\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_state_0\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_state_2\\D\ : bit;
+SIGNAL Net_689D : bit;
+SIGNAL \MIDI2_UART:BUART:tx_bitclk\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_ctrl_mark_last\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_mark\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:tx_parity_bit\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_1\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_0\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_load_fifo\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_3\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_2\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_bitclk\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_state_stop1_reg\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_markspace_status\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_parity_error_status\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_stop_bit_error\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_addr_match_status\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_markspace_pre\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_parity_error_pre\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_break_status\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_address_detected\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_last\\D\ : bit;
+SIGNAL \MIDI2_UART:BUART:rx_parity_bit\\D\ : bit;
+BEGIN
+
+zero <=  ('0') ;
+
+tmpOE__SW2_net_0 <=  ('1') ;
+
+\MIDI1_UART:BUART:counter_load_not\ <= ((not \MIDI1_UART:BUART:tx_bitclk_enable_pre\ and \MIDI1_UART:BUART:tx_state_2\)
+	OR \MIDI1_UART:BUART:tx_state_0\
+	OR \MIDI1_UART:BUART:tx_state_1\);
+
+\MIDI1_UART:BUART:tx_status_0\ <= ((not \MIDI1_UART:BUART:tx_state_1\ and not \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_bitclk_enable_pre\ and \MIDI1_UART:BUART:tx_fifo_empty\ and \MIDI1_UART:BUART:tx_state_2\));
+
+\MIDI1_UART:BUART:tx_status_2\ <= (not \MIDI1_UART:BUART:tx_fifo_notfull\);
+
+\MIDI1_UART:BUART:tx_bitclk\\D\ <= ((not \MIDI1_UART:BUART:tx_state_2\ and \MIDI1_UART:BUART:tx_bitclk_enable_pre\)
+	OR (\MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_bitclk_enable_pre\)
+	OR (\MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_bitclk_enable_pre\));
+
+\MIDI1_UART:BUART:tx_mark\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:tx_mark\));
+
+\MIDI1_UART:BUART:tx_state_2\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_2\ and \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_counter_dp\ and \MIDI1_UART:BUART:tx_bitclk\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_2\ and \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_bitclk\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_bitclk_enable_pre\ and \MIDI1_UART:BUART:tx_state_2\));
+
+\MIDI1_UART:BUART:tx_state_1\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_1\ and not \MIDI1_UART:BUART:tx_state_2\ and \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_bitclk\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_2\ and not \MIDI1_UART:BUART:tx_bitclk\ and \MIDI1_UART:BUART:tx_state_1\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_bitclk_enable_pre\ and \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_0\ and not \MIDI1_UART:BUART:tx_counter_dp\ and \MIDI1_UART:BUART:tx_state_1\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_state_2\));
+
+\MIDI1_UART:BUART:tx_state_0\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_1\ and not \MIDI1_UART:BUART:tx_fifo_empty\ and \MIDI1_UART:BUART:tx_bitclk_enable_pre\ and \MIDI1_UART:BUART:tx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_1\ and not \MIDI1_UART:BUART:tx_state_0\ and not \MIDI1_UART:BUART:tx_fifo_empty\ and not \MIDI1_UART:BUART:tx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_bitclk_enable_pre\ and \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_2\ and not \MIDI1_UART:BUART:tx_bitclk\ and \MIDI1_UART:BUART:tx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_fifo_empty\ and \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_state_0\ and \MIDI1_UART:BUART:tx_state_2\));
+
+\MIDI1_UART:BUART:txn\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_0\ and not \MIDI1_UART:BUART:tx_shift_out\ and not \MIDI1_UART:BUART:tx_state_2\ and not \MIDI1_UART:BUART:tx_counter_dp\ and \MIDI1_UART:BUART:tx_state_1\ and \MIDI1_UART:BUART:tx_bitclk\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_1\ and not \MIDI1_UART:BUART:tx_state_2\ and not \MIDI1_UART:BUART:tx_bitclk\ and \MIDI1_UART:BUART:tx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_state_1\ and not \MIDI1_UART:BUART:tx_shift_out\ and not \MIDI1_UART:BUART:tx_state_2\ and \MIDI1_UART:BUART:tx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:tx_bitclk\ and Net_674 and \MIDI1_UART:BUART:tx_state_1\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and Net_674 and \MIDI1_UART:BUART:tx_state_2\));
+
+\MIDI1_UART:BUART:tx_parity_bit\\D\ <= ((not \MIDI1_UART:BUART:tx_state_0\ and Net_674 and \MIDI1_UART:BUART:tx_parity_bit\)
+	OR \MIDI1_UART:BUART:tx_parity_bit\);
+
+\MIDI1_UART:BUART:rx_counter_load\ <= ((not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_0\ and not \MIDI1_UART:BUART:rx_state_3\ and not \MIDI1_UART:BUART:rx_state_2\));
+
+\MIDI1_UART:BUART:rx_bitclk_pre\ <= ((not \MIDI1_UART:BUART:rx_count_2\ and not \MIDI1_UART:BUART:rx_count_1\ and not \MIDI1_UART:BUART:rx_count_0\));
+
+\MIDI1_UART:BUART:rx_state_stop1_reg\\D\ <= (not \MIDI1_UART:BUART:rx_state_2\
+	OR not \MIDI1_UART:BUART:rx_state_3\
+	OR \MIDI1_UART:BUART:rx_state_0\
+	OR \MIDI1_UART:BUART:rx_state_1\);
+
+\MIDI1_UART:BUART:rx_status_4\ <= ((\MIDI1_UART:BUART:rx_load_fifo\ and \MIDI1_UART:BUART:rx_fifofull\));
+
+\MIDI1_UART:BUART:rx_status_5\ <= ((\MIDI1_UART:BUART:rx_fifonotempty\ and \MIDI1_UART:BUART:rx_state_stop1_reg\));
+
+\MIDI1_UART:BUART:rx_stop_bit_error\\D\ <= ((not Net_675 and not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_0\ and \MIDI1_UART:BUART:rx_bitclk_enable\ and \MIDI1_UART:BUART:rx_state_3\ and \MIDI1_UART:BUART:rx_state_2\));
+
+\MIDI1_UART:BUART:rx_load_fifo\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_0\ and not \MIDI1_UART:BUART:rx_state_2\ and \MIDI1_UART:BUART:rx_bitclk_enable\ and \MIDI1_UART:BUART:rx_state_3\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_3\ and not \MIDI1_UART:BUART:rx_state_2\ and not MODIN1_6 and not MODIN1_4 and \MIDI1_UART:BUART:rx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_3\ and not \MIDI1_UART:BUART:rx_state_2\ and not MODIN1_6 and not MODIN1_5 and \MIDI1_UART:BUART:rx_state_0\));
+
+\MIDI1_UART:BUART:rx_state_3\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_2\ and not MODIN1_6 and not MODIN1_4 and \MIDI1_UART:BUART:rx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_2\ and not MODIN1_6 and not MODIN1_5 and \MIDI1_UART:BUART:rx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_bitclk_enable\ and \MIDI1_UART:BUART:rx_state_3\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_1\ and \MIDI1_UART:BUART:rx_state_3\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_2\ and \MIDI1_UART:BUART:rx_state_3\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_0\ and \MIDI1_UART:BUART:rx_state_3\));
+
+\MIDI1_UART:BUART:rx_state_2\\D\ <= ((not Net_675 and not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_0\ and not \MIDI1_UART:BUART:rx_state_3\ and not \MIDI1_UART:BUART:rx_state_2\ and \MIDI1_UART:BUART:rx_last\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_0\ and not \MIDI1_UART:BUART:rx_state_2\ and \MIDI1_UART:BUART:rx_bitclk_enable\ and \MIDI1_UART:BUART:rx_state_3\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_3\ and not MODIN1_6 and not MODIN1_4 and \MIDI1_UART:BUART:rx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_3\ and not MODIN1_6 and not MODIN1_5 and \MIDI1_UART:BUART:rx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_bitclk_enable\ and \MIDI1_UART:BUART:rx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_1\ and \MIDI1_UART:BUART:rx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_0\ and \MIDI1_UART:BUART:rx_state_2\));
+
+\MIDI1_UART:BUART:rx_state_1\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_1\));
+
+\MIDI1_UART:BUART:rx_state_0\\D\ <= ((not Net_675 and not \MIDI1_UART:BUART:reset_reg\ and not \MIDI1_UART:BUART:rx_state_1\ and not \MIDI1_UART:BUART:rx_state_3\ and \MIDI1_UART:BUART:rx_bitclk_enable\ and \MIDI1_UART:BUART:rx_state_2\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_0\ and MODIN1_5 and MODIN1_4)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_0\ and MODIN1_6)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_0\ and \MIDI1_UART:BUART:rx_state_3\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_1\ and \MIDI1_UART:BUART:rx_state_0\)
+	OR (not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_state_0\ and \MIDI1_UART:BUART:rx_state_2\));
+
+\MIDI1_UART:BUART:rx_last\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and Net_675));
+
+\MIDI1_UART:BUART:rx_address_detected\\D\ <= ((not \MIDI1_UART:BUART:reset_reg\ and \MIDI1_UART:BUART:rx_address_detected\));
+
+\MIDI1_UART:BUART:rx_parity_bit\\D\ <= ((not \MIDI1_UART:BUART:rx_state_0\ and not \MIDI1_UART:BUART:rx_state_2\ and \MIDI1_UART:BUART:rx_parity_bit\)
+	OR (Net_675 and \MIDI1_UART:BUART:rx_state_2\ and \MIDI1_UART:BUART:rx_parity_bit\)
+	OR \MIDI1_UART:BUART:rx_parity_bit\);
+
+\MIDI2_UART:BUART:counter_load_not\ <= ((not \MIDI2_UART:BUART:tx_bitclk_enable_pre\ and \MIDI2_UART:BUART:tx_state_2\)
+	OR \MIDI2_UART:BUART:tx_state_0\
+	OR \MIDI2_UART:BUART:tx_state_1\);
+
+\MIDI2_UART:BUART:tx_status_0\ <= ((not \MIDI2_UART:BUART:tx_state_1\ and not \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_bitclk_enable_pre\ and \MIDI2_UART:BUART:tx_fifo_empty\ and \MIDI2_UART:BUART:tx_state_2\));
+
+\MIDI2_UART:BUART:tx_status_2\ <= (not \MIDI2_UART:BUART:tx_fifo_notfull\);
+
+\MIDI2_UART:BUART:tx_bitclk\\D\ <= ((not \MIDI2_UART:BUART:tx_state_2\ and \MIDI2_UART:BUART:tx_bitclk_enable_pre\)
+	OR (\MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_bitclk_enable_pre\)
+	OR (\MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_bitclk_enable_pre\));
+
+\MIDI2_UART:BUART:tx_mark\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:tx_mark\));
+
+\MIDI2_UART:BUART:tx_state_2\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_2\ and \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_counter_dp\ and \MIDI2_UART:BUART:tx_bitclk\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_2\ and \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_bitclk\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_bitclk_enable_pre\ and \MIDI2_UART:BUART:tx_state_2\));
+
+\MIDI2_UART:BUART:tx_state_1\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_1\ and not \MIDI2_UART:BUART:tx_state_2\ and \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_bitclk\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_2\ and not \MIDI2_UART:BUART:tx_bitclk\ and \MIDI2_UART:BUART:tx_state_1\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_bitclk_enable_pre\ and \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_0\ and not \MIDI2_UART:BUART:tx_counter_dp\ and \MIDI2_UART:BUART:tx_state_1\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_state_2\));
+
+\MIDI2_UART:BUART:tx_state_0\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_1\ and not \MIDI2_UART:BUART:tx_fifo_empty\ and \MIDI2_UART:BUART:tx_bitclk_enable_pre\ and \MIDI2_UART:BUART:tx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_1\ and not \MIDI2_UART:BUART:tx_state_0\ and not \MIDI2_UART:BUART:tx_fifo_empty\ and not \MIDI2_UART:BUART:tx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_bitclk_enable_pre\ and \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_2\ and not \MIDI2_UART:BUART:tx_bitclk\ and \MIDI2_UART:BUART:tx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_fifo_empty\ and \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_state_0\ and \MIDI2_UART:BUART:tx_state_2\));
+
+\MIDI2_UART:BUART:txn\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_0\ and not \MIDI2_UART:BUART:tx_shift_out\ and not \MIDI2_UART:BUART:tx_state_2\ and not \MIDI2_UART:BUART:tx_counter_dp\ and \MIDI2_UART:BUART:tx_state_1\ and \MIDI2_UART:BUART:tx_bitclk\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_1\ and not \MIDI2_UART:BUART:tx_state_2\ and not \MIDI2_UART:BUART:tx_bitclk\ and \MIDI2_UART:BUART:tx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_state_1\ and not \MIDI2_UART:BUART:tx_shift_out\ and not \MIDI2_UART:BUART:tx_state_2\ and \MIDI2_UART:BUART:tx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:tx_bitclk\ and Net_672 and \MIDI2_UART:BUART:tx_state_1\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and Net_672 and \MIDI2_UART:BUART:tx_state_2\));
+
+\MIDI2_UART:BUART:tx_parity_bit\\D\ <= ((not \MIDI2_UART:BUART:tx_state_0\ and Net_672 and \MIDI2_UART:BUART:tx_parity_bit\)
+	OR \MIDI2_UART:BUART:tx_parity_bit\);
+
+\MIDI2_UART:BUART:rx_counter_load\ <= ((not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_0\ and not \MIDI2_UART:BUART:rx_state_3\ and not \MIDI2_UART:BUART:rx_state_2\));
+
+\MIDI2_UART:BUART:rx_bitclk_pre\ <= ((not \MIDI2_UART:BUART:rx_count_2\ and not \MIDI2_UART:BUART:rx_count_1\ and not \MIDI2_UART:BUART:rx_count_0\));
+
+\MIDI2_UART:BUART:rx_state_stop1_reg\\D\ <= (not \MIDI2_UART:BUART:rx_state_2\
+	OR not \MIDI2_UART:BUART:rx_state_3\
+	OR \MIDI2_UART:BUART:rx_state_0\
+	OR \MIDI2_UART:BUART:rx_state_1\);
+
+\MIDI2_UART:BUART:rx_status_4\ <= ((\MIDI2_UART:BUART:rx_load_fifo\ and \MIDI2_UART:BUART:rx_fifofull\));
+
+\MIDI2_UART:BUART:rx_status_5\ <= ((\MIDI2_UART:BUART:rx_fifonotempty\ and \MIDI2_UART:BUART:rx_state_stop1_reg\));
+
+\MIDI2_UART:BUART:rx_stop_bit_error\\D\ <= ((not Net_686 and not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_0\ and \MIDI2_UART:BUART:rx_bitclk_enable\ and \MIDI2_UART:BUART:rx_state_3\ and \MIDI2_UART:BUART:rx_state_2\));
+
+\MIDI2_UART:BUART:rx_load_fifo\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_0\ and not \MIDI2_UART:BUART:rx_state_2\ and \MIDI2_UART:BUART:rx_bitclk_enable\ and \MIDI2_UART:BUART:rx_state_3\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_3\ and not \MIDI2_UART:BUART:rx_state_2\ and not \MIDI2_UART:BUART:rx_count_6\ and not \MIDI2_UART:BUART:rx_count_4\ and \MIDI2_UART:BUART:rx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_3\ and not \MIDI2_UART:BUART:rx_state_2\ and not \MIDI2_UART:BUART:rx_count_6\ and not \MIDI2_UART:BUART:rx_count_5\ and \MIDI2_UART:BUART:rx_state_0\));
+
+\MIDI2_UART:BUART:rx_state_3\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_2\ and not \MIDI2_UART:BUART:rx_count_6\ and not \MIDI2_UART:BUART:rx_count_4\ and \MIDI2_UART:BUART:rx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_2\ and not \MIDI2_UART:BUART:rx_count_6\ and not \MIDI2_UART:BUART:rx_count_5\ and \MIDI2_UART:BUART:rx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_bitclk_enable\ and \MIDI2_UART:BUART:rx_state_3\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_1\ and \MIDI2_UART:BUART:rx_state_3\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_2\ and \MIDI2_UART:BUART:rx_state_3\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_0\ and \MIDI2_UART:BUART:rx_state_3\));
+
+\MIDI2_UART:BUART:rx_state_2\\D\ <= ((not Net_686 and not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_0\ and not \MIDI2_UART:BUART:rx_state_3\ and not \MIDI2_UART:BUART:rx_state_2\ and \MIDI2_UART:BUART:rx_last\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_0\ and not \MIDI2_UART:BUART:rx_state_2\ and \MIDI2_UART:BUART:rx_bitclk_enable\ and \MIDI2_UART:BUART:rx_state_3\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_3\ and not \MIDI2_UART:BUART:rx_count_6\ and not \MIDI2_UART:BUART:rx_count_4\ and \MIDI2_UART:BUART:rx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_3\ and not \MIDI2_UART:BUART:rx_count_6\ and not \MIDI2_UART:BUART:rx_count_5\ and \MIDI2_UART:BUART:rx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_bitclk_enable\ and \MIDI2_UART:BUART:rx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_1\ and \MIDI2_UART:BUART:rx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_0\ and \MIDI2_UART:BUART:rx_state_2\));
+
+\MIDI2_UART:BUART:rx_state_1\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_1\));
+
+\MIDI2_UART:BUART:rx_state_0\\D\ <= ((not Net_686 and not \MIDI2_UART:BUART:reset_reg\ and not \MIDI2_UART:BUART:rx_state_1\ and not \MIDI2_UART:BUART:rx_state_3\ and \MIDI2_UART:BUART:rx_bitclk_enable\ and \MIDI2_UART:BUART:rx_state_2\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_0\ and \MIDI2_UART:BUART:rx_count_5\ and \MIDI2_UART:BUART:rx_count_4\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_0\ and \MIDI2_UART:BUART:rx_count_6\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_0\ and \MIDI2_UART:BUART:rx_state_3\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_1\ and \MIDI2_UART:BUART:rx_state_0\)
+	OR (not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_state_0\ and \MIDI2_UART:BUART:rx_state_2\));
+
+\MIDI2_UART:BUART:rx_last\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and Net_686));
+
+\MIDI2_UART:BUART:rx_address_detected\\D\ <= ((not \MIDI2_UART:BUART:reset_reg\ and \MIDI2_UART:BUART:rx_address_detected\));
+
+\MIDI2_UART:BUART:rx_parity_bit\\D\ <= ((not \MIDI2_UART:BUART:rx_state_0\ and not \MIDI2_UART:BUART:rx_state_2\ and \MIDI2_UART:BUART:rx_parity_bit\)
+	OR (Net_686 and \MIDI2_UART:BUART:rx_state_2\ and \MIDI2_UART:BUART:rx_parity_bit\)
+	OR \MIDI2_UART:BUART:rx_parity_bit\);
+
+SW2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"77c9720d-76e8-4e06-9af8-359f579c4b31",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__SW2_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__SW2_net_0),
+		siovref=>(tmpSIOVREF__SW2_net_0),
+		annotation=>Net_364,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__SW2_net_0);
+\SleepTimer:gsRef_1\:cy_gsref_v1_0
+	GENERIC MAP(guid=>"0335EFD7-9943-4db5-B556-454A5AD8A118")
+	PORT MAP(sig_out=>Net_317);
+SW1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"5e92a984-3b11-44ae-9f60-7d92fa6d9c1e",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__SW1_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__SW1_net_0),
+		siovref=>(tmpSIOVREF__SW1_net_0),
+		annotation=>Net_365,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__SW1_net_0);
+MIDI_PWR:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"12f75402-8258-4a24-b9e9-c367efce01c5",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__MIDI_PWR_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__MIDI_PWR_net_0),
+		siovref=>(tmpSIOVREF__MIDI_PWR_net_0),
+		annotation=>Net_459,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__MIDI_PWR_net_0);
+LED_OutB:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"f8bc0318-1f79-4017-96b4-8202b2c6e937",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__LED_OutB_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__LED_OutB_net_0),
+		siovref=>(tmpSIOVREF__LED_OutB_net_0),
+		annotation=>Net_352,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__LED_OutB_net_0);
+LED_InB:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"29ba3e40-8057-417d-8bf3-2c71587c0d14",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__LED_InB_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__LED_InB_net_0),
+		siovref=>(tmpSIOVREF__LED_InB_net_0),
+		annotation=>Net_349,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__LED_InB_net_0);
+LED_OutA:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"0689c1e7-85fd-44ea-a9f9-bed96995ce5c",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__LED_OutA_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__LED_OutA_net_0),
+		siovref=>(tmpSIOVREF__LED_OutA_net_0),
+		annotation=>Net_346,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__LED_OutA_net_0);
+LED_InA:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"ed092b9b-d398-4703-be89-cebf998501f6",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__LED_InA_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__LED_InA_net_0),
+		siovref=>(tmpSIOVREF__LED_InA_net_0),
+		annotation=>Net_2671,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__LED_InA_net_0);
+MIDI_OUT1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"b9e1db07-a07e-4cf5-8771-93eb2ff0ddc0",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>Net_674,
+		fb=>(tmpFB_0__MIDI_OUT1_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__MIDI_OUT1_net_0),
+		siovref=>(tmpSIOVREF__MIDI_OUT1_net_0),
+		annotation=>Net_492,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__MIDI_OUT1_net_0);
+MIDI_IN1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"6c474820-c2f5-46c6-aa01-7db6a7b6db1f",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>Net_675,
+		analog=>(open),
+		io=>(tmpIO_0__MIDI_IN1_net_0),
+		siovref=>(tmpSIOVREF__MIDI_IN1_net_0),
+		annotation=>Net_583,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__MIDI_IN1_net_0);
+\MIDI1_UART:TXInternalInterrupt\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_680);
+\MIDI1_UART:RXInternalInterrupt\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_681);
+\MIDI1_UART:BUART:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_355,
+		enable=>tmpOE__SW2_net_0,
+		clock_out=>\MIDI1_UART:BUART:clock_op\);
+\MIDI1_UART:BUART:sTX:TxShifter:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000000000000000000000000000000000000000000000000000011000000000000000000000000000010010000000000000000000000000000000000000011111111000000001111111111111111000000000000000001000100111100000000000000001100",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>\MIDI1_UART:BUART:reset_reg\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		cs_addr=>(\MIDI1_UART:BUART:tx_state_1\, \MIDI1_UART:BUART:tx_state_0\, \MIDI1_UART:BUART:tx_bitclk_enable_pre\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>open,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>\MIDI1_UART:BUART:tx_shift_out\,
+		f0_bus_stat=>\MIDI1_UART:BUART:tx_fifo_notfull\,
+		f0_blk_stat=>\MIDI1_UART:BUART:tx_fifo_empty\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\MIDI1_UART:BUART:sTX:sCLOCK:TxBitClkGen\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"1010100001000000001000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000001111111100000111001000000100000000000101111100000000000000001000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>\MIDI1_UART:BUART:reset_reg\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		cs_addr=>(zero, zero, \MIDI1_UART:BUART:counter_load_not\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>open,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>open,
+		f0_blk_stat=>open,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>\MIDI1_UART:BUART:tx_bitclk_enable_pre\,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>\MIDI1_UART:BUART:tx_counter_dp\,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>(\MIDI1_UART:BUART:sc_out_7\, \MIDI1_UART:BUART:sc_out_6\, \MIDI1_UART:BUART:sc_out_5\, \MIDI1_UART:BUART:sc_out_4\,
+			\MIDI1_UART:BUART:sc_out_3\, \MIDI1_UART:BUART:sc_out_2\, \MIDI1_UART:BUART:sc_out_1\, \MIDI1_UART:BUART:sc_out_0\));
+\MIDI1_UART:BUART:sTX:TxSts\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0000001",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>\MIDI1_UART:BUART:reset_reg\,
+		clock=>\MIDI1_UART:BUART:clock_op\,
+		status=>(zero, zero, zero, \MIDI1_UART:BUART:tx_fifo_notfull\,
+			\MIDI1_UART:BUART:tx_status_2\, \MIDI1_UART:BUART:tx_fifo_empty\, \MIDI1_UART:BUART:tx_status_0\),
+		interrupt=>Net_680);
+\MIDI1_UART:BUART:sRX:RxShifter:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000000000000000000000000000000000000000000000000001001000000000100000000000000010000001100000001000000000000000100100001000011111111000000001111111111111111101000000110001001000001111100000000000000001100",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>\MIDI1_UART:BUART:reset_reg\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		cs_addr=>(\MIDI1_UART:BUART:rx_state_1\, \MIDI1_UART:BUART:rx_state_0\, \MIDI1_UART:BUART:rx_bitclk_enable\),
+		route_si=>Net_675,
+		route_ci=>zero,
+		f0_load=>\MIDI1_UART:BUART:rx_load_fifo\,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>\MIDI1_UART:BUART:rx_addressmatch1\,
+		cl0=>open,
+		z0=>open,
+		ff0=>open,
+		ce1=>\MIDI1_UART:BUART:rx_addressmatch2\,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>\MIDI1_UART:BUART:hd_shift_out\,
+		f0_bus_stat=>\MIDI1_UART:BUART:rx_fifonotempty\,
+		f0_blk_stat=>\MIDI1_UART:BUART:rx_fifofull\,
+		f1_bus_stat=>\MIDI1_UART:BUART:hd_tx_fifo_notfull\,
+		f1_blk_stat=>\MIDI1_UART:BUART:hd_tx_fifo_empty\,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\MIDI1_UART:BUART:sRX:RxBitCounter\:cy_psoc3_count7
+	GENERIC MAP(cy_period=>"1110001",
+		cy_init_value=>"0000000",
+		cy_route_ld=>'1',
+		cy_route_en=>'1',
+		cy_alt_mode=>'0')
+	PORT MAP(clock=>\MIDI1_UART:BUART:clock_op\,
+		reset=>\MIDI1_UART:BUART:reset_reg\,
+		load=>\MIDI1_UART:BUART:rx_counter_load\,
+		enable=>tmpOE__SW2_net_0,
+		count=>(MODIN1_6, MODIN1_5, MODIN1_4, MODIN1_3,
+			\MIDI1_UART:BUART:rx_count_2\, \MIDI1_UART:BUART:rx_count_1\, \MIDI1_UART:BUART:rx_count_0\),
+		tc=>\MIDI1_UART:BUART:rx_count7_tc\);
+\MIDI1_UART:BUART:sRX:RxSts\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"1011111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>\MIDI1_UART:BUART:reset_reg\,
+		clock=>\MIDI1_UART:BUART:clock_op\,
+		status=>(zero, \MIDI1_UART:BUART:rx_status_5\, \MIDI1_UART:BUART:rx_status_4\, \MIDI1_UART:BUART:rx_status_3\,
+			\MIDI1_UART:BUART:rx_status_2\, zero, zero),
+		interrupt=>Net_681);
+MIDI_OUT2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"16e2c6df-bfa9-4d60-8902-0c211b69d05a",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>Net_672,
+		fb=>(tmpFB_0__MIDI_OUT2_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__MIDI_OUT2_net_0),
+		siovref=>(tmpSIOVREF__MIDI_OUT2_net_0),
+		annotation=>Net_493,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__MIDI_OUT2_net_0);
+MIDI_IN2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"1425177d-0d0e-4468-8bcc-e638e5509a9b",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>Net_686,
+		analog=>(open),
+		io=>(tmpIO_0__MIDI_IN2_net_0),
+		siovref=>(tmpSIOVREF__MIDI_IN2_net_0),
+		annotation=>Net_582,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__MIDI_IN2_net_0);
+\MIDI2_UART:TXInternalInterrupt\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_691);
+\MIDI2_UART:RXInternalInterrupt\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_692);
+\MIDI2_UART:BUART:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_355,
+		enable=>tmpOE__SW2_net_0,
+		clock_out=>\MIDI2_UART:BUART:clock_op\);
+\MIDI2_UART:BUART:sTX:TxShifter:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000000000000000000000000000000000000000000000000000011000000000000000000000000000010010000000000000000000000000000000000000011111111000000001111111111111111000000000000000001000100111100000000000000001100",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>\MIDI2_UART:BUART:reset_reg\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		cs_addr=>(\MIDI2_UART:BUART:tx_state_1\, \MIDI2_UART:BUART:tx_state_0\, \MIDI2_UART:BUART:tx_bitclk_enable_pre\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>open,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>\MIDI2_UART:BUART:tx_shift_out\,
+		f0_bus_stat=>\MIDI2_UART:BUART:tx_fifo_notfull\,
+		f0_blk_stat=>\MIDI2_UART:BUART:tx_fifo_empty\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\MIDI2_UART:BUART:sTX:sCLOCK:TxBitClkGen\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"1010100001000000001000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000001111111100000111001000000100000000000101111100000000000000001000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>\MIDI2_UART:BUART:reset_reg\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		cs_addr=>(zero, zero, \MIDI2_UART:BUART:counter_load_not\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>open,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>open,
+		f0_blk_stat=>open,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>\MIDI2_UART:BUART:tx_bitclk_enable_pre\,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>\MIDI2_UART:BUART:tx_counter_dp\,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>(\MIDI2_UART:BUART:sc_out_7\, \MIDI2_UART:BUART:sc_out_6\, \MIDI2_UART:BUART:sc_out_5\, \MIDI2_UART:BUART:sc_out_4\,
+			\MIDI2_UART:BUART:sc_out_3\, \MIDI2_UART:BUART:sc_out_2\, \MIDI2_UART:BUART:sc_out_1\, \MIDI2_UART:BUART:sc_out_0\));
+\MIDI2_UART:BUART:sTX:TxSts\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0000001",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>\MIDI2_UART:BUART:reset_reg\,
+		clock=>\MIDI2_UART:BUART:clock_op\,
+		status=>(zero, zero, zero, \MIDI2_UART:BUART:tx_fifo_notfull\,
+			\MIDI2_UART:BUART:tx_status_2\, \MIDI2_UART:BUART:tx_fifo_empty\, \MIDI2_UART:BUART:tx_status_0\),
+		interrupt=>Net_691);
+\MIDI2_UART:BUART:sRX:RxShifter:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000000000000000000000000000000000000000000000000001001000000000100000000000000010000001100000001000000000000000100100001000011111111000000001111111111111111101000000110001001000001111100000000000000001100",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>\MIDI2_UART:BUART:reset_reg\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		cs_addr=>(\MIDI2_UART:BUART:rx_state_1\, \MIDI2_UART:BUART:rx_state_0\, \MIDI2_UART:BUART:rx_bitclk_enable\),
+		route_si=>Net_686,
+		route_ci=>zero,
+		f0_load=>\MIDI2_UART:BUART:rx_load_fifo\,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>\MIDI2_UART:BUART:rx_addressmatch1\,
+		cl0=>open,
+		z0=>open,
+		ff0=>open,
+		ce1=>\MIDI2_UART:BUART:rx_addressmatch2\,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>\MIDI2_UART:BUART:hd_shift_out\,
+		f0_bus_stat=>\MIDI2_UART:BUART:rx_fifonotempty\,
+		f0_blk_stat=>\MIDI2_UART:BUART:rx_fifofull\,
+		f1_bus_stat=>\MIDI2_UART:BUART:hd_tx_fifo_notfull\,
+		f1_blk_stat=>\MIDI2_UART:BUART:hd_tx_fifo_empty\,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\MIDI2_UART:BUART:sRX:RxBitCounter\:cy_psoc3_count7
+	GENERIC MAP(cy_period=>"1110001",
+		cy_init_value=>"0000000",
+		cy_route_ld=>'1',
+		cy_route_en=>'1',
+		cy_alt_mode=>'0')
+	PORT MAP(clock=>\MIDI2_UART:BUART:clock_op\,
+		reset=>\MIDI2_UART:BUART:reset_reg\,
+		load=>\MIDI2_UART:BUART:rx_counter_load\,
+		enable=>tmpOE__SW2_net_0,
+		count=>(\MIDI2_UART:BUART:rx_count_6\, \MIDI2_UART:BUART:rx_count_5\, \MIDI2_UART:BUART:rx_count_4\, \MIDI2_UART:BUART:rx_count_3\,
+			\MIDI2_UART:BUART:rx_count_2\, \MIDI2_UART:BUART:rx_count_1\, \MIDI2_UART:BUART:rx_count_0\),
+		tc=>\MIDI2_UART:BUART:rx_count7_tc\);
+\MIDI2_UART:BUART:sRX:RxSts\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"1011111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>\MIDI2_UART:BUART:reset_reg\,
+		clock=>\MIDI2_UART:BUART:clock_op\,
+		status=>(zero, \MIDI2_UART:BUART:rx_status_5\, \MIDI2_UART:BUART:rx_status_4\, \MIDI2_UART:BUART:rx_status_3\,
+			\MIDI2_UART:BUART:rx_status_2\, zero, zero),
+		interrupt=>Net_692);
+Clock_1:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"cae5798c-7ee3-44d1-9fb6-9cadf8f651f4",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"4000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_355,
+		dig_domain_out=>open);
+\USB:dp_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USB:Net_1010\);
+\USB:Dm\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"207de35d-96fa-4d9c-93e8-b56a5d18b7b9/8b77a6c4-10a0-4390-971c-672353e2a49c",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"NONCONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'1',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(\USB:tmpFB_0__Dm_net_0\),
+		analog=>\USB:Net_597\,
+		io=>(\USB:tmpIO_0__Dm_net_0\),
+		siovref=>(\USB:tmpSIOVREF__Dm_net_0\),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>\USB:tmpINTERRUPT_0__Dm_net_0\);
+\USB:Dp\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"207de35d-96fa-4d9c-93e8-b56a5d18b7b9/618a72fc-5ddd-4df5-958f-a3d55102db42",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"10",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SW2_net_0),
+		y=>(zero),
+		fb=>(\USB:tmpFB_0__Dp_net_0\),
+		analog=>\USB:Net_1000\,
+		io=>(\USB:tmpIO_0__Dp_net_0\),
+		siovref=>(\USB:tmpSIOVREF__Dp_net_0\),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__SW2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__SW2_net_0,
+		out_reset=>zero,
+		interrupt=>\USB:Net_1010\);
+\USB:USB\:cy_psoc3_usb_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(dp=>\USB:Net_1000\,
+		dm=>\USB:Net_597\,
+		sof_int=>Net_698,
+		arb_int=>\USB:Net_1889\,
+		usb_int=>\USB:Net_1876\,
+		ept_int=>(\USB:ep_int_8\, \USB:ep_int_7\, \USB:ep_int_6\, \USB:ep_int_5\,
+			\USB:ep_int_4\, \USB:ep_int_3\, \USB:ep_int_2\, \USB:ep_int_1\,
+			\USB:ep_int_0\),
+		ord_int=>\USB:Net_95\,
+		dma_req=>(\USB:dma_request_7\, \USB:dma_request_6\, \USB:dma_request_5\, \USB:dma_request_4\,
+			\USB:dma_request_3\, \USB:dma_request_2\, \USB:dma_request_1\, \USB:dma_request_0\),
+		dma_termin=>\USB:dma_terminate\);
+\USB:ep_2\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USB:ep_int_2\);
+\USB:ep_1\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USB:ep_int_1\);
+\USB:ep_0\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USB:ep_int_0\);
+\USB:bus_reset\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USB:Net_1876\);
+\USB:arb_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USB:Net_1889\);
+\USB:sof_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_698);
+Sleep_isr:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_317);
+SW_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"SwitchSPST_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_372, Net_365));
+GND_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_372);
+SW_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"SwitchSPST_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_372, Net_364));
+LED1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"LED_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_2671, Net_700));
+R25:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_354, Net_700));
+LED2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"LED_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_346, Net_701));
+R25_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_354, Net_701));
+LED3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"LED_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_349, Net_702));
+R25_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_354, Net_702));
+LED4:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"LED_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_352, Net_703));
+R25_3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_354, Net_703));
+GND_6:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_354);
+Q_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"NPN_v1_0",
+		port_names=>"B, C, E",
+		width=>3)
+	PORT MAP(connect=>(Net_386, Net_704, Net_389));
+R_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_492, Net_386));
+R_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_386, Net_389));
+GND_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_389);
+R_3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_704, Net_390));
+R_4:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_402, Net_414));
+PWR_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_414);
+Q_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"NPN_v1_0",
+		port_names=>"B, C, E",
+		width=>3)
+	PORT MAP(connect=>(Net_407, Net_705, Net_409));
+R_5:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_493, Net_407));
+R_6:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_407, Net_409));
+GND_3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_409);
+R_7:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_705, Net_412));
+R_8:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_413, Net_414));
+PWR_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_461);
+R_9:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_426, Net_427));
+Q_3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"PhotoTrans_v1_0",
+		port_names=>"C, E",
+		width=>2)
+	PORT MAP(connect=>(Net_456, Net_433));
+D_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Diode_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_441, Net_427));
+D_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Diode_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_427, Net_441));
+GND_4:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_433);
+R_10:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_446, Net_447));
+Q_4:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"PhotoTrans_v1_0",
+		port_names=>"C, E",
+		width=>2)
+	PORT MAP(connect=>(Net_420, Net_448));
+D_3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Diode_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_449, Net_447));
+D_4:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Diode_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_447, Net_449));
+GND_5:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_448);
+R_11:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_456, Net_583));
+R_12:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_420, Net_582));
+Q_5:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"PFET_En_v1_0",
+		port_names=>"D, G, S",
+		width=>3)
+	PORT MAP(connect=>(Net_461, Net_459, Net_414));
+R_13:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_459, Net_461));
+\MIDI1_UART:BUART:reset_reg\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:reset_reg\);
+\MIDI1_UART:BUART:txn\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:txn\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>Net_674);
+\MIDI1_UART:BUART:tx_state_1\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:tx_state_1\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:tx_state_1\);
+\MIDI1_UART:BUART:tx_state_0\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:tx_state_0\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:tx_state_0\);
+\MIDI1_UART:BUART:tx_state_2\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:tx_state_2\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:tx_state_2\);
+Net_678:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>Net_678);
+\MIDI1_UART:BUART:tx_bitclk\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:tx_bitclk\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:tx_bitclk\);
+\MIDI1_UART:BUART:tx_ctrl_mark_last\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:tx_ctrl_mark_last\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:tx_ctrl_mark_last\);
+\MIDI1_UART:BUART:tx_mark\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:tx_mark\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:tx_mark\);
+\MIDI1_UART:BUART:tx_parity_bit\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:tx_parity_bit\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:tx_parity_bit\);
+\MIDI1_UART:BUART:rx_state_1\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_state_1\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_state_1\);
+\MIDI1_UART:BUART:rx_state_0\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_state_0\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_state_0\);
+\MIDI1_UART:BUART:rx_load_fifo\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_load_fifo\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_load_fifo\);
+\MIDI1_UART:BUART:rx_state_3\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_state_3\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_state_3\);
+\MIDI1_UART:BUART:rx_state_2\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_state_2\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_state_2\);
+\MIDI1_UART:BUART:rx_bitclk\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_bitclk_pre\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_bitclk_enable\);
+\MIDI1_UART:BUART:rx_state_stop1_reg\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_state_stop1_reg\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_state_stop1_reg\);
+\MIDI1_UART:BUART:rx_markspace_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_markspace_status\);
+\MIDI1_UART:BUART:rx_parity_error_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_status_2\);
+\MIDI1_UART:BUART:rx_stop_bit_error\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_stop_bit_error\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_status_3\);
+\MIDI1_UART:BUART:rx_addr_match_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_addr_match_status\);
+\MIDI1_UART:BUART:rx_markspace_pre\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_markspace_pre\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_markspace_pre\);
+\MIDI1_UART:BUART:rx_parity_error_pre\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_parity_error_pre\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_parity_error_pre\);
+\MIDI1_UART:BUART:rx_break_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_break_status\);
+\MIDI1_UART:BUART:rx_address_detected\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_address_detected\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_address_detected\);
+\MIDI1_UART:BUART:rx_last\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_last\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_last\);
+\MIDI1_UART:BUART:rx_parity_bit\:cy_dff
+	PORT MAP(d=>\MIDI1_UART:BUART:rx_parity_bit\\D\,
+		clk=>\MIDI1_UART:BUART:clock_op\,
+		q=>\MIDI1_UART:BUART:rx_parity_bit\);
+\MIDI2_UART:BUART:reset_reg\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:reset_reg\);
+\MIDI2_UART:BUART:txn\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:txn\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>Net_672);
+\MIDI2_UART:BUART:tx_state_1\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:tx_state_1\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:tx_state_1\);
+\MIDI2_UART:BUART:tx_state_0\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:tx_state_0\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:tx_state_0\);
+\MIDI2_UART:BUART:tx_state_2\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:tx_state_2\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:tx_state_2\);
+Net_689:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>Net_689);
+\MIDI2_UART:BUART:tx_bitclk\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:tx_bitclk\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:tx_bitclk\);
+\MIDI2_UART:BUART:tx_ctrl_mark_last\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:tx_ctrl_mark_last\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:tx_ctrl_mark_last\);
+\MIDI2_UART:BUART:tx_mark\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:tx_mark\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:tx_mark\);
+\MIDI2_UART:BUART:tx_parity_bit\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:tx_parity_bit\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:tx_parity_bit\);
+\MIDI2_UART:BUART:rx_state_1\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_state_1\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_state_1\);
+\MIDI2_UART:BUART:rx_state_0\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_state_0\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_state_0\);
+\MIDI2_UART:BUART:rx_load_fifo\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_load_fifo\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_load_fifo\);
+\MIDI2_UART:BUART:rx_state_3\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_state_3\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_state_3\);
+\MIDI2_UART:BUART:rx_state_2\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_state_2\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_state_2\);
+\MIDI2_UART:BUART:rx_bitclk\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_bitclk_pre\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_bitclk_enable\);
+\MIDI2_UART:BUART:rx_state_stop1_reg\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_state_stop1_reg\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_state_stop1_reg\);
+\MIDI2_UART:BUART:rx_markspace_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_markspace_status\);
+\MIDI2_UART:BUART:rx_parity_error_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_status_2\);
+\MIDI2_UART:BUART:rx_stop_bit_error\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_stop_bit_error\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_status_3\);
+\MIDI2_UART:BUART:rx_addr_match_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_addr_match_status\);
+\MIDI2_UART:BUART:rx_markspace_pre\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_markspace_pre\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_markspace_pre\);
+\MIDI2_UART:BUART:rx_parity_error_pre\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_parity_error_pre\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_parity_error_pre\);
+\MIDI2_UART:BUART:rx_break_status\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_break_status\);
+\MIDI2_UART:BUART:rx_address_detected\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_address_detected\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_address_detected\);
+\MIDI2_UART:BUART:rx_last\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_last\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_last\);
+\MIDI2_UART:BUART:rx_parity_bit\:cy_dff
+	PORT MAP(d=>\MIDI2_UART:BUART:rx_parity_bit\\D\,
+		clk=>\MIDI2_UART:BUART:clock_op\,
+		q=>\MIDI2_UART:BUART:rx_parity_bit\);
+
+END R_T_L;

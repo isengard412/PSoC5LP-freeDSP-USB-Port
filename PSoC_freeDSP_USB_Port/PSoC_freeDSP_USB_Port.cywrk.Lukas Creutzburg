@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoC_freeDSP_USB_Port\USBFS_Multichannel\Source Files\main.c">
+<ExpandedNodeIds>
+<v>PSoC_freeDSP_USB_Port</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\InterIcSound_Example.cydwr</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Header Files</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Header Files\cyapicallbacks.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Source Files</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Source Files\main.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\CLIP</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\CLIP\CLIP.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\CLIP\CLIP.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\CLIP\CLIP_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\clock</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\clock\clock.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\clock\clock.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\I2S_1</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\I2S_1\I2S_1.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\I2S_1\I2S_1.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\I2S_1\I2S_1_PM.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\I2S_1\I2S_1_PVT.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD\LCD.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD\LCD.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD\LCD_PM.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD_LCDPort</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\RxDMA</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\RxDMA\RxDMA_dma.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\RxDMA\RxDMA_dma.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SDI</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SDI\SDI.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SDI\SDI.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SDI\SDI_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SW1</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SW1\SW1.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SW1\SW1.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\SW1\SW1_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\TxDMA</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\TxDMA\TxDMA_dma.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\TxDMA\TxDMA_dma.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydevice.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cyfitter.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\cymetadata.c</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Generated_Source\PSoC5\project.h</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\InterIcSound.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP_Example.cydwr</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP_Example.cyre</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Source Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Source Files\main.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\1kHz_sine_wave.wav</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\cyapicallbacks.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\DmaDone</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\DmaDone\DmaDone.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\DmaDone\DmaDone.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD\LCD.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD\LCD.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD\LCD_PM.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD_LCDPort</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\SampleClk</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\SampleClk\SampleClk.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\SampleClk\SampleClk.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\Speaker</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\Speaker\Speaker.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\Speaker\Speaker.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\Speaker\Speaker_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_audio.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_audio.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_boot.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_cdc.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_cdc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_cdc.inf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_cls.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_cydmac.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_descr.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_drv.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_episr.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_hid.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_hid.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_midi.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_midi.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_msc.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_msc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_pm.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_pvt.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_std.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS\USBFS_vnd.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dm</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dm\USBFS_Dm.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dm\USBFS_Dm.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dm\USBFS_Dm_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dp</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dp\USBFS_Dp.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dp\USBFS_Dp.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_Dp\USBFS_Dp_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_ep2</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_ep2\USBFS_ep2_dma.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\USBFS_ep2\USBFS_ep2_dma.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\VDAC8</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\VDAC8\VDAC8.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\VDAC8\VDAC8.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\VDAC8\VDAC8_PM.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\VdacDma</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\VdacDma\VdacDma_dma.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\VdacDma\VdacDma_dma.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevice.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitter.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\cymetadata.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source\PSoC5\project.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP_Example.cydwr</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP_Example.cyre</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Header Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Header Files\cyapicallbacks.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Source Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Source Files\main.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\Clock_1</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InA</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InA\LED_InA.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InA\LED_InA.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InA\LED_InA_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InB</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InB\LED_InB.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InB\LED_InB.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_InB\LED_InB_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutA</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutA\LED_OutA.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutA\LED_OutA.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutA\LED_OutA_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutB</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutB\LED_OutB.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutB\LED_OutB.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\LED_OutB\LED_OutB_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI_PWR</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI_PWR\MIDI_PWR.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI_PWR\MIDI_PWR.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI_PWR\MIDI_PWR_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI1_UART</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI1_UART\MIDI1_UART.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI1_UART\MIDI1_UART.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI1_UART\MIDI1_UART_BOOT.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI1_UART\MIDI1_UART_INT.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI1_UART\MIDI1_UART_PM.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI2_UART</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI2_UART\MIDI2_UART.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI2_UART\MIDI2_UART.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI2_UART\MIDI2_UART_BOOT.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI2_UART\MIDI2_UART_INT.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\MIDI2_UART\MIDI2_UART_PM.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\Sleep_isr</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\Sleep_isr\Sleep_isr.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\Sleep_isr\Sleep_isr.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SleepTimer</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SleepTimer\SleepTimer.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SleepTimer\SleepTimer.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW1</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW1\SW1.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW1\SW1.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW1\SW1_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW2</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW2\SW2.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW2\SW2.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\SW2\SW2_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_audio.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_audio.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_boot.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_cdc.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_cdc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_cdc.inf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_cls.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_cydmac.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_descr.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_drv.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_episr.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_hid.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_hid.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_midi.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_midi.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_msc.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_msc.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_pm.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_pvt.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_std.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB\USB_vnd.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dm</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dm\USB_Dm.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dm\USB_Dm.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dm\USB_Dm_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dp</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dp\USB_Dp.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dp\USB_Dp.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\USB_Dp\USB_Dp_aliases.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevice.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitter.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\cymetadata.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source\PSoC5\project.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_Multichannel.cydwr</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_Multichannel.cyre</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\Source Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\Source Files\main.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\1kHz_sine_wave.wav</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\cyapicallbacks.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_AUDIO_PSoC3_5LP.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\InterIcSound.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP_Example.cydwr</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP_Example.cyre</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Source Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Source Files\main.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\1kHz_sine_wave.wav</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\cyapicallbacks.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\Generated_Source</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP_Example.cydwr</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP_Example.cyre</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Header Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Header Files\cyapicallbacks.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Source Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Source Files\main.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Generated_Source</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_Multichannel.cydwr</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_Multichannel.cyre</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\Source Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\Source Files\main.c</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\1kHz_sine_wave.wav</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\cyapicallbacks.h</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_AUDIO_PSoC3_5LP.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoC_freeDSP_USB_Port">
+<ExpandedNodeIds>
+<v>PSoC_freeDSP_USB_Port</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\TopDesign\TopDesign.cysch</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\TopDesign\TopDesign.cysch</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\TopDesign\TopDesign.cysch</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC_freeDSP_USB_Port</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\TopDesign\TopDesign.cysch</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\TopDesign\TopDesign.cysch</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\TopDesign\TopDesign.cysch</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\TopDesign</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoC_freeDSP_USB_Port">
+<ExpandedNodeIds>
+<v>PSoC_freeDSP_USB_Port</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CLIP.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\clock.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\I2S_1.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\I2S_1_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\RxDMA_dma.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SDI.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SW1.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\TxDMA_dma.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\InterIcSound_Example.elf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\InterIcSound_Example.hex</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\InterIcSound_Example.map</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\InterIcSound_Example.gpdsc</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\InterIcSound_Example.rpt</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\InterIcSound_Example_timing.html</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\DmaDone.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SampleClk.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\Speaker.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_audio.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_boot.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_cdc.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_cls.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_descr.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_Dm.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_Dp.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_drv.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_ep2_dma.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_episr.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_hid.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_midi.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_msc.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_pm.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_std.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USBFS_vnd.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\VDAC8.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\VDAC8_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\VdacDma_dma.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.elf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.hex</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.map</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP_Example.gpdsc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP_Example.rpt</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_AUDIO_PSoC3_5LP_Example_timing.html</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LED_InA.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LED_InB.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LED_OutA.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LED_OutB.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI_PWR.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI1_UART.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI1_UART_BOOT.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI1_UART_INT.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI1_UART_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI2_UART.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI2_UART_BOOT.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI2_UART_INT.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\MIDI2_UART_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\Sleep_isr.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SleepTimer.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SW1.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SW2.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_audio.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_boot.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_cdc.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_cls.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_descr.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_Dm.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_Dp.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_drv.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_episr.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_hid.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_midi.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_msc.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_pm.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_std.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\USB_vnd.lst</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\USBFS_MIDI_PSoC3_5LP_Example.elf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\USBFS_MIDI_PSoC3_5LP_Example.hex</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CortexM3\ARM_GCC_493\Debug\USBFS_MIDI_PSoC3_5LP_Example.map</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP_Example.gpdsc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP_Example.rpt</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_MIDI_PSoC3_5LP_Example_timing.html</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_Multichannel.gpdsc</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_Multichannel.rpt</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_Multichannel_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC_freeDSP_USB_Port</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CLIP.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\clock.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\I2S_1.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\I2S_1_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_PM.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\RxDMA_dma.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SDI.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\SW1.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\Listing Files\TxDMA_dma.lst</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\InterIcSound_Example.elf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CortexM3\ARM_GCC_493\Debug\InterIcSound_Example.hex</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example">
+<ExpandedNodeIds>
+<v>PSoC_freeDSP_USB_Port</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\PSoC 5 Architecture TRM</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CY8C58LP Family Datasheet</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\System Reference Guides</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\System Reference Guides\cy_boot_v5_30</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\CharLCD_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\cy_clock_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\cy_dma_v1_70</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\cy_dma_v1_70\cy_dma_v1_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\cy_pins_v2_20</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Gnd_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\Gnd_v1_0\Gnd_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\I2S_v2_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\LED_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example\SwitchSPST_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\PSoC 5 Architecture TRM</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CY8C58LP Family Datasheet</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\System Reference Guides</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\System Reference Guides\cy_boot_v5_30</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\CharLCD_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\cy_clock_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\cy_dma_v1_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\cy_isr_v1_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\cy_pins_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\USBFS_v3_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example\VDAC8_v1_90.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PSoC 5 Architecture TRM</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CY8C58LP Family Datasheet</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\System Reference Guides</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\System Reference Guides\cy_boot_v5_30</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_clock_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_isr_v1_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_pins_v2_20</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Diode_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Diode_v1_0\Diode_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Gnd_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Gnd_v1_0\Gnd_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\LED_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\LED_v1_0\LED_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\not_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\not_v1_0\not_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\NPN_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\NPN_v1_0\NPN_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PFET_En_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PhotoTrans_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PhotoTrans_v1_0\PhotoTrans_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Power_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Power_v1_0\Power_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Resistor_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Resistor_v1_0\Resistor_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\SleepTimer_v3_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\SwitchSPST_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\SwitchSPST_v1_0\SwitchSPST_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\UART_v2_50</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\UART_v2_50\UART_v2_50.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\USBFS_v3_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\PSoC 5 Architecture TRM</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\CY8C58LP Family Datasheet</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\System Reference Guides</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\System Reference Guides\cy_boot_v5_30</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\CharLCD_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\cy_clock_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\cy_dma_v1_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\cy_isr_v1_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\cy_pins_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\USBFS_v3_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_Multichannel\VDAC8_v1_90.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC_freeDSP_USB_Port</v>
+<v>PSoC_freeDSP_USB_Port\InterIcSound_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PSoC 5 Architecture TRM</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\CY8C58LP Family Datasheet</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\System Reference Guides</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\System Reference Guides\cy_boot_v5_30</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_clock_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_isr_v1_70.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_pins_v2_20</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Diode_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Diode_v1_0\Diode_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Gnd_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Gnd_v1_0\Gnd_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\LED_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\LED_v1_0\LED_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\not_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\not_v1_0\not_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\NPN_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\NPN_v1_0\NPN_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PFET_En_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PhotoTrans_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\PhotoTrans_v1_0\PhotoTrans_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Power_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Power_v1_0\Power_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Resistor_v1_0</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\Resistor_v1_0\Resistor_v1_0.pdf</v>
+<v>PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example\SleepTimer_v3_20.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\USBFS_MIDI_PSoC3_5LP_Example.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\InterIcSound_Example.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\main.c" />
+<name v=".\USBFS_Multichannel.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\USBFS_Multichannel.cydsn\main.c" />
+</OpenDocs>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>
