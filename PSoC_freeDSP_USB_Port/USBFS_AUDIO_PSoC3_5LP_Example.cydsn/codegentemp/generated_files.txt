@@ -60,8 +60,10 @@
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\LCD_LCDPort_aliases.h" value="NONE;LCD_LCDPort" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\LCD_LCDPort.c" value="ARM_C_FILE;LCD_LCDPort" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\LCD_LCDPort.h" value="NONE;LCD_LCDPort" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_ep2_dma.c" value="ARM_C_FILE;USBFS_ep2" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_ep2_dma.h" value="NONE;USBFS_ep2" />
+  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_ep6_dma.c" value="ARM_C_FILE;USBFS_ep6" />
+  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_ep6_dma.h" value="NONE;USBFS_ep6" />
+  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_ep1_dma.c" value="ARM_C_FILE;USBFS_ep1" />
+  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_ep1_dma.h" value="NONE;USBFS_ep1" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_Dm_aliases.h" value="NONE;USBFS_Dm" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_Dm.c" value="ARM_C_FILE;USBFS_Dm" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\codegentemp\USBFS_Dm.h" value="NONE;USBFS_Dm" />

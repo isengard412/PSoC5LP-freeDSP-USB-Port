@@ -46,12 +46,12 @@ uint8 USBFS_initVar = 0u;
         const uint8 USBFS_DmaChan[USBFS_MAX_EP] =
         {
             0u,
-            0u,
-            (uint8) USBFS_ep2_dma_CHANNEL,
-            0u,
+            (uint8) USBFS_ep1_dma_CHANNEL,
             0u,
             0u,
             0u,
+            0u,
+            (uint8) USBFS_ep6_dma_CHANNEL,
             0u,
             0u,
         };        
@@ -80,12 +80,12 @@ uint8 USBFS_initVar = 0u;
     const uint8 USBFS_DmaReqOut[USBFS_MAX_EP] =
     {
         0u,
-        0u,
-        USBFS_ep2_dma__TR_OUTPUT,
-        0u,
+        USBFS_ep1_dma__TR_OUTPUT,
         0u,
         0u,
         0u,
+        0u,
+        USBFS_ep6_dma__TR_OUTPUT,
         0u,
         0u,
     };
@@ -111,12 +111,12 @@ uint8 USBFS_initVar = 0u;
         const uint8 USBFS_epX_TD_TERMOUT_EN[USBFS_MAX_EP] =
         {
             0u,
-            0u,
-            USBFS_ep2__TD_TERMOUT_EN,
-            0u,
+            USBFS_ep1__TD_TERMOUT_EN,
             0u,
             0u,
             0u,
+            0u,
+            USBFS_ep6__TD_TERMOUT_EN,
             0u,
             0u,
         };

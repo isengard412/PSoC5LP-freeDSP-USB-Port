@@ -2,14 +2,15 @@ dont_use_io iocell 1 0
 dont_use_io iocell 1 1
 dont_use_io iocell 1 3
 set_io "\LCD:LCDPort(4)\" iocell 2 4
-set_location "VdacDma" drqcell -1 -1 0
+set_location "VdacDma" drqcell -1 -1 1
 set_location "DmaDone" interrupt -1 -1 0
+set_location "\USBFS:ep_6\" interrupt -1 -1 2
 set_location "\USBFS:ep_0\" interrupt -1 -1 24
-set_location "\USBFS:ep_2\" interrupt -1 -1 1
+set_location "\USBFS:ep_1\" interrupt -1 -1 1
 set_location "\VDAC8:viDAC8\" vidaccell -1 -1 2
 set_location "\USBFS:dp_int\" interrupt -1 -1 12
 set_location "\USBFS:Dp\" logicalport -1 -1 8
-set_location "\USBFS:ep2\" drqcell -1 -1 1
+set_location "\USBFS:ep1\" drqcell -1 -1 0
 set_location "\USBFS:USB\" usbcell -1 -1 0
 set_location "\USBFS:bus_reset\" interrupt -1 -1 23
 set_io "\LCD:LCDPort(6)\" iocell 2 6
@@ -18,6 +19,7 @@ set_io "\LCD:LCDPort(2)\" iocell 2 2
 set_location "\USBFS:ord_int\" interrupt -1 -1 25
 set_location "\USBFS:arb_int\" interrupt -1 -1 22
 set_location "\USBFS:sof_int\" interrupt -1 -1 21
+set_location "\USBFS:ep6\" drqcell -1 -1 5
 set_location "ClockBlock" clockblockcell -1 -1 0
 set_io "\LCD:LCDPort(1)\" iocell 2 1
 set_io "\LCD:LCDPort(0)\" iocell 2 0

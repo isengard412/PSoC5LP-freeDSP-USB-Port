@@ -1,0 +1,31 @@
+# Design01
+# 2016-05-03 07:55:23Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "\USBFS_1:Dm(0)\" iocell 15 7
+set_location "\USBFS_1:Dp\" logicalport -1 -1 15
+set_io "\USBFS_1:Dp(0)\" iocell 15 6
+set_location "\USBFS_1:EP17_DMA_Done_SR:sts_intr:sts_reg\" 0 4 4
+set_location "\USBFS_1:ep2\" drqcell -1 -1 1
+set_location "\USBFS_1:dp_int\" interrupt -1 -1 12
+set_location "\USBFS_1:USB\" usbcell -1 -1 0
+set_location "\USBFS_1:EP_DMA_Done_isr\" interrupt -1 -1 0
+set_location "\USBFS_1:EP8_DMA_Done_SR:sts_intr:sts_reg\" 1 4 4
+set_location "\USBFS_1:ep_2\" interrupt -1 -1 1
+set_location "\USBFS_1:ep_0\" interrupt -1 -1 24
+set_location "\USBFS_1:bus_reset\" interrupt -1 -1 23
+set_location "\USBFS_1:arb_int\" interrupt -1 -1 22
+set_location "\USBFS_1:nrqSync:genblk1[0]:INST\" 0 3 5 1
+set_location "\USBFS_1:nrqSync:genblk1[1]:INST\" 0 3 5 0
+set_location "\USBFS_1:nrqSync:genblk1[2]:INST\" 0 3 5 3
+set_location "\USBFS_1:nrqSync:genblk1[3]:INST\" 0 3 5 2
+set_location "\USBFS_1:nrqSync:genblk1[4]:INST\" 1 3 5 2
+set_location "\USBFS_1:nrqSync:genblk1[5]:INST\" 1 3 5 1
+set_location "\USBFS_1:nrqSync:genblk1[6]:INST\" 1 3 5 3
+set_location "\USBFS_1:nrqSync:genblk1[7]:INST\" 1 3 5 0

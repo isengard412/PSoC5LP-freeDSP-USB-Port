@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.355ms
+Loading plugins phase: Elapsed time ==> 0s.550ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj -d CY8C5868AXI-LP035 -s C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj -d CY8C5888LTI-LP097 -s C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 2s.075ms
+Elaboration phase: Elapsed time ==> 3s.005ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.062ms
+HDL generation phase: Elapsed time ==> 0s.093ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Lukas
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Fri Apr 29 14:23:28 2016
+Wed May 25 14:03:43 2016
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 USBFS_AUDIO_PSoC3_5LP_Example.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Fri Apr 29 14:23:28 2016
+Wed May 25 14:03:43 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
@@ -82,7 +82,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Lukas
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Fri Apr 29 14:23:28 2016
+Wed May 25 14:03:44 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -108,7 +108,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Lukas
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Fri Apr 29 14:23:28 2016
+Wed May 25 14:03:44 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -177,8 +177,8 @@ Removing Lhs of wire tmpOE__Speaker_net_0[27] = one[24]
 Removing Lhs of wire \VDAC8:Net_83\[34] = zero[8]
 Removing Lhs of wire \VDAC8:Net_81\[35] = zero[8]
 Removing Lhs of wire \VDAC8:Net_82\[36] = zero[8]
-Removing Lhs of wire \USBFS:tmpOE__Dm_net_0\[46] = one[24]
-Removing Lhs of wire \USBFS:tmpOE__Dp_net_0\[53] = one[24]
+Removing Lhs of wire \USBFS:tmpOE__Dm_net_0\[49] = one[24]
+Removing Lhs of wire \USBFS:tmpOE__Dp_net_0\[56] = one[24]
 
 ------------------------------------------------------
 Aliased 0 equations, 13 wires.
@@ -205,14 +205,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya "-.fftprj=C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj" -dcpsoc3 USBFS_AUDIO_PSoC3_5LP_Example.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.374ms
+Warp synthesis phase: Elapsed time ==> 1s.223ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Friday, 29 April 2016 14:23:29
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj -d CY8C5868AXI-LP035 USBFS_AUDIO_PSoC3_5LP_Example.v -verilog
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Wednesday, 25 May 2016 14:03:44
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj -d CY8C5888LTI-LP097 USBFS_AUDIO_PSoC3_5LP_Example.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.013ms
+Design parsing phase: Elapsed time ==> 0s.007ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -649,11 +649,22 @@ Design Equations
     DRQ listing
     ------------------------------------------------------------
 
-    drqcell: Name =\USBFS:ep2\
+    drqcell: Name =\USBFS:ep6\
         PORT MAP (
-            dmareq => \USBFS:dma_request_1\ ,
+            dmareq => \USBFS:dma_request_5\ ,
             termin => \USBFS:dma_terminate\ ,
-            termout => \USBFS:Net_1498\ );
+            termout => \USBFS:Net_1579\ );
+        Properties:
+        {
+            drq_type = "10"
+            num_tds = 0
+        }
+
+    drqcell: Name =\USBFS:ep1\
+        PORT MAP (
+            dmareq => \USBFS:dma_request_0\ ,
+            termin => \USBFS:dma_terminate\ ,
+            termout => \USBFS:Net_1495\ );
         Properties:
         {
             drq_type = "10"
@@ -693,9 +704,9 @@ Design Equations
             int_type = "10"
         }
 
-    interrupt: Name =\USBFS:ep_2\
+    interrupt: Name =\USBFS:ep_1\
         PORT MAP (
-            interrupt => \USBFS:ep_int_2\ );
+            interrupt => \USBFS:ep_int_1\ );
         Properties:
         {
             int_type = "10"
@@ -733,6 +744,14 @@ Design Equations
             int_type = "10"
         }
 
+    interrupt: Name =\USBFS:ep_6\
+        PORT MAP (
+            interrupt => \USBFS:ep_int_6\ );
+        Properties:
+        {
+            int_type = "10"
+        }
+
     interrupt: Name =DmaDone
         PORT MAP (
             interrupt => Net_391 );
@@ -754,13 +773,13 @@ Digital Clocks                :    1 :    7 :    8 : 12.50 %
 Analog Clocks                 :    0 :    4 :    4 :  0.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
-Interrupts                    :    8 :   24 :   32 : 25.00 %
-IO                            :   13 :   59 :   72 : 18.06 %
+Interrupts                    :    9 :   23 :   32 : 28.13 %
+IO                            :   13 :   35 :   48 : 27.08 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
 I2C                           :    0 :    1 :    1 :  0.00 %
 USB                           :    1 :    0 :    1 : 100.00 %
-DMA Channels                  :    2 :   22 :   24 :  8.33 %
+DMA Channels                  :    3 :   21 :   24 : 12.50 %
 Timer                         :    0 :    4 :    4 :  0.00 %
 UDB                           :      :      :      :        
   Macrocells                  :    0 :  192 :  192 :  0.00 %
@@ -778,8 +797,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    1 :    3 :    4 : 25.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.008ms
-Tech mapping phase: Elapsed time ==> 0s.095ms
+Technology Mapping: Elapsed time ==> 0s.022ms
+Tech mapping phase: Elapsed time ==> 0s.149ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
@@ -810,10 +829,10 @@ IO_6@[IOP=(15)][IoId=(6)] : \USBFS:Dp(0)\ (fixed)
 USB[0]@[FFB(USB,0)] : \USBFS:USB\
 VIDAC[2]@[FFB(VIDAC,2)] : \VDAC8:viDAC8\
 
-Analog Placement phase: Elapsed time ==> 0s.525ms
+Analog Placement phase: Elapsed time ==> 0s.754ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.000ms
+Analog Routing phase: Elapsed time ==> 0s.002ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -842,32 +861,32 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.434ms
+Analog Code Generation phase: Elapsed time ==> 0s.636ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
 I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
-I2076: Total run-time: 0.6 sec.
+I2076: Total run-time: 0.8 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
 <CYPRESSTAG name="PLD Packing Summary">
 No PLDs were packed.
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.000ms
+PLD Packing: Elapsed time ==> 0s.001ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.018ms
+Partitioning: Elapsed time ==> 0s.036ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.000ms
+Annealing: Elapsed time ==> 0s.001ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 200, final cost is 200 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 269, final cost is 269 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -918,9 +937,17 @@ Intr container @ [IntrContainer=(0)]:
             int_type = "00"
         }
   Intr@ [IntrContainer=(0)][IntrId=(1)] 
-    interrupt: Name =\USBFS:ep_2\
+    interrupt: Name =\USBFS:ep_1\
         PORT MAP (
-            interrupt => \USBFS:ep_int_2\ );
+            interrupt => \USBFS:ep_int_1\ );
+        Properties:
+        {
+            int_type = "10"
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(2)] 
+    interrupt: Name =\USBFS:ep_6\
+        PORT MAP (
+            interrupt => \USBFS:ep_int_6\ );
         Properties:
         {
             int_type = "10"
@@ -975,6 +1002,17 @@ Intr container @ [IntrContainer=(0)]:
         }
 Drq container @ [DrqContainer=(0)]: 
   Dma@ [DrqContainer=(0)][DrqId=(0)] 
+    drqcell: Name =\USBFS:ep1\
+        PORT MAP (
+            dmareq => \USBFS:dma_request_0\ ,
+            termin => \USBFS:dma_terminate\ ,
+            termout => \USBFS:Net_1495\ );
+        Properties:
+        {
+            drq_type = "10"
+            num_tds = 0
+        }
+  Dma@ [DrqContainer=(0)][DrqId=(1)] 
     drqcell: Name =VdacDma
         PORT MAP (
             dmareq => Net_389_local ,
@@ -985,12 +1023,12 @@ Drq container @ [DrqContainer=(0)]:
             drq_type = "00"
             num_tds = 0
         }
-  Dma@ [DrqContainer=(0)][DrqId=(1)] 
-    drqcell: Name =\USBFS:ep2\
+  Dma@ [DrqContainer=(0)][DrqId=(5)] 
+    drqcell: Name =\USBFS:ep6\
         PORT MAP (
-            dmareq => \USBFS:dma_request_1\ ,
+            dmareq => \USBFS:dma_request_5\ ,
             termin => \USBFS:dma_terminate\ ,
-            termout => \USBFS:Net_1498\ );
+            termout => \USBFS:Net_1579\ );
         Properties:
         {
             drq_type = "10"
@@ -1321,9 +1359,6 @@ Pin : Name = \LCD:LCDPort(6)\
     }
 
 Port 3 is empty
-Port 4 is empty
-Port 5 is empty
-Port 6 is empty
 Port 12 is empty
 Port 15 generates interrupt for logical port:
     logicalport: Name =\USBFS:Dp\
@@ -1585,31 +1620,31 @@ Port | Pin | Fixed |      Type |       Drive Mode |             Name | Connectio
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.002ms
-Digital Placement phase: Elapsed time ==> 0s.892ms
+Digital Placement phase: Elapsed time ==> 1s.457ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.339ms
+Digital Routing phase: Elapsed time ==> 1s.615ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.241ms
+Bitstream and API generation phase: Elapsed time ==> 0s.363ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.049ms
+Bitstream verification phase: Elapsed time ==> 0s.055ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in USBFS_AUDIO_PSoC3_5LP_Example_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.345ms
+Static timing analysis phase: Elapsed time ==> 0s.385ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.267ms
+Design database save phase: Elapsed time ==> 0s.272ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 4s.232ms
+cydsfit: Elapsed time ==> 5s.730ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 4s.274ms
-API generation phase: Elapsed time ==> 3s.383ms
-Dependency generation phase: Elapsed time ==> 0s.019ms
+Fitter phase: Elapsed time ==> 5s.779ms
+API generation phase: Elapsed time ==> 3s.385ms
+Dependency generation phase: Elapsed time ==> 0s.043ms
 Cleanup phase: Elapsed time ==> 0s.001ms

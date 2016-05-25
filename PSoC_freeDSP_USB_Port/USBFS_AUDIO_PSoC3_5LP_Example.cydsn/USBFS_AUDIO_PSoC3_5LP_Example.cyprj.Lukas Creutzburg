@@ -33,7 +33,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cydmac.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_hid.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
@@ -76,7 +78,9 @@
 <file name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <file name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
 <file name=".\Generated_Source\PSoC5\USBFS_cydmac.h" />
+<file name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <file name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<file name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <file name=".\Generated_Source\PSoC5\USBFS_hid.h" />
 <file name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <file name=".\Generated_Source\PSoC5\USBFS_msc.h" />
@@ -240,7 +244,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cydmac.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_hid.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
@@ -286,7 +292,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.c" />
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -309,7 +317,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_boot.c" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -332,7 +342,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.c" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -355,7 +367,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cls.c" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -378,7 +392,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_descr.c" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -401,7 +417,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_drv.c" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -413,22 +431,38 @@
 <dep name=".\cyapicallbacks.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\USBFS_drv.c" />
-<file name=".\ARM_GCC_493\Debug\USBFS_ep2_dma.o">
+<file name=".\ARM_GCC_493\Debug\USBFS_ep1_dma.o">
 <dep name=".\Generated_Source\PSoC5\CYDMAC.H" />
 <dep name=".\Generated_Source\PSoC5\CYFITTER.H" />
 <dep name=".\Generated_Source\PSoC5\CYLIB.H" />
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.H" />
-<dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.c" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.H" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.c" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC5\cyfitter.h" />
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
-<file name=".\Generated_Source\PSoC5\USBFS_ep2_dma.c" />
+<file name=".\Generated_Source\PSoC5\USBFS_ep1_dma.c" />
+<file name=".\ARM_GCC_493\Debug\USBFS_ep6_dma.o">
+<dep name=".\Generated_Source\PSoC5\CYDMAC.H" />
+<dep name=".\Generated_Source\PSoC5\CYFITTER.H" />
+<dep name=".\Generated_Source\PSoC5\CYLIB.H" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.H" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\USBFS_ep6_dma.c" />
 <file name=".\ARM_GCC_493\Debug\USBFS_episr.o">
 <dep name=".\Generated_Source\PSoC5\CYDMAC.H" />
 <dep name=".\Generated_Source\PSoC5\CYFITTER.H" />
@@ -440,7 +474,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cydmac.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_episr.c" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
@@ -463,7 +499,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_hid.c" />
 <dep name=".\Generated_Source\PSoC5\USBFS_hid.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
@@ -487,7 +525,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.c" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
@@ -510,7 +550,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.c" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
@@ -535,7 +577,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS_Dp_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pm.c" />
@@ -559,7 +603,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -582,7 +628,9 @@
 <dep name=".\Generated_Source\PSoC5\USBFS.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_audio.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_cdc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep1_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep6_dma.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_midi.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_msc.h" />
 <dep name=".\Generated_Source\PSoC5\USBFS_pvt.h" />
@@ -685,6 +733,22 @@
 <file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
 <file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+<file name=".\ARM_GCC_493\Debug\USBFS_ep2_dma.o">
+<dep name=".\Generated_Source\PSoC5\CYDMAC.H" />
+<dep name=".\Generated_Source\PSoC5\CYFITTER.H" />
+<dep name=".\Generated_Source\PSoC5\CYLIB.H" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.H" />
+<dep name=".\Generated_Source\PSoC5\USBFS_ep2_dma.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\USBFS_ep2_dma.c" />
 </CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
 </dependency_info>
 </CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256>
@@ -720,7 +784,6 @@
 <dep name=".\ARM_GCC_493\Debug\SampleClk.o" />
 <dep name=".\ARM_GCC_493\Debug\DmaDone.o" />
 <dep name=".\ARM_GCC_493\Debug\LCD_LCDPort.o" />
-<dep name=".\ARM_GCC_493\Debug\USBFS_ep2_dma.o" />
 <dep name=".\ARM_GCC_493\Debug\USBFS_Dm.o" />
 <dep name=".\ARM_GCC_493\Debug\USBFS_Dp.o" />
 <dep name=".\ARM_GCC_493\Debug\Cm3Start.o" />
@@ -731,6 +794,8 @@
 <dep name=".\ARM_GCC_493\Debug\cyPm.o" />
 <dep name=".\ARM_GCC_493\Debug\CySpc.o" />
 <dep name=".\ARM_GCC_493\Debug\cyutils.o" />
+<dep name=".\ARM_GCC_493\Debug\USBFS_ep6_dma.o" />
+<dep name=".\ARM_GCC_493\Debug\USBFS_ep1_dma.o" />
 <dep name=".\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" />
 </file>
@@ -782,14 +847,20 @@
 <name_val_pair name=".\Generated_Source\PSoC5\CySpc.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -ffunction-sections -O0 -ffat-lto-objects" />
 <name_val_pair name=".\Generated_Source\PSoC5\cyutils.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -ffunction-sections -O0 -ffat-lto-objects" />
 <name_val_pair name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.hex" v="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -O0 -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
+<name_val_pair name=".\Generated_Source\PSoC5\USBFS_ep6_dma.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name=".\Generated_Source\PSoC5\USBFS_ep1_dma.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -ffunction-sections -O0 -ffat-lto-objects" />
 </name>
 </genericCmdLineData>
-<codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\Lukas Creutzburg\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p &quot;C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj&quot; -d CY8C5868AXI-LP035 -s &quot;C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\Generated_Source\PSoC5&quot; -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
+<codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\Lukas Creutzburg\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p &quot;C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj&quot; -d CY8C5888LTI-LP097 -s &quot;C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\Generated_Source\PSoC5&quot; -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
 </CyGuid_b0374e30-ce3a-47f2-ad85-821643292c68>
 </dataGuid>
 <dataGuid v="597c5b74-0c46-4204-8b7f-96f3570671dc">
 <CyGuid_597c5b74-0c46-4204-8b7f-96f3570671dc type_name="CyDesigner.Common.ProjMgmt.DeviceSelector.CyDeviceSelectorState" version="1">
+<name_val_pair name="Dialog Bounds" v="320, 200, 800, 599" />
+<name_val_pair name="Column Order" v="PartNumber;CPU;Architecture;PACKAGE;SPEED_MHZ;FLASH_KB;SRAM_KB;EEPROM_KB;IO_COUNT;CAPSENSE;BLUETOOTH;DIRDRIVELCD;TIMERCOUNTERPWM_COUNT;I2C_COUNT;UDB_COUNT;PRECONFIGURED_BLOCKS;USB_TYPE;CAN20B_COUNT;PVT_COMPLEX_ADC;DAC8_COUNT;OPAMP_COUNT;COMP_COUNT;DFB_COUNT;ANALOGBLOCKS_COUNT;DMACHANNELS_COUNT;PLL_COUNT;BOOSTCONVERTER_VOLTS;PVT_DIGITAL_IN_VOLT_RANGE;PVT_ANALOG_IN_VOLT_RANGE;TEMPMIN_CELSIUS;TEMPMAX_CELSIUS;AUTOMOTIVE_QUALIFIED;TRACEBUFF_KB;SILICONID;DesignFits;" />
 <name_val_pair name="Filter Options" v="Architecture:PSoC 5LP;" />
+<name_val_pair name="Visible Columns" v="PartNumber;CPU;Architecture;PACKAGE;SPEED_MHZ;FLASH_KB;SRAM_KB;EEPROM_KB;IO_COUNT;CAPSENSE;BLUETOOTH;DIRDRIVELCD;TIMERCOUNTERPWM_COUNT;I2C_COUNT;UDB_COUNT;PRECONFIGURED_BLOCKS;USB_TYPE;CAN20B_COUNT;PVT_COMPLEX_ADC;DAC8_COUNT;OPAMP_COUNT;COMP_COUNT;DFB_COUNT;ANALOGBLOCKS_COUNT;DMACHANNELS_COUNT;PLL_COUNT;BOOSTCONVERTER_VOLTS;PVT_DIGITAL_IN_VOLT_RANGE;PVT_ANALOG_IN_VOLT_RANGE;TEMPMIN_CELSIUS;TEMPMAX_CELSIUS;AUTOMOTIVE_QUALIFIED;TRACEBUFF_KB;SILICONID;DesignFits;" />
+<name_val_pair name="Sort" v="" />
 </CyGuid_597c5b74-0c46-4204-8b7f-96f3570671dc>
 </dataGuid>
 <dataGuid v="925cc1e1-309e-4e08-b0a1-09a83c35b157">
@@ -1060,6 +1131,16 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\Custom\cydmacontrol.cs</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\Custom\cydmacontrol.designer.cs</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\Custom\cydmacontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\cy_dma_v1_70.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\cy_dma_v1_70.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\cy_dma_v1_70.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\cy_dma_v1_70.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\API\dma.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\API\dma.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\Custom\cycustomizer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\Custom\cydmacontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\Custom\cydmacontrol.designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_dma_v1_70\Custom\cydmacontrol.resx</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cysym</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.primitive</v>
@@ -1147,6 +1228,13 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_20\PSoC5\API\pins.h</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc3_usb_v1_0\cy_psoc3_usb_v1_0.cyprimitive</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc3_usb_v1_0\cy_psoc3_usb_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC5\API\intc.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC5\API\intc.h</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cysym</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.primitive</v>
@@ -1392,20 +1480,24 @@
 <v>.\Generated_Source\PSoC5\Cm3Iar.icf</v>
 <v>.\Generated_Source\PSoC5\CyBootAsmIar.s</v>
 <v>.\Generated_Source\PSoC5\project.h</v>
+<v>.\Generated_Source\PSoC5\USBFS_ep6_dma.c</v>
+<v>.\Generated_Source\PSoC5\USBFS_ep6_dma.h</v>
+<v>.\Generated_Source\PSoC5\USBFS_ep1_dma.c</v>
+<v>.\Generated_Source\PSoC5\USBFS_ep1_dma.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 </warp_dep>
-<deps_time v="131064062180200196" />
+<deps_time v="131086514346219821" />
 <top_block v="TopDesign" />
 <last_generation v="7" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131064062246480764" />
+<deps_time v="131086514440766682" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 </userData>

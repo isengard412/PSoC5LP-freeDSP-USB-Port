@@ -11,7 +11,7 @@ Archive member included because of file (symbol)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
                               .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o) (USBFS_EP)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
-                              .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o) (USBFS_EP_2_ISR)
+                              .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o) (USBFS_EP_1_ISR)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
                               .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o) (USBFS_DP_ISR)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
@@ -22,8 +22,6 @@ Archive member included because of file (symbol)
                               .\ARM_GCC_493\Debug\main.o (VdacDma_DmaInitialize)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
                               .\ARM_GCC_493\Debug\main.o (DmaDone_Disable)
-.\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
-                              .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o) (USBFS_ep2_DmaInitialize)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
                               .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o) (USBFS_Dp_ClearInterrupt)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
@@ -34,6 +32,10 @@ Archive member included because of file (symbol)
                               .\ARM_GCC_493\Debug\Cm3Start.o (CyResetStatus)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
                               .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o) (CyPmReadStatus)
+.\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+                              .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o) (USBFS_ep6_DmaInitialize)
+.\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+                              .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o) (USBFS_ep1_DmaInitialize)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
                               .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o) (USBFS_DispatchClassRqst)
 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
@@ -151,7 +153,7 @@ Discarded input sections
  .text          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
  .data          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
  .text.USBFS_Stop
-                0x00000000       0xd0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00000000       0xd8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
  .text.USBFS_CheckActivity
                 0x00000000       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
  .text.USBFS_Stop_DMA
@@ -223,10 +225,6 @@ Discarded input sections
                 0x00000000       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
  .text.DmaDone_ClearPending
                 0x00000000       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
- .text          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
- .bss           0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
- .text.USBFS_ep2_DmaRelease
-                0x00000000       0x14 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
  .text          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
  .data          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
  .bss           0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
@@ -460,6 +458,14 @@ Discarded input sections
                 0x00000000       0xd4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
  .text.CyPmHviLviRestore
                 0x00000000       0x54 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .text          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .bss           0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .text.USBFS_ep6_DmaRelease
+                0x00000000       0x14 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .text          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+ .bss           0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+ .text.USBFS_ep1_DmaRelease
+                0x00000000       0x14 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
  .text          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
  .data          0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
  .bss           0x00000000        0x0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
@@ -623,7 +629,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 0x00000000                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x3332
+.text           0x00000000     0x3442
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -668,274 +674,280 @@ END GROUP
  .text.AnalogSetDefault
                 0x00000630       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
  .text.cyfitter_cfg
-                0x00000688      0x13c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
+                0x00000688      0x154 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
                 0x00000688                cyfitter_cfg
  .text.LCD_Init
-                0x000007c4       0x6c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x000007c4                LCD_Init
+                0x000007dc       0x6c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x000007dc                LCD_Init
  .text.LCD_Enable
-                0x00000830       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x00000830                LCD_Enable
+                0x00000848       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x00000848                LCD_Enable
  .text.LCD_Start
-                0x00000848       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x00000848                LCD_Start
+                0x00000860       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x00000860                LCD_Start
  .text.LCD_Position
-                0x00000868       0x6c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x00000868                LCD_Position
+                0x00000880       0x6c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x00000880                LCD_Position
  .text.LCD_PrintString
-                0x000008d4       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x000008d4                LCD_PrintString
+                0x000008ec       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x000008ec                LCD_PrintString
  .text.LCD_WriteData
-                0x0000090c       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x0000090c                LCD_WriteData
+                0x00000924       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x00000924                LCD_WriteData
  .text.LCD_WriteControl
-                0x00000940       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x00000940                LCD_WriteControl
+                0x00000958       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x00000958                LCD_WriteControl
  .text.LCD_IsReady
-                0x00000974      0x178 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
-                0x00000974                LCD_IsReady
+                0x0000098c      0x178 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x0000098c                LCD_IsReady
  .text.LCD_WrDatNib
-                0x00000aec       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x00000b04       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
  .text.LCD_WrCntrlNib
-                0x00000b64       0x60 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+                0x00000b7c       0x60 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
  .text.VDAC8_Init
-                0x00000bc4       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
-                0x00000bc4                VDAC8_Init
+                0x00000bdc       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+                0x00000bdc                VDAC8_Init
  .text.VDAC8_Enable
-                0x00000bec       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
-                0x00000bec                VDAC8_Enable
+                0x00000c04       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+                0x00000c04                VDAC8_Enable
  .text.VDAC8_Start
-                0x00000c20       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
-                0x00000c20                VDAC8_Start
+                0x00000c38       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+                0x00000c38                VDAC8_Start
  .text.VDAC8_SetSpeed
-                0x00000c48       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
-                0x00000c48                VDAC8_SetSpeed
+                0x00000c60       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+                0x00000c60                VDAC8_SetSpeed
  .text.VDAC8_SetRange
-                0x00000c88       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
-                0x00000c88                VDAC8_SetRange
+                0x00000ca0       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+                0x00000ca0                VDAC8_SetRange
  .text.VDAC8_SetValue
-                0x00000cc8       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
-                0x00000cc8                VDAC8_SetValue
+                0x00000ce0       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+                0x00000ce0                VDAC8_SetValue
  .text.VDAC8_DacTrim
-                0x00000ce8       0x3c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
-                0x00000ce8                VDAC8_DacTrim
+                0x00000d00       0x3c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+                0x00000d00                VDAC8_DacTrim
  .text.USBFS_Start
-                0x00000d24       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00000d24                USBFS_Start
+                0x00000d3c       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00000d3c                USBFS_Start
  .text.USBFS_Init
-                0x00000d5c      0x1ac .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00000d5c                USBFS_Init
+                0x00000d74      0x1c0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00000d74                USBFS_Init
  .text.USBFS_InitComponent
-                0x00000f08      0x110 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00000f08                USBFS_InitComponent
+                0x00000f34      0x114 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00000f34                USBFS_InitComponent
  .text.USBFS_ReInitComponent
-                0x00001018       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00001018                USBFS_ReInitComponent
+                0x00001048       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00001048                USBFS_ReInitComponent
  .text.USBFS_GetConfiguration
-                0x00001080       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00001080                USBFS_GetConfiguration
+                0x000010b0       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x000010b0                USBFS_GetConfiguration
  .text.USBFS_IsConfigurationChanged
-                0x00001098       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00001098                USBFS_IsConfigurationChanged
+                0x000010c8       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x000010c8                USBFS_IsConfigurationChanged
  .text.USBFS_GetInterfaceSetting
-                0x000010cc       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x000010cc                USBFS_GetInterfaceSetting
+                0x000010fc       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x000010fc                USBFS_GetInterfaceSetting
  .text.USBFS_GetEPState
-                0x000010f0       0x2c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x000010f0                USBFS_GetEPState
+                0x00001120       0x2c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00001120                USBFS_GetEPState
  .text.USBFS_GetEPCount
-                0x0000111c       0x60 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x0000111c                USBFS_GetEPCount
+                0x0000114c       0x60 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x0000114c                USBFS_GetEPCount
  .text.USBFS_InitEP_DMA
-                0x0000117c       0x8c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x0000117c                USBFS_InitEP_DMA
+                0x000011ac       0xa8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x000011ac                USBFS_InitEP_DMA
  .text.USBFS_ReadOutEP
-                0x00001208      0x110 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00001208                USBFS_ReadOutEP
+                0x00001254      0x110 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00001254                USBFS_ReadOutEP
  .text.USBFS_EnableOutEP
-                0x00001318       0x54 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
-                0x00001318                USBFS_EnableOutEP
+                0x00001364       0x54 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+                0x00001364                USBFS_EnableOutEP
  .text.USBFS_EP_0_ISR
-                0x0000136c       0xf8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x0000136c                USBFS_EP_0_ISR
+                0x000013b8       0xf8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000013b8                USBFS_EP_0_ISR
  .text.USBFS_HandleSetup
-                0x00001464       0x88 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001464                USBFS_HandleSetup
+                0x000014b0       0x88 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000014b0                USBFS_HandleSetup
  .text.USBFS_HandleIN
-                0x000014ec       0x4c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x000014ec                USBFS_HandleIN
+                0x00001538       0x4c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x00001538                USBFS_HandleIN
  .text.USBFS_HandleOUT
-                0x00001538       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001538                USBFS_HandleOUT
+                0x00001584       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x00001584                USBFS_HandleOUT
  .text.USBFS_LoadEP0
-                0x00001590       0xd0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001590                USBFS_LoadEP0
+                0x000015dc       0xd0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000015dc                USBFS_LoadEP0
  .text.USBFS_InitControlRead
-                0x00001660       0x70 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001660                USBFS_InitControlRead
+                0x000016ac       0x70 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000016ac                USBFS_InitControlRead
  .text.USBFS_InitZeroLengthControlTransfer
-                0x000016d0       0x44 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x000016d0                USBFS_InitZeroLengthControlTransfer
+                0x0000171c       0x44 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x0000171c                USBFS_InitZeroLengthControlTransfer
  .text.USBFS_ControlReadDataStage
-                0x00001714        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001714                USBFS_ControlReadDataStage
+                0x00001760        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x00001760                USBFS_ControlReadDataStage
  .text.USBFS_ControlReadStatusStage
-                0x00001720       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001720                USBFS_ControlReadStatusStage
+                0x0000176c       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x0000176c                USBFS_ControlReadStatusStage
  .text.USBFS_InitControlWrite
-                0x00001760       0x64 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001760                USBFS_InitControlWrite
+                0x000017ac       0x64 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000017ac                USBFS_InitControlWrite
  .text.USBFS_ControlWriteDataStage
-                0x000017c4       0xb4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x000017c4                USBFS_ControlWriteDataStage
+                0x00001810       0xb4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x00001810                USBFS_ControlWriteDataStage
  .text.USBFS_ControlWriteStatusStage
-                0x00001878       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001878                USBFS_ControlWriteStatusStage
+                0x000018c4       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000018c4                USBFS_ControlWriteStatusStage
  .text.USBFS_InitNoDataControlTransfer
-                0x00001898       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001898                USBFS_InitNoDataControlTransfer
+                0x000018e4       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000018e4                USBFS_InitNoDataControlTransfer
  .text.USBFS_NoDataControlStatusStage
-                0x000018d0       0x48 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x000018d0                USBFS_NoDataControlStatusStage
+                0x0000191c       0x48 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x0000191c                USBFS_NoDataControlStatusStage
  .text.USBFS_UpdateStatusBlock
-                0x00001918       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001918                USBFS_UpdateStatusBlock
+                0x00001964       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x00001964                USBFS_UpdateStatusBlock
  .text.USBFS_InitializeStatusBlock
-                0x00001958       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
-                0x00001958                USBFS_InitializeStatusBlock
- .text.USBFS_EP_2_ISR
-                0x0000198c       0x54 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
-                0x0000198c                USBFS_EP_2_ISR
+                0x000019a4       0x34 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+                0x000019a4                USBFS_InitializeStatusBlock
+ .text.USBFS_EP_1_ISR
+                0x000019d8       0x54 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+                0x000019d8                USBFS_EP_1_ISR
+ .text.USBFS_EP_6_ISR
+                0x00001a2c       0x5c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+                0x00001a2c                USBFS_EP_6_ISR
  .text.USBFS_SOF_ISR
-                0x000019e0        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
-                0x000019e0                USBFS_SOF_ISR
+                0x00001a88        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+                0x00001a88                USBFS_SOF_ISR
  .text.USBFS_BUS_RESET_ISR
-                0x000019ec        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
-                0x000019ec                USBFS_BUS_RESET_ISR
+                0x00001a94        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+                0x00001a94                USBFS_BUS_RESET_ISR
  .text.USBFS_ARB_ISR
-                0x000019f8      0x100 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
-                0x000019f8                USBFS_ARB_ISR
+                0x00001aa0      0x100 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+                0x00001aa0                USBFS_ARB_ISR
  .text.USBFS_DP_ISR
-                0x00001af8        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
-                0x00001af8                USBFS_DP_ISR
+                0x00001ba0        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
+                0x00001ba0                USBFS_DP_ISR
  .text.USBFS_HandleStandardRqst
-                0x00001b04      0x450 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x00001b04                USBFS_HandleStandardRqst
+                0x00001bac      0x450 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x00001bac                USBFS_HandleStandardRqst
  .text.USBFS_ConfigReg
-                0x00001f54      0x128 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x00001f54                USBFS_ConfigReg
+                0x00001ffc      0x128 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x00001ffc                USBFS_ConfigReg
  .text.USBFS_Config
-                0x0000207c      0x318 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x0000207c                USBFS_Config
+                0x00002124      0x318 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x00002124                USBFS_Config
  .text.USBFS_ConfigAltChanged
-                0x00002394      0x23c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x00002394                USBFS_ConfigAltChanged
+                0x0000243c      0x23c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x0000243c                USBFS_ConfigAltChanged
  .text.USBFS_GetConfigTablePtr
-                0x000025d0       0x54 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x000025d0                USBFS_GetConfigTablePtr
+                0x00002678       0x54 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x00002678                USBFS_GetConfigTablePtr
  .text.USBFS_GetDeviceTablePtr
-                0x00002624       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x00002624                USBFS_GetDeviceTablePtr
+                0x000026cc       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x000026cc                USBFS_GetDeviceTablePtr
  .text.USBFS_GetInterfaceClassTablePtr
-                0x00002648       0x4c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x00002648                USBFS_GetInterfaceClassTablePtr
+                0x000026f0       0x4c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x000026f0                USBFS_GetInterfaceClassTablePtr
  .text.USBFS_SetEndpointHalt
-                0x00002694       0xdc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x00002694                USBFS_SetEndpointHalt
+                0x0000273c       0xdc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x0000273c                USBFS_SetEndpointHalt
  .text.USBFS_ClearEndpointHalt
-                0x00002770      0x130 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x00002770                USBFS_ClearEndpointHalt
+                0x00002818      0x130 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x00002818                USBFS_ClearEndpointHalt
  .text.USBFS_ValidateAlternateSetting
-                0x000028a0       0x70 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
-                0x000028a0                USBFS_ValidateAlternateSetting
+                0x00002948       0x70 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x00002948                USBFS_ValidateAlternateSetting
  .text.USBFS_HandleVendorRqst
-                0x00002910       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
-                0x00002910                USBFS_HandleVendorRqst
+                0x000029b8       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
+                0x000029b8                USBFS_HandleVendorRqst
  .text.VdacDma_DmaInitialize
-                0x00002948       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
-                0x00002948                VdacDma_DmaInitialize
+                0x000029f0       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
+                0x000029f0                VdacDma_DmaInitialize
  .text.DmaDone_StartEx
-                0x000029b0       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
-                0x000029b0                DmaDone_StartEx
+                0x00002a58       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+                0x00002a58                DmaDone_StartEx
  .text.DmaDone_SetVector
-                0x000029d4       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
-                0x000029d4                DmaDone_SetVector
+                0x00002a7c       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+                0x00002a7c                DmaDone_SetVector
  .text.DmaDone_SetPriority
-                0x000029f8       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
-                0x000029f8                DmaDone_SetPriority
+                0x00002aa0       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+                0x00002aa0                DmaDone_SetPriority
  .text.DmaDone_Enable
-                0x00002a1c       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
-                0x00002a1c                DmaDone_Enable
+                0x00002ac4       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+                0x00002ac4                DmaDone_Enable
  .text.DmaDone_Disable
-                0x00002a34       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
-                0x00002a34                DmaDone_Disable
- .text.USBFS_ep2_DmaInitialize
-                0x00002a4c       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
-                0x00002a4c                USBFS_ep2_DmaInitialize
+                0x00002adc       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+                0x00002adc                DmaDone_Disable
  .text.USBFS_Dp_ClearInterrupt
-                0x00002ab4       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
-                0x00002ab4                USBFS_Dp_ClearInterrupt
- *fill*         0x00002ad4        0x4 
- .text          0x00002ad8       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
-                0x00002ad8                CyDelayCycles
-                0x00002ae8                CyEnterCriticalSection
-                0x00002af0                CyExitCriticalSection
+                0x00002af4       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+                0x00002af4                USBFS_Dp_ClearInterrupt
+ *fill*         0x00002b14        0x4 
+ .text          0x00002b18       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
+                0x00002b18                CyDelayCycles
+                0x00002b28                CyEnterCriticalSection
+                0x00002b30                CyExitCriticalSection
  .text.CyDmacConfigure
-                0x00002af8       0x5c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002af8                CyDmacConfigure
+                0x00002b38       0x5c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002b38                CyDmacConfigure
  .text.CyDmaChEnable
-                0x00002b54       0x8c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002b54                CyDmaChEnable
+                0x00002b94       0x8c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002b94                CyDmaChEnable
  .text.CyDmaChDisable
-                0x00002be0       0x64 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002be0                CyDmaChDisable
+                0x00002c20       0x64 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002c20                CyDmaChDisable
  .text.CyDmaChPriority
-                0x00002c44       0x60 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002c44                CyDmaChPriority
+                0x00002c84       0x60 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002c84                CyDmaChPriority
  .text.CyDmaChSetExtendedAddress
-                0x00002ca4       0x7c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002ca4                CyDmaChSetExtendedAddress
+                0x00002ce4       0x7c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002ce4                CyDmaChSetExtendedAddress
  .text.CyDmaChSetInitialTd
-                0x00002d20       0x3c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002d20                CyDmaChSetInitialTd
+                0x00002d60       0x3c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002d60                CyDmaChSetInitialTd
  .text.CyDmaChSetConfiguration
-                0x00002d5c       0xa0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002d5c                CyDmaChSetConfiguration
+                0x00002d9c       0xa0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002d9c                CyDmaChSetConfiguration
  .text.CyDmaTdAllocate
-                0x00002dfc       0x5c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002dfc                CyDmaTdAllocate
+                0x00002e3c       0x5c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002e3c                CyDmaTdAllocate
  .text.CyDmaTdSetConfiguration
-                0x00002e58       0x80 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002e58                CyDmaTdSetConfiguration
+                0x00002e98       0x80 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002e98                CyDmaTdSetConfiguration
  .text.CyDmaTdSetAddress
-                0x00002ed8       0x5c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
-                0x00002ed8                CyDmaTdSetAddress
- .text.CyHalt   0x00002f34       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
-                0x00002f34                CyHalt
- .text.CyDelay  0x00002f4c       0x44 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
-                0x00002f4c                CyDelay
+                0x00002f18       0x5c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00002f18                CyDmaTdSetAddress
+ .text.CyHalt   0x00002f74       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+                0x00002f74                CyHalt
+ .text.CyDelay  0x00002f8c       0x44 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+                0x00002f8c                CyDelay
  .text.CyDelayUs
-                0x00002f90       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
-                0x00002f90                CyDelayUs
+                0x00002fd0       0x24 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+                0x00002fd0                CyDelayUs
  .text.CyIntSetVector
-                0x00002fb4       0x50 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
-                0x00002fb4                CyIntSetVector
+                0x00002ff4       0x50 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+                0x00002ff4                CyIntSetVector
  .text.CyIntSetPriority
-                0x00003004       0x44 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
-                0x00003004                CyIntSetPriority
+                0x00003044       0x44 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+                0x00003044                CyIntSetPriority
+ .text.USBFS_ep6_DmaInitialize
+                0x00003088       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+                0x00003088                USBFS_ep6_DmaInitialize
+ .text.USBFS_ep1_DmaInitialize
+                0x000030f0       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+                0x000030f0                USBFS_ep1_DmaInitialize
  .text.USBFS_DispatchClassRqst
-                0x00003048       0x7c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
-                0x00003048                USBFS_DispatchClassRqst
+                0x00003158       0x7c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+                0x00003158                USBFS_DispatchClassRqst
  .text.USBFS_DispatchAUDIOClassRqst
-                0x000030c4      0x1fc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
-                0x000030c4                USBFS_DispatchAUDIOClassRqst
+                0x000031d4      0x1fc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+                0x000031d4                USBFS_DispatchAUDIOClassRqst
  .text.__libc_init_array
-                0x000032c0       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x000032c0                __libc_init_array
- .text.memcpy   0x0000330c       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
-                0x0000330c                memcpy
- .text.memset   0x00003322       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x00003322                memset
+                0x000033d0       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x000033d0                __libc_init_array
+ .text.memcpy   0x0000341c       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x0000341c                memcpy
+ .text.memset   0x00003432       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00003432                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -948,88 +960,87 @@ END GROUP
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x00003334        0x0
+.v4_bx          0x00003444        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00003334        0x0
+.iplt           0x00003444        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x00003334        0x4
+.eh_frame       0x00003444        0x4
  *(.eh_frame)
- .eh_frame      0x00003334        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .eh_frame      0x00003334        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
-                0x00003338                PROVIDE (__exidx_start, .)
+ .eh_frame      0x00003444        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .eh_frame      0x00003444        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+                0x00003448                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00003338                __exidx_end = .
+                0x00003448                __exidx_end = .
 
-.rodata         0x00003338      0x350
+.rodata         0x00003448      0x478
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00003338       0x28 .\ARM_GCC_493\Debug\main.o
- .rodata        0x00003360       0xac .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
- .rodata        0x0000340c      0x244 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
-                0x0000340c                USBFS_DEVICE0_DESCR
-                0x00003420                USBFS_DEVICE0_CONFIGURATION0_DESCR
-                0x00003488                USBFS_STRING_DESCRIPTORS
-                0x000035fc                USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
-                0x00003604                USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
-                0x00003608                USBFS_DEVICE0_CONFIGURATION0_TABLE
-                0x00003630                USBFS_DEVICE0_TABLE
-                0x00003648                USBFS_TABLE
-                0x00003650                . = ALIGN (0x4)
+ .rodata        0x00003448       0x28 .\ARM_GCC_493\Debug\main.o
+ .rodata        0x00003470       0xcc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
+ .rodata        0x0000353c      0x350 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
+                0x0000353c                USBFS_DEVICE0_DESCR
+                0x00003550                USBFS_DEVICE0_CONFIGURATION0_DESCR
+                0x000035fc                USBFS_STRING_DESCRIPTORS
+                0x00003828                USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+                0x00003840                USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+                0x00003844                USBFS_DEVICE0_CONFIGURATION0_TABLE
+                0x0000386c                USBFS_DEVICE0_TABLE
+                0x00003884                USBFS_TABLE
+                0x0000388c                . = ALIGN (0x4)
  *(.init)
- .init          0x00003650        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x00003650                _init
- .init          0x00003654        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x0000365c                . = ALIGN (0x4)
-                0x0000365c                __preinit_array_start = .
+ .init          0x0000388c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x0000388c                _init
+ .init          0x00003890        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x00003898                . = ALIGN (0x4)
+                0x00003898                __preinit_array_start = .
  *(.preinit_array)
-                0x0000365c                __preinit_array_end = .
-                0x0000365c                . = ALIGN (0x4)
-                0x0000365c                __init_array_start = .
+                0x00003898                __preinit_array_end = .
+                0x00003898                . = ALIGN (0x4)
+                0x00003898                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x0000365c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .init_array    0x00003660        0x4 .\ARM_GCC_493\Debug\Cm3Start.o
-                0x00003664                __init_array_end = .
-                0x00003664                . = ALIGN (0x4)
+ .init_array    0x00003898        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .init_array    0x0000389c        0x4 .\ARM_GCC_493\Debug\Cm3Start.o
+                0x000038a0                __init_array_end = .
+                0x000038a0                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00003664        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x00003664                _fini
- .fini          0x00003668        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x00003670                . = ALIGN (0x4)
-                0x00003670                __fini_array_start = .
+ .fini          0x000038a0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x000038a0                _fini
+ .fini          0x000038a4        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x000038ac                . = ALIGN (0x4)
+                0x000038ac                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00003670        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .fini_array    0x000038ac        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00003674                __fini_array_end = .
-                0x00003674                . = ALIGN (0x4)
+                0x000038b0                __fini_array_end = .
+                0x000038b0                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00003674                . = ALIGN (0x4)
+                0x000038b0                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00003674                . = ALIGN (0x4)
-                0x00003674                __cy_regions = .
-                0x00003674        0x4 LONG 0x3688 __cy_region_init_ram
-                0x00003678        0x4 LONG 0x1fff8108 __cy_region_start_data
-                0x0000367c        0x4 LONG 0x30 __cy_region_init_size_ram
-                0x00003680        0x4 LONG 0x250 __cy_region_zero_size_ram
-                0x00003684                __cy_regions_end = .
-                0x00003688                . = ALIGN (0x8)
- *fill*         0x00003684        0x4 
-                0x00003688                _etext = .
+                0x000038b0                . = ALIGN (0x4)
+                0x000038b0                __cy_regions = .
+                0x000038b0        0x4 LONG 0x38c0 __cy_region_init_ram
+                0x000038b4        0x4 LONG 0x1fff8108 __cy_region_start_data
+                0x000038b8        0x4 LONG 0x30 __cy_region_init_size_ram
+                0x000038bc        0x4 LONG 0x250 __cy_region_zero_size_ram
+                0x000038c0                __cy_regions_end = .
+                0x000038c0                . = ALIGN (0x8)
+                0x000038c0                _etext = .
 
 .cy_checksum_exclude
-                0x00003688        0x0
+                0x000038c0        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000      0x100
@@ -1044,7 +1055,7 @@ END GROUP
  .noinit        0x1fff8104        0x1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
                 0x1fff8104                CyResetStatus
 
-.data           0x1fff8108       0x30 load address 0x00003688
+.data           0x1fff8108       0x30 load address 0x000038c0
                 0x1fff8108                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff8108        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
@@ -1055,28 +1066,30 @@ END GROUP
  *(.data .data.* .gnu.linkonce.d.*)
  .data          0x1fff810c        0x1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
                 0x1fff810c                VdacDma_DmaHandle
- .data          0x1fff810d        0x1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
-                0x1fff810d                USBFS_ep2_DmaHandle
- *fill*         0x1fff810e        0x2 
+ *fill*         0x1fff810d        0x3 
  .data          0x1fff8110        0x8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
  .data          0x1fff8118       0x10 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
                 0x1fff8118                cydelay_freq_hz
                 0x1fff811c                cydelay_freq_khz
                 0x1fff8120                cydelay_freq_mhz
                 0x1fff8124                cydelay_32k_ms
- .data          0x1fff8128        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
-                0x1fff8128                USBFS_minimumVolume
-                0x1fff812c                USBFS_maximumVolume
-                0x1fff8130                USBFS_resolutionVolume
+ .data          0x1fff8128        0x1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+                0x1fff8128                USBFS_ep6_DmaHandle
+ .data          0x1fff8129        0x1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+                0x1fff8129                USBFS_ep1_DmaHandle
+ *fill*         0x1fff812a        0x2 
+ .data          0x1fff812c        0xc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+                0x1fff812c                USBFS_minimumVolume
+                0x1fff8130                USBFS_maximumVolume
+                0x1fff8134                USBFS_resolutionVolume
                 0x1fff8138                . = ALIGN (0x8)
- *fill*         0x1fff8134        0x4 
  *(.ram)
                 0x1fff8138                _edata = .
 
-.igot.plt       0x1fff8138        0x0 load address 0x000036b8
+.igot.plt       0x1fff8138        0x0 load address 0x000038f0
  .igot.plt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
-.bss            0x1fff8138      0x250 load address 0x000036b8
+.bss            0x1fff8138      0x250 load address 0x000038f0
                 0x1fff8138                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1136,11 +1149,11 @@ END GROUP
                 0x1fff8388                __end = .
                 0x1fff8388                PROVIDE (end, .)
                 0x1fff8388                PROVIDE (__bss_end__, .)
-                0x00003688                __cy_region_init_ram = LOADADDR (.data)
+                0x000038c0                __cy_region_init_ram = LOADADDR (.data)
                 0x00000030                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000250                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8388       0x80 load address 0x000036b8
+.heap           0x1fff8388       0x80 load address 0x000038f0
                 0x1fff8388                . = _end
                 0x1fff8408                . = (. + 0x80)
  *fill*         0x1fff8388       0x80 
@@ -1191,7 +1204,7 @@ END GROUP
  .cymeta        0x90500000        0xc .\ARM_GCC_493\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x000036b8        0x0 load address 0x9050000c
+.rel.dyn        0x000038f0        0x0 load address 0x9050000c
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .stab
@@ -1212,7 +1225,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xaf0
+.debug_aranges  0x00000000      0xb20
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 .\ARM_GCC_493\Debug\main.o
@@ -1231,72 +1244,75 @@ END GROUP
  .debug_aranges
                 0x000002b0       0x98 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
  .debug_aranges
-                0x00000348       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+                0x00000348       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
  .debug_aranges
-                0x00000380       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
+                0x00000388       0x40 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
  .debug_aranges
-                0x000003c0       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+                0x000003c8       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
  .debug_aranges
-                0x00000438       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
+                0x00000440       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
  .debug_aranges
-                0x00000458       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
+                0x00000460       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
  .debug_aranges
-                0x00000480       0x80 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+                0x00000488       0x80 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
  .debug_aranges
-                0x00000500       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
+                0x00000508       0x48 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
  .debug_aranges
-                0x00000528       0x48 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+                0x00000550       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
  .debug_aranges
-                0x00000570       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
+                0x00000570       0xd8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
  .debug_aranges
-                0x00000590       0xd8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x00000648      0x298 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
  .debug_aranges
-                0x00000668      0x298 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+                0x000008e0       0x98 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
  .debug_aranges
-                0x00000900       0x98 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+                0x00000978       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
  .debug_aranges
-                0x00000998       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+                0x000009a0       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
  .debug_aranges
-                0x000009b8       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
+                0x000009c8       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
  .debug_aranges
-                0x000009d0       0x88 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+                0x000009e8       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
  .debug_aranges
-                0x00000a58       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+                0x00000a00       0x88 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
  .debug_aranges
-                0x00000ad0       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+                0x00000a88       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+ .debug_aranges
+                0x00000b00       0x20 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x5bd6
+.debug_info     0x00000000     0x5d24
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x1c6 .\ARM_GCC_493\Debug\main.o
  .debug_info    0x000001c6      0x13a .\ARM_GCC_493\Debug\cymetadata.o
  .debug_info    0x00000300      0x319 .\ARM_GCC_493\Debug\Cm3Start.o
- .debug_info    0x00000619      0x448 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
- .debug_info    0x00000a61      0x3c8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
- .debug_info    0x00000e29      0x185 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
- .debug_info    0x00000fae      0x7a1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
- .debug_info    0x0000174f      0x521 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
- .debug_info    0x00001c70      0x31f .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
- .debug_info    0x00001f8f      0x186 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
- .debug_info    0x00002115      0x85c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
- .debug_info    0x00002971       0xe8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
- .debug_info    0x00002a59      0x114 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
- .debug_info    0x00002b6d      0x23a .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
- .debug_info    0x00002da7      0x114 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
- .debug_info    0x00002ebb      0x171 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
- .debug_info    0x0000302c       0xce .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
- .debug_info    0x000030fa      0x8b4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
- .debug_info    0x000039ae      0xe36 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
- .debug_info    0x000047e4      0x562 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
- .debug_info    0x00004d46      0x1bc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
- .debug_info    0x00004f02      0x25b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
- .debug_info    0x0000515d      0x3c3 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
- .debug_info    0x00005520      0x459 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
- .debug_info    0x00005979      0x25d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+ .debug_info    0x00000619      0x46f .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
+ .debug_info    0x00000a88      0x3c8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+ .debug_info    0x00000e50      0x185 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+ .debug_info    0x00000fd5      0x7a1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+ .debug_info    0x00001776      0x521 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+ .debug_info    0x00001c97      0x331 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+ .debug_info    0x00001fc8      0x186 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
+ .debug_info    0x0000214e      0x85c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+ .debug_info    0x000029aa       0xe8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
+ .debug_info    0x00002a92      0x114 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
+ .debug_info    0x00002ba6      0x23a .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+ .debug_info    0x00002de0      0x171 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+ .debug_info    0x00002f51       0xce .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
+ .debug_info    0x0000301f      0x8b4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+ .debug_info    0x000038d3      0xe36 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+ .debug_info    0x00004709      0x562 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .debug_info    0x00004c6b      0x114 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .debug_info    0x00004d7f      0x114 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+ .debug_info    0x00004e93      0x1bc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+ .debug_info    0x0000504f      0x25c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
+ .debug_info    0x000052ab      0x3c3 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+ .debug_info    0x0000566e      0x459 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+ .debug_info    0x00005ac7      0x25d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
 
-.debug_abbrev   0x00000000     0x1b4f
+.debug_abbrev   0x00000000     0x1bda
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0xd8 .\ARM_GCC_493\Debug\main.o
  .debug_abbrev  0x000000d8       0x5d .\ARM_GCC_493\Debug\cymetadata.o
@@ -1312,77 +1328,80 @@ END GROUP
  .debug_abbrev  0x00000d9f       0x9b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
  .debug_abbrev  0x00000e3a       0x8b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
  .debug_abbrev  0x00000ec5      0x172 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
- .debug_abbrev  0x00001037       0x8b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
- .debug_abbrev  0x000010c2       0x90 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
- .debug_abbrev  0x00001152       0x14 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
- .debug_abbrev  0x00001166      0x194 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
- .debug_abbrev  0x000012fa      0x217 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
- .debug_abbrev  0x00001511      0x161 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
- .debug_abbrev  0x00001672       0xc5 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
- .debug_abbrev  0x00001737       0xbd .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
- .debug_abbrev  0x000017f4      0x120 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
- .debug_abbrev  0x00001914      0x16c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
- .debug_abbrev  0x00001a80       0xcf .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+ .debug_abbrev  0x00001037       0x90 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+ .debug_abbrev  0x000010c7       0x14 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x000010db      0x194 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+ .debug_abbrev  0x0000126f      0x217 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+ .debug_abbrev  0x00001486      0x161 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .debug_abbrev  0x000015e7       0x8b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .debug_abbrev  0x00001672       0x8b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+ .debug_abbrev  0x000016fd       0xc5 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+ .debug_abbrev  0x000017c2       0xbd .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
+ .debug_abbrev  0x0000187f      0x120 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+ .debug_abbrev  0x0000199f      0x16c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+ .debug_abbrev  0x00001b0b       0xcf .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
 
-.debug_line     0x00000000     0x2d72
+.debug_line     0x00000000     0x2e32
  *(.debug_line)
  .debug_line    0x00000000      0x22b .\ARM_GCC_493\Debug\main.o
  .debug_line    0x0000022b       0x53 .\ARM_GCC_493\Debug\cymetadata.o
  .debug_line    0x0000027e      0x1d5 .\ARM_GCC_493\Debug\Cm3Start.o
- .debug_line    0x00000453      0x1f6 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
- .debug_line    0x00000649      0x1e3 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
- .debug_line    0x0000082c       0xf0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
- .debug_line    0x0000091c      0x36d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
- .debug_line    0x00000c89      0x218 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
- .debug_line    0x00000ea1       0xe3 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
- .debug_line    0x00000f84       0xe5 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
- .debug_line    0x00001069      0x3f9 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
- .debug_line    0x00001462       0x77 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
- .debug_line    0x000014d9       0x93 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
- .debug_line    0x0000156c      0x15b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
- .debug_line    0x000016c7       0x95 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
- .debug_line    0x0000175c       0xbe .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
- .debug_line    0x0000181a       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
- .debug_line    0x00001882      0x2b7 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
- .debug_line    0x00001b39      0x872 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
- .debug_line    0x000023ab      0x381 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
- .debug_line    0x0000272c       0x91 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
- .debug_line    0x000027bd       0x5f .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
- .debug_line    0x0000281c      0x21a .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
- .debug_line    0x00002a36      0x237 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
- .debug_line    0x00002c6d      0x105 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+ .debug_line    0x00000453      0x1f8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
+ .debug_line    0x0000064b      0x1e3 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+ .debug_line    0x0000082e       0xf0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+ .debug_line    0x0000091e      0x379 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+ .debug_line    0x00000c97      0x218 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+ .debug_line    0x00000eaf      0x100 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+ .debug_line    0x00000faf       0xe5 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
+ .debug_line    0x00001094      0x3f9 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+ .debug_line    0x0000148d       0x77 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
+ .debug_line    0x00001504       0x93 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
+ .debug_line    0x00001597      0x15b .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+ .debug_line    0x000016f2       0xbe .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+ .debug_line    0x000017b0       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
+ .debug_line    0x00001818      0x2b7 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+ .debug_line    0x00001acf      0x872 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+ .debug_line    0x00002341      0x381 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .debug_line    0x000026c2       0x95 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .debug_line    0x00002757       0x95 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+ .debug_line    0x000027ec       0x91 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+ .debug_line    0x0000287d       0x5f .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
+ .debug_line    0x000028dc      0x21a .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+ .debug_line    0x00002af6      0x237 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+ .debug_line    0x00002d2d      0x105 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
 
-.debug_frame    0x00000000     0x2a88
+.debug_frame    0x00000000     0x2b08
  *(.debug_frame)
  .debug_frame   0x00000000       0x50 .\ARM_GCC_493\Debug\main.o
  .debug_frame   0x00000050       0xd8 .\ARM_GCC_493\Debug\Cm3Start.o
  .debug_frame   0x00000128      0x16c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
  .debug_frame   0x00000294      0x260 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
  .debug_frame   0x000004f4      0x130 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
- .debug_frame   0x00000624      0x3c4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
- .debug_frame   0x000009e8      0x23c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
- .debug_frame   0x00000c24       0xa4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
- .debug_frame   0x00000cc8       0xbc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
- .debug_frame   0x00000d84      0x1f8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
- .debug_frame   0x00000f7c       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
- .debug_frame   0x00000fb4       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
- .debug_frame   0x0000100c      0x1e8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
- .debug_frame   0x000011f4       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
- .debug_frame   0x0000124c       0xf4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
- .debug_frame   0x00001340      0x3d0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
- .debug_frame   0x00001710      0xbe8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
- .debug_frame   0x000022f8      0x234 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
- .debug_frame   0x0000252c       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
- .debug_frame   0x00002564      0x238 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
- .debug_frame   0x0000279c      0x1f8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
- .debug_frame   0x00002994       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
- .debug_frame   0x000029cc       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x000029ec       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00002a14       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x00002a40       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
- .debug_frame   0x00002a68       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000624      0x3c8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+ .debug_frame   0x000009ec      0x23c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+ .debug_frame   0x00000c28       0xc8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+ .debug_frame   0x00000cf0       0xbc .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
+ .debug_frame   0x00000dac      0x1f8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+ .debug_frame   0x00000fa4       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
+ .debug_frame   0x00000fdc       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
+ .debug_frame   0x00001034      0x1e8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+ .debug_frame   0x0000121c       0xf4 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+ .debug_frame   0x00001310      0x3d0 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+ .debug_frame   0x000016e0      0xbe8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+ .debug_frame   0x000022c8      0x234 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .debug_frame   0x000024fc       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .debug_frame   0x00002554       0x58 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+ .debug_frame   0x000025ac       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+ .debug_frame   0x000025e4      0x238 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+ .debug_frame   0x0000281c      0x1f8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+ .debug_frame   0x00002a14       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+ .debug_frame   0x00002a4c       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00002a6c       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00002a94       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00002ac0       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+ .debug_frame   0x00002ae8       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x27ef
+.debug_str      0x00000000     0x287c
  *(.debug_str)
  .debug_str     0x00000000      0x216 .\ARM_GCC_493\Debug\main.o
                                 0x257 (size before relaxing)
@@ -1390,47 +1409,49 @@ END GROUP
                                 0x228 (size before relaxing)
  .debug_str     0x0000028d      0x132 .\ARM_GCC_493\Debug\Cm3Start.o
                                 0x309 (size before relaxing)
- .debug_str     0x000003bf      0x198 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
-                                0x38c (size before relaxing)
- .debug_str     0x00000557      0x179 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
+ .debug_str     0x000003bf      0x1ac .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyfitter_cfg.o)
+                                0x3a0 (size before relaxing)
+ .debug_str     0x0000056b      0x179 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(LCD.o)
                                 0x34b (size before relaxing)
- .debug_str     0x000006d0       0xaa .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
+ .debug_str     0x000006e4       0xaa .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
                                 0x25d (size before relaxing)
- .debug_str     0x0000077a      0x41d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
+ .debug_str     0x0000078e      0x41d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
                                 0x609 (size before relaxing)
- .debug_str     0x00000b97      0x2d6 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
+ .debug_str     0x00000bab      0x2d6 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
                                 0x5de (size before relaxing)
- .debug_str     0x00000e6d       0x7d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
-                                0x356 (size before relaxing)
- .debug_str     0x00000eea       0x92 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
+ .debug_str     0x00000e81       0x8c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+                                0x365 (size before relaxing)
+ .debug_str     0x00000f0d       0x92 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
                                 0x28b (size before relaxing)
- .debug_str     0x00000f7c      0x262 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+ .debug_str     0x00000f9f      0x262 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
                                 0x6b2 (size before relaxing)
- .debug_str     0x000011de       0x3c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
+ .debug_str     0x00001201       0x3c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
                                 0x219 (size before relaxing)
- .debug_str     0x0000121a       0x9d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
+ .debug_str     0x0000123d       0x9d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
                                 0x255 (size before relaxing)
- .debug_str     0x000012b7      0x11c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+ .debug_str     0x000012da      0x11c .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
                                 0x2f4 (size before relaxing)
- .debug_str     0x000013d3       0x6a .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
-                                0x25d (size before relaxing)
- .debug_str     0x0000143d       0xb2 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+ .debug_str     0x000013f6       0xb2 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
                                 0x271 (size before relaxing)
- .debug_str     0x000014ef      0x357 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+ .debug_str     0x000014a8      0x357 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
                                 0x54f (size before relaxing)
- .debug_str     0x00001846      0x7a5 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+ .debug_str     0x000017ff      0x7a5 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
                                 0xa04 (size before relaxing)
- .debug_str     0x00001feb      0x367 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .debug_str     0x00001fa4      0x367 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
                                 0x569 (size before relaxing)
- .debug_str     0x00002352       0x3d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+ .debug_str     0x0000230b       0x6a .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+                                0x25d (size before relaxing)
+ .debug_str     0x00002375       0x6a .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+                                0x25d (size before relaxing)
+ .debug_str     0x000023df       0x3d .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
                                 0x2b5 (size before relaxing)
- .debug_str     0x0000238f       0xf1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
+ .debug_str     0x0000241c       0xf1 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
                                 0x331 (size before relaxing)
- .debug_str     0x00002480      0x15f .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+ .debug_str     0x0000250d      0x15f .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
                                 0x340 (size before relaxing)
- .debug_str     0x000025df      0x121 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+ .debug_str     0x0000266c      0x121 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
                                 0x325 (size before relaxing)
- .debug_str     0x00002700       0xef .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+ .debug_str     0x0000278d       0xef .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
                                 0x338 (size before relaxing)
 
 .debug_loc
@@ -1439,7 +1460,7 @@ END GROUP
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0x940
+.debug_ranges   0x00000000      0x960
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 .\ARM_GCC_493\Debug\main.o
  .debug_ranges  0x00000018       0x38 .\ARM_GCC_493\Debug\Cm3Start.o
@@ -1448,21 +1469,22 @@ END GROUP
  .debug_ranges  0x00000128       0x48 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VDAC8.o)
  .debug_ranges  0x00000170       0xc8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS.o)
  .debug_ranges  0x00000238       0x88 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_drv.o)
- .debug_ranges  0x000002c0       0x28 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
- .debug_ranges  0x000002e8       0x30 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
- .debug_ranges  0x00000318       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
- .debug_ranges  0x00000380       0x10 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
- .debug_ranges  0x00000390       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
- .debug_ranges  0x000003a8       0x70 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
- .debug_ranges  0x00000418       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
- .debug_ranges  0x00000430       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
- .debug_ranges  0x00000468       0xc8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
- .debug_ranges  0x00000530      0x288 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
- .debug_ranges  0x000007b8       0x88 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
- .debug_ranges  0x00000840       0x10 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
- .debug_ranges  0x00000850       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
- .debug_ranges  0x000008c8       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
- .debug_ranges  0x00000930       0x10 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+ .debug_ranges  0x000002c0       0x30 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_episr.o)
+ .debug_ranges  0x000002f0       0x30 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_pm.o)
+ .debug_ranges  0x00000320       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_std.o)
+ .debug_ranges  0x00000388       0x10 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
+ .debug_ranges  0x00000398       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
+ .debug_ranges  0x000003b0       0x70 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
+ .debug_ranges  0x00000420       0x38 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+ .debug_ranges  0x00000458       0xc8 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+ .debug_ranges  0x00000520      0x288 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+ .debug_ranges  0x000007a8       0x88 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .debug_ranges  0x00000830       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .debug_ranges  0x00000848       0x18 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
+ .debug_ranges  0x00000860       0x10 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+ .debug_ranges  0x00000870       0x78 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+ .debug_ranges  0x000008e8       0x68 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+ .debug_ranges  0x00000950       0x10 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 .\ARM_GCC_493\Debug\main.o
@@ -1480,11 +1502,12 @@ END GROUP
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_vnd.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(VdacDma_dma.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
- .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+ .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
+ .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
  .comment       0x00000000       0x71 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
@@ -1544,43 +1567,45 @@ END GROUP
  .ARM.attributes
                 0x000002fc       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(DmaDone.o)
  .ARM.attributes
-                0x0000032f       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep2_dma.o)
+                0x0000032f       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
  .ARM.attributes
-                0x00000362       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_Dp.o)
+                0x00000362       0x21 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
  .ARM.attributes
-                0x00000395       0x21 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyBootAsmGnu.o)
+                0x00000383       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
  .ARM.attributes
-                0x000003b6       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyDmac.o)
+                0x000003b6       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
  .ARM.attributes
-                0x000003e9       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyLib.o)
+                0x000003e9       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
  .ARM.attributes
-                0x0000041c       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(cyPm.o)
+                0x0000041c       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep6_dma.o)
  .ARM.attributes
-                0x0000044f       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
+                0x0000044f       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_ep1_dma.o)
  .ARM.attributes
-                0x00000482       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
+                0x00000482       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_cls.o)
  .ARM.attributes
-                0x000004b5       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
+                0x000004b5       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_descr.o)
  .ARM.attributes
-                0x000004e8       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
+                0x000004e8       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CyFlash.o)
  .ARM.attributes
-                0x0000051b       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
+                0x0000051b       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(CySpc.o)
  .ARM.attributes
-                0x0000054e       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x0000054e       0x33 .\ARM_GCC_493\Debug\USBFS_AUDIO_PSoC3_5LP_Example.a(USBFS_audio.o)
  .ARM.attributes
-                0x0000057b       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+                0x00000581       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x000005a8       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x000005ae       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x000005d5       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x000005db       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000602       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x00000608       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x0000062f       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00000635       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x0000065c       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+                0x00000662       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x00000689       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x0000068f       0x2d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+ .ARM.attributes
+                0x000006bc       0x1d c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
   29:.\Generated_Source\PSoC5/USBFS_std.c ****     * Function Name: USBFS_SerialNumString
   30:.\Generated_Source\PSoC5/USBFS_std.c ****     ************************************************************************//**
   31:.\Generated_Source\PSoC5/USBFS_std.c ****     *
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 2
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/USBFS_std.c ****     *  This function is available only when the User Call Back option in the 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
   27              		.loc 1 85 0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 24
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 3
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 3
 
 
   30              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
   62 002a 0A2B     		cmp	r3, #10
   63 002c 00F2E480 		bhi	.L55
   64 0030 01A2     		adr	r2, .L5
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 4
 
 
   65 0032 52F823F0 		ldr	pc, [r2, r3, lsl #2]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  108 0090 DBB2     		uxtb	r3, r3
  109 0092 022B     		cmp	r3, #2
  110 0094 24D1     		bne	.L11
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 5
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 5
 
 
  119:.\Generated_Source\PSoC5/USBFS_std.c ****                 {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  131:.\Generated_Source\PSoC5/USBFS_std.c ****                 
  132:.\Generated_Source\PSoC5/USBFS_std.c ****             #if(USBFS_BOS_ENABLE)
  133:.\Generated_Source\PSoC5/USBFS_std.c ****                 else if (USBFS_DESCR_BOS == USBFS_wValueHiReg)
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 6
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 6
 
 
  134:.\Generated_Source\PSoC5/USBFS_std.c ****                 {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  188:.\Generated_Source\PSoC5/USBFS_std.c ****                         }
  189:.\Generated_Source\PSoC5/USBFS_std.c ****                         else
  190:.\Generated_Source\PSoC5/USBFS_std.c ****                         {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 7
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 7
 
 
  191:.\Generated_Source\PSoC5/USBFS_std.c ****                             pStr = (volatile uint8 *)&USBFS_SN_STRING_DESCRIPTOR[0u];
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  162:.\Generated_Source\PSoC5/USBFS_std.c ****                     }
  179              		.loc 1 162 0
  180 0102 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 8
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 8
 
 
  181 0104 0133     		adds	r3, r3, #1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  228              	.L10:
  229              		.loc 1 211 0 is_stmt 0 discriminator 1
  230 014e 54E0     		b	.L18
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 9
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 9
 
 
  231              	.L4:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  219:.\Generated_Source\PSoC5/USBFS_std.c ****                         USBFS_currentTD.pData = &USBFS_tBuffer[0u];
  261              		.loc 1 219 0
  262 0184 4C4B     		ldr	r3, .L59+16
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 10
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 10
 
 
  263 0186 0022     		movs	r2, #0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  238:.\Generated_Source\PSoC5/USBFS_std.c ****                 USBFS_currentTD.count = 1u;
  304              		.loc 1 238 0
  305 01c2 3A4B     		ldr	r3, .L59+4
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 11
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 11
 
 
  306 01c4 0122     		movs	r2, #1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  255:.\Generated_Source\PSoC5/USBFS_std.c ****         /* Control Write */
  256:.\Generated_Source\PSoC5/USBFS_std.c ****         switch (USBFS_bRequestReg)
  344              		.loc 1 256 0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 12
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 12
 
 
  345 01fc 2A4B     		ldr	r3, .L59
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  387 0258 002B     		cmp	r3, #0
  388 025a 06D0     		beq	.L31
  269:.\Generated_Source\PSoC5/USBFS_std.c ****                 {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 13
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 13
 
 
  270:.\Generated_Source\PSoC5/USBFS_std.c ****                     pTmp = USBFS_GetConfigTablePtr((uint8) configurationN - 1u);
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  283:.\Generated_Source\PSoC5/USBFS_std.c ****                     requestHandled = USBFS_InitNoDataControlTransfer();
  430              		.loc 1 283 0
  431 029a FFF7FEFF 		bl	USBFS_InitNoDataControlTransfer
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 14
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 14
 
 
  432 029e 0346     		mov	r3, r0
@@ -796,7 +796,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  442 02ac 00000000 		.word	USBFS_currentTD
  443 02b0 00000000 		.word	USBFS_STRING_DESCRIPTORS
  444 02b4 00000000 		.word	USBFS_EP
- 445 02b8 00000000 		.word	USBFS_tBuffer.5156
+ 445 02b8 00000000 		.word	USBFS_tBuffer.5166
  446 02bc 00000000 		.word	USBFS_deviceStatus
  447 02c0 00000000 		.word	USBFS_configuration
  448 02c4 00000000 		.word	USBFS_interfaceSetting
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  474 02f6 CB5C     		ldrb	r3, [r1, r3]
  475 02f8 DBB2     		uxtb	r3, r3
  476 02fa 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 15
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 15
 
 
  477 02fc 04D0     		beq	.L37
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  324:.\Generated_Source\PSoC5/USBFS_std.c ****                             USBFS_deviceStatus &= (uint8)~USBFS_DEVICE_STATUS_REMOTE_WAKEUP;
  325:.\Generated_Source\PSoC5/USBFS_std.c ****                             requestHandled = USBFS_InitNoDataControlTransfer();
  326:.\Generated_Source\PSoC5/USBFS_std.c ****                         }
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 16
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 16
 
 
  327:.\Generated_Source\PSoC5/USBFS_std.c ****                         break;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  539              		.loc 1 327 0
  540 0360 1CE0     		b	.L43
  541              	.L44:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 17
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 17
 
 
  327:.\Generated_Source\PSoC5/USBFS_std.c ****                     case USBFS_RQST_RCPT_IFC:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  586 03a6 22D0     		beq	.L47
  587 03a8 012B     		cmp	r3, #1
  588 03aa 0DD3     		bcc	.L48
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 18
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 18
 
 
  589 03ac 022B     		cmp	r3, #2
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  611 03ca 9B78     		ldrb	r3, [r3, #2]
  612 03cc DBB2     		uxtb	r3, r3
  613 03ce 012B     		cmp	r3, #1
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 19
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 19
 
 
  614 03d0 0CD1     		bne	.L52
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  367:.\Generated_Source\PSoC5/USBFS_std.c ****                     
  661              		.loc 1 367 0
  662 0422 FFE7     		b	.L58
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 20
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 20
 
 
  663              	.L53:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  384:.\Generated_Source\PSoC5/USBFS_std.c ****     /***************************************************************************
  385:.\Generated_Source\PSoC5/USBFS_std.c ****     * Function Name: USBFS_ReadDieID
  386:.\Generated_Source\PSoC5/USBFS_std.c ****     ************************************************************************//**
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 21
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 21
 
 
  387:.\Generated_Source\PSoC5/USBFS_std.c ****     *
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  706              		@ args = 0, pretend = 0, frame = 8
  707              		@ frame_needed = 1, uses_anonymous_args = 0
  708              		@ link register save eliminated.
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 22
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 22
 
 
  709 0000 90B4     		push	{r4, r7}
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  746 0036 002B     		cmp	r3, #0
  747 0038 1AD0     		beq	.L65
  456:.\Generated_Source\PSoC5/USBFS_std.c ****         {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 23
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 23
 
 
  457:.\Generated_Source\PSoC5/USBFS_std.c ****             if (0u != (USBFS_EP[ep].addr & USBFS_DIR_IN))
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  479:.\Generated_Source\PSoC5/USBFS_std.c ****         {
  480:.\Generated_Source\PSoC5/USBFS_std.c ****             USBFS_SIE_EP_BASE.sieEp[ep].epCr0 = USBFS_MODE_STALL_DATA_EP;
  780              		.loc 1 480 0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 24
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 24
 
 
  781 0070 2B4A     		ldr	r2, .L70+8
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  825 00c0 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
  826 00c2 164C     		ldr	r4, .L70+4
  827 00c4 1346     		mov	r3, r2
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 25
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 25
 
 
  828 00c6 5B00     		lsls	r3, r3, #1
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  506:.\Generated_Source\PSoC5/USBFS_std.c **** #endif /* (CY_PSOC4) */
  507:.\Generated_Source\PSoC5/USBFS_std.c ****     USBFS_EP_ACTIVE_REG = USBFS_DEFAULT_ARB_INT_EN;
  508:.\Generated_Source\PSoC5/USBFS_std.c ****     USBFS_EP_TYPE_REG   = epType;
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 26
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 26
 
 
  509:.\Generated_Source\PSoC5/USBFS_std.c ****     
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  530:.\Generated_Source\PSoC5/USBFS_std.c **** *
  531:.\Generated_Source\PSoC5/USBFS_std.c **** *******************************************************************************/
  532:.\Generated_Source\PSoC5/USBFS_std.c **** void USBFS_EpStateInit(void) 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 27
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 27
 
 
  533:.\Generated_Source\PSoC5/USBFS_std.c **** {
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  544:.\Generated_Source\PSoC5/USBFS_std.c ****         {
  545:.\Generated_Source\PSoC5/USBFS_std.c ****             /* OUT Endpoint */
  546:.\Generated_Source\PSoC5/USBFS_std.c ****             USBFS_EP[i].apiEpState = USBFS_NO_EVENT_PENDING;
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 28
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 28
 
 
  941              		.loc 1 546 0
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  554:.\Generated_Source\PSoC5/USBFS_std.c **** * Function Name: USBFS_Config
  555:.\Generated_Source\PSoC5/USBFS_std.c **** ****************************************************************************//**
  556:.\Generated_Source\PSoC5/USBFS_std.c **** *
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 29
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 29
 
 
  557:.\Generated_Source\PSoC5/USBFS_std.c **** *  This routine configures endpoints for the entire configuration by scanning
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1008              		.loc 1 588 0 discriminator 3
  1009 0014 FA7F     		ldrb	r2, [r7, #31]	@ zero_extendqisi2
  1010 0016 A549     		ldr	r1, .L103
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 30
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 30
 
 
  1011 0018 1346     		mov	r3, r2
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1060              		.loc 1 593 0 discriminator 3
  1061 0072 FA7F     		ldrb	r2, [r7, #31]	@ zero_extendqisi2
  1062 0074 8D49     		ldr	r1, .L103
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 31
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 31
 
 
  1063 0076 1346     		mov	r3, r2
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1105 00b8 7E4A     		ldr	r2, .L103+8
  1106 00ba 0021     		movs	r1, #0
  1107 00bc D154     		strb	r1, [r2, r3]
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 32
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 32
 
 
  600:.\Generated_Source\PSoC5/USBFS_std.c ****         {
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  620:.\Generated_Source\PSoC5/USBFS_std.c ****             USBFS_deviceStatus |= (uint8)  USBFS_DEVICE_STATUS_SELF_POWERED;
  1144              		.loc 1 620 0
  1145 00fc 6F4B     		ldr	r3, .L103+16
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 33
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 33
 
 
  1146 00fe 1B78     		ldrb	r3, [r3]
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  650:.\Generated_Source\PSoC5/USBFS_std.c ****                         /* IN Endpoint */
  651:.\Generated_Source\PSoC5/USBFS_std.c ****                         USBFS_EP[curEp].epMode     = USBFS_GET_ACTIVE_IN_EP_CR0_MODE(epType);
  652:.\Generated_Source\PSoC5/USBFS_std.c ****                         USBFS_EP[curEp].apiEpState = USBFS_EVENT_PENDING;
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 34
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 34
 
 
  653:.\Generated_Source\PSoC5/USBFS_std.c ****                     
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1183 013a 82E0     		b	.L89
  1184              	.L97:
  695:.\Generated_Source\PSoC5/USBFS_std.c ****                 {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 35
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 35
 
 
  696:.\Generated_Source\PSoC5/USBFS_std.c ****                     if (i == (pEP->addr & USBFS_DIR_UNUSED))
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1229 018c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  1230 018e 9A42     		cmp	r2, r3
  1231 0190 51D1     		bne	.L90
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 36
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 36
 
 
  706:.\Generated_Source\PSoC5/USBFS_std.c ****                         {                            
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1276              	.L93:
  1277              		.loc 1 715 0 discriminator 2
  1278 01e0 0D20     		movs	r0, #13
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 37
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 37
 
 
  1279              	.L94:
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1320 0220 0246     		mov	r2, r0
  1321 0222 5A71     		strb	r2, [r3, #5]
  729:.\Generated_Source\PSoC5/USBFS_std.c ****                                 USBFS_EP[i].apiEpState = USBFS_NO_EVENT_PENDING;
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 38
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 38
 
 
  1322              		.loc 1 729 0 is_stmt 1 discriminator 4
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1350 0250 7B77     		strb	r3, [r7, #29]
  1351              	.L88:
  687:.\Generated_Source\PSoC5/USBFS_std.c ****             {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 39
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 39
 
 
  1352              		.loc 1 687 0 is_stmt 0 discriminator 1
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1389              		.loc 1 763 0 is_stmt 0 discriminator 1
  1390 0290 7A7F     		ldrb	r2, [r7, #29]	@ zero_extendqisi2
  1391 0292 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 40
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 40
 
 
  1392 0294 9A42     		cmp	r2, r3
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1434 02e4 0833     		adds	r3, r3, #8
  1435 02e6 1B88     		ldrh	r3, [r3]	@ movhi
  1436 02e8 9AB2     		uxth	r2, r3
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 41
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 41
 
 
  1437 02ea 7B8B     		ldrh	r3, [r7, #26]	@ movhi
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1477              		.thumb_func
  1478              		.type	USBFS_ConfigAltChanged, %function
  1479              	USBFS_ConfigAltChanged:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 42
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 42
 
 
  1480              	.LFB4:
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1505 001a DBB2     		uxtb	r3, r3
  1506 001c 1846     		mov	r0, r3
  1507 001e FFF7FEFF 		bl	USBFS_GetConfigTablePtr
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 43
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 43
 
 
  1508 0022 7860     		str	r0, [r7, #4]
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1545 005c 40F0D480 		bne	.L110
  837:.\Generated_Source\PSoC5/USBFS_std.c ****             {
  838:.\Generated_Source\PSoC5/USBFS_std.c ****                 curEp  = ((uint8) pEP->addr & USBFS_DIR_UNUSED);
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 44
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 44
 
 
  1546              		.loc 1 838 0
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1593 00b6 9888     		ldrh	r0, [r3, #4]
  1594 00b8 5D49     		ldr	r1, .L118+12
  1595 00ba 1346     		mov	r3, r2
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 45
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 45
 
 
  1596 00bc 5B00     		lsls	r3, r3, #1
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  853:.\Generated_Source\PSoC5/USBFS_std.c ****                 else
  854:.\Generated_Source\PSoC5/USBFS_std.c ****                 {
  855:.\Generated_Source\PSoC5/USBFS_std.c ****                     /* OUT Endpoint */
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 46
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 46
 
 
  856:.\Generated_Source\PSoC5/USBFS_std.c ****                     USBFS_EP[curEp].epMode     = USBFS_GET_ACTIVE_OUT_EP_CR0_MODE(epType);
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  871:.\Generated_Source\PSoC5/USBFS_std.c ****                 USBFS_DYN_RECONFIG_REG |= USBFS_DYN_RECONFIG_ENABLE;
  872:.\Generated_Source\PSoC5/USBFS_std.c ****                 
  873:.\Generated_Source\PSoC5/USBFS_std.c ****                 /* Wait until block is ready for re-configuration */
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 47
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 47
 
 
  874:.\Generated_Source\PSoC5/USBFS_std.c ****                 while (0u == (USBFS_DYN_RECONFIG_REG & USBFS_DYN_RECONFIG_RDY_STS))
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1701              		.loc 1 908 0
  1702 0168 3248     		ldr	r0, .L118+16
  1703 016a 7978     		ldrb	r1, [r7, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 48
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 48
 
 
  1704 016c 7A78     		ldrb	r2, [r7, #1]	@ zero_extendqisi2
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1751 01c6 DA71     		strb	r2, [r3, #7]
  916:.\Generated_Source\PSoC5/USBFS_std.c ****                     USBFS_ARB_EP_BASE.arbEp[curEp].rwWa    = LO8(USBFS_EP[curEp].buffOffset);
  1752              		.loc 1 916 0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 49
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 49
 
 
  1753 01c8 1B48     		ldr	r0, .L118+20
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1799 0218 9A42     		cmp	r2, r3
  1800 021a FFF412AF 		bcc	.L117
  1801              	.L107:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 50
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 50
 
 
  923:.\Generated_Source\PSoC5/USBFS_std.c ****         }
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1834 0000 80B4     		push	{r7}
  1835              		.cfi_def_cfa_offset 4
  1836              		.cfi_offset 7, -4
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 51
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 51
 
 
  1837 0002 85B0     		sub	sp, sp, #20
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1872 0038 5B68     		ldr	r3, [r3, #4]
  1873 003a FB60     		str	r3, [r7, #12]
  1874              	.L122:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 52
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 52
 
 
  964:.\Generated_Source\PSoC5/USBFS_std.c ****     }
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  989:.\Generated_Source\PSoC5/USBFS_std.c ****         pTmp = (const T_USBFS_LUT CYCODE *) USBFS_TABLE[USBFS_device].p_list;
  990:.\Generated_Source\PSoC5/USBFS_std.c **** 
  991:.\Generated_Source\PSoC5/USBFS_std.c ****         /* The first entry points to the Device Descriptor,
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 53
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 53
 
 
  992:.\Generated_Source\PSoC5/USBFS_std.c ****         *  the second entry points to the BOS Descriptor
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1933              	.L128:
  1934 001c 00000000 		.word	USBFS_device
  1935 0020 00000000 		.word	USBFS_TABLE
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 54
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 54
 
 
  1936              		.cfi_endproc
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  1968              		.loc 1 1038 0
  1969 0018 BB68     		ldr	r3, [r7, #8]
  1970 001a 002B     		cmp	r3, #0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 55
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 55
 
 
  1971 001c 0DD0     		beq	.L131
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2011              		.section	.text.USBFS_TerminateEP,"ax",%progbits
  2012              		.align	2
  2013              		.global	USBFS_TerminateEP
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 56
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 56
 
 
  2014              		.thumb
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2043 001a 082B     		cmp	r3, #8
  2044 001c 40D8     		bhi	.L136
 1078:.\Generated_Source\PSoC5/USBFS_std.c ****     {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 57
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 57
 
 
 1079:.\Generated_Source\PSoC5/USBFS_std.c ****         /* Set the endpoint Halt */
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2091 0074 1344     		add	r3, r3, r2
  2092 0076 9B00     		lsls	r3, r3, #2
  2093 0078 0B44     		add	r3, r3, r1
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 58
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 58
 
 
  2094 007a 1B79     		ldrb	r3, [r3, #4]
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2137              		.global	USBFS_SetEndpointHalt
  2138              		.thumb
  2139              		.thumb_func
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 59
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 59
 
 
  2140              		.type	USBFS_SetEndpointHalt, %function
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2170 001e 082B     		cmp	r3, #8
  2171 0020 50D8     		bhi	.L142
 1122:.\Generated_Source\PSoC5/USBFS_std.c ****     {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 60
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 60
 
 
 1123:.\Generated_Source\PSoC5/USBFS_std.c ****         /* Set the endpoint Halt */
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2220 0080 9B00     		lsls	r3, r3, #2
  2221 0082 0B44     		add	r3, r3, r1
  2222 0084 0246     		mov	r2, r0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 61
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 61
 
 
  2223 0086 5A70     		strb	r2, [r3, #1]
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2260              		.loc 1 1145 0
  2261 00c4 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
 1146:.\Generated_Source\PSoC5/USBFS_std.c **** }
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 62
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 62
 
 
  2262              		.loc 1 1146 0
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
 1164:.\Generated_Source\PSoC5/USBFS_std.c ****     uint8 requestHandled = USBFS_FALSE;
  2299              		.loc 1 1164 0
  2300 0006 0023     		movs	r3, #0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 63
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 63
 
 
  2301 0008 FB71     		strb	r3, [r7, #7]
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2343 0056 9B00     		lsls	r3, r3, #2
  2344 0058 0B44     		add	r3, r3, r1
  2345 005a 0022     		movs	r2, #0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 64
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 64
 
 
  2346 005c DA70     		strb	r2, [r3, #3]
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2389              		.loc 1 1187 0
  2390 00ae BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
  2391 00b0 1D49     		ldr	r1, .L156+4
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 65
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 65
 
 
  2392 00b2 1346     		mov	r3, r2
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
 1203:.\Generated_Source\PSoC5/USBFS_std.c ****                 USBFS_SIE_EP_BASE.sieEp[ep].epCr0 = USBFS_MODE_NAK_OUT;
  2431              		.loc 1 1203 0
  2432 00f6 0D4A     		ldr	r2, .L156+8
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 66
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 66
 
 
  2433 00f8 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2475              		.thumb
  2476              		.thumb_func
  2477              		.type	USBFS_ValidateAlternateSetting, %function
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 67
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 67
 
 
  2478              	USBFS_ValidateAlternateSetting:
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2504 0018 DBB2     		uxtb	r3, r3
  2505 001a 1846     		mov	r0, r3
  2506 001c FFF7FEFF 		bl	USBFS_GetConfigTablePtr
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 68
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 68
 
 
  2507 0020 B860     		str	r0, [r7, #8]
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2545 0058 1846     		mov	r0, r3
  2546 005a 1037     		adds	r7, r7, #16
  2547              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 69
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 69
 
 
  2548 005c BD46     		mov	sp, r7
@@ -4097,7 +4097,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2561              		.size	USBFS_ValidateAlternateSetting, .-USBFS_ValidateAlternateSetting
  2562              		.bss
  2563              		.align	2
- 2564              	USBFS_tBuffer.5156:
+ 2564              	USBFS_tBuffer.5166:
  2565 0000 0000     		.space	2
  2566 0002 0000     		.text
  2567              	.Letext0:
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2602 0042 04       		.byte	0x4
  2603 0043 05       		.byte	0x5
  2604 0044 5C010000 		.4byte	.LASF4
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 70
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 70
 
 
  2605 0048 02       		.uleb128 0x2
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2659 00b1 0C       		.byte	0xc
  2660 00b2 03       		.byte	0x3
  2661 00b3 8C       		.byte	0x8c
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 71
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 71
 
 
  2662 00b4 25010000 		.4byte	0x125
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2716 0123 0A       		.byte	0xa
  2717 0124 00       		.byte	0
  2718 0125 08       		.uleb128 0x8
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 72
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 72
 
 
  2719 0126 E6040000 		.4byte	.LASF25
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2773 018f A3       		.byte	0xa3
  2774 0190 AD010000 		.4byte	0x1ad
  2775 0194 07       		.uleb128 0x7
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 73
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 73
 
 
  2776 0195 22060000 		.4byte	.LASF30
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2830 01fe 03       		.byte	0x3
  2831 01ff B0       		.byte	0xb0
  2832 0200 1B020000 		.4byte	0x21b
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 74
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 74
 
 
  2833 0204 0A       		.uleb128 0xa
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2887 026b D5       		.byte	0xd5
  2888 026c 6B000000 		.4byte	0x6b
  2889 0270 00       		.byte	0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 75
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 75
 
 
  2890 0271 07       		.uleb128 0x7
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  2944 02dd 07       		.uleb128 0x7
  2945 02de EB010000 		.4byte	.LASF48
  2946 02e2 03       		.byte	0x3
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 76
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 76
 
 
  2947 02e3 EA       		.byte	0xea
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3001 034f 03       		.byte	0x3
  3002 0350 0D01     		.2byte	0x10d
  3003 0352 64030000 		.4byte	0x364
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 77
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 77
 
 
  3004 0356 0F       		.uleb128 0xf
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3058 03cd AC050000 		.4byte	.LASF59
  3059 03d1 01       		.byte	0x1
  3060 03d2 56       		.byte	0x56
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 78
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 78
 
 
  3061 03d3 6B000000 		.4byte	0x6b
@@ -4678,12 +4678,12 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3115 0433 01       		.byte	0x1
  3116 0434 63       		.byte	0x63
  3117 0435 5E040000 		.4byte	0x45e
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 79
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 79
 
 
  3118 0439 05       		.uleb128 0x5
  3119 043a 03       		.byte	0x3
- 3120 043b 00000000 		.4byte	USBFS_tBuffer.5156
+ 3120 043b 00000000 		.4byte	USBFS_tBuffer.5166
  3121 043f 11       		.uleb128 0x11
  3122 0440 FB020000 		.4byte	.LASF67
  3123 0444 01       		.byte	0x1
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3172 04aa 6900     		.ascii	"i\000"
  3173 04ac 01       		.byte	0x1
  3174 04ad 1602     		.2byte	0x216
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 80
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 80
 
 
  3175 04af 6B000000 		.4byte	0x6b
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3229 0515 17       		.uleb128 0x17
  3230 0516 46020000 		.4byte	.LASF73
  3231 051a 01       		.byte	0x1
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 81
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 81
 
 
  3232 051b 4002     		.2byte	0x240
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3286 0589 02       		.uleb128 0x2
  3287 058a 91       		.byte	0x91
  3288 058b 63       		.sleb128 -29
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 82
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 82
 
 
  3289 058c 17       		.uleb128 0x17
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3343 05f1 00000000 		.4byte	.LFB5
  3344 05f5 54000000 		.4byte	.LFE5-.LFB5
  3345 05f9 01       		.uleb128 0x1
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 83
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 83
 
 
  3346 05fa 9C       		.byte	0x9c
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3400 066c 17       		.uleb128 0x17
  3401 066d BB050000 		.4byte	.LASF83
  3402 0671 01       		.byte	0x1
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 84
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 84
 
 
  3403 0672 0B04     		.2byte	0x40b
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3457 06e0 8A04     		.2byte	0x48a
  3458 06e2 6B000000 		.4byte	0x6b
  3459 06e6 00000000 		.4byte	.LFB10
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 85
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 85
 
 
  3460 06ea 30010000 		.4byte	.LFE10-.LFB10
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3514 0758 6F       		.sleb128 -17
  3515 0759 17       		.uleb128 0x17
  3516 075a FB020000 		.4byte	.LASF67
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 86
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 86
 
 
  3517 075e 01       		.byte	0x1
@@ -5147,7 +5147,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3560 07be CA070000 		.4byte	0x7ca
  3561 07c2 1D       		.uleb128 0x1d
  3562 07c3 A9000000 		.4byte	0xa9
- 3563 07c7 7201     		.2byte	0x172
+ 3563 07c7 2802     		.2byte	0x228
  3564 07c9 00       		.byte	0
  3565 07ca 1C       		.uleb128 0x1c
  3566 07cb 12040000 		.4byte	.LASF95
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3571 07d6 B9070000 		.4byte	0x7b9
  3572 07da 1C       		.uleb128 0x1c
  3573 07db 15010000 		.4byte	.LASF96
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 87
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 87
 
 
  3574 07df 04       		.byte	0x4
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3628 0857 F1010000 		.4byte	0x1f1
  3629 085b 00       		.byte	0
  3630              		.section	.debug_abbrev,"",%progbits
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 88
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 88
 
 
  3631              	.Ldebug_abbrev0:
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3685 0035 00       		.byte	0
  3686 0036 05       		.uleb128 0x5
  3687 0037 35       		.uleb128 0x35
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 89
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 89
 
 
  3688 0038 00       		.byte	0
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3742 006e 00       		.byte	0
  3743 006f 0A       		.uleb128 0xa
  3744 0070 0D       		.uleb128 0xd
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 90
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 90
 
 
  3745 0071 00       		.byte	0
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3799 00a7 3A       		.uleb128 0x3a
  3800 00a8 0B       		.uleb128 0xb
  3801 00a9 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 91
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 91
 
 
  3802 00aa 05       		.uleb128 0x5
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3856 00e1 00       		.byte	0
  3857 00e2 00       		.byte	0
  3858 00e3 13       		.uleb128 0x13
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 92
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 92
 
 
  3859 00e4 2E       		.uleb128 0x2e
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3913 011b 12       		.uleb128 0x12
  3914 011c 06       		.uleb128 0x6
  3915 011d 40       		.uleb128 0x40
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 93
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 93
 
 
  3916 011e 18       		.uleb128 0x18
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  3970 0155 12       		.uleb128 0x12
  3971 0156 06       		.uleb128 0x6
  3972 0157 40       		.uleb128 0x40
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 94
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 94
 
 
  3973 0158 18       		.uleb128 0x18
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4027 0191 19       		.uleb128 0x19
  4028 0192 01       		.uleb128 0x1
  4029 0193 13       		.uleb128 0x13
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 95
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 95
 
 
  4030 0194 00       		.byte	0
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4084 0010 00000000 		.4byte	.LFB0
  4085 0014 50040000 		.4byte	.LFE0-.LFB0
  4086 0018 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 96
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 96
 
 
  4087 001c 28010000 		.4byte	.LFE1-.LFB1
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4140      02006200 
  4140      00000201 
  4140      FB0E0D00 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 97
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 97
 
 
  4140      01010101 
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4164      625F6570 
  4164      735F7374 
  4164      72756374 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 98
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 98
 
 
  4165              	.LASF85:
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4186      535F436F 
  4186      6E666967 
  4186      52656700 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 99
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 99
 
 
  4187              	.LASF4:
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4214      72766564 
  4214      00
  4215              	.LASF8:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 100
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 100
 
 
  4216 01f4 756E7369 		.ascii	"unsigned int\000"
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4236      696F6E43 
  4237              	.LASF101:
  4238 02bb 55534246 		.ascii	"USBFS_interfaceClass\000"
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 101
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 101
 
 
  4238      535F696E 
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4262      74696F6E 
  4263              	.LASF52:
  4264 03b2 72775261 		.ascii	"rwRaMsb\000"
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 102
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 102
 
 
  4264      4D736200 
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4290      00
  4291              	.LASF1:
  4292 0458 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 103
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 103
 
 
  4292      676E6564 
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4311      2D506F72 
  4312 055a 5F415544 		.ascii	"_AUDIO_PSoC3_5LP_Example.cydsn\000"
  4312      494F5F50 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 104
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 104
 
 
  4312      536F4333 
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 1
  4334      757300
  4335              	.LASF31:
  4336 0616 6C656E67 		.ascii	"length\000"
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cczAbdAc.s 			page 105
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvRb8NO.s 			page 105
 
 
  4336      746800

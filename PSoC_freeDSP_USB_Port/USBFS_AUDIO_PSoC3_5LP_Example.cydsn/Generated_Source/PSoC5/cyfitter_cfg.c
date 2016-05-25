@@ -326,6 +326,10 @@ void cyfitter_cfg(void)
 	static const uint8 CYCODE BS_IOPINS0_2_VAL[] = {
 		0x00u, 0x7Fu, 0x7Fu, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u};
 
+	/* PHUB_CFGMEM1 Address: CYREG_PHUB_CFGMEM1_CFG0 Size (bytes): 4 */
+	static const uint8 CYCODE BS_PHUB_CFGMEM1_VAL[] = {
+		0x00u, 0x01u, 0x00u, 0x00u};
+
 #ifdef CYGlobalIntDisable
 	/* Disable interrupts by default. Let user enable if/when they want. */
 	CYGlobalIntDisable
@@ -333,9 +337,11 @@ void cyfitter_cfg(void)
 
 
 	/* Set Flash Cycles based on max possible frequency in case a glitch occurs during ClockSetup(). */
-	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CACHE_CC_CTL), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0x01u : 0x00u));
+	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CACHE_CC_CTL), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0x61u : 0x60u));
 	/* Setup clocks based on selections from Clock DWR */
 	ClockSetup();
+	/* Set Flash Cycles based on newly configured 64.00MHz Bus Clock. */
+	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CACHE_CC_CTL), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0x01u : 0x00u));
 	/* Enable/Disable Debug functionality based on settings from System DWR */
 	CY_SET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG, (CY_GET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG) | 0x04u));
 
@@ -343,43 +349,57 @@ void cyfitter_cfg(void)
 		static const uint32 CYCODE cy_cfg_addr_table[] = {
 			0x40004501u, /* Base address: 0x40004500 Count: 1 */
 			0x40005201u, /* Base address: 0x40005200 Count: 1 */
-			0x40011701u, /* Base address: 0x40011700 Count: 1 */
-			0x40011901u, /* Base address: 0x40011900 Count: 1 */
-			0x40014004u, /* Base address: 0x40014000 Count: 4 */
-			0x40014102u, /* Base address: 0x40014100 Count: 2 */
-			0x40014202u, /* Base address: 0x40014200 Count: 2 */
-			0x40014302u, /* Base address: 0x40014300 Count: 2 */
-			0x40014702u, /* Base address: 0x40014700 Count: 2 */
-			0x40014805u, /* Base address: 0x40014800 Count: 5 */
-			0x40014C01u, /* Base address: 0x40014C00 Count: 1 */
+			0x40011702u, /* Base address: 0x40011700 Count: 2 */
+			0x40011902u, /* Base address: 0x40011900 Count: 2 */
+			0x40014008u, /* Base address: 0x40014000 Count: 8 */
+			0x40014103u, /* Base address: 0x40014100 Count: 3 */
+			0x40014203u, /* Base address: 0x40014200 Count: 3 */
+			0x40014303u, /* Base address: 0x40014300 Count: 3 */
+			0x40014704u, /* Base address: 0x40014700 Count: 4 */
+			0x40014807u, /* Base address: 0x40014800 Count: 7 */
+			0x40014C02u, /* Base address: 0x40014C00 Count: 2 */
 			0x40015102u, /* Base address: 0x40015100 Count: 2 */
 		};
 
 		static const cy_cfg_addrvalue_t CYCODE cy_cfg_data_table[] = {
 			{0x7Eu, 0x02u},
 			{0x7Cu, 0x40u},
+			{0xEAu, 0x02u},
 			{0xEEu, 0x02u},
+			{0xEAu, 0x02u},
 			{0xEEu, 0x02u},
+			{0x14u, 0x40u},
+			{0x30u, 0x40u},
+			{0x33u, 0x01u},
 			{0x36u, 0x40u},
-			{0x3Du, 0x80u},
-			{0xCCu, 0x20u},
-			{0xCEu, 0x20u},
-			{0xA5u, 0x40u},
+			{0x38u, 0x08u},
+			{0xC4u, 0x20u},
+			{0xCCu, 0x70u},
+			{0xCEu, 0x40u},
+			{0x94u, 0x08u},
+			{0x9Fu, 0x01u},
 			{0xA6u, 0x40u},
-			{0xA5u, 0x40u},
+			{0x94u, 0x08u},
+			{0x9Fu, 0x01u},
 			{0xA6u, 0x40u},
-			{0xA5u, 0x40u},
+			{0x94u, 0x08u},
+			{0x9Fu, 0x01u},
 			{0xA6u, 0x40u},
-			{0x0Fu, 0x40u},
-			{0xC2u, 0x04u},
-			{0x25u, 0x40u},
-			{0xA5u, 0x40u},
+			{0x0Bu, 0x40u},
+			{0x16u, 0x10u},
+			{0xC2u, 0x08u},
+			{0xC4u, 0x04u},
+			{0x24u, 0x08u},
+			{0x94u, 0x08u},
 			{0xAEu, 0x40u},
+			{0xAFu, 0x01u},
 			{0xC8u, 0x20u},
+			{0xEAu, 0x40u},
 			{0xEEu, 0x40u},
+			{0xAEu, 0x10u},
 			{0xAFu, 0x40u},
-			{0x00u, 0x09u},
-			{0x10u, 0x02u},
+			{0x00u, 0x2Bu},
+			{0x10u, 0x08u},
 		};
 
 
@@ -414,7 +434,8 @@ void cyfitter_cfg(void)
 
 		/* Perform normal device configuration. Order is not critical for these items. */
 		CYMEMZERO((void CYFAR *)(CYREG_PHUB_CFGMEM0_CFG0), 4u);
-		CYMEMZERO((void CYFAR *)(CYREG_PHUB_CFGMEM1_CFG0), 4u);
+		CYCONFIGCPYCODE((void CYFAR *)(CYREG_PHUB_CFGMEM1_CFG0), (const void CYCODE *)(BS_PHUB_CFGMEM1_VAL), 4u);
+		CYMEMZERO((void CYFAR *)(CYREG_PHUB_CFGMEM5_CFG0), 4u);
 
 		/* Enable digital routing */
 		CY_SET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL, CY_GET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL) | 0x02u);

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
   50      2000
   51 001a 0000     		.align	2
   52              	.LC2:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 2
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 2
 
 
   53 001c 41756469 		.ascii	"Audio OFF\000"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
   43:.\main.c      **** volatile uint8 syncDmaCounter = 0u;
   44:.\main.c      **** 
   45:.\main.c      **** /* Variable declarations for VDACoutDMA. */
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 3
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 3
 
 
   46:.\main.c      **** uint8 VdacOutDmaCh;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
   87:.\main.c      ****     uint8 i;
   88:.\main.c      ****     uint8 skipNextOut = 0u;
   76              		.loc 1 88 0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 4
 
 
   77 0006 0023     		movs	r3, #0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  113 0048 FB79     		ldrb	r3, [r7, #7]
  114 004a 0133     		adds	r3, r3, #1
  115 004c FB71     		strb	r3, [r7, #7]
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 5
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 5
 
 
  116              	.L2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  156 008e 0523     		movs	r3, #5
  157 0090 FFF7FEFF 		bl	CyDmaTdSetConfiguration
  116:.\main.c      ****                                 (TD_INC_SRC_ADR | VDAC_DMA_TD_TERMOUT_EN));
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 6
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 6
 
 
  117:.\main.c      **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  131:.\main.c      **** 
  132:.\main.c      ****     CyGlobalIntEnable;
  196              		.loc 1 132 0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 7
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 7
 
 
  197              	@ 132 ".\main.c" 1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  152:.\main.c      **** 
  153:.\main.c      ****                 /* Reset variables. */
  154:.\main.c      ****                 inIndex  = 0u;
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 8
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 8
 
 
  231              		.loc 1 154 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  268 014a FFF7FEFF 		bl	LCD_PrintString
  269              	.L9:
  172:.\main.c      ****             }
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 9
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 9
 
 
  173:.\main.c      ****         }
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  304 018a 1B88     		ldrh	r3, [r3]	@ movhi
  305 018c 9BB2     		uxth	r3, r3
  306 018e 0133     		adds	r3, r3, #1
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 10
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 10
 
 
  307 0190 9AB2     		uxth	r2, r3
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  347 01ce 0023     		movs	r3, #0
  348 01d0 BB71     		strb	r3, [r7, #6]
  349              	.L16:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 11
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 11
 
 
  207:.\main.c      ****             }
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  385              	.L17:
  226:.\main.c      ****         }
  227:.\main.c      ****     }
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 12
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 12
 
 
  386              		.loc 1 227 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  420              		.cfi_offset 14, -4
  421 0002 00AF     		add	r7, sp, #0
  422              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 13
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 13
 
 
  248:.\main.c      ****     /* Move to next buffer location and adjust to be within buffer size. */
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  463              		.loc 1 261 0
  464 0044 064B     		ldr	r3, .L25+12
  465 0046 0022     		movs	r2, #0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 14
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 14
 
 
  466 0048 1A70     		strb	r2, [r3]
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  517 003a 02       		.uleb128 0x2
  518 003b 02       		.byte	0x2
  519 003c 07       		.byte	0x7
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 15
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 15
 
 
  520 003d 66010000 		.4byte	.LASF3
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  574 00ac 02       		.uleb128 0x2
  575 00ad 08       		.byte	0x8
  576 00ae 04       		.byte	0x4
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 16
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 16
 
 
  577 00af 86010000 		.4byte	.LASF15
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  631 011d 79010000 		.4byte	.LASF20
  632 0121 05       		.byte	0x5
  633 0122 5506     		.2byte	0x655
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 17
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 17
 
 
  634 0124 28010000 		.4byte	0x128
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  688 019a 81000000 		.4byte	0x81
  689 019e 05       		.uleb128 0x5
  690 019f 03       		.byte	0x3
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 18
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 18
 
 
  691 01a0 00000000 		.4byte	VdacOutDmaCh
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  745 0023 3A       		.uleb128 0x3a
  746 0024 0B       		.uleb128 0xb
  747 0025 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 19
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 19
 
 
  748 0026 0B       		.uleb128 0xb
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  802 005c 18       		.uleb128 0x18
  803 005d 9642     		.uleb128 0x2116
  804 005f 19       		.uleb128 0x19
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 20
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 20
 
 
  805 0060 01       		.uleb128 0x1
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  859 0097 19       		.uleb128 0x19
  860 0098 00       		.byte	0
  861 0099 00       		.byte	0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 21
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 21
 
 
  862 009a 0B       		.uleb128 0xb
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  916 00d0 00       		.byte	0
  917 00d1 49       		.uleb128 0x49
  918 00d2 13       		.uleb128 0x13
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 22
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 22
 
 
  919 00d3 2F       		.uleb128 0x2f
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  955              	.LASF28:
  956 0088 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  956      4320342E 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 23
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 23
 
 
  956      392E3320 
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  978      00
  979              	.LASF15:
  980 0186 646F7562 		.ascii	"double\000"
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 24
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 24
 
 
  980      6C6500
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 1
  1008 0218 73686F72 		.ascii	"short int\000"
  1008      7420696E 
  1008      7400
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\cc8duB7F.s 			page 25
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccPT6cHE.s 			page 25
 
 
  1009              	.LASF11:

@@ -2,7 +2,7 @@
 --	Conversion of USBFS_AUDIO_PSoC3_5LP_Example.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Apr 29 14:23:29 2016
+--	Wed May 25 14:03:44 2016
 --
 
 USE cypress.cypress.all;
@@ -47,9 +47,11 @@ SIGNAL \VDAC8:Net_83\ : bit;
 SIGNAL \VDAC8:Net_81\ : bit;
 SIGNAL \VDAC8:Net_82\ : bit;
 TERMINAL \VDAC8:Net_77\ : bit;
-SIGNAL \USBFS:dma_request_1\ : bit;
+SIGNAL \USBFS:dma_request_5\ : bit;
 SIGNAL \USBFS:dma_terminate\ : bit;
-SIGNAL \USBFS:Net_1498\ : bit;
+SIGNAL \USBFS:Net_1579\ : bit;
+SIGNAL \USBFS:dma_request_0\ : bit;
+SIGNAL \USBFS:Net_1495\ : bit;
 SIGNAL \USBFS:Net_1010\ : bit;
 SIGNAL \USBFS:tmpOE__Dm_net_0\ : bit;
 SIGNAL \USBFS:tmpFB_0__Dm_net_0\ : bit;
@@ -77,11 +79,10 @@ SIGNAL \USBFS:ep_int_0\ : bit;
 SIGNAL \USBFS:Net_95\ : bit;
 SIGNAL \USBFS:dma_request_7\ : bit;
 SIGNAL \USBFS:dma_request_6\ : bit;
-SIGNAL \USBFS:dma_request_5\ : bit;
 SIGNAL \USBFS:dma_request_4\ : bit;
 SIGNAL \USBFS:dma_request_3\ : bit;
 SIGNAL \USBFS:dma_request_2\ : bit;
-SIGNAL \USBFS:dma_request_0\ : bit;
+SIGNAL \USBFS:dma_request_1\ : bit;
 SIGNAL \USBFS:dma_complete_0\ : bit;
 SIGNAL \USBFS:Net_1922\ : bit;
 SIGNAL \USBFS:dma_complete_1\ : bit;
@@ -267,12 +268,18 @@ Speaker:cy_psoc3_pins_v1_10
 		iout=>\VDAC8:Net_77\);
 \VDAC8:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\VDAC8:Net_77\);
-\USBFS:ep2\:cy_dma_v1_0
+\USBFS:ep6\:cy_dma_v1_0
 	GENERIC MAP(drq_type=>"10",
 		num_tds=>0)
-	PORT MAP(drq=>\USBFS:dma_request_1\,
+	PORT MAP(drq=>\USBFS:dma_request_5\,
 		trq=>\USBFS:dma_terminate\,
-		nrq=>\USBFS:Net_1498\);
+		nrq=>\USBFS:Net_1579\);
+\USBFS:ep1\:cy_dma_v1_0
+	GENERIC MAP(drq_type=>"10",
+		num_tds=>0)
+	PORT MAP(drq=>\USBFS:dma_request_0\,
+		trq=>\USBFS:dma_terminate\,
+		nrq=>\USBFS:Net_1495\);
 \USBFS:dp_int\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>\USBFS:Net_1010\);
@@ -433,9 +440,9 @@ Speaker:cy_psoc3_pins_v1_10
 \USBFS:ord_int\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>\USBFS:Net_95\);
-\USBFS:ep_2\:cy_isr_v1_0
+\USBFS:ep_1\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>\USBFS:ep_int_2\);
+	PORT MAP(int_signal=>\USBFS:ep_int_1\);
 \USBFS:ep_0\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>\USBFS:ep_int_0\);
@@ -448,6 +455,9 @@ Speaker:cy_psoc3_pins_v1_10
 \USBFS:sof_int\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_387);
+\USBFS:ep_6\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBFS:ep_int_6\);
 VdacDma:cy_dma_v1_0
 	GENERIC MAP(drq_type=>"00",
 		num_tds=>0)

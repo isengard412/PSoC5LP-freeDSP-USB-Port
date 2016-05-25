@@ -1,5 +1,5 @@
 -- Project:   C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj
--- Generated: 04/29/2016 14:23:32
+-- Generated: 05/25/2016 14:03:49
 -- PSoC Creator  3.3 SP1
 
 ENTITY USBFS_AUDIO_PSoC3_5LP_Example IS
@@ -50,7 +50,8 @@ ARCHITECTURE __DEFAULT__ OF USBFS_AUDIO_PSoC3_5LP_Example IS
     SIGNAL \\\USBFS:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USBFS:Dp(0)\\__PA\ : bit;
     SIGNAL \USBFS:Net_1010\ : bit;
-    SIGNAL \USBFS:Net_1498\ : bit;
+    SIGNAL \USBFS:Net_1495\ : bit;
+    SIGNAL \USBFS:Net_1579\ : bit;
     SIGNAL \USBFS:Net_1876\ : bit;
     SIGNAL \USBFS:Net_1889\ : bit;
     SIGNAL \USBFS:Net_95\ : bit;
@@ -103,18 +104,21 @@ ARCHITECTURE __DEFAULT__ OF USBFS_AUDIO_PSoC3_5LP_Example IS
     ATTRIBUTE lib_model OF \USBFS:Dp(0)\ : LABEL IS "iocell10";
     ATTRIBUTE Location OF \USBFS:Dp(0)\ : LABEL IS "P15[6]";
     ATTRIBUTE Location OF \VDAC8:viDAC8\ : LABEL IS "F(VIDAC,2)";
-    ATTRIBUTE lib_model OF \USBFS:ep2\ : LABEL IS "drqcell1";
-    ATTRIBUTE Location OF \USBFS:ep2\ : LABEL IS "[DrqContainer=(0)][DrqId=(1)]";
+    ATTRIBUTE lib_model OF \USBFS:ep6\ : LABEL IS "drqcell1";
+    ATTRIBUTE Location OF \USBFS:ep6\ : LABEL IS "[DrqContainer=(0)][DrqId=(5)]";
+    ATTRIBUTE lib_model OF \USBFS:ep1\ : LABEL IS "drqcell2";
+    ATTRIBUTE Location OF \USBFS:ep1\ : LABEL IS "[DrqContainer=(0)][DrqId=(0)]";
     ATTRIBUTE Location OF \USBFS:dp_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(12)]";
     ATTRIBUTE Location OF \USBFS:USB\ : LABEL IS "F(USB,0)";
     ATTRIBUTE Location OF \USBFS:ord_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(25)]";
-    ATTRIBUTE Location OF \USBFS:ep_2\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
+    ATTRIBUTE Location OF \USBFS:ep_1\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE Location OF \USBFS:ep_0\ : LABEL IS "[IntrContainer=(0)][IntrId=(24)]";
     ATTRIBUTE Location OF \USBFS:bus_reset\ : LABEL IS "[IntrContainer=(0)][IntrId=(23)]";
     ATTRIBUTE Location OF \USBFS:arb_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(22)]";
     ATTRIBUTE Location OF \USBFS:sof_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(21)]";
-    ATTRIBUTE lib_model OF VdacDma : LABEL IS "drqcell2";
-    ATTRIBUTE Location OF VdacDma : LABEL IS "[DrqContainer=(0)][DrqId=(0)]";
+    ATTRIBUTE Location OF \USBFS:ep_6\ : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
+    ATTRIBUTE lib_model OF VdacDma : LABEL IS "drqcell3";
+    ATTRIBUTE Location OF VdacDma : LABEL IS "[DrqContainer=(0)][DrqId=(1)]";
     ATTRIBUTE Location OF DmaDone : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     COMPONENT clockblockcell
         PORT (
@@ -780,14 +784,24 @@ BEGIN
             idir => open,
             ioff => open);
 
-    \USBFS:ep2\:drqcell
+    \USBFS:ep6\:drqcell
         GENERIC MAP(
             drq_type => "10",
             num_tds => 0)
         PORT MAP(
-            dmareq => \USBFS:dma_request_1\,
+            dmareq => \USBFS:dma_request_5\,
             termin => \USBFS:dma_terminate\,
-            termout => \USBFS:Net_1498\,
+            termout => \USBFS:Net_1579\,
+            clock => ClockBlock_BUS_CLK);
+
+    \USBFS:ep1\:drqcell
+        GENERIC MAP(
+            drq_type => "10",
+            num_tds => 0)
+        PORT MAP(
+            dmareq => \USBFS:dma_request_0\,
+            termin => \USBFS:dma_terminate\,
+            termout => \USBFS:Net_1495\,
             clock => ClockBlock_BUS_CLK);
 
     \USBFS:dp_int\:interrupt
@@ -831,11 +845,11 @@ BEGIN
             interrupt => \USBFS:Net_95\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBFS:ep_2\:interrupt
+    \USBFS:ep_1\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBFS:ep_int_2\,
+            interrupt => \USBFS:ep_int_1\,
             clock => ClockBlock_BUS_CLK);
 
     \USBFS:ep_0\:interrupt
@@ -864,6 +878,13 @@ BEGIN
             int_type => "10")
         PORT MAP(
             interrupt => Net_387,
+            clock => ClockBlock_BUS_CLK);
+
+    \USBFS:ep_6\:interrupt
+        GENERIC MAP(
+            int_type => "10")
+        PORT MAP(
+            interrupt => \USBFS:ep_int_6\,
             clock => ClockBlock_BUS_CLK);
 
     VdacDma:drqcell
