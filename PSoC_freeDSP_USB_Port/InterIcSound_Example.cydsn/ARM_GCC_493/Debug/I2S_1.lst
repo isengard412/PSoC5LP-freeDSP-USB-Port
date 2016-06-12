@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
   23:.\Generated_Source\PSoC5/I2S_1.c **** 
   24:.\Generated_Source\PSoC5/I2S_1.c **** /*******************************************************************************
   25:.\Generated_Source\PSoC5/I2S_1.c **** * Function Name: I2S_1_Enable
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 2
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 2
 
 
   26:.\Generated_Source\PSoC5/I2S_1.c **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
   63 0028 054B     		ldr	r3, .L2+4
   64 002a 1B78     		ldrb	r3, [r3]
   65 002c DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 3
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 3
 
 
   66 002e 43F00403 		orr	r3, r3, #4
@@ -135,7 +135,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
   76              	.L3:
   77              		.align	2
   78              	.L2:
-  79 003c 90640040 		.word	1073767568
+  79 003c 93640040 		.word	1073767571
   80 0040 72640040 		.word	1073767538
   81              		.cfi_endproc
   82              	.LFE0:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
   99              		.cfi_offset 7, -4
  100 0002 00AF     		add	r7, sp, #0
  101              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 4
 
 
   71:.\Generated_Source\PSoC5/I2S_1.c ****     #if (I2S_1_CLIP_DETECT_ENABLE)
@@ -194,15 +194,15 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
   81:.\Generated_Source\PSoC5/I2S_1.c ****     #if (I2S_1_TX_DIRECTION_ENABLE)
   82:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_SET_TX_INT_MASK(CH0, I2S_1_TX_INT_SOURCE);
  102              		.loc 1 82 0
- 103 0004 124A     		ldr	r2, .L5
- 104 0006 124B     		ldr	r3, .L5
+ 103 0004 084A     		ldr	r2, .L5
+ 104 0006 084B     		ldr	r3, .L5
  105 0008 1B78     		ldrb	r3, [r3]
  106 000a DBB2     		uxtb	r3, r3
  107 000c 23F00703 		bic	r3, r3, #7
  108 0010 DBB2     		uxtb	r3, r3
  109 0012 1370     		strb	r3, [r2]
- 110 0014 0E4B     		ldr	r3, .L5
- 111 0016 0E4A     		ldr	r2, .L5
+ 110 0014 044B     		ldr	r3, .L5
+ 111 0016 044A     		ldr	r2, .L5
  112 0018 1278     		ldrb	r2, [r2]
  113 001a D2B2     		uxtb	r2, r2
  114 001c 1A70     		strb	r2, [r3]
@@ -223,34 +223,9 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
   97:.\Generated_Source\PSoC5/I2S_1.c ****     /* Initialize Rx interrupt source and clipping thresholds selected in customizer */
   98:.\Generated_Source\PSoC5/I2S_1.c ****     #if (I2S_1_RX_DIRECTION_ENABLE)
   99:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_SET_RX_INT_MASK(CH0, I2S_1_RX_INT_SOURCE);
- 115              		.loc 1 99 0
- 116 001e 0D4A     		ldr	r2, .L5+4
- 117 0020 0C4B     		ldr	r3, .L5+4
- 118 0022 1B78     		ldrb	r3, [r3]
- 119 0024 DBB2     		uxtb	r3, r3
- 120 0026 23F00703 		bic	r3, r3, #7
- 121 002a DBB2     		uxtb	r3, r3
- 122 002c 1370     		strb	r3, [r2]
- 123 002e 094B     		ldr	r3, .L5+4
- 124 0030 084A     		ldr	r2, .L5+4
- 125 0032 1278     		ldrb	r2, [r2]
- 126 0034 D2B2     		uxtb	r2, r2
- 127 0036 1A70     		strb	r2, [r3]
  100:.\Generated_Source\PSoC5/I2S_1.c ****         #if (I2S_1_CLIP_DETECT_ENABLE)
  101:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_SET_POS_THRESHOLD(CH0, I2S_1_posThresholds[I2S_1_STEREO_0]);
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 5
-
-
- 128              		.loc 1 101 0
- 129 0038 074B     		ldr	r3, .L5+8
- 130 003a 4022     		movs	r2, #64
- 131 003c 1A70     		strb	r2, [r3]
  102:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_SET_NEG_THRESHOLD(CH0, I2S_1_negThresholds[I2S_1_STEREO_0]);
- 132              		.loc 1 102 0
- 133 003e 074B     		ldr	r3, .L5+12
- 134 0040 C022     		movs	r2, #192
- 135 0042 D2B2     		uxtb	r2, r2
- 136 0044 1A70     		strb	r2, [r3]
  103:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_CLIP_DETECT_ENABLE */
  104:.\Generated_Source\PSoC5/I2S_1.c ****         #if (I2S_1_RX_STEREO_1_PRESENT)
  105:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_SET_RX_INT_MASK(CH1, I2S_1_RX_INT_SOURCE);
@@ -263,6 +238,9 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  112:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_SET_RX_INT_MASK(CH2, I2S_1_RX_INT_SOURCE);
  113:.\Generated_Source\PSoC5/I2S_1.c ****             #if (I2S_1_CLIP_DETECT_ENABLE)
  114:.\Generated_Source\PSoC5/I2S_1.c ****                 I2S_1_SET_POS_THRESHOLD(CH2, I2S_1_posThresholds[I2S_1_STEREO_2]);
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 5
+
+
  115:.\Generated_Source\PSoC5/I2S_1.c ****                 I2S_1_SET_NEG_THRESHOLD(CH2, I2S_1_negThresholds[I2S_1_STEREO_2]);
  116:.\Generated_Source\PSoC5/I2S_1.c ****             #endif /* I2S_1_CLIP_DETECT_ENABLE */
  117:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STEREO_2_PRESENT */
@@ -282,35 +260,29 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  131:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STEREO_4_PRESENT */
  132:.\Generated_Source\PSoC5/I2S_1.c ****     #endif /* (I2S_1_RX_DIRECTION_ENABLE) */
  133:.\Generated_Source\PSoC5/I2S_1.c **** }
- 137              		.loc 1 133 0
- 138 0046 BD46     		mov	sp, r7
- 139              		.cfi_def_cfa_register 13
- 140              		@ sp needed
- 141 0048 5DF8047B 		ldr	r7, [sp], #4
- 142              		.cfi_restore 7
- 143              		.cfi_def_cfa_offset 0
- 144 004c 7047     		bx	lr
- 145              	.L6:
- 146 004e 00BF     		.align	2
- 147              	.L5:
- 148 0050 81640040 		.word	1073767553
- 149 0054 82640040 		.word	1073767554
- 150 0058 22640040 		.word	1073767458
- 151 005c 32640040 		.word	1073767474
- 152              		.cfi_endproc
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 6
-
-
- 153              	.LFE1:
- 154              		.size	I2S_1_Init, .-I2S_1_Init
- 155              		.section	.text.I2S_1_Start,"ax",%progbits
- 156              		.align	2
- 157              		.global	I2S_1_Start
- 158              		.thumb
- 159              		.thumb_func
- 160              		.type	I2S_1_Start, %function
- 161              	I2S_1_Start:
- 162              	.LFB2:
+ 115              		.loc 1 133 0
+ 116 001e BD46     		mov	sp, r7
+ 117              		.cfi_def_cfa_register 13
+ 118              		@ sp needed
+ 119 0020 5DF8047B 		ldr	r7, [sp], #4
+ 120              		.cfi_restore 7
+ 121              		.cfi_def_cfa_offset 0
+ 122 0024 7047     		bx	lr
+ 123              	.L6:
+ 124 0026 00BF     		.align	2
+ 125              	.L5:
+ 126 0028 82640040 		.word	1073767554
+ 127              		.cfi_endproc
+ 128              	.LFE1:
+ 129              		.size	I2S_1_Init, .-I2S_1_Init
+ 130              		.section	.text.I2S_1_Start,"ax",%progbits
+ 131              		.align	2
+ 132              		.global	I2S_1_Start
+ 133              		.thumb
+ 134              		.thumb_func
+ 135              		.type	I2S_1_Start, %function
+ 136              	I2S_1_Start:
+ 137              	.LFB2:
  134:.\Generated_Source\PSoC5/I2S_1.c **** 
  135:.\Generated_Source\PSoC5/I2S_1.c **** 
  136:.\Generated_Source\PSoC5/I2S_1.c **** /*******************************************************************************
@@ -326,6 +298,9 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  146:.\Generated_Source\PSoC5/I2S_1.c **** *
  147:.\Generated_Source\PSoC5/I2S_1.c **** * Return:
  148:.\Generated_Source\PSoC5/I2S_1.c **** *  None.
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 6
+
+
  149:.\Generated_Source\PSoC5/I2S_1.c **** *
  150:.\Generated_Source\PSoC5/I2S_1.c **** * Global Variables:
  151:.\Generated_Source\PSoC5/I2S_1.c **** *  I2S_1_initVar - used to check initial configuration, modified on
@@ -337,58 +312,58 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  157:.\Generated_Source\PSoC5/I2S_1.c **** *******************************************************************************/
  158:.\Generated_Source\PSoC5/I2S_1.c **** void I2S_1_Start(void) 
  159:.\Generated_Source\PSoC5/I2S_1.c **** {
- 163              		.loc 1 159 0
- 164              		.cfi_startproc
- 165              		@ args = 0, pretend = 0, frame = 0
- 166              		@ frame_needed = 1, uses_anonymous_args = 0
- 167 0000 80B5     		push	{r7, lr}
- 168              		.cfi_def_cfa_offset 8
- 169              		.cfi_offset 7, -8
- 170              		.cfi_offset 14, -4
- 171 0002 00AF     		add	r7, sp, #0
- 172              		.cfi_def_cfa_register 7
+ 138              		.loc 1 159 0
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 0
+ 141              		@ frame_needed = 1, uses_anonymous_args = 0
+ 142 0000 80B5     		push	{r7, lr}
+ 143              		.cfi_def_cfa_offset 8
+ 144              		.cfi_offset 7, -8
+ 145              		.cfi_offset 14, -4
+ 146 0002 00AF     		add	r7, sp, #0
+ 147              		.cfi_def_cfa_register 7
  160:.\Generated_Source\PSoC5/I2S_1.c ****     if(0u == I2S_1_initVar)
- 173              		.loc 1 160 0
- 174 0004 054B     		ldr	r3, .L9
- 175 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 176 0008 002B     		cmp	r3, #0
- 177 000a 04D1     		bne	.L8
+ 148              		.loc 1 160 0
+ 149 0004 054B     		ldr	r3, .L9
+ 150 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 151 0008 002B     		cmp	r3, #0
+ 152 000a 04D1     		bne	.L8
  161:.\Generated_Source\PSoC5/I2S_1.c ****     {
  162:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_Init();
- 178              		.loc 1 162 0
- 179 000c FFF7FEFF 		bl	I2S_1_Init
+ 153              		.loc 1 162 0
+ 154 000c FFF7FEFF 		bl	I2S_1_Init
  163:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_initVar = 1u;
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 7
-
-
- 180              		.loc 1 163 0
- 181 0010 024B     		ldr	r3, .L9
- 182 0012 0122     		movs	r2, #1
- 183 0014 1A70     		strb	r2, [r3]
- 184              	.L8:
+ 155              		.loc 1 163 0
+ 156 0010 024B     		ldr	r3, .L9
+ 157 0012 0122     		movs	r2, #1
+ 158 0014 1A70     		strb	r2, [r3]
+ 159              	.L8:
  164:.\Generated_Source\PSoC5/I2S_1.c ****     }
  165:.\Generated_Source\PSoC5/I2S_1.c **** 
  166:.\Generated_Source\PSoC5/I2S_1.c ****     I2S_1_Enable();
- 185              		.loc 1 166 0
- 186 0016 FFF7FEFF 		bl	I2S_1_Enable
+ 160              		.loc 1 166 0
+ 161 0016 FFF7FEFF 		bl	I2S_1_Enable
  167:.\Generated_Source\PSoC5/I2S_1.c **** }
- 187              		.loc 1 167 0
- 188 001a 80BD     		pop	{r7, pc}
- 189              	.L10:
- 190              		.align	2
- 191              	.L9:
- 192 001c 00000000 		.word	I2S_1_initVar
- 193              		.cfi_endproc
- 194              	.LFE2:
- 195              		.size	I2S_1_Start, .-I2S_1_Start
- 196              		.section	.text.I2S_1_Stop,"ax",%progbits
- 197              		.align	2
- 198              		.global	I2S_1_Stop
- 199              		.thumb
- 200              		.thumb_func
- 201              		.type	I2S_1_Stop, %function
- 202              	I2S_1_Stop:
- 203              	.LFB3:
+ 162              		.loc 1 167 0
+ 163 001a 80BD     		pop	{r7, pc}
+ 164              	.L10:
+ 165              		.align	2
+ 166              	.L9:
+ 167 001c 00000000 		.word	I2S_1_initVar
+ 168              		.cfi_endproc
+ 169              	.LFE2:
+ 170              		.size	I2S_1_Start, .-I2S_1_Start
+ 171              		.section	.text.I2S_1_Stop,"ax",%progbits
+ 172              		.align	2
+ 173              		.global	I2S_1_Stop
+ 174              		.thumb
+ 175              		.thumb_func
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 7
+
+
+ 176              		.type	I2S_1_Stop, %function
+ 177              	I2S_1_Stop:
+ 178              	.LFB3:
  168:.\Generated_Source\PSoC5/I2S_1.c **** 
  169:.\Generated_Source\PSoC5/I2S_1.c **** 
  170:.\Generated_Source\PSoC5/I2S_1.c **** /*******************************************************************************
@@ -408,108 +383,104 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  184:.\Generated_Source\PSoC5/I2S_1.c **** *******************************************************************************/
  185:.\Generated_Source\PSoC5/I2S_1.c **** void I2S_1_Stop(void) 
  186:.\Generated_Source\PSoC5/I2S_1.c **** {
- 204              		.loc 1 186 0
- 205              		.cfi_startproc
- 206              		@ args = 0, pretend = 0, frame = 8
- 207              		@ frame_needed = 1, uses_anonymous_args = 0
- 208 0000 80B5     		push	{r7, lr}
- 209              		.cfi_def_cfa_offset 8
- 210              		.cfi_offset 7, -8
- 211              		.cfi_offset 14, -4
- 212 0002 82B0     		sub	sp, sp, #8
- 213              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 8
-
-
- 214 0004 00AF     		add	r7, sp, #0
- 215              		.cfi_def_cfa_register 7
+ 179              		.loc 1 186 0
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 8
+ 182              		@ frame_needed = 1, uses_anonymous_args = 0
+ 183 0000 80B5     		push	{r7, lr}
+ 184              		.cfi_def_cfa_offset 8
+ 185              		.cfi_offset 7, -8
+ 186              		.cfi_offset 14, -4
+ 187 0002 82B0     		sub	sp, sp, #8
+ 188              		.cfi_def_cfa_offset 16
+ 189 0004 00AF     		add	r7, sp, #0
+ 190              		.cfi_def_cfa_register 7
  187:.\Generated_Source\PSoC5/I2S_1.c ****     uint8 enableInterrupts;
  188:.\Generated_Source\PSoC5/I2S_1.c **** 
  189:.\Generated_Source\PSoC5/I2S_1.c ****     I2S_1_CONTROL_REG &= (uint8)~I2S_1_EN;
- 216              		.loc 1 189 0
- 217 0006 134A     		ldr	r2, .L12
- 218 0008 124B     		ldr	r3, .L12
- 219 000a 1B78     		ldrb	r3, [r3]
- 220 000c DBB2     		uxtb	r3, r3
- 221 000e 23F00403 		bic	r3, r3, #4
- 222 0012 DBB2     		uxtb	r3, r3
- 223 0014 1370     		strb	r3, [r2]
+ 191              		.loc 1 189 0
+ 192 0006 114A     		ldr	r2, .L12
+ 193 0008 104B     		ldr	r3, .L12
+ 194 000a 1B78     		ldrb	r3, [r3]
+ 195 000c DBB2     		uxtb	r3, r3
+ 196 000e 23F00403 		bic	r3, r3, #4
+ 197 0012 DBB2     		uxtb	r3, r3
+ 198 0014 1370     		strb	r3, [r2]
  190:.\Generated_Source\PSoC5/I2S_1.c **** 
  191:.\Generated_Source\PSoC5/I2S_1.c ****     enableInterrupts = CyEnterCriticalSection();
- 224              		.loc 1 191 0
- 225 0016 FFF7FEFF 		bl	CyEnterCriticalSection
- 226 001a 0346     		mov	r3, r0
- 227 001c FB71     		strb	r3, [r7, #7]
+ 199              		.loc 1 191 0
+ 200 0016 FFF7FEFF 		bl	CyEnterCriticalSection
+ 201 001a 0346     		mov	r3, r0
+ 202 001c FB71     		strb	r3, [r7, #7]
  192:.\Generated_Source\PSoC5/I2S_1.c ****     I2S_1_AUX_CONTROL_REG &= (uint8)~I2S_1_CNT_START;
- 228              		.loc 1 192 0
- 229 001e 0E4A     		ldr	r2, .L12+4
- 230 0020 0D4B     		ldr	r3, .L12+4
- 231 0022 1B78     		ldrb	r3, [r3]
- 232 0024 DBB2     		uxtb	r3, r3
- 233 0026 23F02003 		bic	r3, r3, #32
- 234 002a DBB2     		uxtb	r3, r3
- 235 002c 1370     		strb	r3, [r2]
+ 203              		.loc 1 192 0
+ 204 001e 0C4A     		ldr	r2, .L12+4
+ 205 0020 0B4B     		ldr	r3, .L12+4
+ 206 0022 1B78     		ldrb	r3, [r3]
+ 207 0024 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 8
+
+
+ 208 0026 23F02003 		bic	r3, r3, #32
+ 209 002a DBB2     		uxtb	r3, r3
+ 210 002c 1370     		strb	r3, [r2]
  193:.\Generated_Source\PSoC5/I2S_1.c ****     CyExitCriticalSection(enableInterrupts);
- 236              		.loc 1 193 0
- 237 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 238 0030 1846     		mov	r0, r3
- 239 0032 FFF7FEFF 		bl	CyExitCriticalSection
+ 211              		.loc 1 193 0
+ 212 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 213 0030 1846     		mov	r0, r3
+ 214 0032 FFF7FEFF 		bl	CyExitCriticalSection
  194:.\Generated_Source\PSoC5/I2S_1.c **** 
  195:.\Generated_Source\PSoC5/I2S_1.c ****     /* Clear counter value to force reload when component is enabled */
  196:.\Generated_Source\PSoC5/I2S_1.c ****     I2S_1_CNT_COUNT_REG = 0u;
- 240              		.loc 1 196 0
- 241 0036 094B     		ldr	r3, .L12+8
- 242 0038 0022     		movs	r2, #0
- 243 003a 1A70     		strb	r2, [r3]
+ 215              		.loc 1 196 0
+ 216 0036 074B     		ldr	r3, .L12+8
+ 217 0038 0022     		movs	r2, #0
+ 218 003a 1A70     		strb	r2, [r3]
  197:.\Generated_Source\PSoC5/I2S_1.c **** 
  198:.\Generated_Source\PSoC5/I2S_1.c ****     #if (I2S_1_TX_DIRECTION_ENABLE)
  199:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_DisableTx();
- 244              		.loc 1 199 0
- 245 003c FFF7FEFF 		bl	I2S_1_DisableTx
+ 219              		.loc 1 199 0
+ 220 003c FFF7FEFF 		bl	I2S_1_DisableTx
  200:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_ClearTxFIFO();
- 246              		.loc 1 200 0
- 247 0040 FFF7FEFF 		bl	I2S_1_ClearTxFIFO
+ 221              		.loc 1 200 0
+ 222 0040 FFF7FEFF 		bl	I2S_1_ClearTxFIFO
  201:.\Generated_Source\PSoC5/I2S_1.c ****     #endif /* (I2S_1_TX_DIRECTION_ENABLE) */
  202:.\Generated_Source\PSoC5/I2S_1.c ****     
  203:.\Generated_Source\PSoC5/I2S_1.c ****     #if (I2S_1_RX_DIRECTION_ENABLE)
  204:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_DisableRx();
- 248              		.loc 1 204 0
- 249 0044 FFF7FEFF 		bl	I2S_1_DisableRx
  205:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_ClearRxFIFO();
- 250              		.loc 1 205 0
- 251 0048 FFF7FEFF 		bl	I2S_1_ClearRxFIFO
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 9
-
-
  206:.\Generated_Source\PSoC5/I2S_1.c ****     #endif /* (I2S_1_RX_DIRECTION_ENABLE) */
  207:.\Generated_Source\PSoC5/I2S_1.c **** }
- 252              		.loc 1 207 0
- 253 004c 0837     		adds	r7, r7, #8
- 254              		.cfi_def_cfa_offset 8
- 255 004e BD46     		mov	sp, r7
- 256              		.cfi_def_cfa_register 13
- 257              		@ sp needed
- 258 0050 80BD     		pop	{r7, pc}
- 259              	.L13:
- 260 0052 00BF     		.align	2
- 261              	.L12:
- 262 0054 72640040 		.word	1073767538
- 263 0058 90640040 		.word	1073767568
- 264 005c 70640040 		.word	1073767536
- 265              		.cfi_endproc
- 266              	.LFE3:
- 267              		.size	I2S_1_Stop, .-I2S_1_Stop
- 268              		.section	.text.I2S_1_EnableTx,"ax",%progbits
- 269              		.align	2
- 270              		.global	I2S_1_EnableTx
- 271              		.thumb
- 272              		.thumb_func
- 273              		.type	I2S_1_EnableTx, %function
- 274              	I2S_1_EnableTx:
- 275              	.LFB4:
+ 223              		.loc 1 207 0
+ 224 0044 0837     		adds	r7, r7, #8
+ 225              		.cfi_def_cfa_offset 8
+ 226 0046 BD46     		mov	sp, r7
+ 227              		.cfi_def_cfa_register 13
+ 228              		@ sp needed
+ 229 0048 80BD     		pop	{r7, pc}
+ 230              	.L13:
+ 231 004a 00BF     		.align	2
+ 232              	.L12:
+ 233 004c 72640040 		.word	1073767538
+ 234 0050 93640040 		.word	1073767571
+ 235 0054 73640040 		.word	1073767539
+ 236              		.cfi_endproc
+ 237              	.LFE3:
+ 238              		.size	I2S_1_Stop, .-I2S_1_Stop
+ 239              		.section	.text.I2S_1_EnableTx,"ax",%progbits
+ 240              		.align	2
+ 241              		.global	I2S_1_EnableTx
+ 242              		.thumb
+ 243              		.thumb_func
+ 244              		.type	I2S_1_EnableTx, %function
+ 245              	I2S_1_EnableTx:
+ 246              	.LFB4:
  208:.\Generated_Source\PSoC5/I2S_1.c **** 
  209:.\Generated_Source\PSoC5/I2S_1.c **** #if (I2S_1_DYNAMIC_BIT_RESOLUTION)
  210:.\Generated_Source\PSoC5/I2S_1.c ****     /*******************************************************************************
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 9
+
+
  211:.\Generated_Source\PSoC5/I2S_1.c ****     * Function Name: I2S_1_SetDataBits
  212:.\Generated_Source\PSoC5/I2S_1.c ****     ********************************************************************************
  213:.\Generated_Source\PSoC5/I2S_1.c ****     *
@@ -538,9 +509,6 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  236:.\Generated_Source\PSoC5/I2S_1.c **** 
  237:.\Generated_Source\PSoC5/I2S_1.c ****         status = CYRET_SUCCESS;
  238:.\Generated_Source\PSoC5/I2S_1.c ****         /* The component must be stopped prior calling this API. Therefore
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 10
-
-
  239:.\Generated_Source\PSoC5/I2S_1.c ****         * all the control bits except the bits modified are zeros.
  240:.\Generated_Source\PSoC5/I2S_1.c ****         */
  241:.\Generated_Source\PSoC5/I2S_1.c ****         switch(dataBits)
@@ -570,6 +538,9 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  265:.\Generated_Source\PSoC5/I2S_1.c ****     /*******************************************************************************
  266:.\Generated_Source\PSoC5/I2S_1.c ****     * Function Name: I2S_1_EnableTx
  267:.\Generated_Source\PSoC5/I2S_1.c ****     ********************************************************************************
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 10
+
+
  268:.\Generated_Source\PSoC5/I2S_1.c ****     *
  269:.\Generated_Source\PSoC5/I2S_1.c ****     * Summary:
  270:.\Generated_Source\PSoC5/I2S_1.c ****     *  Enables the Tx direction of the I2S interface.  At the next word
@@ -584,37 +555,34 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  279:.\Generated_Source\PSoC5/I2S_1.c ****     *******************************************************************************/
  280:.\Generated_Source\PSoC5/I2S_1.c ****     void I2S_1_EnableTx(void) 
  281:.\Generated_Source\PSoC5/I2S_1.c ****     {
- 276              		.loc 1 281 0
- 277              		.cfi_startproc
- 278              		@ args = 0, pretend = 0, frame = 8
- 279              		@ frame_needed = 1, uses_anonymous_args = 0
- 280 0000 80B5     		push	{r7, lr}
- 281              		.cfi_def_cfa_offset 8
- 282              		.cfi_offset 7, -8
- 283              		.cfi_offset 14, -4
- 284 0002 82B0     		sub	sp, sp, #8
- 285              		.cfi_def_cfa_offset 16
- 286 0004 00AF     		add	r7, sp, #0
- 287              		.cfi_def_cfa_register 7
+ 247              		.loc 1 281 0
+ 248              		.cfi_startproc
+ 249              		@ args = 0, pretend = 0, frame = 8
+ 250              		@ frame_needed = 1, uses_anonymous_args = 0
+ 251 0000 80B5     		push	{r7, lr}
+ 252              		.cfi_def_cfa_offset 8
+ 253              		.cfi_offset 7, -8
+ 254              		.cfi_offset 14, -4
+ 255 0002 82B0     		sub	sp, sp, #8
+ 256              		.cfi_def_cfa_offset 16
+ 257 0004 00AF     		add	r7, sp, #0
+ 258              		.cfi_def_cfa_register 7
  282:.\Generated_Source\PSoC5/I2S_1.c ****         uint8 enableInterrupts;
  283:.\Generated_Source\PSoC5/I2S_1.c **** 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 11
-
-
  284:.\Generated_Source\PSoC5/I2S_1.c ****         enableInterrupts = CyEnterCriticalSection();
- 288              		.loc 1 284 0
- 289 0006 FFF7FEFF 		bl	CyEnterCriticalSection
- 290 000a 0346     		mov	r3, r0
- 291 000c FB71     		strb	r3, [r7, #7]
+ 259              		.loc 1 284 0
+ 260 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 261 000a 0346     		mov	r3, r0
+ 262 000c FB71     		strb	r3, [r7, #7]
  285:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_TX_STS0_1_ACTL_REG |= I2S_1_INT_EN;
- 292              		.loc 1 285 0
- 293 000e 0B4A     		ldr	r2, .L15
- 294 0010 0A4B     		ldr	r3, .L15
- 295 0012 1B78     		ldrb	r3, [r3]
- 296 0014 DBB2     		uxtb	r3, r3
- 297 0016 43F01003 		orr	r3, r3, #16
- 298 001a DBB2     		uxtb	r3, r3
- 299 001c 1370     		strb	r3, [r2]
+ 263              		.loc 1 285 0
+ 264 000e 0B4A     		ldr	r2, .L15
+ 265 0010 0A4B     		ldr	r3, .L15
+ 266 0012 1B78     		ldrb	r3, [r3]
+ 267 0014 DBB2     		uxtb	r3, r3
+ 268 0016 43F01003 		orr	r3, r3, #16
+ 269 001a DBB2     		uxtb	r3, r3
+ 270 001c 1370     		strb	r3, [r2]
  286:.\Generated_Source\PSoC5/I2S_1.c ****         #ifdef I2S_1_TX_STS2_3_ACTL_REG
  287:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_TX_STS2_3_ACTL_REG |= I2S_1_INT_EN;
  288:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_TX_STS2_3_ACTL_REG */
@@ -622,47 +590,47 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  290:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_TX_STS4_ACTL_REG |= I2S_1_INT_EN;
  291:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_TX_STS4_ACTL_REG */
  292:.\Generated_Source\PSoC5/I2S_1.c ****         CyExitCriticalSection(enableInterrupts);
- 300              		.loc 1 292 0
- 301 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 302 0020 1846     		mov	r0, r3
- 303 0022 FFF7FEFF 		bl	CyExitCriticalSection
+ 271              		.loc 1 292 0
+ 272 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 273 0020 1846     		mov	r0, r3
+ 274 0022 FFF7FEFF 		bl	CyExitCriticalSection
  293:.\Generated_Source\PSoC5/I2S_1.c ****         
  294:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_CONTROL_REG |= I2S_1_TX_EN;
- 304              		.loc 1 294 0
- 305 0026 064A     		ldr	r2, .L15+4
- 306 0028 054B     		ldr	r3, .L15+4
- 307 002a 1B78     		ldrb	r3, [r3]
- 308 002c DBB2     		uxtb	r3, r3
- 309 002e 43F00103 		orr	r3, r3, #1
- 310 0032 DBB2     		uxtb	r3, r3
- 311 0034 1370     		strb	r3, [r2]
+ 275              		.loc 1 294 0
+ 276 0026 064A     		ldr	r2, .L15+4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 11
+
+
+ 277 0028 054B     		ldr	r3, .L15+4
+ 278 002a 1B78     		ldrb	r3, [r3]
+ 279 002c DBB2     		uxtb	r3, r3
+ 280 002e 43F00103 		orr	r3, r3, #1
+ 281 0032 DBB2     		uxtb	r3, r3
+ 282 0034 1370     		strb	r3, [r2]
  295:.\Generated_Source\PSoC5/I2S_1.c ****     }
- 312              		.loc 1 295 0
- 313 0036 0837     		adds	r7, r7, #8
- 314              		.cfi_def_cfa_offset 8
- 315 0038 BD46     		mov	sp, r7
- 316              		.cfi_def_cfa_register 13
- 317              		@ sp needed
- 318 003a 80BD     		pop	{r7, pc}
- 319              	.L16:
- 320              		.align	2
- 321              	.L15:
- 322 003c 91640040 		.word	1073767569
- 323 0040 72640040 		.word	1073767538
- 324              		.cfi_endproc
- 325              	.LFE4:
- 326              		.size	I2S_1_EnableTx, .-I2S_1_EnableTx
- 327              		.section	.text.I2S_1_DisableTx,"ax",%progbits
- 328              		.align	2
- 329              		.global	I2S_1_DisableTx
- 330              		.thumb
- 331              		.thumb_func
- 332              		.type	I2S_1_DisableTx, %function
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 12
-
-
- 333              	I2S_1_DisableTx:
- 334              	.LFB5:
+ 283              		.loc 1 295 0
+ 284 0036 0837     		adds	r7, r7, #8
+ 285              		.cfi_def_cfa_offset 8
+ 286 0038 BD46     		mov	sp, r7
+ 287              		.cfi_def_cfa_register 13
+ 288              		@ sp needed
+ 289 003a 80BD     		pop	{r7, pc}
+ 290              	.L16:
+ 291              		.align	2
+ 292              	.L15:
+ 293 003c 92640040 		.word	1073767570
+ 294 0040 72640040 		.word	1073767538
+ 295              		.cfi_endproc
+ 296              	.LFE4:
+ 297              		.size	I2S_1_EnableTx, .-I2S_1_EnableTx
+ 298              		.section	.text.I2S_1_DisableTx,"ax",%progbits
+ 299              		.align	2
+ 300              		.global	I2S_1_DisableTx
+ 301              		.thumb
+ 302              		.thumb_func
+ 303              		.type	I2S_1_DisableTx, %function
+ 304              	I2S_1_DisableTx:
+ 305              	.LFB5:
  296:.\Generated_Source\PSoC5/I2S_1.c **** 
  297:.\Generated_Source\PSoC5/I2S_1.c **** 
  298:.\Generated_Source\PSoC5/I2S_1.c ****     /*******************************************************************************
@@ -683,47 +651,47 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  313:.\Generated_Source\PSoC5/I2S_1.c ****     *******************************************************************************/
  314:.\Generated_Source\PSoC5/I2S_1.c ****     void I2S_1_DisableTx(void) 
  315:.\Generated_Source\PSoC5/I2S_1.c ****     {
- 335              		.loc 1 315 0
- 336              		.cfi_startproc
- 337              		@ args = 0, pretend = 0, frame = 8
- 338              		@ frame_needed = 1, uses_anonymous_args = 0
- 339 0000 80B5     		push	{r7, lr}
- 340              		.cfi_def_cfa_offset 8
- 341              		.cfi_offset 7, -8
- 342              		.cfi_offset 14, -4
- 343 0002 82B0     		sub	sp, sp, #8
- 344              		.cfi_def_cfa_offset 16
- 345 0004 00AF     		add	r7, sp, #0
- 346              		.cfi_def_cfa_register 7
+ 306              		.loc 1 315 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 8
+ 309              		@ frame_needed = 1, uses_anonymous_args = 0
+ 310 0000 80B5     		push	{r7, lr}
+ 311              		.cfi_def_cfa_offset 8
+ 312              		.cfi_offset 7, -8
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 12
+
+
+ 313              		.cfi_offset 14, -4
+ 314 0002 82B0     		sub	sp, sp, #8
+ 315              		.cfi_def_cfa_offset 16
+ 316 0004 00AF     		add	r7, sp, #0
+ 317              		.cfi_def_cfa_register 7
  316:.\Generated_Source\PSoC5/I2S_1.c ****         uint8 enableInterrupts;
  317:.\Generated_Source\PSoC5/I2S_1.c **** 
  318:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_CONTROL_REG &= (uint8)~I2S_1_TX_EN;
- 347              		.loc 1 318 0
- 348 0006 0D4A     		ldr	r2, .L18
- 349 0008 0C4B     		ldr	r3, .L18
- 350 000a 1B78     		ldrb	r3, [r3]
- 351 000c DBB2     		uxtb	r3, r3
- 352 000e 23F00103 		bic	r3, r3, #1
- 353 0012 DBB2     		uxtb	r3, r3
- 354 0014 1370     		strb	r3, [r2]
+ 318              		.loc 1 318 0
+ 319 0006 0D4A     		ldr	r2, .L18
+ 320 0008 0C4B     		ldr	r3, .L18
+ 321 000a 1B78     		ldrb	r3, [r3]
+ 322 000c DBB2     		uxtb	r3, r3
+ 323 000e 23F00103 		bic	r3, r3, #1
+ 324 0012 DBB2     		uxtb	r3, r3
+ 325 0014 1370     		strb	r3, [r2]
  319:.\Generated_Source\PSoC5/I2S_1.c **** 
  320:.\Generated_Source\PSoC5/I2S_1.c ****         enableInterrupts = CyEnterCriticalSection();
- 355              		.loc 1 320 0
- 356 0016 FFF7FEFF 		bl	CyEnterCriticalSection
- 357 001a 0346     		mov	r3, r0
- 358 001c FB71     		strb	r3, [r7, #7]
+ 326              		.loc 1 320 0
+ 327 0016 FFF7FEFF 		bl	CyEnterCriticalSection
+ 328 001a 0346     		mov	r3, r0
+ 329 001c FB71     		strb	r3, [r7, #7]
  321:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_TX_STS0_1_ACTL_REG &= (uint8)~I2S_1_INT_EN;
- 359              		.loc 1 321 0
- 360 001e 084A     		ldr	r2, .L18+4
- 361 0020 074B     		ldr	r3, .L18+4
- 362 0022 1B78     		ldrb	r3, [r3]
- 363 0024 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 13
-
-
- 364 0026 23F01003 		bic	r3, r3, #16
- 365 002a DBB2     		uxtb	r3, r3
- 366 002c 1370     		strb	r3, [r2]
+ 330              		.loc 1 321 0
+ 331 001e 084A     		ldr	r2, .L18+4
+ 332 0020 074B     		ldr	r3, .L18+4
+ 333 0022 1B78     		ldrb	r3, [r3]
+ 334 0024 DBB2     		uxtb	r3, r3
+ 335 0026 23F01003 		bic	r3, r3, #16
+ 336 002a DBB2     		uxtb	r3, r3
+ 337 002c 1370     		strb	r3, [r2]
  322:.\Generated_Source\PSoC5/I2S_1.c ****         #ifdef I2S_1_TX_STS2_3_ACTL_REG
  323:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_TX_STS2_3_ACTL_REG &= (uint8)~I2S_1_INT_EN;
  324:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_TX_STS2_3_ACTL_REG */
@@ -731,34 +699,37 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  326:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_TX_STS4_ACTL_REG &= (uint8)~I2S_1_INT_EN;
  327:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_TX_STS4_ACTL_REG */
  328:.\Generated_Source\PSoC5/I2S_1.c ****         CyExitCriticalSection(enableInterrupts);
- 367              		.loc 1 328 0
- 368 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 369 0030 1846     		mov	r0, r3
- 370 0032 FFF7FEFF 		bl	CyExitCriticalSection
+ 338              		.loc 1 328 0
+ 339 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 340 0030 1846     		mov	r0, r3
+ 341 0032 FFF7FEFF 		bl	CyExitCriticalSection
  329:.\Generated_Source\PSoC5/I2S_1.c ****     }
- 371              		.loc 1 329 0
- 372 0036 0837     		adds	r7, r7, #8
- 373              		.cfi_def_cfa_offset 8
- 374 0038 BD46     		mov	sp, r7
- 375              		.cfi_def_cfa_register 13
- 376              		@ sp needed
- 377 003a 80BD     		pop	{r7, pc}
- 378              	.L19:
- 379              		.align	2
- 380              	.L18:
- 381 003c 72640040 		.word	1073767538
- 382 0040 91640040 		.word	1073767569
- 383              		.cfi_endproc
- 384              	.LFE5:
- 385              		.size	I2S_1_DisableTx, .-I2S_1_DisableTx
- 386              		.section	.text.I2S_1_ClearTxFIFO,"ax",%progbits
- 387              		.align	2
- 388              		.global	I2S_1_ClearTxFIFO
- 389              		.thumb
- 390              		.thumb_func
- 391              		.type	I2S_1_ClearTxFIFO, %function
- 392              	I2S_1_ClearTxFIFO:
- 393              	.LFB6:
+ 342              		.loc 1 329 0
+ 343 0036 0837     		adds	r7, r7, #8
+ 344              		.cfi_def_cfa_offset 8
+ 345 0038 BD46     		mov	sp, r7
+ 346              		.cfi_def_cfa_register 13
+ 347              		@ sp needed
+ 348 003a 80BD     		pop	{r7, pc}
+ 349              	.L19:
+ 350              		.align	2
+ 351              	.L18:
+ 352 003c 72640040 		.word	1073767538
+ 353 0040 92640040 		.word	1073767570
+ 354              		.cfi_endproc
+ 355              	.LFE5:
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 13
+
+
+ 356              		.size	I2S_1_DisableTx, .-I2S_1_DisableTx
+ 357              		.section	.text.I2S_1_ClearTxFIFO,"ax",%progbits
+ 358              		.align	2
+ 359              		.global	I2S_1_ClearTxFIFO
+ 360              		.thumb
+ 361              		.thumb_func
+ 362              		.type	I2S_1_ClearTxFIFO, %function
+ 363              	I2S_1_ClearTxFIFO:
+ 364              	.LFB6:
  330:.\Generated_Source\PSoC5/I2S_1.c **** 
  331:.\Generated_Source\PSoC5/I2S_1.c **** 
  332:.\Generated_Source\PSoC5/I2S_1.c ****     /*******************************************************************************
@@ -778,44 +749,44 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  346:.\Generated_Source\PSoC5/I2S_1.c ****     *******************************************************************************/
  347:.\Generated_Source\PSoC5/I2S_1.c ****     void I2S_1_ClearTxFIFO(void) 
  348:.\Generated_Source\PSoC5/I2S_1.c ****     {
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 14
-
-
- 394              		.loc 1 348 0
- 395              		.cfi_startproc
- 396              		@ args = 0, pretend = 0, frame = 8
- 397              		@ frame_needed = 1, uses_anonymous_args = 0
- 398 0000 80B5     		push	{r7, lr}
- 399              		.cfi_def_cfa_offset 8
- 400              		.cfi_offset 7, -8
- 401              		.cfi_offset 14, -4
- 402 0002 82B0     		sub	sp, sp, #8
- 403              		.cfi_def_cfa_offset 16
- 404 0004 00AF     		add	r7, sp, #0
- 405              		.cfi_def_cfa_register 7
+ 365              		.loc 1 348 0
+ 366              		.cfi_startproc
+ 367              		@ args = 0, pretend = 0, frame = 8
+ 368              		@ frame_needed = 1, uses_anonymous_args = 0
+ 369 0000 80B5     		push	{r7, lr}
+ 370              		.cfi_def_cfa_offset 8
+ 371              		.cfi_offset 7, -8
+ 372              		.cfi_offset 14, -4
+ 373 0002 82B0     		sub	sp, sp, #8
+ 374              		.cfi_def_cfa_offset 16
+ 375 0004 00AF     		add	r7, sp, #0
+ 376              		.cfi_def_cfa_register 7
  349:.\Generated_Source\PSoC5/I2S_1.c ****         uint8 enableInterrupts;
  350:.\Generated_Source\PSoC5/I2S_1.c **** 
  351:.\Generated_Source\PSoC5/I2S_1.c ****         enableInterrupts = CyEnterCriticalSection();
- 406              		.loc 1 351 0
- 407 0006 FFF7FEFF 		bl	CyEnterCriticalSection
- 408 000a 0346     		mov	r3, r0
- 409 000c FB71     		strb	r3, [r7, #7]
+ 377              		.loc 1 351 0
+ 378 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 379 000a 0346     		mov	r3, r0
+ 380 000c FB71     		strb	r3, [r7, #7]
  352:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_CLEAR_TX_FIFO(CH0);
- 410              		.loc 1 352 0
- 411 000e 0B4A     		ldr	r2, .L21
- 412 0010 0A4B     		ldr	r3, .L21
- 413 0012 1B78     		ldrb	r3, [r3]
- 414 0014 DBB2     		uxtb	r3, r3
- 415 0016 43F00303 		orr	r3, r3, #3
- 416 001a DBB2     		uxtb	r3, r3
- 417 001c 1370     		strb	r3, [r2]
- 418 001e 074A     		ldr	r2, .L21
- 419 0020 064B     		ldr	r3, .L21
- 420 0022 1B78     		ldrb	r3, [r3]
- 421 0024 DBB2     		uxtb	r3, r3
- 422 0026 23F00303 		bic	r3, r3, #3
- 423 002a DBB2     		uxtb	r3, r3
- 424 002c 1370     		strb	r3, [r2]
+ 381              		.loc 1 352 0
+ 382 000e 0B4A     		ldr	r2, .L21
+ 383 0010 0A4B     		ldr	r3, .L21
+ 384 0012 1B78     		ldrb	r3, [r3]
+ 385 0014 DBB2     		uxtb	r3, r3
+ 386 0016 43F00303 		orr	r3, r3, #3
+ 387 001a DBB2     		uxtb	r3, r3
+ 388 001c 1370     		strb	r3, [r2]
+ 389 001e 074A     		ldr	r2, .L21
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 14
+
+
+ 390 0020 064B     		ldr	r3, .L21
+ 391 0022 1B78     		ldrb	r3, [r3]
+ 392 0024 DBB2     		uxtb	r3, r3
+ 393 0026 23F00303 		bic	r3, r3, #3
+ 394 002a DBB2     		uxtb	r3, r3
+ 395 002c 1370     		strb	r3, [r2]
  353:.\Generated_Source\PSoC5/I2S_1.c ****         #if (I2S_1_TX_STEREO_1_PRESENT)
  354:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_CLEAR_TX_FIFO(CH1);
  355:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_TX_STEREO_1_PRESENT */
@@ -829,1146 +800,658 @@ ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 1
  363:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_CLEAR_TX_FIFO(CH4);
  364:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_TX_STEREO_4_PRESENT */
  365:.\Generated_Source\PSoC5/I2S_1.c ****         CyExitCriticalSection(enableInterrupts);
- 425              		.loc 1 365 0
- 426 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 427 0030 1846     		mov	r0, r3
- 428 0032 FFF7FEFF 		bl	CyExitCriticalSection
+ 396              		.loc 1 365 0
+ 397 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 398 0030 1846     		mov	r0, r3
+ 399 0032 FFF7FEFF 		bl	CyExitCriticalSection
  366:.\Generated_Source\PSoC5/I2S_1.c ****     }
- 429              		.loc 1 366 0
- 430 0036 0837     		adds	r7, r7, #8
- 431              		.cfi_def_cfa_offset 8
- 432 0038 BD46     		mov	sp, r7
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 15
+ 400              		.loc 1 366 0
+ 401 0036 0837     		adds	r7, r7, #8
+ 402              		.cfi_def_cfa_offset 8
+ 403 0038 BD46     		mov	sp, r7
+ 404              		.cfi_def_cfa_register 13
+ 405              		@ sp needed
+ 406 003a 80BD     		pop	{r7, pc}
+ 407              	.L22:
+ 408              		.align	2
+ 409              	.L21:
+ 410 003c 92640040 		.word	1073767570
+ 411              		.cfi_endproc
+ 412              	.LFE6:
+ 413              		.size	I2S_1_ClearTxFIFO, .-I2S_1_ClearTxFIFO
+ 414              		.text
+ 415              	.Letext0:
+ 416              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 417              		.section	.debug_info,"",%progbits
+ 418              	.Ldebug_info0:
+ 419 0000 8E010000 		.4byte	0x18e
+ 420 0004 0400     		.2byte	0x4
+ 421 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 422 000a 04       		.byte	0x4
+ 423 000b 01       		.uleb128 0x1
+ 424 000c 35010000 		.4byte	.LASF23
+ 425 0010 01       		.byte	0x1
+ 426 0011 1B000000 		.4byte	.LASF24
+ 427 0015 B7000000 		.4byte	.LASF25
+ 428 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 429 001d 00000000 		.4byte	0
+ 430 0021 00000000 		.4byte	.Ldebug_line0
+ 431 0025 02       		.uleb128 0x2
+ 432 0026 04       		.byte	0x4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 15
 
 
- 433              		.cfi_def_cfa_register 13
- 434              		@ sp needed
- 435 003a 80BD     		pop	{r7, pc}
- 436              	.L22:
- 437              		.align	2
- 438              	.L21:
- 439 003c 91640040 		.word	1073767569
- 440              		.cfi_endproc
- 441              	.LFE6:
- 442              		.size	I2S_1_ClearTxFIFO, .-I2S_1_ClearTxFIFO
- 443              		.section	.text.I2S_1_EnableRx,"ax",%progbits
- 444              		.align	2
- 445              		.global	I2S_1_EnableRx
- 446              		.thumb
- 447              		.thumb_func
- 448              		.type	I2S_1_EnableRx, %function
- 449              	I2S_1_EnableRx:
- 450              	.LFB7:
- 367:.\Generated_Source\PSoC5/I2S_1.c **** 
- 368:.\Generated_Source\PSoC5/I2S_1.c **** #endif /* (I2S_1_TX_DIRECTION_ENABLE) */
- 369:.\Generated_Source\PSoC5/I2S_1.c **** 
- 370:.\Generated_Source\PSoC5/I2S_1.c **** 
- 371:.\Generated_Source\PSoC5/I2S_1.c **** #if(I2S_1_RX_DIRECTION_ENABLE)
- 372:.\Generated_Source\PSoC5/I2S_1.c ****     /*******************************************************************************
- 373:.\Generated_Source\PSoC5/I2S_1.c ****     * Function Name: I2S_1_EnableRx
- 374:.\Generated_Source\PSoC5/I2S_1.c ****     ********************************************************************************
- 375:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 376:.\Generated_Source\PSoC5/I2S_1.c ****     * Summary:
- 377:.\Generated_Source\PSoC5/I2S_1.c ****     *  Enables the Rx direction of the I2S interface.  At the next word
- 378:.\Generated_Source\PSoC5/I2S_1.c ****     *  select falling edge reception of data will begin.
- 379:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 380:.\Generated_Source\PSoC5/I2S_1.c ****     * Parameters:
- 381:.\Generated_Source\PSoC5/I2S_1.c ****     *  None.
- 382:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 383:.\Generated_Source\PSoC5/I2S_1.c ****     * Return:
- 384:.\Generated_Source\PSoC5/I2S_1.c ****     *  None.
- 385:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 386:.\Generated_Source\PSoC5/I2S_1.c ****     *******************************************************************************/
- 387:.\Generated_Source\PSoC5/I2S_1.c ****     void I2S_1_EnableRx(void) 
- 388:.\Generated_Source\PSoC5/I2S_1.c ****     {
- 451              		.loc 1 388 0
- 452              		.cfi_startproc
- 453              		@ args = 0, pretend = 0, frame = 8
- 454              		@ frame_needed = 1, uses_anonymous_args = 0
- 455 0000 80B5     		push	{r7, lr}
- 456              		.cfi_def_cfa_offset 8
- 457              		.cfi_offset 7, -8
- 458              		.cfi_offset 14, -4
- 459 0002 82B0     		sub	sp, sp, #8
- 460              		.cfi_def_cfa_offset 16
- 461 0004 00AF     		add	r7, sp, #0
- 462              		.cfi_def_cfa_register 7
- 389:.\Generated_Source\PSoC5/I2S_1.c ****         uint8 enableInterrupts;
- 390:.\Generated_Source\PSoC5/I2S_1.c **** 
- 391:.\Generated_Source\PSoC5/I2S_1.c ****         enableInterrupts = CyEnterCriticalSection();
- 463              		.loc 1 391 0
- 464 0006 FFF7FEFF 		bl	CyEnterCriticalSection
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 16
+ 433 0027 05       		.byte	0x5
+ 434 0028 696E7400 		.ascii	"int\000"
+ 435 002c 03       		.uleb128 0x3
+ 436 002d 04       		.byte	0x4
+ 437 002e 07       		.byte	0x7
+ 438 002f 0E000000 		.4byte	.LASF0
+ 439 0033 03       		.uleb128 0x3
+ 440 0034 01       		.byte	0x1
+ 441 0035 06       		.byte	0x6
+ 442 0036 FC010000 		.4byte	.LASF1
+ 443 003a 03       		.uleb128 0x3
+ 444 003b 01       		.byte	0x1
+ 445 003c 08       		.byte	0x8
+ 446 003d A4000000 		.4byte	.LASF2
+ 447 0041 03       		.uleb128 0x3
+ 448 0042 02       		.byte	0x2
+ 449 0043 05       		.byte	0x5
+ 450 0044 2A020000 		.4byte	.LASF3
+ 451 0048 03       		.uleb128 0x3
+ 452 0049 02       		.byte	0x2
+ 453 004a 07       		.byte	0x7
+ 454 004b E9010000 		.4byte	.LASF4
+ 455 004f 03       		.uleb128 0x3
+ 456 0050 04       		.byte	0x4
+ 457 0051 05       		.byte	0x5
+ 458 0052 2C010000 		.4byte	.LASF5
+ 459 0056 03       		.uleb128 0x3
+ 460 0057 04       		.byte	0x4
+ 461 0058 07       		.byte	0x7
+ 462 0059 62000000 		.4byte	.LASF6
+ 463 005d 03       		.uleb128 0x3
+ 464 005e 08       		.byte	0x8
+ 465 005f 05       		.byte	0x5
+ 466 0060 00000000 		.4byte	.LASF7
+ 467 0064 03       		.uleb128 0x3
+ 468 0065 08       		.byte	0x8
+ 469 0066 07       		.byte	0x7
+ 470 0067 74000000 		.4byte	.LASF8
+ 471 006b 03       		.uleb128 0x3
+ 472 006c 04       		.byte	0x4
+ 473 006d 07       		.byte	0x7
+ 474 006e 39020000 		.4byte	.LASF9
+ 475 0072 03       		.uleb128 0x3
+ 476 0073 01       		.byte	0x1
+ 477 0074 08       		.byte	0x8
+ 478 0075 B2000000 		.4byte	.LASF10
+ 479 0079 04       		.uleb128 0x4
+ 480 007a 5C000000 		.4byte	.LASF13
+ 481 007e 02       		.byte	0x2
+ 482 007f 3801     		.2byte	0x138
+ 483 0081 3A000000 		.4byte	0x3a
+ 484 0085 03       		.uleb128 0x3
+ 485 0086 04       		.byte	0x4
+ 486 0087 04       		.byte	0x4
+ 487 0088 14020000 		.4byte	.LASF11
+ 488 008c 03       		.uleb128 0x3
+ 489 008d 08       		.byte	0x8
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 16
 
 
- 465 000a 0346     		mov	r3, r0
- 466 000c FB71     		strb	r3, [r7, #7]
- 392:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_RX_STS0_1_ACTL_REG |= I2S_1_INT_EN;
- 467              		.loc 1 392 0
- 468 000e 0B4A     		ldr	r2, .L24
- 469 0010 0A4B     		ldr	r3, .L24
- 470 0012 1B78     		ldrb	r3, [r3]
- 471 0014 DBB2     		uxtb	r3, r3
- 472 0016 43F01003 		orr	r3, r3, #16
- 473 001a DBB2     		uxtb	r3, r3
- 474 001c 1370     		strb	r3, [r2]
- 393:.\Generated_Source\PSoC5/I2S_1.c ****         #ifdef I2S_1_RX_STS2_3_ACTL_REG
- 394:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_RX_STS2_3_ACTL_REG |= I2S_1_INT_EN;
- 395:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STS2_3_ACTL_REG */
- 396:.\Generated_Source\PSoC5/I2S_1.c ****         #ifdef I2S_1_RX_STS4_ACTL_REG
- 397:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_RX_STS4_ACTL_REG |= I2S_1_INT_EN;
- 398:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STS4_ACTL_REG */
- 399:.\Generated_Source\PSoC5/I2S_1.c ****         CyExitCriticalSection(enableInterrupts);
- 475              		.loc 1 399 0
- 476 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 477 0020 1846     		mov	r0, r3
- 478 0022 FFF7FEFF 		bl	CyExitCriticalSection
- 400:.\Generated_Source\PSoC5/I2S_1.c ****         
- 401:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_CONTROL_REG |= I2S_1_RX_EN;
- 479              		.loc 1 401 0
- 480 0026 064A     		ldr	r2, .L24+4
- 481 0028 054B     		ldr	r3, .L24+4
- 482 002a 1B78     		ldrb	r3, [r3]
- 483 002c DBB2     		uxtb	r3, r3
- 484 002e 43F00203 		orr	r3, r3, #2
- 485 0032 DBB2     		uxtb	r3, r3
- 486 0034 1370     		strb	r3, [r2]
- 402:.\Generated_Source\PSoC5/I2S_1.c ****     }
- 487              		.loc 1 402 0
- 488 0036 0837     		adds	r7, r7, #8
- 489              		.cfi_def_cfa_offset 8
- 490 0038 BD46     		mov	sp, r7
- 491              		.cfi_def_cfa_register 13
- 492              		@ sp needed
- 493 003a 80BD     		pop	{r7, pc}
- 494              	.L25:
- 495              		.align	2
- 496              	.L24:
- 497 003c 92640040 		.word	1073767570
- 498 0040 72640040 		.word	1073767538
- 499              		.cfi_endproc
- 500              	.LFE7:
- 501              		.size	I2S_1_EnableRx, .-I2S_1_EnableRx
- 502              		.section	.text.I2S_1_DisableRx,"ax",%progbits
- 503              		.align	2
- 504              		.global	I2S_1_DisableRx
- 505              		.thumb
- 506              		.thumb_func
- 507              		.type	I2S_1_DisableRx, %function
- 508              	I2S_1_DisableRx:
- 509              	.LFB8:
- 403:.\Generated_Source\PSoC5/I2S_1.c **** 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 17
+ 490 008e 04       		.byte	0x4
+ 491 008f D5010000 		.4byte	.LASF12
+ 492 0093 04       		.uleb128 0x4
+ 493 0094 34020000 		.4byte	.LASF14
+ 494 0098 02       		.byte	0x2
+ 495 0099 E201     		.2byte	0x1e2
+ 496 009b 9F000000 		.4byte	0x9f
+ 497 009f 05       		.uleb128 0x5
+ 498 00a0 79000000 		.4byte	0x79
+ 499 00a4 06       		.uleb128 0x6
+ 500 00a5 DC010000 		.4byte	.LASF17
+ 501 00a9 01       		.byte	0x1
+ 502 00aa 29       		.byte	0x29
+ 503 00ab 00000000 		.4byte	.LFB0
+ 504 00af 44000000 		.4byte	.LFE0-.LFB0
+ 505 00b3 01       		.uleb128 0x1
+ 506 00b4 9C       		.byte	0x9c
+ 507 00b5 C8000000 		.4byte	0xc8
+ 508 00b9 07       		.uleb128 0x7
+ 509 00ba 3C000000 		.4byte	.LASF19
+ 510 00be 01       		.byte	0x1
+ 511 00bf 2B       		.byte	0x2b
+ 512 00c0 79000000 		.4byte	0x79
+ 513 00c4 02       		.uleb128 0x2
+ 514 00c5 91       		.byte	0x91
+ 515 00c6 77       		.sleb128 -9
+ 516 00c7 00       		.byte	0
+ 517 00c8 08       		.uleb128 0x8
+ 518 00c9 42020000 		.4byte	.LASF15
+ 519 00cd 01       		.byte	0x1
+ 520 00ce 45       		.byte	0x45
+ 521 00cf 00000000 		.4byte	.LFB1
+ 522 00d3 2C000000 		.4byte	.LFE1-.LFB1
+ 523 00d7 01       		.uleb128 0x1
+ 524 00d8 9C       		.byte	0x9c
+ 525 00d9 09       		.uleb128 0x9
+ 526 00da 08020000 		.4byte	.LASF16
+ 527 00de 01       		.byte	0x1
+ 528 00df 9E       		.byte	0x9e
+ 529 00e0 00000000 		.4byte	.LFB2
+ 530 00e4 20000000 		.4byte	.LFE2-.LFB2
+ 531 00e8 01       		.uleb128 0x1
+ 532 00e9 9C       		.byte	0x9c
+ 533 00ea 06       		.uleb128 0x6
+ 534 00eb 99000000 		.4byte	.LASF18
+ 535 00ef 01       		.byte	0x1
+ 536 00f0 B9       		.byte	0xb9
+ 537 00f1 00000000 		.4byte	.LFB3
+ 538 00f5 58000000 		.4byte	.LFE3-.LFB3
+ 539 00f9 01       		.uleb128 0x1
+ 540 00fa 9C       		.byte	0x9c
+ 541 00fb 0E010000 		.4byte	0x10e
+ 542 00ff 07       		.uleb128 0x7
+ 543 0100 3C000000 		.4byte	.LASF19
+ 544 0104 01       		.byte	0x1
+ 545 0105 BB       		.byte	0xbb
+ 546 0106 79000000 		.4byte	0x79
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 17
 
 
- 404:.\Generated_Source\PSoC5/I2S_1.c **** 
- 405:.\Generated_Source\PSoC5/I2S_1.c ****     /*******************************************************************************
- 406:.\Generated_Source\PSoC5/I2S_1.c ****     * Function Name: I2S_1_DisableRx
- 407:.\Generated_Source\PSoC5/I2S_1.c ****     ********************************************************************************
- 408:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 409:.\Generated_Source\PSoC5/I2S_1.c ****     * Summary:
- 410:.\Generated_Source\PSoC5/I2S_1.c ****     *  Disables the Rx direction of the I2S interface.
- 411:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 412:.\Generated_Source\PSoC5/I2S_1.c ****     * Parameters:
- 413:.\Generated_Source\PSoC5/I2S_1.c ****     *  None.
- 414:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 415:.\Generated_Source\PSoC5/I2S_1.c ****     * Return:
- 416:.\Generated_Source\PSoC5/I2S_1.c ****     *  None.
- 417:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 418:.\Generated_Source\PSoC5/I2S_1.c ****     *******************************************************************************/
- 419:.\Generated_Source\PSoC5/I2S_1.c ****     void I2S_1_DisableRx(void) 
- 420:.\Generated_Source\PSoC5/I2S_1.c ****     {
- 510              		.loc 1 420 0
- 511              		.cfi_startproc
- 512              		@ args = 0, pretend = 0, frame = 8
- 513              		@ frame_needed = 1, uses_anonymous_args = 0
- 514 0000 80B5     		push	{r7, lr}
- 515              		.cfi_def_cfa_offset 8
- 516              		.cfi_offset 7, -8
- 517              		.cfi_offset 14, -4
- 518 0002 82B0     		sub	sp, sp, #8
- 519              		.cfi_def_cfa_offset 16
- 520 0004 00AF     		add	r7, sp, #0
- 521              		.cfi_def_cfa_register 7
- 421:.\Generated_Source\PSoC5/I2S_1.c ****         uint8 enableInterrupts;
- 422:.\Generated_Source\PSoC5/I2S_1.c **** 
- 423:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_CONTROL_REG &= (uint8)~I2S_1_RX_EN;
- 522              		.loc 1 423 0
- 523 0006 0D4A     		ldr	r2, .L27
- 524 0008 0C4B     		ldr	r3, .L27
- 525 000a 1B78     		ldrb	r3, [r3]
- 526 000c DBB2     		uxtb	r3, r3
- 527 000e 23F00203 		bic	r3, r3, #2
- 528 0012 DBB2     		uxtb	r3, r3
- 529 0014 1370     		strb	r3, [r2]
- 424:.\Generated_Source\PSoC5/I2S_1.c **** 
- 425:.\Generated_Source\PSoC5/I2S_1.c ****         enableInterrupts = CyEnterCriticalSection();
- 530              		.loc 1 425 0
- 531 0016 FFF7FEFF 		bl	CyEnterCriticalSection
- 532 001a 0346     		mov	r3, r0
- 533 001c FB71     		strb	r3, [r7, #7]
- 426:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_RX_STS0_1_ACTL_REG &= (uint8)~I2S_1_INT_EN;
- 534              		.loc 1 426 0
- 535 001e 084A     		ldr	r2, .L27+4
- 536 0020 074B     		ldr	r3, .L27+4
- 537 0022 1B78     		ldrb	r3, [r3]
- 538 0024 DBB2     		uxtb	r3, r3
- 539 0026 23F01003 		bic	r3, r3, #16
- 540 002a DBB2     		uxtb	r3, r3
- 541 002c 1370     		strb	r3, [r2]
- 427:.\Generated_Source\PSoC5/I2S_1.c ****         #ifdef I2S_1_RX_STS2_3_ACTL_REG
- 428:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_RX_STS2_3_ACTL_REG &= (uint8)~I2S_1_INT_EN;
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 18
+ 547 010a 02       		.uleb128 0x2
+ 548 010b 91       		.byte	0x91
+ 549 010c 77       		.sleb128 -9
+ 550 010d 00       		.byte	0
+ 551 010e 0A       		.uleb128 0xa
+ 552 010f 4D000000 		.4byte	.LASF20
+ 553 0113 01       		.byte	0x1
+ 554 0114 1801     		.2byte	0x118
+ 555 0116 00000000 		.4byte	.LFB4
+ 556 011a 44000000 		.4byte	.LFE4-.LFB4
+ 557 011e 01       		.uleb128 0x1
+ 558 011f 9C       		.byte	0x9c
+ 559 0120 34010000 		.4byte	0x134
+ 560 0124 0B       		.uleb128 0xb
+ 561 0125 3C000000 		.4byte	.LASF19
+ 562 0129 01       		.byte	0x1
+ 563 012a 1A01     		.2byte	0x11a
+ 564 012c 79000000 		.4byte	0x79
+ 565 0130 02       		.uleb128 0x2
+ 566 0131 91       		.byte	0x91
+ 567 0132 77       		.sleb128 -9
+ 568 0133 00       		.byte	0
+ 569 0134 0A       		.uleb128 0xa
+ 570 0135 1A020000 		.4byte	.LASF21
+ 571 0139 01       		.byte	0x1
+ 572 013a 3A01     		.2byte	0x13a
+ 573 013c 00000000 		.4byte	.LFB5
+ 574 0140 44000000 		.4byte	.LFE5-.LFB5
+ 575 0144 01       		.uleb128 0x1
+ 576 0145 9C       		.byte	0x9c
+ 577 0146 5A010000 		.4byte	0x15a
+ 578 014a 0B       		.uleb128 0xb
+ 579 014b 3C000000 		.4byte	.LASF19
+ 580 014f 01       		.byte	0x1
+ 581 0150 3C01     		.2byte	0x13c
+ 582 0152 79000000 		.4byte	0x79
+ 583 0156 02       		.uleb128 0x2
+ 584 0157 91       		.byte	0x91
+ 585 0158 77       		.sleb128 -9
+ 586 0159 00       		.byte	0
+ 587 015a 0A       		.uleb128 0xa
+ 588 015b C3010000 		.4byte	.LASF22
+ 589 015f 01       		.byte	0x1
+ 590 0160 5B01     		.2byte	0x15b
+ 591 0162 00000000 		.4byte	.LFB6
+ 592 0166 40000000 		.4byte	.LFE6-.LFB6
+ 593 016a 01       		.uleb128 0x1
+ 594 016b 9C       		.byte	0x9c
+ 595 016c 80010000 		.4byte	0x180
+ 596 0170 0B       		.uleb128 0xb
+ 597 0171 3C000000 		.4byte	.LASF19
+ 598 0175 01       		.byte	0x1
+ 599 0176 5D01     		.2byte	0x15d
+ 600 0178 79000000 		.4byte	0x79
+ 601 017c 02       		.uleb128 0x2
+ 602 017d 91       		.byte	0x91
+ 603 017e 77       		.sleb128 -9
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 18
 
 
- 429:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STS2_3_ACTL_REG */
- 430:.\Generated_Source\PSoC5/I2S_1.c ****         #ifdef I2S_1_RX_STS4_ACTL_REG
- 431:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_RX_STS4_ACTL_REG &= (uint8)~I2S_1_INT_EN;
- 432:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STS4_ACTL_REG */
- 433:.\Generated_Source\PSoC5/I2S_1.c ****         CyExitCriticalSection(enableInterrupts);
- 542              		.loc 1 433 0
- 543 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 544 0030 1846     		mov	r0, r3
- 545 0032 FFF7FEFF 		bl	CyExitCriticalSection
- 434:.\Generated_Source\PSoC5/I2S_1.c ****     }
- 546              		.loc 1 434 0
- 547 0036 0837     		adds	r7, r7, #8
- 548              		.cfi_def_cfa_offset 8
- 549 0038 BD46     		mov	sp, r7
- 550              		.cfi_def_cfa_register 13
- 551              		@ sp needed
- 552 003a 80BD     		pop	{r7, pc}
- 553              	.L28:
- 554              		.align	2
- 555              	.L27:
- 556 003c 72640040 		.word	1073767538
- 557 0040 92640040 		.word	1073767570
- 558              		.cfi_endproc
- 559              	.LFE8:
- 560              		.size	I2S_1_DisableRx, .-I2S_1_DisableRx
- 561              		.section	.text.I2S_1_ClearRxFIFO,"ax",%progbits
- 562              		.align	2
- 563              		.global	I2S_1_ClearRxFIFO
- 564              		.thumb
- 565              		.thumb_func
- 566              		.type	I2S_1_ClearRxFIFO, %function
- 567              	I2S_1_ClearRxFIFO:
- 568              	.LFB9:
- 435:.\Generated_Source\PSoC5/I2S_1.c **** 
- 436:.\Generated_Source\PSoC5/I2S_1.c **** 
- 437:.\Generated_Source\PSoC5/I2S_1.c ****     /*******************************************************************************
- 438:.\Generated_Source\PSoC5/I2S_1.c ****     * Function Name: I2S_1_ClearRxFIFO
- 439:.\Generated_Source\PSoC5/I2S_1.c ****     ********************************************************************************
- 440:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 441:.\Generated_Source\PSoC5/I2S_1.c ****     * Summary:
- 442:.\Generated_Source\PSoC5/I2S_1.c ****     *  Clears out the Rx FIFO.  Any data present in the FIFO will be lost.
- 443:.\Generated_Source\PSoC5/I2S_1.c ****     *  This call should be made only when the Rx direction is disabled.
- 444:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 445:.\Generated_Source\PSoC5/I2S_1.c ****     * Parameters:
- 446:.\Generated_Source\PSoC5/I2S_1.c ****     *  None.
- 447:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 448:.\Generated_Source\PSoC5/I2S_1.c ****     * Return:
- 449:.\Generated_Source\PSoC5/I2S_1.c ****     *  None.
- 450:.\Generated_Source\PSoC5/I2S_1.c ****     *
- 451:.\Generated_Source\PSoC5/I2S_1.c ****     *******************************************************************************/
- 452:.\Generated_Source\PSoC5/I2S_1.c ****     void I2S_1_ClearRxFIFO(void) 
- 453:.\Generated_Source\PSoC5/I2S_1.c ****     {
- 569              		.loc 1 453 0
- 570              		.cfi_startproc
- 571              		@ args = 0, pretend = 0, frame = 8
- 572              		@ frame_needed = 1, uses_anonymous_args = 0
- 573 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 19
+ 604 017f 00       		.byte	0
+ 605 0180 0C       		.uleb128 0xc
+ 606 0181 8B000000 		.4byte	.LASF26
+ 607 0185 01       		.byte	0x1
+ 608 0186 15       		.byte	0x15
+ 609 0187 79000000 		.4byte	0x79
+ 610 018b 05       		.uleb128 0x5
+ 611 018c 03       		.byte	0x3
+ 612 018d 00000000 		.4byte	I2S_1_initVar
+ 613 0191 00       		.byte	0
+ 614              		.section	.debug_abbrev,"",%progbits
+ 615              	.Ldebug_abbrev0:
+ 616 0000 01       		.uleb128 0x1
+ 617 0001 11       		.uleb128 0x11
+ 618 0002 01       		.byte	0x1
+ 619 0003 25       		.uleb128 0x25
+ 620 0004 0E       		.uleb128 0xe
+ 621 0005 13       		.uleb128 0x13
+ 622 0006 0B       		.uleb128 0xb
+ 623 0007 03       		.uleb128 0x3
+ 624 0008 0E       		.uleb128 0xe
+ 625 0009 1B       		.uleb128 0x1b
+ 626 000a 0E       		.uleb128 0xe
+ 627 000b 55       		.uleb128 0x55
+ 628 000c 17       		.uleb128 0x17
+ 629 000d 11       		.uleb128 0x11
+ 630 000e 01       		.uleb128 0x1
+ 631 000f 10       		.uleb128 0x10
+ 632 0010 17       		.uleb128 0x17
+ 633 0011 00       		.byte	0
+ 634 0012 00       		.byte	0
+ 635 0013 02       		.uleb128 0x2
+ 636 0014 24       		.uleb128 0x24
+ 637 0015 00       		.byte	0
+ 638 0016 0B       		.uleb128 0xb
+ 639 0017 0B       		.uleb128 0xb
+ 640 0018 3E       		.uleb128 0x3e
+ 641 0019 0B       		.uleb128 0xb
+ 642 001a 03       		.uleb128 0x3
+ 643 001b 08       		.uleb128 0x8
+ 644 001c 00       		.byte	0
+ 645 001d 00       		.byte	0
+ 646 001e 03       		.uleb128 0x3
+ 647 001f 24       		.uleb128 0x24
+ 648 0020 00       		.byte	0
+ 649 0021 0B       		.uleb128 0xb
+ 650 0022 0B       		.uleb128 0xb
+ 651 0023 3E       		.uleb128 0x3e
+ 652 0024 0B       		.uleb128 0xb
+ 653 0025 03       		.uleb128 0x3
+ 654 0026 0E       		.uleb128 0xe
+ 655 0027 00       		.byte	0
+ 656 0028 00       		.byte	0
+ 657 0029 04       		.uleb128 0x4
+ 658 002a 16       		.uleb128 0x16
+ 659 002b 00       		.byte	0
+ 660 002c 03       		.uleb128 0x3
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 19
 
 
- 574              		.cfi_def_cfa_offset 8
- 575              		.cfi_offset 7, -8
- 576              		.cfi_offset 14, -4
- 577 0002 82B0     		sub	sp, sp, #8
- 578              		.cfi_def_cfa_offset 16
- 579 0004 00AF     		add	r7, sp, #0
- 580              		.cfi_def_cfa_register 7
- 454:.\Generated_Source\PSoC5/I2S_1.c ****         uint8 enableInterrupts;
- 455:.\Generated_Source\PSoC5/I2S_1.c **** 
- 456:.\Generated_Source\PSoC5/I2S_1.c ****         enableInterrupts = CyEnterCriticalSection();
- 581              		.loc 1 456 0
- 582 0006 FFF7FEFF 		bl	CyEnterCriticalSection
- 583 000a 0346     		mov	r3, r0
- 584 000c FB71     		strb	r3, [r7, #7]
- 457:.\Generated_Source\PSoC5/I2S_1.c ****         I2S_1_CLEAR_RX_FIFO(CH0);
- 585              		.loc 1 457 0
- 586 000e 0B4A     		ldr	r2, .L30
- 587 0010 0A4B     		ldr	r3, .L30
- 588 0012 1B78     		ldrb	r3, [r3]
- 589 0014 DBB2     		uxtb	r3, r3
- 590 0016 43F00303 		orr	r3, r3, #3
- 591 001a DBB2     		uxtb	r3, r3
- 592 001c 1370     		strb	r3, [r2]
- 593 001e 074A     		ldr	r2, .L30
- 594 0020 064B     		ldr	r3, .L30
- 595 0022 1B78     		ldrb	r3, [r3]
- 596 0024 DBB2     		uxtb	r3, r3
- 597 0026 23F00303 		bic	r3, r3, #3
- 598 002a DBB2     		uxtb	r3, r3
- 599 002c 1370     		strb	r3, [r2]
- 458:.\Generated_Source\PSoC5/I2S_1.c ****         #if (I2S_1_RX_STEREO_1_PRESENT)
- 459:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_CLEAR_RX_FIFO(CH1);
- 460:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STEREO_1_PRESENT */
- 461:.\Generated_Source\PSoC5/I2S_1.c ****         #if (I2S_1_RX_STEREO_2_PRESENT)
- 462:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_CLEAR_RX_FIFO(CH2);
- 463:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STEREO_2_PRESENT */
- 464:.\Generated_Source\PSoC5/I2S_1.c ****         #if (I2S_1_RX_STEREO_3_PRESENT)
- 465:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_CLEAR_RX_FIFO(CH3);
- 466:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STEREO_3_PRESENT */
- 467:.\Generated_Source\PSoC5/I2S_1.c ****         #if (I2S_1_RX_STEREO_4_PRESENT)
- 468:.\Generated_Source\PSoC5/I2S_1.c ****             I2S_1_CLEAR_RX_FIFO(CH4);
- 469:.\Generated_Source\PSoC5/I2S_1.c ****         #endif /* I2S_1_RX_STEREO_4_PRESENT */
- 470:.\Generated_Source\PSoC5/I2S_1.c ****         CyExitCriticalSection(enableInterrupts);
- 600              		.loc 1 470 0
- 601 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 602 0030 1846     		mov	r0, r3
- 603 0032 FFF7FEFF 		bl	CyExitCriticalSection
- 471:.\Generated_Source\PSoC5/I2S_1.c ****     }
- 604              		.loc 1 471 0
- 605 0036 0837     		adds	r7, r7, #8
- 606              		.cfi_def_cfa_offset 8
- 607 0038 BD46     		mov	sp, r7
- 608              		.cfi_def_cfa_register 13
- 609              		@ sp needed
- 610 003a 80BD     		pop	{r7, pc}
- 611              	.L31:
- 612              		.align	2
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 20
+ 661 002d 0E       		.uleb128 0xe
+ 662 002e 3A       		.uleb128 0x3a
+ 663 002f 0B       		.uleb128 0xb
+ 664 0030 3B       		.uleb128 0x3b
+ 665 0031 05       		.uleb128 0x5
+ 666 0032 49       		.uleb128 0x49
+ 667 0033 13       		.uleb128 0x13
+ 668 0034 00       		.byte	0
+ 669 0035 00       		.byte	0
+ 670 0036 05       		.uleb128 0x5
+ 671 0037 35       		.uleb128 0x35
+ 672 0038 00       		.byte	0
+ 673 0039 49       		.uleb128 0x49
+ 674 003a 13       		.uleb128 0x13
+ 675 003b 00       		.byte	0
+ 676 003c 00       		.byte	0
+ 677 003d 06       		.uleb128 0x6
+ 678 003e 2E       		.uleb128 0x2e
+ 679 003f 01       		.byte	0x1
+ 680 0040 3F       		.uleb128 0x3f
+ 681 0041 19       		.uleb128 0x19
+ 682 0042 03       		.uleb128 0x3
+ 683 0043 0E       		.uleb128 0xe
+ 684 0044 3A       		.uleb128 0x3a
+ 685 0045 0B       		.uleb128 0xb
+ 686 0046 3B       		.uleb128 0x3b
+ 687 0047 0B       		.uleb128 0xb
+ 688 0048 27       		.uleb128 0x27
+ 689 0049 19       		.uleb128 0x19
+ 690 004a 11       		.uleb128 0x11
+ 691 004b 01       		.uleb128 0x1
+ 692 004c 12       		.uleb128 0x12
+ 693 004d 06       		.uleb128 0x6
+ 694 004e 40       		.uleb128 0x40
+ 695 004f 18       		.uleb128 0x18
+ 696 0050 9642     		.uleb128 0x2116
+ 697 0052 19       		.uleb128 0x19
+ 698 0053 01       		.uleb128 0x1
+ 699 0054 13       		.uleb128 0x13
+ 700 0055 00       		.byte	0
+ 701 0056 00       		.byte	0
+ 702 0057 07       		.uleb128 0x7
+ 703 0058 34       		.uleb128 0x34
+ 704 0059 00       		.byte	0
+ 705 005a 03       		.uleb128 0x3
+ 706 005b 0E       		.uleb128 0xe
+ 707 005c 3A       		.uleb128 0x3a
+ 708 005d 0B       		.uleb128 0xb
+ 709 005e 3B       		.uleb128 0x3b
+ 710 005f 0B       		.uleb128 0xb
+ 711 0060 49       		.uleb128 0x49
+ 712 0061 13       		.uleb128 0x13
+ 713 0062 02       		.uleb128 0x2
+ 714 0063 18       		.uleb128 0x18
+ 715 0064 00       		.byte	0
+ 716 0065 00       		.byte	0
+ 717 0066 08       		.uleb128 0x8
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 20
 
 
- 613              	.L30:
- 614 003c 92640040 		.word	1073767570
- 615              		.cfi_endproc
- 616              	.LFE9:
- 617              		.size	I2S_1_ClearRxFIFO, .-I2S_1_ClearRxFIFO
- 618              		.section	.rodata
- 619              		.align	2
- 620              		.type	I2S_1_negThresholds.4838, %object
- 621              		.size	I2S_1_negThresholds.4838, 5
- 622              	I2S_1_negThresholds.4838:
- 623 0000 C0       		.byte	-64
- 624 0001 C0       		.byte	-64
- 625 0002 C0       		.byte	-64
- 626 0003 C0       		.byte	-64
- 627 0004 C0       		.byte	-64
- 628 0005 000000   		.align	2
- 629              		.type	I2S_1_posThresholds.4837, %object
- 630              		.size	I2S_1_posThresholds.4837, 5
- 631              	I2S_1_posThresholds.4837:
- 632 0008 40       		.byte	64
- 633 0009 40       		.byte	64
- 634 000a 40       		.byte	64
- 635 000b 40       		.byte	64
- 636 000c 40       		.byte	64
- 637 000d 000000   		.text
- 638              	.Letext0:
- 639              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
- 640              		.section	.debug_info,"",%progbits
- 641              	.Ldebug_info0:
- 642 0000 5D020000 		.4byte	0x25d
- 643 0004 0400     		.2byte	0x4
- 644 0006 00000000 		.4byte	.Ldebug_abbrev0
- 645 000a 04       		.byte	0x4
- 646 000b 01       		.uleb128 0x1
- 647 000c 18010000 		.4byte	.LASF28
- 648 0010 01       		.byte	0x1
- 649 0011 CC000000 		.4byte	.LASF29
- 650 0015 2C000000 		.4byte	.LASF30
- 651 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 652 001d 00000000 		.4byte	0
- 653 0021 00000000 		.4byte	.Ldebug_line0
- 654 0025 02       		.uleb128 0x2
- 655 0026 04       		.byte	0x4
- 656 0027 05       		.byte	0x5
- 657 0028 696E7400 		.ascii	"int\000"
- 658 002c 03       		.uleb128 0x3
- 659 002d 04       		.byte	0x4
- 660 002e 07       		.byte	0x7
- 661 002f F0010000 		.4byte	.LASF0
- 662 0033 03       		.uleb128 0x3
- 663 0034 01       		.byte	0x1
- 664 0035 06       		.byte	0x6
- 665 0036 83020000 		.4byte	.LASF1
- 666 003a 03       		.uleb128 0x3
- 667 003b 01       		.byte	0x1
- 668 003c 08       		.byte	0x8
- 669 003d A7000000 		.4byte	.LASF2
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 21
+ 718 0067 2E       		.uleb128 0x2e
+ 719 0068 00       		.byte	0
+ 720 0069 3F       		.uleb128 0x3f
+ 721 006a 19       		.uleb128 0x19
+ 722 006b 03       		.uleb128 0x3
+ 723 006c 0E       		.uleb128 0xe
+ 724 006d 3A       		.uleb128 0x3a
+ 725 006e 0B       		.uleb128 0xb
+ 726 006f 3B       		.uleb128 0x3b
+ 727 0070 0B       		.uleb128 0xb
+ 728 0071 27       		.uleb128 0x27
+ 729 0072 19       		.uleb128 0x19
+ 730 0073 11       		.uleb128 0x11
+ 731 0074 01       		.uleb128 0x1
+ 732 0075 12       		.uleb128 0x12
+ 733 0076 06       		.uleb128 0x6
+ 734 0077 40       		.uleb128 0x40
+ 735 0078 18       		.uleb128 0x18
+ 736 0079 9742     		.uleb128 0x2117
+ 737 007b 19       		.uleb128 0x19
+ 738 007c 00       		.byte	0
+ 739 007d 00       		.byte	0
+ 740 007e 09       		.uleb128 0x9
+ 741 007f 2E       		.uleb128 0x2e
+ 742 0080 00       		.byte	0
+ 743 0081 3F       		.uleb128 0x3f
+ 744 0082 19       		.uleb128 0x19
+ 745 0083 03       		.uleb128 0x3
+ 746 0084 0E       		.uleb128 0xe
+ 747 0085 3A       		.uleb128 0x3a
+ 748 0086 0B       		.uleb128 0xb
+ 749 0087 3B       		.uleb128 0x3b
+ 750 0088 0B       		.uleb128 0xb
+ 751 0089 27       		.uleb128 0x27
+ 752 008a 19       		.uleb128 0x19
+ 753 008b 11       		.uleb128 0x11
+ 754 008c 01       		.uleb128 0x1
+ 755 008d 12       		.uleb128 0x12
+ 756 008e 06       		.uleb128 0x6
+ 757 008f 40       		.uleb128 0x40
+ 758 0090 18       		.uleb128 0x18
+ 759 0091 9642     		.uleb128 0x2116
+ 760 0093 19       		.uleb128 0x19
+ 761 0094 00       		.byte	0
+ 762 0095 00       		.byte	0
+ 763 0096 0A       		.uleb128 0xa
+ 764 0097 2E       		.uleb128 0x2e
+ 765 0098 01       		.byte	0x1
+ 766 0099 3F       		.uleb128 0x3f
+ 767 009a 19       		.uleb128 0x19
+ 768 009b 03       		.uleb128 0x3
+ 769 009c 0E       		.uleb128 0xe
+ 770 009d 3A       		.uleb128 0x3a
+ 771 009e 0B       		.uleb128 0xb
+ 772 009f 3B       		.uleb128 0x3b
+ 773 00a0 05       		.uleb128 0x5
+ 774 00a1 27       		.uleb128 0x27
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 21
 
 
- 670 0041 03       		.uleb128 0x3
- 671 0042 02       		.byte	0x2
- 672 0043 05       		.byte	0x5
- 673 0044 4E020000 		.4byte	.LASF3
- 674 0048 03       		.uleb128 0x3
- 675 0049 02       		.byte	0x2
- 676 004a 07       		.byte	0x7
- 677 004b 19000000 		.4byte	.LASF4
- 678 004f 03       		.uleb128 0x3
- 679 0050 04       		.byte	0x4
- 680 0051 05       		.byte	0x5
- 681 0052 6A020000 		.4byte	.LASF5
- 682 0056 03       		.uleb128 0x3
- 683 0057 04       		.byte	0x4
- 684 0058 07       		.byte	0x7
- 685 0059 BA000000 		.4byte	.LASF6
- 686 005d 03       		.uleb128 0x3
- 687 005e 08       		.byte	0x8
- 688 005f 05       		.byte	0x5
- 689 0060 2C020000 		.4byte	.LASF7
- 690 0064 03       		.uleb128 0x3
- 691 0065 08       		.byte	0x8
- 692 0066 07       		.byte	0x7
- 693 0067 FD010000 		.4byte	.LASF8
- 694 006b 03       		.uleb128 0x3
- 695 006c 04       		.byte	0x4
- 696 006d 07       		.byte	0x7
- 697 006e 14020000 		.4byte	.LASF9
- 698 0072 03       		.uleb128 0x3
- 699 0073 01       		.byte	0x1
- 700 0074 08       		.byte	0x8
- 701 0075 3A020000 		.4byte	.LASF10
- 702 0079 04       		.uleb128 0x4
- 703 007a ED000000 		.4byte	.LASF11
- 704 007e 02       		.byte	0x2
- 705 007f 3801     		.2byte	0x138
- 706 0081 3A000000 		.4byte	0x3a
- 707 0085 04       		.uleb128 0x4
- 708 0086 C5010000 		.4byte	.LASF12
- 709 008a 02       		.byte	0x2
- 710 008b 3B01     		.2byte	0x13b
- 711 008d 33000000 		.4byte	0x33
- 712 0091 03       		.uleb128 0x3
- 713 0092 04       		.byte	0x4
- 714 0093 04       		.byte	0x4
- 715 0094 A1000000 		.4byte	.LASF13
- 716 0098 03       		.uleb128 0x3
- 717 0099 08       		.byte	0x8
- 718 009a 04       		.byte	0x4
- 719 009b A6010000 		.4byte	.LASF14
- 720 009f 04       		.uleb128 0x4
- 721 00a0 B5000000 		.4byte	.LASF15
- 722 00a4 02       		.byte	0x2
- 723 00a5 E201     		.2byte	0x1e2
- 724 00a7 AB000000 		.4byte	0xab
- 725 00ab 05       		.uleb128 0x5
- 726 00ac 79000000 		.4byte	0x79
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 22
+ 775 00a2 19       		.uleb128 0x19
+ 776 00a3 11       		.uleb128 0x11
+ 777 00a4 01       		.uleb128 0x1
+ 778 00a5 12       		.uleb128 0x12
+ 779 00a6 06       		.uleb128 0x6
+ 780 00a7 40       		.uleb128 0x40
+ 781 00a8 18       		.uleb128 0x18
+ 782 00a9 9642     		.uleb128 0x2116
+ 783 00ab 19       		.uleb128 0x19
+ 784 00ac 01       		.uleb128 0x1
+ 785 00ad 13       		.uleb128 0x13
+ 786 00ae 00       		.byte	0
+ 787 00af 00       		.byte	0
+ 788 00b0 0B       		.uleb128 0xb
+ 789 00b1 34       		.uleb128 0x34
+ 790 00b2 00       		.byte	0
+ 791 00b3 03       		.uleb128 0x3
+ 792 00b4 0E       		.uleb128 0xe
+ 793 00b5 3A       		.uleb128 0x3a
+ 794 00b6 0B       		.uleb128 0xb
+ 795 00b7 3B       		.uleb128 0x3b
+ 796 00b8 05       		.uleb128 0x5
+ 797 00b9 49       		.uleb128 0x49
+ 798 00ba 13       		.uleb128 0x13
+ 799 00bb 02       		.uleb128 0x2
+ 800 00bc 18       		.uleb128 0x18
+ 801 00bd 00       		.byte	0
+ 802 00be 00       		.byte	0
+ 803 00bf 0C       		.uleb128 0xc
+ 804 00c0 34       		.uleb128 0x34
+ 805 00c1 00       		.byte	0
+ 806 00c2 03       		.uleb128 0x3
+ 807 00c3 0E       		.uleb128 0xe
+ 808 00c4 3A       		.uleb128 0x3a
+ 809 00c5 0B       		.uleb128 0xb
+ 810 00c6 3B       		.uleb128 0x3b
+ 811 00c7 0B       		.uleb128 0xb
+ 812 00c8 49       		.uleb128 0x49
+ 813 00c9 13       		.uleb128 0x13
+ 814 00ca 3F       		.uleb128 0x3f
+ 815 00cb 19       		.uleb128 0x19
+ 816 00cc 02       		.uleb128 0x2
+ 817 00cd 18       		.uleb128 0x18
+ 818 00ce 00       		.byte	0
+ 819 00cf 00       		.byte	0
+ 820 00d0 00       		.byte	0
+ 821              		.section	.debug_aranges,"",%progbits
+ 822 0000 4C000000 		.4byte	0x4c
+ 823 0004 0200     		.2byte	0x2
+ 824 0006 00000000 		.4byte	.Ldebug_info0
+ 825 000a 04       		.byte	0x4
+ 826 000b 00       		.byte	0
+ 827 000c 0000     		.2byte	0
+ 828 000e 0000     		.2byte	0
+ 829 0010 00000000 		.4byte	.LFB0
+ 830 0014 44000000 		.4byte	.LFE0-.LFB0
+ 831 0018 00000000 		.4byte	.LFB1
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 22
 
 
- 727 00b0 06       		.uleb128 0x6
- 728 00b1 B8010000 		.4byte	.LASF16
- 729 00b5 01       		.byte	0x1
- 730 00b6 29       		.byte	0x29
- 731 00b7 00000000 		.4byte	.LFB0
- 732 00bb 44000000 		.4byte	.LFE0-.LFB0
- 733 00bf 01       		.uleb128 0x1
- 734 00c0 9C       		.byte	0x9c
- 735 00c1 D4000000 		.4byte	0xd4
- 736 00c5 07       		.uleb128 0x7
- 737 00c6 07010000 		.4byte	.LASF18
- 738 00ca 01       		.byte	0x1
- 739 00cb 2B       		.byte	0x2b
- 740 00cc 79000000 		.4byte	0x79
- 741 00d0 02       		.uleb128 0x2
- 742 00d1 91       		.byte	0x91
- 743 00d2 77       		.sleb128 -9
- 744 00d3 00       		.byte	0
- 745 00d4 08       		.uleb128 0x8
- 746 00d5 0E000000 		.4byte	.LASF17
- 747 00d9 01       		.byte	0x1
- 748 00da 45       		.byte	0x45
- 749 00db 00000000 		.4byte	.LFB1
- 750 00df 60000000 		.4byte	.LFE1-.LFB1
- 751 00e3 01       		.uleb128 0x1
- 752 00e4 9C       		.byte	0x9c
- 753 00e5 0C010000 		.4byte	0x10c
- 754 00e9 07       		.uleb128 0x7
- 755 00ea CA010000 		.4byte	.LASF19
- 756 00ee 01       		.byte	0x1
- 757 00ef 48       		.byte	0x48
- 758 00f0 1C010000 		.4byte	0x11c
- 759 00f4 05       		.uleb128 0x5
- 760 00f5 03       		.byte	0x3
- 761 00f6 08000000 		.4byte	I2S_1_posThresholds.4837
- 762 00fa 07       		.uleb128 0x7
- 763 00fb F3000000 		.4byte	.LASF20
- 764 00ff 01       		.byte	0x1
- 765 0100 49       		.byte	0x49
- 766 0101 31010000 		.4byte	0x131
- 767 0105 05       		.uleb128 0x5
- 768 0106 03       		.byte	0x3
- 769 0107 00000000 		.4byte	I2S_1_negThresholds.4838
- 770 010b 00       		.byte	0
- 771 010c 09       		.uleb128 0x9
- 772 010d 79000000 		.4byte	0x79
- 773 0111 1C010000 		.4byte	0x11c
- 774 0115 0A       		.uleb128 0xa
- 775 0116 6B000000 		.4byte	0x6b
- 776 011a 04       		.byte	0x4
- 777 011b 00       		.byte	0
- 778 011c 0B       		.uleb128 0xb
- 779 011d 0C010000 		.4byte	0x10c
- 780 0121 09       		.uleb128 0x9
- 781 0122 85000000 		.4byte	0x85
- 782 0126 31010000 		.4byte	0x131
- 783 012a 0A       		.uleb128 0xa
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 23
+ 832 001c 2C000000 		.4byte	.LFE1-.LFB1
+ 833 0020 00000000 		.4byte	.LFB2
+ 834 0024 20000000 		.4byte	.LFE2-.LFB2
+ 835 0028 00000000 		.4byte	.LFB3
+ 836 002c 58000000 		.4byte	.LFE3-.LFB3
+ 837 0030 00000000 		.4byte	.LFB4
+ 838 0034 44000000 		.4byte	.LFE4-.LFB4
+ 839 0038 00000000 		.4byte	.LFB5
+ 840 003c 44000000 		.4byte	.LFE5-.LFB5
+ 841 0040 00000000 		.4byte	.LFB6
+ 842 0044 40000000 		.4byte	.LFE6-.LFB6
+ 843 0048 00000000 		.4byte	0
+ 844 004c 00000000 		.4byte	0
+ 845              		.section	.debug_ranges,"",%progbits
+ 846              	.Ldebug_ranges0:
+ 847 0000 00000000 		.4byte	.LFB0
+ 848 0004 44000000 		.4byte	.LFE0
+ 849 0008 00000000 		.4byte	.LFB1
+ 850 000c 2C000000 		.4byte	.LFE1
+ 851 0010 00000000 		.4byte	.LFB2
+ 852 0014 20000000 		.4byte	.LFE2
+ 853 0018 00000000 		.4byte	.LFB3
+ 854 001c 58000000 		.4byte	.LFE3
+ 855 0020 00000000 		.4byte	.LFB4
+ 856 0024 44000000 		.4byte	.LFE4
+ 857 0028 00000000 		.4byte	.LFB5
+ 858 002c 44000000 		.4byte	.LFE5
+ 859 0030 00000000 		.4byte	.LFB6
+ 860 0034 40000000 		.4byte	.LFE6
+ 861 0038 00000000 		.4byte	0
+ 862 003c 00000000 		.4byte	0
+ 863              		.section	.debug_line,"",%progbits
+ 864              	.Ldebug_line0:
+ 865 0000 E1000000 		.section	.debug_str,"MS",%progbits,1
+ 865      02004400 
+ 865      00000201 
+ 865      FB0E0D00 
+ 865      01010101 
+ 866              	.LASF7:
+ 867 0000 6C6F6E67 		.ascii	"long long int\000"
+ 867      206C6F6E 
+ 867      6720696E 
+ 867      7400
+ 868              	.LASF0:
+ 869 000e 756E7369 		.ascii	"unsigned int\000"
+ 869      676E6564 
+ 869      20696E74 
+ 869      00
+ 870              	.LASF24:
+ 871 001b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\I2S_1.c\000"
+ 871      6E657261 
+ 871      7465645F 
+ 871      536F7572 
+ 871      63655C50 
+ 872              	.LASF19:
+ 873 003c 656E6162 		.ascii	"enableInterrupts\000"
+ 873      6C65496E 
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 23
 
 
- 784 012b 6B000000 		.4byte	0x6b
- 785 012f 04       		.byte	0x4
- 786 0130 00       		.byte	0
- 787 0131 0B       		.uleb128 0xb
- 788 0132 21010000 		.4byte	0x121
- 789 0136 0C       		.uleb128 0xc
- 790 0137 9F020000 		.4byte	.LASF31
- 791 013b 01       		.byte	0x1
- 792 013c 9E       		.byte	0x9e
- 793 013d 00000000 		.4byte	.LFB2
- 794 0141 20000000 		.4byte	.LFE2-.LFB2
- 795 0145 01       		.uleb128 0x1
- 796 0146 9C       		.byte	0x9c
- 797 0147 06       		.uleb128 0x6
- 798 0148 AD010000 		.4byte	.LASF21
- 799 014c 01       		.byte	0x1
- 800 014d B9       		.byte	0xb9
- 801 014e 00000000 		.4byte	.LFB3
- 802 0152 60000000 		.4byte	.LFE3-.LFB3
- 803 0156 01       		.uleb128 0x1
- 804 0157 9C       		.byte	0x9c
- 805 0158 6B010000 		.4byte	0x16b
- 806 015c 07       		.uleb128 0x7
- 807 015d 07010000 		.4byte	.LASF18
- 808 0161 01       		.byte	0x1
- 809 0162 BB       		.byte	0xbb
- 810 0163 79000000 		.4byte	0x79
- 811 0167 02       		.uleb128 0x2
- 812 0168 91       		.byte	0x91
- 813 0169 77       		.sleb128 -9
- 814 016a 00       		.byte	0
- 815 016b 0D       		.uleb128 0xd
- 816 016c 3F020000 		.4byte	.LASF22
- 817 0170 01       		.byte	0x1
- 818 0171 1801     		.2byte	0x118
- 819 0173 00000000 		.4byte	.LFB4
- 820 0177 44000000 		.4byte	.LFE4-.LFB4
- 821 017b 01       		.uleb128 0x1
- 822 017c 9C       		.byte	0x9c
- 823 017d 91010000 		.4byte	0x191
- 824 0181 0E       		.uleb128 0xe
- 825 0182 07010000 		.4byte	.LASF18
- 826 0186 01       		.byte	0x1
- 827 0187 1A01     		.2byte	0x11a
- 828 0189 79000000 		.4byte	0x79
- 829 018d 02       		.uleb128 0x2
- 830 018e 91       		.byte	0x91
- 831 018f 77       		.sleb128 -9
- 832 0190 00       		.byte	0
- 833 0191 0D       		.uleb128 0xd
- 834 0192 8F020000 		.4byte	.LASF23
- 835 0196 01       		.byte	0x1
- 836 0197 3A01     		.2byte	0x13a
- 837 0199 00000000 		.4byte	.LFB5
- 838 019d 44000000 		.4byte	.LFE5-.LFB5
- 839 01a1 01       		.uleb128 0x1
- 840 01a2 9C       		.byte	0x9c
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 24
+ 873      74657272 
+ 873      75707473 
+ 873      00
+ 874              	.LASF20:
+ 875 004d 4932535F 		.ascii	"I2S_1_EnableTx\000"
+ 875      315F456E 
+ 875      61626C65 
+ 875      547800
+ 876              	.LASF13:
+ 877 005c 75696E74 		.ascii	"uint8\000"
+ 877      3800
+ 878              	.LASF6:
+ 879 0062 6C6F6E67 		.ascii	"long unsigned int\000"
+ 879      20756E73 
+ 879      69676E65 
+ 879      6420696E 
+ 879      7400
+ 880              	.LASF8:
+ 881 0074 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 881      206C6F6E 
+ 881      6720756E 
+ 881      7369676E 
+ 881      65642069 
+ 882              	.LASF26:
+ 883 008b 4932535F 		.ascii	"I2S_1_initVar\000"
+ 883      315F696E 
+ 883      69745661 
+ 883      7200
+ 884              	.LASF18:
+ 885 0099 4932535F 		.ascii	"I2S_1_Stop\000"
+ 885      315F5374 
+ 885      6F7000
+ 886              	.LASF2:
+ 887 00a4 756E7369 		.ascii	"unsigned char\000"
+ 887      676E6564 
+ 887      20636861 
+ 887      7200
+ 888              	.LASF10:
+ 889 00b2 63686172 		.ascii	"char\000"
+ 889      00
+ 890              	.LASF25:
+ 891 00b7 433A5C55 		.ascii	"C:\\Users\\Lukas Creutzburg\\Documents\\GitHub\\PSo"
+ 891      73657273 
+ 891      5C4C756B 
+ 891      61732043 
+ 891      72657574 
+ 892 00e5 43354C50 		.ascii	"C5LP-freeDSP-USB-Port\\PSoC_freeDSP_USB_Port\\Inter"
+ 892      2D667265 
+ 892      65445350 
+ 892      2D555342 
+ 892      2D506F72 
+ 893 0116 4963536F 		.ascii	"IcSound_Example.cydsn\000"
+ 893      756E645F 
+ 893      4578616D 
+ 893      706C652E 
+ 893      63796473 
+ 894              	.LASF5:
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 24
 
 
- 841 01a3 B7010000 		.4byte	0x1b7
- 842 01a7 0E       		.uleb128 0xe
- 843 01a8 07010000 		.4byte	.LASF18
- 844 01ac 01       		.byte	0x1
- 845 01ad 3C01     		.2byte	0x13c
- 846 01af 79000000 		.4byte	0x79
- 847 01b3 02       		.uleb128 0x2
- 848 01b4 91       		.byte	0x91
- 849 01b5 77       		.sleb128 -9
- 850 01b6 00       		.byte	0
- 851 01b7 0D       		.uleb128 0xd
- 852 01b8 DE010000 		.4byte	.LASF24
- 853 01bc 01       		.byte	0x1
- 854 01bd 5B01     		.2byte	0x15b
- 855 01bf 00000000 		.4byte	.LFB6
- 856 01c3 40000000 		.4byte	.LFE6-.LFB6
- 857 01c7 01       		.uleb128 0x1
- 858 01c8 9C       		.byte	0x9c
- 859 01c9 DD010000 		.4byte	0x1dd
- 860 01cd 0E       		.uleb128 0xe
- 861 01ce 07010000 		.4byte	.LASF18
- 862 01d2 01       		.byte	0x1
- 863 01d3 5D01     		.2byte	0x15d
- 864 01d5 79000000 		.4byte	0x79
- 865 01d9 02       		.uleb128 0x2
- 866 01da 91       		.byte	0x91
- 867 01db 77       		.sleb128 -9
- 868 01dc 00       		.byte	0
- 869 01dd 0D       		.uleb128 0xd
- 870 01de 1D020000 		.4byte	.LASF25
- 871 01e2 01       		.byte	0x1
- 872 01e3 8301     		.2byte	0x183
- 873 01e5 00000000 		.4byte	.LFB7
- 874 01e9 44000000 		.4byte	.LFE7-.LFB7
- 875 01ed 01       		.uleb128 0x1
- 876 01ee 9C       		.byte	0x9c
- 877 01ef 03020000 		.4byte	0x203
- 878 01f3 0E       		.uleb128 0xe
- 879 01f4 07010000 		.4byte	.LASF18
- 880 01f8 01       		.byte	0x1
- 881 01f9 8501     		.2byte	0x185
- 882 01fb 79000000 		.4byte	0x79
- 883 01ff 02       		.uleb128 0x2
- 884 0200 91       		.byte	0x91
- 885 0201 77       		.sleb128 -9
- 886 0202 00       		.byte	0
- 887 0203 0D       		.uleb128 0xd
- 888 0204 73020000 		.4byte	.LASF26
- 889 0208 01       		.byte	0x1
- 890 0209 A301     		.2byte	0x1a3
- 891 020b 00000000 		.4byte	.LFB8
- 892 020f 44000000 		.4byte	.LFE8-.LFB8
- 893 0213 01       		.uleb128 0x1
- 894 0214 9C       		.byte	0x9c
- 895 0215 29020000 		.4byte	0x229
- 896 0219 0E       		.uleb128 0xe
- 897 021a 07010000 		.4byte	.LASF18
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 25
+ 895 012c 6C6F6E67 		.ascii	"long int\000"
+ 895      20696E74 
+ 895      00
+ 896              	.LASF23:
+ 897 0135 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 897      4320342E 
+ 897      392E3320 
+ 897      32303135 
+ 897      30333033 
+ 898 0168 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 898      20726576 
+ 898      6973696F 
+ 898      6E203232 
+ 898      31323230 
+ 899 019b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 899      66756E63 
+ 899      74696F6E 
+ 899      2D736563 
+ 899      74696F6E 
+ 900              	.LASF22:
+ 901 01c3 4932535F 		.ascii	"I2S_1_ClearTxFIFO\000"
+ 901      315F436C 
+ 901      65617254 
+ 901      78464946 
+ 901      4F00
+ 902              	.LASF12:
+ 903 01d5 646F7562 		.ascii	"double\000"
+ 903      6C6500
+ 904              	.LASF17:
+ 905 01dc 4932535F 		.ascii	"I2S_1_Enable\000"
+ 905      315F456E 
+ 905      61626C65 
+ 905      00
+ 906              	.LASF4:
+ 907 01e9 73686F72 		.ascii	"short unsigned int\000"
+ 907      7420756E 
+ 907      7369676E 
+ 907      65642069 
+ 907      6E7400
+ 908              	.LASF1:
+ 909 01fc 7369676E 		.ascii	"signed char\000"
+ 909      65642063 
+ 909      68617200 
+ 910              	.LASF16:
+ 911 0208 4932535F 		.ascii	"I2S_1_Start\000"
+ 911      315F5374 
+ 911      61727400 
+ 912              	.LASF11:
+ 913 0214 666C6F61 		.ascii	"float\000"
+ 913      7400
+ 914              	.LASF21:
+ 915 021a 4932535F 		.ascii	"I2S_1_DisableTx\000"
+ 915      315F4469 
+ 915      7361626C 
+ 915      65547800 
+ 916              	.LASF3:
+ 917 022a 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccjoen4b.s 			page 25
 
 
- 898 021e 01       		.byte	0x1
- 899 021f A501     		.2byte	0x1a5
- 900 0221 79000000 		.4byte	0x79
- 901 0225 02       		.uleb128 0x2
- 902 0226 91       		.byte	0x91
- 903 0227 77       		.sleb128 -9
- 904 0228 00       		.byte	0
- 905 0229 0D       		.uleb128 0xd
- 906 022a 58020000 		.4byte	.LASF27
- 907 022e 01       		.byte	0x1
- 908 022f C401     		.2byte	0x1c4
- 909 0231 00000000 		.4byte	.LFB9
- 910 0235 40000000 		.4byte	.LFE9-.LFB9
- 911 0239 01       		.uleb128 0x1
- 912 023a 9C       		.byte	0x9c
- 913 023b 4F020000 		.4byte	0x24f
- 914 023f 0E       		.uleb128 0xe
- 915 0240 07010000 		.4byte	.LASF18
- 916 0244 01       		.byte	0x1
- 917 0245 C601     		.2byte	0x1c6
- 918 0247 79000000 		.4byte	0x79
- 919 024b 02       		.uleb128 0x2
- 920 024c 91       		.byte	0x91
- 921 024d 77       		.sleb128 -9
- 922 024e 00       		.byte	0
- 923 024f 0F       		.uleb128 0xf
- 924 0250 00000000 		.4byte	.LASF32
- 925 0254 01       		.byte	0x1
- 926 0255 15       		.byte	0x15
- 927 0256 79000000 		.4byte	0x79
- 928 025a 05       		.uleb128 0x5
- 929 025b 03       		.byte	0x3
- 930 025c 00000000 		.4byte	I2S_1_initVar
- 931 0260 00       		.byte	0
- 932              		.section	.debug_abbrev,"",%progbits
- 933              	.Ldebug_abbrev0:
- 934 0000 01       		.uleb128 0x1
- 935 0001 11       		.uleb128 0x11
- 936 0002 01       		.byte	0x1
- 937 0003 25       		.uleb128 0x25
- 938 0004 0E       		.uleb128 0xe
- 939 0005 13       		.uleb128 0x13
- 940 0006 0B       		.uleb128 0xb
- 941 0007 03       		.uleb128 0x3
- 942 0008 0E       		.uleb128 0xe
- 943 0009 1B       		.uleb128 0x1b
- 944 000a 0E       		.uleb128 0xe
- 945 000b 55       		.uleb128 0x55
- 946 000c 17       		.uleb128 0x17
- 947 000d 11       		.uleb128 0x11
- 948 000e 01       		.uleb128 0x1
- 949 000f 10       		.uleb128 0x10
- 950 0010 17       		.uleb128 0x17
- 951 0011 00       		.byte	0
- 952 0012 00       		.byte	0
- 953 0013 02       		.uleb128 0x2
- 954 0014 24       		.uleb128 0x24
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 26
-
-
- 955 0015 00       		.byte	0
- 956 0016 0B       		.uleb128 0xb
- 957 0017 0B       		.uleb128 0xb
- 958 0018 3E       		.uleb128 0x3e
- 959 0019 0B       		.uleb128 0xb
- 960 001a 03       		.uleb128 0x3
- 961 001b 08       		.uleb128 0x8
- 962 001c 00       		.byte	0
- 963 001d 00       		.byte	0
- 964 001e 03       		.uleb128 0x3
- 965 001f 24       		.uleb128 0x24
- 966 0020 00       		.byte	0
- 967 0021 0B       		.uleb128 0xb
- 968 0022 0B       		.uleb128 0xb
- 969 0023 3E       		.uleb128 0x3e
- 970 0024 0B       		.uleb128 0xb
- 971 0025 03       		.uleb128 0x3
- 972 0026 0E       		.uleb128 0xe
- 973 0027 00       		.byte	0
- 974 0028 00       		.byte	0
- 975 0029 04       		.uleb128 0x4
- 976 002a 16       		.uleb128 0x16
- 977 002b 00       		.byte	0
- 978 002c 03       		.uleb128 0x3
- 979 002d 0E       		.uleb128 0xe
- 980 002e 3A       		.uleb128 0x3a
- 981 002f 0B       		.uleb128 0xb
- 982 0030 3B       		.uleb128 0x3b
- 983 0031 05       		.uleb128 0x5
- 984 0032 49       		.uleb128 0x49
- 985 0033 13       		.uleb128 0x13
- 986 0034 00       		.byte	0
- 987 0035 00       		.byte	0
- 988 0036 05       		.uleb128 0x5
- 989 0037 35       		.uleb128 0x35
- 990 0038 00       		.byte	0
- 991 0039 49       		.uleb128 0x49
- 992 003a 13       		.uleb128 0x13
- 993 003b 00       		.byte	0
- 994 003c 00       		.byte	0
- 995 003d 06       		.uleb128 0x6
- 996 003e 2E       		.uleb128 0x2e
- 997 003f 01       		.byte	0x1
- 998 0040 3F       		.uleb128 0x3f
- 999 0041 19       		.uleb128 0x19
- 1000 0042 03       		.uleb128 0x3
- 1001 0043 0E       		.uleb128 0xe
- 1002 0044 3A       		.uleb128 0x3a
- 1003 0045 0B       		.uleb128 0xb
- 1004 0046 3B       		.uleb128 0x3b
- 1005 0047 0B       		.uleb128 0xb
- 1006 0048 27       		.uleb128 0x27
- 1007 0049 19       		.uleb128 0x19
- 1008 004a 11       		.uleb128 0x11
- 1009 004b 01       		.uleb128 0x1
- 1010 004c 12       		.uleb128 0x12
- 1011 004d 06       		.uleb128 0x6
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 27
-
-
- 1012 004e 40       		.uleb128 0x40
- 1013 004f 18       		.uleb128 0x18
- 1014 0050 9642     		.uleb128 0x2116
- 1015 0052 19       		.uleb128 0x19
- 1016 0053 01       		.uleb128 0x1
- 1017 0054 13       		.uleb128 0x13
- 1018 0055 00       		.byte	0
- 1019 0056 00       		.byte	0
- 1020 0057 07       		.uleb128 0x7
- 1021 0058 34       		.uleb128 0x34
- 1022 0059 00       		.byte	0
- 1023 005a 03       		.uleb128 0x3
- 1024 005b 0E       		.uleb128 0xe
- 1025 005c 3A       		.uleb128 0x3a
- 1026 005d 0B       		.uleb128 0xb
- 1027 005e 3B       		.uleb128 0x3b
- 1028 005f 0B       		.uleb128 0xb
- 1029 0060 49       		.uleb128 0x49
- 1030 0061 13       		.uleb128 0x13
- 1031 0062 02       		.uleb128 0x2
- 1032 0063 18       		.uleb128 0x18
- 1033 0064 00       		.byte	0
- 1034 0065 00       		.byte	0
- 1035 0066 08       		.uleb128 0x8
- 1036 0067 2E       		.uleb128 0x2e
- 1037 0068 01       		.byte	0x1
- 1038 0069 3F       		.uleb128 0x3f
- 1039 006a 19       		.uleb128 0x19
- 1040 006b 03       		.uleb128 0x3
- 1041 006c 0E       		.uleb128 0xe
- 1042 006d 3A       		.uleb128 0x3a
- 1043 006e 0B       		.uleb128 0xb
- 1044 006f 3B       		.uleb128 0x3b
- 1045 0070 0B       		.uleb128 0xb
- 1046 0071 27       		.uleb128 0x27
- 1047 0072 19       		.uleb128 0x19
- 1048 0073 11       		.uleb128 0x11
- 1049 0074 01       		.uleb128 0x1
- 1050 0075 12       		.uleb128 0x12
- 1051 0076 06       		.uleb128 0x6
- 1052 0077 40       		.uleb128 0x40
- 1053 0078 18       		.uleb128 0x18
- 1054 0079 9742     		.uleb128 0x2117
- 1055 007b 19       		.uleb128 0x19
- 1056 007c 01       		.uleb128 0x1
- 1057 007d 13       		.uleb128 0x13
- 1058 007e 00       		.byte	0
- 1059 007f 00       		.byte	0
- 1060 0080 09       		.uleb128 0x9
- 1061 0081 01       		.uleb128 0x1
- 1062 0082 01       		.byte	0x1
- 1063 0083 49       		.uleb128 0x49
- 1064 0084 13       		.uleb128 0x13
- 1065 0085 01       		.uleb128 0x1
- 1066 0086 13       		.uleb128 0x13
- 1067 0087 00       		.byte	0
- 1068 0088 00       		.byte	0
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 28
-
-
- 1069 0089 0A       		.uleb128 0xa
- 1070 008a 21       		.uleb128 0x21
- 1071 008b 00       		.byte	0
- 1072 008c 49       		.uleb128 0x49
- 1073 008d 13       		.uleb128 0x13
- 1074 008e 2F       		.uleb128 0x2f
- 1075 008f 0B       		.uleb128 0xb
- 1076 0090 00       		.byte	0
- 1077 0091 00       		.byte	0
- 1078 0092 0B       		.uleb128 0xb
- 1079 0093 26       		.uleb128 0x26
- 1080 0094 00       		.byte	0
- 1081 0095 49       		.uleb128 0x49
- 1082 0096 13       		.uleb128 0x13
- 1083 0097 00       		.byte	0
- 1084 0098 00       		.byte	0
- 1085 0099 0C       		.uleb128 0xc
- 1086 009a 2E       		.uleb128 0x2e
- 1087 009b 00       		.byte	0
- 1088 009c 3F       		.uleb128 0x3f
- 1089 009d 19       		.uleb128 0x19
- 1090 009e 03       		.uleb128 0x3
- 1091 009f 0E       		.uleb128 0xe
- 1092 00a0 3A       		.uleb128 0x3a
- 1093 00a1 0B       		.uleb128 0xb
- 1094 00a2 3B       		.uleb128 0x3b
- 1095 00a3 0B       		.uleb128 0xb
- 1096 00a4 27       		.uleb128 0x27
- 1097 00a5 19       		.uleb128 0x19
- 1098 00a6 11       		.uleb128 0x11
- 1099 00a7 01       		.uleb128 0x1
- 1100 00a8 12       		.uleb128 0x12
- 1101 00a9 06       		.uleb128 0x6
- 1102 00aa 40       		.uleb128 0x40
- 1103 00ab 18       		.uleb128 0x18
- 1104 00ac 9642     		.uleb128 0x2116
- 1105 00ae 19       		.uleb128 0x19
- 1106 00af 00       		.byte	0
- 1107 00b0 00       		.byte	0
- 1108 00b1 0D       		.uleb128 0xd
- 1109 00b2 2E       		.uleb128 0x2e
- 1110 00b3 01       		.byte	0x1
- 1111 00b4 3F       		.uleb128 0x3f
- 1112 00b5 19       		.uleb128 0x19
- 1113 00b6 03       		.uleb128 0x3
- 1114 00b7 0E       		.uleb128 0xe
- 1115 00b8 3A       		.uleb128 0x3a
- 1116 00b9 0B       		.uleb128 0xb
- 1117 00ba 3B       		.uleb128 0x3b
- 1118 00bb 05       		.uleb128 0x5
- 1119 00bc 27       		.uleb128 0x27
- 1120 00bd 19       		.uleb128 0x19
- 1121 00be 11       		.uleb128 0x11
- 1122 00bf 01       		.uleb128 0x1
- 1123 00c0 12       		.uleb128 0x12
- 1124 00c1 06       		.uleb128 0x6
- 1125 00c2 40       		.uleb128 0x40
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 29
-
-
- 1126 00c3 18       		.uleb128 0x18
- 1127 00c4 9642     		.uleb128 0x2116
- 1128 00c6 19       		.uleb128 0x19
- 1129 00c7 01       		.uleb128 0x1
- 1130 00c8 13       		.uleb128 0x13
- 1131 00c9 00       		.byte	0
- 1132 00ca 00       		.byte	0
- 1133 00cb 0E       		.uleb128 0xe
- 1134 00cc 34       		.uleb128 0x34
- 1135 00cd 00       		.byte	0
- 1136 00ce 03       		.uleb128 0x3
- 1137 00cf 0E       		.uleb128 0xe
- 1138 00d0 3A       		.uleb128 0x3a
- 1139 00d1 0B       		.uleb128 0xb
- 1140 00d2 3B       		.uleb128 0x3b
- 1141 00d3 05       		.uleb128 0x5
- 1142 00d4 49       		.uleb128 0x49
- 1143 00d5 13       		.uleb128 0x13
- 1144 00d6 02       		.uleb128 0x2
- 1145 00d7 18       		.uleb128 0x18
- 1146 00d8 00       		.byte	0
- 1147 00d9 00       		.byte	0
- 1148 00da 0F       		.uleb128 0xf
- 1149 00db 34       		.uleb128 0x34
- 1150 00dc 00       		.byte	0
- 1151 00dd 03       		.uleb128 0x3
- 1152 00de 0E       		.uleb128 0xe
- 1153 00df 3A       		.uleb128 0x3a
- 1154 00e0 0B       		.uleb128 0xb
- 1155 00e1 3B       		.uleb128 0x3b
- 1156 00e2 0B       		.uleb128 0xb
- 1157 00e3 49       		.uleb128 0x49
- 1158 00e4 13       		.uleb128 0x13
- 1159 00e5 3F       		.uleb128 0x3f
- 1160 00e6 19       		.uleb128 0x19
- 1161 00e7 02       		.uleb128 0x2
- 1162 00e8 18       		.uleb128 0x18
- 1163 00e9 00       		.byte	0
- 1164 00ea 00       		.byte	0
- 1165 00eb 00       		.byte	0
- 1166              		.section	.debug_aranges,"",%progbits
- 1167 0000 64000000 		.4byte	0x64
- 1168 0004 0200     		.2byte	0x2
- 1169 0006 00000000 		.4byte	.Ldebug_info0
- 1170 000a 04       		.byte	0x4
- 1171 000b 00       		.byte	0
- 1172 000c 0000     		.2byte	0
- 1173 000e 0000     		.2byte	0
- 1174 0010 00000000 		.4byte	.LFB0
- 1175 0014 44000000 		.4byte	.LFE0-.LFB0
- 1176 0018 00000000 		.4byte	.LFB1
- 1177 001c 60000000 		.4byte	.LFE1-.LFB1
- 1178 0020 00000000 		.4byte	.LFB2
- 1179 0024 20000000 		.4byte	.LFE2-.LFB2
- 1180 0028 00000000 		.4byte	.LFB3
- 1181 002c 60000000 		.4byte	.LFE3-.LFB3
- 1182 0030 00000000 		.4byte	.LFB4
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 30
-
-
- 1183 0034 44000000 		.4byte	.LFE4-.LFB4
- 1184 0038 00000000 		.4byte	.LFB5
- 1185 003c 44000000 		.4byte	.LFE5-.LFB5
- 1186 0040 00000000 		.4byte	.LFB6
- 1187 0044 40000000 		.4byte	.LFE6-.LFB6
- 1188 0048 00000000 		.4byte	.LFB7
- 1189 004c 44000000 		.4byte	.LFE7-.LFB7
- 1190 0050 00000000 		.4byte	.LFB8
- 1191 0054 44000000 		.4byte	.LFE8-.LFB8
- 1192 0058 00000000 		.4byte	.LFB9
- 1193 005c 40000000 		.4byte	.LFE9-.LFB9
- 1194 0060 00000000 		.4byte	0
- 1195 0064 00000000 		.4byte	0
- 1196              		.section	.debug_ranges,"",%progbits
- 1197              	.Ldebug_ranges0:
- 1198 0000 00000000 		.4byte	.LFB0
- 1199 0004 44000000 		.4byte	.LFE0
- 1200 0008 00000000 		.4byte	.LFB1
- 1201 000c 60000000 		.4byte	.LFE1
- 1202 0010 00000000 		.4byte	.LFB2
- 1203 0014 20000000 		.4byte	.LFE2
- 1204 0018 00000000 		.4byte	.LFB3
- 1205 001c 60000000 		.4byte	.LFE3
- 1206 0020 00000000 		.4byte	.LFB4
- 1207 0024 44000000 		.4byte	.LFE4
- 1208 0028 00000000 		.4byte	.LFB5
- 1209 002c 44000000 		.4byte	.LFE5
- 1210 0030 00000000 		.4byte	.LFB6
- 1211 0034 40000000 		.4byte	.LFE6
- 1212 0038 00000000 		.4byte	.LFB7
- 1213 003c 44000000 		.4byte	.LFE7
- 1214 0040 00000000 		.4byte	.LFB8
- 1215 0044 44000000 		.4byte	.LFE8
- 1216 0048 00000000 		.4byte	.LFB9
- 1217 004c 40000000 		.4byte	.LFE9
- 1218 0050 00000000 		.4byte	0
- 1219 0054 00000000 		.4byte	0
- 1220              		.section	.debug_line,"",%progbits
- 1221              	.Ldebug_line0:
- 1222 0000 28010000 		.section	.debug_str,"MS",%progbits,1
- 1222      02004400 
- 1222      00000201 
- 1222      FB0E0D00 
- 1222      01010101 
- 1223              	.LASF32:
- 1224 0000 4932535F 		.ascii	"I2S_1_initVar\000"
- 1224      315F696E 
- 1224      69745661 
- 1224      7200
- 1225              	.LASF17:
- 1226 000e 4932535F 		.ascii	"I2S_1_Init\000"
- 1226      315F496E 
- 1226      697400
- 1227              	.LASF4:
- 1228 0019 73686F72 		.ascii	"short unsigned int\000"
- 1228      7420756E 
- 1228      7369676E 
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 31
-
-
- 1228      65642069 
- 1228      6E7400
- 1229              	.LASF30:
- 1230 002c 433A5C55 		.ascii	"C:\\Users\\Lukas Creutzburg\\Documents\\GitHub\\PSo"
- 1230      73657273 
- 1230      5C4C756B 
- 1230      61732043 
- 1230      72657574 
- 1231 005a 43354C50 		.ascii	"C5LP-freeDSP-USB-Port\\PSoC_freeDSP_USB_Port\\Inter"
- 1231      2D667265 
- 1231      65445350 
- 1231      2D555342 
- 1231      2D506F72 
- 1232 008b 4963536F 		.ascii	"IcSound_Example.cydsn\000"
- 1232      756E645F 
- 1232      4578616D 
- 1232      706C652E 
- 1232      63796473 
- 1233              	.LASF13:
- 1234 00a1 666C6F61 		.ascii	"float\000"
- 1234      7400
- 1235              	.LASF2:
- 1236 00a7 756E7369 		.ascii	"unsigned char\000"
- 1236      676E6564 
- 1236      20636861 
- 1236      7200
- 1237              	.LASF15:
- 1238 00b5 72656738 		.ascii	"reg8\000"
- 1238      00
- 1239              	.LASF6:
- 1240 00ba 6C6F6E67 		.ascii	"long unsigned int\000"
- 1240      20756E73 
- 1240      69676E65 
- 1240      6420696E 
- 1240      7400
- 1241              	.LASF29:
- 1242 00cc 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\I2S_1.c\000"
- 1242      6E657261 
- 1242      7465645F 
- 1242      536F7572 
- 1242      63655C50 
- 1243              	.LASF11:
- 1244 00ed 75696E74 		.ascii	"uint8\000"
- 1244      3800
- 1245              	.LASF20:
- 1246 00f3 4932535F 		.ascii	"I2S_1_negThresholds\000"
- 1246      315F6E65 
- 1246      67546872 
- 1246      6573686F 
- 1246      6C647300 
- 1247              	.LASF18:
- 1248 0107 656E6162 		.ascii	"enableInterrupts\000"
- 1248      6C65496E 
- 1248      74657272 
- 1248      75707473 
- 1248      00
- 1249              	.LASF28:
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 32
-
-
- 1250 0118 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1250      4320342E 
- 1250      392E3320 
- 1250      32303135 
- 1250      30333033 
- 1251 014b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 1251      20726576 
- 1251      6973696F 
- 1251      6E203232 
- 1251      31323230 
- 1252 017e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1252      66756E63 
- 1252      74696F6E 
- 1252      2D736563 
- 1252      74696F6E 
- 1253              	.LASF14:
- 1254 01a6 646F7562 		.ascii	"double\000"
- 1254      6C6500
- 1255              	.LASF21:
- 1256 01ad 4932535F 		.ascii	"I2S_1_Stop\000"
- 1256      315F5374 
- 1256      6F7000
- 1257              	.LASF16:
- 1258 01b8 4932535F 		.ascii	"I2S_1_Enable\000"
- 1258      315F456E 
- 1258      61626C65 
- 1258      00
- 1259              	.LASF12:
- 1260 01c5 696E7438 		.ascii	"int8\000"
- 1260      00
- 1261              	.LASF19:
- 1262 01ca 4932535F 		.ascii	"I2S_1_posThresholds\000"
- 1262      315F706F 
- 1262      73546872 
- 1262      6573686F 
- 1262      6C647300 
- 1263              	.LASF24:
- 1264 01de 4932535F 		.ascii	"I2S_1_ClearTxFIFO\000"
- 1264      315F436C 
- 1264      65617254 
- 1264      78464946 
- 1264      4F00
- 1265              	.LASF0:
- 1266 01f0 756E7369 		.ascii	"unsigned int\000"
- 1266      676E6564 
- 1266      20696E74 
- 1266      00
- 1267              	.LASF8:
- 1268 01fd 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1268      206C6F6E 
- 1268      6720756E 
- 1268      7369676E 
- 1268      65642069 
- 1269              	.LASF9:
- 1270 0214 73697A65 		.ascii	"sizetype\000"
- 1270      74797065 
- 1270      00
-ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccvUkhee.s 			page 33
-
-
- 1271              	.LASF25:
- 1272 021d 4932535F 		.ascii	"I2S_1_EnableRx\000"
- 1272      315F456E 
- 1272      61626C65 
- 1272      527800
- 1273              	.LASF7:
- 1274 022c 6C6F6E67 		.ascii	"long long int\000"
- 1274      206C6F6E 
- 1274      6720696E 
- 1274      7400
- 1275              	.LASF10:
- 1276 023a 63686172 		.ascii	"char\000"
- 1276      00
- 1277              	.LASF22:
- 1278 023f 4932535F 		.ascii	"I2S_1_EnableTx\000"
- 1278      315F456E 
- 1278      61626C65 
- 1278      547800
- 1279              	.LASF3:
- 1280 024e 73686F72 		.ascii	"short int\000"
- 1280      7420696E 
- 1280      7400
- 1281              	.LASF27:
- 1282 0258 4932535F 		.ascii	"I2S_1_ClearRxFIFO\000"
- 1282      315F436C 
- 1282      65617252 
- 1282      78464946 
- 1282      4F00
- 1283              	.LASF5:
- 1284 026a 6C6F6E67 		.ascii	"long int\000"
- 1284      20696E74 
- 1284      00
- 1285              	.LASF26:
- 1286 0273 4932535F 		.ascii	"I2S_1_DisableRx\000"
- 1286      315F4469 
- 1286      7361626C 
- 1286      65527800 
- 1287              	.LASF1:
- 1288 0283 7369676E 		.ascii	"signed char\000"
- 1288      65642063 
- 1288      68617200 
- 1289              	.LASF23:
- 1290 028f 4932535F 		.ascii	"I2S_1_DisableTx\000"
- 1290      315F4469 
- 1290      7361626C 
- 1290      65547800 
- 1291              	.LASF31:
- 1292 029f 4932535F 		.ascii	"I2S_1_Start\000"
- 1292      315F5374 
- 1292      61727400 
- 1293              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 917      7420696E 
+ 917      7400
+ 918              	.LASF14:
+ 919 0234 72656738 		.ascii	"reg8\000"
+ 919      00
+ 920              	.LASF9:
+ 921 0239 73697A65 		.ascii	"sizetype\000"
+ 921      74797065 
+ 921      00
+ 922              	.LASF15:
+ 923 0242 4932535F 		.ascii	"I2S_1_Init\000"
+ 923      315F496E 
+ 923      697400
+ 924              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

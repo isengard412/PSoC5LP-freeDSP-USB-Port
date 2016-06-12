@@ -87,13 +87,6 @@ int main()
     uint8 i;
     uint8 skipNextOut = 0u;
 
-    /* Start LCD display for indication. */
-    LCD_Start();
-    LCD_PrintString("USB->DMA->DAC");
-
-    /* Start VDAC8 to generate output wave. */
-    VDAC8_Start();
-
     /* Initialize DMA channel. */
     VdacOutDmaCh = VdacDma_DmaInitialize(VDAC_DMA_BYTES_PER_BURST, VDAC_DMA_REQUEST_PER_BURST,
                                             HI16(VDAC_DMA_SRC_BASE), HI16(VDAC_DMA_DST_BASE));

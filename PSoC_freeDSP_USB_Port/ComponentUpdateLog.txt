@@ -1,0 +1,19 @@
+Last Modified Date & Time: 06/12/2016 18:21:23
+
+InterIcSound_Example: InterIcSound_Example.cydwr
+	cy_boot [v5.30] to [v5.40]
+	LIN_Dynamic [v3.30] to [v3.40]
+
+USBFS_AUDIO_PSoC3_5LP_Example: USBFS_AUDIO_PSoC3_5LP_Example.cydwr
+	cy_boot [v5.30] to [v5.40]
+	LIN_Dynamic [v3.30] to [v3.40]
+
+USBFS_MIDI_PSoC3_5LP_Example: USBFS_MIDI_PSoC3_5LP_Example.cydwr
+	cy_boot [v5.30] to [v5.40]
+	LIN_Dynamic [v3.30] to [v3.40]
+
+Design01: Design01.cydwr
+	cy_boot [v5.30] to [v5.40]
+	LIN_Dynamic [v3.30] to [v3.40]
+
+

@@ -26,7 +26,7 @@
 *   Conditional Compilation Parameters
 ***************************************/
 
-#define I2S_1_DIRECTION              (3u)
+#define I2S_1_DIRECTION              (2u)
 #define I2S_1_WORD_SELECT            (64u)
 #define I2S_1_DYNAMIC_BIT_RESOLUTION (0u == 1u)
 #define I2S_1_RX_DATA_INTERLEAVING   (1u)
@@ -63,7 +63,7 @@
 #define I2S_1_TX_STEREO_3_PRESENT    (I2S_1_NUMBER_TX_CHANNELS >= 8u)
 #define I2S_1_TX_STEREO_4_PRESENT    (I2S_1_NUMBER_TX_CHANNELS == 10u)
 
-#define I2S_1_CLIP_DETECT_ENABLE     (0u != 1u)
+#define I2S_1_CLIP_DETECT_ENABLE     (0u != 0u)
 
 
 /***************************************

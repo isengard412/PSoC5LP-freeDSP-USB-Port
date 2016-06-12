@@ -1,9 +1,0 @@
-C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\InterIcSound_Example.cyprj|8a23a52b-d30b-4a76-88dd-835920721017
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2ccf0322-27e8-4b32-898a-ad01046ae206
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|21783ee7-a2d3-4fe6-8fc2-457deb244856
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|7f93da03-3a4e-4054-ad9e-d36f5b8bb4dc
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|acfed32a-0581-4122-94d0-9f312f454fd9
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d71b1921-77ab-4cbc-8434-c4ecf28add25
-C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_AUDIO_PSoC3_5LP_Example.cydsn\USBFS_AUDIO_PSoC3_5LP_Example.cyprj|0a835233-d339-47af-9a5e-e15a0989547d
-C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_MIDI_PSoC3_5LP_Example.cydsn\USBFS_MIDI_PSoC3_5LP_Example.cyprj|251bbff2-7de9-4fe1-bdce-40012586940f
-C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\USBFS_Multichannel.cydsn\USBFS_Multichannel.cyprj|888d5fd3-9321-4359-9e8b-683d86492461

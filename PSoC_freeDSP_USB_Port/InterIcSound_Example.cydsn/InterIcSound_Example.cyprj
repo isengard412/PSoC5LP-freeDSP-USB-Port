@@ -365,14 +365,14 @@
 <CyGuid_ebc4f06d-207f-49c2-a540-72acf4adabc0 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFolder" version="2">
 <CyGuid_2f73275c-45bf-46ba-b3b1-00a2fe0c8dd8 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtBaseContainer" version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="RxDMA" persistent="">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <CyGuid_0820c2e7-528d-4137-9a08-97257b946089 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItemList" version="2">
 <dependencies>
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="RxDMA_dma.c" persistent=".\Generated_Source\PSoC5\RxDMA_dma.c">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="ARM_C_FILE" />
 <PropertyDeltas />
@@ -381,7 +381,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="RxDMA_dma.h" persistent=".\Generated_Source\PSoC5\RxDMA_dma.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -395,14 +395,14 @@
 <CyGuid_ebc4f06d-207f-49c2-a540-72acf4adabc0 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFolder" version="2">
 <CyGuid_2f73275c-45bf-46ba-b3b1-00a2fe0c8dd8 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtBaseContainer" version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD" persistent="">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <CyGuid_0820c2e7-528d-4137-9a08-97257b946089 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItemList" version="2">
 <dependencies>
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD.c" persistent=".\Generated_Source\PSoC5\LCD.c">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="ARM_C_FILE" />
 <PropertyDeltas />
@@ -411,7 +411,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD.h" persistent=".\Generated_Source\PSoC5\LCD.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -420,7 +420,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD_PM.c" persistent=".\Generated_Source\PSoC5\LCD_PM.c">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="ARM_C_FILE" />
 <PropertyDeltas />
@@ -464,14 +464,14 @@
 <CyGuid_ebc4f06d-207f-49c2-a540-72acf4adabc0 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFolder" version="2">
 <CyGuid_2f73275c-45bf-46ba-b3b1-00a2fe0c8dd8 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtBaseContainer" version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="SDI" persistent="">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <CyGuid_0820c2e7-528d-4137-9a08-97257b946089 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItemList" version="2">
 <dependencies>
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="SDI_aliases.h" persistent=".\Generated_Source\PSoC5\SDI_aliases.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -480,7 +480,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="SDI.c" persistent=".\Generated_Source\PSoC5\SDI.c">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="ARM_C_FILE" />
 <PropertyDeltas />
@@ -489,7 +489,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="SDI.h" persistent=".\Generated_Source\PSoC5\SDI.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -542,14 +542,14 @@
 <CyGuid_ebc4f06d-207f-49c2-a540-72acf4adabc0 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFolder" version="2">
 <CyGuid_2f73275c-45bf-46ba-b3b1-00a2fe0c8dd8 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtBaseContainer" version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="CLIP" persistent="">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <CyGuid_0820c2e7-528d-4137-9a08-97257b946089 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItemList" version="2">
 <dependencies>
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="CLIP_aliases.h" persistent=".\Generated_Source\PSoC5\CLIP_aliases.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -558,7 +558,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="CLIP.c" persistent=".\Generated_Source\PSoC5\CLIP.c">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="ARM_C_FILE" />
 <PropertyDeltas />
@@ -567,7 +567,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="CLIP.h" persistent=".\Generated_Source\PSoC5\CLIP.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -581,14 +581,14 @@
 <CyGuid_ebc4f06d-207f-49c2-a540-72acf4adabc0 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFolder" version="2">
 <CyGuid_2f73275c-45bf-46ba-b3b1-00a2fe0c8dd8 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtBaseContainer" version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD_LCDPort" persistent="">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <CyGuid_0820c2e7-528d-4137-9a08-97257b946089 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItemList" version="2">
 <dependencies>
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD_LCDPort_aliases.h" persistent=".\Generated_Source\PSoC5\LCD_LCDPort_aliases.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -597,7 +597,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD_LCDPort.c" persistent=".\Generated_Source\PSoC5\LCD_LCDPort.c">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="ARM_C_FILE" />
 <PropertyDeltas />
@@ -606,7 +606,7 @@
 <CyGuid_405e30c3-81d4-4133-98d6-c3ecf21fec0d type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFileGenerated" version="1">
 <CyGuid_8b8ab257-35d3-4473-b57b-36315200b38b type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtFile" version="3" xml_contents_version="1">
 <CyGuid_31768f72-0253-412b-af77-e7dba74d1330 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtItem" version="2" name="LCD_LCDPort.h" persistent=".\Generated_Source\PSoC5\LCD_LCDPort.h">
-<Hidden v="False" />
+<Hidden v="True" />
 </CyGuid_31768f72-0253-412b-af77-e7dba74d1330>
 <build_action v="NONE" />
 <PropertyDeltas />
@@ -929,81 +929,7 @@
 <platform>
 <name v="4bd5669a-0e4e-4e1c-9625-e982dd945372">
 <name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@General@Output Directory" v="${ProjectDir}\${Platform}\${Config}" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@General@Additional Include Directories" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@General@AssemblyGenDebugInfo" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@General@AssemblyMacroExpansion" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@General@Preprocessor Definitions" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@General@AssemblyConditionalList" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@General@PrintListingFile" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@General@AssemblyMacroList" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Assembly@Command Line@Command Line" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@InlineAsm" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@IntPromote" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@Additional Include Directories" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@BrowseInformation" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@FloatFuzzy" v="3" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@GenerateDebugInfo" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@Preprocessor Definitions" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@WarningLevel" v="2" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@PrintListingFile" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@AssemblyCodeList" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@General@ListInclude" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@Optimization@OptimizationLevel" v="0" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@Optimization@OptimizationEmphasis" v="Size" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@Optimization@ObjectAdvanced" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@C/C++@Command Line@Command Line" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@Additional Link Files" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@GenerateCodeListing" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@RemoveUnused" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@Recursions" v="10" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@DisableUnrefWarnings" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@WarningLevel" v="2" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@PrintMapFile" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@CrossRef" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@General@GenMemoryMap" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@Debugging@GenDebugLines" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@Debugging@GenDebugPublicSyms" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@Debugging@GenDebugLocalSyms" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@Debugging@SymbolTypeInfoInOutput" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Debug@DP8051@Linker@Command Line@Command Line" v="" />
 <name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@General@Output Directory" v="${ProjectDir}\${Platform}\${Config}" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@General@Additional Include Directories" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@General@AssemblyGenDebugInfo" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@General@AssemblyMacroExpansion" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@General@Preprocessor Definitions" v="NDEBUG" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@General@AssemblyConditionalList" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@General@PrintListingFile" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@General@AssemblyMacroList" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Assembly@Command Line@Command Line" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@InlineAsm" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@IntPromote" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@Additional Include Directories" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@BrowseInformation" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@FloatFuzzy" v="3" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@GenerateDebugInfo" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@Preprocessor Definitions" v="NDEBUG" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@WarningLevel" v="2" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@PrintListingFile" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@AssemblyCodeList" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@General@ListInclude" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@Optimization@OptimizationLevel" v="2" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@Optimization@OptimizationEmphasis" v="Size" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@Optimization@ObjectAdvanced" v="False" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@C/C++@Command Line@Command Line" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@Additional Link Files" v="" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@GenerateCodeListing" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@RemoveUnused" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@Recursions" v="10" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@DisableUnrefWarnings" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@WarningLevel" v="2" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@PrintMapFile" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@CrossRef" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@General@GenMemoryMap" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@Debugging@GenDebugLines" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@Debugging@GenDebugPublicSyms" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@Debugging@GenDebugLocalSyms" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@Debugging@SymbolTypeInfoInOutput" v="True" />
-<name_val_pair name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051@Linker@Command Line@Command Line" v="" />
 </name>
 </platform>
 <platform>
@@ -1491,8 +1417,8 @@
 <project_current_platform v="c9323d49-d323-40b8-9b59-cc008d68a989" />
 <project_current_processor v="CortexM3" />
 <last_selected_tab v="Cypress" />
-<WriteAppVersionLastSavedWith v="3.3.0.7343" />
-<WriteAppMarketingVersionLastSavedWith v=" 3.3 SP1" />
+<WriteAppVersionLastSavedWith v="3.3.0.9604" />
+<WriteAppMarketingVersionLastSavedWith v=" 3.3 SP2" />
 <project_id v="f311e818-d864-48e3-8b58-9b5b1b4e825b" /><custom_data><CyGuid_7a7929f8-5e3b-4f86-a093-2d4ee6513111 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtProjectCustomData" version="1"><CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2"><userData /></CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997><properties /></CyGuid_7a7929f8-5e3b-4f86-a093-2d4ee6513111></custom_data></CyGuid_49cfd574-032a-4a64-b7be-d4eeeaf25e43>
 </CyGuid_60697ce6-dce2-4816-8680-4de0635742eb>
 <top_block v="TopDesign" />

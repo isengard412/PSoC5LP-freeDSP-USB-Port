@@ -26,25 +26,11 @@
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\I2S_1_PVT.h" value="NONE;I2S_1" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\clock.c" value="ARM_C_FILE;clock" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\clock.h" value="NONE;clock" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\RxDMA_dma.c" value="ARM_C_FILE;RxDMA" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\RxDMA_dma.h" value="NONE;RxDMA" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\LCD.c" value="ARM_C_FILE;LCD" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\LCD.h" value="NONE;LCD" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\LCD_PM.c" value="ARM_C_FILE;LCD" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\TxDMA_dma.c" value="ARM_C_FILE;TxDMA" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\TxDMA_dma.h" value="NONE;TxDMA" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\SDI_aliases.h" value="NONE;SDI" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\SDI.c" value="ARM_C_FILE;SDI" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\SDI.h" value="NONE;SDI" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\SW1_aliases.h" value="NONE;SW1" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\SW1.c" value="ARM_C_FILE;SW1" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\SW1.h" value="NONE;SW1" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\CLIP_aliases.h" value="NONE;CLIP" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\CLIP.c" value="ARM_C_FILE;CLIP" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\CLIP.h" value="NONE;CLIP" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\LCD_LCDPort_aliases.h" value="NONE;LCD_LCDPort" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\LCD_LCDPort.c" value="ARM_C_FILE;LCD_LCDPort" />
-  <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\LCD_LCDPort.h" value="NONE;LCD_LCDPort" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\cycodeshareimport.ld" value="NONE;" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\cycodeshareexport.ld" value="NONE;" />
   <file name="C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\InterIcSound_Example.cydsn\codegentemp\cycodeshareimport.scat" value="NONE;" />
