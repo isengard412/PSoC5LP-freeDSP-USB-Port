@@ -1,0 +1,1618 @@
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBFS_descr.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	USBFS_DEVICE0_DESCR
+  19              		.section	.rodata
+  20              		.align	2
+  21              		.type	USBFS_DEVICE0_DESCR, %object
+  22              		.size	USBFS_DEVICE0_DESCR, 18
+  23              	USBFS_DEVICE0_DESCR:
+  24 0000 12       		.byte	18
+  25 0001 01       		.byte	1
+  26 0002 00       		.byte	0
+  27 0003 02       		.byte	2
+  28 0004 00       		.byte	0
+  29 0005 00       		.byte	0
+  30 0006 00       		.byte	0
+  31 0007 08       		.byte	8
+  32 0008 B4       		.byte	-76
+  33 0009 04       		.byte	4
+  34 000a 01       		.byte	1
+  35 000b 20       		.byte	32
+  36 000c 00       		.byte	0
+  37 000d 00       		.byte	0
+  38 000e 0B       		.byte	11
+  39 000f 0A       		.byte	10
+  40 0010 00       		.byte	0
+  41 0011 01       		.byte	1
+  42              		.global	USBFS_DEVICE0_CONFIGURATION0_DESCR
+  43 0012 0000     		.align	2
+  44              		.type	USBFS_DEVICE0_CONFIGURATION0_DESCR, %object
+  45              		.size	USBFS_DEVICE0_CONFIGURATION0_DESCR, 172
+  46              	USBFS_DEVICE0_CONFIGURATION0_DESCR:
+  47 0014 09       		.byte	9
+  48 0015 02       		.byte	2
+  49 0016 AC       		.byte	-84
+  50 0017 00       		.byte	0
+  51 0018 02       		.byte	2
+  52 0019 01       		.byte	1
+  53 001a 00       		.byte	0
+  54 001b 80       		.byte	-128
+  55 001c 96       		.byte	-106
+  56 001d 09       		.byte	9
+  57 001e 04       		.byte	4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 2
+
+
+  58 001f 00       		.byte	0
+  59 0020 00       		.byte	0
+  60 0021 01       		.byte	1
+  61 0022 01       		.byte	1
+  62 0023 01       		.byte	1
+  63 0024 00       		.byte	0
+  64 0025 0C       		.byte	12
+  65 0026 09       		.byte	9
+  66 0027 24       		.byte	36
+  67 0028 01       		.byte	1
+  68 0029 00       		.byte	0
+  69 002a 01       		.byte	1
+  70 002b 26       		.byte	38
+  71 002c 00       		.byte	0
+  72 002d 01       		.byte	1
+  73 002e 01       		.byte	1
+  74 002f 08       		.byte	8
+  75 0030 24       		.byte	36
+  76 0031 06       		.byte	6
+  77 0032 02       		.byte	2
+  78 0033 01       		.byte	1
+  79 0034 01       		.byte	1
+  80 0035 03       		.byte	3
+  81 0036 00       		.byte	0
+  82 0037 0C       		.byte	12
+  83 0038 24       		.byte	36
+  84 0039 02       		.byte	2
+  85 003a 01       		.byte	1
+  86 003b 01       		.byte	1
+  87 003c 01       		.byte	1
+  88 003d 00       		.byte	0
+  89 003e 02       		.byte	2
+  90 003f 03       		.byte	3
+  91 0040 00       		.byte	0
+  92 0041 00       		.byte	0
+  93 0042 0D       		.byte	13
+  94 0043 09       		.byte	9
+  95 0044 24       		.byte	36
+  96 0045 03       		.byte	3
+  97 0046 03       		.byte	3
+  98 0047 01       		.byte	1
+  99 0048 03       		.byte	3
+ 100 0049 00       		.byte	0
+ 101 004a 02       		.byte	2
+ 102 004b 0E       		.byte	14
+ 103 004c 09       		.byte	9
+ 104 004d 05       		.byte	5
+ 105 004e 86       		.byte	-122
+ 106 004f 03       		.byte	3
+ 107 0050 02       		.byte	2
+ 108 0051 00       		.byte	0
+ 109 0052 1E       		.byte	30
+ 110 0053 00       		.byte	0
+ 111 0054 00       		.byte	0
+ 112 0055 09       		.byte	9
+ 113 0056 04       		.byte	4
+ 114 0057 01       		.byte	1
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 3
+
+
+ 115 0058 00       		.byte	0
+ 116 0059 00       		.byte	0
+ 117 005a 01       		.byte	1
+ 118 005b 02       		.byte	2
+ 119 005c 00       		.byte	0
+ 120 005d 0C       		.byte	12
+ 121 005e 09       		.byte	9
+ 122 005f 04       		.byte	4
+ 123 0060 01       		.byte	1
+ 124 0061 01       		.byte	1
+ 125 0062 01       		.byte	1
+ 126 0063 01       		.byte	1
+ 127 0064 02       		.byte	2
+ 128 0065 00       		.byte	0
+ 129 0066 0F       		.byte	15
+ 130 0067 07       		.byte	7
+ 131 0068 24       		.byte	36
+ 132 0069 01       		.byte	1
+ 133 006a 01       		.byte	1
+ 134 006b 01       		.byte	1
+ 135 006c 01       		.byte	1
+ 136 006d 00       		.byte	0
+ 137 006e 11       		.byte	17
+ 138 006f 24       		.byte	36
+ 139 0070 02       		.byte	2
+ 140 0071 01       		.byte	1
+ 141 0072 02       		.byte	2
+ 142 0073 02       		.byte	2
+ 143 0074 10       		.byte	16
+ 144 0075 03       		.byte	3
+ 145 0076 00       		.byte	0
+ 146 0077 7D       		.byte	125
+ 147 0078 00       		.byte	0
+ 148 0079 44       		.byte	68
+ 149 007a AC       		.byte	-84
+ 150 007b 00       		.byte	0
+ 151 007c 80       		.byte	-128
+ 152 007d BB       		.byte	-69
+ 153 007e 00       		.byte	0
+ 154 007f 09       		.byte	9
+ 155 0080 05       		.byte	5
+ 156 0081 01       		.byte	1
+ 157 0082 0D       		.byte	13
+ 158 0083 C0       		.byte	-64
+ 159 0084 00       		.byte	0
+ 160 0085 01       		.byte	1
+ 161 0086 00       		.byte	0
+ 162 0087 00       		.byte	0
+ 163 0088 07       		.byte	7
+ 164 0089 25       		.byte	37
+ 165 008a 01       		.byte	1
+ 166 008b 01       		.byte	1
+ 167 008c 01       		.byte	1
+ 168 008d 01       		.byte	1
+ 169 008e 00       		.byte	0
+ 170 008f 09       		.byte	9
+ 171 0090 04       		.byte	4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 4
+
+
+ 172 0091 01       		.byte	1
+ 173 0092 02       		.byte	2
+ 174 0093 01       		.byte	1
+ 175 0094 01       		.byte	1
+ 176 0095 02       		.byte	2
+ 177 0096 00       		.byte	0
+ 178 0097 10       		.byte	16
+ 179 0098 07       		.byte	7
+ 180 0099 24       		.byte	36
+ 181 009a 01       		.byte	1
+ 182 009b 01       		.byte	1
+ 183 009c 01       		.byte	1
+ 184 009d 01       		.byte	1
+ 185 009e 00       		.byte	0
+ 186 009f 11       		.byte	17
+ 187 00a0 24       		.byte	36
+ 188 00a1 02       		.byte	2
+ 189 00a2 01       		.byte	1
+ 190 00a3 02       		.byte	2
+ 191 00a4 03       		.byte	3
+ 192 00a5 18       		.byte	24
+ 193 00a6 03       		.byte	3
+ 194 00a7 00       		.byte	0
+ 195 00a8 7D       		.byte	125
+ 196 00a9 00       		.byte	0
+ 197 00aa 44       		.byte	68
+ 198 00ab AC       		.byte	-84
+ 199 00ac 00       		.byte	0
+ 200 00ad 80       		.byte	-128
+ 201 00ae BB       		.byte	-69
+ 202 00af 00       		.byte	0
+ 203 00b0 09       		.byte	9
+ 204 00b1 05       		.byte	5
+ 205 00b2 01       		.byte	1
+ 206 00b3 0D       		.byte	13
+ 207 00b4 20       		.byte	32
+ 208 00b5 01       		.byte	1
+ 209 00b6 01       		.byte	1
+ 210 00b7 00       		.byte	0
+ 211 00b8 00       		.byte	0
+ 212 00b9 07       		.byte	7
+ 213 00ba 25       		.byte	37
+ 214 00bb 01       		.byte	1
+ 215 00bc 01       		.byte	1
+ 216 00bd 01       		.byte	1
+ 217 00be 01       		.byte	1
+ 218 00bf 00       		.byte	0
+ 219              		.global	USBFS_STRING_DESCRIPTORS
+ 220              		.align	2
+ 221              		.type	USBFS_STRING_DESCRIPTORS, %object
+ 222              		.size	USBFS_STRING_DESCRIPTORS, 553
+ 223              	USBFS_STRING_DESCRIPTORS:
+ 224 00c0 04       		.byte	4
+ 225 00c1 03       		.byte	3
+ 226 00c2 09       		.byte	9
+ 227 00c3 04       		.byte	4
+ 228 00c4 44       		.byte	68
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 5
+
+
+ 229 00c5 03       		.byte	3
+ 230 00c6 43       		.byte	67
+ 231 00c7 00       		.byte	0
+ 232 00c8 79       		.byte	121
+ 233 00c9 00       		.byte	0
+ 234 00ca 70       		.byte	112
+ 235 00cb 00       		.byte	0
+ 236 00cc 72       		.byte	114
+ 237 00cd 00       		.byte	0
+ 238 00ce 65       		.byte	101
+ 239 00cf 00       		.byte	0
+ 240 00d0 73       		.byte	115
+ 241 00d1 00       		.byte	0
+ 242 00d2 73       		.byte	115
+ 243 00d3 00       		.byte	0
+ 244 00d4 20       		.byte	32
+ 245 00d5 00       		.byte	0
+ 246 00d6 53       		.byte	83
+ 247 00d7 00       		.byte	0
+ 248 00d8 65       		.byte	101
+ 249 00d9 00       		.byte	0
+ 250 00da 6D       		.byte	109
+ 251 00db 00       		.byte	0
+ 252 00dc 69       		.byte	105
+ 253 00dd 00       		.byte	0
+ 254 00de 63       		.byte	99
+ 255 00df 00       		.byte	0
+ 256 00e0 6F       		.byte	111
+ 257 00e1 00       		.byte	0
+ 258 00e2 6E       		.byte	110
+ 259 00e3 00       		.byte	0
+ 260 00e4 64       		.byte	100
+ 261 00e5 00       		.byte	0
+ 262 00e6 75       		.byte	117
+ 263 00e7 00       		.byte	0
+ 264 00e8 63       		.byte	99
+ 265 00e9 00       		.byte	0
+ 266 00ea 74       		.byte	116
+ 267 00eb 00       		.byte	0
+ 268 00ec 6F       		.byte	111
+ 269 00ed 00       		.byte	0
+ 270 00ee 72       		.byte	114
+ 271 00ef 00       		.byte	0
+ 272 00f0 20       		.byte	32
+ 273 00f1 00       		.byte	0
+ 274 00f2 43       		.byte	67
+ 275 00f3 00       		.byte	0
+ 276 00f4 6F       		.byte	111
+ 277 00f5 00       		.byte	0
+ 278 00f6 72       		.byte	114
+ 279 00f7 00       		.byte	0
+ 280 00f8 70       		.byte	112
+ 281 00f9 00       		.byte	0
+ 282 00fa 6F       		.byte	111
+ 283 00fb 00       		.byte	0
+ 284 00fc 72       		.byte	114
+ 285 00fd 00       		.byte	0
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 6
+
+
+ 286 00fe 61       		.byte	97
+ 287 00ff 00       		.byte	0
+ 288 0100 74       		.byte	116
+ 289 0101 00       		.byte	0
+ 290 0102 69       		.byte	105
+ 291 0103 00       		.byte	0
+ 292 0104 6F       		.byte	111
+ 293 0105 00       		.byte	0
+ 294 0106 6E       		.byte	110
+ 295 0107 00       		.byte	0
+ 296 0108 1E       		.byte	30
+ 297 0109 03       		.byte	3
+ 298 010a 55       		.byte	85
+ 299 010b 00       		.byte	0
+ 300 010c 53       		.byte	83
+ 301 010d 00       		.byte	0
+ 302 010e 42       		.byte	66
+ 303 010f 00       		.byte	0
+ 304 0110 20       		.byte	32
+ 305 0111 00       		.byte	0
+ 306 0112 41       		.byte	65
+ 307 0113 00       		.byte	0
+ 308 0114 75       		.byte	117
+ 309 0115 00       		.byte	0
+ 310 0116 64       		.byte	100
+ 311 0117 00       		.byte	0
+ 312 0118 69       		.byte	105
+ 313 0119 00       		.byte	0
+ 314 011a 6F       		.byte	111
+ 315 011b 00       		.byte	0
+ 316 011c 20       		.byte	32
+ 317 011d 00       		.byte	0
+ 318 011e 44       		.byte	68
+ 319 011f 00       		.byte	0
+ 320 0120 65       		.byte	101
+ 321 0121 00       		.byte	0
+ 322 0122 6D       		.byte	109
+ 323 0123 00       		.byte	0
+ 324 0124 6F       		.byte	111
+ 325 0125 00       		.byte	0
+ 326 0126 22       		.byte	34
+ 327 0127 03       		.byte	3
+ 328 0128 43       		.byte	67
+ 329 0129 00       		.byte	0
+ 330 012a 6F       		.byte	111
+ 331 012b 00       		.byte	0
+ 332 012c 6E       		.byte	110
+ 333 012d 00       		.byte	0
+ 334 012e 74       		.byte	116
+ 335 012f 00       		.byte	0
+ 336 0130 72       		.byte	114
+ 337 0131 00       		.byte	0
+ 338 0132 6F       		.byte	111
+ 339 0133 00       		.byte	0
+ 340 0134 6C       		.byte	108
+ 341 0135 00       		.byte	0
+ 342 0136 20       		.byte	32
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 7
+
+
+ 343 0137 00       		.byte	0
+ 344 0138 49       		.byte	73
+ 345 0139 00       		.byte	0
+ 346 013a 6E       		.byte	110
+ 347 013b 00       		.byte	0
+ 348 013c 65       		.byte	101
+ 349 013d 00       		.byte	0
+ 350 013e 72       		.byte	114
+ 351 013f 00       		.byte	0
+ 352 0140 66       		.byte	102
+ 353 0141 00       		.byte	0
+ 354 0142 61       		.byte	97
+ 355 0143 00       		.byte	0
+ 356 0144 63       		.byte	99
+ 357 0145 00       		.byte	0
+ 358 0146 65       		.byte	101
+ 359 0147 00       		.byte	0
+ 360 0148 28       		.byte	40
+ 361 0149 03       		.byte	3
+ 362 014a 53       		.byte	83
+ 363 014b 00       		.byte	0
+ 364 014c 74       		.byte	116
+ 365 014d 00       		.byte	0
+ 366 014e 72       		.byte	114
+ 367 014f 00       		.byte	0
+ 368 0150 65       		.byte	101
+ 369 0151 00       		.byte	0
+ 370 0152 61       		.byte	97
+ 371 0153 00       		.byte	0
+ 372 0154 6D       		.byte	109
+ 373 0155 00       		.byte	0
+ 374 0156 69       		.byte	105
+ 375 0157 00       		.byte	0
+ 376 0158 6E       		.byte	110
+ 377 0159 00       		.byte	0
+ 378 015a 67       		.byte	103
+ 379 015b 00       		.byte	0
+ 380 015c 20       		.byte	32
+ 381 015d 00       		.byte	0
+ 382 015e 49       		.byte	73
+ 383 015f 00       		.byte	0
+ 384 0160 6E       		.byte	110
+ 385 0161 00       		.byte	0
+ 386 0162 74       		.byte	116
+ 387 0163 00       		.byte	0
+ 388 0164 65       		.byte	101
+ 389 0165 00       		.byte	0
+ 390 0166 72       		.byte	114
+ 391 0167 00       		.byte	0
+ 392 0168 66       		.byte	102
+ 393 0169 00       		.byte	0
+ 394 016a 61       		.byte	97
+ 395 016b 00       		.byte	0
+ 396 016c 63       		.byte	99
+ 397 016d 00       		.byte	0
+ 398 016e 65       		.byte	101
+ 399 016f 00       		.byte	0
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 8
+
+
+ 400 0170 2C       		.byte	44
+ 401 0171 03       		.byte	3
+ 402 0172 43       		.byte	67
+ 403 0173 00       		.byte	0
+ 404 0174 79       		.byte	121
+ 405 0175 00       		.byte	0
+ 406 0176 70       		.byte	112
+ 407 0177 00       		.byte	0
+ 408 0178 72       		.byte	114
+ 409 0179 00       		.byte	0
+ 410 017a 65       		.byte	101
+ 411 017b 00       		.byte	0
+ 412 017c 73       		.byte	115
+ 413 017d 00       		.byte	0
+ 414 017e 73       		.byte	115
+ 415 017f 00       		.byte	0
+ 416 0180 20       		.byte	32
+ 417 0181 00       		.byte	0
+ 418 0182 53       		.byte	83
+ 419 0183 00       		.byte	0
+ 420 0184 65       		.byte	101
+ 421 0185 00       		.byte	0
+ 422 0186 6D       		.byte	109
+ 423 0187 00       		.byte	0
+ 424 0188 69       		.byte	105
+ 425 0189 00       		.byte	0
+ 426 018a 63       		.byte	99
+ 427 018b 00       		.byte	0
+ 428 018c 6F       		.byte	111
+ 429 018d 00       		.byte	0
+ 430 018e 6E       		.byte	110
+ 431 018f 00       		.byte	0
+ 432 0190 64       		.byte	100
+ 433 0191 00       		.byte	0
+ 434 0192 75       		.byte	117
+ 435 0193 00       		.byte	0
+ 436 0194 63       		.byte	99
+ 437 0195 00       		.byte	0
+ 438 0196 74       		.byte	116
+ 439 0197 00       		.byte	0
+ 440 0198 6F       		.byte	111
+ 441 0199 00       		.byte	0
+ 442 019a 72       		.byte	114
+ 443 019b 00       		.byte	0
+ 444 019c 24       		.byte	36
+ 445 019d 03       		.byte	3
+ 446 019e 43       		.byte	67
+ 447 019f 00       		.byte	0
+ 448 01a0 79       		.byte	121
+ 449 01a1 00       		.byte	0
+ 450 01a2 70       		.byte	112
+ 451 01a3 00       		.byte	0
+ 452 01a4 72       		.byte	114
+ 453 01a5 00       		.byte	0
+ 454 01a6 65       		.byte	101
+ 455 01a7 00       		.byte	0
+ 456 01a8 73       		.byte	115
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 9
+
+
+ 457 01a9 00       		.byte	0
+ 458 01aa 73       		.byte	115
+ 459 01ab 00       		.byte	0
+ 460 01ac 20       		.byte	32
+ 461 01ad 00       		.byte	0
+ 462 01ae 55       		.byte	85
+ 463 01af 00       		.byte	0
+ 464 01b0 53       		.byte	83
+ 465 01b1 00       		.byte	0
+ 466 01b2 42       		.byte	66
+ 467 01b3 00       		.byte	0
+ 468 01b4 20       		.byte	32
+ 469 01b5 00       		.byte	0
+ 470 01b6 41       		.byte	65
+ 471 01b7 00       		.byte	0
+ 472 01b8 75       		.byte	117
+ 473 01b9 00       		.byte	0
+ 474 01ba 64       		.byte	100
+ 475 01bb 00       		.byte	0
+ 476 01bc 69       		.byte	105
+ 477 01bd 00       		.byte	0
+ 478 01be 6F       		.byte	111
+ 479 01bf 00       		.byte	0
+ 480 01c0 28       		.byte	40
+ 481 01c1 03       		.byte	3
+ 482 01c2 43       		.byte	67
+ 483 01c3 00       		.byte	0
+ 484 01c4 79       		.byte	121
+ 485 01c5 00       		.byte	0
+ 486 01c6 70       		.byte	112
+ 487 01c7 00       		.byte	0
+ 488 01c8 72       		.byte	114
+ 489 01c9 00       		.byte	0
+ 490 01ca 65       		.byte	101
+ 491 01cb 00       		.byte	0
+ 492 01cc 73       		.byte	115
+ 493 01cd 00       		.byte	0
+ 494 01ce 73       		.byte	115
+ 495 01cf 00       		.byte	0
+ 496 01d0 41       		.byte	65
+ 497 01d1 00       		.byte	0
+ 498 01d2 75       		.byte	117
+ 499 01d3 00       		.byte	0
+ 500 01d4 64       		.byte	100
+ 501 01d5 00       		.byte	0
+ 502 01d6 69       		.byte	105
+ 503 01d7 00       		.byte	0
+ 504 01d8 6F       		.byte	111
+ 505 01d9 00       		.byte	0
+ 506 01da 43       		.byte	67
+ 507 01db 00       		.byte	0
+ 508 01dc 6F       		.byte	111
+ 509 01dd 00       		.byte	0
+ 510 01de 6E       		.byte	110
+ 511 01df 00       		.byte	0
+ 512 01e0 74       		.byte	116
+ 513 01e1 00       		.byte	0
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 10
+
+
+ 514 01e2 72       		.byte	114
+ 515 01e3 00       		.byte	0
+ 516 01e4 6F       		.byte	111
+ 517 01e5 00       		.byte	0
+ 518 01e6 6C       		.byte	108
+ 519 01e7 00       		.byte	0
+ 520 01e8 1C       		.byte	28
+ 521 01e9 03       		.byte	3
+ 522 01ea 5A       		.byte	90
+ 523 01eb 00       		.byte	0
+ 524 01ec 65       		.byte	101
+ 525 01ed 00       		.byte	0
+ 526 01ee 72       		.byte	114
+ 527 01ef 00       		.byte	0
+ 528 01f0 6F       		.byte	111
+ 529 01f1 00       		.byte	0
+ 530 01f2 42       		.byte	66
+ 531 01f3 00       		.byte	0
+ 532 01f4 61       		.byte	97
+ 533 01f5 00       		.byte	0
+ 534 01f6 6E       		.byte	110
+ 535 01f7 00       		.byte	0
+ 536 01f8 64       		.byte	100
+ 537 01f9 00       		.byte	0
+ 538 01fa 77       		.byte	119
+ 539 01fb 00       		.byte	0
+ 540 01fc 69       		.byte	105
+ 541 01fd 00       		.byte	0
+ 542 01fe 64       		.byte	100
+ 543 01ff 00       		.byte	0
+ 544 0200 74       		.byte	116
+ 545 0201 00       		.byte	0
+ 546 0202 68       		.byte	104
+ 547 0203 00       		.byte	0
+ 548 0204 2E       		.byte	46
+ 549 0205 03       		.byte	3
+ 550 0206 41       		.byte	65
+ 551 0207 00       		.byte	0
+ 552 0208 75       		.byte	117
+ 553 0209 00       		.byte	0
+ 554 020a 64       		.byte	100
+ 555 020b 00       		.byte	0
+ 556 020c 69       		.byte	105
+ 557 020d 00       		.byte	0
+ 558 020e 6F       		.byte	111
+ 559 020f 00       		.byte	0
+ 560 0210 53       		.byte	83
+ 561 0211 00       		.byte	0
+ 562 0212 74       		.byte	116
+ 563 0213 00       		.byte	0
+ 564 0214 72       		.byte	114
+ 565 0215 00       		.byte	0
+ 566 0216 65       		.byte	101
+ 567 0217 00       		.byte	0
+ 568 0218 61       		.byte	97
+ 569 0219 00       		.byte	0
+ 570 021a 6D       		.byte	109
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 11
+
+
+ 571 021b 00       		.byte	0
+ 572 021c 69       		.byte	105
+ 573 021d 00       		.byte	0
+ 574 021e 6E       		.byte	110
+ 575 021f 00       		.byte	0
+ 576 0220 67       		.byte	103
+ 577 0221 00       		.byte	0
+ 578 0222 20       		.byte	32
+ 579 0223 00       		.byte	0
+ 580 0224 53       		.byte	83
+ 581 0225 00       		.byte	0
+ 582 0226 70       		.byte	112
+ 583 0227 00       		.byte	0
+ 584 0228 65       		.byte	101
+ 585 0229 00       		.byte	0
+ 586 022a 61       		.byte	97
+ 587 022b 00       		.byte	0
+ 588 022c 6B       		.byte	107
+ 589 022d 00       		.byte	0
+ 590 022e 65       		.byte	101
+ 591 022f 00       		.byte	0
+ 592 0230 72       		.byte	114
+ 593 0231 00       		.byte	0
+ 594 0232 10       		.byte	16
+ 595 0233 03       		.byte	3
+ 596 0234 46       		.byte	70
+ 597 0235 00       		.byte	0
+ 598 0236 72       		.byte	114
+ 599 0237 00       		.byte	0
+ 600 0238 65       		.byte	101
+ 601 0239 00       		.byte	0
+ 602 023a 65       		.byte	101
+ 603 023b 00       		.byte	0
+ 604 023c 44       		.byte	68
+ 605 023d 00       		.byte	0
+ 606 023e 53       		.byte	83
+ 607 023f 00       		.byte	0
+ 608 0240 50       		.byte	80
+ 609 0241 00       		.byte	0
+ 610 0242 16       		.byte	22
+ 611 0243 03       		.byte	3
+ 612 0244 54       		.byte	84
+ 613 0245 00       		.byte	0
+ 614 0246 55       		.byte	85
+ 615 0247 00       		.byte	0
+ 616 0248 20       		.byte	32
+ 617 0249 00       		.byte	0
+ 618 024a 44       		.byte	68
+ 619 024b 00       		.byte	0
+ 620 024c 72       		.byte	114
+ 621 024d 00       		.byte	0
+ 622 024e 65       		.byte	101
+ 623 024f 00       		.byte	0
+ 624 0250 73       		.byte	115
+ 625 0251 00       		.byte	0
+ 626 0252 64       		.byte	100
+ 627 0253 00       		.byte	0
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 12
+
+
+ 628 0254 65       		.byte	101
+ 629 0255 00       		.byte	0
+ 630 0256 6E       		.byte	110
+ 631 0257 00       		.byte	0
+ 632 0258 2C       		.byte	44
+ 633 0259 03       		.byte	3
+ 634 025a 43       		.byte	67
+ 635 025b 00       		.byte	0
+ 636 025c 79       		.byte	121
+ 637 025d 00       		.byte	0
+ 638 025e 70       		.byte	112
+ 639 025f 00       		.byte	0
+ 640 0260 72       		.byte	114
+ 641 0261 00       		.byte	0
+ 642 0262 65       		.byte	101
+ 643 0263 00       		.byte	0
+ 644 0264 73       		.byte	115
+ 645 0265 00       		.byte	0
+ 646 0266 73       		.byte	115
+ 647 0267 00       		.byte	0
+ 648 0268 20       		.byte	32
+ 649 0269 00       		.byte	0
+ 650 026a 44       		.byte	68
+ 651 026b 00       		.byte	0
+ 652 026c 69       		.byte	105
+ 653 026d 00       		.byte	0
+ 654 026e 67       		.byte	103
+ 655 026f 00       		.byte	0
+ 656 0270 69       		.byte	105
+ 657 0271 00       		.byte	0
+ 658 0272 74       		.byte	116
+ 659 0273 00       		.byte	0
+ 660 0274 61       		.byte	97
+ 661 0275 00       		.byte	0
+ 662 0276 6C       		.byte	108
+ 663 0277 00       		.byte	0
+ 664 0278 20       		.byte	32
+ 665 0279 00       		.byte	0
+ 666 027a 41       		.byte	65
+ 667 027b 00       		.byte	0
+ 668 027c 75       		.byte	117
+ 669 027d 00       		.byte	0
+ 670 027e 64       		.byte	100
+ 671 027f 00       		.byte	0
+ 672 0280 69       		.byte	105
+ 673 0281 00       		.byte	0
+ 674 0282 6F       		.byte	111
+ 675 0283 00       		.byte	0
+ 676 0284 1C       		.byte	28
+ 677 0285 03       		.byte	3
+ 678 0286 55       		.byte	85
+ 679 0287 00       		.byte	0
+ 680 0288 53       		.byte	83
+ 681 0289 00       		.byte	0
+ 682 028a 42       		.byte	66
+ 683 028b 00       		.byte	0
+ 684 028c 20       		.byte	32
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 13
+
+
+ 685 028d 00       		.byte	0
+ 686 028e 53       		.byte	83
+ 687 028f 00       		.byte	0
+ 688 0290 74       		.byte	116
+ 689 0291 00       		.byte	0
+ 690 0292 72       		.byte	114
+ 691 0293 00       		.byte	0
+ 692 0294 65       		.byte	101
+ 693 0295 00       		.byte	0
+ 694 0296 61       		.byte	97
+ 695 0297 00       		.byte	0
+ 696 0298 6D       		.byte	109
+ 697 0299 00       		.byte	0
+ 698 029a 69       		.byte	105
+ 699 029b 00       		.byte	0
+ 700 029c 6E       		.byte	110
+ 701 029d 00       		.byte	0
+ 702 029e 67       		.byte	103
+ 703 029f 00       		.byte	0
+ 704 02a0 10       		.byte	16
+ 705 02a1 03       		.byte	3
+ 706 02a2 53       		.byte	83
+ 707 02a3 00       		.byte	0
+ 708 02a4 70       		.byte	112
+ 709 02a5 00       		.byte	0
+ 710 02a6 65       		.byte	101
+ 711 02a7 00       		.byte	0
+ 712 02a8 61       		.byte	97
+ 713 02a9 00       		.byte	0
+ 714 02aa 6B       		.byte	107
+ 715 02ab 00       		.byte	0
+ 716 02ac 65       		.byte	101
+ 717 02ad 00       		.byte	0
+ 718 02ae 72       		.byte	114
+ 719 02af 00       		.byte	0
+ 720 02b0 1C       		.byte	28
+ 721 02b1 03       		.byte	3
+ 722 02b2 41       		.byte	65
+ 723 02b3 00       		.byte	0
+ 724 02b4 63       		.byte	99
+ 725 02b5 00       		.byte	0
+ 726 02b6 74       		.byte	116
+ 727 02b7 00       		.byte	0
+ 728 02b8 69       		.byte	105
+ 729 02b9 00       		.byte	0
+ 730 02ba 76       		.byte	118
+ 731 02bb 00       		.byte	0
+ 732 02bc 65       		.byte	101
+ 733 02bd 00       		.byte	0
+ 734 02be 20       		.byte	32
+ 735 02bf 00       		.byte	0
+ 736 02c0 31       		.byte	49
+ 737 02c1 00       		.byte	0
+ 738 02c2 36       		.byte	54
+ 739 02c3 00       		.byte	0
+ 740 02c4 20       		.byte	32
+ 741 02c5 00       		.byte	0
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 14
+
+
+ 742 02c6 62       		.byte	98
+ 743 02c7 00       		.byte	0
+ 744 02c8 69       		.byte	105
+ 745 02c9 00       		.byte	0
+ 746 02ca 74       		.byte	116
+ 747 02cb 00       		.byte	0
+ 748 02cc 1C       		.byte	28
+ 749 02cd 03       		.byte	3
+ 750 02ce 41       		.byte	65
+ 751 02cf 00       		.byte	0
+ 752 02d0 63       		.byte	99
+ 753 02d1 00       		.byte	0
+ 754 02d2 74       		.byte	116
+ 755 02d3 00       		.byte	0
+ 756 02d4 69       		.byte	105
+ 757 02d5 00       		.byte	0
+ 758 02d6 76       		.byte	118
+ 759 02d7 00       		.byte	0
+ 760 02d8 65       		.byte	101
+ 761 02d9 00       		.byte	0
+ 762 02da 20       		.byte	32
+ 763 02db 00       		.byte	0
+ 764 02dc 32       		.byte	50
+ 765 02dd 00       		.byte	0
+ 766 02de 34       		.byte	52
+ 767 02df 00       		.byte	0
+ 768 02e0 20       		.byte	32
+ 769 02e1 00       		.byte	0
+ 770 02e2 62       		.byte	98
+ 771 02e3 00       		.byte	0
+ 772 02e4 69       		.byte	105
+ 773 02e5 00       		.byte	0
+ 774 02e6 74       		.byte	116
+ 775 02e7 00       		.byte	0
+ 776 02e8 00       		.byte	0
+ 777              		.global	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+ 778 02e9 000000   		.align	2
+ 779              		.type	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE, %object
+ 780              		.size	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE, 24
+ 781              	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE:
+ 782 02ec 00       		.byte	0
+ 783 02ed 00       		.byte	0
+ 784 02ee 86       		.byte	-122
+ 785 02ef 03       		.byte	3
+ 786 02f0 0200     		.short	2
+ 787 02f2 01       		.byte	1
+ 788 02f3 00       		.space	1
+ 789 02f4 01       		.byte	1
+ 790 02f5 01       		.byte	1
+ 791 02f6 01       		.byte	1
+ 792 02f7 0D       		.byte	13
+ 793 02f8 C000     		.short	192
+ 794 02fa 01       		.byte	1
+ 795 02fb 00       		.space	1
+ 796 02fc 01       		.byte	1
+ 797 02fd 02       		.byte	2
+ 798 02fe 01       		.byte	1
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 15
+
+
+ 799 02ff 0D       		.byte	13
+ 800 0300 2001     		.short	288
+ 801 0302 01       		.byte	1
+ 802 0303 00       		.space	1
+ 803              		.global	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+ 804              		.align	2
+ 805              		.type	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS, %object
+ 806              		.size	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS, 2
+ 807              	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS:
+ 808 0304 01       		.byte	1
+ 809 0305 01       		.byte	1
+ 810              		.global	USBFS_DEVICE0_CONFIGURATION0_TABLE
+ 811 0306 0000     		.align	2
+ 812              		.type	USBFS_DEVICE0_CONFIGURATION0_TABLE, %object
+ 813              		.size	USBFS_DEVICE0_CONFIGURATION0_TABLE, 40
+ 814              	USBFS_DEVICE0_CONFIGURATION0_TABLE:
+ 815 0308 01       		.byte	1
+ 816 0309 000000   		.space	3
+ 817 030c 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_DESCR
+ 818 0310 03       		.byte	3
+ 819 0311 000000   		.space	3
+ 820 0314 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+ 821 0318 00       		.byte	0
+ 822 0319 000000   		.space	3
+ 823 031c 00000000 		.word	0
+ 824 0320 00       		.byte	0
+ 825 0321 000000   		.space	3
+ 826 0324 00000000 		.word	0
+ 827 0328 00       		.byte	0
+ 828 0329 000000   		.space	3
+ 829 032c 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+ 830              		.global	USBFS_DEVICE0_TABLE
+ 831              		.align	2
+ 832              		.type	USBFS_DEVICE0_TABLE, %object
+ 833              		.size	USBFS_DEVICE0_TABLE, 24
+ 834              	USBFS_DEVICE0_TABLE:
+ 835 0330 01       		.byte	1
+ 836 0331 000000   		.space	3
+ 837 0334 00000000 		.word	USBFS_DEVICE0_DESCR
+ 838 0338 00       		.byte	0
+ 839 0339 000000   		.space	3
+ 840 033c 00000000 		.word	0
+ 841 0340 01       		.byte	1
+ 842 0341 000000   		.space	3
+ 843 0344 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_TABLE
+ 844              		.global	USBFS_TABLE
+ 845              		.align	2
+ 846              		.type	USBFS_TABLE, %object
+ 847              		.size	USBFS_TABLE, 8
+ 848              	USBFS_TABLE:
+ 849 0348 01       		.byte	1
+ 850 0349 000000   		.space	3
+ 851 034c 00000000 		.word	USBFS_DEVICE0_TABLE
+ 852              		.text
+ 853              	.Letext0:
+ 854              		.file 1 "Generated_Source\\PSoC5\\cytypes.h"
+ 855              		.file 2 "Generated_Source\\PSoC5\\USBFS.h"
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 16
+
+
+ 856              		.file 3 "Generated_Source\\PSoC5\\USBFS_descr.c"
+ 857              		.section	.debug_info,"",%progbits
+ 858              	.Ldebug_info0:
+ 859 0000 58020000 		.4byte	0x258
+ 860 0004 0400     		.2byte	0x4
+ 861 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 862 000a 04       		.byte	0x4
+ 863 000b 01       		.uleb128 0x1
+ 864 000c DF000000 		.4byte	.LASF32
+ 865 0010 01       		.byte	0x1
+ 866 0011 03020000 		.4byte	.LASF33
+ 867 0015 52020000 		.4byte	.LASF34
+ 868 0019 00000000 		.4byte	.Ldebug_line0
+ 869 001d 02       		.uleb128 0x2
+ 870 001e 01       		.byte	0x1
+ 871 001f 06       		.byte	0x6
+ 872 0020 19030000 		.4byte	.LASF0
+ 873 0024 02       		.uleb128 0x2
+ 874 0025 01       		.byte	0x1
+ 875 0026 08       		.byte	0x8
+ 876 0027 D1000000 		.4byte	.LASF1
+ 877 002b 02       		.uleb128 0x2
+ 878 002c 02       		.byte	0x2
+ 879 002d 05       		.byte	0x5
+ 880 002e F6020000 		.4byte	.LASF2
+ 881 0032 02       		.uleb128 0x2
+ 882 0033 02       		.byte	0x2
+ 883 0034 07       		.byte	0x7
+ 884 0035 4D000000 		.4byte	.LASF3
+ 885 0039 02       		.uleb128 0x2
+ 886 003a 04       		.byte	0x4
+ 887 003b 05       		.byte	0x5
+ 888 003c 10030000 		.4byte	.LASF4
+ 889 0040 02       		.uleb128 0x2
+ 890 0041 04       		.byte	0x4
+ 891 0042 07       		.byte	0x7
+ 892 0043 CD010000 		.4byte	.LASF5
+ 893 0047 02       		.uleb128 0x2
+ 894 0048 08       		.byte	0x8
+ 895 0049 05       		.byte	0x5
+ 896 004a CC020000 		.4byte	.LASF6
+ 897 004e 02       		.uleb128 0x2
+ 898 004f 08       		.byte	0x8
+ 899 0050 07       		.byte	0x7
+ 900 0051 EC010000 		.4byte	.LASF7
+ 901 0055 03       		.uleb128 0x3
+ 902 0056 04       		.byte	0x4
+ 903 0057 05       		.byte	0x5
+ 904 0058 696E7400 		.ascii	"int\000"
+ 905 005c 02       		.uleb128 0x2
+ 906 005d 04       		.byte	0x4
+ 907 005e 07       		.byte	0x7
+ 908 005f DF010000 		.4byte	.LASF8
+ 909 0063 04       		.uleb128 0x4
+ 910 0064 00030000 		.4byte	.LASF9
+ 911 0068 01       		.byte	0x1
+ 912 0069 9201     		.2byte	0x192
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 17
+
+
+ 913 006b 24000000 		.4byte	0x24
+ 914 006f 04       		.uleb128 0x4
+ 915 0070 74010000 		.4byte	.LASF10
+ 916 0074 01       		.byte	0x1
+ 917 0075 9301     		.2byte	0x193
+ 918 0077 32000000 		.4byte	0x32
+ 919 007b 02       		.uleb128 0x2
+ 920 007c 04       		.byte	0x4
+ 921 007d 04       		.byte	0x4
+ 922 007e 60000000 		.4byte	.LASF11
+ 923 0082 02       		.uleb128 0x2
+ 924 0083 08       		.byte	0x8
+ 925 0084 04       		.byte	0x4
+ 926 0085 6D010000 		.4byte	.LASF12
+ 927 0089 02       		.uleb128 0x2
+ 928 008a 01       		.byte	0x1
+ 929 008b 08       		.byte	0x8
+ 930 008c E6020000 		.4byte	.LASF13
+ 931 0090 02       		.uleb128 0x2
+ 932 0091 04       		.byte	0x4
+ 933 0092 07       		.byte	0x7
+ 934 0093 49020000 		.4byte	.LASF14
+ 935 0097 05       		.uleb128 0x5
+ 936 0098 08       		.byte	0x8
+ 937 0099 02       		.byte	0x2
+ 938 009a 99       		.byte	0x99
+ 939 009b E8000000 		.4byte	0xe8
+ 940 009f 06       		.uleb128 0x6
+ 941 00a0 06030000 		.4byte	.LASF15
+ 942 00a4 02       		.byte	0x2
+ 943 00a5 9B       		.byte	0x9b
+ 944 00a6 63000000 		.4byte	0x63
+ 945 00aa 00       		.byte	0
+ 946 00ab 06       		.uleb128 0x6
+ 947 00ac 66000000 		.4byte	.LASF16
+ 948 00b0 02       		.byte	0x2
+ 949 00b1 9C       		.byte	0x9c
+ 950 00b2 63000000 		.4byte	0x63
+ 951 00b6 01       		.byte	0x1
+ 952 00b7 06       		.uleb128 0x6
+ 953 00b8 B8000000 		.4byte	.LASF17
+ 954 00bc 02       		.byte	0x2
+ 955 00bd 9D       		.byte	0x9d
+ 956 00be 63000000 		.4byte	0x63
+ 957 00c2 02       		.byte	0x2
+ 958 00c3 06       		.uleb128 0x6
+ 959 00c4 8A000000 		.4byte	.LASF18
+ 960 00c8 02       		.byte	0x2
+ 961 00c9 9E       		.byte	0x9e
+ 962 00ca 63000000 		.4byte	0x63
+ 963 00ce 03       		.byte	0x3
+ 964 00cf 06       		.uleb128 0x6
+ 965 00d0 EB020000 		.4byte	.LASF19
+ 966 00d4 02       		.byte	0x2
+ 967 00d5 9F       		.byte	0x9f
+ 968 00d6 6F000000 		.4byte	0x6f
+ 969 00da 04       		.byte	0x4
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 18
+
+
+ 970 00db 06       		.uleb128 0x6
+ 971 00dc 25030000 		.4byte	.LASF20
+ 972 00e0 02       		.byte	0x2
+ 973 00e1 A0       		.byte	0xa0
+ 974 00e2 63000000 		.4byte	0x63
+ 975 00e6 06       		.byte	0x6
+ 976 00e7 00       		.byte	0
+ 977 00e8 07       		.uleb128 0x7
+ 978 00e9 2F020000 		.4byte	.LASF21
+ 979 00ed 02       		.byte	0x2
+ 980 00ee A1       		.byte	0xa1
+ 981 00ef 97000000 		.4byte	0x97
+ 982 00f3 05       		.uleb128 0x5
+ 983 00f4 08       		.byte	0x8
+ 984 00f5 02       		.byte	0x2
+ 985 00f6 B0       		.byte	0xb0
+ 986 00f7 12010000 		.4byte	0x112
+ 987 00fb 08       		.uleb128 0x8
+ 988 00fc 6300     		.ascii	"c\000"
+ 989 00fe 02       		.byte	0x2
+ 990 00ff B2       		.byte	0xb2
+ 991 0100 63000000 		.4byte	0x63
+ 992 0104 00       		.byte	0
+ 993 0105 06       		.uleb128 0x6
+ 994 0106 28020000 		.4byte	.LASF22
+ 995 010a 02       		.byte	0x2
+ 996 010b B3       		.byte	0xb3
+ 997 010c 12010000 		.4byte	0x112
+ 998 0110 04       		.byte	0x4
+ 999 0111 00       		.byte	0
+ 1000 0112 09       		.uleb128 0x9
+ 1001 0113 04       		.byte	0x4
+ 1002 0114 18010000 		.4byte	0x118
+ 1003 0118 0A       		.uleb128 0xa
+ 1004 0119 07       		.uleb128 0x7
+ 1005 011a DA020000 		.4byte	.LASF23
+ 1006 011e 02       		.byte	0x2
+ 1007 011f B4       		.byte	0xb4
+ 1008 0120 F3000000 		.4byte	0xf3
+ 1009 0124 0B       		.uleb128 0xb
+ 1010 0125 63000000 		.4byte	0x63
+ 1011 0129 34010000 		.4byte	0x134
+ 1012 012d 0C       		.uleb128 0xc
+ 1013 012e 90000000 		.4byte	0x90
+ 1014 0132 11       		.byte	0x11
+ 1015 0133 00       		.byte	0
+ 1016 0134 0D       		.uleb128 0xd
+ 1017 0135 00000000 		.4byte	.LASF24
+ 1018 0139 03       		.byte	0x3
+ 1019 013a 24       		.byte	0x24
+ 1020 013b 45010000 		.4byte	0x145
+ 1021 013f 05       		.uleb128 0x5
+ 1022 0140 03       		.byte	0x3
+ 1023 0141 00000000 		.4byte	USBFS_DEVICE0_DESCR
+ 1024 0145 0E       		.uleb128 0xe
+ 1025 0146 24010000 		.4byte	0x124
+ 1026 014a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 19
+
+
+ 1027 014b 63000000 		.4byte	0x63
+ 1028 014f 5A010000 		.4byte	0x15a
+ 1029 0153 0C       		.uleb128 0xc
+ 1030 0154 90000000 		.4byte	0x90
+ 1031 0158 AB       		.byte	0xab
+ 1032 0159 00       		.byte	0
+ 1033 015a 0D       		.uleb128 0xd
+ 1034 015b AA010000 		.4byte	.LASF25
+ 1035 015f 03       		.byte	0x3
+ 1036 0160 37       		.byte	0x37
+ 1037 0161 6B010000 		.4byte	0x16b
+ 1038 0165 05       		.uleb128 0x5
+ 1039 0166 03       		.byte	0x3
+ 1040 0167 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_DESCR
+ 1041 016b 0E       		.uleb128 0xe
+ 1042 016c 4A010000 		.4byte	0x14a
+ 1043 0170 0B       		.uleb128 0xb
+ 1044 0171 E8000000 		.4byte	0xe8
+ 1045 0175 80010000 		.4byte	0x180
+ 1046 0179 0C       		.uleb128 0xc
+ 1047 017a 90000000 		.4byte	0x90
+ 1048 017e 02       		.byte	0x2
+ 1049 017f 00       		.byte	0
+ 1050 0180 0F       		.uleb128 0xf
+ 1051 0181 7B010000 		.4byte	.LASF26
+ 1052 0185 03       		.byte	0x3
+ 1053 0186 A301     		.2byte	0x1a3
+ 1054 0188 92010000 		.4byte	0x192
+ 1055 018c 05       		.uleb128 0x5
+ 1056 018d 03       		.byte	0x3
+ 1057 018e 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+ 1058 0192 0E       		.uleb128 0xe
+ 1059 0193 70010000 		.4byte	0x170
+ 1060 0197 0B       		.uleb128 0xb
+ 1061 0198 63000000 		.4byte	0x63
+ 1062 019c A7010000 		.4byte	0x1a7
+ 1063 01a0 0C       		.uleb128 0xc
+ 1064 01a1 90000000 		.4byte	0x90
+ 1065 01a5 01       		.byte	0x1
+ 1066 01a6 00       		.byte	0
+ 1067 01a7 0F       		.uleb128 0xf
+ 1068 01a8 14000000 		.4byte	.LASF27
+ 1069 01ac 03       		.byte	0x3
+ 1070 01ad A901     		.2byte	0x1a9
+ 1071 01af B9010000 		.4byte	0x1b9
+ 1072 01b3 05       		.uleb128 0x5
+ 1073 01b4 03       		.byte	0x3
+ 1074 01b5 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+ 1075 01b9 0E       		.uleb128 0xe
+ 1076 01ba 97010000 		.4byte	0x197
+ 1077 01be 0B       		.uleb128 0xb
+ 1078 01bf 19010000 		.4byte	0x119
+ 1079 01c3 CE010000 		.4byte	0x1ce
+ 1080 01c7 0C       		.uleb128 0xc
+ 1081 01c8 90000000 		.4byte	0x90
+ 1082 01cc 04       		.byte	0x4
+ 1083 01cd 00       		.byte	0
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 20
+
+
+ 1084 01ce 0F       		.uleb128 0xf
+ 1085 01cf 95000000 		.4byte	.LASF28
+ 1086 01d3 03       		.byte	0x3
+ 1087 01d4 B101     		.2byte	0x1b1
+ 1088 01d6 E0010000 		.4byte	0x1e0
+ 1089 01da 05       		.uleb128 0x5
+ 1090 01db 03       		.byte	0x3
+ 1091 01dc 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_TABLE
+ 1092 01e0 0E       		.uleb128 0xe
+ 1093 01e1 BE010000 		.4byte	0x1be
+ 1094 01e5 0B       		.uleb128 0xb
+ 1095 01e6 19010000 		.4byte	0x119
+ 1096 01ea F5010000 		.4byte	0x1f5
+ 1097 01ee 0C       		.uleb128 0xc
+ 1098 01ef 90000000 		.4byte	0x90
+ 1099 01f3 02       		.byte	0x2
+ 1100 01f4 00       		.byte	0
+ 1101 01f5 0F       		.uleb128 0xf
+ 1102 01f6 BD000000 		.4byte	.LASF29
+ 1103 01fa 03       		.byte	0x3
+ 1104 01fb BC01     		.2byte	0x1bc
+ 1105 01fd 07020000 		.4byte	0x207
+ 1106 0201 05       		.uleb128 0x5
+ 1107 0202 03       		.byte	0x3
+ 1108 0203 00000000 		.4byte	USBFS_DEVICE0_TABLE
+ 1109 0207 0E       		.uleb128 0xe
+ 1110 0208 E5010000 		.4byte	0x1e5
+ 1111 020c 0B       		.uleb128 0xb
+ 1112 020d 19010000 		.4byte	0x119
+ 1113 0211 1C020000 		.4byte	0x21c
+ 1114 0215 0C       		.uleb128 0xc
+ 1115 0216 90000000 		.4byte	0x90
+ 1116 021a 00       		.byte	0
+ 1117 021b 00       		.byte	0
+ 1118 021c 0F       		.uleb128 0xf
+ 1119 021d 41000000 		.4byte	.LASF30
+ 1120 0221 03       		.byte	0x3
+ 1121 0222 C401     		.2byte	0x1c4
+ 1122 0224 2E020000 		.4byte	0x22e
+ 1123 0228 05       		.uleb128 0x5
+ 1124 0229 03       		.byte	0x3
+ 1125 022a 00000000 		.4byte	USBFS_TABLE
+ 1126 022e 0E       		.uleb128 0xe
+ 1127 022f 0C020000 		.4byte	0x20c
+ 1128 0233 0B       		.uleb128 0xb
+ 1129 0234 63000000 		.4byte	0x63
+ 1130 0238 44020000 		.4byte	0x244
+ 1131 023c 10       		.uleb128 0x10
+ 1132 023d 90000000 		.4byte	0x90
+ 1133 0241 2802     		.2byte	0x228
+ 1134 0243 00       		.byte	0
+ 1135 0244 0F       		.uleb128 0xf
+ 1136 0245 71000000 		.4byte	.LASF31
+ 1137 0249 03       		.byte	0x3
+ 1138 024a 0301     		.2byte	0x103
+ 1139 024c 56020000 		.4byte	0x256
+ 1140 0250 05       		.uleb128 0x5
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 21
+
+
+ 1141 0251 03       		.byte	0x3
+ 1142 0252 00000000 		.4byte	USBFS_STRING_DESCRIPTORS
+ 1143 0256 0E       		.uleb128 0xe
+ 1144 0257 33020000 		.4byte	0x233
+ 1145 025b 00       		.byte	0
+ 1146              		.section	.debug_abbrev,"",%progbits
+ 1147              	.Ldebug_abbrev0:
+ 1148 0000 01       		.uleb128 0x1
+ 1149 0001 11       		.uleb128 0x11
+ 1150 0002 01       		.byte	0x1
+ 1151 0003 25       		.uleb128 0x25
+ 1152 0004 0E       		.uleb128 0xe
+ 1153 0005 13       		.uleb128 0x13
+ 1154 0006 0B       		.uleb128 0xb
+ 1155 0007 03       		.uleb128 0x3
+ 1156 0008 0E       		.uleb128 0xe
+ 1157 0009 1B       		.uleb128 0x1b
+ 1158 000a 0E       		.uleb128 0xe
+ 1159 000b 10       		.uleb128 0x10
+ 1160 000c 17       		.uleb128 0x17
+ 1161 000d 00       		.byte	0
+ 1162 000e 00       		.byte	0
+ 1163 000f 02       		.uleb128 0x2
+ 1164 0010 24       		.uleb128 0x24
+ 1165 0011 00       		.byte	0
+ 1166 0012 0B       		.uleb128 0xb
+ 1167 0013 0B       		.uleb128 0xb
+ 1168 0014 3E       		.uleb128 0x3e
+ 1169 0015 0B       		.uleb128 0xb
+ 1170 0016 03       		.uleb128 0x3
+ 1171 0017 0E       		.uleb128 0xe
+ 1172 0018 00       		.byte	0
+ 1173 0019 00       		.byte	0
+ 1174 001a 03       		.uleb128 0x3
+ 1175 001b 24       		.uleb128 0x24
+ 1176 001c 00       		.byte	0
+ 1177 001d 0B       		.uleb128 0xb
+ 1178 001e 0B       		.uleb128 0xb
+ 1179 001f 3E       		.uleb128 0x3e
+ 1180 0020 0B       		.uleb128 0xb
+ 1181 0021 03       		.uleb128 0x3
+ 1182 0022 08       		.uleb128 0x8
+ 1183 0023 00       		.byte	0
+ 1184 0024 00       		.byte	0
+ 1185 0025 04       		.uleb128 0x4
+ 1186 0026 16       		.uleb128 0x16
+ 1187 0027 00       		.byte	0
+ 1188 0028 03       		.uleb128 0x3
+ 1189 0029 0E       		.uleb128 0xe
+ 1190 002a 3A       		.uleb128 0x3a
+ 1191 002b 0B       		.uleb128 0xb
+ 1192 002c 3B       		.uleb128 0x3b
+ 1193 002d 05       		.uleb128 0x5
+ 1194 002e 49       		.uleb128 0x49
+ 1195 002f 13       		.uleb128 0x13
+ 1196 0030 00       		.byte	0
+ 1197 0031 00       		.byte	0
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 22
+
+
+ 1198 0032 05       		.uleb128 0x5
+ 1199 0033 13       		.uleb128 0x13
+ 1200 0034 01       		.byte	0x1
+ 1201 0035 0B       		.uleb128 0xb
+ 1202 0036 0B       		.uleb128 0xb
+ 1203 0037 3A       		.uleb128 0x3a
+ 1204 0038 0B       		.uleb128 0xb
+ 1205 0039 3B       		.uleb128 0x3b
+ 1206 003a 0B       		.uleb128 0xb
+ 1207 003b 01       		.uleb128 0x1
+ 1208 003c 13       		.uleb128 0x13
+ 1209 003d 00       		.byte	0
+ 1210 003e 00       		.byte	0
+ 1211 003f 06       		.uleb128 0x6
+ 1212 0040 0D       		.uleb128 0xd
+ 1213 0041 00       		.byte	0
+ 1214 0042 03       		.uleb128 0x3
+ 1215 0043 0E       		.uleb128 0xe
+ 1216 0044 3A       		.uleb128 0x3a
+ 1217 0045 0B       		.uleb128 0xb
+ 1218 0046 3B       		.uleb128 0x3b
+ 1219 0047 0B       		.uleb128 0xb
+ 1220 0048 49       		.uleb128 0x49
+ 1221 0049 13       		.uleb128 0x13
+ 1222 004a 38       		.uleb128 0x38
+ 1223 004b 0B       		.uleb128 0xb
+ 1224 004c 00       		.byte	0
+ 1225 004d 00       		.byte	0
+ 1226 004e 07       		.uleb128 0x7
+ 1227 004f 16       		.uleb128 0x16
+ 1228 0050 00       		.byte	0
+ 1229 0051 03       		.uleb128 0x3
+ 1230 0052 0E       		.uleb128 0xe
+ 1231 0053 3A       		.uleb128 0x3a
+ 1232 0054 0B       		.uleb128 0xb
+ 1233 0055 3B       		.uleb128 0x3b
+ 1234 0056 0B       		.uleb128 0xb
+ 1235 0057 49       		.uleb128 0x49
+ 1236 0058 13       		.uleb128 0x13
+ 1237 0059 00       		.byte	0
+ 1238 005a 00       		.byte	0
+ 1239 005b 08       		.uleb128 0x8
+ 1240 005c 0D       		.uleb128 0xd
+ 1241 005d 00       		.byte	0
+ 1242 005e 03       		.uleb128 0x3
+ 1243 005f 08       		.uleb128 0x8
+ 1244 0060 3A       		.uleb128 0x3a
+ 1245 0061 0B       		.uleb128 0xb
+ 1246 0062 3B       		.uleb128 0x3b
+ 1247 0063 0B       		.uleb128 0xb
+ 1248 0064 49       		.uleb128 0x49
+ 1249 0065 13       		.uleb128 0x13
+ 1250 0066 38       		.uleb128 0x38
+ 1251 0067 0B       		.uleb128 0xb
+ 1252 0068 00       		.byte	0
+ 1253 0069 00       		.byte	0
+ 1254 006a 09       		.uleb128 0x9
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 23
+
+
+ 1255 006b 0F       		.uleb128 0xf
+ 1256 006c 00       		.byte	0
+ 1257 006d 0B       		.uleb128 0xb
+ 1258 006e 0B       		.uleb128 0xb
+ 1259 006f 49       		.uleb128 0x49
+ 1260 0070 13       		.uleb128 0x13
+ 1261 0071 00       		.byte	0
+ 1262 0072 00       		.byte	0
+ 1263 0073 0A       		.uleb128 0xa
+ 1264 0074 26       		.uleb128 0x26
+ 1265 0075 00       		.byte	0
+ 1266 0076 00       		.byte	0
+ 1267 0077 00       		.byte	0
+ 1268 0078 0B       		.uleb128 0xb
+ 1269 0079 01       		.uleb128 0x1
+ 1270 007a 01       		.byte	0x1
+ 1271 007b 49       		.uleb128 0x49
+ 1272 007c 13       		.uleb128 0x13
+ 1273 007d 01       		.uleb128 0x1
+ 1274 007e 13       		.uleb128 0x13
+ 1275 007f 00       		.byte	0
+ 1276 0080 00       		.byte	0
+ 1277 0081 0C       		.uleb128 0xc
+ 1278 0082 21       		.uleb128 0x21
+ 1279 0083 00       		.byte	0
+ 1280 0084 49       		.uleb128 0x49
+ 1281 0085 13       		.uleb128 0x13
+ 1282 0086 2F       		.uleb128 0x2f
+ 1283 0087 0B       		.uleb128 0xb
+ 1284 0088 00       		.byte	0
+ 1285 0089 00       		.byte	0
+ 1286 008a 0D       		.uleb128 0xd
+ 1287 008b 34       		.uleb128 0x34
+ 1288 008c 00       		.byte	0
+ 1289 008d 03       		.uleb128 0x3
+ 1290 008e 0E       		.uleb128 0xe
+ 1291 008f 3A       		.uleb128 0x3a
+ 1292 0090 0B       		.uleb128 0xb
+ 1293 0091 3B       		.uleb128 0x3b
+ 1294 0092 0B       		.uleb128 0xb
+ 1295 0093 49       		.uleb128 0x49
+ 1296 0094 13       		.uleb128 0x13
+ 1297 0095 3F       		.uleb128 0x3f
+ 1298 0096 19       		.uleb128 0x19
+ 1299 0097 02       		.uleb128 0x2
+ 1300 0098 18       		.uleb128 0x18
+ 1301 0099 00       		.byte	0
+ 1302 009a 00       		.byte	0
+ 1303 009b 0E       		.uleb128 0xe
+ 1304 009c 26       		.uleb128 0x26
+ 1305 009d 00       		.byte	0
+ 1306 009e 49       		.uleb128 0x49
+ 1307 009f 13       		.uleb128 0x13
+ 1308 00a0 00       		.byte	0
+ 1309 00a1 00       		.byte	0
+ 1310 00a2 0F       		.uleb128 0xf
+ 1311 00a3 34       		.uleb128 0x34
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 24
+
+
+ 1312 00a4 00       		.byte	0
+ 1313 00a5 03       		.uleb128 0x3
+ 1314 00a6 0E       		.uleb128 0xe
+ 1315 00a7 3A       		.uleb128 0x3a
+ 1316 00a8 0B       		.uleb128 0xb
+ 1317 00a9 3B       		.uleb128 0x3b
+ 1318 00aa 05       		.uleb128 0x5
+ 1319 00ab 49       		.uleb128 0x49
+ 1320 00ac 13       		.uleb128 0x13
+ 1321 00ad 3F       		.uleb128 0x3f
+ 1322 00ae 19       		.uleb128 0x19
+ 1323 00af 02       		.uleb128 0x2
+ 1324 00b0 18       		.uleb128 0x18
+ 1325 00b1 00       		.byte	0
+ 1326 00b2 00       		.byte	0
+ 1327 00b3 10       		.uleb128 0x10
+ 1328 00b4 21       		.uleb128 0x21
+ 1329 00b5 00       		.byte	0
+ 1330 00b6 49       		.uleb128 0x49
+ 1331 00b7 13       		.uleb128 0x13
+ 1332 00b8 2F       		.uleb128 0x2f
+ 1333 00b9 05       		.uleb128 0x5
+ 1334 00ba 00       		.byte	0
+ 1335 00bb 00       		.byte	0
+ 1336 00bc 00       		.byte	0
+ 1337              		.section	.debug_aranges,"",%progbits
+ 1338 0000 14000000 		.4byte	0x14
+ 1339 0004 0200     		.2byte	0x2
+ 1340 0006 00000000 		.4byte	.Ldebug_info0
+ 1341 000a 04       		.byte	0x4
+ 1342 000b 00       		.byte	0
+ 1343 000c 0000     		.2byte	0
+ 1344 000e 0000     		.2byte	0
+ 1345 0010 00000000 		.4byte	0
+ 1346 0014 00000000 		.4byte	0
+ 1347              		.section	.debug_line,"",%progbits
+ 1348              	.Ldebug_line0:
+ 1349 0000 59000000 		.section	.debug_str,"MS",%progbits,1
+ 1349      02005300 
+ 1349      00000201 
+ 1349      FB0E0D00 
+ 1349      01010101 
+ 1350              	.LASF24:
+ 1351 0000 55534246 		.ascii	"USBFS_DEVICE0_DESCR\000"
+ 1351      535F4445 
+ 1351      56494345 
+ 1351      305F4445 
+ 1351      53435200 
+ 1352              	.LASF27:
+ 1353 0014 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS\000"
+ 1353      535F4445 
+ 1353      56494345 
+ 1353      305F434F 
+ 1353      4E464947 
+ 1354              	.LASF30:
+ 1355 0041 55534246 		.ascii	"USBFS_TABLE\000"
+ 1355      535F5441 
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 25
+
+
+ 1355      424C4500 
+ 1356              	.LASF3:
+ 1357 004d 73686F72 		.ascii	"short unsigned int\000"
+ 1357      7420756E 
+ 1357      7369676E 
+ 1357      65642069 
+ 1357      6E7400
+ 1358              	.LASF11:
+ 1359 0060 666C6F61 		.ascii	"float\000"
+ 1359      7400
+ 1360              	.LASF16:
+ 1361 0066 616C7453 		.ascii	"altSetting\000"
+ 1361      65747469 
+ 1361      6E6700
+ 1362              	.LASF31:
+ 1363 0071 55534246 		.ascii	"USBFS_STRING_DESCRIPTORS\000"
+ 1363      535F5354 
+ 1363      52494E47 
+ 1363      5F444553 
+ 1363      43524950 
+ 1364              	.LASF18:
+ 1365 008a 61747472 		.ascii	"attributes\000"
+ 1365      69627574 
+ 1365      657300
+ 1366              	.LASF28:
+ 1367 0095 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_TABLE\000"
+ 1367      535F4445 
+ 1367      56494345 
+ 1367      305F434F 
+ 1367      4E464947 
+ 1368              	.LASF17:
+ 1369 00b8 61646472 		.ascii	"addr\000"
+ 1369      00
+ 1370              	.LASF29:
+ 1371 00bd 55534246 		.ascii	"USBFS_DEVICE0_TABLE\000"
+ 1371      535F4445 
+ 1371      56494345 
+ 1371      305F5441 
+ 1371      424C4500 
+ 1372              	.LASF1:
+ 1373 00d1 756E7369 		.ascii	"unsigned char\000"
+ 1373      676E6564 
+ 1373      20636861 
+ 1373      7200
+ 1374              	.LASF32:
+ 1375 00df 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1375      4320342E 
+ 1375      392E3320 
+ 1375      32303135 
+ 1375      30333033 
+ 1376 0112 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1376      20726576 
+ 1376      6973696F 
+ 1376      6E203232 
+ 1376      31323230 
+ 1377 0145 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1377      66756E63 
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 26
+
+
+ 1377      74696F6E 
+ 1377      2D736563 
+ 1377      74696F6E 
+ 1378              	.LASF12:
+ 1379 016d 646F7562 		.ascii	"double\000"
+ 1379      6C6500
+ 1380              	.LASF10:
+ 1381 0174 75696E74 		.ascii	"uint16\000"
+ 1381      313600
+ 1382              	.LASF26:
+ 1383 017b 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE\000"
+ 1383      535F4445 
+ 1383      56494345 
+ 1383      305F434F 
+ 1383      4E464947 
+ 1384              	.LASF25:
+ 1385 01aa 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_DESCR\000"
+ 1385      535F4445 
+ 1385      56494345 
+ 1385      305F434F 
+ 1385      4E464947 
+ 1386              	.LASF5:
+ 1387 01cd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1387      20756E73 
+ 1387      69676E65 
+ 1387      6420696E 
+ 1387      7400
+ 1388              	.LASF8:
+ 1389 01df 756E7369 		.ascii	"unsigned int\000"
+ 1389      676E6564 
+ 1389      20696E74 
+ 1389      00
+ 1390              	.LASF7:
+ 1391 01ec 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1391      206C6F6E 
+ 1391      6720756E 
+ 1391      7369676E 
+ 1391      65642069 
+ 1392              	.LASF33:
+ 1393 0203 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBFS_descr.c\000"
+ 1393      72617465 
+ 1393      645F536F 
+ 1393      75726365 
+ 1393      5C50536F 
+ 1394              	.LASF22:
+ 1395 0228 705F6C69 		.ascii	"p_list\000"
+ 1395      737400
+ 1396              	.LASF21:
+ 1397 022f 545F5553 		.ascii	"T_USBFS_EP_SETTINGS_BLOCK\000"
+ 1397      4246535F 
+ 1397      45505F53 
+ 1397      45545449 
+ 1397      4E47535F 
+ 1398              	.LASF14:
+ 1399 0249 73697A65 		.ascii	"sizetype\000"
+ 1399      74797065 
+ 1399      00
+ARM GAS  C:\Users\LUKASC~1\AppData\Local\Temp\ccGbr1GI.s 			page 27
+
+
+ 1400              	.LASF34:
+ 1401 0252 433A5C55 		.ascii	"C:\\Users\\Lukas Creutzburg\\Documents\\GitHub\\PSo"
+ 1401      73657273 
+ 1401      5C4C756B 
+ 1401      61732043 
+ 1401      72657574 
+ 1402 0280 43354C50 		.ascii	"C5LP-freeDSP-USB-Port\\PSoC_freeDSP_USB_Port\\PSoC5"
+ 1402      2D667265 
+ 1402      65445350 
+ 1402      2D555342 
+ 1402      2D506F72 
+ 1403 02b1 5F555342 		.ascii	"_USB_Sound_Interface.cydsn\000"
+ 1403      5F536F75 
+ 1403      6E645F49 
+ 1403      6E746572 
+ 1403      66616365 
+ 1404              	.LASF6:
+ 1405 02cc 6C6F6E67 		.ascii	"long long int\000"
+ 1405      206C6F6E 
+ 1405      6720696E 
+ 1405      7400
+ 1406              	.LASF23:
+ 1407 02da 545F5553 		.ascii	"T_USBFS_LUT\000"
+ 1407      4246535F 
+ 1407      4C555400 
+ 1408              	.LASF13:
+ 1409 02e6 63686172 		.ascii	"char\000"
+ 1409      00
+ 1410              	.LASF19:
+ 1411 02eb 62756666 		.ascii	"bufferSize\000"
+ 1411      65725369 
+ 1411      7A6500
+ 1412              	.LASF2:
+ 1413 02f6 73686F72 		.ascii	"short int\000"
+ 1413      7420696E 
+ 1413      7400
+ 1414              	.LASF9:
+ 1415 0300 75696E74 		.ascii	"uint8\000"
+ 1415      3800
+ 1416              	.LASF15:
+ 1417 0306 696E7465 		.ascii	"interface\000"
+ 1417      72666163 
+ 1417      6500
+ 1418              	.LASF4:
+ 1419 0310 6C6F6E67 		.ascii	"long int\000"
+ 1419      20696E74 
+ 1419      00
+ 1420              	.LASF0:
+ 1421 0319 7369676E 		.ascii	"signed char\000"
+ 1421      65642063 
+ 1421      68617200 
+ 1422              	.LASF20:
+ 1423 0325 624D6973 		.ascii	"bMisc\000"
+ 1423      6300
+ 1424              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

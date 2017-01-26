@@ -1,0 +1,70 @@
+--------------- Build Started: 01/26/2017 19:44:34 Project: PSoC5_USB_Sound_Interface, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+cydsfit.exe -.appdatapath "C:\Users\Lukas Creutzburg\AppData\Local\Cypress Semiconductor\PSoC Creator\4.0" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\PSoC5_USB_Sound_Interface.cydsn\PSoC5_USB_Sound_Interface.cyprj" -d CY8C5888LTI-LP097 -s "C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\PSoC5_USB_Sound_Interface.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+ADD: pft.M0074: information: A (re)build is required to use the analog device editor. Unable to load the necessary information from the cyfit file. Partial/wrong data will be displayed until this has been resolved.
+ * C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\PSoC5_USB_Sound_Interface.cydsn\PSoC5_USB_Sound_Interface.cydwr ()
+HDL Generation...
+Synthesis...
+Tech Mapping...
+Analog Placement...
+Log: apr.M0058: The analog placement iterative improvement is 43% done. (App=cydsfit)
+Analog Routing...
+Analog Code Generation...
+Digital Placement...
+Digital Routing...
+Bitstream Generation...
+Bitstream Verification...
+Static timing analysis...
+API Generation...
+DEL: pft.M0074: information: A (re)build is required to use the analog device editor. Unable to load the necessary information from the cyfit file. Partial/wrong data will be displayed until this has been resolved.
+ * C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\PSoC5_USB_Sound_Interface.cydsn\PSoC5_USB_Sound_Interface.cydwr ()
+Dependency Generation...
+Cleanup...
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/main.lst -g -ffunction-sections -O0 -ffat-lto-objects -c main.c -o .\ARM_GCC_493\Debug\main.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/cyfitter_cfg.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\cyfitter_cfg.c -o .\ARM_GCC_493\Debug\cyfitter_cfg.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/cymetadata.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\cymetadata.c -o .\ARM_GCC_493\Debug\cymetadata.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/Speaker.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\Speaker.c -o .\ARM_GCC_493\Debug\Speaker.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/VDAC8.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\VDAC8.c -o .\ARM_GCC_493\Debug\VDAC8.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/VDAC8_PM.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\VDAC8_PM.c -o .\ARM_GCC_493\Debug\VDAC8_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS.c -o .\ARM_GCC_493\Debug\USBFS.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_audio.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_audio.c -o .\ARM_GCC_493\Debug\USBFS_audio.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_boot.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_boot.c -o .\ARM_GCC_493\Debug\USBFS_boot.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_cdc.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_cdc.c -o .\ARM_GCC_493\Debug\USBFS_cdc.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_cls.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_cls.c -o .\ARM_GCC_493\Debug\USBFS_cls.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_descr.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_descr.c -o .\ARM_GCC_493\Debug\USBFS_descr.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_drv.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_drv.c -o .\ARM_GCC_493\Debug\USBFS_drv.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_episr.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_episr.c -o .\ARM_GCC_493\Debug\USBFS_episr.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_hid.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_hid.c -o .\ARM_GCC_493\Debug\USBFS_hid.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_pm.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_pm.c -o .\ARM_GCC_493\Debug\USBFS_pm.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_std.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_std.c -o .\ARM_GCC_493\Debug\USBFS_std.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_vnd.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_vnd.c -o .\ARM_GCC_493\Debug\USBFS_vnd.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_midi.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_midi.c -o .\ARM_GCC_493\Debug\USBFS_midi.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_msc.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_msc.c -o .\ARM_GCC_493\Debug\USBFS_msc.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/VdacDma_dma.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\VdacDma_dma.c -o .\ARM_GCC_493\Debug\VdacDma_dma.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/SampleClk.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\SampleClk.c -o .\ARM_GCC_493\Debug\SampleClk.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/DmaDone.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\DmaDone.c -o .\ARM_GCC_493\Debug\DmaDone.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_Dm.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_Dm.c -o .\ARM_GCC_493\Debug\USBFS_Dm.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_Dp.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_Dp.c -o .\ARM_GCC_493\Debug\USBFS_Dp.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/Cm3Start.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\Cm3Start.c -o .\ARM_GCC_493\Debug\Cm3Start.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/CyDmac.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\CyDmac.c -o .\ARM_GCC_493\Debug\CyDmac.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/CyFlash.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\CyFlash.c -o .\ARM_GCC_493\Debug\CyFlash.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/CyLib.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\CyLib.c -o .\ARM_GCC_493\Debug\CyLib.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/cyPm.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\cyPm.c -o .\ARM_GCC_493\Debug\cyPm.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/CySpc.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\CySpc.c -o .\ARM_GCC_493\Debug\CySpc.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/cyutils.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\cyutils.c -o .\ARM_GCC_493\Debug\cyutils.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_ep6_dma.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_ep6_dma.c -o .\ARM_GCC_493\Debug\USBFS_ep6_dma.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/USBFS_ep1_dma.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\USBFS_ep1_dma.c -o .\ARM_GCC_493\Debug\USBFS_ep1_dma.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/I2S_1.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\I2S_1.c -o .\ARM_GCC_493\Debug\I2S_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/I2S_1_PM.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\I2S_1_PM.c -o .\ARM_GCC_493\Debug\I2S_1_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/clock.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\clock.c -o .\ARM_GCC_493\Debug\clock.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/TxDMA_dma.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\TxDMA_dma.c -o .\ARM_GCC_493\Debug\TxDMA_dma.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/MCLK.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\MCLK.c -o .\ARM_GCC_493\Debug\MCLK.o
+arm-none-eabi-as.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=.\ARM_GCC_493\Debug/CyBootAsmGnu.lst -g -o .\ARM_GCC_493\Debug\CyBootAsmGnu.o Generated_Source\PSoC5\CyBootAsmGnu.s
+arm-none-eabi-ar.exe -rs .\ARM_GCC_493\Debug\PSoC5_USB_Sound_Interface.a .\ARM_GCC_493\Debug\cyfitter_cfg.o .\ARM_GCC_493\Debug\Speaker.o .\ARM_GCC_493\Debug\VDAC8.o .\ARM_GCC_493\Debug\VDAC8_PM.o .\ARM_GCC_493\Debug\USBFS.o .\ARM_GCC_493\Debug\USBFS_audio.o .\ARM_GCC_493\Debug\USBFS_boot.o .\ARM_GCC_493\Debug\USBFS_cdc.o .\ARM_GCC_493\Debug\USBFS_cls.o .\ARM_GCC_493\Debug\USBFS_descr.o .\ARM_GCC_493\Debug\USBFS_drv.o .\ARM_GCC_493\Debug\USBFS_episr.o .\ARM_GCC_493\Debug\USBFS_hid.o .\ARM_GCC_493\Debug\USBFS_pm.o .\ARM_GCC_493\Debug\USBFS_std.o .\ARM_GCC_493\Debug\USBFS_vnd.o .\ARM_GCC_493\Debug\USBFS_midi.o .\ARM_GCC_493\Debug\USBFS_msc.o .\ARM_GCC_493\Debug\VdacDma_dma.o .\ARM_GCC_493\Debug\SampleClk.o .\ARM_GCC_493\Debug\DmaDone.o .\ARM_GCC_493\Debug\USBFS_Dm.o .\ARM_GCC_493\Debug\USBFS_Dp.o .\ARM_GCC_493\Debug\CyDmac.o .\ARM_GCC_493\Debug\CyFlash.o .\ARM_GCC_493\Debug\CyLib.o .\ARM_GCC_493\Debug\cyPm.o .\ARM_GCC_493\Debug\CySpc.o .\ARM_GCC_493\Debug\cyutils.o .\ARM_GCC_493\Debug\USBFS_ep6_dma.o .\ARM_GCC_493\Debug\USBFS_ep1_dma.o .\ARM_GCC_493\Debug\I2S_1.o .\ARM_GCC_493\Debug\I2S_1_PM.o .\ARM_GCC_493\Debug\clock.o .\ARM_GCC_493\Debug\TxDMA_dma.o .\ARM_GCC_493\Debug\MCLK.o .\ARM_GCC_493\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\ARM_GCC_493\Debug\PSoC5_USB_Sound_Interface.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\ARM_GCC_493\Debug\PSoC5_USB_Sound_Interface.elf .\ARM_GCC_493\Debug\main.o .\ARM_GCC_493\Debug\cymetadata.o .\ARM_GCC_493\Debug\Cm3Start.o .\ARM_GCC_493\Debug\PSoC5_USB_Sound_Interface.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -O0 -ffat-lto-objects -L Generated_Source\PSoC5 -Wl,-Map,.\ARM_GCC_493\Debug/PSoC5_USB_Sound_Interface.map -T "C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\PSoC5_USB_Sound_Interface.cydsn\Generated_Source\PSoC5\cm3gcc.ld" -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
+cyelftool.exe -C "C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\PSoC5_USB_Sound_Interface.cydsn\ARM_GCC_493\Debug\PSoC5_USB_Sound_Interface.elf" --flash_row_size 256 --flash_size 262144
+cyelftool.exe -S "C:\Users\Lukas Creutzburg\Documents\GitHub\PSoC5LP-freeDSP-USB-Port\PSoC_freeDSP_USB_Port\PSoC5_USB_Sound_Interface.cydsn\ARM_GCC_493\Debug\PSoC5_USB_Sound_Interface.elf"
+Flash used: 13694 of 262144 bytes (5,2 %).
+SRAM used: 3181 of 65536 bytes (4,9 %). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 01/26/2017 19:45:04 ---------------

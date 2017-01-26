@@ -17,3 +17,21 @@ Design01: Design01.cydwr
 	LIN_Dynamic [v3.30] to [v3.40]
 
 
+Last Modified Date & Time: 01/26/2017 19:35:37
+
+InterIcSound_Example: InterIcSound_Example.cydwr
+	cy_boot [v5.40] to [v5.50]
+
+USBFS_AUDIO_PSoC3_5LP_Example: TopDesign.cysch
+	USBFS [v3.0] to [v3.10]
+
+USBFS_AUDIO_PSoC3_5LP_Example: USBFS_AUDIO_PSoC3_5LP_Example.cydwr
+	cy_boot [v5.40] to [v5.50]
+
+Design01: TopDesign.cysch
+	USBFS_1 [v3.0] to [v3.10]
+
+Design01: Design01.cydwr
+	cy_boot [v5.40] to [v5.50]
+
+
