@@ -1,0 +1,862 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Droop_Filter_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.bss
+  19              		.align	2
+  20              	Droop_Filter_backup:
+  21 0000 00       		.space	1
+  22 0001 000000   		.section	.text.Droop_Filter_SaveConfig,"ax",%progbits
+  23              		.align	2
+  24              		.global	Droop_Filter_SaveConfig
+  25              		.thumb
+  26              		.thumb_func
+  27              		.type	Droop_Filter_SaveConfig, %function
+  28              	Droop_Filter_SaveConfig:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC5\\Droop_Filter_PM.c"
+   1:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * File Name: Droop_Filter_PM.c
+   3:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Version 1.20
+   4:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+   5:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  This file contains the setup, control and status commands to support
+   7:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  component operations in low power mode.
+   8:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+   9:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Note:
+  10:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  11:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Copyright 2011-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  18:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** #include "Droop_Filter.h"
+  19:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  20:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** static Droop_Filter_BACKUP_STRUCT Droop_Filter_backup = { 0u };
+  21:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  22:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  23:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** /*******************************************************************************
+  24:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Function Name: Droop_Filter_SaveConfig
+  25:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** ********************************************************************************
+  26:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  27:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Summary:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 2
+
+
+  28:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Saves the user configuration of the DFB non-retention registers. This routine
+  29:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  is called by DFB_Sleep() to save the component configuration before entering
+  30:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  sleep.
+  31:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  32:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Parameters:
+  33:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+  34:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  35:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Return:
+  36:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+  37:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  38:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *******************************************************************************/
+  39:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** void Droop_Filter_SaveConfig(void) 
+  40:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** {
+  31              		.loc 1 40 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35              		@ link register save eliminated.
+  36 0000 80B4     		push	{r7}
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 7, -4
+  39 0002 00AF     		add	r7, sp, #0
+  40              		.cfi_def_cfa_register 7
+  41:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     /* */
+  42:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** }
+  41              		.loc 1 42 0
+  42 0004 BD46     		mov	sp, r7
+  43              		.cfi_def_cfa_register 13
+  44              		@ sp needed
+  45 0006 5DF8047B 		ldr	r7, [sp], #4
+  46              		.cfi_restore 7
+  47              		.cfi_def_cfa_offset 0
+  48 000a 7047     		bx	lr
+  49              		.cfi_endproc
+  50              	.LFE0:
+  51              		.size	Droop_Filter_SaveConfig, .-Droop_Filter_SaveConfig
+  52              		.section	.text.Droop_Filter_RestoreConfig,"ax",%progbits
+  53              		.align	2
+  54              		.global	Droop_Filter_RestoreConfig
+  55              		.thumb
+  56              		.thumb_func
+  57              		.type	Droop_Filter_RestoreConfig, %function
+  58              	Droop_Filter_RestoreConfig:
+  59              	.LFB1:
+  43:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  44:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  45:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** /*******************************************************************************
+  46:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Function Name: Droop_Filter_RestoreConfig
+  47:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** ********************************************************************************
+  48:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  49:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Summary:
+  50:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Restores the user configuration of the DFB non-retention registers. This
+  51:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  routine is called by DFB_Wakeup() to restore the component configuration when
+  52:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  exiting sleep.
+  53:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  54:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Parameters:
+  55:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 3
+
+
+  56:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  57:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Return:
+  58:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+  59:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  60:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *******************************************************************************/
+  61:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** void Droop_Filter_RestoreConfig(void) 
+  62:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** {
+  60              		.loc 1 62 0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 1, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65 0000 80B4     		push	{r7}
+  66              		.cfi_def_cfa_offset 4
+  67              		.cfi_offset 7, -4
+  68 0002 00AF     		add	r7, sp, #0
+  69              		.cfi_def_cfa_register 7
+  63:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     /* */
+  64:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** }
+  70              		.loc 1 64 0
+  71 0004 BD46     		mov	sp, r7
+  72              		.cfi_def_cfa_register 13
+  73              		@ sp needed
+  74 0006 5DF8047B 		ldr	r7, [sp], #4
+  75              		.cfi_restore 7
+  76              		.cfi_def_cfa_offset 0
+  77 000a 7047     		bx	lr
+  78              		.cfi_endproc
+  79              	.LFE1:
+  80              		.size	Droop_Filter_RestoreConfig, .-Droop_Filter_RestoreConfig
+  81              		.section	.text.Droop_Filter_Sleep,"ax",%progbits
+  82              		.align	2
+  83              		.global	Droop_Filter_Sleep
+  84              		.thumb
+  85              		.thumb_func
+  86              		.type	Droop_Filter_Sleep, %function
+  87              	Droop_Filter_Sleep:
+  88              	.LFB2:
+  65:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  66:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+  67:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** /*******************************************************************************
+  68:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Function Name: Droop_Filter_Sleep
+  69:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** ********************************************************************************
+  70:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  71:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Summary:
+  72:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  This is the preferred routine to prepare the component for sleep. The
+  73:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Droop_Filter_Sleep() routine saves the current component state. Then it
+  74:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  calls the DFB_Stop() function and calls Droop_Filter_SaveConfig() to save
+  75:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  the hardware configuration. Call the Droop_Filter_Sleep() function before
+  76:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  calling the CyPmSleep() or the CyPmHibernate() function. Refer to the PSoC
+  77:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Creator System Reference Guide for more information about power management
+  78:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  functions.
+  79:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  80:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Parameters:
+  81:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+  82:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  83:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Return:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 4
+
+
+  84:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+  85:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  86:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Reentrant:
+  87:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  No.
+  88:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+  89:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *******************************************************************************/
+  90:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** void Droop_Filter_Sleep(void) 
+  91:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** {
+  89              		.loc 1 91 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 1, uses_anonymous_args = 0
+  93 0000 80B5     		push	{r7, lr}
+  94              		.cfi_def_cfa_offset 8
+  95              		.cfi_offset 7, -8
+  96              		.cfi_offset 14, -4
+  97 0002 00AF     		add	r7, sp, #0
+  98              		.cfi_def_cfa_register 7
+  92:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     if (0u != (Droop_Filter_CR_REG & Droop_Filter_RUN_MASK))
+  99              		.loc 1 92 0
+ 100 0004 0C4B     		ldr	r3, .L6
+ 101 0006 1B78     		ldrb	r3, [r3]
+ 102 0008 DBB2     		uxtb	r3, r3
+ 103 000a 03F00103 		and	r3, r3, #1
+ 104 000e 002B     		cmp	r3, #0
+ 105 0010 03D0     		beq	.L4
+  93:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     {
+  94:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         Droop_Filter_backup.enableState = 1u;
+ 106              		.loc 1 94 0
+ 107 0012 0A4B     		ldr	r3, .L6+4
+ 108 0014 0122     		movs	r2, #1
+ 109 0016 1A70     		strb	r2, [r3]
+ 110 0018 02E0     		b	.L5
+ 111              	.L4:
+  95:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     }
+  96:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     else /* The DFB block is disabled */
+  97:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     {
+  98:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         Droop_Filter_backup.enableState = 0u;
+ 112              		.loc 1 98 0
+ 113 001a 084B     		ldr	r3, .L6+4
+ 114 001c 0022     		movs	r2, #0
+ 115 001e 1A70     		strb	r2, [r3]
+ 116              	.L5:
+  99:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     }
+ 100:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+ 101:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     /* Disables the clock to the entire core of the block */
+ 102:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     Droop_Filter_CR_REG |= Droop_Filter_CORECLK_DISABLE;
+ 117              		.loc 1 102 0
+ 118 0020 054A     		ldr	r2, .L6
+ 119 0022 054B     		ldr	r3, .L6
+ 120 0024 1B78     		ldrb	r3, [r3]
+ 121 0026 DBB2     		uxtb	r3, r3
+ 122 0028 43F00403 		orr	r3, r3, #4
+ 123 002c DBB2     		uxtb	r3, r3
+ 124 002e 1370     		strb	r3, [r2]
+ 103:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+ 104:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     Droop_Filter_Pause();
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 5
+
+
+ 125              		.loc 1 104 0
+ 126 0030 FFF7FEFF 		bl	Droop_Filter_Pause
+ 105:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** }
+ 127              		.loc 1 105 0
+ 128 0034 80BD     		pop	{r7, pc}
+ 129              	.L7:
+ 130 0036 00BF     		.align	2
+ 131              	.L6:
+ 132 0038 80C70040 		.word	1073792896
+ 133 003c 00000000 		.word	Droop_Filter_backup
+ 134              		.cfi_endproc
+ 135              	.LFE2:
+ 136              		.size	Droop_Filter_Sleep, .-Droop_Filter_Sleep
+ 137              		.section	.text.Droop_Filter_Wakeup,"ax",%progbits
+ 138              		.align	2
+ 139              		.global	Droop_Filter_Wakeup
+ 140              		.thumb
+ 141              		.thumb_func
+ 142              		.type	Droop_Filter_Wakeup, %function
+ 143              	Droop_Filter_Wakeup:
+ 144              	.LFB3:
+ 106:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+ 107:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+ 108:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** /*******************************************************************************
+ 109:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Function Name: Droop_Filter_Wakeup
+ 110:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** ********************************************************************************
+ 111:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+ 112:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Summary:
+ 113:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  This is the preferred routine to restore the component to the state when
+ 114:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Droop_Filter_Sleep() was called. The Droop_Filter_Wakeup() function
+ 115:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  calls the Droop_Filter_RestoreConfig() function to restore the
+ 116:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  configuration. If the component was enabled before the
+ 117:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Droop_Filter_Sleep() function was called, the Droop_Filter_Wakeup()
+ 118:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  function will also re-enable the component.
+ 119:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+ 120:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Parameters:
+ 121:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+ 122:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+ 123:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Return:
+ 124:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  None.
+ 125:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+ 126:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** * Side Effects:
+ 127:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Calling the Droop_Filter_Wakeup() function without first calling the
+ 128:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  Droop_Filter_Sleep() or Droop_Filter_SaveConfig() function may
+ 129:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *  produce unexpected behavior.
+ 130:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *
+ 131:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** *******************************************************************************/
+ 132:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** void Droop_Filter_Wakeup(void) 
+ 133:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** {
+ 145              		.loc 1 133 0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 1, uses_anonymous_args = 0
+ 149 0000 80B5     		push	{r7, lr}
+ 150              		.cfi_def_cfa_offset 8
+ 151              		.cfi_offset 7, -8
+ 152              		.cfi_offset 14, -4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 6
+
+
+ 153 0002 00AF     		add	r7, sp, #0
+ 154              		.cfi_def_cfa_register 7
+ 134:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****    Droop_Filter_RestoreConfig();
+ 155              		.loc 1 134 0
+ 156 0004 FFF7FEFF 		bl	Droop_Filter_RestoreConfig
+ 135:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+ 136:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     /* Enables the clock to the entire core of the block */
+ 137:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     Droop_Filter_CR_REG &= (uint8) (~Droop_Filter_CORECLK_DISABLE);
+ 157              		.loc 1 137 0
+ 158 0008 0A4A     		ldr	r2, .L11
+ 159 000a 0A4B     		ldr	r3, .L11
+ 160 000c 1B78     		ldrb	r3, [r3]
+ 161 000e DBB2     		uxtb	r3, r3
+ 162 0010 23F00403 		bic	r3, r3, #4
+ 163 0014 DBB2     		uxtb	r3, r3
+ 164 0016 1370     		strb	r3, [r2]
+ 138:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** 
+ 139:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     if (Droop_Filter_backup.enableState != 0u)
+ 165              		.loc 1 139 0
+ 166 0018 074B     		ldr	r3, .L11+4
+ 167 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 168 001c 002B     		cmp	r3, #0
+ 169 001e 02D0     		beq	.L9
+ 140:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     {
+ 141:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         /* Enables component's operation */
+ 142:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         Droop_Filter_Resume();
+ 170              		.loc 1 142 0
+ 171 0020 FFF7FEFF 		bl	Droop_Filter_Resume
+ 172 0024 05E0     		b	.L8
+ 173              	.L9:
+ 143:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     } /* Left Run Bit in off state if component's block was disabled before */
+ 144:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     else
+ 145:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     {
+ 146:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         /* Takes DFB RAM off the bus */
+ 147:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         Droop_Filter_RAM_DIR_REG = Droop_Filter_RAM_DIR_DFB;
+ 174              		.loc 1 147 0
+ 175 0026 054B     		ldr	r3, .L11+8
+ 176 0028 0022     		movs	r2, #0
+ 177 002a 1A70     		strb	r2, [r3]
+ 148:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         /* Clears any pending interrupts */
+ 149:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****         Droop_Filter_SR_REG = 0xFFu;
+ 178              		.loc 1 149 0
+ 179 002c 044B     		ldr	r3, .L11+12
+ 180 002e FF22     		movs	r2, #255
+ 181 0030 1A70     		strb	r2, [r3]
+ 182              	.L8:
+ 150:.\Generated_Source\PSoC5/Droop_Filter_PM.c ****     }
+ 151:.\Generated_Source\PSoC5/Droop_Filter_PM.c **** }
+ 183              		.loc 1 151 0
+ 184 0032 80BD     		pop	{r7, pc}
+ 185              	.L12:
+ 186              		.align	2
+ 187              	.L11:
+ 188 0034 80C70040 		.word	1073792896
+ 189 0038 00000000 		.word	Droop_Filter_backup
+ 190 003c 8CC70040 		.word	1073792908
+ 191 0040 84C70040 		.word	1073792900
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 7
+
+
+ 192              		.cfi_endproc
+ 193              	.LFE3:
+ 194              		.size	Droop_Filter_Wakeup, .-Droop_Filter_Wakeup
+ 195              		.text
+ 196              	.Letext0:
+ 197              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 198              		.file 3 ".\\Generated_Source\\PSoC5\\Droop_Filter.h"
+ 199              		.section	.debug_info,"",%progbits
+ 200              	.Ldebug_info0:
+ 201 0000 14010000 		.4byte	0x114
+ 202 0004 0400     		.2byte	0x4
+ 203 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 204 000a 04       		.byte	0x4
+ 205 000b 01       		.uleb128 0x1
+ 206 000c 0E010000 		.4byte	.LASF20
+ 207 0010 01       		.byte	0x1
+ 208 0011 3B000000 		.4byte	.LASF21
+ 209 0015 C2010000 		.4byte	.LASF22
+ 210 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 211 001d 00000000 		.4byte	0
+ 212 0021 00000000 		.4byte	.Ldebug_line0
+ 213 0025 02       		.uleb128 0x2
+ 214 0026 01       		.byte	0x1
+ 215 0027 06       		.byte	0x6
+ 216 0028 B6010000 		.4byte	.LASF0
+ 217 002c 02       		.uleb128 0x2
+ 218 002d 01       		.byte	0x1
+ 219 002e 08       		.byte	0x8
+ 220 002f E3000000 		.4byte	.LASF1
+ 221 0033 02       		.uleb128 0x2
+ 222 0034 02       		.byte	0x2
+ 223 0035 05       		.byte	0x5
+ 224 0036 20020000 		.4byte	.LASF2
+ 225 003a 02       		.uleb128 0x2
+ 226 003b 02       		.byte	0x2
+ 227 003c 07       		.byte	0x7
+ 228 003d A3010000 		.4byte	.LASF3
+ 229 0041 02       		.uleb128 0x2
+ 230 0042 04       		.byte	0x4
+ 231 0043 05       		.byte	0x5
+ 232 0044 05010000 		.4byte	.LASF4
+ 233 0048 02       		.uleb128 0x2
+ 234 0049 04       		.byte	0x4
+ 235 004a 07       		.byte	0x7
+ 236 004b 87000000 		.4byte	.LASF5
+ 237 004f 02       		.uleb128 0x2
+ 238 0050 08       		.byte	0x8
+ 239 0051 05       		.byte	0x5
+ 240 0052 00000000 		.4byte	.LASF6
+ 241 0056 02       		.uleb128 0x2
+ 242 0057 08       		.byte	0x8
+ 243 0058 07       		.byte	0x7
+ 244 0059 B4000000 		.4byte	.LASF7
+ 245 005d 03       		.uleb128 0x3
+ 246 005e 04       		.byte	0x4
+ 247 005f 05       		.byte	0x5
+ 248 0060 696E7400 		.ascii	"int\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 8
+
+
+ 249 0064 02       		.uleb128 0x2
+ 250 0065 04       		.byte	0x4
+ 251 0066 07       		.byte	0x7
+ 252 0067 1A000000 		.4byte	.LASF8
+ 253 006b 04       		.uleb128 0x4
+ 254 006c 81000000 		.4byte	.LASF12
+ 255 0070 02       		.byte	0x2
+ 256 0071 5B       		.byte	0x5b
+ 257 0072 2C000000 		.4byte	0x2c
+ 258 0076 02       		.uleb128 0x2
+ 259 0077 04       		.byte	0x4
+ 260 0078 04       		.byte	0x4
+ 261 0079 1A020000 		.4byte	.LASF9
+ 262 007d 02       		.uleb128 0x2
+ 263 007e 08       		.byte	0x8
+ 264 007f 04       		.byte	0x4
+ 265 0080 9C010000 		.4byte	.LASF10
+ 266 0084 02       		.uleb128 0x2
+ 267 0085 01       		.byte	0x1
+ 268 0086 08       		.byte	0x8
+ 269 0087 DE000000 		.4byte	.LASF11
+ 270 008b 04       		.uleb128 0x4
+ 271 008c 2A020000 		.4byte	.LASF13
+ 272 0090 02       		.byte	0x2
+ 273 0091 F0       		.byte	0xf0
+ 274 0092 96000000 		.4byte	0x96
+ 275 0096 05       		.uleb128 0x5
+ 276 0097 6B000000 		.4byte	0x6b
+ 277 009b 02       		.uleb128 0x2
+ 278 009c 04       		.byte	0x4
+ 279 009d 07       		.byte	0x7
+ 280 009e 2F020000 		.4byte	.LASF14
+ 281 00a2 06       		.uleb128 0x6
+ 282 00a3 01       		.byte	0x1
+ 283 00a4 03       		.byte	0x3
+ 284 00a5 47       		.byte	0x47
+ 285 00a6 B7000000 		.4byte	0xb7
+ 286 00aa 07       		.uleb128 0x7
+ 287 00ab 0E000000 		.4byte	.LASF23
+ 288 00af 03       		.byte	0x3
+ 289 00b0 49       		.byte	0x49
+ 290 00b1 6B000000 		.4byte	0x6b
+ 291 00b5 00       		.byte	0
+ 292 00b6 00       		.byte	0
+ 293 00b7 04       		.uleb128 0x4
+ 294 00b8 99000000 		.4byte	.LASF15
+ 295 00bc 03       		.byte	0x3
+ 296 00bd 4A       		.byte	0x4a
+ 297 00be A2000000 		.4byte	0xa2
+ 298 00c2 08       		.uleb128 0x8
+ 299 00c3 38020000 		.4byte	.LASF16
+ 300 00c7 01       		.byte	0x1
+ 301 00c8 27       		.byte	0x27
+ 302 00c9 00000000 		.4byte	.LFB0
+ 303 00cd 0C000000 		.4byte	.LFE0-.LFB0
+ 304 00d1 01       		.uleb128 0x1
+ 305 00d2 9C       		.byte	0x9c
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 9
+
+
+ 306 00d3 08       		.uleb128 0x8
+ 307 00d4 66000000 		.4byte	.LASF17
+ 308 00d8 01       		.byte	0x1
+ 309 00d9 3D       		.byte	0x3d
+ 310 00da 00000000 		.4byte	.LFB1
+ 311 00de 0C000000 		.4byte	.LFE1-.LFB1
+ 312 00e2 01       		.uleb128 0x1
+ 313 00e3 9C       		.byte	0x9c
+ 314 00e4 09       		.uleb128 0x9
+ 315 00e5 CB000000 		.4byte	.LASF18
+ 316 00e9 01       		.byte	0x1
+ 317 00ea 5A       		.byte	0x5a
+ 318 00eb 00000000 		.4byte	.LFB2
+ 319 00ef 40000000 		.4byte	.LFE2-.LFB2
+ 320 00f3 01       		.uleb128 0x1
+ 321 00f4 9C       		.byte	0x9c
+ 322 00f5 09       		.uleb128 0x9
+ 323 00f6 F1000000 		.4byte	.LASF19
+ 324 00fa 01       		.byte	0x1
+ 325 00fb 84       		.byte	0x84
+ 326 00fc 00000000 		.4byte	.LFB3
+ 327 0100 44000000 		.4byte	.LFE3-.LFB3
+ 328 0104 01       		.uleb128 0x1
+ 329 0105 9C       		.byte	0x9c
+ 330 0106 0A       		.uleb128 0xa
+ 331 0107 27000000 		.4byte	.LASF24
+ 332 010b 01       		.byte	0x1
+ 333 010c 14       		.byte	0x14
+ 334 010d B7000000 		.4byte	0xb7
+ 335 0111 05       		.uleb128 0x5
+ 336 0112 03       		.byte	0x3
+ 337 0113 00000000 		.4byte	Droop_Filter_backup
+ 338 0117 00       		.byte	0
+ 339              		.section	.debug_abbrev,"",%progbits
+ 340              	.Ldebug_abbrev0:
+ 341 0000 01       		.uleb128 0x1
+ 342 0001 11       		.uleb128 0x11
+ 343 0002 01       		.byte	0x1
+ 344 0003 25       		.uleb128 0x25
+ 345 0004 0E       		.uleb128 0xe
+ 346 0005 13       		.uleb128 0x13
+ 347 0006 0B       		.uleb128 0xb
+ 348 0007 03       		.uleb128 0x3
+ 349 0008 0E       		.uleb128 0xe
+ 350 0009 1B       		.uleb128 0x1b
+ 351 000a 0E       		.uleb128 0xe
+ 352 000b 55       		.uleb128 0x55
+ 353 000c 17       		.uleb128 0x17
+ 354 000d 11       		.uleb128 0x11
+ 355 000e 01       		.uleb128 0x1
+ 356 000f 10       		.uleb128 0x10
+ 357 0010 17       		.uleb128 0x17
+ 358 0011 00       		.byte	0
+ 359 0012 00       		.byte	0
+ 360 0013 02       		.uleb128 0x2
+ 361 0014 24       		.uleb128 0x24
+ 362 0015 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 10
+
+
+ 363 0016 0B       		.uleb128 0xb
+ 364 0017 0B       		.uleb128 0xb
+ 365 0018 3E       		.uleb128 0x3e
+ 366 0019 0B       		.uleb128 0xb
+ 367 001a 03       		.uleb128 0x3
+ 368 001b 0E       		.uleb128 0xe
+ 369 001c 00       		.byte	0
+ 370 001d 00       		.byte	0
+ 371 001e 03       		.uleb128 0x3
+ 372 001f 24       		.uleb128 0x24
+ 373 0020 00       		.byte	0
+ 374 0021 0B       		.uleb128 0xb
+ 375 0022 0B       		.uleb128 0xb
+ 376 0023 3E       		.uleb128 0x3e
+ 377 0024 0B       		.uleb128 0xb
+ 378 0025 03       		.uleb128 0x3
+ 379 0026 08       		.uleb128 0x8
+ 380 0027 00       		.byte	0
+ 381 0028 00       		.byte	0
+ 382 0029 04       		.uleb128 0x4
+ 383 002a 16       		.uleb128 0x16
+ 384 002b 00       		.byte	0
+ 385 002c 03       		.uleb128 0x3
+ 386 002d 0E       		.uleb128 0xe
+ 387 002e 3A       		.uleb128 0x3a
+ 388 002f 0B       		.uleb128 0xb
+ 389 0030 3B       		.uleb128 0x3b
+ 390 0031 0B       		.uleb128 0xb
+ 391 0032 49       		.uleb128 0x49
+ 392 0033 13       		.uleb128 0x13
+ 393 0034 00       		.byte	0
+ 394 0035 00       		.byte	0
+ 395 0036 05       		.uleb128 0x5
+ 396 0037 35       		.uleb128 0x35
+ 397 0038 00       		.byte	0
+ 398 0039 49       		.uleb128 0x49
+ 399 003a 13       		.uleb128 0x13
+ 400 003b 00       		.byte	0
+ 401 003c 00       		.byte	0
+ 402 003d 06       		.uleb128 0x6
+ 403 003e 13       		.uleb128 0x13
+ 404 003f 01       		.byte	0x1
+ 405 0040 0B       		.uleb128 0xb
+ 406 0041 0B       		.uleb128 0xb
+ 407 0042 3A       		.uleb128 0x3a
+ 408 0043 0B       		.uleb128 0xb
+ 409 0044 3B       		.uleb128 0x3b
+ 410 0045 0B       		.uleb128 0xb
+ 411 0046 01       		.uleb128 0x1
+ 412 0047 13       		.uleb128 0x13
+ 413 0048 00       		.byte	0
+ 414 0049 00       		.byte	0
+ 415 004a 07       		.uleb128 0x7
+ 416 004b 0D       		.uleb128 0xd
+ 417 004c 00       		.byte	0
+ 418 004d 03       		.uleb128 0x3
+ 419 004e 0E       		.uleb128 0xe
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 11
+
+
+ 420 004f 3A       		.uleb128 0x3a
+ 421 0050 0B       		.uleb128 0xb
+ 422 0051 3B       		.uleb128 0x3b
+ 423 0052 0B       		.uleb128 0xb
+ 424 0053 49       		.uleb128 0x49
+ 425 0054 13       		.uleb128 0x13
+ 426 0055 38       		.uleb128 0x38
+ 427 0056 0B       		.uleb128 0xb
+ 428 0057 00       		.byte	0
+ 429 0058 00       		.byte	0
+ 430 0059 08       		.uleb128 0x8
+ 431 005a 2E       		.uleb128 0x2e
+ 432 005b 00       		.byte	0
+ 433 005c 3F       		.uleb128 0x3f
+ 434 005d 19       		.uleb128 0x19
+ 435 005e 03       		.uleb128 0x3
+ 436 005f 0E       		.uleb128 0xe
+ 437 0060 3A       		.uleb128 0x3a
+ 438 0061 0B       		.uleb128 0xb
+ 439 0062 3B       		.uleb128 0x3b
+ 440 0063 0B       		.uleb128 0xb
+ 441 0064 27       		.uleb128 0x27
+ 442 0065 19       		.uleb128 0x19
+ 443 0066 11       		.uleb128 0x11
+ 444 0067 01       		.uleb128 0x1
+ 445 0068 12       		.uleb128 0x12
+ 446 0069 06       		.uleb128 0x6
+ 447 006a 40       		.uleb128 0x40
+ 448 006b 18       		.uleb128 0x18
+ 449 006c 9742     		.uleb128 0x2117
+ 450 006e 19       		.uleb128 0x19
+ 451 006f 00       		.byte	0
+ 452 0070 00       		.byte	0
+ 453 0071 09       		.uleb128 0x9
+ 454 0072 2E       		.uleb128 0x2e
+ 455 0073 00       		.byte	0
+ 456 0074 3F       		.uleb128 0x3f
+ 457 0075 19       		.uleb128 0x19
+ 458 0076 03       		.uleb128 0x3
+ 459 0077 0E       		.uleb128 0xe
+ 460 0078 3A       		.uleb128 0x3a
+ 461 0079 0B       		.uleb128 0xb
+ 462 007a 3B       		.uleb128 0x3b
+ 463 007b 0B       		.uleb128 0xb
+ 464 007c 27       		.uleb128 0x27
+ 465 007d 19       		.uleb128 0x19
+ 466 007e 11       		.uleb128 0x11
+ 467 007f 01       		.uleb128 0x1
+ 468 0080 12       		.uleb128 0x12
+ 469 0081 06       		.uleb128 0x6
+ 470 0082 40       		.uleb128 0x40
+ 471 0083 18       		.uleb128 0x18
+ 472 0084 9642     		.uleb128 0x2116
+ 473 0086 19       		.uleb128 0x19
+ 474 0087 00       		.byte	0
+ 475 0088 00       		.byte	0
+ 476 0089 0A       		.uleb128 0xa
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 12
+
+
+ 477 008a 34       		.uleb128 0x34
+ 478 008b 00       		.byte	0
+ 479 008c 03       		.uleb128 0x3
+ 480 008d 0E       		.uleb128 0xe
+ 481 008e 3A       		.uleb128 0x3a
+ 482 008f 0B       		.uleb128 0xb
+ 483 0090 3B       		.uleb128 0x3b
+ 484 0091 0B       		.uleb128 0xb
+ 485 0092 49       		.uleb128 0x49
+ 486 0093 13       		.uleb128 0x13
+ 487 0094 02       		.uleb128 0x2
+ 488 0095 18       		.uleb128 0x18
+ 489 0096 00       		.byte	0
+ 490 0097 00       		.byte	0
+ 491 0098 00       		.byte	0
+ 492              		.section	.debug_aranges,"",%progbits
+ 493 0000 34000000 		.4byte	0x34
+ 494 0004 0200     		.2byte	0x2
+ 495 0006 00000000 		.4byte	.Ldebug_info0
+ 496 000a 04       		.byte	0x4
+ 497 000b 00       		.byte	0
+ 498 000c 0000     		.2byte	0
+ 499 000e 0000     		.2byte	0
+ 500 0010 00000000 		.4byte	.LFB0
+ 501 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 502 0018 00000000 		.4byte	.LFB1
+ 503 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 504 0020 00000000 		.4byte	.LFB2
+ 505 0024 40000000 		.4byte	.LFE2-.LFB2
+ 506 0028 00000000 		.4byte	.LFB3
+ 507 002c 44000000 		.4byte	.LFE3-.LFB3
+ 508 0030 00000000 		.4byte	0
+ 509 0034 00000000 		.4byte	0
+ 510              		.section	.debug_ranges,"",%progbits
+ 511              	.Ldebug_ranges0:
+ 512 0000 00000000 		.4byte	.LFB0
+ 513 0004 0C000000 		.4byte	.LFE0
+ 514 0008 00000000 		.4byte	.LFB1
+ 515 000c 0C000000 		.4byte	.LFE1
+ 516 0010 00000000 		.4byte	.LFB2
+ 517 0014 40000000 		.4byte	.LFE2
+ 518 0018 00000000 		.4byte	.LFB3
+ 519 001c 44000000 		.4byte	.LFE3
+ 520 0020 00000000 		.4byte	0
+ 521 0024 00000000 		.4byte	0
+ 522              		.section	.debug_line,"",%progbits
+ 523              	.Ldebug_line0:
+ 524 0000 B3000000 		.section	.debug_str,"MS",%progbits,1
+ 524      02006000 
+ 524      00000201 
+ 524      FB0E0D00 
+ 524      01010101 
+ 525              	.LASF6:
+ 526 0000 6C6F6E67 		.ascii	"long long int\000"
+ 526      206C6F6E 
+ 526      6720696E 
+ 526      7400
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 13
+
+
+ 527              	.LASF23:
+ 528 000e 656E6162 		.ascii	"enableState\000"
+ 528      6C655374 
+ 528      61746500 
+ 529              	.LASF8:
+ 530 001a 756E7369 		.ascii	"unsigned int\000"
+ 530      676E6564 
+ 530      20696E74 
+ 530      00
+ 531              	.LASF24:
+ 532 0027 44726F6F 		.ascii	"Droop_Filter_backup\000"
+ 532      705F4669 
+ 532      6C746572 
+ 532      5F626163 
+ 532      6B757000 
+ 533              	.LASF21:
+ 534 003b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Droop_Filter_PM.c\000"
+ 534      6E657261 
+ 534      7465645F 
+ 534      536F7572 
+ 534      63655C50 
+ 535              	.LASF17:
+ 536 0066 44726F6F 		.ascii	"Droop_Filter_RestoreConfig\000"
+ 536      705F4669 
+ 536      6C746572 
+ 536      5F526573 
+ 536      746F7265 
+ 537              	.LASF12:
+ 538 0081 75696E74 		.ascii	"uint8\000"
+ 538      3800
+ 539              	.LASF5:
+ 540 0087 6C6F6E67 		.ascii	"long unsigned int\000"
+ 540      20756E73 
+ 540      69676E65 
+ 540      6420696E 
+ 540      7400
+ 541              	.LASF15:
+ 542 0099 44726F6F 		.ascii	"Droop_Filter_BACKUP_STRUCT\000"
+ 542      705F4669 
+ 542      6C746572 
+ 542      5F424143 
+ 542      4B55505F 
+ 543              	.LASF7:
+ 544 00b4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 544      206C6F6E 
+ 544      6720756E 
+ 544      7369676E 
+ 544      65642069 
+ 545              	.LASF18:
+ 546 00cb 44726F6F 		.ascii	"Droop_Filter_Sleep\000"
+ 546      705F4669 
+ 546      6C746572 
+ 546      5F536C65 
+ 546      657000
+ 547              	.LASF11:
+ 548 00de 63686172 		.ascii	"char\000"
+ 548      00
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 14
+
+
+ 549              	.LASF1:
+ 550 00e3 756E7369 		.ascii	"unsigned char\000"
+ 550      676E6564 
+ 550      20636861 
+ 550      7200
+ 551              	.LASF19:
+ 552 00f1 44726F6F 		.ascii	"Droop_Filter_Wakeup\000"
+ 552      705F4669 
+ 552      6C746572 
+ 552      5F57616B 
+ 552      65757000 
+ 553              	.LASF4:
+ 554 0105 6C6F6E67 		.ascii	"long int\000"
+ 554      20696E74 
+ 554      00
+ 555              	.LASF20:
+ 556 010e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 556      4320342E 
+ 556      392E3320 
+ 556      32303135 
+ 556      30333033 
+ 557 0141 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 557      20726576 
+ 557      6973696F 
+ 557      6E203232 
+ 557      31323230 
+ 558 0174 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 558      66756E63 
+ 558      74696F6E 
+ 558      2D736563 
+ 558      74696F6E 
+ 559              	.LASF10:
+ 560 019c 646F7562 		.ascii	"double\000"
+ 560      6C6500
+ 561              	.LASF3:
+ 562 01a3 73686F72 		.ascii	"short unsigned int\000"
+ 562      7420756E 
+ 562      7369676E 
+ 562      65642069 
+ 562      6E7400
+ 563              	.LASF0:
+ 564 01b6 7369676E 		.ascii	"signed char\000"
+ 564      65642063 
+ 564      68617200 
+ 565              	.LASF22:
+ 566 01c2 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 566      73657273 
+ 566      5C6C756B 
+ 566      61735C44 
+ 566      65736B74 
+ 567 01f1 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 567      73746572 
+ 567      5C50696F 
+ 567      6E656572 
+ 567      4B69745F 
+ 568              	.LASF9:
+ 569 021a 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccU0XATm.s 			page 15
+
+
+ 569      7400
+ 570              	.LASF2:
+ 571 0220 73686F72 		.ascii	"short int\000"
+ 571      7420696E 
+ 571      7400
+ 572              	.LASF13:
+ 573 022a 72656738 		.ascii	"reg8\000"
+ 573      00
+ 574              	.LASF14:
+ 575 022f 73697A65 		.ascii	"sizetype\000"
+ 575      74797065 
+ 575      00
+ 576              	.LASF16:
+ 577 0238 44726F6F 		.ascii	"Droop_Filter_SaveConfig\000"
+ 577      705F4669 
+ 577      6C746572 
+ 577      5F536176 
+ 577      65436F6E 
+ 578              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,559 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ByteSwap_Tx.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.ByteSwap_Tx_Start,"ax",%progbits
+  19              		.align	2
+  20              		.global	ByteSwap_Tx_Start
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	ByteSwap_Tx_Start, %function
+  24              	ByteSwap_Tx_Start:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\ByteSwap_Tx.c"
+   1:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * File Name: ByteSwap_Tx.c  
+   3:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Version 1.10
+   4:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+   5:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Description:
+   6:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  This file contains the setup, control and status commands for the ByteSwap
+   7:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  component.  
+   8:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+   9:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Note: 
+  10:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  11:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *******************************************************************************
+  12:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Copyright 2008-2011, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 
+  18:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** #include "ByteSwap_Tx.h"  
+  19:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 
+  20:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** /*******************************************************************************
+  21:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Function Name: ByteSwap_Tx_Start
+  22:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** ********************************************************************************
+  23:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  24:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Summary:
+  25:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  Starts the Byte swap component.
+  26:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  27:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Parameters:
+  28:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  None.
+  29:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  30:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Return:
+  31:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  None.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  33:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Reentrant:
+  34:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  No.
+  35:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  36:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *******************************************************************************/
+  37:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** void ByteSwap_Tx_Start(void)
+  38:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** {
+  27              		.loc 1 38 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 7, -4
+  35 0002 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  39:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	/* Configure Aux control register for FIFO status */
+  40:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	ByteSwap_Tx_AUX_CONTROL_REG = ByteSwap_Tx_AUX_CONTROL_REG & (~(ByteSwap_Tx_INPUT_FIFO_0_CLR | 
+  37              		.loc 1 40 0
+  38 0004 0D4A     		ldr	r2, .L2
+  39 0006 0D4B     		ldr	r3, .L2
+  40 0008 1B78     		ldrb	r3, [r3]
+  41 000a DBB2     		uxtb	r3, r3
+  42 000c 23F00303 		bic	r3, r3, #3
+  43 0010 DBB2     		uxtb	r3, r3
+  44 0012 1370     		strb	r3, [r2]
+  41:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	                                                                        ByteSwap_Tx_OUTPUT_FIFO_1_
+  42:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 																			
+  43:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	ByteSwap_Tx_AUX_CONTROL_REG = ByteSwap_Tx_AUX_CONTROL_REG | ByteSwap_Tx_INPUT_FIFO_LEVEL_HALF_EMPT
+  45              		.loc 1 43 0
+  46 0014 094A     		ldr	r2, .L2
+  47 0016 094B     		ldr	r3, .L2
+  48 0018 1B78     		ldrb	r3, [r3]
+  49 001a DBB2     		uxtb	r3, r3
+  50 001c 43F00C03 		orr	r3, r3, #12
+  51 0020 DBB2     		uxtb	r3, r3
+  52 0022 1370     		strb	r3, [r2]
+  44:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	
+  45:.\Generated_Source\PSoC5/ByteSwap_Tx.c ****     /* Set Control register enable flag  */
+  46:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	ByteSwap_Tx_CONTROL_REG = ByteSwap_Tx_CONTROL_REG | ByteSwap_Tx_EN;
+  53              		.loc 1 46 0
+  54 0024 064A     		ldr	r2, .L2+4
+  55 0026 064B     		ldr	r3, .L2+4
+  56 0028 1B78     		ldrb	r3, [r3]
+  57 002a DBB2     		uxtb	r3, r3
+  58 002c 43F00103 		orr	r3, r3, #1
+  59 0030 DBB2     		uxtb	r3, r3
+  60 0032 1370     		strb	r3, [r2]
+  47:.\Generated_Source\PSoC5/ByteSwap_Tx.c ****         
+  48:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** }
+  61              		.loc 1 48 0
+  62 0034 BD46     		mov	sp, r7
+  63              		.cfi_def_cfa_register 13
+  64              		@ sp needed
+  65 0036 5DF8047B 		ldr	r7, [sp], #4
+  66              		.cfi_restore 7
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 3
+
+
+  67              		.cfi_def_cfa_offset 0
+  68 003a 7047     		bx	lr
+  69              	.L3:
+  70              		.align	2
+  71              	.L2:
+  72 003c 90640040 		.word	1073767568
+  73 0040 72640040 		.word	1073767538
+  74              		.cfi_endproc
+  75              	.LFE0:
+  76              		.size	ByteSwap_Tx_Start, .-ByteSwap_Tx_Start
+  77              		.section	.text.ByteSwap_Tx_Stop,"ax",%progbits
+  78              		.align	2
+  79              		.global	ByteSwap_Tx_Stop
+  80              		.thumb
+  81              		.thumb_func
+  82              		.type	ByteSwap_Tx_Stop, %function
+  83              	ByteSwap_Tx_Stop:
+  84              	.LFB1:
+  49:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 
+  50:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Function Name: ByteSwap_Tx_Stop
+  52:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  54:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Summary:
+  55:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  Stops the Byte swap component.
+  56:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  57:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Parameters:
+  58:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  None.
+  59:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  60:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Return:
+  61:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  None.
+  62:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  63:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** * Reentrant:
+  64:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *  No.
+  65:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *
+  66:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** *******************************************************************************/
+  67:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** void ByteSwap_Tx_Stop(void)
+  68:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** {
+  85              		.loc 1 68 0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 1, uses_anonymous_args = 0
+  89              		@ link register save eliminated.
+  90 0000 80B4     		push	{r7}
+  91              		.cfi_def_cfa_offset 4
+  92              		.cfi_offset 7, -4
+  93 0002 00AF     		add	r7, sp, #0
+  94              		.cfi_def_cfa_register 7
+  69:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	/* Clear Aux control FIFO status */
+  70:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	ByteSwap_Tx_AUX_CONTROL_REG = ByteSwap_Tx_AUX_CONTROL_REG | (ByteSwap_Tx_INPUT_FIFO_0_CLR | 
+  95              		.loc 1 70 0
+  96 0004 094A     		ldr	r2, .L5
+  97 0006 094B     		ldr	r3, .L5
+  98 0008 1B78     		ldrb	r3, [r3]
+  99 000a DBB2     		uxtb	r3, r3
+ 100 000c 43F00303 		orr	r3, r3, #3
+ 101 0010 DBB2     		uxtb	r3, r3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 4
+
+
+ 102 0012 1370     		strb	r3, [r2]
+  71:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	                                                                        ByteSwap_Tx_OUTPUT_FIFO_1_
+  72:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	
+  73:.\Generated_Source\PSoC5/ByteSwap_Tx.c ****     /* Clears the Control register enable flag  */
+  74:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** 	ByteSwap_Tx_CONTROL_REG = ByteSwap_Tx_CONTROL_REG & (~ ByteSwap_Tx_EN);
+ 103              		.loc 1 74 0
+ 104 0014 064A     		ldr	r2, .L5+4
+ 105 0016 064B     		ldr	r3, .L5+4
+ 106 0018 1B78     		ldrb	r3, [r3]
+ 107 001a DBB2     		uxtb	r3, r3
+ 108 001c 23F00103 		bic	r3, r3, #1
+ 109 0020 DBB2     		uxtb	r3, r3
+ 110 0022 1370     		strb	r3, [r2]
+  75:.\Generated_Source\PSoC5/ByteSwap_Tx.c **** }
+ 111              		.loc 1 75 0
+ 112 0024 BD46     		mov	sp, r7
+ 113              		.cfi_def_cfa_register 13
+ 114              		@ sp needed
+ 115 0026 5DF8047B 		ldr	r7, [sp], #4
+ 116              		.cfi_restore 7
+ 117              		.cfi_def_cfa_offset 0
+ 118 002a 7047     		bx	lr
+ 119              	.L6:
+ 120              		.align	2
+ 121              	.L5:
+ 122 002c 90640040 		.word	1073767568
+ 123 0030 72640040 		.word	1073767538
+ 124              		.cfi_endproc
+ 125              	.LFE1:
+ 126              		.size	ByteSwap_Tx_Stop, .-ByteSwap_Tx_Stop
+ 127              		.text
+ 128              	.Letext0:
+ 129              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 130              		.section	.debug_info,"",%progbits
+ 131              	.Ldebug_info0:
+ 132 0000 C1000000 		.4byte	0xc1
+ 133 0004 0400     		.2byte	0x4
+ 134 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 135 000a 04       		.byte	0x4
+ 136 000b 01       		.uleb128 0x1
+ 137 000c 8D000000 		.4byte	.LASF17
+ 138 0010 01       		.byte	0x1
+ 139 0011 33000000 		.4byte	.LASF18
+ 140 0015 53010000 		.4byte	.LASF19
+ 141 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 142 001d 00000000 		.4byte	0
+ 143 0021 00000000 		.4byte	.Ldebug_line0
+ 144 0025 02       		.uleb128 0x2
+ 145 0026 01       		.byte	0x1
+ 146 0027 06       		.byte	0x6
+ 147 0028 47010000 		.4byte	.LASF0
+ 148 002c 02       		.uleb128 0x2
+ 149 002d 01       		.byte	0x1
+ 150 002e 08       		.byte	0x8
+ 151 002f 71000000 		.4byte	.LASF1
+ 152 0033 02       		.uleb128 0x2
+ 153 0034 02       		.byte	0x2
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 5
+
+
+ 154 0035 05       		.byte	0x5
+ 155 0036 B1010000 		.4byte	.LASF2
+ 156 003a 02       		.uleb128 0x2
+ 157 003b 02       		.byte	0x2
+ 158 003c 07       		.byte	0x7
+ 159 003d 34010000 		.4byte	.LASF3
+ 160 0041 02       		.uleb128 0x2
+ 161 0042 04       		.byte	0x4
+ 162 0043 05       		.byte	0x5
+ 163 0044 84000000 		.4byte	.LASF4
+ 164 0048 02       		.uleb128 0x2
+ 165 0049 04       		.byte	0x4
+ 166 004a 07       		.byte	0x7
+ 167 004b 21000000 		.4byte	.LASF5
+ 168 004f 02       		.uleb128 0x2
+ 169 0050 08       		.byte	0x8
+ 170 0051 05       		.byte	0x5
+ 171 0052 00000000 		.4byte	.LASF6
+ 172 0056 02       		.uleb128 0x2
+ 173 0057 08       		.byte	0x8
+ 174 0058 07       		.byte	0x7
+ 175 0059 5A000000 		.4byte	.LASF7
+ 176 005d 03       		.uleb128 0x3
+ 177 005e 04       		.byte	0x4
+ 178 005f 05       		.byte	0x5
+ 179 0060 696E7400 		.ascii	"int\000"
+ 180 0064 02       		.uleb128 0x2
+ 181 0065 04       		.byte	0x4
+ 182 0066 07       		.byte	0x7
+ 183 0067 0E000000 		.4byte	.LASF8
+ 184 006b 04       		.uleb128 0x4
+ 185 006c 1B000000 		.4byte	.LASF12
+ 186 0070 02       		.byte	0x2
+ 187 0071 5B       		.byte	0x5b
+ 188 0072 2C000000 		.4byte	0x2c
+ 189 0076 02       		.uleb128 0x2
+ 190 0077 04       		.byte	0x4
+ 191 0078 04       		.byte	0x4
+ 192 0079 AB010000 		.4byte	.LASF9
+ 193 007d 02       		.uleb128 0x2
+ 194 007e 08       		.byte	0x8
+ 195 007f 04       		.byte	0x4
+ 196 0080 1B010000 		.4byte	.LASF10
+ 197 0084 02       		.uleb128 0x2
+ 198 0085 01       		.byte	0x1
+ 199 0086 08       		.byte	0x8
+ 200 0087 7F000000 		.4byte	.LASF11
+ 201 008b 04       		.uleb128 0x4
+ 202 008c BB010000 		.4byte	.LASF13
+ 203 0090 02       		.byte	0x2
+ 204 0091 F0       		.byte	0xf0
+ 205 0092 96000000 		.4byte	0x96
+ 206 0096 05       		.uleb128 0x5
+ 207 0097 6B000000 		.4byte	0x6b
+ 208 009b 02       		.uleb128 0x2
+ 209 009c 04       		.byte	0x4
+ 210 009d 07       		.byte	0x7
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 6
+
+
+ 211 009e C0010000 		.4byte	.LASF14
+ 212 00a2 06       		.uleb128 0x6
+ 213 00a3 22010000 		.4byte	.LASF15
+ 214 00a7 01       		.byte	0x1
+ 215 00a8 25       		.byte	0x25
+ 216 00a9 00000000 		.4byte	.LFB0
+ 217 00ad 44000000 		.4byte	.LFE0-.LFB0
+ 218 00b1 01       		.uleb128 0x1
+ 219 00b2 9C       		.byte	0x9c
+ 220 00b3 06       		.uleb128 0x6
+ 221 00b4 C9010000 		.4byte	.LASF16
+ 222 00b8 01       		.byte	0x1
+ 223 00b9 43       		.byte	0x43
+ 224 00ba 00000000 		.4byte	.LFB1
+ 225 00be 34000000 		.4byte	.LFE1-.LFB1
+ 226 00c2 01       		.uleb128 0x1
+ 227 00c3 9C       		.byte	0x9c
+ 228 00c4 00       		.byte	0
+ 229              		.section	.debug_abbrev,"",%progbits
+ 230              	.Ldebug_abbrev0:
+ 231 0000 01       		.uleb128 0x1
+ 232 0001 11       		.uleb128 0x11
+ 233 0002 01       		.byte	0x1
+ 234 0003 25       		.uleb128 0x25
+ 235 0004 0E       		.uleb128 0xe
+ 236 0005 13       		.uleb128 0x13
+ 237 0006 0B       		.uleb128 0xb
+ 238 0007 03       		.uleb128 0x3
+ 239 0008 0E       		.uleb128 0xe
+ 240 0009 1B       		.uleb128 0x1b
+ 241 000a 0E       		.uleb128 0xe
+ 242 000b 55       		.uleb128 0x55
+ 243 000c 17       		.uleb128 0x17
+ 244 000d 11       		.uleb128 0x11
+ 245 000e 01       		.uleb128 0x1
+ 246 000f 10       		.uleb128 0x10
+ 247 0010 17       		.uleb128 0x17
+ 248 0011 00       		.byte	0
+ 249 0012 00       		.byte	0
+ 250 0013 02       		.uleb128 0x2
+ 251 0014 24       		.uleb128 0x24
+ 252 0015 00       		.byte	0
+ 253 0016 0B       		.uleb128 0xb
+ 254 0017 0B       		.uleb128 0xb
+ 255 0018 3E       		.uleb128 0x3e
+ 256 0019 0B       		.uleb128 0xb
+ 257 001a 03       		.uleb128 0x3
+ 258 001b 0E       		.uleb128 0xe
+ 259 001c 00       		.byte	0
+ 260 001d 00       		.byte	0
+ 261 001e 03       		.uleb128 0x3
+ 262 001f 24       		.uleb128 0x24
+ 263 0020 00       		.byte	0
+ 264 0021 0B       		.uleb128 0xb
+ 265 0022 0B       		.uleb128 0xb
+ 266 0023 3E       		.uleb128 0x3e
+ 267 0024 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 7
+
+
+ 268 0025 03       		.uleb128 0x3
+ 269 0026 08       		.uleb128 0x8
+ 270 0027 00       		.byte	0
+ 271 0028 00       		.byte	0
+ 272 0029 04       		.uleb128 0x4
+ 273 002a 16       		.uleb128 0x16
+ 274 002b 00       		.byte	0
+ 275 002c 03       		.uleb128 0x3
+ 276 002d 0E       		.uleb128 0xe
+ 277 002e 3A       		.uleb128 0x3a
+ 278 002f 0B       		.uleb128 0xb
+ 279 0030 3B       		.uleb128 0x3b
+ 280 0031 0B       		.uleb128 0xb
+ 281 0032 49       		.uleb128 0x49
+ 282 0033 13       		.uleb128 0x13
+ 283 0034 00       		.byte	0
+ 284 0035 00       		.byte	0
+ 285 0036 05       		.uleb128 0x5
+ 286 0037 35       		.uleb128 0x35
+ 287 0038 00       		.byte	0
+ 288 0039 49       		.uleb128 0x49
+ 289 003a 13       		.uleb128 0x13
+ 290 003b 00       		.byte	0
+ 291 003c 00       		.byte	0
+ 292 003d 06       		.uleb128 0x6
+ 293 003e 2E       		.uleb128 0x2e
+ 294 003f 00       		.byte	0
+ 295 0040 3F       		.uleb128 0x3f
+ 296 0041 19       		.uleb128 0x19
+ 297 0042 03       		.uleb128 0x3
+ 298 0043 0E       		.uleb128 0xe
+ 299 0044 3A       		.uleb128 0x3a
+ 300 0045 0B       		.uleb128 0xb
+ 301 0046 3B       		.uleb128 0x3b
+ 302 0047 0B       		.uleb128 0xb
+ 303 0048 27       		.uleb128 0x27
+ 304 0049 19       		.uleb128 0x19
+ 305 004a 11       		.uleb128 0x11
+ 306 004b 01       		.uleb128 0x1
+ 307 004c 12       		.uleb128 0x12
+ 308 004d 06       		.uleb128 0x6
+ 309 004e 40       		.uleb128 0x40
+ 310 004f 18       		.uleb128 0x18
+ 311 0050 9742     		.uleb128 0x2117
+ 312 0052 19       		.uleb128 0x19
+ 313 0053 00       		.byte	0
+ 314 0054 00       		.byte	0
+ 315 0055 00       		.byte	0
+ 316              		.section	.debug_aranges,"",%progbits
+ 317 0000 24000000 		.4byte	0x24
+ 318 0004 0200     		.2byte	0x2
+ 319 0006 00000000 		.4byte	.Ldebug_info0
+ 320 000a 04       		.byte	0x4
+ 321 000b 00       		.byte	0
+ 322 000c 0000     		.2byte	0
+ 323 000e 0000     		.2byte	0
+ 324 0010 00000000 		.4byte	.LFB0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 8
+
+
+ 325 0014 44000000 		.4byte	.LFE0-.LFB0
+ 326 0018 00000000 		.4byte	.LFB1
+ 327 001c 34000000 		.4byte	.LFE1-.LFB1
+ 328 0020 00000000 		.4byte	0
+ 329 0024 00000000 		.4byte	0
+ 330              		.section	.debug_ranges,"",%progbits
+ 331              	.Ldebug_ranges0:
+ 332 0000 00000000 		.4byte	.LFB0
+ 333 0004 44000000 		.4byte	.LFE0
+ 334 0008 00000000 		.4byte	.LFB1
+ 335 000c 34000000 		.4byte	.LFE1
+ 336 0010 00000000 		.4byte	0
+ 337 0014 00000000 		.4byte	0
+ 338              		.section	.debug_line,"",%progbits
+ 339              	.Ldebug_line0:
+ 340 0000 76000000 		.section	.debug_str,"MS",%progbits,1
+ 340      02004A00 
+ 340      00000201 
+ 340      FB0E0D00 
+ 340      01010101 
+ 341              	.LASF6:
+ 342 0000 6C6F6E67 		.ascii	"long long int\000"
+ 342      206C6F6E 
+ 342      6720696E 
+ 342      7400
+ 343              	.LASF8:
+ 344 000e 756E7369 		.ascii	"unsigned int\000"
+ 344      676E6564 
+ 344      20696E74 
+ 344      00
+ 345              	.LASF12:
+ 346 001b 75696E74 		.ascii	"uint8\000"
+ 346      3800
+ 347              	.LASF5:
+ 348 0021 6C6F6E67 		.ascii	"long unsigned int\000"
+ 348      20756E73 
+ 348      69676E65 
+ 348      6420696E 
+ 348      7400
+ 349              	.LASF18:
+ 350 0033 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ByteSwap_Tx.c\000"
+ 350      6E657261 
+ 350      7465645F 
+ 350      536F7572 
+ 350      63655C50 
+ 351              	.LASF7:
+ 352 005a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 352      206C6F6E 
+ 352      6720756E 
+ 352      7369676E 
+ 352      65642069 
+ 353              	.LASF1:
+ 354 0071 756E7369 		.ascii	"unsigned char\000"
+ 354      676E6564 
+ 354      20636861 
+ 354      7200
+ 355              	.LASF11:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 9
+
+
+ 356 007f 63686172 		.ascii	"char\000"
+ 356      00
+ 357              	.LASF4:
+ 358 0084 6C6F6E67 		.ascii	"long int\000"
+ 358      20696E74 
+ 358      00
+ 359              	.LASF17:
+ 360 008d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 360      4320342E 
+ 360      392E3320 
+ 360      32303135 
+ 360      30333033 
+ 361 00c0 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 361      20726576 
+ 361      6973696F 
+ 361      6E203232 
+ 361      31323230 
+ 362 00f3 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 362      66756E63 
+ 362      74696F6E 
+ 362      2D736563 
+ 362      74696F6E 
+ 363              	.LASF10:
+ 364 011b 646F7562 		.ascii	"double\000"
+ 364      6C6500
+ 365              	.LASF15:
+ 366 0122 42797465 		.ascii	"ByteSwap_Tx_Start\000"
+ 366      53776170 
+ 366      5F54785F 
+ 366      53746172 
+ 366      7400
+ 367              	.LASF3:
+ 368 0134 73686F72 		.ascii	"short unsigned int\000"
+ 368      7420756E 
+ 368      7369676E 
+ 368      65642069 
+ 368      6E7400
+ 369              	.LASF0:
+ 370 0147 7369676E 		.ascii	"signed char\000"
+ 370      65642063 
+ 370      68617200 
+ 371              	.LASF19:
+ 372 0153 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 372      73657273 
+ 372      5C6C756B 
+ 372      61735C44 
+ 372      65736B74 
+ 373 0182 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 373      73746572 
+ 373      5C50696F 
+ 373      6E656572 
+ 373      4B69745F 
+ 374              	.LASF9:
+ 375 01ab 666C6F61 		.ascii	"float\000"
+ 375      7400
+ 376              	.LASF2:
+ 377 01b1 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRhhaPB.s 			page 10
+
+
+ 377      7420696E 
+ 377      7400
+ 378              	.LASF13:
+ 379 01bb 72656738 		.ascii	"reg8\000"
+ 379      00
+ 380              	.LASF14:
+ 381 01c0 73697A65 		.ascii	"sizetype\000"
+ 381      74797065 
+ 381      00
+ 382              	.LASF16:
+ 383 01c9 42797465 		.ascii	"ByteSwap_Tx_Stop\000"
+ 383      53776170 
+ 383      5F54785F 
+ 383      53746F70 
+ 383      00
+ 384              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

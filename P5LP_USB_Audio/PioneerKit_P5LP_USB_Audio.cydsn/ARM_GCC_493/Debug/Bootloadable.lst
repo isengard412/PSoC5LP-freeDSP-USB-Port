@@ -1,0 +1,800 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Bootloadable.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Bootloadable_Load,"ax",%progbits
+  19              		.align	2
+  20              		.global	Bootloadable_Load
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Bootloadable_Load, %function
+  24              	Bootloadable_Load:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\Bootloadable.c"
+   1:.\Generated_Source\PSoC5/Bootloadable.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Bootloadable.c **** * File Name: Bootloadable.c
+   3:.\Generated_Source\PSoC5/Bootloadable.c **** * Version 1.10
+   4:.\Generated_Source\PSoC5/Bootloadable.c **** *
+   5:.\Generated_Source\PSoC5/Bootloadable.c **** *  Description:
+   6:.\Generated_Source\PSoC5/Bootloadable.c **** *   Provides an API for the Bootloadable application. The API includes a
+   7:.\Generated_Source\PSoC5/Bootloadable.c **** *   single function for starting bootloader.
+   8:.\Generated_Source\PSoC5/Bootloadable.c **** *
+   9:.\Generated_Source\PSoC5/Bootloadable.c **** ********************************************************************************
+  10:.\Generated_Source\PSoC5/Bootloadable.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  11:.\Generated_Source\PSoC5/Bootloadable.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:.\Generated_Source\PSoC5/Bootloadable.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:.\Generated_Source\PSoC5/Bootloadable.c **** * the software package with which this file was provided.
+  14:.\Generated_Source\PSoC5/Bootloadable.c **** *******************************************************************************/
+  15:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  16:.\Generated_Source\PSoC5/Bootloadable.c **** #include "Bootloadable.h"
+  17:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  18:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  19:.\Generated_Source\PSoC5/Bootloadable.c **** /*******************************************************************************
+  20:.\Generated_Source\PSoC5/Bootloadable.c **** * Function Name: Bootloadable_Load
+  21:.\Generated_Source\PSoC5/Bootloadable.c **** ********************************************************************************
+  22:.\Generated_Source\PSoC5/Bootloadable.c **** * Summary:
+  23:.\Generated_Source\PSoC5/Bootloadable.c **** *  Begins the bootloading algorithm, downloading a new ACD image from the host.
+  24:.\Generated_Source\PSoC5/Bootloadable.c **** *
+  25:.\Generated_Source\PSoC5/Bootloadable.c **** * Parameters:
+  26:.\Generated_Source\PSoC5/Bootloadable.c **** *  None
+  27:.\Generated_Source\PSoC5/Bootloadable.c **** *
+  28:.\Generated_Source\PSoC5/Bootloadable.c **** * Returns:
+  29:.\Generated_Source\PSoC5/Bootloadable.c **** *  This method will never return. It will load a new application and reset
+  30:.\Generated_Source\PSoC5/Bootloadable.c **** *  the device.
+  31:.\Generated_Source\PSoC5/Bootloadable.c **** *
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/Bootloadable.c **** *******************************************************************************/
+  33:.\Generated_Source\PSoC5/Bootloadable.c **** void Bootloadable_Load(void) 
+  34:.\Generated_Source\PSoC5/Bootloadable.c **** {
+  27              		.loc 1 34 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 7, -4
+  35 0002 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  35:.\Generated_Source\PSoC5/Bootloadable.c ****     /* Schedule Bootloader to start after reset */
+  36:.\Generated_Source\PSoC5/Bootloadable.c ****     Bootloadable_SET_RUN_TYPE(Bootloadable_START_BTLDR);
+  37              		.loc 1 36 0
+  38 0004 044B     		ldr	r3, .L2
+  39 0006 4022     		movs	r2, #64
+  40 0008 1A70     		strb	r2, [r3]
+  37:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  38:.\Generated_Source\PSoC5/Bootloadable.c ****     /* Reset device */
+  39:.\Generated_Source\PSoC5/Bootloadable.c ****     Bootloadable_SOFTWARE_RESET;
+  41              		.loc 1 39 0
+  42 000a 044B     		ldr	r3, .L2+4
+  43 000c 0122     		movs	r2, #1
+  44 000e 1A70     		strb	r2, [r3]
+  40:.\Generated_Source\PSoC5/Bootloadable.c **** }
+  45              		.loc 1 40 0
+  46 0010 BD46     		mov	sp, r7
+  47              		.cfi_def_cfa_register 13
+  48              		@ sp needed
+  49 0012 5DF8047B 		ldr	r7, [sp], #4
+  50              		.cfi_restore 7
+  51              		.cfi_def_cfa_offset 0
+  52 0016 7047     		bx	lr
+  53              	.L3:
+  54              		.align	2
+  55              	.L2:
+  56 0018 FA460040 		.word	1073759994
+  57 001c F6460040 		.word	1073759990
+  58              		.cfi_endproc
+  59              	.LFE0:
+  60              		.size	Bootloadable_Load, .-Bootloadable_Load
+  61              		.section	.text.Bootloadable_SetFlashByte,"ax",%progbits
+  62              		.align	2
+  63              		.global	Bootloadable_SetFlashByte
+  64              		.thumb
+  65              		.thumb_func
+  66              		.type	Bootloadable_SetFlashByte, %function
+  67              	Bootloadable_SetFlashByte:
+  68              	.LFB1:
+  41:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  42:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  43:.\Generated_Source\PSoC5/Bootloadable.c **** /*******************************************************************************
+  44:.\Generated_Source\PSoC5/Bootloadable.c **** * Function Name: Bootloadable_SetFlashByte
+  45:.\Generated_Source\PSoC5/Bootloadable.c **** ********************************************************************************
+  46:.\Generated_Source\PSoC5/Bootloadable.c **** * Summary:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 3
+
+
+  47:.\Generated_Source\PSoC5/Bootloadable.c **** *  Sets byte at specified address in Flash.
+  48:.\Generated_Source\PSoC5/Bootloadable.c **** *
+  49:.\Generated_Source\PSoC5/Bootloadable.c **** * Parameters:  
+  50:.\Generated_Source\PSoC5/Bootloadable.c **** *  None
+  51:.\Generated_Source\PSoC5/Bootloadable.c **** *
+  52:.\Generated_Source\PSoC5/Bootloadable.c **** * Returns:
+  53:.\Generated_Source\PSoC5/Bootloadable.c **** *  None
+  54:.\Generated_Source\PSoC5/Bootloadable.c **** *
+  55:.\Generated_Source\PSoC5/Bootloadable.c **** *******************************************************************************/
+  56:.\Generated_Source\PSoC5/Bootloadable.c **** void Bootloadable_SetFlashByte(uint32 address, uint8 runType) 
+  57:.\Generated_Source\PSoC5/Bootloadable.c **** {
+  69              		.loc 1 57 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 280
+  72              		@ frame_needed = 1, uses_anonymous_args = 0
+  73 0000 80B5     		push	{r7, lr}
+  74              		.cfi_def_cfa_offset 8
+  75              		.cfi_offset 7, -8
+  76              		.cfi_offset 14, -4
+  77 0002 C6B0     		sub	sp, sp, #280
+  78              		.cfi_def_cfa_offset 288
+  79 0004 00AF     		add	r7, sp, #0
+  80              		.cfi_def_cfa_register 7
+  81 0006 3B1D     		adds	r3, r7, #4
+  82 0008 1860     		str	r0, [r3]
+  83 000a 0A46     		mov	r2, r1
+  84 000c FB1C     		adds	r3, r7, #3
+  85 000e 1A70     		strb	r2, [r3]
+  58:.\Generated_Source\PSoC5/Bootloadable.c ****     uint32 flsAddr = address - CYDEV_FLASH_BASE;
+  86              		.loc 1 58 0
+  87 0010 3B1D     		adds	r3, r7, #4
+  88 0012 1B68     		ldr	r3, [r3]
+  89 0014 C7F81031 		str	r3, [r7, #272]
+  59:.\Generated_Source\PSoC5/Bootloadable.c ****     uint8 rowData[CYDEV_FLS_ROW_SIZE];
+  60:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  61:.\Generated_Source\PSoC5/Bootloadable.c ****     #if !(CY_PSOC4)
+  62:.\Generated_Source\PSoC5/Bootloadable.c ****         uint8 arrayId = (flsAddr / CYDEV_FLS_SECTOR_SIZE);
+  90              		.loc 1 62 0
+  91 0018 D7F81031 		ldr	r3, [r7, #272]
+  92 001c 1B0C     		lsrs	r3, r3, #16
+  93 001e 87F80F31 		strb	r3, [r7, #271]
+  63:.\Generated_Source\PSoC5/Bootloadable.c ****     #endif  /* !(CY_PSOC4) */
+  64:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  65:.\Generated_Source\PSoC5/Bootloadable.c ****     uint16 rowNum = ((flsAddr % CYDEV_FLS_SECTOR_SIZE) / CYDEV_FLS_ROW_SIZE);
+  94              		.loc 1 65 0
+  95 0022 D7F81031 		ldr	r3, [r7, #272]
+  96 0026 9BB2     		uxth	r3, r3
+  97 0028 1B0A     		lsrs	r3, r3, #8
+  98 002a A7F80C31 		strh	r3, [r7, #268]	@ movhi
+  66:.\Generated_Source\PSoC5/Bootloadable.c ****     uint32 baseAddr = address - (address % CYDEV_FLS_ROW_SIZE);
+  99              		.loc 1 66 0
+ 100 002e 3B1D     		adds	r3, r7, #4
+ 101 0030 1B68     		ldr	r3, [r3]
+ 102 0032 23F0FF03 		bic	r3, r3, #255
+ 103 0036 C7F80831 		str	r3, [r7, #264]
+  67:.\Generated_Source\PSoC5/Bootloadable.c ****     uint16 idx;
+  68:.\Generated_Source\PSoC5/Bootloadable.c **** 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 4
+
+
+  69:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  70:.\Generated_Source\PSoC5/Bootloadable.c ****     for (idx = 0; idx < CYDEV_FLS_ROW_SIZE; idx++)
+ 104              		.loc 1 70 0
+ 105 003a 0023     		movs	r3, #0
+ 106 003c A7F81631 		strh	r3, [r7, #278]	@ movhi
+ 107 0040 0FE0     		b	.L5
+ 108              	.L6:
+  71:.\Generated_Source\PSoC5/Bootloadable.c ****     {
+  72:.\Generated_Source\PSoC5/Bootloadable.c ****         rowData[idx] = Bootloadable_GET_CODE_DATA(baseAddr + idx);
+ 109              		.loc 1 72 0 discriminator 3
+ 110 0042 B7F81631 		ldrh	r3, [r7, #278]
+ 111 0046 B7F81611 		ldrh	r1, [r7, #278]
+ 112 004a D7F80821 		ldr	r2, [r7, #264]
+ 113 004e 0A44     		add	r2, r2, r1
+ 114 0050 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 115 0052 07F10802 		add	r2, r7, #8
+ 116 0056 D154     		strb	r1, [r2, r3]
+  70:.\Generated_Source\PSoC5/Bootloadable.c ****     {
+ 117              		.loc 1 70 0 discriminator 3
+ 118 0058 B7F81631 		ldrh	r3, [r7, #278]
+ 119 005c 0133     		adds	r3, r3, #1
+ 120 005e A7F81631 		strh	r3, [r7, #278]	@ movhi
+ 121              	.L5:
+  70:.\Generated_Source\PSoC5/Bootloadable.c ****     {
+ 122              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 123 0062 B7F81631 		ldrh	r3, [r7, #278]
+ 124 0066 FF2B     		cmp	r3, #255
+ 125 0068 EBD9     		bls	.L6
+  73:.\Generated_Source\PSoC5/Bootloadable.c ****     }
+  74:.\Generated_Source\PSoC5/Bootloadable.c ****     rowData[address % CYDEV_FLS_ROW_SIZE] = runType;
+ 126              		.loc 1 74 0 is_stmt 1
+ 127 006a 3B1D     		adds	r3, r7, #4
+ 128 006c 1B68     		ldr	r3, [r3]
+ 129 006e DBB2     		uxtb	r3, r3
+ 130 0070 07F10802 		add	r2, r7, #8
+ 131 0074 F91C     		adds	r1, r7, #3
+ 132 0076 0978     		ldrb	r1, [r1]
+ 133 0078 D154     		strb	r1, [r2, r3]
+  75:.\Generated_Source\PSoC5/Bootloadable.c **** 
+  76:.\Generated_Source\PSoC5/Bootloadable.c ****     #if(CY_PSOC4)
+  77:.\Generated_Source\PSoC5/Bootloadable.c ****         CySysFlashWriteRow(rowNum, rowData);
+  78:.\Generated_Source\PSoC5/Bootloadable.c ****     #else
+  79:.\Generated_Source\PSoC5/Bootloadable.c ****         CyWriteRowData(arrayId, rowNum, rowData);
+ 134              		.loc 1 79 0
+ 135 007a 97F80F11 		ldrb	r1, [r7, #271]	@ zero_extendqisi2
+ 136 007e B7F80C21 		ldrh	r2, [r7, #268]
+ 137 0082 07F10803 		add	r3, r7, #8
+ 138 0086 0846     		mov	r0, r1
+ 139 0088 1146     		mov	r1, r2
+ 140 008a 1A46     		mov	r2, r3
+ 141 008c FFF7FEFF 		bl	CyWriteRowData
+  80:.\Generated_Source\PSoC5/Bootloadable.c ****     #endif  /* (CY_PSOC4) */
+  81:.\Generated_Source\PSoC5/Bootloadable.c **** }
+ 142              		.loc 1 81 0
+ 143 0090 07F58C77 		add	r7, r7, #280
+ 144              		.cfi_def_cfa_offset 8
+ 145 0094 BD46     		mov	sp, r7
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 5
+
+
+ 146              		.cfi_def_cfa_register 13
+ 147              		@ sp needed
+ 148 0096 80BD     		pop	{r7, pc}
+ 149              		.cfi_endproc
+ 150              	.LFE1:
+ 151              		.size	Bootloadable_SetFlashByte, .-Bootloadable_SetFlashByte
+ 152              		.text
+ 153              	.Letext0:
+ 154              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 155              		.section	.debug_info,"",%progbits
+ 156              	.Ldebug_info0:
+ 157 0000 5B010000 		.4byte	0x15b
+ 158 0004 0400     		.2byte	0x4
+ 159 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 160 000a 04       		.byte	0x4
+ 161 000b 01       		.uleb128 0x1
+ 162 000c 63010000 		.4byte	.LASF24
+ 163 0010 01       		.byte	0x1
+ 164 0011 28010000 		.4byte	.LASF25
+ 165 0015 00000000 		.4byte	.LASF26
+ 166 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 167 001d 00000000 		.4byte	0
+ 168 0021 00000000 		.4byte	.Ldebug_line0
+ 169 0025 02       		.uleb128 0x2
+ 170 0026 01       		.byte	0x1
+ 171 0027 06       		.byte	0x6
+ 172 0028 1E020000 		.4byte	.LASF0
+ 173 002c 02       		.uleb128 0x2
+ 174 002d 01       		.byte	0x1
+ 175 002e 08       		.byte	0x8
+ 176 002f 78000000 		.4byte	.LASF1
+ 177 0033 02       		.uleb128 0x2
+ 178 0034 02       		.byte	0x2
+ 179 0035 05       		.byte	0x5
+ 180 0036 0B020000 		.4byte	.LASF2
+ 181 003a 02       		.uleb128 0x2
+ 182 003b 02       		.byte	0x2
+ 183 003c 07       		.byte	0x7
+ 184 003d 5F000000 		.4byte	.LASF3
+ 185 0041 02       		.uleb128 0x2
+ 186 0042 04       		.byte	0x4
+ 187 0043 05       		.byte	0x5
+ 188 0044 15020000 		.4byte	.LASF4
+ 189 0048 02       		.uleb128 0x2
+ 190 0049 04       		.byte	0x4
+ 191 004a 07       		.byte	0x7
+ 192 004b 93000000 		.4byte	.LASF5
+ 193 004f 02       		.uleb128 0x2
+ 194 0050 08       		.byte	0x8
+ 195 0051 05       		.byte	0x5
+ 196 0052 50010000 		.4byte	.LASF6
+ 197 0056 02       		.uleb128 0x2
+ 198 0057 08       		.byte	0x8
+ 199 0058 07       		.byte	0x7
+ 200 0059 F7000000 		.4byte	.LASF7
+ 201 005d 03       		.uleb128 0x3
+ 202 005e 04       		.byte	0x4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 6
+
+
+ 203 005f 05       		.byte	0x5
+ 204 0060 696E7400 		.ascii	"int\000"
+ 205 0064 02       		.uleb128 0x2
+ 206 0065 04       		.byte	0x4
+ 207 0066 07       		.byte	0x7
+ 208 0067 E2000000 		.4byte	.LASF8
+ 209 006b 04       		.uleb128 0x4
+ 210 006c A5000000 		.4byte	.LASF9
+ 211 0070 02       		.byte	0x2
+ 212 0071 5B       		.byte	0x5b
+ 213 0072 2C000000 		.4byte	0x2c
+ 214 0076 04       		.uleb128 0x4
+ 215 0077 D4000000 		.4byte	.LASF10
+ 216 007b 02       		.byte	0x2
+ 217 007c 5C       		.byte	0x5c
+ 218 007d 3A000000 		.4byte	0x3a
+ 219 0081 04       		.uleb128 0x4
+ 220 0082 DB000000 		.4byte	.LASF11
+ 221 0086 02       		.byte	0x2
+ 222 0087 5D       		.byte	0x5d
+ 223 0088 48000000 		.4byte	0x48
+ 224 008c 02       		.uleb128 0x2
+ 225 008d 04       		.byte	0x4
+ 226 008e 04       		.byte	0x4
+ 227 008f 72000000 		.4byte	.LASF12
+ 228 0093 02       		.uleb128 0x2
+ 229 0094 08       		.byte	0x8
+ 230 0095 04       		.byte	0x4
+ 231 0096 C5000000 		.4byte	.LASF13
+ 232 009a 02       		.uleb128 0x2
+ 233 009b 01       		.byte	0x1
+ 234 009c 08       		.byte	0x8
+ 235 009d 5E010000 		.4byte	.LASF14
+ 236 00a1 04       		.uleb128 0x4
+ 237 00a2 8E000000 		.4byte	.LASF15
+ 238 00a6 02       		.byte	0x2
+ 239 00a7 F0       		.byte	0xf0
+ 240 00a8 AC000000 		.4byte	0xac
+ 241 00ac 05       		.uleb128 0x5
+ 242 00ad 6B000000 		.4byte	0x6b
+ 243 00b1 02       		.uleb128 0x2
+ 244 00b2 04       		.byte	0x4
+ 245 00b3 07       		.byte	0x7
+ 246 00b4 1F010000 		.4byte	.LASF16
+ 247 00b8 06       		.uleb128 0x6
+ 248 00b9 B3000000 		.4byte	.LASF27
+ 249 00bd 01       		.byte	0x1
+ 250 00be 21       		.byte	0x21
+ 251 00bf 00000000 		.4byte	.LFB0
+ 252 00c3 20000000 		.4byte	.LFE0-.LFB0
+ 253 00c7 01       		.uleb128 0x1
+ 254 00c8 9C       		.byte	0x9c
+ 255 00c9 07       		.uleb128 0x7
+ 256 00ca F1010000 		.4byte	.LASF28
+ 257 00ce 01       		.byte	0x1
+ 258 00cf 38       		.byte	0x38
+ 259 00d0 00000000 		.4byte	.LFB1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 7
+
+
+ 260 00d4 98000000 		.4byte	.LFE1-.LFB1
+ 261 00d8 01       		.uleb128 0x1
+ 262 00d9 9C       		.byte	0x9c
+ 263 00da 52010000 		.4byte	0x152
+ 264 00de 08       		.uleb128 0x8
+ 265 00df EF000000 		.4byte	.LASF17
+ 266 00e3 01       		.byte	0x1
+ 267 00e4 38       		.byte	0x38
+ 268 00e5 81000000 		.4byte	0x81
+ 269 00e9 03       		.uleb128 0x3
+ 270 00ea 91       		.byte	0x91
+ 271 00eb E47D     		.sleb128 -284
+ 272 00ed 08       		.uleb128 0x8
+ 273 00ee 0E010000 		.4byte	.LASF18
+ 274 00f2 01       		.byte	0x1
+ 275 00f3 38       		.byte	0x38
+ 276 00f4 6B000000 		.4byte	0x6b
+ 277 00f8 03       		.uleb128 0x3
+ 278 00f9 91       		.byte	0x91
+ 279 00fa E37D     		.sleb128 -285
+ 280 00fc 09       		.uleb128 0x9
+ 281 00fd CC000000 		.4byte	.LASF19
+ 282 0101 01       		.byte	0x1
+ 283 0102 3A       		.byte	0x3a
+ 284 0103 81000000 		.4byte	0x81
+ 285 0107 02       		.uleb128 0x2
+ 286 0108 91       		.byte	0x91
+ 287 0109 70       		.sleb128 -16
+ 288 010a 09       		.uleb128 0x9
+ 289 010b 86000000 		.4byte	.LASF20
+ 290 010f 01       		.byte	0x1
+ 291 0110 3B       		.byte	0x3b
+ 292 0111 52010000 		.4byte	0x152
+ 293 0115 03       		.uleb128 0x3
+ 294 0116 91       		.byte	0x91
+ 295 0117 E87D     		.sleb128 -280
+ 296 0119 09       		.uleb128 0x9
+ 297 011a AB000000 		.4byte	.LASF21
+ 298 011e 01       		.byte	0x1
+ 299 011f 3E       		.byte	0x3e
+ 300 0120 6B000000 		.4byte	0x6b
+ 301 0124 02       		.uleb128 0x2
+ 302 0125 91       		.byte	0x91
+ 303 0126 6F       		.sleb128 -17
+ 304 0127 09       		.uleb128 0x9
+ 305 0128 58000000 		.4byte	.LASF22
+ 306 012c 01       		.byte	0x1
+ 307 012d 41       		.byte	0x41
+ 308 012e 76000000 		.4byte	0x76
+ 309 0132 02       		.uleb128 0x2
+ 310 0133 91       		.byte	0x91
+ 311 0134 6C       		.sleb128 -20
+ 312 0135 09       		.uleb128 0x9
+ 313 0136 16010000 		.4byte	.LASF23
+ 314 013a 01       		.byte	0x1
+ 315 013b 42       		.byte	0x42
+ 316 013c 81000000 		.4byte	0x81
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 8
+
+
+ 317 0140 02       		.uleb128 0x2
+ 318 0141 91       		.byte	0x91
+ 319 0142 68       		.sleb128 -24
+ 320 0143 0A       		.uleb128 0xa
+ 321 0144 69647800 		.ascii	"idx\000"
+ 322 0148 01       		.byte	0x1
+ 323 0149 43       		.byte	0x43
+ 324 014a 76000000 		.4byte	0x76
+ 325 014e 02       		.uleb128 0x2
+ 326 014f 91       		.byte	0x91
+ 327 0150 76       		.sleb128 -10
+ 328 0151 00       		.byte	0
+ 329 0152 0B       		.uleb128 0xb
+ 330 0153 6B000000 		.4byte	0x6b
+ 331 0157 0C       		.uleb128 0xc
+ 332 0158 B1000000 		.4byte	0xb1
+ 333 015c FF       		.byte	0xff
+ 334 015d 00       		.byte	0
+ 335 015e 00       		.byte	0
+ 336              		.section	.debug_abbrev,"",%progbits
+ 337              	.Ldebug_abbrev0:
+ 338 0000 01       		.uleb128 0x1
+ 339 0001 11       		.uleb128 0x11
+ 340 0002 01       		.byte	0x1
+ 341 0003 25       		.uleb128 0x25
+ 342 0004 0E       		.uleb128 0xe
+ 343 0005 13       		.uleb128 0x13
+ 344 0006 0B       		.uleb128 0xb
+ 345 0007 03       		.uleb128 0x3
+ 346 0008 0E       		.uleb128 0xe
+ 347 0009 1B       		.uleb128 0x1b
+ 348 000a 0E       		.uleb128 0xe
+ 349 000b 55       		.uleb128 0x55
+ 350 000c 17       		.uleb128 0x17
+ 351 000d 11       		.uleb128 0x11
+ 352 000e 01       		.uleb128 0x1
+ 353 000f 10       		.uleb128 0x10
+ 354 0010 17       		.uleb128 0x17
+ 355 0011 00       		.byte	0
+ 356 0012 00       		.byte	0
+ 357 0013 02       		.uleb128 0x2
+ 358 0014 24       		.uleb128 0x24
+ 359 0015 00       		.byte	0
+ 360 0016 0B       		.uleb128 0xb
+ 361 0017 0B       		.uleb128 0xb
+ 362 0018 3E       		.uleb128 0x3e
+ 363 0019 0B       		.uleb128 0xb
+ 364 001a 03       		.uleb128 0x3
+ 365 001b 0E       		.uleb128 0xe
+ 366 001c 00       		.byte	0
+ 367 001d 00       		.byte	0
+ 368 001e 03       		.uleb128 0x3
+ 369 001f 24       		.uleb128 0x24
+ 370 0020 00       		.byte	0
+ 371 0021 0B       		.uleb128 0xb
+ 372 0022 0B       		.uleb128 0xb
+ 373 0023 3E       		.uleb128 0x3e
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 9
+
+
+ 374 0024 0B       		.uleb128 0xb
+ 375 0025 03       		.uleb128 0x3
+ 376 0026 08       		.uleb128 0x8
+ 377 0027 00       		.byte	0
+ 378 0028 00       		.byte	0
+ 379 0029 04       		.uleb128 0x4
+ 380 002a 16       		.uleb128 0x16
+ 381 002b 00       		.byte	0
+ 382 002c 03       		.uleb128 0x3
+ 383 002d 0E       		.uleb128 0xe
+ 384 002e 3A       		.uleb128 0x3a
+ 385 002f 0B       		.uleb128 0xb
+ 386 0030 3B       		.uleb128 0x3b
+ 387 0031 0B       		.uleb128 0xb
+ 388 0032 49       		.uleb128 0x49
+ 389 0033 13       		.uleb128 0x13
+ 390 0034 00       		.byte	0
+ 391 0035 00       		.byte	0
+ 392 0036 05       		.uleb128 0x5
+ 393 0037 35       		.uleb128 0x35
+ 394 0038 00       		.byte	0
+ 395 0039 49       		.uleb128 0x49
+ 396 003a 13       		.uleb128 0x13
+ 397 003b 00       		.byte	0
+ 398 003c 00       		.byte	0
+ 399 003d 06       		.uleb128 0x6
+ 400 003e 2E       		.uleb128 0x2e
+ 401 003f 00       		.byte	0
+ 402 0040 3F       		.uleb128 0x3f
+ 403 0041 19       		.uleb128 0x19
+ 404 0042 03       		.uleb128 0x3
+ 405 0043 0E       		.uleb128 0xe
+ 406 0044 3A       		.uleb128 0x3a
+ 407 0045 0B       		.uleb128 0xb
+ 408 0046 3B       		.uleb128 0x3b
+ 409 0047 0B       		.uleb128 0xb
+ 410 0048 27       		.uleb128 0x27
+ 411 0049 19       		.uleb128 0x19
+ 412 004a 11       		.uleb128 0x11
+ 413 004b 01       		.uleb128 0x1
+ 414 004c 12       		.uleb128 0x12
+ 415 004d 06       		.uleb128 0x6
+ 416 004e 40       		.uleb128 0x40
+ 417 004f 18       		.uleb128 0x18
+ 418 0050 9742     		.uleb128 0x2117
+ 419 0052 19       		.uleb128 0x19
+ 420 0053 00       		.byte	0
+ 421 0054 00       		.byte	0
+ 422 0055 07       		.uleb128 0x7
+ 423 0056 2E       		.uleb128 0x2e
+ 424 0057 01       		.byte	0x1
+ 425 0058 3F       		.uleb128 0x3f
+ 426 0059 19       		.uleb128 0x19
+ 427 005a 03       		.uleb128 0x3
+ 428 005b 0E       		.uleb128 0xe
+ 429 005c 3A       		.uleb128 0x3a
+ 430 005d 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 10
+
+
+ 431 005e 3B       		.uleb128 0x3b
+ 432 005f 0B       		.uleb128 0xb
+ 433 0060 27       		.uleb128 0x27
+ 434 0061 19       		.uleb128 0x19
+ 435 0062 11       		.uleb128 0x11
+ 436 0063 01       		.uleb128 0x1
+ 437 0064 12       		.uleb128 0x12
+ 438 0065 06       		.uleb128 0x6
+ 439 0066 40       		.uleb128 0x40
+ 440 0067 18       		.uleb128 0x18
+ 441 0068 9642     		.uleb128 0x2116
+ 442 006a 19       		.uleb128 0x19
+ 443 006b 01       		.uleb128 0x1
+ 444 006c 13       		.uleb128 0x13
+ 445 006d 00       		.byte	0
+ 446 006e 00       		.byte	0
+ 447 006f 08       		.uleb128 0x8
+ 448 0070 05       		.uleb128 0x5
+ 449 0071 00       		.byte	0
+ 450 0072 03       		.uleb128 0x3
+ 451 0073 0E       		.uleb128 0xe
+ 452 0074 3A       		.uleb128 0x3a
+ 453 0075 0B       		.uleb128 0xb
+ 454 0076 3B       		.uleb128 0x3b
+ 455 0077 0B       		.uleb128 0xb
+ 456 0078 49       		.uleb128 0x49
+ 457 0079 13       		.uleb128 0x13
+ 458 007a 02       		.uleb128 0x2
+ 459 007b 18       		.uleb128 0x18
+ 460 007c 00       		.byte	0
+ 461 007d 00       		.byte	0
+ 462 007e 09       		.uleb128 0x9
+ 463 007f 34       		.uleb128 0x34
+ 464 0080 00       		.byte	0
+ 465 0081 03       		.uleb128 0x3
+ 466 0082 0E       		.uleb128 0xe
+ 467 0083 3A       		.uleb128 0x3a
+ 468 0084 0B       		.uleb128 0xb
+ 469 0085 3B       		.uleb128 0x3b
+ 470 0086 0B       		.uleb128 0xb
+ 471 0087 49       		.uleb128 0x49
+ 472 0088 13       		.uleb128 0x13
+ 473 0089 02       		.uleb128 0x2
+ 474 008a 18       		.uleb128 0x18
+ 475 008b 00       		.byte	0
+ 476 008c 00       		.byte	0
+ 477 008d 0A       		.uleb128 0xa
+ 478 008e 34       		.uleb128 0x34
+ 479 008f 00       		.byte	0
+ 480 0090 03       		.uleb128 0x3
+ 481 0091 08       		.uleb128 0x8
+ 482 0092 3A       		.uleb128 0x3a
+ 483 0093 0B       		.uleb128 0xb
+ 484 0094 3B       		.uleb128 0x3b
+ 485 0095 0B       		.uleb128 0xb
+ 486 0096 49       		.uleb128 0x49
+ 487 0097 13       		.uleb128 0x13
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 11
+
+
+ 488 0098 02       		.uleb128 0x2
+ 489 0099 18       		.uleb128 0x18
+ 490 009a 00       		.byte	0
+ 491 009b 00       		.byte	0
+ 492 009c 0B       		.uleb128 0xb
+ 493 009d 01       		.uleb128 0x1
+ 494 009e 01       		.byte	0x1
+ 495 009f 49       		.uleb128 0x49
+ 496 00a0 13       		.uleb128 0x13
+ 497 00a1 00       		.byte	0
+ 498 00a2 00       		.byte	0
+ 499 00a3 0C       		.uleb128 0xc
+ 500 00a4 21       		.uleb128 0x21
+ 501 00a5 00       		.byte	0
+ 502 00a6 49       		.uleb128 0x49
+ 503 00a7 13       		.uleb128 0x13
+ 504 00a8 2F       		.uleb128 0x2f
+ 505 00a9 0B       		.uleb128 0xb
+ 506 00aa 00       		.byte	0
+ 507 00ab 00       		.byte	0
+ 508 00ac 00       		.byte	0
+ 509              		.section	.debug_aranges,"",%progbits
+ 510 0000 24000000 		.4byte	0x24
+ 511 0004 0200     		.2byte	0x2
+ 512 0006 00000000 		.4byte	.Ldebug_info0
+ 513 000a 04       		.byte	0x4
+ 514 000b 00       		.byte	0
+ 515 000c 0000     		.2byte	0
+ 516 000e 0000     		.2byte	0
+ 517 0010 00000000 		.4byte	.LFB0
+ 518 0014 20000000 		.4byte	.LFE0-.LFB0
+ 519 0018 00000000 		.4byte	.LFB1
+ 520 001c 98000000 		.4byte	.LFE1-.LFB1
+ 521 0020 00000000 		.4byte	0
+ 522 0024 00000000 		.4byte	0
+ 523              		.section	.debug_ranges,"",%progbits
+ 524              	.Ldebug_ranges0:
+ 525 0000 00000000 		.4byte	.LFB0
+ 526 0004 20000000 		.4byte	.LFE0
+ 527 0008 00000000 		.4byte	.LFB1
+ 528 000c 98000000 		.4byte	.LFE1
+ 529 0010 00000000 		.4byte	0
+ 530 0014 00000000 		.4byte	0
+ 531              		.section	.debug_line,"",%progbits
+ 532              	.Ldebug_line0:
+ 533 0000 8B000000 		.section	.debug_str,"MS",%progbits,1
+ 533      02004B00 
+ 533      00000201 
+ 533      FB0E0D00 
+ 533      01010101 
+ 534              	.LASF26:
+ 535 0000 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 535      73657273 
+ 535      5C6C756B 
+ 535      61735C44 
+ 535      65736B74 
+ 536 002f 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 12
+
+
+ 536      73746572 
+ 536      5C50696F 
+ 536      6E656572 
+ 536      4B69745F 
+ 537              	.LASF22:
+ 538 0058 726F774E 		.ascii	"rowNum\000"
+ 538      756D00
+ 539              	.LASF3:
+ 540 005f 73686F72 		.ascii	"short unsigned int\000"
+ 540      7420756E 
+ 540      7369676E 
+ 540      65642069 
+ 540      6E7400
+ 541              	.LASF12:
+ 542 0072 666C6F61 		.ascii	"float\000"
+ 542      7400
+ 543              	.LASF1:
+ 544 0078 756E7369 		.ascii	"unsigned char\000"
+ 544      676E6564 
+ 544      20636861 
+ 544      7200
+ 545              	.LASF20:
+ 546 0086 726F7744 		.ascii	"rowData\000"
+ 546      61746100 
+ 547              	.LASF15:
+ 548 008e 72656738 		.ascii	"reg8\000"
+ 548      00
+ 549              	.LASF5:
+ 550 0093 6C6F6E67 		.ascii	"long unsigned int\000"
+ 550      20756E73 
+ 550      69676E65 
+ 550      6420696E 
+ 550      7400
+ 551              	.LASF9:
+ 552 00a5 75696E74 		.ascii	"uint8\000"
+ 552      3800
+ 553              	.LASF21:
+ 554 00ab 61727261 		.ascii	"arrayId\000"
+ 554      79496400 
+ 555              	.LASF27:
+ 556 00b3 426F6F74 		.ascii	"Bootloadable_Load\000"
+ 556      6C6F6164 
+ 556      61626C65 
+ 556      5F4C6F61 
+ 556      6400
+ 557              	.LASF13:
+ 558 00c5 646F7562 		.ascii	"double\000"
+ 558      6C6500
+ 559              	.LASF19:
+ 560 00cc 666C7341 		.ascii	"flsAddr\000"
+ 560      64647200 
+ 561              	.LASF10:
+ 562 00d4 75696E74 		.ascii	"uint16\000"
+ 562      313600
+ 563              	.LASF11:
+ 564 00db 75696E74 		.ascii	"uint32\000"
+ 564      333200
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 13
+
+
+ 565              	.LASF8:
+ 566 00e2 756E7369 		.ascii	"unsigned int\000"
+ 566      676E6564 
+ 566      20696E74 
+ 566      00
+ 567              	.LASF17:
+ 568 00ef 61646472 		.ascii	"address\000"
+ 568      65737300 
+ 569              	.LASF7:
+ 570 00f7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 570      206C6F6E 
+ 570      6720756E 
+ 570      7369676E 
+ 570      65642069 
+ 571              	.LASF18:
+ 572 010e 72756E54 		.ascii	"runType\000"
+ 572      79706500 
+ 573              	.LASF23:
+ 574 0116 62617365 		.ascii	"baseAddr\000"
+ 574      41646472 
+ 574      00
+ 575              	.LASF16:
+ 576 011f 73697A65 		.ascii	"sizetype\000"
+ 576      74797065 
+ 576      00
+ 577              	.LASF25:
+ 578 0128 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Bootloadable.c\000"
+ 578      6E657261 
+ 578      7465645F 
+ 578      536F7572 
+ 578      63655C50 
+ 579              	.LASF6:
+ 580 0150 6C6F6E67 		.ascii	"long long int\000"
+ 580      206C6F6E 
+ 580      6720696E 
+ 580      7400
+ 581              	.LASF14:
+ 582 015e 63686172 		.ascii	"char\000"
+ 582      00
+ 583              	.LASF24:
+ 584 0163 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 584      4320342E 
+ 584      392E3320 
+ 584      32303135 
+ 584      30333033 
+ 585 0196 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 585      20726576 
+ 585      6973696F 
+ 585      6E203232 
+ 585      31323230 
+ 586 01c9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 586      66756E63 
+ 586      74696F6E 
+ 586      2D736563 
+ 586      74696F6E 
+ 587              	.LASF28:
+ 588 01f1 426F6F74 		.ascii	"Bootloadable_SetFlashByte\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccNvTykm.s 			page 14
+
+
+ 588      6C6F6164 
+ 588      61626C65 
+ 588      5F536574 
+ 588      466C6173 
+ 589              	.LASF2:
+ 590 020b 73686F72 		.ascii	"short int\000"
+ 590      7420696E 
+ 590      7400
+ 591              	.LASF4:
+ 592 0215 6C6F6E67 		.ascii	"long int\000"
+ 592      20696E74 
+ 592      00
+ 593              	.LASF0:
+ 594 021e 7369676E 		.ascii	"signed char\000"
+ 594      65642063 
+ 594      68617200 
+ 595              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,1898 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Cm3Start.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.noinit,"aw",%progbits
+  19              		.align	2
+  20              		.type	cySysNoInitDataValid, %object
+  21              		.size	cySysNoInitDataValid, 4
+  22              	cySysNoInitDataValid:
+  23 0000 00000000 		.space	4
+  24              		.global	CyRamVectors
+  25              		.section	.ramvectors,"aw",%progbits
+  26              		.align	8
+  27              		.type	CyRamVectors, %object
+  28              		.size	CyRamVectors, 192
+  29              	CyRamVectors:
+  30 0000 00000000 		.space	192
+  30      00000000 
+  30      00000000 
+  30      00000000 
+  30      00000000 
+  31 00c0 00000000 		.section	.text.IntDefaultHandler,"ax",%progbits
+  31      00000000 
+  31      00000000 
+  31      00000000 
+  31      00000000 
+  32              		.align	2
+  33              		.global	IntDefaultHandler
+  34              		.thumb
+  35              		.thumb_func
+  36              		.type	IntDefaultHandler, %function
+  37              	IntDefaultHandler:
+  38              	.LFB0:
+  39              		.file 1 ".\\Generated_Source\\PSoC5\\Cm3Start.c"
+   1:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Cm3Start.c **** * File Name: Cm3Start.c
+   3:.\Generated_Source\PSoC5/Cm3Start.c **** * Version 4.10
+   4:.\Generated_Source\PSoC5/Cm3Start.c **** *
+   5:.\Generated_Source\PSoC5/Cm3Start.c **** *  Description:
+   6:.\Generated_Source\PSoC5/Cm3Start.c **** *  Startup code for the ARM CM3.
+   7:.\Generated_Source\PSoC5/Cm3Start.c **** *
+   8:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+   9:.\Generated_Source\PSoC5/Cm3Start.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation. All rights reserved.
+  10:.\Generated_Source\PSoC5/Cm3Start.c **** * You may use this file only in accordance with the license, terms, conditions,
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 2
+
+
+  11:.\Generated_Source\PSoC5/Cm3Start.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:.\Generated_Source\PSoC5/Cm3Start.c **** * the software package with which this file was provided.
+  13:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+  14:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  15:.\Generated_Source\PSoC5/Cm3Start.c **** #include <limits.h>
+  16:.\Generated_Source\PSoC5/Cm3Start.c **** #include "cydevice_trm.h"
+  17:.\Generated_Source\PSoC5/Cm3Start.c **** #include "cytypes.h"
+  18:.\Generated_Source\PSoC5/Cm3Start.c **** #include "cyfitter_cfg.h"
+  19:.\Generated_Source\PSoC5/Cm3Start.c **** #include "CyLib.h"
+  20:.\Generated_Source\PSoC5/Cm3Start.c **** #include "CyDmac.h"
+  21:.\Generated_Source\PSoC5/Cm3Start.c **** #include "cyfitter.h"
+  22:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  23:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NUM_INTERRUPTS           (32u)
+  24:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NUM_VECTORS              (CYINT_IRQ_BASE + CY_NUM_INTERRUPTS)
+  25:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NUM_ROM_VECTORS          (4u)
+  26:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_APINT_PTR           ((reg32 *) CYREG_NVIC_APPLN_INTR)
+  27:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_CFG_CTRL_PTR        ((reg32 *) CYREG_NVIC_CFG_CONTROL)
+  28:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_APINT_PRIGROUP_3_5  (0x00000400u)  /* Priority group 3.5 split */
+  29:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_APINT_VECTKEY       (0x05FA0000u)  /* This key is required in order to write the NV
+  30:.\Generated_Source\PSoC5/Cm3Start.c **** #define CY_NVIC_CFG_STACKALIGN      (0x00000200u)  /* This specifies that the exception stack must 
+  31:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  32:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  33:.\Generated_Source\PSoC5/Cm3Start.c **** /* Extern functions */
+  34:.\Generated_Source\PSoC5/Cm3Start.c **** extern void CyBtldr_CheckLaunch(void);
+  35:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  36:.\Generated_Source\PSoC5/Cm3Start.c **** /* Function prototypes */
+  37:.\Generated_Source\PSoC5/Cm3Start.c **** void initialize_psoc(void);
+  38:.\Generated_Source\PSoC5/Cm3Start.c **** CY_ISR(IntDefaultHandler);
+  39:.\Generated_Source\PSoC5/Cm3Start.c **** void Reset(void);
+  40:.\Generated_Source\PSoC5/Cm3Start.c **** CY_ISR(IntDefaultHandler);
+  41:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  42:.\Generated_Source\PSoC5/Cm3Start.c **** #if defined(__ARMCC_VERSION)
+  43:.\Generated_Source\PSoC5/Cm3Start.c ****     #define INITIAL_STACK_POINTER ((cyisraddress)(uint32)&Image$$ARM_LIB_STACK$$ZI$$Limit)
+  44:.\Generated_Source\PSoC5/Cm3Start.c **** #elif defined (__GNUC__)
+  45:.\Generated_Source\PSoC5/Cm3Start.c ****     #define INITIAL_STACK_POINTER (&__cy_stack)
+  46:.\Generated_Source\PSoC5/Cm3Start.c **** #elif defined (__ICCARM__)
+  47:.\Generated_Source\PSoC5/Cm3Start.c ****     #pragma language=extended
+  48:.\Generated_Source\PSoC5/Cm3Start.c ****     #pragma segment="CSTACK"
+  49:.\Generated_Source\PSoC5/Cm3Start.c ****     #define INITIAL_STACK_POINTER  { .__ptr = __sfe( "CSTACK" ) }
+  50:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  51:.\Generated_Source\PSoC5/Cm3Start.c ****     extern void __iar_program_start( void );
+  52:.\Generated_Source\PSoC5/Cm3Start.c ****     extern void __iar_data_init3 (void);
+  53:.\Generated_Source\PSoC5/Cm3Start.c **** #endif  /* (__ARMCC_VERSION) */
+  54:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  55:.\Generated_Source\PSoC5/Cm3Start.c **** /* Global variables */
+  56:.\Generated_Source\PSoC5/Cm3Start.c **** #if !defined (__ICCARM__)
+  57:.\Generated_Source\PSoC5/Cm3Start.c ****     CY_NOINIT static uint32 cySysNoInitDataValid;
+  58:.\Generated_Source\PSoC5/Cm3Start.c **** #endif  /* !defined (__ICCARM__) */
+  59:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  60:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  61:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+  62:.\Generated_Source\PSoC5/Cm3Start.c **** * Default Ram Interrupt Vector table storage area. Must be 256-byte aligned.
+  63:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC5/Cm3Start.c **** #if defined (__ICCARM__)
+  65:.\Generated_Source\PSoC5/Cm3Start.c ****     #pragma location=".ramvectors"
+  66:.\Generated_Source\PSoC5/Cm3Start.c ****     #pragma data_alignment=256
+  67:.\Generated_Source\PSoC5/Cm3Start.c **** #else
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 3
+
+
+  68:.\Generated_Source\PSoC5/Cm3Start.c ****     CY_SECTION(".ramvectors")
+  69:.\Generated_Source\PSoC5/Cm3Start.c ****     CY_ALIGN(256)
+  70:.\Generated_Source\PSoC5/Cm3Start.c **** #endif  /* defined (__ICCARM__) */
+  71:.\Generated_Source\PSoC5/Cm3Start.c **** cyisraddress CyRamVectors[CY_NUM_VECTORS];
+  72:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  73:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  74:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+  75:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: IntDefaultHandler
+  76:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+  77:.\Generated_Source\PSoC5/Cm3Start.c **** *
+  78:.\Generated_Source\PSoC5/Cm3Start.c **** * Summary:
+  79:.\Generated_Source\PSoC5/Cm3Start.c **** *  This function is called for all interrupts, other than a reset that gets
+  80:.\Generated_Source\PSoC5/Cm3Start.c **** *  called before the system is setup.
+  81:.\Generated_Source\PSoC5/Cm3Start.c **** *
+  82:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
+  83:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+  84:.\Generated_Source\PSoC5/Cm3Start.c **** *
+  85:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
+  86:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+  87:.\Generated_Source\PSoC5/Cm3Start.c **** *
+  88:.\Generated_Source\PSoC5/Cm3Start.c **** * Theory:
+  89:.\Generated_Source\PSoC5/Cm3Start.c **** *  Any value other than zero is acceptable.
+  90:.\Generated_Source\PSoC5/Cm3Start.c **** *
+  91:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+  92:.\Generated_Source\PSoC5/Cm3Start.c **** CY_ISR(IntDefaultHandler)
+  93:.\Generated_Source\PSoC5/Cm3Start.c **** {
+  40              		.loc 1 93 0
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 1, uses_anonymous_args = 0
+  44              		@ link register save eliminated.
+  45 0000 80B4     		push	{r7}
+  46              		.cfi_def_cfa_offset 4
+  47              		.cfi_offset 7, -4
+  48 0002 00AF     		add	r7, sp, #0
+  49              		.cfi_def_cfa_register 7
+  50              	.L2:
+  94:.\Generated_Source\PSoC5/Cm3Start.c **** 
+  95:.\Generated_Source\PSoC5/Cm3Start.c ****     while(1)
+  96:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+  97:.\Generated_Source\PSoC5/Cm3Start.c ****         /***********************************************************************
+  98:.\Generated_Source\PSoC5/Cm3Start.c ****         * We must not get here. If we do, a serious problem occurs, so go
+  99:.\Generated_Source\PSoC5/Cm3Start.c ****         * into an infinite loop.
+ 100:.\Generated_Source\PSoC5/Cm3Start.c ****         ***********************************************************************/
+ 101:.\Generated_Source\PSoC5/Cm3Start.c ****     }
+  51              		.loc 1 101 0 discriminator 1
+  52 0004 FEE7     		b	.L2
+  53              		.cfi_endproc
+  54              	.LFE0:
+  55              		.size	IntDefaultHandler, .-IntDefaultHandler
+  56              		.section	.text.Reset,"ax",%progbits
+  57              		.align	2
+  58              		.global	Reset
+  59              		.thumb
+  60              		.thumb_func
+  61              		.type	Reset, %function
+  62              	Reset:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 4
+
+
+  63              	.LFB1:
+ 102:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 103:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 104:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 105:.\Generated_Source\PSoC5/Cm3Start.c **** #if defined(__ARMCC_VERSION)
+ 106:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 107:.\Generated_Source\PSoC5/Cm3Start.c **** /* Local function for device reset. */
+ 108:.\Generated_Source\PSoC5/Cm3Start.c **** extern void Reset(void);
+ 109:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 110:.\Generated_Source\PSoC5/Cm3Start.c **** /* Application entry point. */
+ 111:.\Generated_Source\PSoC5/Cm3Start.c **** extern void $Super$$main(void);
+ 112:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 113:.\Generated_Source\PSoC5/Cm3Start.c **** /* Linker-generated Stack Base addresses, Two Region and One Region */
+ 114:.\Generated_Source\PSoC5/Cm3Start.c **** extern uint32 Image$$ARM_LIB_STACK$$ZI$$Limit;
+ 115:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 116:.\Generated_Source\PSoC5/Cm3Start.c **** /* RealView C Library initialization. */
+ 117:.\Generated_Source\PSoC5/Cm3Start.c **** extern int __main(void);
+ 118:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 119:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 120:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+ 121:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: Reset
+ 122:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+ 123:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 124:.\Generated_Source\PSoC5/Cm3Start.c **** * Summary:
+ 125:.\Generated_Source\PSoC5/Cm3Start.c **** *  This function handles the reset interrupt for the RVDS/MDK toolchains.
+ 126:.\Generated_Source\PSoC5/Cm3Start.c **** *  This is the first bit of code that is executed at startup.
+ 127:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 128:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
+ 129:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 130:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 131:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
+ 132:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 133:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 134:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+ 135:.\Generated_Source\PSoC5/Cm3Start.c **** void Reset(void)
+ 136:.\Generated_Source\PSoC5/Cm3Start.c **** {
+ 137:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE)
+ 138:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 139:.\Generated_Source\PSoC5/Cm3Start.c ****         /* For PSoC 5LP, debugging is enabled by default */
+ 140:.\Generated_Source\PSoC5/Cm3Start.c ****         #if(CYDEV_DEBUGGING_ENABLE == 0)
+ 141:.\Generated_Source\PSoC5/Cm3Start.c ****             *(reg32 *)(CYDEV_DEBUG_ENABLE_REGISTER) |= CYDEV_DEBUG_ENABLE_MASK;
+ 142:.\Generated_Source\PSoC5/Cm3Start.c ****         #endif /* (CYDEV_DEBUGGING_ENABLE) */
+ 143:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 144:.\Generated_Source\PSoC5/Cm3Start.c ****         /* Reset Status Register has Read-to-clear SW access mode.
+ 145:.\Generated_Source\PSoC5/Cm3Start.c ****         * Preserve current RESET_SR0 state to make it available for next reading.
+ 146:.\Generated_Source\PSoC5/Cm3Start.c ****         */
+ 147:.\Generated_Source\PSoC5/Cm3Start.c ****         *(reg32 *)(CYREG_PHUB_CFGMEM23_CFG1) = *(reg32 *)(CYREG_RESET_SR0);
+ 148:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 149:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE) */
+ 150:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 151:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(CYDEV_BOOTLOADER_ENABLE)
+ 152:.\Generated_Source\PSoC5/Cm3Start.c ****         CyBtldr_CheckLaunch();
+ 153:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif /* (CYDEV_BOOTLOADER_ENABLE) */
+ 154:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 155:.\Generated_Source\PSoC5/Cm3Start.c ****     __main();
+ 156:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 157:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 5
+
+
+ 158:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 159:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+ 160:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: $Sub$$main
+ 161:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+ 162:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 163:.\Generated_Source\PSoC5/Cm3Start.c **** * Summary:
+ 164:.\Generated_Source\PSoC5/Cm3Start.c **** *  This function is called immediately before the users main
+ 165:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 166:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
+ 167:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 168:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 169:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
+ 170:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 171:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 172:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+ 173:.\Generated_Source\PSoC5/Cm3Start.c **** void $Sub$$main(void)
+ 174:.\Generated_Source\PSoC5/Cm3Start.c **** {
+ 175:.\Generated_Source\PSoC5/Cm3Start.c ****     initialize_psoc();
+ 176:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 177:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Call original main */
+ 178:.\Generated_Source\PSoC5/Cm3Start.c ****     $Super$$main();
+ 179:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 180:.\Generated_Source\PSoC5/Cm3Start.c ****     while (1)
+ 181:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 182:.\Generated_Source\PSoC5/Cm3Start.c ****         /* If main returns, it is undefined what we should do. */
+ 183:.\Generated_Source\PSoC5/Cm3Start.c ****     }
+ 184:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 185:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 186:.\Generated_Source\PSoC5/Cm3Start.c **** #elif defined(__GNUC__)
+ 187:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 188:.\Generated_Source\PSoC5/Cm3Start.c **** void Start_c(void);
+ 189:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 190:.\Generated_Source\PSoC5/Cm3Start.c **** /* Stack Base address */
+ 191:.\Generated_Source\PSoC5/Cm3Start.c **** extern void __cy_stack(void);
+ 192:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 193:.\Generated_Source\PSoC5/Cm3Start.c **** /* Application entry point. */
+ 194:.\Generated_Source\PSoC5/Cm3Start.c **** extern int main(void);
+ 195:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 196:.\Generated_Source\PSoC5/Cm3Start.c **** /* Static objects constructors initializer */
+ 197:.\Generated_Source\PSoC5/Cm3Start.c **** extern void __libc_init_array(void);
+ 198:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 199:.\Generated_Source\PSoC5/Cm3Start.c **** typedef unsigned char __cy_byte_align8 __attribute ((aligned (8)));
+ 200:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 201:.\Generated_Source\PSoC5/Cm3Start.c **** struct __cy_region
+ 202:.\Generated_Source\PSoC5/Cm3Start.c **** {
+ 203:.\Generated_Source\PSoC5/Cm3Start.c ****     __cy_byte_align8 *init; /* Initial contents of this region.  */
+ 204:.\Generated_Source\PSoC5/Cm3Start.c ****     __cy_byte_align8 *data; /* Start address of region.  */
+ 205:.\Generated_Source\PSoC5/Cm3Start.c ****     size_t init_size;       /* Size of initial data.  */
+ 206:.\Generated_Source\PSoC5/Cm3Start.c ****     size_t zero_size;       /* Additional size to be zeroed.  */
+ 207:.\Generated_Source\PSoC5/Cm3Start.c **** };
+ 208:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 209:.\Generated_Source\PSoC5/Cm3Start.c **** extern const struct __cy_region __cy_regions[];
+ 210:.\Generated_Source\PSoC5/Cm3Start.c **** extern const char __cy_region_num __attribute__((weak));
+ 211:.\Generated_Source\PSoC5/Cm3Start.c **** #define __cy_region_num ((size_t)&__cy_region_num)
+ 212:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 213:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 214:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 6
+
+
+ 215:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: Reset
+ 216:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+ 217:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 218:.\Generated_Source\PSoC5/Cm3Start.c **** * Summary:
+ 219:.\Generated_Source\PSoC5/Cm3Start.c **** *  This function handles the reset interrupt for the GCC toolchain. This is the
+ 220:.\Generated_Source\PSoC5/Cm3Start.c **** *  first bit of code that is executed at startup.
+ 221:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 222:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
+ 223:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 224:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 225:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
+ 226:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 227:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 228:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+ 229:.\Generated_Source\PSoC5/Cm3Start.c **** void Reset(void)
+ 230:.\Generated_Source\PSoC5/Cm3Start.c **** {
+  64              		.loc 1 230 0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 1, uses_anonymous_args = 0
+  68 0000 80B5     		push	{r7, lr}
+  69              		.cfi_def_cfa_offset 8
+  70              		.cfi_offset 7, -8
+  71              		.cfi_offset 14, -4
+  72 0002 00AF     		add	r7, sp, #0
+  73              		.cfi_def_cfa_register 7
+ 231:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE)
+ 232:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 233:.\Generated_Source\PSoC5/Cm3Start.c ****         /* For PSoC 5LP, debugging is enabled by default */
+ 234:.\Generated_Source\PSoC5/Cm3Start.c ****         #if(CYDEV_DEBUGGING_ENABLE == 0)
+ 235:.\Generated_Source\PSoC5/Cm3Start.c ****             *(reg32 *)(CYDEV_DEBUG_ENABLE_REGISTER) |= CYDEV_DEBUG_ENABLE_MASK;
+ 236:.\Generated_Source\PSoC5/Cm3Start.c ****         #endif /* (CYDEV_DEBUGGING_ENABLE) */
+ 237:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 238:.\Generated_Source\PSoC5/Cm3Start.c ****         /* Reset Status Register has Read-to-clear SW access mode.
+ 239:.\Generated_Source\PSoC5/Cm3Start.c ****         * Preserve current RESET_SR0 state to make it available for next reading.
+ 240:.\Generated_Source\PSoC5/Cm3Start.c ****         */
+ 241:.\Generated_Source\PSoC5/Cm3Start.c ****         *(reg32 *)(CYREG_PHUB_CFGMEM23_CFG1) = *(reg32 *)(CYREG_RESET_SR0);
+  74              		.loc 1 241 0
+  75 0004 024A     		ldr	r2, .L4
+  76 0006 034B     		ldr	r3, .L4+4
+  77 0008 1B68     		ldr	r3, [r3]
+  78 000a 1360     		str	r3, [r2]
+ 242:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 243:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE) */
+ 244:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 245:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(CYDEV_BOOTLOADER_ENABLE)
+ 246:.\Generated_Source\PSoC5/Cm3Start.c ****         CyBtldr_CheckLaunch();
+ 247:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif /* (CYDEV_BOOTLOADER_ENABLE) */
+ 248:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 249:.\Generated_Source\PSoC5/Cm3Start.c ****     Start_c();
+  79              		.loc 1 249 0
+  80 000c FFF7FEFF 		bl	Start_c
+  81              	.L5:
+  82              		.align	2
+  83              	.L4:
+  84 0010 BC760040 		.word	1073772220
+  85 0014 FA460040 		.word	1073759994
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 7
+
+
+  86              		.cfi_endproc
+  87              	.LFE1:
+  88              		.size	Reset, .-Reset
+  89              		.section	.text._exit,"ax",%progbits
+  90              		.align	2
+  91              		.weak	_exit
+  92              		.thumb
+  93              		.thumb_func
+  94              		.type	_exit, %function
+  95              	_exit:
+  96              	.LFB2:
+ 250:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 251:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 252:.\Generated_Source\PSoC5/Cm3Start.c **** __attribute__((weak))
+ 253:.\Generated_Source\PSoC5/Cm3Start.c **** void _exit(int status)
+ 254:.\Generated_Source\PSoC5/Cm3Start.c **** {
+  97              		.loc 1 254 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 16
+ 100              		@ frame_needed = 1, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+ 102 0000 80B4     		push	{r7}
+ 103              		.cfi_def_cfa_offset 4
+ 104              		.cfi_offset 7, -4
+ 105 0002 85B0     		sub	sp, sp, #20
+ 106              		.cfi_def_cfa_offset 24
+ 107 0004 00AF     		add	r7, sp, #0
+ 108              		.cfi_def_cfa_register 7
+ 109 0006 7860     		str	r0, [r7, #4]
+ 255:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Cause divide by 0 exception */
+ 256:.\Generated_Source\PSoC5/Cm3Start.c ****     int x = status / INT_MAX;
+ 110              		.loc 1 256 0
+ 111 0008 7B68     		ldr	r3, [r7, #4]
+ 112 000a 064A     		ldr	r2, .L8
+ 113 000c 82FB0312 		smull	r1, r2, r2, r3
+ 114 0010 5217     		asrs	r2, r2, #29
+ 115 0012 DB17     		asrs	r3, r3, #31
+ 116 0014 D31A     		subs	r3, r2, r3
+ 117 0016 FB60     		str	r3, [r7, #12]
+ 257:.\Generated_Source\PSoC5/Cm3Start.c ****     x = 4 / x;
+ 118              		.loc 1 257 0
+ 119 0018 0422     		movs	r2, #4
+ 120 001a FB68     		ldr	r3, [r7, #12]
+ 121 001c 92FBF3F3 		sdiv	r3, r2, r3
+ 122 0020 FB60     		str	r3, [r7, #12]
+ 123              	.L7:
+ 258:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 259:.\Generated_Source\PSoC5/Cm3Start.c ****     while(1)
+ 260:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 261:.\Generated_Source\PSoC5/Cm3Start.c ****     }
+ 124              		.loc 1 261 0 discriminator 1
+ 125 0022 FEE7     		b	.L7
+ 126              	.L9:
+ 127              		.align	2
+ 128              	.L8:
+ 129 0024 01000040 		.word	1073741825
+ 130              		.cfi_endproc
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 8
+
+
+ 131              	.LFE2:
+ 132              		.size	_exit, .-_exit
+ 133              		.section	.text.Start_c,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	Start_c
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.type	Start_c, %function
+ 139              	Start_c:
+ 140              	.LFB3:
+ 262:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 263:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 264:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+ 265:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: Start_c
+ 266:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+ 267:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 268:.\Generated_Source\PSoC5/Cm3Start.c **** * Summary:
+ 269:.\Generated_Source\PSoC5/Cm3Start.c **** *  This function handles initializing the .data and .bss sections in
+ 270:.\Generated_Source\PSoC5/Cm3Start.c **** *  preparation for running the standard C code.  Once initialization is complete
+ 271:.\Generated_Source\PSoC5/Cm3Start.c **** *  it will call main(). This function will never return.
+ 272:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 273:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
+ 274:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 275:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 276:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
+ 277:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 278:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 279:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+ 280:.\Generated_Source\PSoC5/Cm3Start.c **** void Start_c(void)  __attribute__ ((noreturn));
+ 281:.\Generated_Source\PSoC5/Cm3Start.c **** void Start_c(void)
+ 282:.\Generated_Source\PSoC5/Cm3Start.c **** {
+ 141              		.loc 1 282 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 24
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145 0000 80B5     		push	{r7, lr}
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 86B0     		sub	sp, sp, #24
+ 150              		.cfi_def_cfa_offset 32
+ 151 0004 00AF     		add	r7, sp, #0
+ 152              		.cfi_def_cfa_register 7
+ 283:.\Generated_Source\PSoC5/Cm3Start.c ****     unsigned regions = __cy_region_num;
+ 153              		.loc 1 283 0
+ 154 0006 214B     		ldr	r3, .L18
+ 155 0008 7B61     		str	r3, [r7, #20]
+ 284:.\Generated_Source\PSoC5/Cm3Start.c ****     const struct __cy_region *rptr = __cy_regions;
+ 156              		.loc 1 284 0
+ 157 000a 214B     		ldr	r3, .L18+4
+ 158 000c 3B61     		str	r3, [r7, #16]
+ 285:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 286:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Initialize memory */
+ 287:.\Generated_Source\PSoC5/Cm3Start.c ****     for (regions = __cy_region_num, rptr = __cy_regions; regions--; rptr++)
+ 159              		.loc 1 287 0
+ 160 000e 1F4B     		ldr	r3, .L18
+ 161 0010 7B61     		str	r3, [r7, #20]
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 9
+
+
+ 162 0012 1F4B     		ldr	r3, .L18+4
+ 163 0014 3B61     		str	r3, [r7, #16]
+ 164 0016 2FE0     		b	.L11
+ 165              	.L16:
+ 166              	.LBB2:
+ 288:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 289:.\Generated_Source\PSoC5/Cm3Start.c ****         uint32 *src = (uint32 *)rptr->init;
+ 167              		.loc 1 289 0
+ 168 0018 3B69     		ldr	r3, [r7, #16]
+ 169 001a 1B68     		ldr	r3, [r3]
+ 170 001c FB60     		str	r3, [r7, #12]
+ 290:.\Generated_Source\PSoC5/Cm3Start.c ****         uint32 *dst = (uint32 *)rptr->data;
+ 171              		.loc 1 290 0
+ 172 001e 3B69     		ldr	r3, [r7, #16]
+ 173 0020 5B68     		ldr	r3, [r3, #4]
+ 174 0022 BB60     		str	r3, [r7, #8]
+ 291:.\Generated_Source\PSoC5/Cm3Start.c ****         unsigned limit = rptr->init_size;
+ 175              		.loc 1 291 0
+ 176 0024 3B69     		ldr	r3, [r7, #16]
+ 177 0026 9B68     		ldr	r3, [r3, #8]
+ 178 0028 3B60     		str	r3, [r7]
+ 292:.\Generated_Source\PSoC5/Cm3Start.c ****         unsigned count;
+ 293:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 294:.\Generated_Source\PSoC5/Cm3Start.c ****         for (count = 0u; count != limit; count += sizeof (uint32))
+ 179              		.loc 1 294 0
+ 180 002a 0023     		movs	r3, #0
+ 181 002c 7B60     		str	r3, [r7, #4]
+ 182 002e 0AE0     		b	.L12
+ 183              	.L13:
+ 295:.\Generated_Source\PSoC5/Cm3Start.c ****         {
+ 296:.\Generated_Source\PSoC5/Cm3Start.c ****             *dst++ = *src++;
+ 184              		.loc 1 296 0 discriminator 3
+ 185 0030 BB68     		ldr	r3, [r7, #8]
+ 186 0032 1A1D     		adds	r2, r3, #4
+ 187 0034 BA60     		str	r2, [r7, #8]
+ 188 0036 FA68     		ldr	r2, [r7, #12]
+ 189 0038 111D     		adds	r1, r2, #4
+ 190 003a F960     		str	r1, [r7, #12]
+ 191 003c 1268     		ldr	r2, [r2]
+ 192 003e 1A60     		str	r2, [r3]
+ 294:.\Generated_Source\PSoC5/Cm3Start.c ****         {
+ 193              		.loc 1 294 0 discriminator 3
+ 194 0040 7B68     		ldr	r3, [r7, #4]
+ 195 0042 0433     		adds	r3, r3, #4
+ 196 0044 7B60     		str	r3, [r7, #4]
+ 197              	.L12:
+ 294:.\Generated_Source\PSoC5/Cm3Start.c ****         {
+ 198              		.loc 1 294 0 is_stmt 0 discriminator 1
+ 199 0046 7A68     		ldr	r2, [r7, #4]
+ 200 0048 3B68     		ldr	r3, [r7]
+ 201 004a 9A42     		cmp	r2, r3
+ 202 004c F0D1     		bne	.L13
+ 297:.\Generated_Source\PSoC5/Cm3Start.c ****         }
+ 298:.\Generated_Source\PSoC5/Cm3Start.c ****         limit = rptr->zero_size;
+ 203              		.loc 1 298 0 is_stmt 1
+ 204 004e 3B69     		ldr	r3, [r7, #16]
+ 205 0050 DB68     		ldr	r3, [r3, #12]
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 10
+
+
+ 206 0052 3B60     		str	r3, [r7]
+ 299:.\Generated_Source\PSoC5/Cm3Start.c ****         for (count = 0u; count != limit; count += sizeof (uint32))
+ 207              		.loc 1 299 0
+ 208 0054 0023     		movs	r3, #0
+ 209 0056 7B60     		str	r3, [r7, #4]
+ 210 0058 07E0     		b	.L14
+ 211              	.L15:
+ 300:.\Generated_Source\PSoC5/Cm3Start.c ****         {
+ 301:.\Generated_Source\PSoC5/Cm3Start.c ****             *dst++ = 0u;
+ 212              		.loc 1 301 0 discriminator 3
+ 213 005a BB68     		ldr	r3, [r7, #8]
+ 214 005c 1A1D     		adds	r2, r3, #4
+ 215 005e BA60     		str	r2, [r7, #8]
+ 216 0060 0022     		movs	r2, #0
+ 217 0062 1A60     		str	r2, [r3]
+ 299:.\Generated_Source\PSoC5/Cm3Start.c ****         for (count = 0u; count != limit; count += sizeof (uint32))
+ 218              		.loc 1 299 0 discriminator 3
+ 219 0064 7B68     		ldr	r3, [r7, #4]
+ 220 0066 0433     		adds	r3, r3, #4
+ 221 0068 7B60     		str	r3, [r7, #4]
+ 222              	.L14:
+ 299:.\Generated_Source\PSoC5/Cm3Start.c ****         for (count = 0u; count != limit; count += sizeof (uint32))
+ 223              		.loc 1 299 0 is_stmt 0 discriminator 1
+ 224 006a 7A68     		ldr	r2, [r7, #4]
+ 225 006c 3B68     		ldr	r3, [r7]
+ 226 006e 9A42     		cmp	r2, r3
+ 227 0070 F3D1     		bne	.L15
+ 228              	.LBE2:
+ 287:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 229              		.loc 1 287 0 is_stmt 1 discriminator 2
+ 230 0072 3B69     		ldr	r3, [r7, #16]
+ 231 0074 1033     		adds	r3, r3, #16
+ 232 0076 3B61     		str	r3, [r7, #16]
+ 233              	.L11:
+ 287:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 234              		.loc 1 287 0 is_stmt 0 discriminator 1
+ 235 0078 7B69     		ldr	r3, [r7, #20]
+ 236 007a 5A1E     		subs	r2, r3, #1
+ 237 007c 7A61     		str	r2, [r7, #20]
+ 238 007e 002B     		cmp	r3, #0
+ 239 0080 CAD1     		bne	.L16
+ 302:.\Generated_Source\PSoC5/Cm3Start.c ****         }
+ 303:.\Generated_Source\PSoC5/Cm3Start.c ****     }
+ 304:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 305:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Invoke static objects constructors */
+ 306:.\Generated_Source\PSoC5/Cm3Start.c ****     __libc_init_array();
+ 240              		.loc 1 306 0 is_stmt 1
+ 241 0082 FFF7FEFF 		bl	__libc_init_array
+ 307:.\Generated_Source\PSoC5/Cm3Start.c ****     (void) main();
+ 242              		.loc 1 307 0
+ 243 0086 FFF7FEFF 		bl	main
+ 244              	.L17:
+ 308:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 309:.\Generated_Source\PSoC5/Cm3Start.c ****     while (1)
+ 310:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 311:.\Generated_Source\PSoC5/Cm3Start.c ****         /* If main returns, make sure we don't return. */
+ 312:.\Generated_Source\PSoC5/Cm3Start.c ****     }
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 11
+
+
+ 245              		.loc 1 312 0 discriminator 1
+ 246 008a FEE7     		b	.L17
+ 247              	.L19:
+ 248              		.align	2
+ 249              	.L18:
+ 250 008c 00000000 		.word	__cy_region_num
+ 251 0090 00000000 		.word	__cy_regions
+ 252              		.cfi_endproc
+ 253              	.LFE3:
+ 254              		.size	Start_c, .-Start_c
+ 255              		.global	RomVectors
+ 256              		.section	.romvectors,"a",%progbits
+ 257              		.align	2
+ 258              		.type	RomVectors, %object
+ 259              		.size	RomVectors, 16
+ 260              	RomVectors:
+ 261 0000 00000000 		.word	__cy_stack
+ 262 0004 00000000 		.word	Reset
+ 263 0008 00000000 		.word	IntDefaultHandler
+ 264 000c 00000000 		.word	IntDefaultHandler
+ 265              		.section	.text.initialize_psoc,"ax",%progbits
+ 266              		.align	2
+ 267              		.global	initialize_psoc
+ 268              		.thumb
+ 269              		.thumb_func
+ 270              		.type	initialize_psoc, %function
+ 271              	initialize_psoc:
+ 272              	.LFB4:
+ 313:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 314:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 315:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 316:.\Generated_Source\PSoC5/Cm3Start.c **** #elif defined (__ICCARM__)
+ 317:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 318:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+ 319:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: __low_level_init
+ 320:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+ 321:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 322:.\Generated_Source\PSoC5/Cm3Start.c **** * Summary:
+ 323:.\Generated_Source\PSoC5/Cm3Start.c **** *  This function performs early initializations for the IAR Embedded
+ 324:.\Generated_Source\PSoC5/Cm3Start.c **** *  Workbench IDE. It is executed in the context of a reset interrupt handler
+ 325:.\Generated_Source\PSoC5/Cm3Start.c **** *  before the data sections are initialized.
+ 326:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 327:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
+ 328:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 329:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 330:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
+ 331:.\Generated_Source\PSoC5/Cm3Start.c **** *  The value that determines whether or not data sections should be initialized
+ 332:.\Generated_Source\PSoC5/Cm3Start.c **** *  by the system startup code:
+ 333:.\Generated_Source\PSoC5/Cm3Start.c **** *    0 - skip data sections initialization;
+ 334:.\Generated_Source\PSoC5/Cm3Start.c **** *    1 - initialize data sections;
+ 335:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 336:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+ 337:.\Generated_Source\PSoC5/Cm3Start.c **** int __low_level_init(void)
+ 338:.\Generated_Source\PSoC5/Cm3Start.c **** {
+ 339:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE)
+ 340:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 341:.\Generated_Source\PSoC5/Cm3Start.c ****         /* For PSoC 5LP, debugging is enabled by default */
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 12
+
+
+ 342:.\Generated_Source\PSoC5/Cm3Start.c ****         #if(CYDEV_DEBUGGING_ENABLE == 0)
+ 343:.\Generated_Source\PSoC5/Cm3Start.c ****             *(reg32 *)(CYDEV_DEBUG_ENABLE_REGISTER) |= CYDEV_DEBUG_ENABLE_MASK;
+ 344:.\Generated_Source\PSoC5/Cm3Start.c ****         #endif /* (CYDEV_DEBUGGING_ENABLE) */
+ 345:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 346:.\Generated_Source\PSoC5/Cm3Start.c ****         /* Reset Status Register has Read-to-clear SW access mode.
+ 347:.\Generated_Source\PSoC5/Cm3Start.c ****         * Preserve current RESET_SR0 state to make it available for next reading.
+ 348:.\Generated_Source\PSoC5/Cm3Start.c ****         */
+ 349:.\Generated_Source\PSoC5/Cm3Start.c ****         *(reg32 *)(CYREG_PHUB_CFGMEM23_CFG1) = *(reg32 *)(CYREG_RESET_SR0);
+ 350:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 351:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_LOADABLE) */
+ 352:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 353:.\Generated_Source\PSoC5/Cm3Start.c ****     #if (CYDEV_BOOTLOADER_ENABLE)
+ 354:.\Generated_Source\PSoC5/Cm3Start.c ****         CyBtldr_CheckLaunch();
+ 355:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif /* CYDEV_BOOTLOADER_ENABLE */
+ 356:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 357:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Initialize data sections */
+ 358:.\Generated_Source\PSoC5/Cm3Start.c ****     __iar_data_init3();
+ 359:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 360:.\Generated_Source\PSoC5/Cm3Start.c ****     initialize_psoc();
+ 361:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 362:.\Generated_Source\PSoC5/Cm3Start.c ****     return 0;
+ 363:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 364:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 365:.\Generated_Source\PSoC5/Cm3Start.c **** #endif /* __GNUC__ */
+ 366:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 367:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 368:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+ 369:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 370:.\Generated_Source\PSoC5/Cm3Start.c **** * Default Rom Interrupt Vector table.
+ 371:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 372:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+ 373:.\Generated_Source\PSoC5/Cm3Start.c **** #if defined(__ARMCC_VERSION)
+ 374:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Suppress diagnostic message 1296-D: extended constant initialiser used */
+ 375:.\Generated_Source\PSoC5/Cm3Start.c ****     #pragma diag_suppress 1296
+ 376:.\Generated_Source\PSoC5/Cm3Start.c **** #endif  /* defined(__ARMCC_VERSION) */
+ 377:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 378:.\Generated_Source\PSoC5/Cm3Start.c **** #if defined (__ICCARM__)
+ 379:.\Generated_Source\PSoC5/Cm3Start.c ****     #pragma location=".romvectors"
+ 380:.\Generated_Source\PSoC5/Cm3Start.c ****     const intvec_elem __vector_table[CY_NUM_ROM_VECTORS] =
+ 381:.\Generated_Source\PSoC5/Cm3Start.c **** #else
+ 382:.\Generated_Source\PSoC5/Cm3Start.c ****     CY_SECTION(".romvectors")
+ 383:.\Generated_Source\PSoC5/Cm3Start.c ****     const cyisraddress RomVectors[CY_NUM_ROM_VECTORS] =
+ 384:.\Generated_Source\PSoC5/Cm3Start.c **** #endif  /* defined (__ICCARM__) */
+ 385:.\Generated_Source\PSoC5/Cm3Start.c **** {
+ 386:.\Generated_Source\PSoC5/Cm3Start.c ****     INITIAL_STACK_POINTER,   /* Initial stack pointer  0 */
+ 387:.\Generated_Source\PSoC5/Cm3Start.c ****     #if defined (__ICCARM__) /* Reset handler          1 */
+ 388:.\Generated_Source\PSoC5/Cm3Start.c ****         __iar_program_start,
+ 389:.\Generated_Source\PSoC5/Cm3Start.c ****     #else
+ 390:.\Generated_Source\PSoC5/Cm3Start.c ****         (cyisraddress)&Reset,
+ 391:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* defined (__ICCARM__) */
+ 392:.\Generated_Source\PSoC5/Cm3Start.c ****     &IntDefaultHandler,      /* NMI handler            2 */
+ 393:.\Generated_Source\PSoC5/Cm3Start.c ****     &IntDefaultHandler,      /* Hard fault handler     3 */
+ 394:.\Generated_Source\PSoC5/Cm3Start.c **** };
+ 395:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 396:.\Generated_Source\PSoC5/Cm3Start.c **** #if defined(__ARMCC_VERSION)
+ 397:.\Generated_Source\PSoC5/Cm3Start.c ****     #pragma diag_default 1296
+ 398:.\Generated_Source\PSoC5/Cm3Start.c **** #endif  /* defined(__ARMCC_VERSION) */
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 13
+
+
+ 399:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 400:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 401:.\Generated_Source\PSoC5/Cm3Start.c **** /*******************************************************************************
+ 402:.\Generated_Source\PSoC5/Cm3Start.c **** * Function Name: initialize_psoc
+ 403:.\Generated_Source\PSoC5/Cm3Start.c **** ********************************************************************************
+ 404:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 405:.\Generated_Source\PSoC5/Cm3Start.c **** * Summary:
+ 406:.\Generated_Source\PSoC5/Cm3Start.c **** *  This function used to initialize the PSoC chip before calling main.
+ 407:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 408:.\Generated_Source\PSoC5/Cm3Start.c **** * Parameters:
+ 409:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 410:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 411:.\Generated_Source\PSoC5/Cm3Start.c **** * Return:
+ 412:.\Generated_Source\PSoC5/Cm3Start.c **** *  None
+ 413:.\Generated_Source\PSoC5/Cm3Start.c **** *
+ 414:.\Generated_Source\PSoC5/Cm3Start.c **** *******************************************************************************/
+ 415:.\Generated_Source\PSoC5/Cm3Start.c **** #if (defined(__GNUC__) && !defined(__ARMCC_VERSION))
+ 416:.\Generated_Source\PSoC5/Cm3Start.c **** __attribute__ ((constructor(101)))
+ 417:.\Generated_Source\PSoC5/Cm3Start.c **** #endif
+ 418:.\Generated_Source\PSoC5/Cm3Start.c **** void initialize_psoc(void)
+ 419:.\Generated_Source\PSoC5/Cm3Start.c **** {
+ 273              		.loc 1 419 0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 8
+ 276              		@ frame_needed = 1, uses_anonymous_args = 0
+ 277 0000 80B5     		push	{r7, lr}
+ 278              		.cfi_def_cfa_offset 8
+ 279              		.cfi_offset 7, -8
+ 280              		.cfi_offset 14, -4
+ 281 0002 82B0     		sub	sp, sp, #8
+ 282              		.cfi_def_cfa_offset 16
+ 283 0004 00AF     		add	r7, sp, #0
+ 284              		.cfi_def_cfa_register 7
+ 420:.\Generated_Source\PSoC5/Cm3Start.c ****     uint32 i;
+ 421:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 422:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Set Priority group 5. */
+ 423:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 424:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Writes to NVIC_APINT register require the VECTKEY in the upper half */
+ 425:.\Generated_Source\PSoC5/Cm3Start.c ****     *CY_NVIC_APINT_PTR = CY_NVIC_APINT_VECTKEY | CY_NVIC_APINT_PRIGROUP_3_5;
+ 285              		.loc 1 425 0
+ 286 0006 184B     		ldr	r3, .L25
+ 287 0008 184A     		ldr	r2, .L25+4
+ 288 000a 1A60     		str	r2, [r3]
+ 426:.\Generated_Source\PSoC5/Cm3Start.c ****     *CY_NVIC_CFG_CTRL_PTR |= CY_NVIC_CFG_STACKALIGN;
+ 289              		.loc 1 426 0
+ 290 000c 184A     		ldr	r2, .L25+8
+ 291 000e 184B     		ldr	r3, .L25+8
+ 292 0010 1B68     		ldr	r3, [r3]
+ 293 0012 43F40073 		orr	r3, r3, #512
+ 294 0016 1360     		str	r3, [r2]
+ 427:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 428:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Set Ram interrupt vectors to default functions. */
+ 429:.\Generated_Source\PSoC5/Cm3Start.c ****     for (i = 0u; i < CY_NUM_VECTORS; i++)
+ 295              		.loc 1 429 0
+ 296 0018 0023     		movs	r3, #0
+ 297 001a 7B60     		str	r3, [r7, #4]
+ 298 001c 0FE0     		b	.L21
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 14
+
+
+ 299              	.L24:
+ 430:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 431:.\Generated_Source\PSoC5/Cm3Start.c ****         #if defined (__ICCARM__)
+ 432:.\Generated_Source\PSoC5/Cm3Start.c ****             CyRamVectors[i] = (i < CY_NUM_ROM_VECTORS) ? __vector_table[i].__fun : &IntDefaultHandl
+ 433:.\Generated_Source\PSoC5/Cm3Start.c ****         #else
+ 434:.\Generated_Source\PSoC5/Cm3Start.c ****             CyRamVectors[i] = (i < CY_NUM_ROM_VECTORS) ? RomVectors[i] : &IntDefaultHandler;
+ 300              		.loc 1 434 0
+ 301 001e 7B68     		ldr	r3, [r7, #4]
+ 302 0020 032B     		cmp	r3, #3
+ 303 0022 04D8     		bhi	.L22
+ 304              		.loc 1 434 0 is_stmt 0 discriminator 1
+ 305 0024 134A     		ldr	r2, .L25+12
+ 306 0026 7B68     		ldr	r3, [r7, #4]
+ 307 0028 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 308 002c 00E0     		b	.L23
+ 309              	.L22:
+ 310              		.loc 1 434 0 discriminator 2
+ 311 002e 124B     		ldr	r3, .L25+16
+ 312              	.L23:
+ 313              		.loc 1 434 0 discriminator 4
+ 314 0030 1249     		ldr	r1, .L25+20
+ 315 0032 7A68     		ldr	r2, [r7, #4]
+ 316 0034 41F82230 		str	r3, [r1, r2, lsl #2]
+ 429:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 317              		.loc 1 429 0 is_stmt 1 discriminator 4
+ 318 0038 7B68     		ldr	r3, [r7, #4]
+ 319 003a 0133     		adds	r3, r3, #1
+ 320 003c 7B60     		str	r3, [r7, #4]
+ 321              	.L21:
+ 429:.\Generated_Source\PSoC5/Cm3Start.c ****     {
+ 322              		.loc 1 429 0 is_stmt 0 discriminator 2
+ 323 003e 7B68     		ldr	r3, [r7, #4]
+ 324 0040 2F2B     		cmp	r3, #47
+ 325 0042 ECD9     		bls	.L24
+ 435:.\Generated_Source\PSoC5/Cm3Start.c ****         #endif  /* defined (__ICCARM__) */
+ 436:.\Generated_Source\PSoC5/Cm3Start.c ****     }
+ 437:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 438:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Was stored in CFGMEM to avoid being cleared while SRAM gets cleared */
+ 439:.\Generated_Source\PSoC5/Cm3Start.c ****     CyResetStatus = CY_GET_REG8(CYREG_PHUB_CFGMEM23_CFG1);
+ 326              		.loc 1 439 0 is_stmt 1
+ 327 0044 0E4B     		ldr	r3, .L25+24
+ 328 0046 1B78     		ldrb	r3, [r3]
+ 329 0048 DAB2     		uxtb	r2, r3
+ 330 004a 0E4B     		ldr	r3, .L25+28
+ 331 004c 1A70     		strb	r2, [r3]
+ 440:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 441:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Point NVIC at RAM vector table. */
+ 442:.\Generated_Source\PSoC5/Cm3Start.c ****     *CYINT_VECT_TABLE = CyRamVectors;
+ 332              		.loc 1 442 0
+ 333 004e 0E4B     		ldr	r3, .L25+32
+ 334 0050 0A4A     		ldr	r2, .L25+20
+ 335 0052 1A60     		str	r2, [r3]
+ 443:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 444:.\Generated_Source\PSoC5/Cm3Start.c ****     /* Initialize the configuration registers. */
+ 445:.\Generated_Source\PSoC5/Cm3Start.c ****     cyfitter_cfg();
+ 336              		.loc 1 445 0
+ 337 0054 FFF7FEFF 		bl	cyfitter_cfg
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 15
+
+
+ 446:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 447:.\Generated_Source\PSoC5/Cm3Start.c ****     #if(0u != DMA_CHANNELS_USED__MASK0)
+ 448:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 449:.\Generated_Source\PSoC5/Cm3Start.c ****         /* Setup DMA - only necessary if design contains DMA component. */
+ 450:.\Generated_Source\PSoC5/Cm3Start.c ****         CyDmacConfigure();
+ 338              		.loc 1 450 0
+ 339 0058 FFF7FEFF 		bl	CyDmacConfigure
+ 451:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 452:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* (0u != DMA_CHANNELS_USED__MASK0) */
+ 453:.\Generated_Source\PSoC5/Cm3Start.c **** 
+ 454:.\Generated_Source\PSoC5/Cm3Start.c ****     #if !defined (__ICCARM__)
+ 455:.\Generated_Source\PSoC5/Cm3Start.c ****         /* Actually, no need to clean this variable, just to make compiler happy. */
+ 456:.\Generated_Source\PSoC5/Cm3Start.c ****         cySysNoInitDataValid = 0u;
+ 340              		.loc 1 456 0
+ 341 005c 0B4B     		ldr	r3, .L25+36
+ 342 005e 0022     		movs	r2, #0
+ 343 0060 1A60     		str	r2, [r3]
+ 457:.\Generated_Source\PSoC5/Cm3Start.c ****     #endif  /* !defined (__ICCARM__) */
+ 458:.\Generated_Source\PSoC5/Cm3Start.c **** }
+ 344              		.loc 1 458 0
+ 345 0062 0837     		adds	r7, r7, #8
+ 346              		.cfi_def_cfa_offset 8
+ 347 0064 BD46     		mov	sp, r7
+ 348              		.cfi_def_cfa_register 13
+ 349              		@ sp needed
+ 350 0066 80BD     		pop	{r7, pc}
+ 351              	.L26:
+ 352              		.align	2
+ 353              	.L25:
+ 354 0068 0CED00E0 		.word	-536810228
+ 355 006c 0004FA05 		.word	100271104
+ 356 0070 14ED00E0 		.word	-536810220
+ 357 0074 00000000 		.word	RomVectors
+ 358 0078 00000000 		.word	IntDefaultHandler
+ 359 007c 00000000 		.word	CyRamVectors
+ 360 0080 BC760040 		.word	1073772220
+ 361 0084 00000000 		.word	CyResetStatus
+ 362 0088 08ED00E0 		.word	-536810232
+ 363 008c 00000000 		.word	cySysNoInitDataValid
+ 364              		.cfi_endproc
+ 365              	.LFE4:
+ 366              		.size	initialize_psoc, .-initialize_psoc
+ 367              		.section	.init_array,"aw",%init_array
+ 368              		.align	2
+ 369 0000 00000000 		.word	initialize_psoc(target1)
+ 370              		.weak	__cy_region_num
+ 371              		.text
+ 372              	.Letext0:
+ 373              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 374              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 375              		.file 4 ".\\Generated_Source\\PSoC5\\CyLib.h"
+ 376              		.section	.debug_info,"",%progbits
+ 377              	.Ldebug_info0:
+ 378 0000 B8020000 		.4byte	0x2b8
+ 379 0004 0400     		.2byte	0x4
+ 380 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 381 000a 04       		.byte	0x4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 16
+
+
+ 382 000b 01       		.uleb128 0x1
+ 383 000c 51010000 		.4byte	.LASF39
+ 384 0010 01       		.byte	0x1
+ 385 0011 A3000000 		.4byte	.LASF40
+ 386 0015 00000000 		.4byte	.LASF41
+ 387 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 388 001d 00000000 		.4byte	0
+ 389 0021 00000000 		.4byte	.Ldebug_line0
+ 390 0025 02       		.uleb128 0x2
+ 391 0026 01       		.byte	0x1
+ 392 0027 06       		.byte	0x6
+ 393 0028 91020000 		.4byte	.LASF0
+ 394 002c 02       		.uleb128 0x2
+ 395 002d 01       		.byte	0x1
+ 396 002e 08       		.byte	0x8
+ 397 002f ED000000 		.4byte	.LASF1
+ 398 0033 02       		.uleb128 0x2
+ 399 0034 02       		.byte	0x2
+ 400 0035 05       		.byte	0x5
+ 401 0036 70020000 		.4byte	.LASF2
+ 402 003a 02       		.uleb128 0x2
+ 403 003b 02       		.byte	0x2
+ 404 003c 07       		.byte	0x7
+ 405 003d 90000000 		.4byte	.LASF3
+ 406 0041 02       		.uleb128 0x2
+ 407 0042 04       		.byte	0x4
+ 408 0043 05       		.byte	0x5
+ 409 0044 7A020000 		.4byte	.LASF4
+ 410 0048 02       		.uleb128 0x2
+ 411 0049 04       		.byte	0x4
+ 412 004a 07       		.byte	0x7
+ 413 004b 06010000 		.4byte	.LASF5
+ 414 004f 02       		.uleb128 0x2
+ 415 0050 08       		.byte	0x8
+ 416 0051 05       		.byte	0x5
+ 417 0052 5D020000 		.4byte	.LASF6
+ 418 0056 02       		.uleb128 0x2
+ 419 0057 08       		.byte	0x8
+ 420 0058 07       		.byte	0x7
+ 421 0059 0A020000 		.4byte	.LASF7
+ 422 005d 03       		.uleb128 0x3
+ 423 005e 04       		.byte	0x4
+ 424 005f 05       		.byte	0x5
+ 425 0060 696E7400 		.ascii	"int\000"
+ 426 0064 02       		.uleb128 0x2
+ 427 0065 04       		.byte	0x4
+ 428 0066 07       		.byte	0x7
+ 429 0067 FD010000 		.4byte	.LASF8
+ 430 006b 04       		.uleb128 0x4
+ 431 006c 2D010000 		.4byte	.LASF9
+ 432 0070 02       		.byte	0x2
+ 433 0071 5B       		.byte	0x5b
+ 434 0072 2C000000 		.4byte	0x2c
+ 435 0076 04       		.uleb128 0x4
+ 436 0077 F6010000 		.4byte	.LASF10
+ 437 007b 02       		.byte	0x2
+ 438 007c 5D       		.byte	0x5d
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 17
+
+
+ 439 007d 48000000 		.4byte	0x48
+ 440 0081 02       		.uleb128 0x2
+ 441 0082 04       		.byte	0x4
+ 442 0083 04       		.byte	0x4
+ 443 0084 E2000000 		.4byte	.LASF11
+ 444 0088 02       		.uleb128 0x2
+ 445 0089 08       		.byte	0x8
+ 446 008a 04       		.byte	0x4
+ 447 008b DF010000 		.4byte	.LASF12
+ 448 008f 02       		.uleb128 0x2
+ 449 0090 01       		.byte	0x1
+ 450 0091 08       		.byte	0x8
+ 451 0092 6B020000 		.4byte	.LASF13
+ 452 0096 04       		.uleb128 0x4
+ 453 0097 4F020000 		.4byte	.LASF14
+ 454 009b 02       		.byte	0x2
+ 455 009c F0       		.byte	0xf0
+ 456 009d A1000000 		.4byte	0xa1
+ 457 00a1 05       		.uleb128 0x5
+ 458 00a2 6B000000 		.4byte	0x6b
+ 459 00a6 04       		.uleb128 0x4
+ 460 00a7 58000000 		.4byte	.LASF15
+ 461 00ab 02       		.byte	0x2
+ 462 00ac F2       		.byte	0xf2
+ 463 00ad B1000000 		.4byte	0xb1
+ 464 00b1 05       		.uleb128 0x5
+ 465 00b2 76000000 		.4byte	0x76
+ 466 00b6 06       		.uleb128 0x6
+ 467 00b7 27020000 		.4byte	.LASF16
+ 468 00bb 02       		.byte	0x2
+ 469 00bc 0201     		.2byte	0x102
+ 470 00be C2000000 		.4byte	0xc2
+ 471 00c2 07       		.uleb128 0x7
+ 472 00c3 04       		.byte	0x4
+ 473 00c4 C8000000 		.4byte	0xc8
+ 474 00c8 08       		.uleb128 0x8
+ 475 00c9 04       		.uleb128 0x4
+ 476 00ca 5E000000 		.4byte	.LASF17
+ 477 00ce 03       		.byte	0x3
+ 478 00cf D4       		.byte	0xd4
+ 479 00d0 64000000 		.4byte	0x64
+ 480 00d4 02       		.uleb128 0x2
+ 481 00d5 04       		.byte	0x4
+ 482 00d6 07       		.byte	0x7
+ 483 00d7 54020000 		.4byte	.LASF18
+ 484 00db 09       		.uleb128 0x9
+ 485 00dc 8F000000 		.4byte	0x8f
+ 486 00e0 04       		.uleb128 0x4
+ 487 00e1 3E020000 		.4byte	.LASF19
+ 488 00e5 01       		.byte	0x1
+ 489 00e6 C7       		.byte	0xc7
+ 490 00e7 2C000000 		.4byte	0x2c
+ 491 00eb 0A       		.uleb128 0xa
+ 492 00ec B2020000 		.4byte	.LASF42
+ 493 00f0 10       		.byte	0x10
+ 494 00f1 01       		.byte	0x1
+ 495 00f2 C9       		.byte	0xc9
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 18
+
+
+ 496 00f3 28010000 		.4byte	0x128
+ 497 00f7 0B       		.uleb128 0xb
+ 498 00f8 C7000000 		.4byte	.LASF20
+ 499 00fc 01       		.byte	0x1
+ 500 00fd CB       		.byte	0xcb
+ 501 00fe 28010000 		.4byte	0x128
+ 502 0102 00       		.byte	0
+ 503 0103 0B       		.uleb128 0xb
+ 504 0104 E8000000 		.4byte	.LASF21
+ 505 0108 01       		.byte	0x1
+ 506 0109 CC       		.byte	0xcc
+ 507 010a 28010000 		.4byte	0x128
+ 508 010e 04       		.byte	0x4
+ 509 010f 0B       		.uleb128 0xb
+ 510 0110 34020000 		.4byte	.LASF22
+ 511 0114 01       		.byte	0x1
+ 512 0115 CD       		.byte	0xcd
+ 513 0116 C9000000 		.4byte	0xc9
+ 514 011a 08       		.byte	0x8
+ 515 011b 0B       		.uleb128 0xb
+ 516 011c D3000000 		.4byte	.LASF23
+ 517 0120 01       		.byte	0x1
+ 518 0121 CE       		.byte	0xce
+ 519 0122 C9000000 		.4byte	0xc9
+ 520 0126 0C       		.byte	0xc
+ 521 0127 00       		.byte	0
+ 522 0128 07       		.uleb128 0x7
+ 523 0129 04       		.byte	0x4
+ 524 012a E0000000 		.4byte	0xe0
+ 525 012e 0C       		.uleb128 0xc
+ 526 012f 3F010000 		.4byte	.LASF24
+ 527 0133 01       		.byte	0x1
+ 528 0134 5C       		.byte	0x5c
+ 529 0135 00000000 		.4byte	.LFB0
+ 530 0139 06000000 		.4byte	.LFE0-.LFB0
+ 531 013d 01       		.uleb128 0x1
+ 532 013e 9C       		.byte	0x9c
+ 533 013f 0D       		.uleb128 0xd
+ 534 0140 33010000 		.4byte	.LASF25
+ 535 0144 01       		.byte	0x1
+ 536 0145 E5       		.byte	0xe5
+ 537 0146 00000000 		.4byte	.LFB1
+ 538 014a 18000000 		.4byte	.LFE1-.LFB1
+ 539 014e 01       		.uleb128 0x1
+ 540 014f 9C       		.byte	0x9c
+ 541 0150 0E       		.uleb128 0xe
+ 542 0151 39010000 		.4byte	.LASF26
+ 543 0155 01       		.byte	0x1
+ 544 0156 FD       		.byte	0xfd
+ 545 0157 00000000 		.4byte	.LFB2
+ 546 015b 28000000 		.4byte	.LFE2-.LFB2
+ 547 015f 01       		.uleb128 0x1
+ 548 0160 9C       		.byte	0x9c
+ 549 0161 81010000 		.4byte	0x181
+ 550 0165 0F       		.uleb128 0xf
+ 551 0166 CC000000 		.4byte	.LASF43
+ 552 016a 01       		.byte	0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 19
+
+
+ 553 016b FD       		.byte	0xfd
+ 554 016c 5D000000 		.4byte	0x5d
+ 555 0170 02       		.uleb128 0x2
+ 556 0171 91       		.byte	0x91
+ 557 0172 6C       		.sleb128 -20
+ 558 0173 10       		.uleb128 0x10
+ 559 0174 7800     		.ascii	"x\000"
+ 560 0176 01       		.byte	0x1
+ 561 0177 0001     		.2byte	0x100
+ 562 0179 5D000000 		.4byte	0x5d
+ 563 017d 02       		.uleb128 0x2
+ 564 017e 91       		.byte	0x91
+ 565 017f 74       		.sleb128 -12
+ 566 0180 00       		.byte	0
+ 567 0181 11       		.uleb128 0x11
+ 568 0182 82000000 		.4byte	.LASF27
+ 569 0186 01       		.byte	0x1
+ 570 0187 1901     		.2byte	0x119
+ 571 0189 00000000 		.4byte	.LFB3
+ 572 018d 94000000 		.4byte	.LFE3-.LFB3
+ 573 0191 01       		.uleb128 0x1
+ 574 0192 9C       		.byte	0x9c
+ 575 0193 FC010000 		.4byte	0x1fc
+ 576 0197 12       		.uleb128 0x12
+ 577 0198 AA020000 		.4byte	.LASF28
+ 578 019c 01       		.byte	0x1
+ 579 019d 1B01     		.2byte	0x11b
+ 580 019f 64000000 		.4byte	0x64
+ 581 01a3 02       		.uleb128 0x2
+ 582 01a4 91       		.byte	0x91
+ 583 01a5 74       		.sleb128 -12
+ 584 01a6 12       		.uleb128 0x12
+ 585 01a7 DD000000 		.4byte	.LASF29
+ 586 01ab 01       		.byte	0x1
+ 587 01ac 1C01     		.2byte	0x11c
+ 588 01ae FC010000 		.4byte	0x1fc
+ 589 01b2 02       		.uleb128 0x2
+ 590 01b3 91       		.byte	0x91
+ 591 01b4 70       		.sleb128 -16
+ 592 01b5 13       		.uleb128 0x13
+ 593 01b6 18000000 		.4byte	.LBB2
+ 594 01ba 5A000000 		.4byte	.LBE2-.LBB2
+ 595 01be 10       		.uleb128 0x10
+ 596 01bf 73726300 		.ascii	"src\000"
+ 597 01c3 01       		.byte	0x1
+ 598 01c4 2101     		.2byte	0x121
+ 599 01c6 07020000 		.4byte	0x207
+ 600 01ca 02       		.uleb128 0x2
+ 601 01cb 91       		.byte	0x91
+ 602 01cc 6C       		.sleb128 -20
+ 603 01cd 10       		.uleb128 0x10
+ 604 01ce 64737400 		.ascii	"dst\000"
+ 605 01d2 01       		.byte	0x1
+ 606 01d3 2201     		.2byte	0x122
+ 607 01d5 07020000 		.4byte	0x207
+ 608 01d9 02       		.uleb128 0x2
+ 609 01da 91       		.byte	0x91
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 20
+
+
+ 610 01db 68       		.sleb128 -24
+ 611 01dc 12       		.uleb128 0x12
+ 612 01dd 21020000 		.4byte	.LASF30
+ 613 01e1 01       		.byte	0x1
+ 614 01e2 2301     		.2byte	0x123
+ 615 01e4 64000000 		.4byte	0x64
+ 616 01e8 02       		.uleb128 0x2
+ 617 01e9 91       		.byte	0x91
+ 618 01ea 60       		.sleb128 -32
+ 619 01eb 12       		.uleb128 0x12
+ 620 01ec 8A000000 		.4byte	.LASF31
+ 621 01f0 01       		.byte	0x1
+ 622 01f1 2401     		.2byte	0x124
+ 623 01f3 64000000 		.4byte	0x64
+ 624 01f7 02       		.uleb128 0x2
+ 625 01f8 91       		.byte	0x91
+ 626 01f9 64       		.sleb128 -28
+ 627 01fa 00       		.byte	0
+ 628 01fb 00       		.byte	0
+ 629 01fc 07       		.uleb128 0x7
+ 630 01fd 04       		.byte	0x4
+ 631 01fe 02020000 		.4byte	0x202
+ 632 0202 09       		.uleb128 0x9
+ 633 0203 EB000000 		.4byte	0xeb
+ 634 0207 07       		.uleb128 0x7
+ 635 0208 04       		.byte	0x4
+ 636 0209 76000000 		.4byte	0x76
+ 637 020d 11       		.uleb128 0x11
+ 638 020e E6010000 		.4byte	.LASF32
+ 639 0212 01       		.byte	0x1
+ 640 0213 A201     		.2byte	0x1a2
+ 641 0215 00000000 		.4byte	.LFB4
+ 642 0219 90000000 		.4byte	.LFE4-.LFB4
+ 643 021d 01       		.uleb128 0x1
+ 644 021e 9C       		.byte	0x9c
+ 645 021f 31020000 		.4byte	0x231
+ 646 0223 10       		.uleb128 0x10
+ 647 0224 6900     		.ascii	"i\000"
+ 648 0226 01       		.byte	0x1
+ 649 0227 A401     		.2byte	0x1a4
+ 650 0229 76000000 		.4byte	0x76
+ 651 022d 02       		.uleb128 0x2
+ 652 022e 91       		.byte	0x91
+ 653 022f 74       		.sleb128 -12
+ 654 0230 00       		.byte	0
+ 655 0231 14       		.uleb128 0x14
+ 656 0232 18010000 		.4byte	.LASF33
+ 657 0236 01       		.byte	0x1
+ 658 0237 39       		.byte	0x39
+ 659 0238 76000000 		.4byte	0x76
+ 660 023c 05       		.uleb128 0x5
+ 661 023d 03       		.byte	0x3
+ 662 023e 00000000 		.4byte	cySysNoInitDataValid
+ 663 0242 15       		.uleb128 0x15
+ 664 0243 83020000 		.4byte	.LASF34
+ 665 0247 04       		.byte	0x4
+ 666 0248 2D       		.byte	0x2d
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 21
+
+
+ 667 0249 6B000000 		.4byte	0x6b
+ 668 024d 16       		.uleb128 0x16
+ 669 024e B6000000 		.4byte	0xb6
+ 670 0252 5D020000 		.4byte	0x25d
+ 671 0256 17       		.uleb128 0x17
+ 672 0257 D4000000 		.4byte	0xd4
+ 673 025b 2F       		.byte	0x2f
+ 674 025c 00       		.byte	0
+ 675 025d 18       		.uleb128 0x18
+ 676 025e 75000000 		.4byte	.LASF35
+ 677 0262 01       		.byte	0x1
+ 678 0263 47       		.byte	0x47
+ 679 0264 4D020000 		.4byte	0x24d
+ 680 0268 05       		.uleb128 0x5
+ 681 0269 03       		.byte	0x3
+ 682 026a 00000000 		.4byte	CyRamVectors
+ 683 026e 16       		.uleb128 0x16
+ 684 026f EB000000 		.4byte	0xeb
+ 685 0273 79020000 		.4byte	0x279
+ 686 0277 19       		.uleb128 0x19
+ 687 0278 00       		.byte	0
+ 688 0279 15       		.uleb128 0x15
+ 689 027a 9D020000 		.4byte	.LASF36
+ 690 027e 01       		.byte	0x1
+ 691 027f D1       		.byte	0xd1
+ 692 0280 84020000 		.4byte	0x284
+ 693 0284 09       		.uleb128 0x9
+ 694 0285 6E020000 		.4byte	0x26e
+ 695 0289 15       		.uleb128 0x15
+ 696 028a 65000000 		.4byte	.LASF37
+ 697 028e 01       		.byte	0x1
+ 698 028f D2       		.byte	0xd2
+ 699 0290 DB000000 		.4byte	0xdb
+ 700 0294 16       		.uleb128 0x16
+ 701 0295 B6000000 		.4byte	0xb6
+ 702 0299 A4020000 		.4byte	0x2a4
+ 703 029d 17       		.uleb128 0x17
+ 704 029e D4000000 		.4byte	0xd4
+ 705 02a2 03       		.byte	0x3
+ 706 02a3 00       		.byte	0
+ 707 02a4 1A       		.uleb128 0x1a
+ 708 02a5 FB000000 		.4byte	.LASF38
+ 709 02a9 01       		.byte	0x1
+ 710 02aa 7F01     		.2byte	0x17f
+ 711 02ac B6020000 		.4byte	0x2b6
+ 712 02b0 05       		.uleb128 0x5
+ 713 02b1 03       		.byte	0x3
+ 714 02b2 00000000 		.4byte	RomVectors
+ 715 02b6 09       		.uleb128 0x9
+ 716 02b7 94020000 		.4byte	0x294
+ 717 02bb 00       		.byte	0
+ 718              		.section	.debug_abbrev,"",%progbits
+ 719              	.Ldebug_abbrev0:
+ 720 0000 01       		.uleb128 0x1
+ 721 0001 11       		.uleb128 0x11
+ 722 0002 01       		.byte	0x1
+ 723 0003 25       		.uleb128 0x25
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 22
+
+
+ 724 0004 0E       		.uleb128 0xe
+ 725 0005 13       		.uleb128 0x13
+ 726 0006 0B       		.uleb128 0xb
+ 727 0007 03       		.uleb128 0x3
+ 728 0008 0E       		.uleb128 0xe
+ 729 0009 1B       		.uleb128 0x1b
+ 730 000a 0E       		.uleb128 0xe
+ 731 000b 55       		.uleb128 0x55
+ 732 000c 17       		.uleb128 0x17
+ 733 000d 11       		.uleb128 0x11
+ 734 000e 01       		.uleb128 0x1
+ 735 000f 10       		.uleb128 0x10
+ 736 0010 17       		.uleb128 0x17
+ 737 0011 00       		.byte	0
+ 738 0012 00       		.byte	0
+ 739 0013 02       		.uleb128 0x2
+ 740 0014 24       		.uleb128 0x24
+ 741 0015 00       		.byte	0
+ 742 0016 0B       		.uleb128 0xb
+ 743 0017 0B       		.uleb128 0xb
+ 744 0018 3E       		.uleb128 0x3e
+ 745 0019 0B       		.uleb128 0xb
+ 746 001a 03       		.uleb128 0x3
+ 747 001b 0E       		.uleb128 0xe
+ 748 001c 00       		.byte	0
+ 749 001d 00       		.byte	0
+ 750 001e 03       		.uleb128 0x3
+ 751 001f 24       		.uleb128 0x24
+ 752 0020 00       		.byte	0
+ 753 0021 0B       		.uleb128 0xb
+ 754 0022 0B       		.uleb128 0xb
+ 755 0023 3E       		.uleb128 0x3e
+ 756 0024 0B       		.uleb128 0xb
+ 757 0025 03       		.uleb128 0x3
+ 758 0026 08       		.uleb128 0x8
+ 759 0027 00       		.byte	0
+ 760 0028 00       		.byte	0
+ 761 0029 04       		.uleb128 0x4
+ 762 002a 16       		.uleb128 0x16
+ 763 002b 00       		.byte	0
+ 764 002c 03       		.uleb128 0x3
+ 765 002d 0E       		.uleb128 0xe
+ 766 002e 3A       		.uleb128 0x3a
+ 767 002f 0B       		.uleb128 0xb
+ 768 0030 3B       		.uleb128 0x3b
+ 769 0031 0B       		.uleb128 0xb
+ 770 0032 49       		.uleb128 0x49
+ 771 0033 13       		.uleb128 0x13
+ 772 0034 00       		.byte	0
+ 773 0035 00       		.byte	0
+ 774 0036 05       		.uleb128 0x5
+ 775 0037 35       		.uleb128 0x35
+ 776 0038 00       		.byte	0
+ 777 0039 49       		.uleb128 0x49
+ 778 003a 13       		.uleb128 0x13
+ 779 003b 00       		.byte	0
+ 780 003c 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 23
+
+
+ 781 003d 06       		.uleb128 0x6
+ 782 003e 16       		.uleb128 0x16
+ 783 003f 00       		.byte	0
+ 784 0040 03       		.uleb128 0x3
+ 785 0041 0E       		.uleb128 0xe
+ 786 0042 3A       		.uleb128 0x3a
+ 787 0043 0B       		.uleb128 0xb
+ 788 0044 3B       		.uleb128 0x3b
+ 789 0045 05       		.uleb128 0x5
+ 790 0046 49       		.uleb128 0x49
+ 791 0047 13       		.uleb128 0x13
+ 792 0048 00       		.byte	0
+ 793 0049 00       		.byte	0
+ 794 004a 07       		.uleb128 0x7
+ 795 004b 0F       		.uleb128 0xf
+ 796 004c 00       		.byte	0
+ 797 004d 0B       		.uleb128 0xb
+ 798 004e 0B       		.uleb128 0xb
+ 799 004f 49       		.uleb128 0x49
+ 800 0050 13       		.uleb128 0x13
+ 801 0051 00       		.byte	0
+ 802 0052 00       		.byte	0
+ 803 0053 08       		.uleb128 0x8
+ 804 0054 15       		.uleb128 0x15
+ 805 0055 00       		.byte	0
+ 806 0056 27       		.uleb128 0x27
+ 807 0057 19       		.uleb128 0x19
+ 808 0058 00       		.byte	0
+ 809 0059 00       		.byte	0
+ 810 005a 09       		.uleb128 0x9
+ 811 005b 26       		.uleb128 0x26
+ 812 005c 00       		.byte	0
+ 813 005d 49       		.uleb128 0x49
+ 814 005e 13       		.uleb128 0x13
+ 815 005f 00       		.byte	0
+ 816 0060 00       		.byte	0
+ 817 0061 0A       		.uleb128 0xa
+ 818 0062 13       		.uleb128 0x13
+ 819 0063 01       		.byte	0x1
+ 820 0064 03       		.uleb128 0x3
+ 821 0065 0E       		.uleb128 0xe
+ 822 0066 0B       		.uleb128 0xb
+ 823 0067 0B       		.uleb128 0xb
+ 824 0068 3A       		.uleb128 0x3a
+ 825 0069 0B       		.uleb128 0xb
+ 826 006a 3B       		.uleb128 0x3b
+ 827 006b 0B       		.uleb128 0xb
+ 828 006c 01       		.uleb128 0x1
+ 829 006d 13       		.uleb128 0x13
+ 830 006e 00       		.byte	0
+ 831 006f 00       		.byte	0
+ 832 0070 0B       		.uleb128 0xb
+ 833 0071 0D       		.uleb128 0xd
+ 834 0072 00       		.byte	0
+ 835 0073 03       		.uleb128 0x3
+ 836 0074 0E       		.uleb128 0xe
+ 837 0075 3A       		.uleb128 0x3a
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 24
+
+
+ 838 0076 0B       		.uleb128 0xb
+ 839 0077 3B       		.uleb128 0x3b
+ 840 0078 0B       		.uleb128 0xb
+ 841 0079 49       		.uleb128 0x49
+ 842 007a 13       		.uleb128 0x13
+ 843 007b 38       		.uleb128 0x38
+ 844 007c 0B       		.uleb128 0xb
+ 845 007d 00       		.byte	0
+ 846 007e 00       		.byte	0
+ 847 007f 0C       		.uleb128 0xc
+ 848 0080 2E       		.uleb128 0x2e
+ 849 0081 00       		.byte	0
+ 850 0082 3F       		.uleb128 0x3f
+ 851 0083 19       		.uleb128 0x19
+ 852 0084 03       		.uleb128 0x3
+ 853 0085 0E       		.uleb128 0xe
+ 854 0086 3A       		.uleb128 0x3a
+ 855 0087 0B       		.uleb128 0xb
+ 856 0088 3B       		.uleb128 0x3b
+ 857 0089 0B       		.uleb128 0xb
+ 858 008a 27       		.uleb128 0x27
+ 859 008b 19       		.uleb128 0x19
+ 860 008c 11       		.uleb128 0x11
+ 861 008d 01       		.uleb128 0x1
+ 862 008e 12       		.uleb128 0x12
+ 863 008f 06       		.uleb128 0x6
+ 864 0090 40       		.uleb128 0x40
+ 865 0091 18       		.uleb128 0x18
+ 866 0092 9742     		.uleb128 0x2117
+ 867 0094 19       		.uleb128 0x19
+ 868 0095 00       		.byte	0
+ 869 0096 00       		.byte	0
+ 870 0097 0D       		.uleb128 0xd
+ 871 0098 2E       		.uleb128 0x2e
+ 872 0099 00       		.byte	0
+ 873 009a 3F       		.uleb128 0x3f
+ 874 009b 19       		.uleb128 0x19
+ 875 009c 03       		.uleb128 0x3
+ 876 009d 0E       		.uleb128 0xe
+ 877 009e 3A       		.uleb128 0x3a
+ 878 009f 0B       		.uleb128 0xb
+ 879 00a0 3B       		.uleb128 0x3b
+ 880 00a1 0B       		.uleb128 0xb
+ 881 00a2 27       		.uleb128 0x27
+ 882 00a3 19       		.uleb128 0x19
+ 883 00a4 11       		.uleb128 0x11
+ 884 00a5 01       		.uleb128 0x1
+ 885 00a6 12       		.uleb128 0x12
+ 886 00a7 06       		.uleb128 0x6
+ 887 00a8 40       		.uleb128 0x40
+ 888 00a9 18       		.uleb128 0x18
+ 889 00aa 9642     		.uleb128 0x2116
+ 890 00ac 19       		.uleb128 0x19
+ 891 00ad 00       		.byte	0
+ 892 00ae 00       		.byte	0
+ 893 00af 0E       		.uleb128 0xe
+ 894 00b0 2E       		.uleb128 0x2e
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 25
+
+
+ 895 00b1 01       		.byte	0x1
+ 896 00b2 3F       		.uleb128 0x3f
+ 897 00b3 19       		.uleb128 0x19
+ 898 00b4 03       		.uleb128 0x3
+ 899 00b5 0E       		.uleb128 0xe
+ 900 00b6 3A       		.uleb128 0x3a
+ 901 00b7 0B       		.uleb128 0xb
+ 902 00b8 3B       		.uleb128 0x3b
+ 903 00b9 0B       		.uleb128 0xb
+ 904 00ba 27       		.uleb128 0x27
+ 905 00bb 19       		.uleb128 0x19
+ 906 00bc 11       		.uleb128 0x11
+ 907 00bd 01       		.uleb128 0x1
+ 908 00be 12       		.uleb128 0x12
+ 909 00bf 06       		.uleb128 0x6
+ 910 00c0 40       		.uleb128 0x40
+ 911 00c1 18       		.uleb128 0x18
+ 912 00c2 9742     		.uleb128 0x2117
+ 913 00c4 19       		.uleb128 0x19
+ 914 00c5 01       		.uleb128 0x1
+ 915 00c6 13       		.uleb128 0x13
+ 916 00c7 00       		.byte	0
+ 917 00c8 00       		.byte	0
+ 918 00c9 0F       		.uleb128 0xf
+ 919 00ca 05       		.uleb128 0x5
+ 920 00cb 00       		.byte	0
+ 921 00cc 03       		.uleb128 0x3
+ 922 00cd 0E       		.uleb128 0xe
+ 923 00ce 3A       		.uleb128 0x3a
+ 924 00cf 0B       		.uleb128 0xb
+ 925 00d0 3B       		.uleb128 0x3b
+ 926 00d1 0B       		.uleb128 0xb
+ 927 00d2 49       		.uleb128 0x49
+ 928 00d3 13       		.uleb128 0x13
+ 929 00d4 02       		.uleb128 0x2
+ 930 00d5 18       		.uleb128 0x18
+ 931 00d6 00       		.byte	0
+ 932 00d7 00       		.byte	0
+ 933 00d8 10       		.uleb128 0x10
+ 934 00d9 34       		.uleb128 0x34
+ 935 00da 00       		.byte	0
+ 936 00db 03       		.uleb128 0x3
+ 937 00dc 08       		.uleb128 0x8
+ 938 00dd 3A       		.uleb128 0x3a
+ 939 00de 0B       		.uleb128 0xb
+ 940 00df 3B       		.uleb128 0x3b
+ 941 00e0 05       		.uleb128 0x5
+ 942 00e1 49       		.uleb128 0x49
+ 943 00e2 13       		.uleb128 0x13
+ 944 00e3 02       		.uleb128 0x2
+ 945 00e4 18       		.uleb128 0x18
+ 946 00e5 00       		.byte	0
+ 947 00e6 00       		.byte	0
+ 948 00e7 11       		.uleb128 0x11
+ 949 00e8 2E       		.uleb128 0x2e
+ 950 00e9 01       		.byte	0x1
+ 951 00ea 3F       		.uleb128 0x3f
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 26
+
+
+ 952 00eb 19       		.uleb128 0x19
+ 953 00ec 03       		.uleb128 0x3
+ 954 00ed 0E       		.uleb128 0xe
+ 955 00ee 3A       		.uleb128 0x3a
+ 956 00ef 0B       		.uleb128 0xb
+ 957 00f0 3B       		.uleb128 0x3b
+ 958 00f1 05       		.uleb128 0x5
+ 959 00f2 27       		.uleb128 0x27
+ 960 00f3 19       		.uleb128 0x19
+ 961 00f4 11       		.uleb128 0x11
+ 962 00f5 01       		.uleb128 0x1
+ 963 00f6 12       		.uleb128 0x12
+ 964 00f7 06       		.uleb128 0x6
+ 965 00f8 40       		.uleb128 0x40
+ 966 00f9 18       		.uleb128 0x18
+ 967 00fa 9642     		.uleb128 0x2116
+ 968 00fc 19       		.uleb128 0x19
+ 969 00fd 01       		.uleb128 0x1
+ 970 00fe 13       		.uleb128 0x13
+ 971 00ff 00       		.byte	0
+ 972 0100 00       		.byte	0
+ 973 0101 12       		.uleb128 0x12
+ 974 0102 34       		.uleb128 0x34
+ 975 0103 00       		.byte	0
+ 976 0104 03       		.uleb128 0x3
+ 977 0105 0E       		.uleb128 0xe
+ 978 0106 3A       		.uleb128 0x3a
+ 979 0107 0B       		.uleb128 0xb
+ 980 0108 3B       		.uleb128 0x3b
+ 981 0109 05       		.uleb128 0x5
+ 982 010a 49       		.uleb128 0x49
+ 983 010b 13       		.uleb128 0x13
+ 984 010c 02       		.uleb128 0x2
+ 985 010d 18       		.uleb128 0x18
+ 986 010e 00       		.byte	0
+ 987 010f 00       		.byte	0
+ 988 0110 13       		.uleb128 0x13
+ 989 0111 0B       		.uleb128 0xb
+ 990 0112 01       		.byte	0x1
+ 991 0113 11       		.uleb128 0x11
+ 992 0114 01       		.uleb128 0x1
+ 993 0115 12       		.uleb128 0x12
+ 994 0116 06       		.uleb128 0x6
+ 995 0117 00       		.byte	0
+ 996 0118 00       		.byte	0
+ 997 0119 14       		.uleb128 0x14
+ 998 011a 34       		.uleb128 0x34
+ 999 011b 00       		.byte	0
+ 1000 011c 03       		.uleb128 0x3
+ 1001 011d 0E       		.uleb128 0xe
+ 1002 011e 3A       		.uleb128 0x3a
+ 1003 011f 0B       		.uleb128 0xb
+ 1004 0120 3B       		.uleb128 0x3b
+ 1005 0121 0B       		.uleb128 0xb
+ 1006 0122 49       		.uleb128 0x49
+ 1007 0123 13       		.uleb128 0x13
+ 1008 0124 02       		.uleb128 0x2
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 27
+
+
+ 1009 0125 18       		.uleb128 0x18
+ 1010 0126 00       		.byte	0
+ 1011 0127 00       		.byte	0
+ 1012 0128 15       		.uleb128 0x15
+ 1013 0129 34       		.uleb128 0x34
+ 1014 012a 00       		.byte	0
+ 1015 012b 03       		.uleb128 0x3
+ 1016 012c 0E       		.uleb128 0xe
+ 1017 012d 3A       		.uleb128 0x3a
+ 1018 012e 0B       		.uleb128 0xb
+ 1019 012f 3B       		.uleb128 0x3b
+ 1020 0130 0B       		.uleb128 0xb
+ 1021 0131 49       		.uleb128 0x49
+ 1022 0132 13       		.uleb128 0x13
+ 1023 0133 3F       		.uleb128 0x3f
+ 1024 0134 19       		.uleb128 0x19
+ 1025 0135 3C       		.uleb128 0x3c
+ 1026 0136 19       		.uleb128 0x19
+ 1027 0137 00       		.byte	0
+ 1028 0138 00       		.byte	0
+ 1029 0139 16       		.uleb128 0x16
+ 1030 013a 01       		.uleb128 0x1
+ 1031 013b 01       		.byte	0x1
+ 1032 013c 49       		.uleb128 0x49
+ 1033 013d 13       		.uleb128 0x13
+ 1034 013e 01       		.uleb128 0x1
+ 1035 013f 13       		.uleb128 0x13
+ 1036 0140 00       		.byte	0
+ 1037 0141 00       		.byte	0
+ 1038 0142 17       		.uleb128 0x17
+ 1039 0143 21       		.uleb128 0x21
+ 1040 0144 00       		.byte	0
+ 1041 0145 49       		.uleb128 0x49
+ 1042 0146 13       		.uleb128 0x13
+ 1043 0147 2F       		.uleb128 0x2f
+ 1044 0148 0B       		.uleb128 0xb
+ 1045 0149 00       		.byte	0
+ 1046 014a 00       		.byte	0
+ 1047 014b 18       		.uleb128 0x18
+ 1048 014c 34       		.uleb128 0x34
+ 1049 014d 00       		.byte	0
+ 1050 014e 03       		.uleb128 0x3
+ 1051 014f 0E       		.uleb128 0xe
+ 1052 0150 3A       		.uleb128 0x3a
+ 1053 0151 0B       		.uleb128 0xb
+ 1054 0152 3B       		.uleb128 0x3b
+ 1055 0153 0B       		.uleb128 0xb
+ 1056 0154 49       		.uleb128 0x49
+ 1057 0155 13       		.uleb128 0x13
+ 1058 0156 3F       		.uleb128 0x3f
+ 1059 0157 19       		.uleb128 0x19
+ 1060 0158 02       		.uleb128 0x2
+ 1061 0159 18       		.uleb128 0x18
+ 1062 015a 00       		.byte	0
+ 1063 015b 00       		.byte	0
+ 1064 015c 19       		.uleb128 0x19
+ 1065 015d 21       		.uleb128 0x21
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 28
+
+
+ 1066 015e 00       		.byte	0
+ 1067 015f 00       		.byte	0
+ 1068 0160 00       		.byte	0
+ 1069 0161 1A       		.uleb128 0x1a
+ 1070 0162 34       		.uleb128 0x34
+ 1071 0163 00       		.byte	0
+ 1072 0164 03       		.uleb128 0x3
+ 1073 0165 0E       		.uleb128 0xe
+ 1074 0166 3A       		.uleb128 0x3a
+ 1075 0167 0B       		.uleb128 0xb
+ 1076 0168 3B       		.uleb128 0x3b
+ 1077 0169 05       		.uleb128 0x5
+ 1078 016a 49       		.uleb128 0x49
+ 1079 016b 13       		.uleb128 0x13
+ 1080 016c 3F       		.uleb128 0x3f
+ 1081 016d 19       		.uleb128 0x19
+ 1082 016e 02       		.uleb128 0x2
+ 1083 016f 18       		.uleb128 0x18
+ 1084 0170 00       		.byte	0
+ 1085 0171 00       		.byte	0
+ 1086 0172 00       		.byte	0
+ 1087              		.section	.debug_aranges,"",%progbits
+ 1088 0000 3C000000 		.4byte	0x3c
+ 1089 0004 0200     		.2byte	0x2
+ 1090 0006 00000000 		.4byte	.Ldebug_info0
+ 1091 000a 04       		.byte	0x4
+ 1092 000b 00       		.byte	0
+ 1093 000c 0000     		.2byte	0
+ 1094 000e 0000     		.2byte	0
+ 1095 0010 00000000 		.4byte	.LFB0
+ 1096 0014 06000000 		.4byte	.LFE0-.LFB0
+ 1097 0018 00000000 		.4byte	.LFB1
+ 1098 001c 18000000 		.4byte	.LFE1-.LFB1
+ 1099 0020 00000000 		.4byte	.LFB2
+ 1100 0024 28000000 		.4byte	.LFE2-.LFB2
+ 1101 0028 00000000 		.4byte	.LFB3
+ 1102 002c 94000000 		.4byte	.LFE3-.LFB3
+ 1103 0030 00000000 		.4byte	.LFB4
+ 1104 0034 90000000 		.4byte	.LFE4-.LFB4
+ 1105 0038 00000000 		.4byte	0
+ 1106 003c 00000000 		.4byte	0
+ 1107              		.section	.debug_ranges,"",%progbits
+ 1108              	.Ldebug_ranges0:
+ 1109 0000 00000000 		.4byte	.LFB0
+ 1110 0004 06000000 		.4byte	.LFE0
+ 1111 0008 00000000 		.4byte	.LFB1
+ 1112 000c 18000000 		.4byte	.LFE1
+ 1113 0010 00000000 		.4byte	.LFB2
+ 1114 0014 28000000 		.4byte	.LFE2
+ 1115 0018 00000000 		.4byte	.LFB3
+ 1116 001c 94000000 		.4byte	.LFE3
+ 1117 0020 00000000 		.4byte	.LFB4
+ 1118 0024 90000000 		.4byte	.LFE4
+ 1119 0028 00000000 		.4byte	0
+ 1120 002c 00000000 		.4byte	0
+ 1121              		.section	.debug_line,"",%progbits
+ 1122              	.Ldebug_line0:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 29
+
+
+ 1123 0000 A5010000 		.section	.debug_str,"MS",%progbits,1
+ 1123      0200D400 
+ 1123      00000201 
+ 1123      FB0E0D00 
+ 1123      01010101 
+ 1124              	.LASF41:
+ 1125 0000 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 1125      73657273 
+ 1125      5C6C756B 
+ 1125      61735C44 
+ 1125      65736B74 
+ 1126 002f 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 1126      73746572 
+ 1126      5C50696F 
+ 1126      6E656572 
+ 1126      4B69745F 
+ 1127              	.LASF15:
+ 1128 0058 72656733 		.ascii	"reg32\000"
+ 1128      3200
+ 1129              	.LASF17:
+ 1130 005e 73697A65 		.ascii	"size_t\000"
+ 1130      5F7400
+ 1131              	.LASF37:
+ 1132 0065 5F5F6379 		.ascii	"__cy_region_num\000"
+ 1132      5F726567 
+ 1132      696F6E5F 
+ 1132      6E756D00 
+ 1133              	.LASF35:
+ 1134 0075 43795261 		.ascii	"CyRamVectors\000"
+ 1134      6D566563 
+ 1134      746F7273 
+ 1134      00
+ 1135              	.LASF27:
+ 1136 0082 53746172 		.ascii	"Start_c\000"
+ 1136      745F6300 
+ 1137              	.LASF31:
+ 1138 008a 636F756E 		.ascii	"count\000"
+ 1138      7400
+ 1139              	.LASF3:
+ 1140 0090 73686F72 		.ascii	"short unsigned int\000"
+ 1140      7420756E 
+ 1140      7369676E 
+ 1140      65642069 
+ 1140      6E7400
+ 1141              	.LASF40:
+ 1142 00a3 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Cm3Start.c\000"
+ 1142      6E657261 
+ 1142      7465645F 
+ 1142      536F7572 
+ 1142      63655C50 
+ 1143              	.LASF20:
+ 1144 00c7 696E6974 		.ascii	"init\000"
+ 1144      00
+ 1145              	.LASF43:
+ 1146 00cc 73746174 		.ascii	"status\000"
+ 1146      757300
+ 1147              	.LASF23:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 30
+
+
+ 1148 00d3 7A65726F 		.ascii	"zero_size\000"
+ 1148      5F73697A 
+ 1148      6500
+ 1149              	.LASF29:
+ 1150 00dd 72707472 		.ascii	"rptr\000"
+ 1150      00
+ 1151              	.LASF11:
+ 1152 00e2 666C6F61 		.ascii	"float\000"
+ 1152      7400
+ 1153              	.LASF21:
+ 1154 00e8 64617461 		.ascii	"data\000"
+ 1154      00
+ 1155              	.LASF1:
+ 1156 00ed 756E7369 		.ascii	"unsigned char\000"
+ 1156      676E6564 
+ 1156      20636861 
+ 1156      7200
+ 1157              	.LASF38:
+ 1158 00fb 526F6D56 		.ascii	"RomVectors\000"
+ 1158      6563746F 
+ 1158      727300
+ 1159              	.LASF5:
+ 1160 0106 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1160      20756E73 
+ 1160      69676E65 
+ 1160      6420696E 
+ 1160      7400
+ 1161              	.LASF33:
+ 1162 0118 63795379 		.ascii	"cySysNoInitDataValid\000"
+ 1162      734E6F49 
+ 1162      6E697444 
+ 1162      61746156 
+ 1162      616C6964 
+ 1163              	.LASF9:
+ 1164 012d 75696E74 		.ascii	"uint8\000"
+ 1164      3800
+ 1165              	.LASF25:
+ 1166 0133 52657365 		.ascii	"Reset\000"
+ 1166      7400
+ 1167              	.LASF26:
+ 1168 0139 5F657869 		.ascii	"_exit\000"
+ 1168      7400
+ 1169              	.LASF24:
+ 1170 013f 496E7444 		.ascii	"IntDefaultHandler\000"
+ 1170      65666175 
+ 1170      6C744861 
+ 1170      6E646C65 
+ 1170      7200
+ 1171              	.LASF39:
+ 1172 0151 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1172      4320342E 
+ 1172      392E3320 
+ 1172      32303135 
+ 1172      30333033 
+ 1173 0184 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1173      20726576 
+ 1173      6973696F 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 31
+
+
+ 1173      6E203232 
+ 1173      31323230 
+ 1174 01b7 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1174      66756E63 
+ 1174      74696F6E 
+ 1174      2D736563 
+ 1174      74696F6E 
+ 1175              	.LASF12:
+ 1176 01df 646F7562 		.ascii	"double\000"
+ 1176      6C6500
+ 1177              	.LASF32:
+ 1178 01e6 696E6974 		.ascii	"initialize_psoc\000"
+ 1178      69616C69 
+ 1178      7A655F70 
+ 1178      736F6300 
+ 1179              	.LASF10:
+ 1180 01f6 75696E74 		.ascii	"uint32\000"
+ 1180      333200
+ 1181              	.LASF8:
+ 1182 01fd 756E7369 		.ascii	"unsigned int\000"
+ 1182      676E6564 
+ 1182      20696E74 
+ 1182      00
+ 1183              	.LASF7:
+ 1184 020a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1184      206C6F6E 
+ 1184      6720756E 
+ 1184      7369676E 
+ 1184      65642069 
+ 1185              	.LASF30:
+ 1186 0221 6C696D69 		.ascii	"limit\000"
+ 1186      7400
+ 1187              	.LASF16:
+ 1188 0227 63796973 		.ascii	"cyisraddress\000"
+ 1188      72616464 
+ 1188      72657373 
+ 1188      00
+ 1189              	.LASF22:
+ 1190 0234 696E6974 		.ascii	"init_size\000"
+ 1190      5F73697A 
+ 1190      6500
+ 1191              	.LASF19:
+ 1192 023e 5F5F6379 		.ascii	"__cy_byte_align8\000"
+ 1192      5F627974 
+ 1192      655F616C 
+ 1192      69676E38 
+ 1192      00
+ 1193              	.LASF14:
+ 1194 024f 72656738 		.ascii	"reg8\000"
+ 1194      00
+ 1195              	.LASF18:
+ 1196 0254 73697A65 		.ascii	"sizetype\000"
+ 1196      74797065 
+ 1196      00
+ 1197              	.LASF6:
+ 1198 025d 6C6F6E67 		.ascii	"long long int\000"
+ 1198      206C6F6E 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccl6YHek.s 			page 32
+
+
+ 1198      6720696E 
+ 1198      7400
+ 1199              	.LASF13:
+ 1200 026b 63686172 		.ascii	"char\000"
+ 1200      00
+ 1201              	.LASF2:
+ 1202 0270 73686F72 		.ascii	"short int\000"
+ 1202      7420696E 
+ 1202      7400
+ 1203              	.LASF4:
+ 1204 027a 6C6F6E67 		.ascii	"long int\000"
+ 1204      20696E74 
+ 1204      00
+ 1205              	.LASF34:
+ 1206 0283 43795265 		.ascii	"CyResetStatus\000"
+ 1206      73657453 
+ 1206      74617475 
+ 1206      7300
+ 1207              	.LASF0:
+ 1208 0291 7369676E 		.ascii	"signed char\000"
+ 1208      65642063 
+ 1208      68617200 
+ 1209              	.LASF36:
+ 1210 029d 5F5F6379 		.ascii	"__cy_regions\000"
+ 1210      5F726567 
+ 1210      696F6E73 
+ 1210      00
+ 1211              	.LASF28:
+ 1212 02aa 72656769 		.ascii	"regions\000"
+ 1212      6F6E7300 
+ 1213              	.LASF42:
+ 1214 02b2 5F5F6379 		.ascii	"__cy_region\000"
+ 1214      5F726567 
+ 1214      696F6E00 
+ 1215              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

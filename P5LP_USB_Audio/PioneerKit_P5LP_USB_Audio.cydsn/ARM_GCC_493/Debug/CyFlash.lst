@@ -1,0 +1,2793 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"CyFlash.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	dieTemperature,2,4
+  19              		.bss
+  20              		.align	2
+  21              	rowBuffer:
+  22 0000 00000000 		.space	4
+  23              		.section	.text.CyFlash_Start,"ax",%progbits
+  24              		.align	2
+  25              		.global	CyFlash_Start
+  26              		.thumb
+  27              		.thumb_func
+  28              		.type	CyFlash_Start, %function
+  29              	CyFlash_Start:
+  30              	.LFB0:
+  31              		.file 1 ".\\Generated_Source\\PSoC5\\CyFlash.c"
+   1:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/CyFlash.c **** * File Name: CyFlash.c
+   3:.\Generated_Source\PSoC5/CyFlash.c **** * Version 4.10
+   4:.\Generated_Source\PSoC5/CyFlash.c **** *
+   5:.\Generated_Source\PSoC5/CyFlash.c **** *  Description:
+   6:.\Generated_Source\PSoC5/CyFlash.c **** *   Provides an API for the FLASH/EEPROM.
+   7:.\Generated_Source\PSoC5/CyFlash.c **** *
+   8:.\Generated_Source\PSoC5/CyFlash.c **** *  Note:
+   9:.\Generated_Source\PSoC5/CyFlash.c **** *   This code is endian agnostic.
+  10:.\Generated_Source\PSoC5/CyFlash.c **** *
+  11:.\Generated_Source\PSoC5/CyFlash.c **** *  Note:
+  12:.\Generated_Source\PSoC5/CyFlash.c **** *   Documentation of the API's in this file is located in the
+  13:.\Generated_Source\PSoC5/CyFlash.c **** *   System Reference Guide provided with PSoC Creator.
+  14:.\Generated_Source\PSoC5/CyFlash.c **** *
+  15:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+  16:.\Generated_Source\PSoC5/CyFlash.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation. All rights reserved.
+  17:.\Generated_Source\PSoC5/CyFlash.c **** * You may use this file only in accordance with the license, terms, conditions,
+  18:.\Generated_Source\PSoC5/CyFlash.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  19:.\Generated_Source\PSoC5/CyFlash.c **** * the software package with which this file was provided.
+  20:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+  21:.\Generated_Source\PSoC5/CyFlash.c **** 
+  22:.\Generated_Source\PSoC5/CyFlash.c **** #include "CyFlash.h"
+  23:.\Generated_Source\PSoC5/CyFlash.c **** 
+  24:.\Generated_Source\PSoC5/CyFlash.c **** 
+  25:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+  26:.\Generated_Source\PSoC5/CyFlash.c **** * Holds the die temperature, updated by CySetTemp(). Used for flash writing.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 2
+
+
+  27:.\Generated_Source\PSoC5/CyFlash.c **** * The first byte is the sign of the temperature (0 = negative, 1 = positive).
+  28:.\Generated_Source\PSoC5/CyFlash.c **** * The second byte is the magnitude.
+  29:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+  30:.\Generated_Source\PSoC5/CyFlash.c **** uint8 dieTemperature[CY_FLASH_DIE_TEMP_DATA_SIZE];
+  31:.\Generated_Source\PSoC5/CyFlash.c **** 
+  32:.\Generated_Source\PSoC5/CyFlash.c **** #if(CYDEV_ECC_ENABLE == 0)
+  33:.\Generated_Source\PSoC5/CyFlash.c ****     static uint8 * rowBuffer = 0;
+  34:.\Generated_Source\PSoC5/CyFlash.c **** #endif  /* (CYDEV_ECC_ENABLE == 0) */
+  35:.\Generated_Source\PSoC5/CyFlash.c **** 
+  36:.\Generated_Source\PSoC5/CyFlash.c **** 
+  37:.\Generated_Source\PSoC5/CyFlash.c **** static cystatus CySetTempInt(void);
+  38:.\Generated_Source\PSoC5/CyFlash.c **** 
+  39:.\Generated_Source\PSoC5/CyFlash.c **** 
+  40:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+  41:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyFlash_Start
+  42:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+  43:.\Generated_Source\PSoC5/CyFlash.c **** *
+  44:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+  45:.\Generated_Source\PSoC5/CyFlash.c **** *  Enable the Flash.
+  46:.\Generated_Source\PSoC5/CyFlash.c **** *
+  47:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+  48:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+  49:.\Generated_Source\PSoC5/CyFlash.c **** *
+  50:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+  51:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+  52:.\Generated_Source\PSoC5/CyFlash.c **** *
+  53:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+  54:.\Generated_Source\PSoC5/CyFlash.c **** void CyFlash_Start(void) 
+  55:.\Generated_Source\PSoC5/CyFlash.c **** {
+  32              		.loc 1 55 0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 1, uses_anonymous_args = 0
+  36 0000 80B5     		push	{r7, lr}
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  40 0002 00AF     		add	r7, sp, #0
+  41              		.cfi_def_cfa_register 7
+  56:.\Generated_Source\PSoC5/CyFlash.c ****     /* Active Power Mode */
+  57:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ACT_EEFLASH_PTR |= CY_FLASH_PM_FLASH_MASK;
+  42              		.loc 1 57 0
+  43 0004 094A     		ldr	r2, .L2
+  44 0006 094B     		ldr	r3, .L2
+  45 0008 1B78     		ldrb	r3, [r3]
+  46 000a DBB2     		uxtb	r3, r3
+  47 000c 43F00103 		orr	r3, r3, #1
+  48 0010 DBB2     		uxtb	r3, r3
+  49 0012 1370     		strb	r3, [r2]
+  58:.\Generated_Source\PSoC5/CyFlash.c **** 
+  59:.\Generated_Source\PSoC5/CyFlash.c ****     /* Standby Power Mode */
+  60:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ALTACT_EEFLASH_PTR |= CY_FLASH_PM_FLASH_MASK;
+  50              		.loc 1 60 0
+  51 0014 064A     		ldr	r2, .L2+4
+  52 0016 064B     		ldr	r3, .L2+4
+  53 0018 1B78     		ldrb	r3, [r3]
+  54 001a DBB2     		uxtb	r3, r3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 3
+
+
+  55 001c 43F00103 		orr	r3, r3, #1
+  56 0020 DBB2     		uxtb	r3, r3
+  57 0022 1370     		strb	r3, [r2]
+  61:.\Generated_Source\PSoC5/CyFlash.c **** 
+  62:.\Generated_Source\PSoC5/CyFlash.c ****     CyDelayUs(CY_FLASH_EE_STARTUP_DELAY);
+  58              		.loc 1 62 0
+  59 0024 0520     		movs	r0, #5
+  60 0026 FFF7FEFF 		bl	CyDelayUs
+  63:.\Generated_Source\PSoC5/CyFlash.c **** }
+  61              		.loc 1 63 0
+  62 002a 80BD     		pop	{r7, pc}
+  63              	.L3:
+  64              		.align	2
+  65              	.L2:
+  66 002c AC430040 		.word	1073759148
+  67 0030 BC430040 		.word	1073759164
+  68              		.cfi_endproc
+  69              	.LFE0:
+  70              		.size	CyFlash_Start, .-CyFlash_Start
+  71              		.section	.text.CyFlash_Stop,"ax",%progbits
+  72              		.align	2
+  73              		.global	CyFlash_Stop
+  74              		.thumb
+  75              		.thumb_func
+  76              		.type	CyFlash_Stop, %function
+  77              	CyFlash_Stop:
+  78              	.LFB1:
+  64:.\Generated_Source\PSoC5/CyFlash.c **** 
+  65:.\Generated_Source\PSoC5/CyFlash.c **** 
+  66:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+  67:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyFlash_Stop
+  68:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+  69:.\Generated_Source\PSoC5/CyFlash.c **** *
+  70:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+  71:.\Generated_Source\PSoC5/CyFlash.c **** *  Disable the Flash.
+  72:.\Generated_Source\PSoC5/CyFlash.c **** *
+  73:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+  74:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+  75:.\Generated_Source\PSoC5/CyFlash.c **** *
+  76:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+  77:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+  78:.\Generated_Source\PSoC5/CyFlash.c **** *
+  79:.\Generated_Source\PSoC5/CyFlash.c **** * Side Effects:
+  80:.\Generated_Source\PSoC5/CyFlash.c **** *  This setting is ignored as long as the CPU is currently running.  This will
+  81:.\Generated_Source\PSoC5/CyFlash.c **** *  only take effect when the CPU is later disabled.
+  82:.\Generated_Source\PSoC5/CyFlash.c **** *
+  83:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+  84:.\Generated_Source\PSoC5/CyFlash.c **** void CyFlash_Stop(void) 
+  85:.\Generated_Source\PSoC5/CyFlash.c **** {
+  79              		.loc 1 85 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 1, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  84 0000 80B4     		push	{r7}
+  85              		.cfi_def_cfa_offset 4
+  86              		.cfi_offset 7, -4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 4
+
+
+  87 0002 00AF     		add	r7, sp, #0
+  88              		.cfi_def_cfa_register 7
+  86:.\Generated_Source\PSoC5/CyFlash.c ****     /* Active Power Mode */
+  87:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ACT_EEFLASH_PTR &= ((uint8)(~CY_FLASH_PM_FLASH_MASK));
+  89              		.loc 1 87 0
+  90 0004 094A     		ldr	r2, .L5
+  91 0006 094B     		ldr	r3, .L5
+  92 0008 1B78     		ldrb	r3, [r3]
+  93 000a DBB2     		uxtb	r3, r3
+  94 000c 23F00103 		bic	r3, r3, #1
+  95 0010 DBB2     		uxtb	r3, r3
+  96 0012 1370     		strb	r3, [r2]
+  88:.\Generated_Source\PSoC5/CyFlash.c **** 
+  89:.\Generated_Source\PSoC5/CyFlash.c ****     /* Standby Power Mode */
+  90:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ALTACT_EEFLASH_PTR &= ((uint8)(~CY_FLASH_PM_FLASH_MASK));
+  97              		.loc 1 90 0
+  98 0014 064A     		ldr	r2, .L5+4
+  99 0016 064B     		ldr	r3, .L5+4
+ 100 0018 1B78     		ldrb	r3, [r3]
+ 101 001a DBB2     		uxtb	r3, r3
+ 102 001c 23F00103 		bic	r3, r3, #1
+ 103 0020 DBB2     		uxtb	r3, r3
+ 104 0022 1370     		strb	r3, [r2]
+  91:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 105              		.loc 1 91 0
+ 106 0024 BD46     		mov	sp, r7
+ 107              		.cfi_def_cfa_register 13
+ 108              		@ sp needed
+ 109 0026 5DF8047B 		ldr	r7, [sp], #4
+ 110              		.cfi_restore 7
+ 111              		.cfi_def_cfa_offset 0
+ 112 002a 7047     		bx	lr
+ 113              	.L6:
+ 114              		.align	2
+ 115              	.L5:
+ 116 002c AC430040 		.word	1073759148
+ 117 0030 BC430040 		.word	1073759164
+ 118              		.cfi_endproc
+ 119              	.LFE1:
+ 120              		.size	CyFlash_Stop, .-CyFlash_Stop
+ 121              		.section	.text.CySetTempInt,"ax",%progbits
+ 122              		.align	2
+ 123              		.thumb
+ 124              		.thumb_func
+ 125              		.type	CySetTempInt, %function
+ 126              	CySetTempInt:
+ 127              	.LFB2:
+  92:.\Generated_Source\PSoC5/CyFlash.c **** 
+  93:.\Generated_Source\PSoC5/CyFlash.c **** 
+  94:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+  95:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CySetTempInt
+  96:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+  97:.\Generated_Source\PSoC5/CyFlash.c **** *
+  98:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+  99:.\Generated_Source\PSoC5/CyFlash.c **** *  Sends a command to the SPC to read the die temperature. Sets a global value
+ 100:.\Generated_Source\PSoC5/CyFlash.c **** *  used by the Write function. This function must be called once before
+ 101:.\Generated_Source\PSoC5/CyFlash.c **** *  executing a series of Flash writing functions.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 5
+
+
+ 102:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 103:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 104:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 105:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 106:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 107:.\Generated_Source\PSoC5/CyFlash.c **** *  status:
+ 108:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_SUCCESS - if successful
+ 109:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_LOCKED  - if Flash writing already in use
+ 110:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_UNKNOWN - if there was an SPC error
+ 111:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 112:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 113:.\Generated_Source\PSoC5/CyFlash.c **** static cystatus CySetTempInt(void) 
+ 114:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 128              		.loc 1 114 0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 8
+ 131              		@ frame_needed = 1, uses_anonymous_args = 0
+ 132 0000 80B5     		push	{r7, lr}
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 7, -8
+ 135              		.cfi_offset 14, -4
+ 136 0002 82B0     		sub	sp, sp, #8
+ 137              		.cfi_def_cfa_offset 16
+ 138 0004 00AF     		add	r7, sp, #0
+ 139              		.cfi_def_cfa_register 7
+ 115:.\Generated_Source\PSoC5/CyFlash.c ****     cystatus status;
+ 116:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 117:.\Generated_Source\PSoC5/CyFlash.c ****     /* Make sure SPC is powered */
+ 118:.\Generated_Source\PSoC5/CyFlash.c ****     CySpcStart();
+ 140              		.loc 1 118 0
+ 141 0006 FFF7FEFF 		bl	CySpcStart
+ 119:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 120:.\Generated_Source\PSoC5/CyFlash.c ****     /* Plan for failure. */
+ 121:.\Generated_Source\PSoC5/CyFlash.c ****     status = CYRET_UNKNOWN;
+ 142              		.loc 1 121 0
+ 143 000a 4FF0FF33 		mov	r3, #-1
+ 144 000e 7B60     		str	r3, [r7, #4]
+ 122:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 123:.\Generated_Source\PSoC5/CyFlash.c ****     if(CySpcLock() == CYRET_SUCCESS)
+ 145              		.loc 1 123 0
+ 146 0010 FFF7FEFF 		bl	CySpcLock
+ 147 0014 0346     		mov	r3, r0
+ 148 0016 002B     		cmp	r3, #0
+ 149 0018 24D1     		bne	.L8
+ 124:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 125:.\Generated_Source\PSoC5/CyFlash.c ****         /* Write the command. */
+ 126:.\Generated_Source\PSoC5/CyFlash.c ****         if(CYRET_STARTED == CySpcGetTemp(CY_TEMP_NUMBER_OF_SAMPLES))
+ 150              		.loc 1 126 0
+ 151 001a 0120     		movs	r0, #1
+ 152 001c FFF7FEFF 		bl	CySpcGetTemp
+ 153 0020 0346     		mov	r3, r0
+ 154 0022 072B     		cmp	r3, #7
+ 155 0024 1BD1     		bne	.L9
+ 156              	.L13:
+ 127:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 128:.\Generated_Source\PSoC5/CyFlash.c ****             do
+ 129:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 6
+
+
+ 130:.\Generated_Source\PSoC5/CyFlash.c ****                 if(CySpcReadData(dieTemperature, CY_FLASH_DIE_TEMP_DATA_SIZE) == CY_FLASH_DIE_TEMP_
+ 157              		.loc 1 130 0
+ 158 0026 1348     		ldr	r0, .L16
+ 159 0028 0221     		movs	r1, #2
+ 160 002a FFF7FEFF 		bl	CySpcReadData
+ 161 002e 0346     		mov	r3, r0
+ 162 0030 022B     		cmp	r3, #2
+ 163 0032 0DD1     		bne	.L10
+ 131:.\Generated_Source\PSoC5/CyFlash.c ****                 {
+ 132:.\Generated_Source\PSoC5/CyFlash.c ****                     status = CYRET_SUCCESS;
+ 164              		.loc 1 132 0
+ 165 0034 0023     		movs	r3, #0
+ 166 0036 7B60     		str	r3, [r7, #4]
+ 133:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 134:.\Generated_Source\PSoC5/CyFlash.c ****                     while(CY_SPC_BUSY)
+ 167              		.loc 1 134 0
+ 168 0038 02E0     		b	.L11
+ 169              	.L12:
+ 135:.\Generated_Source\PSoC5/CyFlash.c ****                     {
+ 136:.\Generated_Source\PSoC5/CyFlash.c ****                         /* Spin until idle. */
+ 137:.\Generated_Source\PSoC5/CyFlash.c ****                         CyDelayUs(1u);
+ 170              		.loc 1 137 0
+ 171 003a 0120     		movs	r0, #1
+ 172 003c FFF7FEFF 		bl	CyDelayUs
+ 173              	.L11:
+ 134:.\Generated_Source\PSoC5/CyFlash.c ****                     {
+ 174              		.loc 1 134 0
+ 175 0040 0D4B     		ldr	r3, .L16+4
+ 176 0042 1B78     		ldrb	r3, [r3]
+ 177 0044 DBB2     		uxtb	r3, r3
+ 178 0046 03F00203 		and	r3, r3, #2
+ 179 004a 002B     		cmp	r3, #0
+ 180 004c F5D0     		beq	.L12
+ 138:.\Generated_Source\PSoC5/CyFlash.c ****                     }
+ 139:.\Generated_Source\PSoC5/CyFlash.c ****                     break;
+ 181              		.loc 1 139 0
+ 182 004e 06E0     		b	.L9
+ 183              	.L10:
+ 140:.\Generated_Source\PSoC5/CyFlash.c ****                 }
+ 141:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 142:.\Generated_Source\PSoC5/CyFlash.c ****             } while(CY_SPC_BUSY);
+ 184              		.loc 1 142 0
+ 185 0050 094B     		ldr	r3, .L16+4
+ 186 0052 1B78     		ldrb	r3, [r3]
+ 187 0054 DBB2     		uxtb	r3, r3
+ 188 0056 03F00203 		and	r3, r3, #2
+ 189 005a 002B     		cmp	r3, #0
+ 190 005c E3D0     		beq	.L13
+ 191              	.L9:
+ 143:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 144:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 145:.\Generated_Source\PSoC5/CyFlash.c ****         CySpcUnlock();
+ 192              		.loc 1 145 0
+ 193 005e FFF7FEFF 		bl	CySpcUnlock
+ 194 0062 01E0     		b	.L14
+ 195              	.L8:
+ 146:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 7
+
+
+ 147:.\Generated_Source\PSoC5/CyFlash.c ****     else
+ 148:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 149:.\Generated_Source\PSoC5/CyFlash.c ****         status = CYRET_LOCKED;
+ 196              		.loc 1 149 0
+ 197 0064 0423     		movs	r3, #4
+ 198 0066 7B60     		str	r3, [r7, #4]
+ 199              	.L14:
+ 150:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 151:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 152:.\Generated_Source\PSoC5/CyFlash.c ****     return (status);
+ 200              		.loc 1 152 0
+ 201 0068 7B68     		ldr	r3, [r7, #4]
+ 153:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 202              		.loc 1 153 0
+ 203 006a 1846     		mov	r0, r3
+ 204 006c 0837     		adds	r7, r7, #8
+ 205              		.cfi_def_cfa_offset 8
+ 206 006e BD46     		mov	sp, r7
+ 207              		.cfi_def_cfa_register 13
+ 208              		@ sp needed
+ 209 0070 80BD     		pop	{r7, pc}
+ 210              	.L17:
+ 211 0072 00BF     		.align	2
+ 212              	.L16:
+ 213 0074 00000000 		.word	dieTemperature
+ 214 0078 22470040 		.word	1073760034
+ 215              		.cfi_endproc
+ 216              	.LFE2:
+ 217              		.size	CySetTempInt, .-CySetTempInt
+ 218              		.section	.text.CySetTemp,"ax",%progbits
+ 219              		.align	2
+ 220              		.global	CySetTemp
+ 221              		.thumb
+ 222              		.thumb_func
+ 223              		.type	CySetTemp, %function
+ 224              	CySetTemp:
+ 225              	.LFB3:
+ 154:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 155:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 156:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 157:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CySetTemp
+ 158:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 159:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 160:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 161:.\Generated_Source\PSoC5/CyFlash.c **** *  This is a wraparound for CySetTempInt(). It is used to return the second
+ 162:.\Generated_Source\PSoC5/CyFlash.c **** *  successful read of the temperature value.
+ 163:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 164:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 165:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 166:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 167:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 168:.\Generated_Source\PSoC5/CyFlash.c **** *  status:
+ 169:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_SUCCESS if successful.
+ 170:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_LOCKED  if Flash writing already in use
+ 171:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_UNKNOWN if there was an SPC error.
+ 172:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 173:.\Generated_Source\PSoC5/CyFlash.c **** *  uint8 dieTemperature[2]:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 8
+
+
+ 174:.\Generated_Source\PSoC5/CyFlash.c **** *   Holds the die temperature for the flash writing algorithm. The first byte is
+ 175:.\Generated_Source\PSoC5/CyFlash.c **** *   the sign of the temperature (0 = negative, 1 = positive). The second byte is
+ 176:.\Generated_Source\PSoC5/CyFlash.c **** *   the magnitude.
+ 177:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 178:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 179:.\Generated_Source\PSoC5/CyFlash.c **** cystatus CySetTemp(void) 
+ 180:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 226              		.loc 1 180 0
+ 227              		.cfi_startproc
+ 228              		@ args = 0, pretend = 0, frame = 8
+ 229              		@ frame_needed = 1, uses_anonymous_args = 0
+ 230 0000 80B5     		push	{r7, lr}
+ 231              		.cfi_def_cfa_offset 8
+ 232              		.cfi_offset 7, -8
+ 233              		.cfi_offset 14, -4
+ 234 0002 82B0     		sub	sp, sp, #8
+ 235              		.cfi_def_cfa_offset 16
+ 236 0004 00AF     		add	r7, sp, #0
+ 237              		.cfi_def_cfa_register 7
+ 181:.\Generated_Source\PSoC5/CyFlash.c ****     cystatus status = CySetTempInt();
+ 238              		.loc 1 181 0
+ 239 0006 FFF7FEFF 		bl	CySetTempInt
+ 240 000a 7860     		str	r0, [r7, #4]
+ 182:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 183:.\Generated_Source\PSoC5/CyFlash.c ****     if(status == CYRET_SUCCESS)
+ 241              		.loc 1 183 0
+ 242 000c 7B68     		ldr	r3, [r7, #4]
+ 243 000e 002B     		cmp	r3, #0
+ 244 0010 02D1     		bne	.L19
+ 184:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 185:.\Generated_Source\PSoC5/CyFlash.c ****         status = CySetTempInt();
+ 245              		.loc 1 185 0
+ 246 0012 FFF7FEFF 		bl	CySetTempInt
+ 247 0016 7860     		str	r0, [r7, #4]
+ 248              	.L19:
+ 186:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 187:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 188:.\Generated_Source\PSoC5/CyFlash.c ****     return (status);
+ 249              		.loc 1 188 0
+ 250 0018 7B68     		ldr	r3, [r7, #4]
+ 189:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 251              		.loc 1 189 0
+ 252 001a 1846     		mov	r0, r3
+ 253 001c 0837     		adds	r7, r7, #8
+ 254              		.cfi_def_cfa_offset 8
+ 255 001e BD46     		mov	sp, r7
+ 256              		.cfi_def_cfa_register 13
+ 257              		@ sp needed
+ 258 0020 80BD     		pop	{r7, pc}
+ 259              		.cfi_endproc
+ 260              	.LFE3:
+ 261              		.size	CySetTemp, .-CySetTemp
+ 262 0022 00BF     		.section	.text.CySetFlashEEBuffer,"ax",%progbits
+ 263              		.align	2
+ 264              		.global	CySetFlashEEBuffer
+ 265              		.thumb
+ 266              		.thumb_func
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 9
+
+
+ 267              		.type	CySetFlashEEBuffer, %function
+ 268              	CySetFlashEEBuffer:
+ 269              	.LFB4:
+ 190:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 191:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 192:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 193:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CySetFlashEEBuffer
+ 194:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 195:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 196:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 197:.\Generated_Source\PSoC5/CyFlash.c **** *  Sets the user supplied temporary buffer to store SPC data while performing
+ 198:.\Generated_Source\PSoC5/CyFlash.c **** *  Flash and EEPROM commands. This buffer is only necessary when the Flash ECC is
+ 199:.\Generated_Source\PSoC5/CyFlash.c **** *  disabled.
+ 200:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 201:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 202:.\Generated_Source\PSoC5/CyFlash.c **** *  buffer:
+ 203:.\Generated_Source\PSoC5/CyFlash.c **** *   The address of a block of memory to store temporary memory. The size of the block
+ 204:.\Generated_Source\PSoC5/CyFlash.c **** *   of memory is CYDEV_FLS_ROW_SIZE + CYDEV_ECC_ROW_SIZE.
+ 205:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 206:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 207:.\Generated_Source\PSoC5/CyFlash.c **** *  status:
+ 208:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_SUCCESS if successful.
+ 209:.\Generated_Source\PSoC5/CyFlash.c **** *   CYRET_BAD_PARAM if the buffer is NULL
+ 210:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 211:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 212:.\Generated_Source\PSoC5/CyFlash.c **** cystatus CySetFlashEEBuffer(uint8 * buffer) 
+ 213:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 270              		.loc 1 213 0
+ 271              		.cfi_startproc
+ 272              		@ args = 0, pretend = 0, frame = 16
+ 273              		@ frame_needed = 1, uses_anonymous_args = 0
+ 274 0000 80B5     		push	{r7, lr}
+ 275              		.cfi_def_cfa_offset 8
+ 276              		.cfi_offset 7, -8
+ 277              		.cfi_offset 14, -4
+ 278 0002 84B0     		sub	sp, sp, #16
+ 279              		.cfi_def_cfa_offset 24
+ 280 0004 00AF     		add	r7, sp, #0
+ 281              		.cfi_def_cfa_register 7
+ 282 0006 7860     		str	r0, [r7, #4]
+ 214:.\Generated_Source\PSoC5/CyFlash.c ****     cystatus status = CYRET_SUCCESS;
+ 283              		.loc 1 214 0
+ 284 0008 0023     		movs	r3, #0
+ 285 000a FB60     		str	r3, [r7, #12]
+ 215:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 216:.\Generated_Source\PSoC5/CyFlash.c ****     CySpcStart();
+ 286              		.loc 1 216 0
+ 287 000c FFF7FEFF 		bl	CySpcStart
+ 217:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 218:.\Generated_Source\PSoC5/CyFlash.c ****     #if(CYDEV_ECC_ENABLE == 0)
+ 219:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 220:.\Generated_Source\PSoC5/CyFlash.c ****         if(NULL == buffer)
+ 288              		.loc 1 220 0
+ 289 0010 7B68     		ldr	r3, [r7, #4]
+ 290 0012 002B     		cmp	r3, #0
+ 291 0014 06D1     		bne	.L22
+ 221:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 10
+
+
+ 222:.\Generated_Source\PSoC5/CyFlash.c ****             rowBuffer = rowBuffer;
+ 292              		.loc 1 222 0
+ 293 0016 0E4B     		ldr	r3, .L26
+ 294 0018 1B68     		ldr	r3, [r3]
+ 295 001a 0D4A     		ldr	r2, .L26
+ 296 001c 1360     		str	r3, [r2]
+ 223:.\Generated_Source\PSoC5/CyFlash.c ****             status = CYRET_BAD_PARAM;
+ 297              		.loc 1 223 0
+ 298 001e 0123     		movs	r3, #1
+ 299 0020 FB60     		str	r3, [r7, #12]
+ 300 0022 10E0     		b	.L23
+ 301              	.L22:
+ 224:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 225:.\Generated_Source\PSoC5/CyFlash.c ****         else if(CySpcLock() != CYRET_SUCCESS)
+ 302              		.loc 1 225 0
+ 303 0024 FFF7FEFF 		bl	CySpcLock
+ 304 0028 0346     		mov	r3, r0
+ 305 002a 002B     		cmp	r3, #0
+ 306 002c 06D0     		beq	.L24
+ 226:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 227:.\Generated_Source\PSoC5/CyFlash.c ****             rowBuffer = rowBuffer;
+ 307              		.loc 1 227 0
+ 308 002e 084B     		ldr	r3, .L26
+ 309 0030 1B68     		ldr	r3, [r3]
+ 310 0032 074A     		ldr	r2, .L26
+ 311 0034 1360     		str	r3, [r2]
+ 228:.\Generated_Source\PSoC5/CyFlash.c ****             status = CYRET_LOCKED;
+ 312              		.loc 1 228 0
+ 313 0036 0423     		movs	r3, #4
+ 314 0038 FB60     		str	r3, [r7, #12]
+ 315 003a 04E0     		b	.L23
+ 316              	.L24:
+ 229:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 230:.\Generated_Source\PSoC5/CyFlash.c ****         else
+ 231:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 232:.\Generated_Source\PSoC5/CyFlash.c ****             rowBuffer = buffer;
+ 317              		.loc 1 232 0
+ 318 003c 044A     		ldr	r2, .L26
+ 319 003e 7B68     		ldr	r3, [r7, #4]
+ 320 0040 1360     		str	r3, [r2]
+ 233:.\Generated_Source\PSoC5/CyFlash.c ****             CySpcUnlock();
+ 321              		.loc 1 233 0
+ 322 0042 FFF7FEFF 		bl	CySpcUnlock
+ 323              	.L23:
+ 234:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 235:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 236:.\Generated_Source\PSoC5/CyFlash.c ****     #else
+ 237:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 238:.\Generated_Source\PSoC5/CyFlash.c ****         /* To suppress warning */
+ 239:.\Generated_Source\PSoC5/CyFlash.c ****         buffer = buffer;
+ 240:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 241:.\Generated_Source\PSoC5/CyFlash.c ****     #endif  /* (CYDEV_ECC_ENABLE == 0u) */
+ 242:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 243:.\Generated_Source\PSoC5/CyFlash.c ****     return(status);
+ 324              		.loc 1 243 0
+ 325 0046 FB68     		ldr	r3, [r7, #12]
+ 244:.\Generated_Source\PSoC5/CyFlash.c **** }
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 11
+
+
+ 326              		.loc 1 244 0
+ 327 0048 1846     		mov	r0, r3
+ 328 004a 1037     		adds	r7, r7, #16
+ 329              		.cfi_def_cfa_offset 8
+ 330 004c BD46     		mov	sp, r7
+ 331              		.cfi_def_cfa_register 13
+ 332              		@ sp needed
+ 333 004e 80BD     		pop	{r7, pc}
+ 334              	.L27:
+ 335              		.align	2
+ 336              	.L26:
+ 337 0050 00000000 		.word	rowBuffer
+ 338              		.cfi_endproc
+ 339              	.LFE4:
+ 340              		.size	CySetFlashEEBuffer, .-CySetFlashEEBuffer
+ 341              		.section	.text.CyWriteRowData,"ax",%progbits
+ 342              		.align	2
+ 343              		.global	CyWriteRowData
+ 344              		.thumb
+ 345              		.thumb_func
+ 346              		.type	CyWriteRowData, %function
+ 347              	CyWriteRowData:
+ 348              	.LFB5:
+ 245:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 246:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 247:.\Generated_Source\PSoC5/CyFlash.c **** #if(CYDEV_ECC_ENABLE == 1)
+ 248:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 249:.\Generated_Source\PSoC5/CyFlash.c ****     /*******************************************************************************
+ 250:.\Generated_Source\PSoC5/CyFlash.c ****     * Function Name: CyWriteRowData
+ 251:.\Generated_Source\PSoC5/CyFlash.c ****     ********************************************************************************
+ 252:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 253:.\Generated_Source\PSoC5/CyFlash.c ****     * Summary:
+ 254:.\Generated_Source\PSoC5/CyFlash.c ****     *  Sends a command to the SPC to load and program a row of data in
+ 255:.\Generated_Source\PSoC5/CyFlash.c ****     *  Flash or EEPROM.
+ 256:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 257:.\Generated_Source\PSoC5/CyFlash.c ****     * Parameters:
+ 258:.\Generated_Source\PSoC5/CyFlash.c ****     *  arrayID:    ID of the array to write.
+ 259:.\Generated_Source\PSoC5/CyFlash.c ****     *   The type of write, Flash or EEPROM, is determined from the array ID.
+ 260:.\Generated_Source\PSoC5/CyFlash.c ****     *   The arrays in the part are sequential starting at the first ID for the
+ 261:.\Generated_Source\PSoC5/CyFlash.c ****     *   specific memory type. The array ID for the Flash memory lasts from 0x00 to
+ 262:.\Generated_Source\PSoC5/CyFlash.c ****     *   0x3F and for the EEPROM memory it lasts from 0x40 to 0x7F.
+ 263:.\Generated_Source\PSoC5/CyFlash.c ****     *  rowAddress: rowAddress of flash row to program.
+ 264:.\Generated_Source\PSoC5/CyFlash.c ****     *  rowData:    Array of bytes to write.
+ 265:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 266:.\Generated_Source\PSoC5/CyFlash.c ****     * Return:
+ 267:.\Generated_Source\PSoC5/CyFlash.c ****     *  status:
+ 268:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_SUCCESS if successful.
+ 269:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_LOCKED if the SPC is already in use.
+ 270:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_CANCELED if command not accepted
+ 271:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_UNKNOWN if there was an SPC error.
+ 272:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 273:.\Generated_Source\PSoC5/CyFlash.c ****     *******************************************************************************/
+ 274:.\Generated_Source\PSoC5/CyFlash.c ****     cystatus CyWriteRowData(uint8 arrayId, uint16 rowAddress, const uint8 * rowData) 
+ 275:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 276:.\Generated_Source\PSoC5/CyFlash.c ****         uint16 rowSize;
+ 277:.\Generated_Source\PSoC5/CyFlash.c ****         cystatus status;
+ 278:.\Generated_Source\PSoC5/CyFlash.c **** 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 12
+
+
+ 279:.\Generated_Source\PSoC5/CyFlash.c ****         rowSize = (arrayId > CY_SPC_LAST_FLASH_ARRAYID) ? CYDEV_EEPROM_ROW_SIZE : CYDEV_FLS_ROW_SIZ
+ 280:.\Generated_Source\PSoC5/CyFlash.c ****         status = CyWriteRowFull(arrayId, rowAddress, rowData, rowSize);
+ 281:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 282:.\Generated_Source\PSoC5/CyFlash.c ****         return(status);
+ 283:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 284:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 285:.\Generated_Source\PSoC5/CyFlash.c **** #else
+ 286:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 287:.\Generated_Source\PSoC5/CyFlash.c ****     /*******************************************************************************
+ 288:.\Generated_Source\PSoC5/CyFlash.c ****     * Function Name: CyWriteRowData
+ 289:.\Generated_Source\PSoC5/CyFlash.c ****     ********************************************************************************
+ 290:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 291:.\Generated_Source\PSoC5/CyFlash.c ****     * Summary:
+ 292:.\Generated_Source\PSoC5/CyFlash.c ****     *   Sends a command to the SPC to load and program a row of data in
+ 293:.\Generated_Source\PSoC5/CyFlash.c ****     *   Flash or EEPROM.
+ 294:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 295:.\Generated_Source\PSoC5/CyFlash.c ****     * Parameters:
+ 296:.\Generated_Source\PSoC5/CyFlash.c ****     *  arrayID      : ID of the array to write.
+ 297:.\Generated_Source\PSoC5/CyFlash.c ****     *   The type of write, Flash or EEPROM, is determined from the array ID.
+ 298:.\Generated_Source\PSoC5/CyFlash.c ****     *   The arrays in the part are sequential starting at the first ID for the
+ 299:.\Generated_Source\PSoC5/CyFlash.c ****     *   specific memory type. The array ID for the Flash memory lasts from 0x00 to
+ 300:.\Generated_Source\PSoC5/CyFlash.c ****     *   0x3F and for the EEPROM memory it lasts from 0x40 to 0x7F.
+ 301:.\Generated_Source\PSoC5/CyFlash.c ****     *  rowAddress   : rowAddress of flash row to program.
+ 302:.\Generated_Source\PSoC5/CyFlash.c ****     *  rowData      : Array of bytes to write.
+ 303:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 304:.\Generated_Source\PSoC5/CyFlash.c ****     * Return:
+ 305:.\Generated_Source\PSoC5/CyFlash.c ****     *  status:
+ 306:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_SUCCESS if successful.
+ 307:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_LOCKED if the SPC is already in use.
+ 308:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_CANCELED if command not accepted
+ 309:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_UNKNOWN if there was an SPC error.
+ 310:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 311:.\Generated_Source\PSoC5/CyFlash.c ****     *******************************************************************************/
+ 312:.\Generated_Source\PSoC5/CyFlash.c ****     cystatus CyWriteRowData(uint8 arrayId, uint16 rowAddress, const uint8 * rowData) 
+ 313:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 349              		.loc 1 313 0
+ 350              		.cfi_startproc
+ 351              		@ args = 0, pretend = 0, frame = 24
+ 352              		@ frame_needed = 1, uses_anonymous_args = 0
+ 353 0000 80B5     		push	{r7, lr}
+ 354              		.cfi_def_cfa_offset 8
+ 355              		.cfi_offset 7, -8
+ 356              		.cfi_offset 14, -4
+ 357 0002 86B0     		sub	sp, sp, #24
+ 358              		.cfi_def_cfa_offset 32
+ 359 0004 00AF     		add	r7, sp, #0
+ 360              		.cfi_def_cfa_register 7
+ 361 0006 0346     		mov	r3, r0
+ 362 0008 3A60     		str	r2, [r7]
+ 363 000a FB71     		strb	r3, [r7, #7]
+ 364 000c 0B46     		mov	r3, r1	@ movhi
+ 365 000e BB80     		strh	r3, [r7, #4]	@ movhi
+ 314:.\Generated_Source\PSoC5/CyFlash.c ****         uint8 i;
+ 315:.\Generated_Source\PSoC5/CyFlash.c ****         uint32 offset;
+ 316:.\Generated_Source\PSoC5/CyFlash.c ****         uint16 rowSize;
+ 317:.\Generated_Source\PSoC5/CyFlash.c ****         cystatus status;
+ 318:.\Generated_Source\PSoC5/CyFlash.c **** 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 13
+
+
+ 319:.\Generated_Source\PSoC5/CyFlash.c ****         /* Check whether rowBuffer pointer has been initialized by CySetFlashEEBuffer() */
+ 320:.\Generated_Source\PSoC5/CyFlash.c ****         if(NULL != rowBuffer)
+ 366              		.loc 1 320 0
+ 367 0010 214B     		ldr	r3, .L36
+ 368 0012 1B68     		ldr	r3, [r3]
+ 369 0014 002B     		cmp	r3, #0
+ 370 0016 36D0     		beq	.L29
+ 321:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 322:.\Generated_Source\PSoC5/CyFlash.c ****             if(arrayId > CY_SPC_LAST_FLASH_ARRAYID)
+ 371              		.loc 1 322 0
+ 372 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 373 001a 3F2B     		cmp	r3, #63
+ 374 001c 02D9     		bls	.L30
+ 323:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 324:.\Generated_Source\PSoC5/CyFlash.c ****                 rowSize = CYDEV_EEPROM_ROW_SIZE;
+ 375              		.loc 1 324 0
+ 376 001e 1023     		movs	r3, #16
+ 377 0020 BB82     		strh	r3, [r7, #20]	@ movhi
+ 378 0022 1FE0     		b	.L31
+ 379              	.L30:
+ 325:.\Generated_Source\PSoC5/CyFlash.c ****             }
+ 326:.\Generated_Source\PSoC5/CyFlash.c ****             else
+ 327:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 328:.\Generated_Source\PSoC5/CyFlash.c ****                 rowSize = CYDEV_FLS_ROW_SIZE + CYDEV_ECC_ROW_SIZE;
+ 380              		.loc 1 328 0
+ 381 0024 4FF49073 		mov	r3, #288
+ 382 0028 BB82     		strh	r3, [r7, #20]	@ movhi
+ 329:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 330:.\Generated_Source\PSoC5/CyFlash.c ****                 /* Save ECC area. */
+ 331:.\Generated_Source\PSoC5/CyFlash.c ****                 offset = CYDEV_ECC_BASE +
+ 332:.\Generated_Source\PSoC5/CyFlash.c ****                         ((uint32)arrayId * CYDEV_ECC_SECTOR_SIZE) +
+ 383              		.loc 1 332 0
+ 384 002a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 385 002c 03F51033 		add	r3, r3, #147456
+ 386 0030 1A02     		lsls	r2, r3, #8
+ 333:.\Generated_Source\PSoC5/CyFlash.c ****                         ((uint32)rowAddress * CYDEV_ECC_ROW_SIZE);
+ 387              		.loc 1 333 0
+ 388 0032 BB88     		ldrh	r3, [r7, #4]
+ 332:.\Generated_Source\PSoC5/CyFlash.c ****                         ((uint32)rowAddress * CYDEV_ECC_ROW_SIZE);
+ 389              		.loc 1 332 0
+ 390 0034 1344     		add	r3, r3, r2
+ 331:.\Generated_Source\PSoC5/CyFlash.c ****                         ((uint32)arrayId * CYDEV_ECC_SECTOR_SIZE) +
+ 391              		.loc 1 331 0
+ 392 0036 5B01     		lsls	r3, r3, #5
+ 393 0038 FB60     		str	r3, [r7, #12]
+ 334:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 335:.\Generated_Source\PSoC5/CyFlash.c ****                 for(i = 0u; i < CYDEV_ECC_ROW_SIZE; i++)
+ 394              		.loc 1 335 0
+ 395 003a 0023     		movs	r3, #0
+ 396 003c FB75     		strb	r3, [r7, #23]
+ 397 003e 0EE0     		b	.L32
+ 398              	.L33:
+ 336:.\Generated_Source\PSoC5/CyFlash.c ****                 {
+ 337:.\Generated_Source\PSoC5/CyFlash.c ****                     *(rowBuffer + CYDEV_FLS_ROW_SIZE + i) = CY_GET_XTND_REG8((void CYFAR *)(offset 
+ 399              		.loc 1 337 0 discriminator 3
+ 400 0040 154B     		ldr	r3, .L36
+ 401 0042 1A68     		ldr	r2, [r3]
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 14
+
+
+ 402 0044 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 403 0046 03F58073 		add	r3, r3, #256
+ 404 004a 1344     		add	r3, r3, r2
+ 405 004c F97D     		ldrb	r1, [r7, #23]	@ zero_extendqisi2
+ 406 004e FA68     		ldr	r2, [r7, #12]
+ 407 0050 0A44     		add	r2, r2, r1
+ 408 0052 1278     		ldrb	r2, [r2]
+ 409 0054 D2B2     		uxtb	r2, r2
+ 410 0056 1A70     		strb	r2, [r3]
+ 335:.\Generated_Source\PSoC5/CyFlash.c ****                 {
+ 411              		.loc 1 335 0 discriminator 3
+ 412 0058 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 413 005a 0133     		adds	r3, r3, #1
+ 414 005c FB75     		strb	r3, [r7, #23]
+ 415              	.L32:
+ 335:.\Generated_Source\PSoC5/CyFlash.c ****                 {
+ 416              		.loc 1 335 0 is_stmt 0 discriminator 1
+ 417 005e FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 418 0060 1F2B     		cmp	r3, #31
+ 419 0062 EDD9     		bls	.L33
+ 420              	.L31:
+ 338:.\Generated_Source\PSoC5/CyFlash.c ****                 }
+ 339:.\Generated_Source\PSoC5/CyFlash.c ****             }
+ 340:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 341:.\Generated_Source\PSoC5/CyFlash.c ****             /* Copy rowdata to temporary buffer. */
+ 342:.\Generated_Source\PSoC5/CyFlash.c ****         #if(CY_PSOC3)
+ 343:.\Generated_Source\PSoC5/CyFlash.c ****             (void) memcpy((void *) rowBuffer, (void *)((uint32) rowData), (int16) CYDEV_FLS_ROW_SIZ
+ 344:.\Generated_Source\PSoC5/CyFlash.c ****         #else
+ 345:.\Generated_Source\PSoC5/CyFlash.c ****             (void) memcpy((void *) rowBuffer, (const void *) rowData, CYDEV_FLS_ROW_SIZE);
+ 421              		.loc 1 345 0 is_stmt 1
+ 422 0064 0C4B     		ldr	r3, .L36
+ 423 0066 1B68     		ldr	r3, [r3]
+ 424 0068 1846     		mov	r0, r3
+ 425 006a 3968     		ldr	r1, [r7]
+ 426 006c 4FF48072 		mov	r2, #256
+ 427 0070 FFF7FEFF 		bl	memcpy
+ 346:.\Generated_Source\PSoC5/CyFlash.c ****         #endif  /* (CY_PSOC3) */
+ 347:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 348:.\Generated_Source\PSoC5/CyFlash.c ****             status = CyWriteRowFull(arrayId, rowAddress, rowBuffer, rowSize);
+ 428              		.loc 1 348 0
+ 429 0074 084B     		ldr	r3, .L36
+ 430 0076 1A68     		ldr	r2, [r3]
+ 431 0078 F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 432 007a B988     		ldrh	r1, [r7, #4]
+ 433 007c BB8A     		ldrh	r3, [r7, #20]
+ 434 007e FFF7FEFF 		bl	CyWriteRowFull
+ 435 0082 3861     		str	r0, [r7, #16]
+ 436 0084 02E0     		b	.L34
+ 437              	.L29:
+ 349:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 350:.\Generated_Source\PSoC5/CyFlash.c ****         else
+ 351:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 352:.\Generated_Source\PSoC5/CyFlash.c ****             status = CYRET_UNKNOWN;
+ 438              		.loc 1 352 0
+ 439 0086 4FF0FF33 		mov	r3, #-1
+ 440 008a 3B61     		str	r3, [r7, #16]
+ 441              	.L34:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 15
+
+
+ 353:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 354:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 355:.\Generated_Source\PSoC5/CyFlash.c ****         return(status);
+ 442              		.loc 1 355 0
+ 443 008c 3B69     		ldr	r3, [r7, #16]
+ 356:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 444              		.loc 1 356 0
+ 445 008e 1846     		mov	r0, r3
+ 446 0090 1837     		adds	r7, r7, #24
+ 447              		.cfi_def_cfa_offset 8
+ 448 0092 BD46     		mov	sp, r7
+ 449              		.cfi_def_cfa_register 13
+ 450              		@ sp needed
+ 451 0094 80BD     		pop	{r7, pc}
+ 452              	.L37:
+ 453 0096 00BF     		.align	2
+ 454              	.L36:
+ 455 0098 00000000 		.word	rowBuffer
+ 456              		.cfi_endproc
+ 457              	.LFE5:
+ 458              		.size	CyWriteRowData, .-CyWriteRowData
+ 459              		.section	.text.CyWriteRowFull,"ax",%progbits
+ 460              		.align	2
+ 461              		.global	CyWriteRowFull
+ 462              		.thumb
+ 463              		.thumb_func
+ 464              		.type	CyWriteRowFull, %function
+ 465              	CyWriteRowFull:
+ 466              	.LFB6:
+ 357:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 358:.\Generated_Source\PSoC5/CyFlash.c **** #endif /* (CYDEV_ECC_ENABLE == 0u) */
+ 359:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 360:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 361:.\Generated_Source\PSoC5/CyFlash.c **** #if ((CYDEV_ECC_ENABLE == 0u) && (CYDEV_CONFIGURATION_ECC == 0u))
+ 362:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 363:.\Generated_Source\PSoC5/CyFlash.c ****     /*******************************************************************************
+ 364:.\Generated_Source\PSoC5/CyFlash.c ****     * Function Name: CyWriteRowConfig
+ 365:.\Generated_Source\PSoC5/CyFlash.c ****     ********************************************************************************
+ 366:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 367:.\Generated_Source\PSoC5/CyFlash.c ****     * Summary:
+ 368:.\Generated_Source\PSoC5/CyFlash.c ****     *  Sends a command to the SPC to load and program a row of config data in the Flash.
+ 369:.\Generated_Source\PSoC5/CyFlash.c ****     *  This function is only valid for Flash array IDs (not for EEPROM).
+ 370:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 371:.\Generated_Source\PSoC5/CyFlash.c ****     * Parameters:
+ 372:.\Generated_Source\PSoC5/CyFlash.c ****     *  arrayId:      ID of the array to write
+ 373:.\Generated_Source\PSoC5/CyFlash.c ****     *   The arrays in the part are sequential starting at the first ID for the
+ 374:.\Generated_Source\PSoC5/CyFlash.c ****     *   specific memory type. The array ID for the Flash memory lasts
+ 375:.\Generated_Source\PSoC5/CyFlash.c ****     *   from 0x00 to 0x3F.
+ 376:.\Generated_Source\PSoC5/CyFlash.c ****     *  rowAddress:   The address of the sector to erase.
+ 377:.\Generated_Source\PSoC5/CyFlash.c ****     *  rowECC:       The array of bytes to write.
+ 378:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 379:.\Generated_Source\PSoC5/CyFlash.c ****     * Return:
+ 380:.\Generated_Source\PSoC5/CyFlash.c ****     *  status:
+ 381:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_SUCCESS if successful.
+ 382:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_LOCKED if the SPC is already in use.
+ 383:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_CANCELED if command not accepted
+ 384:.\Generated_Source\PSoC5/CyFlash.c ****     *   CYRET_UNKNOWN if there was an SPC error.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 16
+
+
+ 385:.\Generated_Source\PSoC5/CyFlash.c ****     *
+ 386:.\Generated_Source\PSoC5/CyFlash.c ****     *******************************************************************************/
+ 387:.\Generated_Source\PSoC5/CyFlash.c ****     cystatus CyWriteRowConfig(uint8 arrayId, uint16 rowAddress, const uint8 * rowECC)\
+ 388:.\Generated_Source\PSoC5/CyFlash.c ****     
+ 389:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 390:.\Generated_Source\PSoC5/CyFlash.c ****         uint32 offset;
+ 391:.\Generated_Source\PSoC5/CyFlash.c ****         uint16 i;
+ 392:.\Generated_Source\PSoC5/CyFlash.c ****         cystatus status;
+ 393:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 394:.\Generated_Source\PSoC5/CyFlash.c ****         /* Check whether rowBuffer pointer has been initialized by CySetFlashEEBuffer() */
+ 395:.\Generated_Source\PSoC5/CyFlash.c ****         if(NULL != rowBuffer)
+ 396:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 397:.\Generated_Source\PSoC5/CyFlash.c ****             /* Read existing flash data. */
+ 398:.\Generated_Source\PSoC5/CyFlash.c ****             offset = ((uint32)arrayId * CYDEV_FLS_SECTOR_SIZE) +
+ 399:.\Generated_Source\PSoC5/CyFlash.c ****                      ((uint32)rowAddress * CYDEV_FLS_ROW_SIZE);
+ 400:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 401:.\Generated_Source\PSoC5/CyFlash.c ****             #if (CYDEV_FLS_BASE != 0u)
+ 402:.\Generated_Source\PSoC5/CyFlash.c ****                 offset += CYDEV_FLS_BASE;
+ 403:.\Generated_Source\PSoC5/CyFlash.c ****             #endif  /* (CYDEV_FLS_BASE != 0u) */
+ 404:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 405:.\Generated_Source\PSoC5/CyFlash.c ****             for (i = 0u; i < CYDEV_FLS_ROW_SIZE; i++)
+ 406:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 407:.\Generated_Source\PSoC5/CyFlash.c ****                 rowBuffer[i] = CY_GET_XTND_REG8((void CYFAR *)(offset + i));
+ 408:.\Generated_Source\PSoC5/CyFlash.c ****             }
+ 409:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 410:.\Generated_Source\PSoC5/CyFlash.c ****             #if(CY_PSOC3)
+ 411:.\Generated_Source\PSoC5/CyFlash.c ****                 (void) memcpy((void *)&rowBuffer[CYDEV_FLS_ROW_SIZE],
+ 412:.\Generated_Source\PSoC5/CyFlash.c ****                               (void *)(uint32)rowECC,
+ 413:.\Generated_Source\PSoC5/CyFlash.c ****                               (int16)CYDEV_ECC_ROW_SIZE);
+ 414:.\Generated_Source\PSoC5/CyFlash.c ****             #else
+ 415:.\Generated_Source\PSoC5/CyFlash.c ****                 (void) memcpy((void *)&rowBuffer[CYDEV_FLS_ROW_SIZE],
+ 416:.\Generated_Source\PSoC5/CyFlash.c ****                               (const void *)rowECC,
+ 417:.\Generated_Source\PSoC5/CyFlash.c ****                               CYDEV_ECC_ROW_SIZE);
+ 418:.\Generated_Source\PSoC5/CyFlash.c ****             #endif  /* (CY_PSOC3) */
+ 419:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 420:.\Generated_Source\PSoC5/CyFlash.c ****             status = CyWriteRowFull(arrayId, rowAddress, rowBuffer, CYDEV_FLS_ROW_SIZE + CYDEV_ECC_
+ 421:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 422:.\Generated_Source\PSoC5/CyFlash.c ****         else
+ 423:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 424:.\Generated_Source\PSoC5/CyFlash.c ****             status = CYRET_UNKNOWN;
+ 425:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 426:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 427:.\Generated_Source\PSoC5/CyFlash.c ****         return (status);
+ 428:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 429:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 430:.\Generated_Source\PSoC5/CyFlash.c **** #endif  /* ((CYDEV_ECC_ENABLE == 0u) && (CYDEV_CONFIGURATION_ECC == 0u)) */
+ 431:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 432:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 433:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 434:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 435:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyWriteRowFull
+ 436:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 437:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 438:.\Generated_Source\PSoC5/CyFlash.c **** *  Sends a command to the SPC to load and program a row of data in the Flash.
+ 439:.\Generated_Source\PSoC5/CyFlash.c **** *  rowData array is expected to contain Flash and ECC data if needed.
+ 440:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 441:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 17
+
+
+ 442:.\Generated_Source\PSoC5/CyFlash.c **** *  arrayId:    FLASH or EEPROM array id.
+ 443:.\Generated_Source\PSoC5/CyFlash.c **** *  rowData:    Pointer to a row of data to write.
+ 444:.\Generated_Source\PSoC5/CyFlash.c **** *  rowNumber:  Zero based number of the row.
+ 445:.\Generated_Source\PSoC5/CyFlash.c **** *  rowSize:    Size of the row.
+ 446:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 447:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 448:.\Generated_Source\PSoC5/CyFlash.c **** *  CYRET_SUCCESS if successful.
+ 449:.\Generated_Source\PSoC5/CyFlash.c **** *  CYRET_LOCKED if the SPC is already in use.
+ 450:.\Generated_Source\PSoC5/CyFlash.c **** *  CYRET_CANCELED if command not accepted
+ 451:.\Generated_Source\PSoC5/CyFlash.c **** *  CYRET_UNKNOWN if there was an SPC error.
+ 452:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 453:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 454:.\Generated_Source\PSoC5/CyFlash.c **** cystatus CyWriteRowFull(uint8 arrayId, uint16 rowNumber, const uint8* rowData, uint16 rowSize) \
+ 455:.\Generated_Source\PSoC5/CyFlash.c ****         
+ 456:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 467              		.loc 1 456 0
+ 468              		.cfi_startproc
+ 469              		@ args = 0, pretend = 0, frame = 24
+ 470              		@ frame_needed = 1, uses_anonymous_args = 0
+ 471 0000 80B5     		push	{r7, lr}
+ 472              		.cfi_def_cfa_offset 8
+ 473              		.cfi_offset 7, -8
+ 474              		.cfi_offset 14, -4
+ 475 0002 86B0     		sub	sp, sp, #24
+ 476              		.cfi_def_cfa_offset 32
+ 477 0004 00AF     		add	r7, sp, #0
+ 478              		.cfi_def_cfa_register 7
+ 479 0006 BA60     		str	r2, [r7, #8]
+ 480 0008 1A46     		mov	r2, r3
+ 481 000a 0346     		mov	r3, r0
+ 482 000c FB73     		strb	r3, [r7, #15]
+ 483 000e 0B46     		mov	r3, r1	@ movhi
+ 484 0010 BB81     		strh	r3, [r7, #12]	@ movhi
+ 485 0012 1346     		mov	r3, r2	@ movhi
+ 486 0014 FB80     		strh	r3, [r7, #6]	@ movhi
+ 457:.\Generated_Source\PSoC5/CyFlash.c ****     cystatus status;
+ 458:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 459:.\Generated_Source\PSoC5/CyFlash.c ****     if(CySpcLock() == CYRET_SUCCESS)
+ 487              		.loc 1 459 0
+ 488 0016 FFF7FEFF 		bl	CySpcLock
+ 489 001a 0346     		mov	r3, r0
+ 490 001c 002B     		cmp	r3, #0
+ 491 001e 5AD1     		bne	.L39
+ 460:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 461:.\Generated_Source\PSoC5/CyFlash.c ****         /* Load row data into SPC internal latch */
+ 462:.\Generated_Source\PSoC5/CyFlash.c ****         status = CySpcLoadRow(arrayId, rowData, rowSize);
+ 492              		.loc 1 462 0
+ 493 0020 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 494 0022 FB88     		ldrh	r3, [r7, #6]
+ 495 0024 1046     		mov	r0, r2
+ 496 0026 B968     		ldr	r1, [r7, #8]
+ 497 0028 1A46     		mov	r2, r3
+ 498 002a FFF7FEFF 		bl	CySpcLoadRow
+ 499 002e 7861     		str	r0, [r7, #20]
+ 463:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 464:.\Generated_Source\PSoC5/CyFlash.c ****         if(CYRET_STARTED == status)
+ 500              		.loc 1 464 0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 18
+
+
+ 501 0030 7B69     		ldr	r3, [r7, #20]
+ 502 0032 072B     		cmp	r3, #7
+ 503 0034 4CD1     		bne	.L40
+ 465:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 466:.\Generated_Source\PSoC5/CyFlash.c ****             while(CY_SPC_BUSY)
+ 504              		.loc 1 466 0
+ 505 0036 02E0     		b	.L41
+ 506              	.L42:
+ 467:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 468:.\Generated_Source\PSoC5/CyFlash.c ****                 /* Wait for SPC to finish and get SPC status */
+ 469:.\Generated_Source\PSoC5/CyFlash.c ****                 CyDelayUs(1u);
+ 507              		.loc 1 469 0
+ 508 0038 0120     		movs	r0, #1
+ 509 003a FFF7FEFF 		bl	CyDelayUs
+ 510              	.L41:
+ 466:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 511              		.loc 1 466 0
+ 512 003e 294B     		ldr	r3, .L50
+ 513 0040 1B78     		ldrb	r3, [r3]
+ 514 0042 DBB2     		uxtb	r3, r3
+ 515 0044 03F00203 		and	r3, r3, #2
+ 516 0048 002B     		cmp	r3, #0
+ 517 004a F5D0     		beq	.L42
+ 470:.\Generated_Source\PSoC5/CyFlash.c ****             }
+ 471:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 472:.\Generated_Source\PSoC5/CyFlash.c ****             /* Hide SPC status */
+ 473:.\Generated_Source\PSoC5/CyFlash.c ****             if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 518              		.loc 1 473 0
+ 519 004c 254B     		ldr	r3, .L50
+ 520 004e 1B78     		ldrb	r3, [r3]
+ 521 0050 DBB2     		uxtb	r3, r3
+ 522 0052 03F00203 		and	r3, r3, #2
+ 523 0056 002B     		cmp	r3, #0
+ 524 0058 09D0     		beq	.L43
+ 525              		.loc 1 473 0 is_stmt 0 discriminator 1
+ 526 005a 224B     		ldr	r3, .L50
+ 527 005c 1B78     		ldrb	r3, [r3]
+ 528 005e DBB2     		uxtb	r3, r3
+ 529 0060 9B08     		lsrs	r3, r3, #2
+ 530 0062 DBB2     		uxtb	r3, r3
+ 531 0064 002B     		cmp	r3, #0
+ 532 0066 02D1     		bne	.L43
+ 474:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 475:.\Generated_Source\PSoC5/CyFlash.c ****                 status = CYRET_SUCCESS;
+ 533              		.loc 1 475 0 is_stmt 1
+ 534 0068 0023     		movs	r3, #0
+ 535 006a 7B61     		str	r3, [r7, #20]
+ 536 006c 02E0     		b	.L44
+ 537              	.L43:
+ 476:.\Generated_Source\PSoC5/CyFlash.c ****             }
+ 477:.\Generated_Source\PSoC5/CyFlash.c ****             else
+ 478:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 479:.\Generated_Source\PSoC5/CyFlash.c ****                 status = CYRET_UNKNOWN;
+ 538              		.loc 1 479 0
+ 539 006e 4FF0FF33 		mov	r3, #-1
+ 540 0072 7B61     		str	r3, [r7, #20]
+ 541              	.L44:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 19
+
+
+ 480:.\Generated_Source\PSoC5/CyFlash.c ****             }
+ 481:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 482:.\Generated_Source\PSoC5/CyFlash.c ****             if(CYRET_SUCCESS == status)
+ 542              		.loc 1 482 0
+ 543 0074 7B69     		ldr	r3, [r7, #20]
+ 544 0076 002B     		cmp	r3, #0
+ 545 0078 2AD1     		bne	.L40
+ 483:.\Generated_Source\PSoC5/CyFlash.c ****             {
+ 484:.\Generated_Source\PSoC5/CyFlash.c ****                 /* Erase and program flash with data from SPC interval latch */
+ 485:.\Generated_Source\PSoC5/CyFlash.c ****                 status = CySpcWriteRow(arrayId, rowNumber, dieTemperature[0u], dieTemperature[1u]);
+ 546              		.loc 1 485 0
+ 547 007a 1B4B     		ldr	r3, .L50+4
+ 548 007c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 549 007e 1A4B     		ldr	r3, .L50+4
+ 550 0080 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 551 0082 F87B     		ldrb	r0, [r7, #15]	@ zero_extendqisi2
+ 552 0084 B989     		ldrh	r1, [r7, #12]
+ 553 0086 FFF7FEFF 		bl	CySpcWriteRow
+ 554 008a 7861     		str	r0, [r7, #20]
+ 486:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 487:.\Generated_Source\PSoC5/CyFlash.c ****                 if(CYRET_STARTED == status)
+ 555              		.loc 1 487 0
+ 556 008c 7B69     		ldr	r3, [r7, #20]
+ 557 008e 072B     		cmp	r3, #7
+ 558 0090 1ED1     		bne	.L40
+ 488:.\Generated_Source\PSoC5/CyFlash.c ****                 {
+ 489:.\Generated_Source\PSoC5/CyFlash.c ****                     while(CY_SPC_BUSY)
+ 559              		.loc 1 489 0
+ 560 0092 02E0     		b	.L45
+ 561              	.L46:
+ 490:.\Generated_Source\PSoC5/CyFlash.c ****                     {
+ 491:.\Generated_Source\PSoC5/CyFlash.c ****                         /* Wait for SPC to finish and get SPC status */
+ 492:.\Generated_Source\PSoC5/CyFlash.c ****                         CyDelayUs(1u);
+ 562              		.loc 1 492 0
+ 563 0094 0120     		movs	r0, #1
+ 564 0096 FFF7FEFF 		bl	CyDelayUs
+ 565              	.L45:
+ 489:.\Generated_Source\PSoC5/CyFlash.c ****                     {
+ 566              		.loc 1 489 0
+ 567 009a 124B     		ldr	r3, .L50
+ 568 009c 1B78     		ldrb	r3, [r3]
+ 569 009e DBB2     		uxtb	r3, r3
+ 570 00a0 03F00203 		and	r3, r3, #2
+ 571 00a4 002B     		cmp	r3, #0
+ 572 00a6 F5D0     		beq	.L46
+ 493:.\Generated_Source\PSoC5/CyFlash.c ****                     }
+ 494:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 495:.\Generated_Source\PSoC5/CyFlash.c ****                     /* Hide SPC status */
+ 496:.\Generated_Source\PSoC5/CyFlash.c ****                     if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 573              		.loc 1 496 0
+ 574 00a8 0E4B     		ldr	r3, .L50
+ 575 00aa 1B78     		ldrb	r3, [r3]
+ 576 00ac DBB2     		uxtb	r3, r3
+ 577 00ae 03F00203 		and	r3, r3, #2
+ 578 00b2 002B     		cmp	r3, #0
+ 579 00b4 09D0     		beq	.L47
+ 580              		.loc 1 496 0 is_stmt 0 discriminator 1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 20
+
+
+ 581 00b6 0B4B     		ldr	r3, .L50
+ 582 00b8 1B78     		ldrb	r3, [r3]
+ 583 00ba DBB2     		uxtb	r3, r3
+ 584 00bc 9B08     		lsrs	r3, r3, #2
+ 585 00be DBB2     		uxtb	r3, r3
+ 586 00c0 002B     		cmp	r3, #0
+ 587 00c2 02D1     		bne	.L47
+ 497:.\Generated_Source\PSoC5/CyFlash.c ****                     {
+ 498:.\Generated_Source\PSoC5/CyFlash.c ****                         status = CYRET_SUCCESS;
+ 588              		.loc 1 498 0 is_stmt 1
+ 589 00c4 0023     		movs	r3, #0
+ 590 00c6 7B61     		str	r3, [r7, #20]
+ 591 00c8 02E0     		b	.L40
+ 592              	.L47:
+ 499:.\Generated_Source\PSoC5/CyFlash.c ****                     }
+ 500:.\Generated_Source\PSoC5/CyFlash.c ****                     else
+ 501:.\Generated_Source\PSoC5/CyFlash.c ****                     {
+ 502:.\Generated_Source\PSoC5/CyFlash.c ****                         status = CYRET_UNKNOWN;
+ 593              		.loc 1 502 0
+ 594 00ca 4FF0FF33 		mov	r3, #-1
+ 595 00ce 7B61     		str	r3, [r7, #20]
+ 596              	.L40:
+ 503:.\Generated_Source\PSoC5/CyFlash.c ****                     }
+ 504:.\Generated_Source\PSoC5/CyFlash.c ****                 }
+ 505:.\Generated_Source\PSoC5/CyFlash.c ****             }
+ 506:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 507:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 508:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 509:.\Generated_Source\PSoC5/CyFlash.c ****         CySpcUnlock();
+ 597              		.loc 1 509 0
+ 598 00d0 FFF7FEFF 		bl	CySpcUnlock
+ 599 00d4 01E0     		b	.L48
+ 600              	.L39:
+ 510:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 511:.\Generated_Source\PSoC5/CyFlash.c ****     else
+ 512:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 513:.\Generated_Source\PSoC5/CyFlash.c ****         status = CYRET_LOCKED;
+ 601              		.loc 1 513 0
+ 602 00d6 0423     		movs	r3, #4
+ 603 00d8 7B61     		str	r3, [r7, #20]
+ 604              	.L48:
+ 514:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 515:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 516:.\Generated_Source\PSoC5/CyFlash.c ****     return(status);
+ 605              		.loc 1 516 0
+ 606 00da 7B69     		ldr	r3, [r7, #20]
+ 517:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 607              		.loc 1 517 0
+ 608 00dc 1846     		mov	r0, r3
+ 609 00de 1837     		adds	r7, r7, #24
+ 610              		.cfi_def_cfa_offset 8
+ 611 00e0 BD46     		mov	sp, r7
+ 612              		.cfi_def_cfa_register 13
+ 613              		@ sp needed
+ 614 00e2 80BD     		pop	{r7, pc}
+ 615              	.L51:
+ 616              		.align	2
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 21
+
+
+ 617              	.L50:
+ 618 00e4 22470040 		.word	1073760034
+ 619 00e8 00000000 		.word	dieTemperature
+ 620              		.cfi_endproc
+ 621              	.LFE6:
+ 622              		.size	CyWriteRowFull, .-CyWriteRowFull
+ 623              		.section	.text.CyFlash_SetWaitCycles,"ax",%progbits
+ 624              		.align	2
+ 625              		.global	CyFlash_SetWaitCycles
+ 626              		.thumb
+ 627              		.thumb_func
+ 628              		.type	CyFlash_SetWaitCycles, %function
+ 629              	CyFlash_SetWaitCycles:
+ 630              	.LFB7:
+ 518:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 519:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 520:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 521:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyFlash_SetWaitCycles
+ 522:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 523:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 524:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 525:.\Generated_Source\PSoC5/CyFlash.c **** *  Sets the number of clock cycles the cache will wait before it samples data
+ 526:.\Generated_Source\PSoC5/CyFlash.c **** *  coming back from the Flash. This function must be called before increasing the CPU
+ 527:.\Generated_Source\PSoC5/CyFlash.c **** *  clock frequency. It can optionally be called after lowering the CPU clock
+ 528:.\Generated_Source\PSoC5/CyFlash.c **** *  frequency in order to improve the CPU performance.
+ 529:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 530:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 531:.\Generated_Source\PSoC5/CyFlash.c **** *  uint8 freq:
+ 532:.\Generated_Source\PSoC5/CyFlash.c **** *   Frequency of operation in Megahertz.
+ 533:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 534:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 535:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 536:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 537:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 538:.\Generated_Source\PSoC5/CyFlash.c **** void CyFlash_SetWaitCycles(uint8 freq) 
+ 539:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 631              		.loc 1 539 0
+ 632              		.cfi_startproc
+ 633              		@ args = 0, pretend = 0, frame = 16
+ 634              		@ frame_needed = 1, uses_anonymous_args = 0
+ 635 0000 80B5     		push	{r7, lr}
+ 636              		.cfi_def_cfa_offset 8
+ 637              		.cfi_offset 7, -8
+ 638              		.cfi_offset 14, -4
+ 639 0002 84B0     		sub	sp, sp, #16
+ 640              		.cfi_def_cfa_offset 24
+ 641 0004 00AF     		add	r7, sp, #0
+ 642              		.cfi_def_cfa_register 7
+ 643 0006 0346     		mov	r3, r0
+ 644 0008 FB71     		strb	r3, [r7, #7]
+ 540:.\Generated_Source\PSoC5/CyFlash.c ****     uint8 interruptState;
+ 541:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 542:.\Generated_Source\PSoC5/CyFlash.c ****     /* Save current global interrupt enable and disable it */
+ 543:.\Generated_Source\PSoC5/CyFlash.c ****     interruptState = CyEnterCriticalSection();
+ 645              		.loc 1 543 0
+ 646 000a FFF7FEFF 		bl	CyEnterCriticalSection
+ 647 000e 0346     		mov	r3, r0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 22
+
+
+ 648 0010 FB73     		strb	r3, [r7, #15]
+ 544:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 545:.\Generated_Source\PSoC5/CyFlash.c ****     /***************************************************************************
+ 546:.\Generated_Source\PSoC5/CyFlash.c ****     * The number of clock cycles the cache will wait before it samples data
+ 547:.\Generated_Source\PSoC5/CyFlash.c ****     * coming back from the Flash must be equal or greater to to the CPU frequency
+ 548:.\Generated_Source\PSoC5/CyFlash.c ****     * outlined in clock cycles.
+ 549:.\Generated_Source\PSoC5/CyFlash.c ****     ***************************************************************************/
+ 550:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 551:.\Generated_Source\PSoC5/CyFlash.c ****     #if (CY_PSOC3)
+ 552:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 553:.\Generated_Source\PSoC5/CyFlash.c ****         if (freq <= 22u)
+ 554:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 555:.\Generated_Source\PSoC5/CyFlash.c ****             *CY_FLASH_CONTROL_PTR = ((*CY_FLASH_CONTROL_PTR & ((uint8)(~CY_FLASH_CYCLES_MASK))) |
+ 556:.\Generated_Source\PSoC5/CyFlash.c ****                 ((uint8)(CY_FLASH_LESSER_OR_EQUAL_22MHz << CY_FLASH_CYCLES_MASK_SHIFT)));
+ 557:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 558:.\Generated_Source\PSoC5/CyFlash.c ****         else if (freq <= 44u)
+ 559:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 560:.\Generated_Source\PSoC5/CyFlash.c ****             *CY_FLASH_CONTROL_PTR = ((*CY_FLASH_CONTROL_PTR & ((uint8)(~CY_FLASH_CYCLES_MASK))) |
+ 561:.\Generated_Source\PSoC5/CyFlash.c ****                 ((uint8)(CY_FLASH_LESSER_OR_EQUAL_44MHz << CY_FLASH_CYCLES_MASK_SHIFT)));
+ 562:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 563:.\Generated_Source\PSoC5/CyFlash.c ****         else
+ 564:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 565:.\Generated_Source\PSoC5/CyFlash.c ****             *CY_FLASH_CONTROL_PTR = ((*CY_FLASH_CONTROL_PTR & ((uint8)(~CY_FLASH_CYCLES_MASK))) |
+ 566:.\Generated_Source\PSoC5/CyFlash.c ****                 ((uint8)(CY_FLASH_GREATER_44MHz << CY_FLASH_CYCLES_MASK_SHIFT)));
+ 567:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 568:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 569:.\Generated_Source\PSoC5/CyFlash.c ****     #endif  /* (CY_PSOC3) */
+ 570:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 571:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 572:.\Generated_Source\PSoC5/CyFlash.c ****     #if (CY_PSOC5)
+ 573:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 574:.\Generated_Source\PSoC5/CyFlash.c ****         if (freq <= 16u)
+ 649              		.loc 1 574 0
+ 650 0012 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 651 0014 102B     		cmp	r3, #16
+ 652 0016 0DD8     		bhi	.L53
+ 575:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 576:.\Generated_Source\PSoC5/CyFlash.c ****             *CY_FLASH_CONTROL_PTR = ((*CY_FLASH_CONTROL_PTR & ((uint8)(~CY_FLASH_CYCLES_MASK))) |
+ 653              		.loc 1 576 0
+ 654 0018 1C4B     		ldr	r3, .L57
+ 655 001a 1C4A     		ldr	r2, .L57
+ 656 001c 1278     		ldrb	r2, [r2]
+ 657 001e D2B2     		uxtb	r2, r2
+ 658 0020 D2B2     		uxtb	r2, r2
+ 659 0022 02F03F02 		and	r2, r2, #63
+ 660 0026 D2B2     		uxtb	r2, r2
+ 661 0028 42F04002 		orr	r2, r2, #64
+ 662 002c D2B2     		uxtb	r2, r2
+ 663 002e D2B2     		uxtb	r2, r2
+ 664 0030 1A70     		strb	r2, [r3]
+ 665 0032 24E0     		b	.L54
+ 666              	.L53:
+ 577:.\Generated_Source\PSoC5/CyFlash.c ****                 ((uint8)(CY_FLASH_LESSER_OR_EQUAL_16MHz << CY_FLASH_CYCLES_MASK_SHIFT)));
+ 578:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 579:.\Generated_Source\PSoC5/CyFlash.c ****         else if (freq <= 33u)
+ 667              		.loc 1 579 0
+ 668 0034 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 23
+
+
+ 669 0036 212B     		cmp	r3, #33
+ 670 0038 0DD8     		bhi	.L55
+ 580:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 581:.\Generated_Source\PSoC5/CyFlash.c ****             *CY_FLASH_CONTROL_PTR = ((*CY_FLASH_CONTROL_PTR & ((uint8)(~CY_FLASH_CYCLES_MASK))) |
+ 671              		.loc 1 581 0
+ 672 003a 144B     		ldr	r3, .L57
+ 673 003c 134A     		ldr	r2, .L57
+ 674 003e 1278     		ldrb	r2, [r2]
+ 675 0040 D2B2     		uxtb	r2, r2
+ 676 0042 D2B2     		uxtb	r2, r2
+ 677 0044 02F03F02 		and	r2, r2, #63
+ 678 0048 D2B2     		uxtb	r2, r2
+ 679 004a 62F07F02 		orn	r2, r2, #127
+ 680 004e D2B2     		uxtb	r2, r2
+ 681 0050 D2B2     		uxtb	r2, r2
+ 682 0052 1A70     		strb	r2, [r3]
+ 683 0054 13E0     		b	.L54
+ 684              	.L55:
+ 582:.\Generated_Source\PSoC5/CyFlash.c ****                 ((uint8)(CY_FLASH_LESSER_OR_EQUAL_33MHz << CY_FLASH_CYCLES_MASK_SHIFT)));
+ 583:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 584:.\Generated_Source\PSoC5/CyFlash.c ****         else if (freq <= 50u)
+ 685              		.loc 1 584 0
+ 686 0056 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 687 0058 322B     		cmp	r3, #50
+ 688 005a 08D8     		bhi	.L56
+ 585:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 586:.\Generated_Source\PSoC5/CyFlash.c ****             *CY_FLASH_CONTROL_PTR = ((*CY_FLASH_CONTROL_PTR & ((uint8)(~CY_FLASH_CYCLES_MASK))) |
+ 689              		.loc 1 586 0
+ 690 005c 0B4A     		ldr	r2, .L57
+ 691 005e 0B4B     		ldr	r3, .L57
+ 692 0060 1B78     		ldrb	r3, [r3]
+ 693 0062 DBB2     		uxtb	r3, r3
+ 694 0064 63F03F03 		orn	r3, r3, #63
+ 695 0068 DBB2     		uxtb	r3, r3
+ 696 006a 1370     		strb	r3, [r2]
+ 697 006c 07E0     		b	.L54
+ 698              	.L56:
+ 587:.\Generated_Source\PSoC5/CyFlash.c ****                 ((uint8)(CY_FLASH_LESSER_OR_EQUAL_50MHz << CY_FLASH_CYCLES_MASK_SHIFT)));
+ 588:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 589:.\Generated_Source\PSoC5/CyFlash.c ****         else
+ 590:.\Generated_Source\PSoC5/CyFlash.c ****         {
+ 591:.\Generated_Source\PSoC5/CyFlash.c ****             *CY_FLASH_CONTROL_PTR = ((*CY_FLASH_CONTROL_PTR & ((uint8)(~CY_FLASH_CYCLES_MASK))) |
+ 699              		.loc 1 591 0
+ 700 006e 074A     		ldr	r2, .L57
+ 701 0070 064B     		ldr	r3, .L57
+ 702 0072 1B78     		ldrb	r3, [r3]
+ 703 0074 DBB2     		uxtb	r3, r3
+ 704 0076 03F03F03 		and	r3, r3, #63
+ 705 007a DBB2     		uxtb	r3, r3
+ 706 007c 1370     		strb	r3, [r2]
+ 707              	.L54:
+ 592:.\Generated_Source\PSoC5/CyFlash.c ****                 ((uint8)(CY_FLASH_GREATER_51MHz << CY_FLASH_CYCLES_MASK_SHIFT)));
+ 593:.\Generated_Source\PSoC5/CyFlash.c ****         }
+ 594:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 595:.\Generated_Source\PSoC5/CyFlash.c ****     #endif  /* (CY_PSOC5) */
+ 596:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 597:.\Generated_Source\PSoC5/CyFlash.c ****     /* Restore global interrupt enable state */
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 24
+
+
+ 598:.\Generated_Source\PSoC5/CyFlash.c ****     CyExitCriticalSection(interruptState);
+ 708              		.loc 1 598 0
+ 709 007e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 710 0080 1846     		mov	r0, r3
+ 711 0082 FFF7FEFF 		bl	CyExitCriticalSection
+ 599:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 712              		.loc 1 599 0
+ 713 0086 1037     		adds	r7, r7, #16
+ 714              		.cfi_def_cfa_offset 8
+ 715 0088 BD46     		mov	sp, r7
+ 716              		.cfi_def_cfa_register 13
+ 717              		@ sp needed
+ 718 008a 80BD     		pop	{r7, pc}
+ 719              	.L58:
+ 720              		.align	2
+ 721              	.L57:
+ 722 008c 00480040 		.word	1073760256
+ 723              		.cfi_endproc
+ 724              	.LFE7:
+ 725              		.size	CyFlash_SetWaitCycles, .-CyFlash_SetWaitCycles
+ 726              		.section	.text.CyEEPROM_Start,"ax",%progbits
+ 727              		.align	2
+ 728              		.global	CyEEPROM_Start
+ 729              		.thumb
+ 730              		.thumb_func
+ 731              		.type	CyEEPROM_Start, %function
+ 732              	CyEEPROM_Start:
+ 733              	.LFB8:
+ 600:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 601:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 602:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 603:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyEEPROM_Start
+ 604:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 605:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 606:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 607:.\Generated_Source\PSoC5/CyFlash.c **** *  Enable the EEPROM.
+ 608:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 609:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 610:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 611:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 612:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 613:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 614:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 615:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 616:.\Generated_Source\PSoC5/CyFlash.c **** void CyEEPROM_Start(void) 
+ 617:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 734              		.loc 1 617 0
+ 735              		.cfi_startproc
+ 736              		@ args = 0, pretend = 0, frame = 0
+ 737              		@ frame_needed = 1, uses_anonymous_args = 0
+ 738              		@ link register save eliminated.
+ 739 0000 80B4     		push	{r7}
+ 740              		.cfi_def_cfa_offset 4
+ 741              		.cfi_offset 7, -4
+ 742 0002 00AF     		add	r7, sp, #0
+ 743              		.cfi_def_cfa_register 7
+ 618:.\Generated_Source\PSoC5/CyFlash.c ****     /* Active Power Mode */
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 25
+
+
+ 619:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ACT_EEFLASH_PTR |= CY_FLASH_PM_EE_MASK;
+ 744              		.loc 1 619 0
+ 745 0004 094A     		ldr	r2, .L60
+ 746 0006 094B     		ldr	r3, .L60
+ 747 0008 1B78     		ldrb	r3, [r3]
+ 748 000a DBB2     		uxtb	r3, r3
+ 749 000c 43F01003 		orr	r3, r3, #16
+ 750 0010 DBB2     		uxtb	r3, r3
+ 751 0012 1370     		strb	r3, [r2]
+ 620:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 621:.\Generated_Source\PSoC5/CyFlash.c ****     /* Standby Power Mode */
+ 622:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ALTACT_EEFLASH_PTR |= CY_FLASH_PM_EE_MASK;
+ 752              		.loc 1 622 0
+ 753 0014 064A     		ldr	r2, .L60+4
+ 754 0016 064B     		ldr	r3, .L60+4
+ 755 0018 1B78     		ldrb	r3, [r3]
+ 756 001a DBB2     		uxtb	r3, r3
+ 757 001c 43F01003 		orr	r3, r3, #16
+ 758 0020 DBB2     		uxtb	r3, r3
+ 759 0022 1370     		strb	r3, [r2]
+ 623:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 760              		.loc 1 623 0
+ 761 0024 BD46     		mov	sp, r7
+ 762              		.cfi_def_cfa_register 13
+ 763              		@ sp needed
+ 764 0026 5DF8047B 		ldr	r7, [sp], #4
+ 765              		.cfi_restore 7
+ 766              		.cfi_def_cfa_offset 0
+ 767 002a 7047     		bx	lr
+ 768              	.L61:
+ 769              		.align	2
+ 770              	.L60:
+ 771 002c AC430040 		.word	1073759148
+ 772 0030 BC430040 		.word	1073759164
+ 773              		.cfi_endproc
+ 774              	.LFE8:
+ 775              		.size	CyEEPROM_Start, .-CyEEPROM_Start
+ 776              		.section	.text.CyEEPROM_Stop,"ax",%progbits
+ 777              		.align	2
+ 778              		.global	CyEEPROM_Stop
+ 779              		.thumb
+ 780              		.thumb_func
+ 781              		.type	CyEEPROM_Stop, %function
+ 782              	CyEEPROM_Stop:
+ 783              	.LFB9:
+ 624:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 625:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 626:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 627:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyEEPROM_Stop
+ 628:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 629:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 630:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 631:.\Generated_Source\PSoC5/CyFlash.c **** *  Disable the EEPROM.
+ 632:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 633:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 634:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 635:.\Generated_Source\PSoC5/CyFlash.c **** *
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 26
+
+
+ 636:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 637:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 638:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 639:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 640:.\Generated_Source\PSoC5/CyFlash.c **** void CyEEPROM_Stop (void) 
+ 641:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 784              		.loc 1 641 0
+ 785              		.cfi_startproc
+ 786              		@ args = 0, pretend = 0, frame = 0
+ 787              		@ frame_needed = 1, uses_anonymous_args = 0
+ 788              		@ link register save eliminated.
+ 789 0000 80B4     		push	{r7}
+ 790              		.cfi_def_cfa_offset 4
+ 791              		.cfi_offset 7, -4
+ 792 0002 00AF     		add	r7, sp, #0
+ 793              		.cfi_def_cfa_register 7
+ 642:.\Generated_Source\PSoC5/CyFlash.c ****     /* Active Power Mode */
+ 643:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ACT_EEFLASH_PTR &= ((uint8)(~CY_FLASH_PM_EE_MASK));
+ 794              		.loc 1 643 0
+ 795 0004 094A     		ldr	r2, .L63
+ 796 0006 094B     		ldr	r3, .L63
+ 797 0008 1B78     		ldrb	r3, [r3]
+ 798 000a DBB2     		uxtb	r3, r3
+ 799 000c 23F01003 		bic	r3, r3, #16
+ 800 0010 DBB2     		uxtb	r3, r3
+ 801 0012 1370     		strb	r3, [r2]
+ 644:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 645:.\Generated_Source\PSoC5/CyFlash.c ****     /* Standby Power Mode */
+ 646:.\Generated_Source\PSoC5/CyFlash.c ****     *CY_FLASH_PM_ALTACT_EEFLASH_PTR &= ((uint8)(~CY_FLASH_PM_EE_MASK));
+ 802              		.loc 1 646 0
+ 803 0014 064A     		ldr	r2, .L63+4
+ 804 0016 064B     		ldr	r3, .L63+4
+ 805 0018 1B78     		ldrb	r3, [r3]
+ 806 001a DBB2     		uxtb	r3, r3
+ 807 001c 23F01003 		bic	r3, r3, #16
+ 808 0020 DBB2     		uxtb	r3, r3
+ 809 0022 1370     		strb	r3, [r2]
+ 647:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 810              		.loc 1 647 0
+ 811 0024 BD46     		mov	sp, r7
+ 812              		.cfi_def_cfa_register 13
+ 813              		@ sp needed
+ 814 0026 5DF8047B 		ldr	r7, [sp], #4
+ 815              		.cfi_restore 7
+ 816              		.cfi_def_cfa_offset 0
+ 817 002a 7047     		bx	lr
+ 818              	.L64:
+ 819              		.align	2
+ 820              	.L63:
+ 821 002c AC430040 		.word	1073759148
+ 822 0030 BC430040 		.word	1073759164
+ 823              		.cfi_endproc
+ 824              	.LFE9:
+ 825              		.size	CyEEPROM_Stop, .-CyEEPROM_Stop
+ 826              		.section	.text.CyEEPROM_ReadReserve,"ax",%progbits
+ 827              		.align	2
+ 828              		.global	CyEEPROM_ReadReserve
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 27
+
+
+ 829              		.thumb
+ 830              		.thumb_func
+ 831              		.type	CyEEPROM_ReadReserve, %function
+ 832              	CyEEPROM_ReadReserve:
+ 833              	.LFB10:
+ 648:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 649:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 650:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 651:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyEEPROM_ReadReserve
+ 652:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 653:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 654:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 655:.\Generated_Source\PSoC5/CyFlash.c **** *  Request access to the EEPROM for reading and wait until access is available.
+ 656:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 657:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 658:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 659:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 660:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 661:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 662:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 663:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 664:.\Generated_Source\PSoC5/CyFlash.c **** void CyEEPROM_ReadReserve(void) 
+ 665:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 834              		.loc 1 665 0
+ 835              		.cfi_startproc
+ 836              		@ args = 0, pretend = 0, frame = 0
+ 837              		@ frame_needed = 1, uses_anonymous_args = 0
+ 838              		@ link register save eliminated.
+ 839 0000 80B4     		push	{r7}
+ 840              		.cfi_def_cfa_offset 4
+ 841              		.cfi_offset 7, -4
+ 842 0002 00AF     		add	r7, sp, #0
+ 843              		.cfi_def_cfa_register 7
+ 666:.\Generated_Source\PSoC5/CyFlash.c ****     /* Make request for PHUB to have access */
+ 667:.\Generated_Source\PSoC5/CyFlash.c ****     CY_FLASH_EE_SCR_REG |= CY_FLASH_EE_SCR_AHB_EE_REQ;
+ 844              		.loc 1 667 0
+ 845 0004 094A     		ldr	r2, .L67
+ 846 0006 094B     		ldr	r3, .L67
+ 847 0008 1B78     		ldrb	r3, [r3]
+ 848 000a DBB2     		uxtb	r3, r3
+ 849 000c 43F00103 		orr	r3, r3, #1
+ 850 0010 DBB2     		uxtb	r3, r3
+ 851 0012 1370     		strb	r3, [r2]
+ 668:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 669:.\Generated_Source\PSoC5/CyFlash.c ****     while (0u == (CY_FLASH_EE_SCR_REG & CY_FLASH_EE_SCR_AHB_EE_ACK))
+ 852              		.loc 1 669 0
+ 853 0014 00BF     		nop
+ 854              	.L66:
+ 855              		.loc 1 669 0 is_stmt 0 discriminator 1
+ 856 0016 054B     		ldr	r3, .L67
+ 857 0018 1B78     		ldrb	r3, [r3]
+ 858 001a DBB2     		uxtb	r3, r3
+ 859 001c 03F00203 		and	r3, r3, #2
+ 860 0020 002B     		cmp	r3, #0
+ 861 0022 F8D0     		beq	.L66
+ 670:.\Generated_Source\PSoC5/CyFlash.c ****     {
+ 671:.\Generated_Source\PSoC5/CyFlash.c ****         /* Wait for acknowledgement from PHUB */
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 28
+
+
+ 672:.\Generated_Source\PSoC5/CyFlash.c ****     }
+ 673:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 862              		.loc 1 673 0 is_stmt 1
+ 863 0024 BD46     		mov	sp, r7
+ 864              		.cfi_def_cfa_register 13
+ 865              		@ sp needed
+ 866 0026 5DF8047B 		ldr	r7, [sp], #4
+ 867              		.cfi_restore 7
+ 868              		.cfi_def_cfa_offset 0
+ 869 002a 7047     		bx	lr
+ 870              	.L68:
+ 871              		.align	2
+ 872              	.L67:
+ 873 002c 02470040 		.word	1073760002
+ 874              		.cfi_endproc
+ 875              	.LFE10:
+ 876              		.size	CyEEPROM_ReadReserve, .-CyEEPROM_ReadReserve
+ 877              		.section	.text.CyEEPROM_ReadRelease,"ax",%progbits
+ 878              		.align	2
+ 879              		.global	CyEEPROM_ReadRelease
+ 880              		.thumb
+ 881              		.thumb_func
+ 882              		.type	CyEEPROM_ReadRelease, %function
+ 883              	CyEEPROM_ReadRelease:
+ 884              	.LFB11:
+ 674:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 675:.\Generated_Source\PSoC5/CyFlash.c **** 
+ 676:.\Generated_Source\PSoC5/CyFlash.c **** /*******************************************************************************
+ 677:.\Generated_Source\PSoC5/CyFlash.c **** * Function Name: CyEEPROM_ReadRelease
+ 678:.\Generated_Source\PSoC5/CyFlash.c **** ********************************************************************************
+ 679:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 680:.\Generated_Source\PSoC5/CyFlash.c **** * Summary:
+ 681:.\Generated_Source\PSoC5/CyFlash.c **** *  Release the read reservation of the EEPROM.
+ 682:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 683:.\Generated_Source\PSoC5/CyFlash.c **** * Parameters:
+ 684:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 685:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 686:.\Generated_Source\PSoC5/CyFlash.c **** * Return:
+ 687:.\Generated_Source\PSoC5/CyFlash.c **** *  None
+ 688:.\Generated_Source\PSoC5/CyFlash.c **** *
+ 689:.\Generated_Source\PSoC5/CyFlash.c **** *******************************************************************************/
+ 690:.\Generated_Source\PSoC5/CyFlash.c **** void CyEEPROM_ReadRelease(void) 
+ 691:.\Generated_Source\PSoC5/CyFlash.c **** {
+ 885              		.loc 1 691 0
+ 886              		.cfi_startproc
+ 887              		@ args = 0, pretend = 0, frame = 0
+ 888              		@ frame_needed = 1, uses_anonymous_args = 0
+ 889              		@ link register save eliminated.
+ 890 0000 80B4     		push	{r7}
+ 891              		.cfi_def_cfa_offset 4
+ 892              		.cfi_offset 7, -4
+ 893 0002 00AF     		add	r7, sp, #0
+ 894              		.cfi_def_cfa_register 7
+ 692:.\Generated_Source\PSoC5/CyFlash.c ****     CY_FLASH_EE_SCR_REG &= (uint8)(~CY_FLASH_EE_SCR_AHB_EE_REQ);
+ 895              		.loc 1 692 0
+ 896 0004 054A     		ldr	r2, .L70
+ 897 0006 054B     		ldr	r3, .L70
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 29
+
+
+ 898 0008 1B78     		ldrb	r3, [r3]
+ 899 000a DBB2     		uxtb	r3, r3
+ 900 000c 23F00103 		bic	r3, r3, #1
+ 901 0010 DBB2     		uxtb	r3, r3
+ 902 0012 1370     		strb	r3, [r2]
+ 693:.\Generated_Source\PSoC5/CyFlash.c **** }
+ 903              		.loc 1 693 0
+ 904 0014 BD46     		mov	sp, r7
+ 905              		.cfi_def_cfa_register 13
+ 906              		@ sp needed
+ 907 0016 5DF8047B 		ldr	r7, [sp], #4
+ 908              		.cfi_restore 7
+ 909              		.cfi_def_cfa_offset 0
+ 910 001a 7047     		bx	lr
+ 911              	.L71:
+ 912              		.align	2
+ 913              	.L70:
+ 914 001c 02470040 		.word	1073760002
+ 915              		.cfi_endproc
+ 916              	.LFE11:
+ 917              		.size	CyEEPROM_ReadRelease, .-CyEEPROM_ReadRelease
+ 918              		.text
+ 919              	.Letext0:
+ 920              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 921              		.section	.debug_info,"",%progbits
+ 922              	.Ldebug_info0:
+ 923 0000 10030000 		.4byte	0x310
+ 924 0004 0400     		.2byte	0x4
+ 925 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 926 000a 04       		.byte	0x4
+ 927 000b 01       		.uleb128 0x1
+ 928 000c 39010000 		.4byte	.LASF39
+ 929 0010 01       		.byte	0x1
+ 930 0011 9B020000 		.4byte	.LASF40
+ 931 0015 00000000 		.4byte	.LASF41
+ 932 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 933 001d 00000000 		.4byte	0
+ 934 0021 00000000 		.4byte	.Ldebug_line0
+ 935 0025 02       		.uleb128 0x2
+ 936 0026 01       		.byte	0x1
+ 937 0027 06       		.byte	0x6
+ 938 0028 DE020000 		.4byte	.LASF0
+ 939 002c 02       		.uleb128 0x2
+ 940 002d 01       		.byte	0x1
+ 941 002e 08       		.byte	0x8
+ 942 002f D6000000 		.4byte	.LASF1
+ 943 0033 02       		.uleb128 0x2
+ 944 0034 02       		.byte	0x2
+ 945 0035 05       		.byte	0x5
+ 946 0036 D6010000 		.4byte	.LASF2
+ 947 003a 02       		.uleb128 0x2
+ 948 003b 02       		.byte	0x2
+ 949 003c 07       		.byte	0x7
+ 950 003d 7E000000 		.4byte	.LASF3
+ 951 0041 02       		.uleb128 0x2
+ 952 0042 04       		.byte	0x4
+ 953 0043 05       		.byte	0x5
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 30
+
+
+ 954 0044 BE020000 		.4byte	.LASF4
+ 955 0048 02       		.uleb128 0x2
+ 956 0049 04       		.byte	0x4
+ 957 004a 07       		.byte	0x7
+ 958 004b 0A010000 		.4byte	.LASF5
+ 959 004f 02       		.uleb128 0x2
+ 960 0050 08       		.byte	0x8
+ 961 0051 05       		.byte	0x5
+ 962 0052 5D020000 		.4byte	.LASF6
+ 963 0056 02       		.uleb128 0x2
+ 964 0057 08       		.byte	0x8
+ 965 0058 07       		.byte	0x7
+ 966 0059 1E020000 		.4byte	.LASF7
+ 967 005d 03       		.uleb128 0x3
+ 968 005e 04       		.byte	0x4
+ 969 005f 05       		.byte	0x5
+ 970 0060 696E7400 		.ascii	"int\000"
+ 971 0064 02       		.uleb128 0x2
+ 972 0065 04       		.byte	0x4
+ 973 0066 07       		.byte	0x7
+ 974 0067 03020000 		.4byte	.LASF8
+ 975 006b 04       		.uleb128 0x4
+ 976 006c 1C010000 		.4byte	.LASF9
+ 977 0070 02       		.byte	0x2
+ 978 0071 5B       		.byte	0x5b
+ 979 0072 2C000000 		.4byte	0x2c
+ 980 0076 04       		.uleb128 0x4
+ 981 0077 F5010000 		.4byte	.LASF10
+ 982 007b 02       		.byte	0x2
+ 983 007c 5C       		.byte	0x5c
+ 984 007d 3A000000 		.4byte	0x3a
+ 985 0081 04       		.uleb128 0x4
+ 986 0082 FC010000 		.4byte	.LASF11
+ 987 0086 02       		.byte	0x2
+ 988 0087 5D       		.byte	0x5d
+ 989 0088 48000000 		.4byte	0x48
+ 990 008c 02       		.uleb128 0x2
+ 991 008d 04       		.byte	0x4
+ 992 008e 04       		.byte	0x4
+ 993 008f A7000000 		.4byte	.LASF12
+ 994 0093 02       		.uleb128 0x2
+ 995 0094 08       		.byte	0x8
+ 996 0095 04       		.byte	0x4
+ 997 0096 C7010000 		.4byte	.LASF13
+ 998 009a 02       		.uleb128 0x2
+ 999 009b 01       		.byte	0x1
+ 1000 009c 08       		.byte	0x8
+ 1001 009d 76020000 		.4byte	.LASF14
+ 1002 00a1 04       		.uleb128 0x4
+ 1003 00a2 58000000 		.4byte	.LASF15
+ 1004 00a6 02       		.byte	0x2
+ 1005 00a7 E8       		.byte	0xe8
+ 1006 00a8 48000000 		.4byte	0x48
+ 1007 00ac 04       		.uleb128 0x4
+ 1008 00ad 61000000 		.4byte	.LASF16
+ 1009 00b1 02       		.byte	0x2
+ 1010 00b2 F0       		.byte	0xf0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 31
+
+
+ 1011 00b3 B7000000 		.4byte	0xb7
+ 1012 00b7 05       		.uleb128 0x5
+ 1013 00b8 6B000000 		.4byte	0x6b
+ 1014 00bc 02       		.uleb128 0x2
+ 1015 00bd 04       		.byte	0x4
+ 1016 00be 07       		.byte	0x7
+ 1017 00bf 4A020000 		.4byte	.LASF17
+ 1018 00c3 06       		.uleb128 0x6
+ 1019 00c4 10020000 		.4byte	.LASF18
+ 1020 00c8 01       		.byte	0x1
+ 1021 00c9 36       		.byte	0x36
+ 1022 00ca 00000000 		.4byte	.LFB0
+ 1023 00ce 34000000 		.4byte	.LFE0-.LFB0
+ 1024 00d2 01       		.uleb128 0x1
+ 1025 00d3 9C       		.byte	0x9c
+ 1026 00d4 07       		.uleb128 0x7
+ 1027 00d5 C7020000 		.4byte	.LASF19
+ 1028 00d9 01       		.byte	0x1
+ 1029 00da 54       		.byte	0x54
+ 1030 00db 00000000 		.4byte	.LFB1
+ 1031 00df 34000000 		.4byte	.LFE1-.LFB1
+ 1032 00e3 01       		.uleb128 0x1
+ 1033 00e4 9C       		.byte	0x9c
+ 1034 00e5 08       		.uleb128 0x8
+ 1035 00e6 7B020000 		.4byte	.LASF42
+ 1036 00ea 01       		.byte	0x1
+ 1037 00eb 71       		.byte	0x71
+ 1038 00ec A1000000 		.4byte	0xa1
+ 1039 00f0 00000000 		.4byte	.LFB2
+ 1040 00f4 7C000000 		.4byte	.LFE2-.LFB2
+ 1041 00f8 01       		.uleb128 0x1
+ 1042 00f9 9C       		.byte	0x9c
+ 1043 00fa 0D010000 		.4byte	0x10d
+ 1044 00fe 09       		.uleb128 0x9
+ 1045 00ff A0000000 		.4byte	.LASF20
+ 1046 0103 01       		.byte	0x1
+ 1047 0104 73       		.byte	0x73
+ 1048 0105 A1000000 		.4byte	0xa1
+ 1049 0109 02       		.uleb128 0x2
+ 1050 010a 91       		.byte	0x91
+ 1051 010b 74       		.sleb128 -12
+ 1052 010c 00       		.byte	0
+ 1053 010d 0A       		.uleb128 0xa
+ 1054 010e 53020000 		.4byte	.LASF21
+ 1055 0112 01       		.byte	0x1
+ 1056 0113 B3       		.byte	0xb3
+ 1057 0114 A1000000 		.4byte	0xa1
+ 1058 0118 00000000 		.4byte	.LFB3
+ 1059 011c 22000000 		.4byte	.LFE3-.LFB3
+ 1060 0120 01       		.uleb128 0x1
+ 1061 0121 9C       		.byte	0x9c
+ 1062 0122 35010000 		.4byte	0x135
+ 1063 0126 09       		.uleb128 0x9
+ 1064 0127 A0000000 		.4byte	.LASF20
+ 1065 012b 01       		.byte	0x1
+ 1066 012c B5       		.byte	0xb5
+ 1067 012d A1000000 		.4byte	0xa1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 32
+
+
+ 1068 0131 02       		.uleb128 0x2
+ 1069 0132 91       		.byte	0x91
+ 1070 0133 74       		.sleb128 -12
+ 1071 0134 00       		.byte	0
+ 1072 0135 0A       		.uleb128 0xa
+ 1073 0136 C3000000 		.4byte	.LASF22
+ 1074 013a 01       		.byte	0x1
+ 1075 013b D4       		.byte	0xd4
+ 1076 013c A1000000 		.4byte	0xa1
+ 1077 0140 00000000 		.4byte	.LFB4
+ 1078 0144 54000000 		.4byte	.LFE4-.LFB4
+ 1079 0148 01       		.uleb128 0x1
+ 1080 0149 9C       		.byte	0x9c
+ 1081 014a 6B010000 		.4byte	0x16b
+ 1082 014e 0B       		.uleb128 0xb
+ 1083 014f 94020000 		.4byte	.LASF24
+ 1084 0153 01       		.byte	0x1
+ 1085 0154 D4       		.byte	0xd4
+ 1086 0155 6B010000 		.4byte	0x16b
+ 1087 0159 02       		.uleb128 0x2
+ 1088 015a 91       		.byte	0x91
+ 1089 015b 6C       		.sleb128 -20
+ 1090 015c 09       		.uleb128 0x9
+ 1091 015d A0000000 		.4byte	.LASF20
+ 1092 0161 01       		.byte	0x1
+ 1093 0162 D6       		.byte	0xd6
+ 1094 0163 A1000000 		.4byte	0xa1
+ 1095 0167 02       		.uleb128 0x2
+ 1096 0168 91       		.byte	0x91
+ 1097 0169 74       		.sleb128 -12
+ 1098 016a 00       		.byte	0
+ 1099 016b 0C       		.uleb128 0xc
+ 1100 016c 04       		.byte	0x4
+ 1101 016d 6B000000 		.4byte	0x6b
+ 1102 0171 0D       		.uleb128 0xd
+ 1103 0172 EA020000 		.4byte	.LASF23
+ 1104 0176 01       		.byte	0x1
+ 1105 0177 3801     		.2byte	0x138
+ 1106 0179 A1000000 		.4byte	0xa1
+ 1107 017d 00000000 		.4byte	.LFB5
+ 1108 0181 9C000000 		.4byte	.LFE5-.LFB5
+ 1109 0185 01       		.uleb128 0x1
+ 1110 0186 9C       		.byte	0x9c
+ 1111 0187 F3010000 		.4byte	0x1f3
+ 1112 018b 0E       		.uleb128 0xe
+ 1113 018c 22010000 		.4byte	.LASF25
+ 1114 0190 01       		.byte	0x1
+ 1115 0191 3801     		.2byte	0x138
+ 1116 0193 6B000000 		.4byte	0x6b
+ 1117 0197 02       		.uleb128 0x2
+ 1118 0198 91       		.byte	0x91
+ 1119 0199 67       		.sleb128 -25
+ 1120 019a 0E       		.uleb128 0xe
+ 1121 019b 6B020000 		.4byte	.LASF26
+ 1122 019f 01       		.byte	0x1
+ 1123 01a0 3801     		.2byte	0x138
+ 1124 01a2 76000000 		.4byte	0x76
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 33
+
+
+ 1125 01a6 02       		.uleb128 0x2
+ 1126 01a7 91       		.byte	0x91
+ 1127 01a8 64       		.sleb128 -28
+ 1128 01a9 0E       		.uleb128 0xe
+ 1129 01aa E4000000 		.4byte	.LASF27
+ 1130 01ae 01       		.byte	0x1
+ 1131 01af 3801     		.2byte	0x138
+ 1132 01b1 F3010000 		.4byte	0x1f3
+ 1133 01b5 02       		.uleb128 0x2
+ 1134 01b6 91       		.byte	0x91
+ 1135 01b7 60       		.sleb128 -32
+ 1136 01b8 0F       		.uleb128 0xf
+ 1137 01b9 6900     		.ascii	"i\000"
+ 1138 01bb 01       		.byte	0x1
+ 1139 01bc 3A01     		.2byte	0x13a
+ 1140 01be 6B000000 		.4byte	0x6b
+ 1141 01c2 02       		.uleb128 0x2
+ 1142 01c3 91       		.byte	0x91
+ 1143 01c4 77       		.sleb128 -9
+ 1144 01c5 10       		.uleb128 0x10
+ 1145 01c6 88020000 		.4byte	.LASF28
+ 1146 01ca 01       		.byte	0x1
+ 1147 01cb 3B01     		.2byte	0x13b
+ 1148 01cd 81000000 		.4byte	0x81
+ 1149 01d1 02       		.uleb128 0x2
+ 1150 01d2 91       		.byte	0x91
+ 1151 01d3 6C       		.sleb128 -20
+ 1152 01d4 10       		.uleb128 0x10
+ 1153 01d5 CE010000 		.4byte	.LASF29
+ 1154 01d9 01       		.byte	0x1
+ 1155 01da 3C01     		.2byte	0x13c
+ 1156 01dc 76000000 		.4byte	0x76
+ 1157 01e0 02       		.uleb128 0x2
+ 1158 01e1 91       		.byte	0x91
+ 1159 01e2 74       		.sleb128 -12
+ 1160 01e3 10       		.uleb128 0x10
+ 1161 01e4 A0000000 		.4byte	.LASF20
+ 1162 01e8 01       		.byte	0x1
+ 1163 01e9 3D01     		.2byte	0x13d
+ 1164 01eb A1000000 		.4byte	0xa1
+ 1165 01ef 02       		.uleb128 0x2
+ 1166 01f0 91       		.byte	0x91
+ 1167 01f1 70       		.sleb128 -16
+ 1168 01f2 00       		.byte	0
+ 1169 01f3 0C       		.uleb128 0xc
+ 1170 01f4 04       		.byte	0x4
+ 1171 01f5 F9010000 		.4byte	0x1f9
+ 1172 01f9 11       		.uleb128 0x11
+ 1173 01fa 6B000000 		.4byte	0x6b
+ 1174 01fe 0D       		.uleb128 0xd
+ 1175 01ff 91000000 		.4byte	.LASF30
+ 1176 0203 01       		.byte	0x1
+ 1177 0204 C601     		.2byte	0x1c6
+ 1178 0206 A1000000 		.4byte	0xa1
+ 1179 020a 00000000 		.4byte	.LFB6
+ 1180 020e EC000000 		.4byte	.LFE6-.LFB6
+ 1181 0212 01       		.uleb128 0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 34
+
+
+ 1182 0213 9C       		.byte	0x9c
+ 1183 0214 64020000 		.4byte	0x264
+ 1184 0218 0E       		.uleb128 0xe
+ 1185 0219 22010000 		.4byte	.LASF25
+ 1186 021d 01       		.byte	0x1
+ 1187 021e C601     		.2byte	0x1c6
+ 1188 0220 6B000000 		.4byte	0x6b
+ 1189 0224 02       		.uleb128 0x2
+ 1190 0225 91       		.byte	0x91
+ 1191 0226 6F       		.sleb128 -17
+ 1192 0227 0E       		.uleb128 0xe
+ 1193 0228 D4020000 		.4byte	.LASF31
+ 1194 022c 01       		.byte	0x1
+ 1195 022d C601     		.2byte	0x1c6
+ 1196 022f 76000000 		.4byte	0x76
+ 1197 0233 02       		.uleb128 0x2
+ 1198 0234 91       		.byte	0x91
+ 1199 0235 6C       		.sleb128 -20
+ 1200 0236 0E       		.uleb128 0xe
+ 1201 0237 E4000000 		.4byte	.LASF27
+ 1202 023b 01       		.byte	0x1
+ 1203 023c C601     		.2byte	0x1c6
+ 1204 023e F3010000 		.4byte	0x1f3
+ 1205 0242 02       		.uleb128 0x2
+ 1206 0243 91       		.byte	0x91
+ 1207 0244 68       		.sleb128 -24
+ 1208 0245 0E       		.uleb128 0xe
+ 1209 0246 CE010000 		.4byte	.LASF29
+ 1210 024a 01       		.byte	0x1
+ 1211 024b C601     		.2byte	0x1c6
+ 1212 024d 76000000 		.4byte	0x76
+ 1213 0251 02       		.uleb128 0x2
+ 1214 0252 91       		.byte	0x91
+ 1215 0253 66       		.sleb128 -26
+ 1216 0254 10       		.uleb128 0x10
+ 1217 0255 A0000000 		.4byte	.LASF20
+ 1218 0259 01       		.byte	0x1
+ 1219 025a C901     		.2byte	0x1c9
+ 1220 025c A1000000 		.4byte	0xa1
+ 1221 0260 02       		.uleb128 0x2
+ 1222 0261 91       		.byte	0x91
+ 1223 0262 74       		.sleb128 -12
+ 1224 0263 00       		.byte	0
+ 1225 0264 12       		.uleb128 0x12
+ 1226 0265 AD000000 		.4byte	.LASF43
+ 1227 0269 01       		.byte	0x1
+ 1228 026a 1A02     		.2byte	0x21a
+ 1229 026c 00000000 		.4byte	.LFB7
+ 1230 0270 90000000 		.4byte	.LFE7-.LFB7
+ 1231 0274 01       		.uleb128 0x1
+ 1232 0275 9C       		.byte	0x9c
+ 1233 0276 99020000 		.4byte	0x299
+ 1234 027a 0E       		.uleb128 0xe
+ 1235 027b 8F020000 		.4byte	.LASF32
+ 1236 027f 01       		.byte	0x1
+ 1237 0280 1A02     		.2byte	0x21a
+ 1238 0282 6B000000 		.4byte	0x6b
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 35
+
+
+ 1239 0286 02       		.uleb128 0x2
+ 1240 0287 91       		.byte	0x91
+ 1241 0288 6F       		.sleb128 -17
+ 1242 0289 10       		.uleb128 0x10
+ 1243 028a FB000000 		.4byte	.LASF33
+ 1244 028e 01       		.byte	0x1
+ 1245 028f 1C02     		.2byte	0x21c
+ 1246 0291 6B000000 		.4byte	0x6b
+ 1247 0295 02       		.uleb128 0x2
+ 1248 0296 91       		.byte	0x91
+ 1249 0297 77       		.sleb128 -9
+ 1250 0298 00       		.byte	0
+ 1251 0299 13       		.uleb128 0x13
+ 1252 029a EC000000 		.4byte	.LASF34
+ 1253 029e 01       		.byte	0x1
+ 1254 029f 6802     		.2byte	0x268
+ 1255 02a1 00000000 		.4byte	.LFB8
+ 1256 02a5 34000000 		.4byte	.LFE8-.LFB8
+ 1257 02a9 01       		.uleb128 0x1
+ 1258 02aa 9C       		.byte	0x9c
+ 1259 02ab 13       		.uleb128 0x13
+ 1260 02ac 70000000 		.4byte	.LASF35
+ 1261 02b0 01       		.byte	0x1
+ 1262 02b1 8002     		.2byte	0x280
+ 1263 02b3 00000000 		.4byte	.LFB9
+ 1264 02b7 34000000 		.4byte	.LFE9-.LFB9
+ 1265 02bb 01       		.uleb128 0x1
+ 1266 02bc 9C       		.byte	0x9c
+ 1267 02bd 13       		.uleb128 0x13
+ 1268 02be 35020000 		.4byte	.LASF36
+ 1269 02c2 01       		.byte	0x1
+ 1270 02c3 9802     		.2byte	0x298
+ 1271 02c5 00000000 		.4byte	.LFB10
+ 1272 02c9 30000000 		.4byte	.LFE10-.LFB10
+ 1273 02cd 01       		.uleb128 0x1
+ 1274 02ce 9C       		.byte	0x9c
+ 1275 02cf 13       		.uleb128 0x13
+ 1276 02d0 E0010000 		.4byte	.LASF37
+ 1277 02d4 01       		.byte	0x1
+ 1278 02d5 B202     		.2byte	0x2b2
+ 1279 02d7 00000000 		.4byte	.LFB11
+ 1280 02db 20000000 		.4byte	.LFE11-.LFB11
+ 1281 02df 01       		.uleb128 0x1
+ 1282 02e0 9C       		.byte	0x9c
+ 1283 02e1 09       		.uleb128 0x9
+ 1284 02e2 66000000 		.4byte	.LASF38
+ 1285 02e6 01       		.byte	0x1
+ 1286 02e7 21       		.byte	0x21
+ 1287 02e8 6B010000 		.4byte	0x16b
+ 1288 02ec 05       		.uleb128 0x5
+ 1289 02ed 03       		.byte	0x3
+ 1290 02ee 00000000 		.4byte	rowBuffer
+ 1291 02f2 14       		.uleb128 0x14
+ 1292 02f3 6B000000 		.4byte	0x6b
+ 1293 02f7 02030000 		.4byte	0x302
+ 1294 02fb 15       		.uleb128 0x15
+ 1295 02fc BC000000 		.4byte	0xbc
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 36
+
+
+ 1296 0300 01       		.byte	0x1
+ 1297 0301 00       		.byte	0
+ 1298 0302 16       		.uleb128 0x16
+ 1299 0303 2A010000 		.4byte	.LASF44
+ 1300 0307 01       		.byte	0x1
+ 1301 0308 1E       		.byte	0x1e
+ 1302 0309 F2020000 		.4byte	0x2f2
+ 1303 030d 05       		.uleb128 0x5
+ 1304 030e 03       		.byte	0x3
+ 1305 030f 00000000 		.4byte	dieTemperature
+ 1306 0313 00       		.byte	0
+ 1307              		.section	.debug_abbrev,"",%progbits
+ 1308              	.Ldebug_abbrev0:
+ 1309 0000 01       		.uleb128 0x1
+ 1310 0001 11       		.uleb128 0x11
+ 1311 0002 01       		.byte	0x1
+ 1312 0003 25       		.uleb128 0x25
+ 1313 0004 0E       		.uleb128 0xe
+ 1314 0005 13       		.uleb128 0x13
+ 1315 0006 0B       		.uleb128 0xb
+ 1316 0007 03       		.uleb128 0x3
+ 1317 0008 0E       		.uleb128 0xe
+ 1318 0009 1B       		.uleb128 0x1b
+ 1319 000a 0E       		.uleb128 0xe
+ 1320 000b 55       		.uleb128 0x55
+ 1321 000c 17       		.uleb128 0x17
+ 1322 000d 11       		.uleb128 0x11
+ 1323 000e 01       		.uleb128 0x1
+ 1324 000f 10       		.uleb128 0x10
+ 1325 0010 17       		.uleb128 0x17
+ 1326 0011 00       		.byte	0
+ 1327 0012 00       		.byte	0
+ 1328 0013 02       		.uleb128 0x2
+ 1329 0014 24       		.uleb128 0x24
+ 1330 0015 00       		.byte	0
+ 1331 0016 0B       		.uleb128 0xb
+ 1332 0017 0B       		.uleb128 0xb
+ 1333 0018 3E       		.uleb128 0x3e
+ 1334 0019 0B       		.uleb128 0xb
+ 1335 001a 03       		.uleb128 0x3
+ 1336 001b 0E       		.uleb128 0xe
+ 1337 001c 00       		.byte	0
+ 1338 001d 00       		.byte	0
+ 1339 001e 03       		.uleb128 0x3
+ 1340 001f 24       		.uleb128 0x24
+ 1341 0020 00       		.byte	0
+ 1342 0021 0B       		.uleb128 0xb
+ 1343 0022 0B       		.uleb128 0xb
+ 1344 0023 3E       		.uleb128 0x3e
+ 1345 0024 0B       		.uleb128 0xb
+ 1346 0025 03       		.uleb128 0x3
+ 1347 0026 08       		.uleb128 0x8
+ 1348 0027 00       		.byte	0
+ 1349 0028 00       		.byte	0
+ 1350 0029 04       		.uleb128 0x4
+ 1351 002a 16       		.uleb128 0x16
+ 1352 002b 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 37
+
+
+ 1353 002c 03       		.uleb128 0x3
+ 1354 002d 0E       		.uleb128 0xe
+ 1355 002e 3A       		.uleb128 0x3a
+ 1356 002f 0B       		.uleb128 0xb
+ 1357 0030 3B       		.uleb128 0x3b
+ 1358 0031 0B       		.uleb128 0xb
+ 1359 0032 49       		.uleb128 0x49
+ 1360 0033 13       		.uleb128 0x13
+ 1361 0034 00       		.byte	0
+ 1362 0035 00       		.byte	0
+ 1363 0036 05       		.uleb128 0x5
+ 1364 0037 35       		.uleb128 0x35
+ 1365 0038 00       		.byte	0
+ 1366 0039 49       		.uleb128 0x49
+ 1367 003a 13       		.uleb128 0x13
+ 1368 003b 00       		.byte	0
+ 1369 003c 00       		.byte	0
+ 1370 003d 06       		.uleb128 0x6
+ 1371 003e 2E       		.uleb128 0x2e
+ 1372 003f 00       		.byte	0
+ 1373 0040 3F       		.uleb128 0x3f
+ 1374 0041 19       		.uleb128 0x19
+ 1375 0042 03       		.uleb128 0x3
+ 1376 0043 0E       		.uleb128 0xe
+ 1377 0044 3A       		.uleb128 0x3a
+ 1378 0045 0B       		.uleb128 0xb
+ 1379 0046 3B       		.uleb128 0x3b
+ 1380 0047 0B       		.uleb128 0xb
+ 1381 0048 27       		.uleb128 0x27
+ 1382 0049 19       		.uleb128 0x19
+ 1383 004a 11       		.uleb128 0x11
+ 1384 004b 01       		.uleb128 0x1
+ 1385 004c 12       		.uleb128 0x12
+ 1386 004d 06       		.uleb128 0x6
+ 1387 004e 40       		.uleb128 0x40
+ 1388 004f 18       		.uleb128 0x18
+ 1389 0050 9642     		.uleb128 0x2116
+ 1390 0052 19       		.uleb128 0x19
+ 1391 0053 00       		.byte	0
+ 1392 0054 00       		.byte	0
+ 1393 0055 07       		.uleb128 0x7
+ 1394 0056 2E       		.uleb128 0x2e
+ 1395 0057 00       		.byte	0
+ 1396 0058 3F       		.uleb128 0x3f
+ 1397 0059 19       		.uleb128 0x19
+ 1398 005a 03       		.uleb128 0x3
+ 1399 005b 0E       		.uleb128 0xe
+ 1400 005c 3A       		.uleb128 0x3a
+ 1401 005d 0B       		.uleb128 0xb
+ 1402 005e 3B       		.uleb128 0x3b
+ 1403 005f 0B       		.uleb128 0xb
+ 1404 0060 27       		.uleb128 0x27
+ 1405 0061 19       		.uleb128 0x19
+ 1406 0062 11       		.uleb128 0x11
+ 1407 0063 01       		.uleb128 0x1
+ 1408 0064 12       		.uleb128 0x12
+ 1409 0065 06       		.uleb128 0x6
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 38
+
+
+ 1410 0066 40       		.uleb128 0x40
+ 1411 0067 18       		.uleb128 0x18
+ 1412 0068 9742     		.uleb128 0x2117
+ 1413 006a 19       		.uleb128 0x19
+ 1414 006b 00       		.byte	0
+ 1415 006c 00       		.byte	0
+ 1416 006d 08       		.uleb128 0x8
+ 1417 006e 2E       		.uleb128 0x2e
+ 1418 006f 01       		.byte	0x1
+ 1419 0070 03       		.uleb128 0x3
+ 1420 0071 0E       		.uleb128 0xe
+ 1421 0072 3A       		.uleb128 0x3a
+ 1422 0073 0B       		.uleb128 0xb
+ 1423 0074 3B       		.uleb128 0x3b
+ 1424 0075 0B       		.uleb128 0xb
+ 1425 0076 27       		.uleb128 0x27
+ 1426 0077 19       		.uleb128 0x19
+ 1427 0078 49       		.uleb128 0x49
+ 1428 0079 13       		.uleb128 0x13
+ 1429 007a 11       		.uleb128 0x11
+ 1430 007b 01       		.uleb128 0x1
+ 1431 007c 12       		.uleb128 0x12
+ 1432 007d 06       		.uleb128 0x6
+ 1433 007e 40       		.uleb128 0x40
+ 1434 007f 18       		.uleb128 0x18
+ 1435 0080 9642     		.uleb128 0x2116
+ 1436 0082 19       		.uleb128 0x19
+ 1437 0083 01       		.uleb128 0x1
+ 1438 0084 13       		.uleb128 0x13
+ 1439 0085 00       		.byte	0
+ 1440 0086 00       		.byte	0
+ 1441 0087 09       		.uleb128 0x9
+ 1442 0088 34       		.uleb128 0x34
+ 1443 0089 00       		.byte	0
+ 1444 008a 03       		.uleb128 0x3
+ 1445 008b 0E       		.uleb128 0xe
+ 1446 008c 3A       		.uleb128 0x3a
+ 1447 008d 0B       		.uleb128 0xb
+ 1448 008e 3B       		.uleb128 0x3b
+ 1449 008f 0B       		.uleb128 0xb
+ 1450 0090 49       		.uleb128 0x49
+ 1451 0091 13       		.uleb128 0x13
+ 1452 0092 02       		.uleb128 0x2
+ 1453 0093 18       		.uleb128 0x18
+ 1454 0094 00       		.byte	0
+ 1455 0095 00       		.byte	0
+ 1456 0096 0A       		.uleb128 0xa
+ 1457 0097 2E       		.uleb128 0x2e
+ 1458 0098 01       		.byte	0x1
+ 1459 0099 3F       		.uleb128 0x3f
+ 1460 009a 19       		.uleb128 0x19
+ 1461 009b 03       		.uleb128 0x3
+ 1462 009c 0E       		.uleb128 0xe
+ 1463 009d 3A       		.uleb128 0x3a
+ 1464 009e 0B       		.uleb128 0xb
+ 1465 009f 3B       		.uleb128 0x3b
+ 1466 00a0 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 39
+
+
+ 1467 00a1 27       		.uleb128 0x27
+ 1468 00a2 19       		.uleb128 0x19
+ 1469 00a3 49       		.uleb128 0x49
+ 1470 00a4 13       		.uleb128 0x13
+ 1471 00a5 11       		.uleb128 0x11
+ 1472 00a6 01       		.uleb128 0x1
+ 1473 00a7 12       		.uleb128 0x12
+ 1474 00a8 06       		.uleb128 0x6
+ 1475 00a9 40       		.uleb128 0x40
+ 1476 00aa 18       		.uleb128 0x18
+ 1477 00ab 9642     		.uleb128 0x2116
+ 1478 00ad 19       		.uleb128 0x19
+ 1479 00ae 01       		.uleb128 0x1
+ 1480 00af 13       		.uleb128 0x13
+ 1481 00b0 00       		.byte	0
+ 1482 00b1 00       		.byte	0
+ 1483 00b2 0B       		.uleb128 0xb
+ 1484 00b3 05       		.uleb128 0x5
+ 1485 00b4 00       		.byte	0
+ 1486 00b5 03       		.uleb128 0x3
+ 1487 00b6 0E       		.uleb128 0xe
+ 1488 00b7 3A       		.uleb128 0x3a
+ 1489 00b8 0B       		.uleb128 0xb
+ 1490 00b9 3B       		.uleb128 0x3b
+ 1491 00ba 0B       		.uleb128 0xb
+ 1492 00bb 49       		.uleb128 0x49
+ 1493 00bc 13       		.uleb128 0x13
+ 1494 00bd 02       		.uleb128 0x2
+ 1495 00be 18       		.uleb128 0x18
+ 1496 00bf 00       		.byte	0
+ 1497 00c0 00       		.byte	0
+ 1498 00c1 0C       		.uleb128 0xc
+ 1499 00c2 0F       		.uleb128 0xf
+ 1500 00c3 00       		.byte	0
+ 1501 00c4 0B       		.uleb128 0xb
+ 1502 00c5 0B       		.uleb128 0xb
+ 1503 00c6 49       		.uleb128 0x49
+ 1504 00c7 13       		.uleb128 0x13
+ 1505 00c8 00       		.byte	0
+ 1506 00c9 00       		.byte	0
+ 1507 00ca 0D       		.uleb128 0xd
+ 1508 00cb 2E       		.uleb128 0x2e
+ 1509 00cc 01       		.byte	0x1
+ 1510 00cd 3F       		.uleb128 0x3f
+ 1511 00ce 19       		.uleb128 0x19
+ 1512 00cf 03       		.uleb128 0x3
+ 1513 00d0 0E       		.uleb128 0xe
+ 1514 00d1 3A       		.uleb128 0x3a
+ 1515 00d2 0B       		.uleb128 0xb
+ 1516 00d3 3B       		.uleb128 0x3b
+ 1517 00d4 05       		.uleb128 0x5
+ 1518 00d5 27       		.uleb128 0x27
+ 1519 00d6 19       		.uleb128 0x19
+ 1520 00d7 49       		.uleb128 0x49
+ 1521 00d8 13       		.uleb128 0x13
+ 1522 00d9 11       		.uleb128 0x11
+ 1523 00da 01       		.uleb128 0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 40
+
+
+ 1524 00db 12       		.uleb128 0x12
+ 1525 00dc 06       		.uleb128 0x6
+ 1526 00dd 40       		.uleb128 0x40
+ 1527 00de 18       		.uleb128 0x18
+ 1528 00df 9642     		.uleb128 0x2116
+ 1529 00e1 19       		.uleb128 0x19
+ 1530 00e2 01       		.uleb128 0x1
+ 1531 00e3 13       		.uleb128 0x13
+ 1532 00e4 00       		.byte	0
+ 1533 00e5 00       		.byte	0
+ 1534 00e6 0E       		.uleb128 0xe
+ 1535 00e7 05       		.uleb128 0x5
+ 1536 00e8 00       		.byte	0
+ 1537 00e9 03       		.uleb128 0x3
+ 1538 00ea 0E       		.uleb128 0xe
+ 1539 00eb 3A       		.uleb128 0x3a
+ 1540 00ec 0B       		.uleb128 0xb
+ 1541 00ed 3B       		.uleb128 0x3b
+ 1542 00ee 05       		.uleb128 0x5
+ 1543 00ef 49       		.uleb128 0x49
+ 1544 00f0 13       		.uleb128 0x13
+ 1545 00f1 02       		.uleb128 0x2
+ 1546 00f2 18       		.uleb128 0x18
+ 1547 00f3 00       		.byte	0
+ 1548 00f4 00       		.byte	0
+ 1549 00f5 0F       		.uleb128 0xf
+ 1550 00f6 34       		.uleb128 0x34
+ 1551 00f7 00       		.byte	0
+ 1552 00f8 03       		.uleb128 0x3
+ 1553 00f9 08       		.uleb128 0x8
+ 1554 00fa 3A       		.uleb128 0x3a
+ 1555 00fb 0B       		.uleb128 0xb
+ 1556 00fc 3B       		.uleb128 0x3b
+ 1557 00fd 05       		.uleb128 0x5
+ 1558 00fe 49       		.uleb128 0x49
+ 1559 00ff 13       		.uleb128 0x13
+ 1560 0100 02       		.uleb128 0x2
+ 1561 0101 18       		.uleb128 0x18
+ 1562 0102 00       		.byte	0
+ 1563 0103 00       		.byte	0
+ 1564 0104 10       		.uleb128 0x10
+ 1565 0105 34       		.uleb128 0x34
+ 1566 0106 00       		.byte	0
+ 1567 0107 03       		.uleb128 0x3
+ 1568 0108 0E       		.uleb128 0xe
+ 1569 0109 3A       		.uleb128 0x3a
+ 1570 010a 0B       		.uleb128 0xb
+ 1571 010b 3B       		.uleb128 0x3b
+ 1572 010c 05       		.uleb128 0x5
+ 1573 010d 49       		.uleb128 0x49
+ 1574 010e 13       		.uleb128 0x13
+ 1575 010f 02       		.uleb128 0x2
+ 1576 0110 18       		.uleb128 0x18
+ 1577 0111 00       		.byte	0
+ 1578 0112 00       		.byte	0
+ 1579 0113 11       		.uleb128 0x11
+ 1580 0114 26       		.uleb128 0x26
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 41
+
+
+ 1581 0115 00       		.byte	0
+ 1582 0116 49       		.uleb128 0x49
+ 1583 0117 13       		.uleb128 0x13
+ 1584 0118 00       		.byte	0
+ 1585 0119 00       		.byte	0
+ 1586 011a 12       		.uleb128 0x12
+ 1587 011b 2E       		.uleb128 0x2e
+ 1588 011c 01       		.byte	0x1
+ 1589 011d 3F       		.uleb128 0x3f
+ 1590 011e 19       		.uleb128 0x19
+ 1591 011f 03       		.uleb128 0x3
+ 1592 0120 0E       		.uleb128 0xe
+ 1593 0121 3A       		.uleb128 0x3a
+ 1594 0122 0B       		.uleb128 0xb
+ 1595 0123 3B       		.uleb128 0x3b
+ 1596 0124 05       		.uleb128 0x5
+ 1597 0125 27       		.uleb128 0x27
+ 1598 0126 19       		.uleb128 0x19
+ 1599 0127 11       		.uleb128 0x11
+ 1600 0128 01       		.uleb128 0x1
+ 1601 0129 12       		.uleb128 0x12
+ 1602 012a 06       		.uleb128 0x6
+ 1603 012b 40       		.uleb128 0x40
+ 1604 012c 18       		.uleb128 0x18
+ 1605 012d 9642     		.uleb128 0x2116
+ 1606 012f 19       		.uleb128 0x19
+ 1607 0130 01       		.uleb128 0x1
+ 1608 0131 13       		.uleb128 0x13
+ 1609 0132 00       		.byte	0
+ 1610 0133 00       		.byte	0
+ 1611 0134 13       		.uleb128 0x13
+ 1612 0135 2E       		.uleb128 0x2e
+ 1613 0136 00       		.byte	0
+ 1614 0137 3F       		.uleb128 0x3f
+ 1615 0138 19       		.uleb128 0x19
+ 1616 0139 03       		.uleb128 0x3
+ 1617 013a 0E       		.uleb128 0xe
+ 1618 013b 3A       		.uleb128 0x3a
+ 1619 013c 0B       		.uleb128 0xb
+ 1620 013d 3B       		.uleb128 0x3b
+ 1621 013e 05       		.uleb128 0x5
+ 1622 013f 27       		.uleb128 0x27
+ 1623 0140 19       		.uleb128 0x19
+ 1624 0141 11       		.uleb128 0x11
+ 1625 0142 01       		.uleb128 0x1
+ 1626 0143 12       		.uleb128 0x12
+ 1627 0144 06       		.uleb128 0x6
+ 1628 0145 40       		.uleb128 0x40
+ 1629 0146 18       		.uleb128 0x18
+ 1630 0147 9742     		.uleb128 0x2117
+ 1631 0149 19       		.uleb128 0x19
+ 1632 014a 00       		.byte	0
+ 1633 014b 00       		.byte	0
+ 1634 014c 14       		.uleb128 0x14
+ 1635 014d 01       		.uleb128 0x1
+ 1636 014e 01       		.byte	0x1
+ 1637 014f 49       		.uleb128 0x49
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 42
+
+
+ 1638 0150 13       		.uleb128 0x13
+ 1639 0151 01       		.uleb128 0x1
+ 1640 0152 13       		.uleb128 0x13
+ 1641 0153 00       		.byte	0
+ 1642 0154 00       		.byte	0
+ 1643 0155 15       		.uleb128 0x15
+ 1644 0156 21       		.uleb128 0x21
+ 1645 0157 00       		.byte	0
+ 1646 0158 49       		.uleb128 0x49
+ 1647 0159 13       		.uleb128 0x13
+ 1648 015a 2F       		.uleb128 0x2f
+ 1649 015b 0B       		.uleb128 0xb
+ 1650 015c 00       		.byte	0
+ 1651 015d 00       		.byte	0
+ 1652 015e 16       		.uleb128 0x16
+ 1653 015f 34       		.uleb128 0x34
+ 1654 0160 00       		.byte	0
+ 1655 0161 03       		.uleb128 0x3
+ 1656 0162 0E       		.uleb128 0xe
+ 1657 0163 3A       		.uleb128 0x3a
+ 1658 0164 0B       		.uleb128 0xb
+ 1659 0165 3B       		.uleb128 0x3b
+ 1660 0166 0B       		.uleb128 0xb
+ 1661 0167 49       		.uleb128 0x49
+ 1662 0168 13       		.uleb128 0x13
+ 1663 0169 3F       		.uleb128 0x3f
+ 1664 016a 19       		.uleb128 0x19
+ 1665 016b 02       		.uleb128 0x2
+ 1666 016c 18       		.uleb128 0x18
+ 1667 016d 00       		.byte	0
+ 1668 016e 00       		.byte	0
+ 1669 016f 00       		.byte	0
+ 1670              		.section	.debug_aranges,"",%progbits
+ 1671 0000 74000000 		.4byte	0x74
+ 1672 0004 0200     		.2byte	0x2
+ 1673 0006 00000000 		.4byte	.Ldebug_info0
+ 1674 000a 04       		.byte	0x4
+ 1675 000b 00       		.byte	0
+ 1676 000c 0000     		.2byte	0
+ 1677 000e 0000     		.2byte	0
+ 1678 0010 00000000 		.4byte	.LFB0
+ 1679 0014 34000000 		.4byte	.LFE0-.LFB0
+ 1680 0018 00000000 		.4byte	.LFB1
+ 1681 001c 34000000 		.4byte	.LFE1-.LFB1
+ 1682 0020 00000000 		.4byte	.LFB2
+ 1683 0024 7C000000 		.4byte	.LFE2-.LFB2
+ 1684 0028 00000000 		.4byte	.LFB3
+ 1685 002c 22000000 		.4byte	.LFE3-.LFB3
+ 1686 0030 00000000 		.4byte	.LFB4
+ 1687 0034 54000000 		.4byte	.LFE4-.LFB4
+ 1688 0038 00000000 		.4byte	.LFB5
+ 1689 003c 9C000000 		.4byte	.LFE5-.LFB5
+ 1690 0040 00000000 		.4byte	.LFB6
+ 1691 0044 EC000000 		.4byte	.LFE6-.LFB6
+ 1692 0048 00000000 		.4byte	.LFB7
+ 1693 004c 90000000 		.4byte	.LFE7-.LFB7
+ 1694 0050 00000000 		.4byte	.LFB8
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 43
+
+
+ 1695 0054 34000000 		.4byte	.LFE8-.LFB8
+ 1696 0058 00000000 		.4byte	.LFB9
+ 1697 005c 34000000 		.4byte	.LFE9-.LFB9
+ 1698 0060 00000000 		.4byte	.LFB10
+ 1699 0064 30000000 		.4byte	.LFE10-.LFB10
+ 1700 0068 00000000 		.4byte	.LFB11
+ 1701 006c 20000000 		.4byte	.LFE11-.LFB11
+ 1702 0070 00000000 		.4byte	0
+ 1703 0074 00000000 		.4byte	0
+ 1704              		.section	.debug_ranges,"",%progbits
+ 1705              	.Ldebug_ranges0:
+ 1706 0000 00000000 		.4byte	.LFB0
+ 1707 0004 34000000 		.4byte	.LFE0
+ 1708 0008 00000000 		.4byte	.LFB1
+ 1709 000c 34000000 		.4byte	.LFE1
+ 1710 0010 00000000 		.4byte	.LFB2
+ 1711 0014 7C000000 		.4byte	.LFE2
+ 1712 0018 00000000 		.4byte	.LFB3
+ 1713 001c 22000000 		.4byte	.LFE3
+ 1714 0020 00000000 		.4byte	.LFB4
+ 1715 0024 54000000 		.4byte	.LFE4
+ 1716 0028 00000000 		.4byte	.LFB5
+ 1717 002c 9C000000 		.4byte	.LFE5
+ 1718 0030 00000000 		.4byte	.LFB6
+ 1719 0034 EC000000 		.4byte	.LFE6
+ 1720 0038 00000000 		.4byte	.LFB7
+ 1721 003c 90000000 		.4byte	.LFE7
+ 1722 0040 00000000 		.4byte	.LFB8
+ 1723 0044 34000000 		.4byte	.LFE8
+ 1724 0048 00000000 		.4byte	.LFB9
+ 1725 004c 34000000 		.4byte	.LFE9
+ 1726 0050 00000000 		.4byte	.LFB10
+ 1727 0054 30000000 		.4byte	.LFE10
+ 1728 0058 00000000 		.4byte	.LFB11
+ 1729 005c 20000000 		.4byte	.LFE11
+ 1730 0060 00000000 		.4byte	0
+ 1731 0064 00000000 		.4byte	0
+ 1732              		.section	.debug_line,"",%progbits
+ 1733              	.Ldebug_line0:
+ 1734 0000 97010000 		.section	.debug_str,"MS",%progbits,1
+ 1734      02004600 
+ 1734      00000201 
+ 1734      FB0E0D00 
+ 1734      01010101 
+ 1735              	.LASF41:
+ 1736 0000 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 1736      73657273 
+ 1736      5C6C756B 
+ 1736      61735C44 
+ 1736      65736B74 
+ 1737 002f 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 1737      73746572 
+ 1737      5C50696F 
+ 1737      6E656572 
+ 1737      4B69745F 
+ 1738              	.LASF15:
+ 1739 0058 63797374 		.ascii	"cystatus\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 44
+
+
+ 1739      61747573 
+ 1739      00
+ 1740              	.LASF16:
+ 1741 0061 72656738 		.ascii	"reg8\000"
+ 1741      00
+ 1742              	.LASF38:
+ 1743 0066 726F7742 		.ascii	"rowBuffer\000"
+ 1743      75666665 
+ 1743      7200
+ 1744              	.LASF35:
+ 1745 0070 43794545 		.ascii	"CyEEPROM_Stop\000"
+ 1745      50524F4D 
+ 1745      5F53746F 
+ 1745      7000
+ 1746              	.LASF3:
+ 1747 007e 73686F72 		.ascii	"short unsigned int\000"
+ 1747      7420756E 
+ 1747      7369676E 
+ 1747      65642069 
+ 1747      6E7400
+ 1748              	.LASF30:
+ 1749 0091 43795772 		.ascii	"CyWriteRowFull\000"
+ 1749      69746552 
+ 1749      6F774675 
+ 1749      6C6C00
+ 1750              	.LASF20:
+ 1751 00a0 73746174 		.ascii	"status\000"
+ 1751      757300
+ 1752              	.LASF12:
+ 1753 00a7 666C6F61 		.ascii	"float\000"
+ 1753      7400
+ 1754              	.LASF43:
+ 1755 00ad 4379466C 		.ascii	"CyFlash_SetWaitCycles\000"
+ 1755      6173685F 
+ 1755      53657457 
+ 1755      61697443 
+ 1755      79636C65 
+ 1756              	.LASF22:
+ 1757 00c3 43795365 		.ascii	"CySetFlashEEBuffer\000"
+ 1757      74466C61 
+ 1757      73684545 
+ 1757      42756666 
+ 1757      657200
+ 1758              	.LASF1:
+ 1759 00d6 756E7369 		.ascii	"unsigned char\000"
+ 1759      676E6564 
+ 1759      20636861 
+ 1759      7200
+ 1760              	.LASF27:
+ 1761 00e4 726F7744 		.ascii	"rowData\000"
+ 1761      61746100 
+ 1762              	.LASF34:
+ 1763 00ec 43794545 		.ascii	"CyEEPROM_Start\000"
+ 1763      50524F4D 
+ 1763      5F537461 
+ 1763      727400
+ 1764              	.LASF33:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 45
+
+
+ 1765 00fb 696E7465 		.ascii	"interruptState\000"
+ 1765      72727570 
+ 1765      74537461 
+ 1765      746500
+ 1766              	.LASF5:
+ 1767 010a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1767      20756E73 
+ 1767      69676E65 
+ 1767      6420696E 
+ 1767      7400
+ 1768              	.LASF9:
+ 1769 011c 75696E74 		.ascii	"uint8\000"
+ 1769      3800
+ 1770              	.LASF25:
+ 1771 0122 61727261 		.ascii	"arrayId\000"
+ 1771      79496400 
+ 1772              	.LASF44:
+ 1773 012a 64696554 		.ascii	"dieTemperature\000"
+ 1773      656D7065 
+ 1773      72617475 
+ 1773      726500
+ 1774              	.LASF39:
+ 1775 0139 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1775      4320342E 
+ 1775      392E3320 
+ 1775      32303135 
+ 1775      30333033 
+ 1776 016c 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1776      20726576 
+ 1776      6973696F 
+ 1776      6E203232 
+ 1776      31323230 
+ 1777 019f 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1777      66756E63 
+ 1777      74696F6E 
+ 1777      2D736563 
+ 1777      74696F6E 
+ 1778              	.LASF13:
+ 1779 01c7 646F7562 		.ascii	"double\000"
+ 1779      6C6500
+ 1780              	.LASF29:
+ 1781 01ce 726F7753 		.ascii	"rowSize\000"
+ 1781      697A6500 
+ 1782              	.LASF2:
+ 1783 01d6 73686F72 		.ascii	"short int\000"
+ 1783      7420696E 
+ 1783      7400
+ 1784              	.LASF37:
+ 1785 01e0 43794545 		.ascii	"CyEEPROM_ReadRelease\000"
+ 1785      50524F4D 
+ 1785      5F526561 
+ 1785      6452656C 
+ 1785      65617365 
+ 1786              	.LASF10:
+ 1787 01f5 75696E74 		.ascii	"uint16\000"
+ 1787      313600
+ 1788              	.LASF11:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 46
+
+
+ 1789 01fc 75696E74 		.ascii	"uint32\000"
+ 1789      333200
+ 1790              	.LASF8:
+ 1791 0203 756E7369 		.ascii	"unsigned int\000"
+ 1791      676E6564 
+ 1791      20696E74 
+ 1791      00
+ 1792              	.LASF18:
+ 1793 0210 4379466C 		.ascii	"CyFlash_Start\000"
+ 1793      6173685F 
+ 1793      53746172 
+ 1793      7400
+ 1794              	.LASF7:
+ 1795 021e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1795      206C6F6E 
+ 1795      6720756E 
+ 1795      7369676E 
+ 1795      65642069 
+ 1796              	.LASF36:
+ 1797 0235 43794545 		.ascii	"CyEEPROM_ReadReserve\000"
+ 1797      50524F4D 
+ 1797      5F526561 
+ 1797      64526573 
+ 1797      65727665 
+ 1798              	.LASF17:
+ 1799 024a 73697A65 		.ascii	"sizetype\000"
+ 1799      74797065 
+ 1799      00
+ 1800              	.LASF21:
+ 1801 0253 43795365 		.ascii	"CySetTemp\000"
+ 1801      7454656D 
+ 1801      7000
+ 1802              	.LASF6:
+ 1803 025d 6C6F6E67 		.ascii	"long long int\000"
+ 1803      206C6F6E 
+ 1803      6720696E 
+ 1803      7400
+ 1804              	.LASF26:
+ 1805 026b 726F7741 		.ascii	"rowAddress\000"
+ 1805      64647265 
+ 1805      737300
+ 1806              	.LASF14:
+ 1807 0276 63686172 		.ascii	"char\000"
+ 1807      00
+ 1808              	.LASF42:
+ 1809 027b 43795365 		.ascii	"CySetTempInt\000"
+ 1809      7454656D 
+ 1809      70496E74 
+ 1809      00
+ 1810              	.LASF28:
+ 1811 0288 6F666673 		.ascii	"offset\000"
+ 1811      657400
+ 1812              	.LASF32:
+ 1813 028f 66726571 		.ascii	"freq\000"
+ 1813      00
+ 1814              	.LASF24:
+ 1815 0294 62756666 		.ascii	"buffer\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLLEwWS.s 			page 47
+
+
+ 1815      657200
+ 1816              	.LASF40:
+ 1817 029b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\CyFlash.c\000"
+ 1817      6E657261 
+ 1817      7465645F 
+ 1817      536F7572 
+ 1817      63655C50 
+ 1818              	.LASF4:
+ 1819 02be 6C6F6E67 		.ascii	"long int\000"
+ 1819      20696E74 
+ 1819      00
+ 1820              	.LASF19:
+ 1821 02c7 4379466C 		.ascii	"CyFlash_Stop\000"
+ 1821      6173685F 
+ 1821      53746F70 
+ 1821      00
+ 1822              	.LASF31:
+ 1823 02d4 726F774E 		.ascii	"rowNumber\000"
+ 1823      756D6265 
+ 1823      7200
+ 1824              	.LASF0:
+ 1825 02de 7369676E 		.ascii	"signed char\000"
+ 1825      65642063 
+ 1825      68617200 
+ 1826              	.LASF23:
+ 1827 02ea 43795772 		.ascii	"CyWriteRowData\000"
+ 1827      69746552 
+ 1827      6F774461 
+ 1827      746100
+ 1828              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

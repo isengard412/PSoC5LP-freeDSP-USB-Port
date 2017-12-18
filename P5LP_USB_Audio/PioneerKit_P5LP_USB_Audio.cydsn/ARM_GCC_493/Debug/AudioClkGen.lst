@@ -1,0 +1,1319 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"AudioClkGen.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.AudioClkGen_Start,"ax",%progbits
+  19              		.align	2
+  20              		.global	AudioClkGen_Start
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	AudioClkGen_Start, %function
+  24              	AudioClkGen_Start:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\AudioClkGen.c"
+   1:.\Generated_Source\PSoC5/AudioClkGen.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/AudioClkGen.c **** * File Name: AudioClkGen.c  
+   3:.\Generated_Source\PSoC5/AudioClkGen.c **** * 
+   4:.\Generated_Source\PSoC5/AudioClkGen.c **** * Version 0.83 
+   5:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+   6:.\Generated_Source\PSoC5/AudioClkGen.c **** * Description:
+   7:.\Generated_Source\PSoC5/AudioClkGen.c **** *  This file contains API to enable firmware control of divider settings and 
+   8:.\Generated_Source\PSoC5/AudioClkGen.c **** *  audio clock generation.
+   9:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  10:.\Generated_Source\PSoC5/AudioClkGen.c **** *  Note: Only includes support for digital audio.
+  11:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  12:.\Generated_Source\PSoC5/AudioClkGen.c **** *******************************************************************************
+  13:.\Generated_Source\PSoC5/AudioClkGen.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC5/AudioClkGen.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC5/AudioClkGen.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:.\Generated_Source\PSoC5/AudioClkGen.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC5/AudioClkGen.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  19:.\Generated_Source\PSoC5/AudioClkGen.c **** #include "cytypes.h"
+  20:.\Generated_Source\PSoC5/AudioClkGen.c **** #include "cyfitter.h"
+  21:.\Generated_Source\PSoC5/AudioClkGen.c **** #include "CyLib.h"
+  22:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  23:.\Generated_Source\PSoC5/AudioClkGen.c **** #include "AudioClkGen.h"
+  24:.\Generated_Source\PSoC5/AudioClkGen.c **** #include "AudioClkGen_Clock_I2S.h"
+  25:.\Generated_Source\PSoC5/AudioClkGen.c **** #include "AudioClkGen_Clock_SCK.h"
+  26:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  27:.\Generated_Source\PSoC5/AudioClkGen.c **** //#define BUSCLK_48
+  28:.\Generated_Source\PSoC5/AudioClkGen.c **** #define BUSCLK_36
+  29:.\Generated_Source\PSoC5/AudioClkGen.c **** //#define BUSCLK_24
+  30:.\Generated_Source\PSoC5/AudioClkGen.c **** //#define BUSCLK_16
+  31:.\Generated_Source\PSoC5/AudioClkGen.c **** //#define BUSCLK_12
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/AudioClkGen.c **** //#define WORD_PERIOD_32
+  33:.\Generated_Source\PSoC5/AudioClkGen.c **** //#define NEW_16M_CLKGEN_VALUES
+  34:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_HIGH_PERIOD		(*(reg8 *) AudioClkGen_UDB_ACG_div_Div_u0__D0_REG)
+  35:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_LOW_PERIOD 		(*(reg8 *) AudioClkGen_UDB_ACG_div_Div_u0__D1_REG)
+  36:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  37:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_C0_0				(*(reg8 *) AudioClkGen_UDB_ACG_sync_SofCounter_u0__D0_REG)
+  38:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_C0_1				(*(reg8 *) AudioClkGen_UDB_ACG_sync_SofCounter_u1__D0_REG)
+  39:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_N					(*(reg8 *) AudioClkGen_UDB_ACG_sync_Counter_u0__D0_REG)
+  40:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_SHIFT_CNT			(*(reg8 *) AudioClkGen_UDB_ACG_sync_Counter_u0__D1_REG)
+  41:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  42:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_NC0_INIT_0			(*(reg8 *) AudioClkGen_UDB_ACG_shaper_Div_u0__A1_REG)
+  43:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_NC0_INIT_1			(*(reg8 *) AudioClkGen_UDB_ACG_shaper_Div_u1__A1_REG)
+  44:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  45:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_THRESHOLD_0		(*(reg8 *) AudioClkGen_UDB_ACG_shaper_Div_u0__D0_REG)
+  46:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_THRESHOLD_1		(*(reg8 *) AudioClkGen_UDB_ACG_shaper_Div_u1__D0_REG)
+  47:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  48:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_M_0				(*(reg8 *) AudioClkGen_UDB_ACG_shaper_Div_u0__D1_REG)
+  49:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_M_1				(*(reg8 *) AudioClkGen_UDB_ACG_shaper_Div_u1__D1_REG)
+  50:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  51:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_NC0_0				(*(reg8 *) AudioClkGen_UDB_ACG_sync_SofCounter_u0__D1_REG)
+  52:.\Generated_Source\PSoC5/AudioClkGen.c **** #define AudioClkGen_NC0_1				(*(reg8 *) AudioClkGen_UDB_ACG_sync_SofCounter_u1__D1_REG)
+  53:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  54:.\Generated_Source\PSoC5/AudioClkGen.c **** /*******************************************************************************
+  55:.\Generated_Source\PSoC5/AudioClkGen.c **** * Function Name: AudioClkGen_Start
+  56:.\Generated_Source\PSoC5/AudioClkGen.c **** ********************************************************************************
+  57:.\Generated_Source\PSoC5/AudioClkGen.c **** * Summary:
+  58:.\Generated_Source\PSoC5/AudioClkGen.c **** *  The start function initializes the fractional divider with the default values.
+  59:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  60:.\Generated_Source\PSoC5/AudioClkGen.c **** * Parameters:  
+  61:.\Generated_Source\PSoC5/AudioClkGen.c **** *  void  
+  62:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  63:.\Generated_Source\PSoC5/AudioClkGen.c **** * Return: 
+  64:.\Generated_Source\PSoC5/AudioClkGen.c **** *  void
+  65:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  66:.\Generated_Source\PSoC5/AudioClkGen.c **** *******************************************************************************/
+  67:.\Generated_Source\PSoC5/AudioClkGen.c **** void AudioClkGen_Start(void)
+  68:.\Generated_Source\PSoC5/AudioClkGen.c **** {
+  27              		.loc 1 68 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 7, -4
+  35 0002 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  69:.\Generated_Source\PSoC5/AudioClkGen.c **** 	/* Divide by 23 plus a fraction
+  70:.\Generated_Source\PSoC5/AudioClkGen.c **** 	 * When the waveform is 24 cycles long the extra cycle is added to the high period of the clock ou
+  71:.\Generated_Source\PSoC5/AudioClkGen.c **** 	AudioClkGen_HIGH_PERIOD = (11-2);	/* High period is 11 or 12 cycles */
+  37              		.loc 1 71 0
+  38 0004 0A4B     		ldr	r3, .L2
+  39 0006 0922     		movs	r2, #9
+  40 0008 1A70     		strb	r2, [r3]
+  72:.\Generated_Source\PSoC5/AudioClkGen.c **** 	AudioClkGen_LOW_PERIOD = (23-2);	/* Overall period is 23 or 24 cycles */
+  41              		.loc 1 72 0
+  42 000a 0A4B     		ldr	r3, .L2+4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 3
+
+
+  43 000c 1522     		movs	r2, #21
+  44 000e 1A70     		strb	r2, [r3]
+  73:.\Generated_Source\PSoC5/AudioClkGen.c **** 	
+  74:.\Generated_Source\PSoC5/AudioClkGen.c **** 	/* Settings that aren't audio rate dependent */
+  75:.\Generated_Source\PSoC5/AudioClkGen.c **** 	AudioClkGen_C0_0 = (uint8)((24000 - 74) & 0xFF);
+  45              		.loc 1 75 0
+  46 0010 094B     		ldr	r3, .L2+8
+  47 0012 7622     		movs	r2, #118
+  48 0014 1A70     		strb	r2, [r3]
+  76:.\Generated_Source\PSoC5/AudioClkGen.c **** 	AudioClkGen_C0_1 = (uint8)(((24000 - 74) >> 8) & 0xFF);
+  49              		.loc 1 76 0
+  50 0016 094B     		ldr	r3, .L2+12
+  51 0018 5D22     		movs	r2, #93
+  52 001a 1A70     		strb	r2, [r3]
+  77:.\Generated_Source\PSoC5/AudioClkGen.c **** 	AudioClkGen_N = (55-2);
+  53              		.loc 1 77 0
+  54 001c 084B     		ldr	r3, .L2+16
+  55 001e 3522     		movs	r2, #53
+  56 0020 1A70     		strb	r2, [r3]
+  78:.\Generated_Source\PSoC5/AudioClkGen.c **** 	AudioClkGen_SHIFT_CNT = (16-1);	/* Shift counter */	
+  57              		.loc 1 78 0
+  58 0022 084B     		ldr	r3, .L2+20
+  59 0024 0F22     		movs	r2, #15
+  60 0026 1A70     		strb	r2, [r3]
+  79:.\Generated_Source\PSoC5/AudioClkGen.c **** }
+  61              		.loc 1 79 0
+  62 0028 BD46     		mov	sp, r7
+  63              		.cfi_def_cfa_register 13
+  64              		@ sp needed
+  65 002a 5DF8047B 		ldr	r7, [sp], #4
+  66              		.cfi_restore 7
+  67              		.cfi_def_cfa_offset 0
+  68 002e 7047     		bx	lr
+  69              	.L3:
+  70              		.align	2
+  71              	.L2:
+  72 0030 26640040 		.word	1073767462
+  73 0034 36640040 		.word	1073767478
+  74 0038 26650040 		.word	1073767718
+  75 003c 27650040 		.word	1073767719
+  76 0040 27640040 		.word	1073767463
+  77 0044 37640040 		.word	1073767479
+  78              		.cfi_endproc
+  79              	.LFE0:
+  80              		.size	AudioClkGen_Start, .-AudioClkGen_Start
+  81              		.section	.text.AudioClkGen_Stop,"ax",%progbits
+  82              		.align	2
+  83              		.global	AudioClkGen_Stop
+  84              		.thumb
+  85              		.thumb_func
+  86              		.type	AudioClkGen_Stop, %function
+  87              	AudioClkGen_Stop:
+  88              	.LFB1:
+  80:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  81:.\Generated_Source\PSoC5/AudioClkGen.c **** /*******************************************************************************
+  82:.\Generated_Source\PSoC5/AudioClkGen.c **** * Function Name: AudioClkGen_Stop
+  83:.\Generated_Source\PSoC5/AudioClkGen.c **** ********************************************************************************
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 4
+
+
+  84:.\Generated_Source\PSoC5/AudioClkGen.c **** * Summary:
+  85:.\Generated_Source\PSoC5/AudioClkGen.c **** *  The stop function halts the fractional divider (currently a placeholder).
+  86:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  87:.\Generated_Source\PSoC5/AudioClkGen.c **** * Parameters:  
+  88:.\Generated_Source\PSoC5/AudioClkGen.c **** *  void  
+  89:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  90:.\Generated_Source\PSoC5/AudioClkGen.c **** * Return: 
+  91:.\Generated_Source\PSoC5/AudioClkGen.c **** *  void
+  92:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+  93:.\Generated_Source\PSoC5/AudioClkGen.c **** *******************************************************************************/
+  94:.\Generated_Source\PSoC5/AudioClkGen.c **** void AudioClkGen_Stop(void)
+  95:.\Generated_Source\PSoC5/AudioClkGen.c **** {
+  89              		.loc 1 95 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 1, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  94 0000 80B4     		push	{r7}
+  95              		.cfi_def_cfa_offset 4
+  96              		.cfi_offset 7, -4
+  97 0002 00AF     		add	r7, sp, #0
+  98              		.cfi_def_cfa_register 7
+  96:.\Generated_Source\PSoC5/AudioClkGen.c **** 	;
+  97:.\Generated_Source\PSoC5/AudioClkGen.c **** }
+  99              		.loc 1 97 0
+ 100 0004 BD46     		mov	sp, r7
+ 101              		.cfi_def_cfa_register 13
+ 102              		@ sp needed
+ 103 0006 5DF8047B 		ldr	r7, [sp], #4
+ 104              		.cfi_restore 7
+ 105              		.cfi_def_cfa_offset 0
+ 106 000a 7047     		bx	lr
+ 107              		.cfi_endproc
+ 108              	.LFE1:
+ 109              		.size	AudioClkGen_Stop, .-AudioClkGen_Stop
+ 110              		.section	.text.AudioClkGen_SetAudioRate,"ax",%progbits
+ 111              		.align	2
+ 112              		.global	AudioClkGen_SetAudioRate
+ 113              		.thumb
+ 114              		.thumb_func
+ 115              		.type	AudioClkGen_SetAudioRate, %function
+ 116              	AudioClkGen_SetAudioRate:
+ 117              	.LFB2:
+  98:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+  99:.\Generated_Source\PSoC5/AudioClkGen.c **** /*******************************************************************************
+ 100:.\Generated_Source\PSoC5/AudioClkGen.c **** * Function Name: AudioClkGen_SetDividerAudioRate
+ 101:.\Generated_Source\PSoC5/AudioClkGen.c **** ********************************************************************************
+ 102:.\Generated_Source\PSoC5/AudioClkGen.c **** * Summary:
+ 103:.\Generated_Source\PSoC5/AudioClkGen.c **** *  This function is used to setup all the required internal values for 
+ 104:.\Generated_Source\PSoC5/AudioClkGen.c **** *  to generate common audio sample rate clocks from a 24 MHz input
+ 105:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+ 106:.\Generated_Source\PSoC5/AudioClkGen.c **** * Parameters:  
+ 107:.\Generated_Source\PSoC5/AudioClkGen.c **** *  rate: Desired audio sample rate to be fed to PLL.  
+ 108:.\Generated_Source\PSoC5/AudioClkGen.c **** *  		 Must be one of the following:
+ 109:.\Generated_Source\PSoC5/AudioClkGen.c **** *		AudioClkGen_RATE_8KHZ
+ 110:.\Generated_Source\PSoC5/AudioClkGen.c **** *		AudioClkGen_RATE_11KHZ
+ 111:.\Generated_Source\PSoC5/AudioClkGen.c **** *		AudioClkGen_RATE_16KHZ
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 5
+
+
+ 112:.\Generated_Source\PSoC5/AudioClkGen.c **** *		AudioClkGen_RATE_22KHZ
+ 113:.\Generated_Source\PSoC5/AudioClkGen.c **** *		AudioClkGen_RATE_32KHZ
+ 114:.\Generated_Source\PSoC5/AudioClkGen.c **** *		AudioClkGen_RATE_44KHZ
+ 115:.\Generated_Source\PSoC5/AudioClkGen.c **** * 		AudioClkGen_RATE_48KHZ
+ 116:.\Generated_Source\PSoC5/AudioClkGen.c **** * 		AudioClkGen_RATE_96KHZ
+ 117:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+ 118:.\Generated_Source\PSoC5/AudioClkGen.c **** * Return: 
+ 119:.\Generated_Source\PSoC5/AudioClkGen.c **** *  char*: string with current audio sample frequency
+ 120:.\Generated_Source\PSoC5/AudioClkGen.c **** *
+ 121:.\Generated_Source\PSoC5/AudioClkGen.c **** *******************************************************************************/
+ 122:.\Generated_Source\PSoC5/AudioClkGen.c **** void AudioClkGen_SetAudioRate(uint8 rate) 
+ 123:.\Generated_Source\PSoC5/AudioClkGen.c **** {
+ 118              		.loc 1 123 0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 8
+ 121              		@ frame_needed = 1, uses_anonymous_args = 0
+ 122 0000 80B5     		push	{r7, lr}
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 7, -8
+ 125              		.cfi_offset 14, -4
+ 126 0002 82B0     		sub	sp, sp, #8
+ 127              		.cfi_def_cfa_offset 16
+ 128 0004 00AF     		add	r7, sp, #0
+ 129              		.cfi_def_cfa_register 7
+ 130 0006 0346     		mov	r3, r0
+ 131 0008 FB71     		strb	r3, [r7, #7]
+ 124:.\Generated_Source\PSoC5/AudioClkGen.c **** 	/* Turn off the PLL */
+ 125:.\Generated_Source\PSoC5/AudioClkGen.c **** 	//CyPLL_OUT_Stop();	    
+ 126:.\Generated_Source\PSoC5/AudioClkGen.c **** 	
+ 127:.\Generated_Source\PSoC5/AudioClkGen.c **** 	switch (rate) {	
+ 132              		.loc 1 127 0
+ 133 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 134 000c 072B     		cmp	r3, #7
+ 135 000e 4BD8     		bhi	.L22
+ 136 0010 01A2     		adr	r2, .L8
+ 137 0012 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 138 0016 00BF     		.p2align 2
+ 139              	.L8:
+ 140 0018 39000000 		.word	.L7+1
+ 141 001c 71000000 		.word	.L9+1
+ 142 0020 39000000 		.word	.L7+1
+ 143 0024 39000000 		.word	.L7+1
+ 144 0028 39000000 		.word	.L7+1
+ 145 002c 71000000 		.word	.L9+1
+ 146 0030 71000000 		.word	.L9+1
+ 147 0034 39000000 		.word	.L7+1
+ 148              		.p2align 1
+ 149              	.L7:
+ 128:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_8KHZ:				
+ 129:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_16KHZ:				
+ 130:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_32KHZ:				
+ 131:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_48KHZ:
+ 132:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_96KHZ:		
+ 133:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_48
+ 134:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 48);
+ 135:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 136:.\Generated_Source\PSoC5/AudioClkGen.c **** 				
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 6
+
+
+ 137:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_36
+ 138:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 36);
+ 150              		.loc 1 138 0
+ 151 0038 504B     		ldr	r3, .L24
+ 152 003a 2422     		movs	r2, #36
+ 153 003c 1A80     		strh	r2, [r3]	@ movhi
+ 139:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 140:.\Generated_Source\PSoC5/AudioClkGen.c **** 				
+ 141:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_24
+ 142:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 24);
+ 143:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 144:.\Generated_Source\PSoC5/AudioClkGen.c **** 				
+ 145:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_12
+ 146:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 12);
+ 147:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 148:.\Generated_Source\PSoC5/AudioClkGen.c ****                 
+ 149:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #ifdef BUSCLK_16
+ 150:.\Generated_Source\PSoC5/AudioClkGen.c ****                      #ifdef NEW_16M_CLKGEN_VALUES
+ 151:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_P_REG = 18; /* P = 18 */
+ 152:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_Q_REG = 0; /* Q = 1*/
+ 153:.\Generated_Source\PSoC5/AudioClkGen.c ****                     #else
+ 154:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_P_REG = 36; /* P = 33 */
+ 155:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_Q_REG = 1; /* Q = 2*/
+ 156:.\Generated_Source\PSoC5/AudioClkGen.c ****                     #endif    
+ 157:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #endif
+ 158:.\Generated_Source\PSoC5/AudioClkGen.c **** 				
+ 159:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #ifdef NEW_16M_CLKGEN_VALUES
+ 160:.\Generated_Source\PSoC5/AudioClkGen.c ****                     AudioClkGen_NC0_INIT_0 = (uint8)(14336 & 0xFF);
+ 161:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_INIT_1 = (uint8)((14336 >> 8) & 0xFF);
+ 162:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_0 = (uint8)(34816 & 0xFF);
+ 163:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_1 = (uint8)((34816 >> 8) & 0xFF);
+ 164:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_0 = (uint8)(32768 & 0xFF);
+ 165:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_1 = (uint8)((32768 >> 8) & 0xFF);		
+ 166:.\Generated_Source\PSoC5/AudioClkGen.c ****                     AudioClkGen_N = (32-2);
+ 167:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_LOW_PERIOD = (23-2);	// Overall period is 23 or 24 cycles
+ 168:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_0 = (uint8)(14336 & 0xFF);
+ 169:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_1 = (uint8)((14336 >> 8) & 0xFF);
+ 170:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #else
+ 171:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_INIT_0 = (uint8)(24640 & 0xFF);
+ 154              		.loc 1 171 0
+ 155 003e 504B     		ldr	r3, .L24+4
+ 156 0040 4022     		movs	r2, #64
+ 157 0042 1A70     		strb	r2, [r3]
+ 172:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_INIT_1 = (uint8)((24640 >> 8) & 0xFF);
+ 158              		.loc 1 172 0
+ 159 0044 4F4B     		ldr	r3, .L24+8
+ 160 0046 6022     		movs	r2, #96
+ 161 0048 1A70     		strb	r2, [r3]
+ 173:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_0 = (uint8)(36288 & 0xFF);
+ 162              		.loc 1 173 0
+ 163 004a 4F4B     		ldr	r3, .L24+12
+ 164 004c C022     		movs	r2, #192
+ 165 004e 1A70     		strb	r2, [r3]
+ 174:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_1 = (uint8)((36288 >> 8) & 0xFF);
+ 166              		.loc 1 174 0
+ 167 0050 4E4B     		ldr	r3, .L24+16
+ 168 0052 8D22     		movs	r2, #141
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 7
+
+
+ 169 0054 1A70     		strb	r2, [r3]
+ 175:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_0 = (uint8)(56320 & 0xFF);
+ 170              		.loc 1 175 0
+ 171 0056 4E4B     		ldr	r3, .L24+20
+ 172 0058 0022     		movs	r2, #0
+ 173 005a 1A70     		strb	r2, [r3]
+ 176:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_1 = (uint8)((56320 >> 8) & 0xFF);										
+ 174              		.loc 1 176 0
+ 175 005c 4D4B     		ldr	r3, .L24+24
+ 176 005e DC22     		movs	r2, #220
+ 177 0060 1A70     		strb	r2, [r3]
+ 177:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_0 = (uint8)(24640 & 0xFF);
+ 178              		.loc 1 177 0
+ 179 0062 4D4B     		ldr	r3, .L24+28
+ 180 0064 4022     		movs	r2, #64
+ 181 0066 1A70     		strb	r2, [r3]
+ 178:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_1 = (uint8)((24640 >> 8) & 0xFF);
+ 182              		.loc 1 178 0
+ 183 0068 4C4B     		ldr	r3, .L24+32
+ 184 006a 6022     		movs	r2, #96
+ 185 006c 1A70     		strb	r2, [r3]
+ 179:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #endif
+ 180:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 186              		.loc 1 180 0
+ 187 006e 1CE0     		b	.L10
+ 188              	.L9:
+ 181:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_11KHZ:		
+ 182:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_22KHZ:		
+ 183:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_44KHZ:
+ 184:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_48
+ 185:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 44);
+ 186:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 187:.\Generated_Source\PSoC5/AudioClkGen.c **** 				
+ 188:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_36
+ 189:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 33);
+ 189              		.loc 1 189 0
+ 190 0070 424B     		ldr	r3, .L24
+ 191 0072 2122     		movs	r2, #33
+ 192 0074 1A80     		strh	r2, [r3]	@ movhi
+ 190:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 191:.\Generated_Source\PSoC5/AudioClkGen.c **** 				
+ 192:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_24
+ 193:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 22);
+ 194:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 195:.\Generated_Source\PSoC5/AudioClkGen.c **** 				
+ 196:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_12
+ 197:.\Generated_Source\PSoC5/AudioClkGen.c **** 				CY_SET_XTND_REG16((void CYFAR *)(CYDEV_FASTCLK_PLL_P), 11);
+ 198:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 199:.\Generated_Source\PSoC5/AudioClkGen.c ****                 
+ 200:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #ifdef BUSCLK_16
+ 201:.\Generated_Source\PSoC5/AudioClkGen.c ****                     #ifdef NEW_16M_CLKGEN_VALUES
+ 202:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_P_REG = 16; /* P = 16 */
+ 203:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_Q_REG = 0; /* Q = 1*/
+ 204:.\Generated_Source\PSoC5/AudioClkGen.c ****                     #else
+ 205:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_P_REG = 33; /* P = 33 */
+ 206:.\Generated_Source\PSoC5/AudioClkGen.c ****                         CY_CLK_PLL_Q_REG = 1; /* Q = 1*/
+ 207:.\Generated_Source\PSoC5/AudioClkGen.c ****                     #endif
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 8
+
+
+ 208:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #endif
+ 209:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+ 210:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #ifdef NEW_16M_CLKGEN_VALUES
+ 211:.\Generated_Source\PSoC5/AudioClkGen.c ****                     AudioClkGen_NC0_INIT_0 = (uint8)(21456 & 0xFF);
+ 212:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_INIT_1 = (uint8)((21456 >> 8) & 0xFF);
+ 213:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_0 = (uint8)(27188 & 0xFF);
+ 214:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_1 = (uint8)((27188 >> 8) & 0xFF);
+ 215:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_0 = (uint8)(31752 & 0xFF);
+ 216:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_1 = (uint8)((31752 >> 8) & 0xFF);
+ 217:.\Generated_Source\PSoC5/AudioClkGen.c ****                     AudioClkGen_N = (30-2);
+ 218:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_LOW_PERIOD = (22-2);	// Overall period is 22 or 23 cycles
+ 219:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_0 = (uint8)(21456 & 0xFF);
+ 220:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_1 = (uint8)((21456 >> 8) & 0xFF);
+ 221:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #else                                
+ 222:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_INIT_0 = (uint8)(21696 & 0xFF);
+ 193              		.loc 1 222 0
+ 194 0076 424B     		ldr	r3, .L24+4
+ 195 0078 C022     		movs	r2, #192
+ 196 007a 1A70     		strb	r2, [r3]
+ 223:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_INIT_1 = (uint8)((21696 >> 8) & 0xFF);
+ 197              		.loc 1 223 0
+ 198 007c 414B     		ldr	r3, .L24+8
+ 199 007e 5422     		movs	r2, #84
+ 200 0080 1A70     		strb	r2, [r3]
+ 224:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_0 = (uint8)(39296 & 0xFF);
+ 201              		.loc 1 224 0
+ 202 0082 414B     		ldr	r3, .L24+12
+ 203 0084 8022     		movs	r2, #128
+ 204 0086 1A70     		strb	r2, [r3]
+ 225:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_THRESHOLD_1 = (uint8)((39296 >> 8) & 0xFF);
+ 205              		.loc 1 225 0
+ 206 0088 404B     		ldr	r3, .L24+16
+ 207 008a 9922     		movs	r2, #153
+ 208 008c 1A70     		strb	r2, [r3]
+ 226:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_0 = (uint8)(56448 & 0xFF);
+ 209              		.loc 1 226 0
+ 210 008e 404B     		ldr	r3, .L24+20
+ 211 0090 8022     		movs	r2, #128
+ 212 0092 1A70     		strb	r2, [r3]
+ 227:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_M_1 = (uint8)((56448 >> 8) & 0xFF);										
+ 213              		.loc 1 227 0
+ 214 0094 3F4B     		ldr	r3, .L24+24
+ 215 0096 DC22     		movs	r2, #220
+ 216 0098 1A70     		strb	r2, [r3]
+ 228:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_0 = (uint8)(21696 & 0xFF);
+ 217              		.loc 1 228 0
+ 218 009a 3F4B     		ldr	r3, .L24+28
+ 219 009c C022     		movs	r2, #192
+ 220 009e 1A70     		strb	r2, [r3]
+ 229:.\Generated_Source\PSoC5/AudioClkGen.c ****     				AudioClkGen_NC0_1 = (uint8)((21696 >> 8) & 0xFF);					
+ 221              		.loc 1 229 0
+ 222 00a0 3E4B     		ldr	r3, .L24+32
+ 223 00a2 5422     		movs	r2, #84
+ 224 00a4 1A70     		strb	r2, [r3]
+ 230:.\Generated_Source\PSoC5/AudioClkGen.c ****                 #endif
+ 231:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;				
+ 225              		.loc 1 231 0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 9
+
+
+ 226 00a6 00E0     		b	.L10
+ 227              	.L22:
+ 232:.\Generated_Source\PSoC5/AudioClkGen.c **** 		default:
+ 233:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 228              		.loc 1 233 0
+ 229 00a8 00BF     		nop
+ 230              	.L10:
+ 234:.\Generated_Source\PSoC5/AudioClkGen.c **** 	}
+ 235:.\Generated_Source\PSoC5/AudioClkGen.c **** 	
+ 236:.\Generated_Source\PSoC5/AudioClkGen.c **** 	/* Turn on the PLL */
+ 237:.\Generated_Source\PSoC5/AudioClkGen.c **** 	CyPLL_OUT_Start(0);
+ 231              		.loc 1 237 0
+ 232 00aa 0020     		movs	r0, #0
+ 233 00ac FFF7FEFF 		bl	CyPLL_OUT_Start
+ 238:.\Generated_Source\PSoC5/AudioClkGen.c ****     
+ 239:.\Generated_Source\PSoC5/AudioClkGen.c **** 	/* Wait to allow the PLL clock to stabilize */
+ 240:.\Generated_Source\PSoC5/AudioClkGen.c **** 	CyDelayUs(250);
+ 234              		.loc 1 240 0
+ 235 00b0 FA20     		movs	r0, #250
+ 236 00b2 FFF7FEFF 		bl	CyDelayUs
+ 241:.\Generated_Source\PSoC5/AudioClkGen.c **** 	
+ 242:.\Generated_Source\PSoC5/AudioClkGen.c **** 	switch (rate) {	
+ 237              		.loc 1 242 0
+ 238 00b6 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 239 00b8 072B     		cmp	r3, #7
+ 240 00ba 5BD8     		bhi	.L23
+ 241 00bc 01A2     		adr	r2, .L13
+ 242 00be 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 243 00c2 00BF     		.p2align 2
+ 244              	.L13:
+ 245 00c4 1B010000 		.word	.L12+1
+ 246 00c8 51010000 		.word	.L14+1
+ 247 00cc 09010000 		.word	.L15+1
+ 248 00d0 F7000000 		.word	.L16+1
+ 249 00d4 E5000000 		.word	.L17+1
+ 250 00d8 2D010000 		.word	.L18+1
+ 251 00dc 3F010000 		.word	.L19+1
+ 252 00e0 63010000 		.word	.L20+1
+ 253              		.p2align 1
+ 254              	.L17:
+ 243:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_8KHZ:				
+ 244:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_Mclk)
+ 245:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_SCK_SetDividerRegister(23,0);	/* divide by 24 */
+ 255              		.loc 1 245 0
+ 256 00e4 1720     		movs	r0, #23
+ 257 00e6 0021     		movs	r1, #0
+ 258 00e8 FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ 246:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif			
+ 247:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_I2Sclk)
+ 248:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_I2S_SetDividerRegister(47,0);	/* divide by 48 */
+ 259              		.loc 1 248 0
+ 260 00ec 2F20     		movs	r0, #47
+ 261 00ee 0021     		movs	r1, #0
+ 262 00f0 FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 249:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 250:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 263              		.loc 1 250 0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 10
+
+
+ 264 00f4 3FE0     		b	.L5
+ 265              	.L16:
+ 251:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_16KHZ:				
+ 252:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_Mclk)
+ 253:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_SCK_SetDividerRegister(11,0);	/* divide by 12 */
+ 266              		.loc 1 253 0
+ 267 00f6 0B20     		movs	r0, #11
+ 268 00f8 0021     		movs	r1, #0
+ 269 00fa FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ 254:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 255:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_I2Sclk)
+ 256:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_I2S_SetDividerRegister(23,0);	/* divide by 24 */
+ 270              		.loc 1 256 0
+ 271 00fe 1720     		movs	r0, #23
+ 272 0100 0021     		movs	r1, #0
+ 273 0102 FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 257:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 258:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 274              		.loc 1 258 0
+ 275 0106 36E0     		b	.L5
+ 276              	.L15:
+ 259:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_32KHZ:				
+ 260:.\Generated_Source\PSoC5/AudioClkGen.c **** 		#ifdef BUSCLK_48
+ 261:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 262:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(5);	//divide by 6..
+ 263:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 264:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 265:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 266:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(23);	//divide by 24..
+ 267:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 268:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(11);	//divide by 12..
+ 269:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 270:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 271:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 272:.\Generated_Source\PSoC5/AudioClkGen.c **** 			
+ 273:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_36
+ 274:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 275:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(3);	//divide by 4..
+ 277              		.loc 1 275 0
+ 278 0108 0320     		movs	r0, #3
+ 279 010a 0121     		movs	r1, #1
+ 280 010c FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ 276:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 277:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 278:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 279:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(17);	//divide by 18
+ 280:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 281:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(8);	//divide by 9
+ 281              		.loc 1 281 0
+ 282 0110 0820     		movs	r0, #8
+ 283 0112 0121     		movs	r1, #1
+ 284 0114 FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 282:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 283:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 284:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 285:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_24
+ 286:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 11
+
+
+ 287:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(2);	//divide by 3
+ 288:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 289:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 290:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 291:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(11);	//divide by 12
+ 292:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 293:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(5);	//divide by 6
+ 294:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 295:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 296:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 297:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+ 298:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef BUSCLK_12
+ 299:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 300:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(0);	//divide by 1
+ 301:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 302:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 303:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 304:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(5);	//divide by 6
+ 305:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 306:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(1);	//divide by 2
+ 307:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 308:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 309:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 310:.\Generated_Source\PSoC5/AudioClkGen.c ****             
+ 311:.\Generated_Source\PSoC5/AudioClkGen.c ****             #ifdef BUSCLK_16
+ 312:.\Generated_Source\PSoC5/AudioClkGen.c ****                 AudioClkGen_Clock_SCK_SetDivider(0);	//divide by 1
+ 313:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef WORD_PERIOD_32
+ 314:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(8);	//divide by 9
+ 315:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#else
+ 316:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(3);	//divide by 4
+ 317:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 318:.\Generated_Source\PSoC5/AudioClkGen.c ****             #endif
+ 319:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;			
+ 285              		.loc 1 319 0
+ 286 0118 2DE0     		b	.L5
+ 287              	.L12:
+ 320:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_48KHZ:		
+ 321:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_48
+ 322:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 323:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(3);	//divide by 4
+ 324:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 325:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 326:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 327:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(15);	//divide by 16
+ 328:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 329:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(7);	//divide by 8
+ 330:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 331:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 332:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 333:.\Generated_Source\PSoC5/AudioClkGen.c **** 			
+ 334:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_36
+ 335:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 336:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(2);	//divide by 3
+ 288              		.loc 1 336 0
+ 289 011a 0220     		movs	r0, #2
+ 290 011c 0121     		movs	r1, #1
+ 291 011e FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 12
+
+
+ 337:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 338:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 339:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 340:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(11);	//divide by 12
+ 341:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 342:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(5);	//divide by 6
+ 292              		.loc 1 342 0
+ 293 0122 0520     		movs	r0, #5
+ 294 0124 0121     		movs	r1, #1
+ 295 0126 FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 343:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 344:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 345:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 346:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_24
+ 347:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 348:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(1);	//divide by 2
+ 349:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 350:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 351:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 352:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(7);	//divide by 8
+ 353:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 354:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(3);	//divide by 4
+ 355:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 356:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 357:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 358:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+ 359:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_12
+ 360:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 361:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(0);	//divide by 1
+ 362:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 363:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 364:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 365:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(3);	//divide by 4
+ 366:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 367:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(1);	//divide by 2
+ 368:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 369:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 370:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 371:.\Generated_Source\PSoC5/AudioClkGen.c ****             
+ 372:.\Generated_Source\PSoC5/AudioClkGen.c ****             #ifdef BUSCLK_16
+ 373:.\Generated_Source\PSoC5/AudioClkGen.c ****                 AudioClkGen_Clock_SCK_SetDivider(0);	//divide by 1
+ 374:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef WORD_PERIOD_32
+ 375:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(5);	//divide by 6
+ 376:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#else
+ 377:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(2);	//divide by 3
+ 378:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 379:.\Generated_Source\PSoC5/AudioClkGen.c ****             #endif
+ 380:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 296              		.loc 1 380 0
+ 297 012a 24E0     		b	.L5
+ 298              	.L18:
+ 381:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_11KHZ:		
+ 382:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_Mclk)
+ 383:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_SCK_SetDividerRegister(15,0);	/* divide by 16 */
+ 299              		.loc 1 383 0
+ 300 012c 0F20     		movs	r0, #15
+ 301 012e 0021     		movs	r1, #0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 13
+
+
+ 302 0130 FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ 384:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 385:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_I2Sclk)
+ 386:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_I2S_SetDividerRegister(31,0);	/* divide by 32 */
+ 303              		.loc 1 386 0
+ 304 0134 1F20     		movs	r0, #31
+ 305 0136 0021     		movs	r1, #0
+ 306 0138 FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 387:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 388:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 307              		.loc 1 388 0
+ 308 013c 1BE0     		b	.L5
+ 309              	.L19:
+ 389:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_22KHZ:		
+ 390:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_Mclk)
+ 391:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_SCK_SetDividerRegister(7,0);	/* divide by 8 */
+ 310              		.loc 1 391 0
+ 311 013e 0720     		movs	r0, #7
+ 312 0140 0021     		movs	r1, #0
+ 313 0142 FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ 392:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 393:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_I2Sclk)
+ 394:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_I2S_SetDividerRegister(15,0);	/* divide by 16 */
+ 314              		.loc 1 394 0
+ 315 0146 0F20     		movs	r0, #15
+ 316 0148 0021     		movs	r1, #0
+ 317 014a FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 395:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 396:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 318              		.loc 1 396 0
+ 319 014e 12E0     		b	.L5
+ 320              	.L14:
+ 397:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_44KHZ:
+ 398:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_48
+ 399:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 400:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(3);	//divide by 4
+ 401:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 402:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 403:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 404:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(15);	//divide by 16
+ 405:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 406:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(7);	//divide by 8
+ 407:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 408:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 409:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 410:.\Generated_Source\PSoC5/AudioClkGen.c **** 			
+ 411:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_36
+ 412:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 413:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(2);	//divide by 3
+ 321              		.loc 1 413 0
+ 322 0150 0220     		movs	r0, #2
+ 323 0152 0121     		movs	r1, #1
+ 324 0154 FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ 414:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 415:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 416:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 417:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(11);	//divide by 12
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 14
+
+
+ 418:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 419:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(5);	//divide by 6
+ 325              		.loc 1 419 0
+ 326 0158 0520     		movs	r0, #5
+ 327 015a 0121     		movs	r1, #1
+ 328 015c FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 420:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 421:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 422:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 423:.\Generated_Source\PSoC5/AudioClkGen.c **** 			
+ 424:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_24
+ 425:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 426:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(1);	//divide by 2
+ 427:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 428:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 429:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 430:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(7);	//divide by 8
+ 431:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 432:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(3);	//divide by 4
+ 433:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 434:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 435:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 436:.\Generated_Source\PSoC5/AudioClkGen.c **** 			
+ 437:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#ifdef BUSCLK_12
+ 438:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_Mclk)
+ 439:.\Generated_Source\PSoC5/AudioClkGen.c **** 				AudioClkGen_Clock_SCK_SetDivider(0);	//divide by 1
+ 440:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 441:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#if (AudioClkGen_Enable_I2Sclk)
+ 442:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#ifdef WORD_PERIOD_32
+ 443:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(3);	//divide by 4
+ 444:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#else
+ 445:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(1);	//divide by 2
+ 446:.\Generated_Source\PSoC5/AudioClkGen.c **** 					#endif
+ 447:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif
+ 448:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif
+ 449:.\Generated_Source\PSoC5/AudioClkGen.c ****             
+ 450:.\Generated_Source\PSoC5/AudioClkGen.c ****             #ifdef BUSCLK_16
+ 451:.\Generated_Source\PSoC5/AudioClkGen.c ****                 AudioClkGen_Clock_SCK_SetDivider(0);	//divide by 1
+ 452:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#ifdef WORD_PERIOD_32
+ 453:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(5);	//divide by 6
+ 454:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#else
+ 455:.\Generated_Source\PSoC5/AudioClkGen.c **** 					AudioClkGen_Clock_I2S_SetDivider(2);	//divide by 3
+ 456:.\Generated_Source\PSoC5/AudioClkGen.c **** 				#endif	
+ 457:.\Generated_Source\PSoC5/AudioClkGen.c ****             #endif
+ 458:.\Generated_Source\PSoC5/AudioClkGen.c **** 			
+ 459:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 329              		.loc 1 459 0
+ 330 0160 09E0     		b	.L5
+ 331              	.L20:
+ 460:.\Generated_Source\PSoC5/AudioClkGen.c **** 
+ 461:.\Generated_Source\PSoC5/AudioClkGen.c **** 		case AudioClkGen_RATE_96KHZ: 
+ 462:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_Mclk) 
+ 463:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_SCK_SetDividerRegister(1,0); //divide by 2 
+ 332              		.loc 1 463 0
+ 333 0162 0120     		movs	r0, #1
+ 334 0164 0021     		movs	r1, #0
+ 335 0166 FFF7FEFF 		bl	AudioClkGen_Clock_SCK_SetDividerRegister
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 15
+
+
+ 464:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif 
+ 465:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#if (AudioClkGen_Enable_I2Sclk) 
+ 466:.\Generated_Source\PSoC5/AudioClkGen.c **** 			AudioClkGen_Clock_I2S_SetDividerRegister(3,0); //divide by 4 
+ 336              		.loc 1 466 0
+ 337 016a 0320     		movs	r0, #3
+ 338 016c 0021     		movs	r1, #0
+ 339 016e FFF7FEFF 		bl	AudioClkGen_Clock_I2S_SetDividerRegister
+ 467:.\Generated_Source\PSoC5/AudioClkGen.c **** 			#endif 
+ 468:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 340              		.loc 1 468 0
+ 341 0172 00E0     		b	.L5
+ 342              	.L23:
+ 469:.\Generated_Source\PSoC5/AudioClkGen.c **** 		default:
+ 470:.\Generated_Source\PSoC5/AudioClkGen.c **** 			break;
+ 343              		.loc 1 470 0
+ 344 0174 00BF     		nop
+ 345              	.L5:
+ 471:.\Generated_Source\PSoC5/AudioClkGen.c **** 	}
+ 472:.\Generated_Source\PSoC5/AudioClkGen.c **** }
+ 346              		.loc 1 472 0
+ 347 0176 0837     		adds	r7, r7, #8
+ 348              		.cfi_def_cfa_offset 8
+ 349 0178 BD46     		mov	sp, r7
+ 350              		.cfi_def_cfa_register 13
+ 351              		@ sp needed
+ 352 017a 80BD     		pop	{r7, pc}
+ 353              	.L25:
+ 354              		.align	2
+ 355              	.L24:
+ 356 017c 22420040 		.word	1073758754
+ 357 0180 14650040 		.word	1073767700
+ 358 0184 15650040 		.word	1073767701
+ 359 0188 24650040 		.word	1073767716
+ 360 018c 25650040 		.word	1073767717
+ 361 0190 34650040 		.word	1073767732
+ 362 0194 35650040 		.word	1073767733
+ 363 0198 36650040 		.word	1073767734
+ 364 019c 37650040 		.word	1073767735
+ 365              		.cfi_endproc
+ 366              	.LFE2:
+ 367              		.size	AudioClkGen_SetAudioRate, .-AudioClkGen_SetAudioRate
+ 368              		.text
+ 369              	.Letext0:
+ 370              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 371              		.section	.debug_info,"",%progbits
+ 372              	.Ldebug_info0:
+ 373 0000 FC000000 		.4byte	0xfc
+ 374 0004 0400     		.2byte	0x4
+ 375 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 376 000a 04       		.byte	0x4
+ 377 000b 01       		.uleb128 0x1
+ 378 000c A0000000 		.4byte	.LASF19
+ 379 0010 01       		.byte	0x1
+ 380 0011 AB010000 		.4byte	.LASF20
+ 381 0015 4D010000 		.4byte	.LASF21
+ 382 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 383 001d 00000000 		.4byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 16
+
+
+ 384 0021 00000000 		.4byte	.Ldebug_line0
+ 385 0025 02       		.uleb128 0x2
+ 386 0026 01       		.byte	0x1
+ 387 0027 06       		.byte	0x6
+ 388 0028 41010000 		.4byte	.LASF0
+ 389 002c 02       		.uleb128 0x2
+ 390 002d 01       		.byte	0x1
+ 391 002e 08       		.byte	0x8
+ 392 002f 84000000 		.4byte	.LASF1
+ 393 0033 02       		.uleb128 0x2
+ 394 0034 02       		.byte	0x2
+ 395 0035 05       		.byte	0x5
+ 396 0036 D2010000 		.4byte	.LASF2
+ 397 003a 02       		.uleb128 0x2
+ 398 003b 02       		.byte	0x2
+ 399 003c 07       		.byte	0x7
+ 400 003d 0E000000 		.4byte	.LASF3
+ 401 0041 02       		.uleb128 0x2
+ 402 0042 04       		.byte	0x4
+ 403 0043 05       		.byte	0x5
+ 404 0044 97000000 		.4byte	.LASF4
+ 405 0048 02       		.uleb128 0x2
+ 406 0049 04       		.byte	0x4
+ 407 004a 07       		.byte	0x7
+ 408 004b 49000000 		.4byte	.LASF5
+ 409 004f 02       		.uleb128 0x2
+ 410 0050 08       		.byte	0x8
+ 411 0051 05       		.byte	0x5
+ 412 0052 00000000 		.4byte	.LASF6
+ 413 0056 02       		.uleb128 0x2
+ 414 0057 08       		.byte	0x8
+ 415 0058 07       		.byte	0x7
+ 416 0059 5B000000 		.4byte	.LASF7
+ 417 005d 03       		.uleb128 0x3
+ 418 005e 04       		.byte	0x4
+ 419 005f 05       		.byte	0x5
+ 420 0060 696E7400 		.ascii	"int\000"
+ 421 0064 02       		.uleb128 0x2
+ 422 0065 04       		.byte	0x4
+ 423 0066 07       		.byte	0x7
+ 424 0067 21000000 		.4byte	.LASF8
+ 425 006b 04       		.uleb128 0x4
+ 426 006c 3B010000 		.4byte	.LASF9
+ 427 0070 02       		.byte	0x2
+ 428 0071 5B       		.byte	0x5b
+ 429 0072 2C000000 		.4byte	0x2c
+ 430 0076 04       		.uleb128 0x4
+ 431 0077 DC010000 		.4byte	.LASF10
+ 432 007b 02       		.byte	0x2
+ 433 007c 5C       		.byte	0x5c
+ 434 007d 3A000000 		.4byte	0x3a
+ 435 0081 02       		.uleb128 0x2
+ 436 0082 04       		.byte	0x4
+ 437 0083 04       		.byte	0x4
+ 438 0084 A5010000 		.4byte	.LASF11
+ 439 0088 02       		.uleb128 0x2
+ 440 0089 08       		.byte	0x8
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 17
+
+
+ 441 008a 04       		.byte	0x4
+ 442 008b 34010000 		.4byte	.LASF12
+ 443 008f 02       		.uleb128 0x2
+ 444 0090 01       		.byte	0x1
+ 445 0091 08       		.byte	0x8
+ 446 0092 92000000 		.4byte	.LASF13
+ 447 0096 04       		.uleb128 0x4
+ 448 0097 3F000000 		.4byte	.LASF14
+ 449 009b 02       		.byte	0x2
+ 450 009c F0       		.byte	0xf0
+ 451 009d A1000000 		.4byte	0xa1
+ 452 00a1 05       		.uleb128 0x5
+ 453 00a2 6B000000 		.4byte	0x6b
+ 454 00a6 04       		.uleb128 0x4
+ 455 00a7 2E010000 		.4byte	.LASF15
+ 456 00ab 02       		.byte	0x2
+ 457 00ac F1       		.byte	0xf1
+ 458 00ad B1000000 		.4byte	0xb1
+ 459 00b1 05       		.uleb128 0x5
+ 460 00b2 76000000 		.4byte	0x76
+ 461 00b6 02       		.uleb128 0x2
+ 462 00b7 04       		.byte	0x4
+ 463 00b8 07       		.byte	0x7
+ 464 00b9 FC010000 		.4byte	.LASF16
+ 465 00bd 06       		.uleb128 0x6
+ 466 00be 72000000 		.4byte	.LASF17
+ 467 00c2 01       		.byte	0x1
+ 468 00c3 43       		.byte	0x43
+ 469 00c4 00000000 		.4byte	.LFB0
+ 470 00c8 48000000 		.4byte	.LFE0-.LFB0
+ 471 00cc 01       		.uleb128 0x1
+ 472 00cd 9C       		.byte	0x9c
+ 473 00ce 06       		.uleb128 0x6
+ 474 00cf 2E000000 		.4byte	.LASF18
+ 475 00d3 01       		.byte	0x1
+ 476 00d4 5E       		.byte	0x5e
+ 477 00d5 00000000 		.4byte	.LFB1
+ 478 00d9 0C000000 		.4byte	.LFE1-.LFB1
+ 479 00dd 01       		.uleb128 0x1
+ 480 00de 9C       		.byte	0x9c
+ 481 00df 07       		.uleb128 0x7
+ 482 00e0 E3010000 		.4byte	.LASF22
+ 483 00e4 01       		.byte	0x1
+ 484 00e5 7A       		.byte	0x7a
+ 485 00e6 00000000 		.4byte	.LFB2
+ 486 00ea A0010000 		.4byte	.LFE2-.LFB2
+ 487 00ee 01       		.uleb128 0x1
+ 488 00ef 9C       		.byte	0x9c
+ 489 00f0 08       		.uleb128 0x8
+ 490 00f1 44000000 		.4byte	.LASF23
+ 491 00f5 01       		.byte	0x1
+ 492 00f6 7A       		.byte	0x7a
+ 493 00f7 6B000000 		.4byte	0x6b
+ 494 00fb 02       		.uleb128 0x2
+ 495 00fc 91       		.byte	0x91
+ 496 00fd 77       		.sleb128 -9
+ 497 00fe 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 18
+
+
+ 498 00ff 00       		.byte	0
+ 499              		.section	.debug_abbrev,"",%progbits
+ 500              	.Ldebug_abbrev0:
+ 501 0000 01       		.uleb128 0x1
+ 502 0001 11       		.uleb128 0x11
+ 503 0002 01       		.byte	0x1
+ 504 0003 25       		.uleb128 0x25
+ 505 0004 0E       		.uleb128 0xe
+ 506 0005 13       		.uleb128 0x13
+ 507 0006 0B       		.uleb128 0xb
+ 508 0007 03       		.uleb128 0x3
+ 509 0008 0E       		.uleb128 0xe
+ 510 0009 1B       		.uleb128 0x1b
+ 511 000a 0E       		.uleb128 0xe
+ 512 000b 55       		.uleb128 0x55
+ 513 000c 17       		.uleb128 0x17
+ 514 000d 11       		.uleb128 0x11
+ 515 000e 01       		.uleb128 0x1
+ 516 000f 10       		.uleb128 0x10
+ 517 0010 17       		.uleb128 0x17
+ 518 0011 00       		.byte	0
+ 519 0012 00       		.byte	0
+ 520 0013 02       		.uleb128 0x2
+ 521 0014 24       		.uleb128 0x24
+ 522 0015 00       		.byte	0
+ 523 0016 0B       		.uleb128 0xb
+ 524 0017 0B       		.uleb128 0xb
+ 525 0018 3E       		.uleb128 0x3e
+ 526 0019 0B       		.uleb128 0xb
+ 527 001a 03       		.uleb128 0x3
+ 528 001b 0E       		.uleb128 0xe
+ 529 001c 00       		.byte	0
+ 530 001d 00       		.byte	0
+ 531 001e 03       		.uleb128 0x3
+ 532 001f 24       		.uleb128 0x24
+ 533 0020 00       		.byte	0
+ 534 0021 0B       		.uleb128 0xb
+ 535 0022 0B       		.uleb128 0xb
+ 536 0023 3E       		.uleb128 0x3e
+ 537 0024 0B       		.uleb128 0xb
+ 538 0025 03       		.uleb128 0x3
+ 539 0026 08       		.uleb128 0x8
+ 540 0027 00       		.byte	0
+ 541 0028 00       		.byte	0
+ 542 0029 04       		.uleb128 0x4
+ 543 002a 16       		.uleb128 0x16
+ 544 002b 00       		.byte	0
+ 545 002c 03       		.uleb128 0x3
+ 546 002d 0E       		.uleb128 0xe
+ 547 002e 3A       		.uleb128 0x3a
+ 548 002f 0B       		.uleb128 0xb
+ 549 0030 3B       		.uleb128 0x3b
+ 550 0031 0B       		.uleb128 0xb
+ 551 0032 49       		.uleb128 0x49
+ 552 0033 13       		.uleb128 0x13
+ 553 0034 00       		.byte	0
+ 554 0035 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 19
+
+
+ 555 0036 05       		.uleb128 0x5
+ 556 0037 35       		.uleb128 0x35
+ 557 0038 00       		.byte	0
+ 558 0039 49       		.uleb128 0x49
+ 559 003a 13       		.uleb128 0x13
+ 560 003b 00       		.byte	0
+ 561 003c 00       		.byte	0
+ 562 003d 06       		.uleb128 0x6
+ 563 003e 2E       		.uleb128 0x2e
+ 564 003f 00       		.byte	0
+ 565 0040 3F       		.uleb128 0x3f
+ 566 0041 19       		.uleb128 0x19
+ 567 0042 03       		.uleb128 0x3
+ 568 0043 0E       		.uleb128 0xe
+ 569 0044 3A       		.uleb128 0x3a
+ 570 0045 0B       		.uleb128 0xb
+ 571 0046 3B       		.uleb128 0x3b
+ 572 0047 0B       		.uleb128 0xb
+ 573 0048 27       		.uleb128 0x27
+ 574 0049 19       		.uleb128 0x19
+ 575 004a 11       		.uleb128 0x11
+ 576 004b 01       		.uleb128 0x1
+ 577 004c 12       		.uleb128 0x12
+ 578 004d 06       		.uleb128 0x6
+ 579 004e 40       		.uleb128 0x40
+ 580 004f 18       		.uleb128 0x18
+ 581 0050 9742     		.uleb128 0x2117
+ 582 0052 19       		.uleb128 0x19
+ 583 0053 00       		.byte	0
+ 584 0054 00       		.byte	0
+ 585 0055 07       		.uleb128 0x7
+ 586 0056 2E       		.uleb128 0x2e
+ 587 0057 01       		.byte	0x1
+ 588 0058 3F       		.uleb128 0x3f
+ 589 0059 19       		.uleb128 0x19
+ 590 005a 03       		.uleb128 0x3
+ 591 005b 0E       		.uleb128 0xe
+ 592 005c 3A       		.uleb128 0x3a
+ 593 005d 0B       		.uleb128 0xb
+ 594 005e 3B       		.uleb128 0x3b
+ 595 005f 0B       		.uleb128 0xb
+ 596 0060 27       		.uleb128 0x27
+ 597 0061 19       		.uleb128 0x19
+ 598 0062 11       		.uleb128 0x11
+ 599 0063 01       		.uleb128 0x1
+ 600 0064 12       		.uleb128 0x12
+ 601 0065 06       		.uleb128 0x6
+ 602 0066 40       		.uleb128 0x40
+ 603 0067 18       		.uleb128 0x18
+ 604 0068 9642     		.uleb128 0x2116
+ 605 006a 19       		.uleb128 0x19
+ 606 006b 00       		.byte	0
+ 607 006c 00       		.byte	0
+ 608 006d 08       		.uleb128 0x8
+ 609 006e 05       		.uleb128 0x5
+ 610 006f 00       		.byte	0
+ 611 0070 03       		.uleb128 0x3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 20
+
+
+ 612 0071 0E       		.uleb128 0xe
+ 613 0072 3A       		.uleb128 0x3a
+ 614 0073 0B       		.uleb128 0xb
+ 615 0074 3B       		.uleb128 0x3b
+ 616 0075 0B       		.uleb128 0xb
+ 617 0076 49       		.uleb128 0x49
+ 618 0077 13       		.uleb128 0x13
+ 619 0078 02       		.uleb128 0x2
+ 620 0079 18       		.uleb128 0x18
+ 621 007a 00       		.byte	0
+ 622 007b 00       		.byte	0
+ 623 007c 00       		.byte	0
+ 624              		.section	.debug_aranges,"",%progbits
+ 625 0000 2C000000 		.4byte	0x2c
+ 626 0004 0200     		.2byte	0x2
+ 627 0006 00000000 		.4byte	.Ldebug_info0
+ 628 000a 04       		.byte	0x4
+ 629 000b 00       		.byte	0
+ 630 000c 0000     		.2byte	0
+ 631 000e 0000     		.2byte	0
+ 632 0010 00000000 		.4byte	.LFB0
+ 633 0014 48000000 		.4byte	.LFE0-.LFB0
+ 634 0018 00000000 		.4byte	.LFB1
+ 635 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 636 0020 00000000 		.4byte	.LFB2
+ 637 0024 A0010000 		.4byte	.LFE2-.LFB2
+ 638 0028 00000000 		.4byte	0
+ 639 002c 00000000 		.4byte	0
+ 640              		.section	.debug_ranges,"",%progbits
+ 641              	.Ldebug_ranges0:
+ 642 0000 00000000 		.4byte	.LFB0
+ 643 0004 48000000 		.4byte	.LFE0
+ 644 0008 00000000 		.4byte	.LFB1
+ 645 000c 0C000000 		.4byte	.LFE1
+ 646 0010 00000000 		.4byte	.LFB2
+ 647 0014 A0010000 		.4byte	.LFE2
+ 648 0018 00000000 		.4byte	0
+ 649 001c 00000000 		.4byte	0
+ 650              		.section	.debug_line,"",%progbits
+ 651              	.Ldebug_line0:
+ 652 0000 D1000000 		.section	.debug_str,"MS",%progbits,1
+ 652      02004A00 
+ 652      00000201 
+ 652      FB0E0D00 
+ 652      01010101 
+ 653              	.LASF6:
+ 654 0000 6C6F6E67 		.ascii	"long long int\000"
+ 654      206C6F6E 
+ 654      6720696E 
+ 654      7400
+ 655              	.LASF3:
+ 656 000e 73686F72 		.ascii	"short unsigned int\000"
+ 656      7420756E 
+ 656      7369676E 
+ 656      65642069 
+ 656      6E7400
+ 657              	.LASF8:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 21
+
+
+ 658 0021 756E7369 		.ascii	"unsigned int\000"
+ 658      676E6564 
+ 658      20696E74 
+ 658      00
+ 659              	.LASF18:
+ 660 002e 41756469 		.ascii	"AudioClkGen_Stop\000"
+ 660      6F436C6B 
+ 660      47656E5F 
+ 660      53746F70 
+ 660      00
+ 661              	.LASF14:
+ 662 003f 72656738 		.ascii	"reg8\000"
+ 662      00
+ 663              	.LASF23:
+ 664 0044 72617465 		.ascii	"rate\000"
+ 664      00
+ 665              	.LASF5:
+ 666 0049 6C6F6E67 		.ascii	"long unsigned int\000"
+ 666      20756E73 
+ 666      69676E65 
+ 666      6420696E 
+ 666      7400
+ 667              	.LASF7:
+ 668 005b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 668      206C6F6E 
+ 668      6720756E 
+ 668      7369676E 
+ 668      65642069 
+ 669              	.LASF17:
+ 670 0072 41756469 		.ascii	"AudioClkGen_Start\000"
+ 670      6F436C6B 
+ 670      47656E5F 
+ 670      53746172 
+ 670      7400
+ 671              	.LASF1:
+ 672 0084 756E7369 		.ascii	"unsigned char\000"
+ 672      676E6564 
+ 672      20636861 
+ 672      7200
+ 673              	.LASF13:
+ 674 0092 63686172 		.ascii	"char\000"
+ 674      00
+ 675              	.LASF4:
+ 676 0097 6C6F6E67 		.ascii	"long int\000"
+ 676      20696E74 
+ 676      00
+ 677              	.LASF19:
+ 678 00a0 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 678      4320342E 
+ 678      392E3320 
+ 678      32303135 
+ 678      30333033 
+ 679 00d3 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 679      20726576 
+ 679      6973696F 
+ 679      6E203232 
+ 679      31323230 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccCdmuxf.s 			page 22
+
+
+ 680 0106 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 680      66756E63 
+ 680      74696F6E 
+ 680      2D736563 
+ 680      74696F6E 
+ 681              	.LASF15:
+ 682 012e 72656731 		.ascii	"reg16\000"
+ 682      3600
+ 683              	.LASF12:
+ 684 0134 646F7562 		.ascii	"double\000"
+ 684      6C6500
+ 685              	.LASF9:
+ 686 013b 75696E74 		.ascii	"uint8\000"
+ 686      3800
+ 687              	.LASF0:
+ 688 0141 7369676E 		.ascii	"signed char\000"
+ 688      65642063 
+ 688      68617200 
+ 689              	.LASF21:
+ 690 014d 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 690      73657273 
+ 690      5C6C756B 
+ 690      61735C44 
+ 690      65736B74 
+ 691 017c 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 691      73746572 
+ 691      5C50696F 
+ 691      6E656572 
+ 691      4B69745F 
+ 692              	.LASF11:
+ 693 01a5 666C6F61 		.ascii	"float\000"
+ 693      7400
+ 694              	.LASF20:
+ 695 01ab 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\AudioClkGen.c\000"
+ 695      6E657261 
+ 695      7465645F 
+ 695      536F7572 
+ 695      63655C50 
+ 696              	.LASF2:
+ 697 01d2 73686F72 		.ascii	"short int\000"
+ 697      7420696E 
+ 697      7400
+ 698              	.LASF10:
+ 699 01dc 75696E74 		.ascii	"uint16\000"
+ 699      313600
+ 700              	.LASF22:
+ 701 01e3 41756469 		.ascii	"AudioClkGen_SetAudioRate\000"
+ 701      6F436C6B 
+ 701      47656E5F 
+ 701      53657441 
+ 701      7564696F 
+ 702              	.LASF16:
+ 703 01fc 73697A65 		.ascii	"sizetype\000"
+ 703      74797065 
+ 703      00
+ 704              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

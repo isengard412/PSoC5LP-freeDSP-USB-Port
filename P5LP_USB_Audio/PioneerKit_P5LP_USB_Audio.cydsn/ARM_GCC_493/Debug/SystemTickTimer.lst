@@ -1,0 +1,1492 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"SystemTickTimer.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	SystemTickTimer_initVar
+  19              		.bss
+  20              		.type	SystemTickTimer_initVar, %object
+  21              		.size	SystemTickTimer_initVar, 1
+  22              	SystemTickTimer_initVar:
+  23 0000 00       		.space	1
+  24              		.section	.text.SystemTickTimer_Start,"ax",%progbits
+  25              		.align	2
+  26              		.global	SystemTickTimer_Start
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	SystemTickTimer_Start, %function
+  30              	SystemTickTimer_Start:
+  31              	.LFB0:
+  32              		.file 1 ".\\Generated_Source\\PSoC5\\SystemTickTimer.c"
+   1:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/SystemTickTimer.c **** * File Name: SystemTickTimer.c
+   3:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Version 3.20
+   4:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+   5:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Description:
+   6:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This file provides the source code to API for the Sleep Timer.
+   7:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+   8:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+   9:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  10:.\Generated_Source\PSoC5/SystemTickTimer.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:.\Generated_Source\PSoC5/SystemTickTimer.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:.\Generated_Source\PSoC5/SystemTickTimer.c **** * the software package with which this file was provided.
+  13:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+  14:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  15:.\Generated_Source\PSoC5/SystemTickTimer.c **** #include "SystemTickTimer.h"
+  16:.\Generated_Source\PSoC5/SystemTickTimer.c **** #include "CyLib.h"
+  17:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  18:.\Generated_Source\PSoC5/SystemTickTimer.c **** /* Variables were not initialized */
+  19:.\Generated_Source\PSoC5/SystemTickTimer.c **** uint8 SystemTickTimer_initVar = 0u;
+  20:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  21:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  22:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+  23:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_Start
+  24:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+  25:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 2
+
+
+  26:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+  27:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This is the preferred method to begin component operation. SleepTimer_Start()
+  28:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  sets the initVar variable, calls the SleepTimer_Init() function, and then
+  29:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  calls the SleepTimer_Enable() function. It enables the 1-kHz ILO clock and
+  30:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  leaves it enabled after the Sleep Timer component is stopped.
+  31:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  32:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+  33:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+  34:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  35:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+  36:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+  37:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  38:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Global variables:
+  39:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  The SystemTickTimer_initVar variable is used to indicate initial
+  40:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  configuration of this component.  The variable is initialized to zero and
+  41:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  set to 1 the first time SystemTickTimer_Start() is called. This allows for
+  42:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  component initialization without re-initialization in all subsequent calls
+  43:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  to the SystemTickTimer_Start() routine.
+  44:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  45:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Reentrant:
+  46:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  No
+  47:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  48:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Side Effects:
+  49:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  If the initVar variable is already set, this function only calls the
+  50:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  SleepTimer_Enable() function.
+  51:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  52:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+  53:.\Generated_Source\PSoC5/SystemTickTimer.c **** void SystemTickTimer_Start(void) 
+  54:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+  33              		.loc 1 54 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  55:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Execute once in normal flow */
+  56:.\Generated_Source\PSoC5/SystemTickTimer.c ****     if (0u == SystemTickTimer_initVar)
+  43              		.loc 1 56 0
+  44 0004 054B     		ldr	r3, .L3
+  45 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  46 0008 002B     		cmp	r3, #0
+  47 000a 04D1     		bne	.L2
+  57:.\Generated_Source\PSoC5/SystemTickTimer.c ****     {
+  58:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_Init();
+  48              		.loc 1 58 0
+  49 000c FFF7FEFF 		bl	SystemTickTimer_Init
+  59:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_initVar = 1u;
+  50              		.loc 1 59 0
+  51 0010 024B     		ldr	r3, .L3
+  52 0012 0122     		movs	r2, #1
+  53 0014 1A70     		strb	r2, [r3]
+  54              	.L2:
+  60:.\Generated_Source\PSoC5/SystemTickTimer.c ****     }
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 3
+
+
+  61:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  62:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Enables the component operation */
+  63:.\Generated_Source\PSoC5/SystemTickTimer.c ****     SystemTickTimer_Enable();
+  55              		.loc 1 63 0
+  56 0016 FFF7FEFF 		bl	SystemTickTimer_Enable
+  64:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+  57              		.loc 1 64 0
+  58 001a 80BD     		pop	{r7, pc}
+  59              	.L4:
+  60              		.align	2
+  61              	.L3:
+  62 001c 00000000 		.word	SystemTickTimer_initVar
+  63              		.cfi_endproc
+  64              	.LFE0:
+  65              		.size	SystemTickTimer_Start, .-SystemTickTimer_Start
+  66              		.section	.text.SystemTickTimer_Init,"ax",%progbits
+  67              		.align	2
+  68              		.global	SystemTickTimer_Init
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	SystemTickTimer_Init, %function
+  72              	SystemTickTimer_Init:
+  73              	.LFB1:
+  65:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  66:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  67:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+  68:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_Init
+  69:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+  70:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  71:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+  72:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This function initializes or restores the component according to the
+  73:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  customizer Configure dialog settings. It is not necessary to call
+  74:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  SleepTimer_Init() because the SleepTimer_Start() API calls this function and
+  75:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  is the preferred method to begin component operation. Sets CTW interval
+  76:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  period and enables or disables CTW interrupt (according to the customizer's
+  77:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  settings).
+  78:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  79:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+  80:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+  81:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  82:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+  83:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+  84:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+  85:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+  86:.\Generated_Source\PSoC5/SystemTickTimer.c **** void SystemTickTimer_Init(void)  
+  87:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+  74              		.loc 1 87 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 1, uses_anonymous_args = 0
+  78 0000 80B5     		push	{r7, lr}
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 7, -8
+  81              		.cfi_offset 14, -4
+  82 0002 00AF     		add	r7, sp, #0
+  83              		.cfi_def_cfa_register 7
+  88:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Sets default (passed from customizer) interval */
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 4
+
+
+  89:.\Generated_Source\PSoC5/SystemTickTimer.c ****     SystemTickTimer_SetInterval(SystemTickTimer_INTERVAL);
+  84              		.loc 1 89 0
+  85 0004 0320     		movs	r0, #3
+  86 0006 FFF7FEFF 		bl	SystemTickTimer_SetInterval
+  90:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+  91:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Check if user sets to issue an interrupt in customizer */
+  92:.\Generated_Source\PSoC5/SystemTickTimer.c ****     #if (1u == SystemTickTimer_ENABLE_INTERRUPT)
+  93:.\Generated_Source\PSoC5/SystemTickTimer.c ****     {
+  94:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Enable interrupt */
+  95:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_EnableInt();
+  87              		.loc 1 95 0
+  88 000a FFF7FEFF 		bl	SystemTickTimer_EnableInt
+  96:.\Generated_Source\PSoC5/SystemTickTimer.c ****     }
+  97:.\Generated_Source\PSoC5/SystemTickTimer.c ****     #else /* interrupt should be disabled */
+  98:.\Generated_Source\PSoC5/SystemTickTimer.c ****     {
+  99:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Disable interrupt */
+ 100:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_DisableInt();
+ 101:.\Generated_Source\PSoC5/SystemTickTimer.c ****     }   /* Interrupt is disabled  */
+ 102:.\Generated_Source\PSoC5/SystemTickTimer.c ****     #endif  /* (1u == SystemTickTimer_ENABLE_INTERRUPT) */
+ 103:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+  89              		.loc 1 103 0
+  90 000e 80BD     		pop	{r7, pc}
+  91              		.cfi_endproc
+  92              	.LFE1:
+  93              		.size	SystemTickTimer_Init, .-SystemTickTimer_Init
+  94              		.section	.text.SystemTickTimer_Enable,"ax",%progbits
+  95              		.align	2
+  96              		.global	SystemTickTimer_Enable
+  97              		.thumb
+  98              		.thumb_func
+  99              		.type	SystemTickTimer_Enable, %function
+ 100              	SystemTickTimer_Enable:
+ 101              	.LFB2:
+ 104:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 105:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 106:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+ 107:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_Enable
+ 108:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+ 109:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+ 110:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This function activates the 1-kHz ILO and the CTW and begins component
+ 111:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  operation. It is not necessary to call SleepTimer_Enable() because the
+ 112:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  SleepTimer_Start() API calls this function, which is the preferred method to
+ 113:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  begin component operation.
+ 114:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 115:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+ 116:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 117:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 118:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+ 119:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 120:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 121:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Side Effects:
+ 122:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  Enables 1 kHz ILO clocks and leaves it enabled after Sleep Time component
+ 123:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  is stopped.
+ 124:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 125:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+ 126:.\Generated_Source\PSoC5/SystemTickTimer.c **** void SystemTickTimer_Enable(void) 
+ 127:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 5
+
+
+ 102              		.loc 1 127 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 8
+ 105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 106 0000 80B5     		push	{r7, lr}
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 7, -8
+ 109              		.cfi_offset 14, -4
+ 110 0002 82B0     		sub	sp, sp, #8
+ 111              		.cfi_def_cfa_offset 16
+ 112 0004 00AF     		add	r7, sp, #0
+ 113              		.cfi_def_cfa_register 7
+ 128:.\Generated_Source\PSoC5/SystemTickTimer.c ****     uint8 interruptState;
+ 129:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 130:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* If 1kHz ILO is disabled */
+ 131:.\Generated_Source\PSoC5/SystemTickTimer.c ****     if(0u == (SystemTickTimer_ILO_CFG_REG & SystemTickTimer_ILO_1KHZ_EN))
+ 114              		.loc 1 131 0
+ 115 0006 194B     		ldr	r3, .L9
+ 116 0008 1B78     		ldrb	r3, [r3]
+ 117 000a DBB2     		uxtb	r3, r3
+ 118 000c 03F00203 		and	r3, r3, #2
+ 119 0010 002B     		cmp	r3, #0
+ 120 0012 18D1     		bne	.L7
+ 132:.\Generated_Source\PSoC5/SystemTickTimer.c ****     {
+ 133:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Enter critical section */
+ 134:.\Generated_Source\PSoC5/SystemTickTimer.c ****         interruptState = CyEnterCriticalSection();
+ 121              		.loc 1 134 0
+ 122 0014 FFF7FEFF 		bl	CyEnterCriticalSection
+ 123 0018 0346     		mov	r3, r0
+ 124 001a FB71     		strb	r3, [r7, #7]
+ 135:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 136:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Enable 1kHz ILO */
+ 137:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_ILO_CFG_REG |=SystemTickTimer_ILO_1KHZ_EN;
+ 125              		.loc 1 137 0
+ 126 001c 134A     		ldr	r2, .L9
+ 127 001e 134B     		ldr	r3, .L9
+ 128 0020 1B78     		ldrb	r3, [r3]
+ 129 0022 DBB2     		uxtb	r3, r3
+ 130 0024 43F00203 		orr	r3, r3, #2
+ 131 0028 DBB2     		uxtb	r3, r3
+ 132 002a 1370     		strb	r3, [r2]
+ 138:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 139:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Enable the CTW counter */
+ 140:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_TW_CFG_REG |= SystemTickTimer_CTW_EN;
+ 133              		.loc 1 140 0
+ 134 002c 104A     		ldr	r2, .L9+4
+ 135 002e 104B     		ldr	r3, .L9+4
+ 136 0030 1B78     		ldrb	r3, [r3]
+ 137 0032 DBB2     		uxtb	r3, r3
+ 138 0034 43F00403 		orr	r3, r3, #4
+ 139 0038 DBB2     		uxtb	r3, r3
+ 140 003a 1370     		strb	r3, [r2]
+ 141:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 142:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Exit critical section */
+ 143:.\Generated_Source\PSoC5/SystemTickTimer.c ****         CyExitCriticalSection(interruptState);
+ 141              		.loc 1 143 0
+ 142 003c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 6
+
+
+ 143 003e 1846     		mov	r0, r3
+ 144 0040 FFF7FEFF 		bl	CyExitCriticalSection
+ 145 0044 0FE0     		b	.L6
+ 146              	.L7:
+ 144:.\Generated_Source\PSoC5/SystemTickTimer.c ****     }
+ 145:.\Generated_Source\PSoC5/SystemTickTimer.c ****     else /* If 1kHz ILO is enabled - enable CTW counter */
+ 146:.\Generated_Source\PSoC5/SystemTickTimer.c ****     {
+ 147:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Enter critical section */
+ 148:.\Generated_Source\PSoC5/SystemTickTimer.c ****         interruptState = CyEnterCriticalSection();
+ 147              		.loc 1 148 0
+ 148 0046 FFF7FEFF 		bl	CyEnterCriticalSection
+ 149 004a 0346     		mov	r3, r0
+ 150 004c FB71     		strb	r3, [r7, #7]
+ 149:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 150:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Enable the CTW counter */
+ 151:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_TW_CFG_REG |= SystemTickTimer_CTW_EN;
+ 151              		.loc 1 151 0
+ 152 004e 084A     		ldr	r2, .L9+4
+ 153 0050 074B     		ldr	r3, .L9+4
+ 154 0052 1B78     		ldrb	r3, [r3]
+ 155 0054 DBB2     		uxtb	r3, r3
+ 156 0056 43F00403 		orr	r3, r3, #4
+ 157 005a DBB2     		uxtb	r3, r3
+ 158 005c 1370     		strb	r3, [r2]
+ 152:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 153:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Exit critical section */
+ 154:.\Generated_Source\PSoC5/SystemTickTimer.c ****         CyExitCriticalSection(interruptState);
+ 159              		.loc 1 154 0
+ 160 005e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 161 0060 1846     		mov	r0, r3
+ 162 0062 FFF7FEFF 		bl	CyExitCriticalSection
+ 163              	.L6:
+ 155:.\Generated_Source\PSoC5/SystemTickTimer.c ****     }
+ 156:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+ 164              		.loc 1 156 0
+ 165 0066 0837     		adds	r7, r7, #8
+ 166              		.cfi_def_cfa_offset 8
+ 167 0068 BD46     		mov	sp, r7
+ 168              		.cfi_def_cfa_register 13
+ 169              		@ sp needed
+ 170 006a 80BD     		pop	{r7, pc}
+ 171              	.L10:
+ 172              		.align	2
+ 173              	.L9:
+ 174 006c 00430040 		.word	1073758976
+ 175 0070 82430040 		.word	1073759106
+ 176              		.cfi_endproc
+ 177              	.LFE2:
+ 178              		.size	SystemTickTimer_Enable, .-SystemTickTimer_Enable
+ 179              		.section	.text.SystemTickTimer_Stop,"ax",%progbits
+ 180              		.align	2
+ 181              		.global	SystemTickTimer_Stop
+ 182              		.thumb
+ 183              		.thumb_func
+ 184              		.type	SystemTickTimer_Stop, %function
+ 185              	SystemTickTimer_Stop:
+ 186              	.LFB3:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 7
+
+
+ 157:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 158:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 159:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+ 160:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_Stop
+ 161:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+ 162:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 163:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+ 164:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This function stops Sleep Timer operation and disables wakeup and interrupt.
+ 165:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  The device does not wake up when the CTW counter reaches terminal count, and
+ 166:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  an interrupt is not issued.
+ 167:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 168:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+ 169:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 170:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 171:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+ 172:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 173:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 174:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Side Effects:
+ 175:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  Leaves the 1 kHz ILO clock enabled after Sleep Time component is stopped.
+ 176:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 177:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+ 178:.\Generated_Source\PSoC5/SystemTickTimer.c **** void SystemTickTimer_Stop(void) 
+ 179:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+ 187              		.loc 1 179 0
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 8
+ 190              		@ frame_needed = 1, uses_anonymous_args = 0
+ 191 0000 80B5     		push	{r7, lr}
+ 192              		.cfi_def_cfa_offset 8
+ 193              		.cfi_offset 7, -8
+ 194              		.cfi_offset 14, -4
+ 195 0002 82B0     		sub	sp, sp, #8
+ 196              		.cfi_def_cfa_offset 16
+ 197 0004 00AF     		add	r7, sp, #0
+ 198              		.cfi_def_cfa_register 7
+ 180:.\Generated_Source\PSoC5/SystemTickTimer.c ****     uint8 interruptState;
+ 181:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 182:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Enter critical section */
+ 183:.\Generated_Source\PSoC5/SystemTickTimer.c ****     interruptState = CyEnterCriticalSection();
+ 199              		.loc 1 183 0
+ 200 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 201 000a 0346     		mov	r3, r0
+ 202 000c FB71     		strb	r3, [r7, #7]
+ 184:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 185:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Disable CTW counter */
+ 186:.\Generated_Source\PSoC5/SystemTickTimer.c ****     SystemTickTimer_TW_CFG_REG &= (uint8)(~SystemTickTimer_CTW_EN);
+ 203              		.loc 1 186 0
+ 204 000e 074A     		ldr	r2, .L12
+ 205 0010 064B     		ldr	r3, .L12
+ 206 0012 1B78     		ldrb	r3, [r3]
+ 207 0014 DBB2     		uxtb	r3, r3
+ 208 0016 23F00403 		bic	r3, r3, #4
+ 209 001a DBB2     		uxtb	r3, r3
+ 210 001c 1370     		strb	r3, [r2]
+ 187:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 188:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Exit critical section */
+ 189:.\Generated_Source\PSoC5/SystemTickTimer.c ****     CyExitCriticalSection(interruptState);
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 8
+
+
+ 211              		.loc 1 189 0
+ 212 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 213 0020 1846     		mov	r0, r3
+ 214 0022 FFF7FEFF 		bl	CyExitCriticalSection
+ 190:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+ 215              		.loc 1 190 0
+ 216 0026 0837     		adds	r7, r7, #8
+ 217              		.cfi_def_cfa_offset 8
+ 218 0028 BD46     		mov	sp, r7
+ 219              		.cfi_def_cfa_register 13
+ 220              		@ sp needed
+ 221 002a 80BD     		pop	{r7, pc}
+ 222              	.L13:
+ 223              		.align	2
+ 224              	.L12:
+ 225 002c 82430040 		.word	1073759106
+ 226              		.cfi_endproc
+ 227              	.LFE3:
+ 228              		.size	SystemTickTimer_Stop, .-SystemTickTimer_Stop
+ 229              		.section	.text.SystemTickTimer_EnableInt,"ax",%progbits
+ 230              		.align	2
+ 231              		.global	SystemTickTimer_EnableInt
+ 232              		.thumb
+ 233              		.thumb_func
+ 234              		.type	SystemTickTimer_EnableInt, %function
+ 235              	SystemTickTimer_EnableInt:
+ 236              	.LFB4:
+ 191:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 192:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 193:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+ 194:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_EnableInt
+ 195:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+ 196:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 197:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+ 198:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This function enables the CTW terminal count interrupt.
+ 199:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 200:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+ 201:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 202:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 203:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+ 204:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 205:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 206:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+ 207:.\Generated_Source\PSoC5/SystemTickTimer.c **** void SystemTickTimer_EnableInt(void) 
+ 208:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+ 237              		.loc 1 208 0
+ 238              		.cfi_startproc
+ 239              		@ args = 0, pretend = 0, frame = 8
+ 240              		@ frame_needed = 1, uses_anonymous_args = 0
+ 241 0000 80B5     		push	{r7, lr}
+ 242              		.cfi_def_cfa_offset 8
+ 243              		.cfi_offset 7, -8
+ 244              		.cfi_offset 14, -4
+ 245 0002 82B0     		sub	sp, sp, #8
+ 246              		.cfi_def_cfa_offset 16
+ 247 0004 00AF     		add	r7, sp, #0
+ 248              		.cfi_def_cfa_register 7
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 9
+
+
+ 209:.\Generated_Source\PSoC5/SystemTickTimer.c ****     uint8 interruptState;
+ 210:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 211:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Enter critical section */
+ 212:.\Generated_Source\PSoC5/SystemTickTimer.c ****     interruptState = CyEnterCriticalSection();
+ 249              		.loc 1 212 0
+ 250 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 251 000a 0346     		mov	r3, r0
+ 252 000c FB71     		strb	r3, [r7, #7]
+ 213:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 214:.\Generated_Source\PSoC5/SystemTickTimer.c ****      /* Enable interrupt on wake up */
+ 215:.\Generated_Source\PSoC5/SystemTickTimer.c ****     SystemTickTimer_TW_CFG_REG |= SystemTickTimer_CTW_IE;
+ 253              		.loc 1 215 0
+ 254 000e 074A     		ldr	r2, .L15
+ 255 0010 064B     		ldr	r3, .L15
+ 256 0012 1B78     		ldrb	r3, [r3]
+ 257 0014 DBB2     		uxtb	r3, r3
+ 258 0016 43F00803 		orr	r3, r3, #8
+ 259 001a DBB2     		uxtb	r3, r3
+ 260 001c 1370     		strb	r3, [r2]
+ 216:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 217:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Exit critical section */
+ 218:.\Generated_Source\PSoC5/SystemTickTimer.c ****     CyExitCriticalSection(interruptState);
+ 261              		.loc 1 218 0
+ 262 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 263 0020 1846     		mov	r0, r3
+ 264 0022 FFF7FEFF 		bl	CyExitCriticalSection
+ 219:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+ 265              		.loc 1 219 0
+ 266 0026 0837     		adds	r7, r7, #8
+ 267              		.cfi_def_cfa_offset 8
+ 268 0028 BD46     		mov	sp, r7
+ 269              		.cfi_def_cfa_register 13
+ 270              		@ sp needed
+ 271 002a 80BD     		pop	{r7, pc}
+ 272              	.L16:
+ 273              		.align	2
+ 274              	.L15:
+ 275 002c 82430040 		.word	1073759106
+ 276              		.cfi_endproc
+ 277              	.LFE4:
+ 278              		.size	SystemTickTimer_EnableInt, .-SystemTickTimer_EnableInt
+ 279              		.section	.text.SystemTickTimer_DisableInt,"ax",%progbits
+ 280              		.align	2
+ 281              		.global	SystemTickTimer_DisableInt
+ 282              		.thumb
+ 283              		.thumb_func
+ 284              		.type	SystemTickTimer_DisableInt, %function
+ 285              	SystemTickTimer_DisableInt:
+ 286              	.LFB5:
+ 220:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 221:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 222:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+ 223:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_DisableInt
+ 224:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+ 225:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 226:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+ 227:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This function disables the CTW terminal count interrupt.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 10
+
+
+ 228:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 229:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+ 230:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 231:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 232:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+ 233:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 234:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 235:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+ 236:.\Generated_Source\PSoC5/SystemTickTimer.c **** void SystemTickTimer_DisableInt(void) 
+ 237:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+ 287              		.loc 1 237 0
+ 288              		.cfi_startproc
+ 289              		@ args = 0, pretend = 0, frame = 8
+ 290              		@ frame_needed = 1, uses_anonymous_args = 0
+ 291 0000 80B5     		push	{r7, lr}
+ 292              		.cfi_def_cfa_offset 8
+ 293              		.cfi_offset 7, -8
+ 294              		.cfi_offset 14, -4
+ 295 0002 82B0     		sub	sp, sp, #8
+ 296              		.cfi_def_cfa_offset 16
+ 297 0004 00AF     		add	r7, sp, #0
+ 298              		.cfi_def_cfa_register 7
+ 238:.\Generated_Source\PSoC5/SystemTickTimer.c ****     uint8 interruptState;
+ 239:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 240:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Enter critical section */
+ 241:.\Generated_Source\PSoC5/SystemTickTimer.c ****     interruptState = CyEnterCriticalSection();
+ 299              		.loc 1 241 0
+ 300 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 301 000a 0346     		mov	r3, r0
+ 302 000c FB71     		strb	r3, [r7, #7]
+ 242:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 243:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Disable interrupt on wake up */
+ 244:.\Generated_Source\PSoC5/SystemTickTimer.c ****     SystemTickTimer_TW_CFG_REG &= (uint8)(~SystemTickTimer_CTW_IE);
+ 303              		.loc 1 244 0
+ 304 000e 074A     		ldr	r2, .L18
+ 305 0010 064B     		ldr	r3, .L18
+ 306 0012 1B78     		ldrb	r3, [r3]
+ 307 0014 DBB2     		uxtb	r3, r3
+ 308 0016 23F00803 		bic	r3, r3, #8
+ 309 001a DBB2     		uxtb	r3, r3
+ 310 001c 1370     		strb	r3, [r2]
+ 245:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 246:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Exit critical section */
+ 247:.\Generated_Source\PSoC5/SystemTickTimer.c ****     CyExitCriticalSection(interruptState);
+ 311              		.loc 1 247 0
+ 312 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 313 0020 1846     		mov	r0, r3
+ 314 0022 FFF7FEFF 		bl	CyExitCriticalSection
+ 248:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+ 315              		.loc 1 248 0
+ 316 0026 0837     		adds	r7, r7, #8
+ 317              		.cfi_def_cfa_offset 8
+ 318 0028 BD46     		mov	sp, r7
+ 319              		.cfi_def_cfa_register 13
+ 320              		@ sp needed
+ 321 002a 80BD     		pop	{r7, pc}
+ 322              	.L19:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 11
+
+
+ 323              		.align	2
+ 324              	.L18:
+ 325 002c 82430040 		.word	1073759106
+ 326              		.cfi_endproc
+ 327              	.LFE5:
+ 328              		.size	SystemTickTimer_DisableInt, .-SystemTickTimer_DisableInt
+ 329              		.section	.text.SystemTickTimer_SetInterval,"ax",%progbits
+ 330              		.align	2
+ 331              		.global	SystemTickTimer_SetInterval
+ 332              		.thumb
+ 333              		.thumb_func
+ 334              		.type	SystemTickTimer_SetInterval, %function
+ 335              	SystemTickTimer_SetInterval:
+ 336              	.LFB6:
+ 249:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 250:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 251:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+ 252:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_SetInterval
+ 253:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+ 254:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 255:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+ 256:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This function sets the CTW interval period. The first interval can range
+ 257:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  from 1 to (period + 1) milliseconds. Additional intervals occur at the
+ 258:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  nominal period. You can only change the interval value when CTW is disabled,
+ 259:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  which you do by stopping the component.
+ 260:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 261:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+ 262:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  uint8 interval: interval?s value for the CTW.
+ 263:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 264:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  PSoC 5:
+ 265:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  Only the 4-, 8-, 16-, 32-, 64-, 128-, and 256-ms selections are supported.
+ 266:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 267:.\Generated_Source\PSoC5/SystemTickTimer.c **** *           Name                    Value        Period
+ 268:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_2_MS      4'b0001        2 ms
+ 269:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_4_MS      4'b0010        4 ms
+ 270:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_8_MS      4'b0011        8 ms
+ 271:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_16_MS     4'b0100        16 ms
+ 272:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_32_MS     4'b0101        32 ms
+ 273:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_64_MS     4'b0110        64 ms
+ 274:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_128_MS    4'b0111        128 ms
+ 275:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_256_MS    4'b1000        256 ms
+ 276:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_512_MS    4'b1001        512 ms
+ 277:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_1024_MS   4'b1010        1024 ms
+ 278:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_2048_MS   4'b1011        2048 ms
+ 279:.\Generated_Source\PSoC5/SystemTickTimer.c **** *   SystemTickTimer__CTW_4096_MS   4'b1100        4096 ms
+ 280:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 281:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+ 282:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 283:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 284:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Side Effects:
+ 285:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  Interval value can be only changed when component is stopped (CTW is
+ 286:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  disabled).
+ 287:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 288:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+ 289:.\Generated_Source\PSoC5/SystemTickTimer.c **** void SystemTickTimer_SetInterval(uint8 interval) 
+ 290:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+ 337              		.loc 1 290 0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 12
+
+
+ 338              		.cfi_startproc
+ 339              		@ args = 0, pretend = 0, frame = 8
+ 340              		@ frame_needed = 1, uses_anonymous_args = 0
+ 341              		@ link register save eliminated.
+ 342 0000 80B4     		push	{r7}
+ 343              		.cfi_def_cfa_offset 4
+ 344              		.cfi_offset 7, -4
+ 345 0002 83B0     		sub	sp, sp, #12
+ 346              		.cfi_def_cfa_offset 16
+ 347 0004 00AF     		add	r7, sp, #0
+ 348              		.cfi_def_cfa_register 7
+ 349 0006 0346     		mov	r3, r0
+ 350 0008 FB71     		strb	r3, [r7, #7]
+ 291:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Check if CTW is disabled */
+ 292:.\Generated_Source\PSoC5/SystemTickTimer.c ****     if (0u == (SystemTickTimer_TW_CFG_REG & SystemTickTimer_CTW_EN))
+ 351              		.loc 1 292 0
+ 352 000a 0D4B     		ldr	r3, .L22
+ 353 000c 1B78     		ldrb	r3, [r3]
+ 354 000e DBB2     		uxtb	r3, r3
+ 355 0010 03F00403 		and	r3, r3, #4
+ 356 0014 002B     		cmp	r3, #0
+ 357 0016 0DD1     		bne	.L20
+ 293:.\Generated_Source\PSoC5/SystemTickTimer.c ****     {
+ 294:.\Generated_Source\PSoC5/SystemTickTimer.c ****         #if(CY_PSOC5A)
+ 295:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 296:.\Generated_Source\PSoC5/SystemTickTimer.c ****             CYASSERT((SystemTickTimer__CTW_4_MS   == interval) ||
+ 297:.\Generated_Source\PSoC5/SystemTickTimer.c ****                      (SystemTickTimer__CTW_8_MS   == interval) ||
+ 298:.\Generated_Source\PSoC5/SystemTickTimer.c ****                      (SystemTickTimer__CTW_16_MS  == interval) ||
+ 299:.\Generated_Source\PSoC5/SystemTickTimer.c ****                      (SystemTickTimer__CTW_32_MS  == interval) ||
+ 300:.\Generated_Source\PSoC5/SystemTickTimer.c ****                      (SystemTickTimer__CTW_64_MS  == interval) ||
+ 301:.\Generated_Source\PSoC5/SystemTickTimer.c ****                      (SystemTickTimer__CTW_128_MS == interval) ||
+ 302:.\Generated_Source\PSoC5/SystemTickTimer.c ****                      (SystemTickTimer__CTW_256_MS == interval));
+ 303:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 304:.\Generated_Source\PSoC5/SystemTickTimer.c ****         #endif  /* (CY_PSOC5A) */
+ 305:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 306:.\Generated_Source\PSoC5/SystemTickTimer.c ****         /* Set CTW interval */
+ 307:.\Generated_Source\PSoC5/SystemTickTimer.c ****         SystemTickTimer_CTW_INTERVAL_REG = \
+ 358              		.loc 1 307 0
+ 359 0018 0A49     		ldr	r1, .L22+4
+ 308:.\Generated_Source\PSoC5/SystemTickTimer.c ****             (SystemTickTimer_CTW_INTERVAL_REG & ((uint8)~SystemTickTimer_INTERVAL_MASK)) | \
+ 360              		.loc 1 308 0
+ 361 001a 0A4B     		ldr	r3, .L22+4
+ 362 001c 1B78     		ldrb	r3, [r3]
+ 363 001e DBB2     		uxtb	r3, r3
+ 307:.\Generated_Source\PSoC5/SystemTickTimer.c ****             (SystemTickTimer_CTW_INTERVAL_REG & ((uint8)~SystemTickTimer_INTERVAL_MASK)) | \
+ 364              		.loc 1 307 0
+ 365 0020 23F00F03 		bic	r3, r3, #15
+ 366 0024 DAB2     		uxtb	r2, r3
+ 367 0026 FB79     		ldrb	r3, [r7, #7]
+ 368 0028 03F00F03 		and	r3, r3, #15
+ 369 002c DBB2     		uxtb	r3, r3
+ 370 002e 1343     		orrs	r3, r3, r2
+ 371 0030 DBB2     		uxtb	r3, r3
+ 372 0032 0B70     		strb	r3, [r1]
+ 373              	.L20:
+ 309:.\Generated_Source\PSoC5/SystemTickTimer.c ****             (interval & SystemTickTimer_INTERVAL_MASK);
+ 310:.\Generated_Source\PSoC5/SystemTickTimer.c ****     }
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 13
+
+
+ 311:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Do nothing if CTW is enabled. */
+ 312:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+ 374              		.loc 1 312 0
+ 375 0034 0C37     		adds	r7, r7, #12
+ 376              		.cfi_def_cfa_offset 4
+ 377 0036 BD46     		mov	sp, r7
+ 378              		.cfi_def_cfa_register 13
+ 379              		@ sp needed
+ 380 0038 5DF8047B 		ldr	r7, [sp], #4
+ 381              		.cfi_restore 7
+ 382              		.cfi_def_cfa_offset 0
+ 383 003c 7047     		bx	lr
+ 384              	.L23:
+ 385 003e 00BF     		.align	2
+ 386              	.L22:
+ 387 0040 82430040 		.word	1073759106
+ 388 0044 81430040 		.word	1073759105
+ 389              		.cfi_endproc
+ 390              	.LFE6:
+ 391              		.size	SystemTickTimer_SetInterval, .-SystemTickTimer_SetInterval
+ 392              		.section	.text.SystemTickTimer_GetStatus,"ax",%progbits
+ 393              		.align	2
+ 394              		.global	SystemTickTimer_GetStatus
+ 395              		.thumb
+ 396              		.thumb_func
+ 397              		.type	SystemTickTimer_GetStatus, %function
+ 398              	SystemTickTimer_GetStatus:
+ 399              	.LFB7:
+ 313:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 314:.\Generated_Source\PSoC5/SystemTickTimer.c **** 
+ 315:.\Generated_Source\PSoC5/SystemTickTimer.c **** /*******************************************************************************
+ 316:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Function Name: SystemTickTimer_GetStatus
+ 317:.\Generated_Source\PSoC5/SystemTickTimer.c **** ********************************************************************************
+ 318:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 319:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Summary:
+ 320:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  This function returns the state of the Sleep Timer's status register, and
+ 321:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  clears the pending interrupt status bit. The application code must always
+ 322:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  call this function after wakeup to clear the ctw_int status bit. The code
+ 323:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  must call this function whether the Sleep Timer's interrupt is disabled or
+ 324:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  enabled.
+ 325:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 326:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Parameters:
+ 327:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  None
+ 328:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 329:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Return:
+ 330:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  Returns an 8-bit value (uint8) with bits set if a corresponding event has
+ 331:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  occurred. The constants shown in the following table describe the two-bit
+ 332:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  masks for the two events that this return value can contain.
+ 333:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 334:.\Generated_Source\PSoC5/SystemTickTimer.c **** *            Name                             Description
+ 335:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  SystemTickTimer_PM_INT_SR_ONEPPSP  A onepps event has occured
+ 336:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  SystemTickTimer_PM_INT_SR_CTW      A central timewheel event occured
+ 337:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  SystemTickTimer_PM_INT_SR_FTW      A fast timewheel event occured
+ 338:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 339:.\Generated_Source\PSoC5/SystemTickTimer.c **** * Side Effects:
+ 340:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  If the SleepTimer_GetStatus() function is not called in an interrupt
+ 341:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  associated with the SleepTimer, the interrupt is not cleared and as soon as
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 14
+
+
+ 342:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  the interrupt is exited it is re-entered.
+ 343:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 344:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  After the Sleep Timer has expired, the sleep interval is functionally 0 ms,
+ 345:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  because the interrupt is called until the ctw_int flag is cleared by the
+ 346:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  SleepTimer_GetStatus() function.
+ 347:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 348:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  If an interrupt is generated at the same time as a register read/clear, the
+ 349:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  bit remains set (which causes another interrupt).
+ 350:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 351:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  Reports and then clears all interrupt status bits in the Power Manager
+ 352:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  Interrupt Status register. Some of the bits are not relevant to this
+ 353:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  component's operation.
+ 354:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 355:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  The application code must always call this function (when the Sleep Timer's
+ 356:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  interrupt is disabled or enabled) after wakeup to clear the ctw_int status
+ 357:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  bit. The code must call SleepTimer_GetStatus() within 1 ms (1 clock cycle of
+ 358:.\Generated_Source\PSoC5/SystemTickTimer.c **** *  the ILO) after the CTW event occurred.
+ 359:.\Generated_Source\PSoC5/SystemTickTimer.c **** *
+ 360:.\Generated_Source\PSoC5/SystemTickTimer.c **** *******************************************************************************/
+ 361:.\Generated_Source\PSoC5/SystemTickTimer.c **** uint8 SystemTickTimer_GetStatus(void) 
+ 362:.\Generated_Source\PSoC5/SystemTickTimer.c **** {
+ 400              		.loc 1 362 0
+ 401              		.cfi_startproc
+ 402              		@ args = 0, pretend = 0, frame = 0
+ 403              		@ frame_needed = 1, uses_anonymous_args = 0
+ 404 0000 80B5     		push	{r7, lr}
+ 405              		.cfi_def_cfa_offset 8
+ 406              		.cfi_offset 7, -8
+ 407              		.cfi_offset 14, -4
+ 408 0002 00AF     		add	r7, sp, #0
+ 409              		.cfi_def_cfa_register 7
+ 363:.\Generated_Source\PSoC5/SystemTickTimer.c ****     /* Read to clear  */
+ 364:.\Generated_Source\PSoC5/SystemTickTimer.c ****     return CyPmReadStatus(CY_PM_CTW_INT);
+ 410              		.loc 1 364 0
+ 411 0004 0220     		movs	r0, #2
+ 412 0006 FFF7FEFF 		bl	CyPmReadStatus
+ 413 000a 0346     		mov	r3, r0
+ 365:.\Generated_Source\PSoC5/SystemTickTimer.c **** }
+ 414              		.loc 1 365 0
+ 415 000c 1846     		mov	r0, r3
+ 416 000e 80BD     		pop	{r7, pc}
+ 417              		.cfi_endproc
+ 418              	.LFE7:
+ 419              		.size	SystemTickTimer_GetStatus, .-SystemTickTimer_GetStatus
+ 420              		.text
+ 421              	.Letext0:
+ 422              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 423              		.section	.debug_info,"",%progbits
+ 424              	.Ldebug_info0:
+ 425 0000 9E010000 		.4byte	0x19e
+ 426 0004 0400     		.2byte	0x4
+ 427 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 428 000a 04       		.byte	0x4
+ 429 000b 01       		.uleb128 0x1
+ 430 000c 10010000 		.4byte	.LASF23
+ 431 0010 01       		.byte	0x1
+ 432 0011 3A020000 		.4byte	.LASF24
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 15
+
+
+ 433 0015 E2010000 		.4byte	.LASF25
+ 434 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 435 001d 00000000 		.4byte	0
+ 436 0021 00000000 		.4byte	.Ldebug_line0
+ 437 0025 02       		.uleb128 0x2
+ 438 0026 01       		.byte	0x1
+ 439 0027 06       		.byte	0x6
+ 440 0028 D6010000 		.4byte	.LASF0
+ 441 002c 02       		.uleb128 0x2
+ 442 002d 01       		.byte	0x1
+ 443 002e 08       		.byte	0x8
+ 444 002f 35000000 		.4byte	.LASF1
+ 445 0033 02       		.uleb128 0x2
+ 446 0034 02       		.byte	0x2
+ 447 0035 05       		.byte	0x5
+ 448 0036 86020000 		.4byte	.LASF2
+ 449 003a 02       		.uleb128 0x2
+ 450 003b 02       		.byte	0x2
+ 451 003c 07       		.byte	0x7
+ 452 003d C3010000 		.4byte	.LASF3
+ 453 0041 02       		.uleb128 0x2
+ 454 0042 04       		.byte	0x4
+ 455 0043 05       		.byte	0x5
+ 456 0044 BA010000 		.4byte	.LASF4
+ 457 0048 02       		.uleb128 0x2
+ 458 0049 04       		.byte	0x4
+ 459 004a 07       		.byte	0x7
+ 460 004b 7C000000 		.4byte	.LASF5
+ 461 004f 02       		.uleb128 0x2
+ 462 0050 08       		.byte	0x8
+ 463 0051 05       		.byte	0x5
+ 464 0052 00000000 		.4byte	.LASF6
+ 465 0056 02       		.uleb128 0x2
+ 466 0057 08       		.byte	0x8
+ 467 0058 07       		.byte	0x7
+ 468 0059 8E000000 		.4byte	.LASF7
+ 469 005d 03       		.uleb128 0x3
+ 470 005e 04       		.byte	0x4
+ 471 005f 05       		.byte	0x5
+ 472 0060 696E7400 		.ascii	"int\000"
+ 473 0064 02       		.uleb128 0x2
+ 474 0065 04       		.byte	0x4
+ 475 0066 07       		.byte	0x7
+ 476 0067 0E000000 		.4byte	.LASF8
+ 477 006b 04       		.uleb128 0x4
+ 478 006c 76000000 		.4byte	.LASF12
+ 479 0070 02       		.byte	0x2
+ 480 0071 5B       		.byte	0x5b
+ 481 0072 2C000000 		.4byte	0x2c
+ 482 0076 02       		.uleb128 0x2
+ 483 0077 04       		.byte	0x4
+ 484 0078 04       		.byte	0x4
+ 485 0079 80020000 		.4byte	.LASF9
+ 486 007d 02       		.uleb128 0x2
+ 487 007e 08       		.byte	0x8
+ 488 007f 04       		.byte	0x4
+ 489 0080 B3010000 		.4byte	.LASF10
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 16
+
+
+ 490 0084 02       		.uleb128 0x2
+ 491 0085 01       		.byte	0x1
+ 492 0086 08       		.byte	0x8
+ 493 0087 F3000000 		.4byte	.LASF11
+ 494 008b 04       		.uleb128 0x4
+ 495 008c 90020000 		.4byte	.LASF13
+ 496 0090 02       		.byte	0x2
+ 497 0091 F0       		.byte	0xf0
+ 498 0092 96000000 		.4byte	0x96
+ 499 0096 05       		.uleb128 0x5
+ 500 0097 6B000000 		.4byte	0x6b
+ 501 009b 02       		.uleb128 0x2
+ 502 009c 04       		.byte	0x4
+ 503 009d 07       		.byte	0x7
+ 504 009e 95020000 		.4byte	.LASF14
+ 505 00a2 06       		.uleb128 0x6
+ 506 00a3 DD000000 		.4byte	.LASF15
+ 507 00a7 01       		.byte	0x1
+ 508 00a8 35       		.byte	0x35
+ 509 00a9 00000000 		.4byte	.LFB0
+ 510 00ad 20000000 		.4byte	.LFE0-.LFB0
+ 511 00b1 01       		.uleb128 0x1
+ 512 00b2 9C       		.byte	0x9c
+ 513 00b3 06       		.uleb128 0x6
+ 514 00b4 9E010000 		.4byte	.LASF16
+ 515 00b8 01       		.byte	0x1
+ 516 00b9 56       		.byte	0x56
+ 517 00ba 00000000 		.4byte	.LFB1
+ 518 00be 10000000 		.4byte	.LFE1-.LFB1
+ 519 00c2 01       		.uleb128 0x1
+ 520 00c3 9C       		.byte	0x9c
+ 521 00c4 07       		.uleb128 0x7
+ 522 00c5 5F000000 		.4byte	.LASF17
+ 523 00c9 01       		.byte	0x1
+ 524 00ca 7E       		.byte	0x7e
+ 525 00cb 00000000 		.4byte	.LFB2
+ 526 00cf 74000000 		.4byte	.LFE2-.LFB2
+ 527 00d3 01       		.uleb128 0x1
+ 528 00d4 9C       		.byte	0x9c
+ 529 00d5 E8000000 		.4byte	0xe8
+ 530 00d9 08       		.uleb128 0x8
+ 531 00da 9E020000 		.4byte	.LASF19
+ 532 00de 01       		.byte	0x1
+ 533 00df 80       		.byte	0x80
+ 534 00e0 6B000000 		.4byte	0x6b
+ 535 00e4 02       		.uleb128 0x2
+ 536 00e5 91       		.byte	0x91
+ 537 00e6 77       		.sleb128 -9
+ 538 00e7 00       		.byte	0
+ 539 00e8 07       		.uleb128 0x7
+ 540 00e9 BF000000 		.4byte	.LASF18
+ 541 00ed 01       		.byte	0x1
+ 542 00ee B2       		.byte	0xb2
+ 543 00ef 00000000 		.4byte	.LFB3
+ 544 00f3 30000000 		.4byte	.LFE3-.LFB3
+ 545 00f7 01       		.uleb128 0x1
+ 546 00f8 9C       		.byte	0x9c
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 17
+
+
+ 547 00f9 0C010000 		.4byte	0x10c
+ 548 00fd 08       		.uleb128 0x8
+ 549 00fe 9E020000 		.4byte	.LASF19
+ 550 0102 01       		.byte	0x1
+ 551 0103 B4       		.byte	0xb4
+ 552 0104 6B000000 		.4byte	0x6b
+ 553 0108 02       		.uleb128 0x2
+ 554 0109 91       		.byte	0x91
+ 555 010a 77       		.sleb128 -9
+ 556 010b 00       		.byte	0
+ 557 010c 07       		.uleb128 0x7
+ 558 010d A5000000 		.4byte	.LASF20
+ 559 0111 01       		.byte	0x1
+ 560 0112 CF       		.byte	0xcf
+ 561 0113 00000000 		.4byte	.LFB4
+ 562 0117 30000000 		.4byte	.LFE4-.LFB4
+ 563 011b 01       		.uleb128 0x1
+ 564 011c 9C       		.byte	0x9c
+ 565 011d 30010000 		.4byte	0x130
+ 566 0121 08       		.uleb128 0x8
+ 567 0122 9E020000 		.4byte	.LASF19
+ 568 0126 01       		.byte	0x1
+ 569 0127 D1       		.byte	0xd1
+ 570 0128 6B000000 		.4byte	0x6b
+ 571 012c 02       		.uleb128 0x2
+ 572 012d 91       		.byte	0x91
+ 573 012e 77       		.sleb128 -9
+ 574 012f 00       		.byte	0
+ 575 0130 07       		.uleb128 0x7
+ 576 0131 65020000 		.4byte	.LASF21
+ 577 0135 01       		.byte	0x1
+ 578 0136 EC       		.byte	0xec
+ 579 0137 00000000 		.4byte	.LFB5
+ 580 013b 30000000 		.4byte	.LFE5-.LFB5
+ 581 013f 01       		.uleb128 0x1
+ 582 0140 9C       		.byte	0x9c
+ 583 0141 54010000 		.4byte	0x154
+ 584 0145 08       		.uleb128 0x8
+ 585 0146 9E020000 		.4byte	.LASF19
+ 586 014a 01       		.byte	0x1
+ 587 014b EE       		.byte	0xee
+ 588 014c 6B000000 		.4byte	0x6b
+ 589 0150 02       		.uleb128 0x2
+ 590 0151 91       		.byte	0x91
+ 591 0152 77       		.sleb128 -9
+ 592 0153 00       		.byte	0
+ 593 0154 09       		.uleb128 0x9
+ 594 0155 43000000 		.4byte	.LASF22
+ 595 0159 01       		.byte	0x1
+ 596 015a 2101     		.2byte	0x121
+ 597 015c 00000000 		.4byte	.LFB6
+ 598 0160 48000000 		.4byte	.LFE6-.LFB6
+ 599 0164 01       		.uleb128 0x1
+ 600 0165 9C       		.byte	0x9c
+ 601 0166 7A010000 		.4byte	0x17a
+ 602 016a 0A       		.uleb128 0xa
+ 603 016b D4000000 		.4byte	.LASF26
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 18
+
+
+ 604 016f 01       		.byte	0x1
+ 605 0170 2101     		.2byte	0x121
+ 606 0172 6B000000 		.4byte	0x6b
+ 607 0176 02       		.uleb128 0x2
+ 608 0177 91       		.byte	0x91
+ 609 0178 77       		.sleb128 -9
+ 610 0179 00       		.byte	0
+ 611 017a 0B       		.uleb128 0xb
+ 612 017b 1B000000 		.4byte	.LASF27
+ 613 017f 01       		.byte	0x1
+ 614 0180 6901     		.2byte	0x169
+ 615 0182 6B000000 		.4byte	0x6b
+ 616 0186 00000000 		.4byte	.LFB7
+ 617 018a 10000000 		.4byte	.LFE7-.LFB7
+ 618 018e 01       		.uleb128 0x1
+ 619 018f 9C       		.byte	0x9c
+ 620 0190 0C       		.uleb128 0xc
+ 621 0191 F8000000 		.4byte	.LASF28
+ 622 0195 01       		.byte	0x1
+ 623 0196 13       		.byte	0x13
+ 624 0197 6B000000 		.4byte	0x6b
+ 625 019b 05       		.uleb128 0x5
+ 626 019c 03       		.byte	0x3
+ 627 019d 00000000 		.4byte	SystemTickTimer_initVar
+ 628 01a1 00       		.byte	0
+ 629              		.section	.debug_abbrev,"",%progbits
+ 630              	.Ldebug_abbrev0:
+ 631 0000 01       		.uleb128 0x1
+ 632 0001 11       		.uleb128 0x11
+ 633 0002 01       		.byte	0x1
+ 634 0003 25       		.uleb128 0x25
+ 635 0004 0E       		.uleb128 0xe
+ 636 0005 13       		.uleb128 0x13
+ 637 0006 0B       		.uleb128 0xb
+ 638 0007 03       		.uleb128 0x3
+ 639 0008 0E       		.uleb128 0xe
+ 640 0009 1B       		.uleb128 0x1b
+ 641 000a 0E       		.uleb128 0xe
+ 642 000b 55       		.uleb128 0x55
+ 643 000c 17       		.uleb128 0x17
+ 644 000d 11       		.uleb128 0x11
+ 645 000e 01       		.uleb128 0x1
+ 646 000f 10       		.uleb128 0x10
+ 647 0010 17       		.uleb128 0x17
+ 648 0011 00       		.byte	0
+ 649 0012 00       		.byte	0
+ 650 0013 02       		.uleb128 0x2
+ 651 0014 24       		.uleb128 0x24
+ 652 0015 00       		.byte	0
+ 653 0016 0B       		.uleb128 0xb
+ 654 0017 0B       		.uleb128 0xb
+ 655 0018 3E       		.uleb128 0x3e
+ 656 0019 0B       		.uleb128 0xb
+ 657 001a 03       		.uleb128 0x3
+ 658 001b 0E       		.uleb128 0xe
+ 659 001c 00       		.byte	0
+ 660 001d 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 19
+
+
+ 661 001e 03       		.uleb128 0x3
+ 662 001f 24       		.uleb128 0x24
+ 663 0020 00       		.byte	0
+ 664 0021 0B       		.uleb128 0xb
+ 665 0022 0B       		.uleb128 0xb
+ 666 0023 3E       		.uleb128 0x3e
+ 667 0024 0B       		.uleb128 0xb
+ 668 0025 03       		.uleb128 0x3
+ 669 0026 08       		.uleb128 0x8
+ 670 0027 00       		.byte	0
+ 671 0028 00       		.byte	0
+ 672 0029 04       		.uleb128 0x4
+ 673 002a 16       		.uleb128 0x16
+ 674 002b 00       		.byte	0
+ 675 002c 03       		.uleb128 0x3
+ 676 002d 0E       		.uleb128 0xe
+ 677 002e 3A       		.uleb128 0x3a
+ 678 002f 0B       		.uleb128 0xb
+ 679 0030 3B       		.uleb128 0x3b
+ 680 0031 0B       		.uleb128 0xb
+ 681 0032 49       		.uleb128 0x49
+ 682 0033 13       		.uleb128 0x13
+ 683 0034 00       		.byte	0
+ 684 0035 00       		.byte	0
+ 685 0036 05       		.uleb128 0x5
+ 686 0037 35       		.uleb128 0x35
+ 687 0038 00       		.byte	0
+ 688 0039 49       		.uleb128 0x49
+ 689 003a 13       		.uleb128 0x13
+ 690 003b 00       		.byte	0
+ 691 003c 00       		.byte	0
+ 692 003d 06       		.uleb128 0x6
+ 693 003e 2E       		.uleb128 0x2e
+ 694 003f 00       		.byte	0
+ 695 0040 3F       		.uleb128 0x3f
+ 696 0041 19       		.uleb128 0x19
+ 697 0042 03       		.uleb128 0x3
+ 698 0043 0E       		.uleb128 0xe
+ 699 0044 3A       		.uleb128 0x3a
+ 700 0045 0B       		.uleb128 0xb
+ 701 0046 3B       		.uleb128 0x3b
+ 702 0047 0B       		.uleb128 0xb
+ 703 0048 27       		.uleb128 0x27
+ 704 0049 19       		.uleb128 0x19
+ 705 004a 11       		.uleb128 0x11
+ 706 004b 01       		.uleb128 0x1
+ 707 004c 12       		.uleb128 0x12
+ 708 004d 06       		.uleb128 0x6
+ 709 004e 40       		.uleb128 0x40
+ 710 004f 18       		.uleb128 0x18
+ 711 0050 9642     		.uleb128 0x2116
+ 712 0052 19       		.uleb128 0x19
+ 713 0053 00       		.byte	0
+ 714 0054 00       		.byte	0
+ 715 0055 07       		.uleb128 0x7
+ 716 0056 2E       		.uleb128 0x2e
+ 717 0057 01       		.byte	0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 20
+
+
+ 718 0058 3F       		.uleb128 0x3f
+ 719 0059 19       		.uleb128 0x19
+ 720 005a 03       		.uleb128 0x3
+ 721 005b 0E       		.uleb128 0xe
+ 722 005c 3A       		.uleb128 0x3a
+ 723 005d 0B       		.uleb128 0xb
+ 724 005e 3B       		.uleb128 0x3b
+ 725 005f 0B       		.uleb128 0xb
+ 726 0060 27       		.uleb128 0x27
+ 727 0061 19       		.uleb128 0x19
+ 728 0062 11       		.uleb128 0x11
+ 729 0063 01       		.uleb128 0x1
+ 730 0064 12       		.uleb128 0x12
+ 731 0065 06       		.uleb128 0x6
+ 732 0066 40       		.uleb128 0x40
+ 733 0067 18       		.uleb128 0x18
+ 734 0068 9642     		.uleb128 0x2116
+ 735 006a 19       		.uleb128 0x19
+ 736 006b 01       		.uleb128 0x1
+ 737 006c 13       		.uleb128 0x13
+ 738 006d 00       		.byte	0
+ 739 006e 00       		.byte	0
+ 740 006f 08       		.uleb128 0x8
+ 741 0070 34       		.uleb128 0x34
+ 742 0071 00       		.byte	0
+ 743 0072 03       		.uleb128 0x3
+ 744 0073 0E       		.uleb128 0xe
+ 745 0074 3A       		.uleb128 0x3a
+ 746 0075 0B       		.uleb128 0xb
+ 747 0076 3B       		.uleb128 0x3b
+ 748 0077 0B       		.uleb128 0xb
+ 749 0078 49       		.uleb128 0x49
+ 750 0079 13       		.uleb128 0x13
+ 751 007a 02       		.uleb128 0x2
+ 752 007b 18       		.uleb128 0x18
+ 753 007c 00       		.byte	0
+ 754 007d 00       		.byte	0
+ 755 007e 09       		.uleb128 0x9
+ 756 007f 2E       		.uleb128 0x2e
+ 757 0080 01       		.byte	0x1
+ 758 0081 3F       		.uleb128 0x3f
+ 759 0082 19       		.uleb128 0x19
+ 760 0083 03       		.uleb128 0x3
+ 761 0084 0E       		.uleb128 0xe
+ 762 0085 3A       		.uleb128 0x3a
+ 763 0086 0B       		.uleb128 0xb
+ 764 0087 3B       		.uleb128 0x3b
+ 765 0088 05       		.uleb128 0x5
+ 766 0089 27       		.uleb128 0x27
+ 767 008a 19       		.uleb128 0x19
+ 768 008b 11       		.uleb128 0x11
+ 769 008c 01       		.uleb128 0x1
+ 770 008d 12       		.uleb128 0x12
+ 771 008e 06       		.uleb128 0x6
+ 772 008f 40       		.uleb128 0x40
+ 773 0090 18       		.uleb128 0x18
+ 774 0091 9742     		.uleb128 0x2117
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 21
+
+
+ 775 0093 19       		.uleb128 0x19
+ 776 0094 01       		.uleb128 0x1
+ 777 0095 13       		.uleb128 0x13
+ 778 0096 00       		.byte	0
+ 779 0097 00       		.byte	0
+ 780 0098 0A       		.uleb128 0xa
+ 781 0099 05       		.uleb128 0x5
+ 782 009a 00       		.byte	0
+ 783 009b 03       		.uleb128 0x3
+ 784 009c 0E       		.uleb128 0xe
+ 785 009d 3A       		.uleb128 0x3a
+ 786 009e 0B       		.uleb128 0xb
+ 787 009f 3B       		.uleb128 0x3b
+ 788 00a0 05       		.uleb128 0x5
+ 789 00a1 49       		.uleb128 0x49
+ 790 00a2 13       		.uleb128 0x13
+ 791 00a3 02       		.uleb128 0x2
+ 792 00a4 18       		.uleb128 0x18
+ 793 00a5 00       		.byte	0
+ 794 00a6 00       		.byte	0
+ 795 00a7 0B       		.uleb128 0xb
+ 796 00a8 2E       		.uleb128 0x2e
+ 797 00a9 00       		.byte	0
+ 798 00aa 3F       		.uleb128 0x3f
+ 799 00ab 19       		.uleb128 0x19
+ 800 00ac 03       		.uleb128 0x3
+ 801 00ad 0E       		.uleb128 0xe
+ 802 00ae 3A       		.uleb128 0x3a
+ 803 00af 0B       		.uleb128 0xb
+ 804 00b0 3B       		.uleb128 0x3b
+ 805 00b1 05       		.uleb128 0x5
+ 806 00b2 27       		.uleb128 0x27
+ 807 00b3 19       		.uleb128 0x19
+ 808 00b4 49       		.uleb128 0x49
+ 809 00b5 13       		.uleb128 0x13
+ 810 00b6 11       		.uleb128 0x11
+ 811 00b7 01       		.uleb128 0x1
+ 812 00b8 12       		.uleb128 0x12
+ 813 00b9 06       		.uleb128 0x6
+ 814 00ba 40       		.uleb128 0x40
+ 815 00bb 18       		.uleb128 0x18
+ 816 00bc 9642     		.uleb128 0x2116
+ 817 00be 19       		.uleb128 0x19
+ 818 00bf 00       		.byte	0
+ 819 00c0 00       		.byte	0
+ 820 00c1 0C       		.uleb128 0xc
+ 821 00c2 34       		.uleb128 0x34
+ 822 00c3 00       		.byte	0
+ 823 00c4 03       		.uleb128 0x3
+ 824 00c5 0E       		.uleb128 0xe
+ 825 00c6 3A       		.uleb128 0x3a
+ 826 00c7 0B       		.uleb128 0xb
+ 827 00c8 3B       		.uleb128 0x3b
+ 828 00c9 0B       		.uleb128 0xb
+ 829 00ca 49       		.uleb128 0x49
+ 830 00cb 13       		.uleb128 0x13
+ 831 00cc 3F       		.uleb128 0x3f
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 22
+
+
+ 832 00cd 19       		.uleb128 0x19
+ 833 00ce 02       		.uleb128 0x2
+ 834 00cf 18       		.uleb128 0x18
+ 835 00d0 00       		.byte	0
+ 836 00d1 00       		.byte	0
+ 837 00d2 00       		.byte	0
+ 838              		.section	.debug_aranges,"",%progbits
+ 839 0000 54000000 		.4byte	0x54
+ 840 0004 0200     		.2byte	0x2
+ 841 0006 00000000 		.4byte	.Ldebug_info0
+ 842 000a 04       		.byte	0x4
+ 843 000b 00       		.byte	0
+ 844 000c 0000     		.2byte	0
+ 845 000e 0000     		.2byte	0
+ 846 0010 00000000 		.4byte	.LFB0
+ 847 0014 20000000 		.4byte	.LFE0-.LFB0
+ 848 0018 00000000 		.4byte	.LFB1
+ 849 001c 10000000 		.4byte	.LFE1-.LFB1
+ 850 0020 00000000 		.4byte	.LFB2
+ 851 0024 74000000 		.4byte	.LFE2-.LFB2
+ 852 0028 00000000 		.4byte	.LFB3
+ 853 002c 30000000 		.4byte	.LFE3-.LFB3
+ 854 0030 00000000 		.4byte	.LFB4
+ 855 0034 30000000 		.4byte	.LFE4-.LFB4
+ 856 0038 00000000 		.4byte	.LFB5
+ 857 003c 30000000 		.4byte	.LFE5-.LFB5
+ 858 0040 00000000 		.4byte	.LFB6
+ 859 0044 48000000 		.4byte	.LFE6-.LFB6
+ 860 0048 00000000 		.4byte	.LFB7
+ 861 004c 10000000 		.4byte	.LFE7-.LFB7
+ 862 0050 00000000 		.4byte	0
+ 863 0054 00000000 		.4byte	0
+ 864              		.section	.debug_ranges,"",%progbits
+ 865              	.Ldebug_ranges0:
+ 866 0000 00000000 		.4byte	.LFB0
+ 867 0004 20000000 		.4byte	.LFE0
+ 868 0008 00000000 		.4byte	.LFB1
+ 869 000c 10000000 		.4byte	.LFE1
+ 870 0010 00000000 		.4byte	.LFB2
+ 871 0014 74000000 		.4byte	.LFE2
+ 872 0018 00000000 		.4byte	.LFB3
+ 873 001c 30000000 		.4byte	.LFE3
+ 874 0020 00000000 		.4byte	.LFB4
+ 875 0024 30000000 		.4byte	.LFE4
+ 876 0028 00000000 		.4byte	.LFB5
+ 877 002c 30000000 		.4byte	.LFE5
+ 878 0030 00000000 		.4byte	.LFB6
+ 879 0034 48000000 		.4byte	.LFE6
+ 880 0038 00000000 		.4byte	.LFB7
+ 881 003c 10000000 		.4byte	.LFE7
+ 882 0040 00000000 		.4byte	0
+ 883 0044 00000000 		.4byte	0
+ 884              		.section	.debug_line,"",%progbits
+ 885              	.Ldebug_line0:
+ 886 0000 F9000000 		.section	.debug_str,"MS",%progbits,1
+ 886      02004E00 
+ 886      00000201 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 23
+
+
+ 886      FB0E0D00 
+ 886      01010101 
+ 887              	.LASF6:
+ 888 0000 6C6F6E67 		.ascii	"long long int\000"
+ 888      206C6F6E 
+ 888      6720696E 
+ 888      7400
+ 889              	.LASF8:
+ 890 000e 756E7369 		.ascii	"unsigned int\000"
+ 890      676E6564 
+ 890      20696E74 
+ 890      00
+ 891              	.LASF27:
+ 892 001b 53797374 		.ascii	"SystemTickTimer_GetStatus\000"
+ 892      656D5469 
+ 892      636B5469 
+ 892      6D65725F 
+ 892      47657453 
+ 893              	.LASF1:
+ 894 0035 756E7369 		.ascii	"unsigned char\000"
+ 894      676E6564 
+ 894      20636861 
+ 894      7200
+ 895              	.LASF22:
+ 896 0043 53797374 		.ascii	"SystemTickTimer_SetInterval\000"
+ 896      656D5469 
+ 896      636B5469 
+ 896      6D65725F 
+ 896      53657449 
+ 897              	.LASF17:
+ 898 005f 53797374 		.ascii	"SystemTickTimer_Enable\000"
+ 898      656D5469 
+ 898      636B5469 
+ 898      6D65725F 
+ 898      456E6162 
+ 899              	.LASF12:
+ 900 0076 75696E74 		.ascii	"uint8\000"
+ 900      3800
+ 901              	.LASF5:
+ 902 007c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 902      20756E73 
+ 902      69676E65 
+ 902      6420696E 
+ 902      7400
+ 903              	.LASF7:
+ 904 008e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 904      206C6F6E 
+ 904      6720756E 
+ 904      7369676E 
+ 904      65642069 
+ 905              	.LASF20:
+ 906 00a5 53797374 		.ascii	"SystemTickTimer_EnableInt\000"
+ 906      656D5469 
+ 906      636B5469 
+ 906      6D65725F 
+ 906      456E6162 
+ 907              	.LASF18:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 24
+
+
+ 908 00bf 53797374 		.ascii	"SystemTickTimer_Stop\000"
+ 908      656D5469 
+ 908      636B5469 
+ 908      6D65725F 
+ 908      53746F70 
+ 909              	.LASF26:
+ 910 00d4 696E7465 		.ascii	"interval\000"
+ 910      7276616C 
+ 910      00
+ 911              	.LASF15:
+ 912 00dd 53797374 		.ascii	"SystemTickTimer_Start\000"
+ 912      656D5469 
+ 912      636B5469 
+ 912      6D65725F 
+ 912      53746172 
+ 913              	.LASF11:
+ 914 00f3 63686172 		.ascii	"char\000"
+ 914      00
+ 915              	.LASF28:
+ 916 00f8 53797374 		.ascii	"SystemTickTimer_initVar\000"
+ 916      656D5469 
+ 916      636B5469 
+ 916      6D65725F 
+ 916      696E6974 
+ 917              	.LASF23:
+ 918 0110 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 918      4320342E 
+ 918      392E3320 
+ 918      32303135 
+ 918      30333033 
+ 919 0143 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 919      20726576 
+ 919      6973696F 
+ 919      6E203232 
+ 919      31323230 
+ 920 0176 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 920      66756E63 
+ 920      74696F6E 
+ 920      2D736563 
+ 920      74696F6E 
+ 921              	.LASF16:
+ 922 019e 53797374 		.ascii	"SystemTickTimer_Init\000"
+ 922      656D5469 
+ 922      636B5469 
+ 922      6D65725F 
+ 922      496E6974 
+ 923              	.LASF10:
+ 924 01b3 646F7562 		.ascii	"double\000"
+ 924      6C6500
+ 925              	.LASF4:
+ 926 01ba 6C6F6E67 		.ascii	"long int\000"
+ 926      20696E74 
+ 926      00
+ 927              	.LASF3:
+ 928 01c3 73686F72 		.ascii	"short unsigned int\000"
+ 928      7420756E 
+ 928      7369676E 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccvjzXe2.s 			page 25
+
+
+ 928      65642069 
+ 928      6E7400
+ 929              	.LASF0:
+ 930 01d6 7369676E 		.ascii	"signed char\000"
+ 930      65642063 
+ 930      68617200 
+ 931              	.LASF25:
+ 932 01e2 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 932      73657273 
+ 932      5C6C756B 
+ 932      61735C44 
+ 932      65736B74 
+ 933 0211 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 933      73746572 
+ 933      5C50696F 
+ 933      6E656572 
+ 933      4B69745F 
+ 934              	.LASF24:
+ 935 023a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\SystemTickTimer.c\000"
+ 935      6E657261 
+ 935      7465645F 
+ 935      536F7572 
+ 935      63655C50 
+ 936              	.LASF21:
+ 937 0265 53797374 		.ascii	"SystemTickTimer_DisableInt\000"
+ 937      656D5469 
+ 937      636B5469 
+ 937      6D65725F 
+ 937      44697361 
+ 938              	.LASF9:
+ 939 0280 666C6F61 		.ascii	"float\000"
+ 939      7400
+ 940              	.LASF2:
+ 941 0286 73686F72 		.ascii	"short int\000"
+ 941      7420696E 
+ 941      7400
+ 942              	.LASF13:
+ 943 0290 72656738 		.ascii	"reg8\000"
+ 943      00
+ 944              	.LASF14:
+ 945 0295 73697A65 		.ascii	"sizetype\000"
+ 945      74797065 
+ 945      00
+ 946              	.LASF19:
+ 947 029e 696E7465 		.ascii	"interruptState\000"
+ 947      72727570 
+ 947      74537461 
+ 947      746500
+ 948              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,1192 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Interrupts.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.InDMADone_Interrupt,"ax",%progbits
+  19              		.align	2
+  20              		.global	InDMADone_Interrupt
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	InDMADone_Interrupt, %function
+  24              	InDMADone_Interrupt:
+  25              	.LFB56:
+  26              		.file 1 ".\\Interrupts.c"
+   1:.\Interrupts.c **** /*******************************************************************************
+   2:.\Interrupts.c **** * File Name: Interrupts.c
+   3:.\Interrupts.c **** *
+   4:.\Interrupts.c **** * Version 1.0
+   5:.\Interrupts.c **** *
+   6:.\Interrupts.c **** *  Description: This file contains interrupt service routines for all the interrupts
+   7:.\Interrupts.c **** *               in the system
+   8:.\Interrupts.c **** *
+   9:.\Interrupts.c **** ********************************************************************************
+  10:.\Interrupts.c **** * Copyright (2008-2013), Cypress Semiconductor Corporation.
+  11:.\Interrupts.c **** ********************************************************************************
+  12:.\Interrupts.c **** * This software is owned by Cypress Semiconductor Corporation (Cypress) and is
+  13:.\Interrupts.c **** * protected by and subject to worldwide patent protection (United States and
+  14:.\Interrupts.c **** * foreign), United States copyright laws and international treaty provisions.
+  15:.\Interrupts.c **** * Cypress hereby grants to licensee a personal, non-exclusive, non-transferable
+  16:.\Interrupts.c **** * license to copy, use, modify, create derivative works of, and compile the
+  17:.\Interrupts.c **** * Cypress Source Code and derivative works for the sole purpose of creating
+  18:.\Interrupts.c **** * custom software in support of licensee product to be used only in conjunction
+  19:.\Interrupts.c **** * with a Cypress integrated circuit as specified in the applicable agreement.
+  20:.\Interrupts.c **** * Any reproduction, modification, translation, compilation, or representation of
+  21:.\Interrupts.c **** * this software except as specified above is prohibited without the express
+  22:.\Interrupts.c **** * written permission of Cypress.
+  23:.\Interrupts.c **** *
+  24:.\Interrupts.c **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH
+  25:.\Interrupts.c **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  26:.\Interrupts.c **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  27:.\Interrupts.c **** * Cypress reserves the right to make changes without further notice to the
+  28:.\Interrupts.c **** * materials described herein. Cypress does not assume any liability arising out
+  29:.\Interrupts.c **** * of the application or use of any product or circuit described herein. Cypress
+  30:.\Interrupts.c **** * does not authorize its products for use as critical components in life-support
+  31:.\Interrupts.c **** * systems where a malfunction or failure may reasonably be expected to result in
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 2
+
+
+  32:.\Interrupts.c **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  33:.\Interrupts.c **** * support systems application implies that the manufacturer assumes all risk of
+  34:.\Interrupts.c **** * such use and in doing so indemnifies Cypress against all charges. Use may be
+  35:.\Interrupts.c **** * limited by and subject to the applicable Cypress software license agreement.
+  36:.\Interrupts.c **** *******************************************************************************/
+  37:.\Interrupts.c **** #include <Application.h>
+  38:.\Interrupts.c **** #include <AudioControl.h>
+  39:.\Interrupts.c **** #include <Configuration.h>
+  40:.\Interrupts.c **** #include <device.h>
+  41:.\Interrupts.c **** #include <Interrupts.h>
+  42:.\Interrupts.c **** #include <USBInterface.h>
+  43:.\Interrupts.c **** extern uint16 inCnt;
+  44:.\Interrupts.c **** extern uint16 inLevel;
+  45:.\Interrupts.c **** extern uint16 inUsbCount;
+  46:.\Interrupts.c **** extern uint16 inUsbShadow;
+  47:.\Interrupts.c **** extern CYBIT applicationTimerTick;
+  48:.\Interrupts.c **** extern uint16 outLevel;
+  49:.\Interrupts.c **** extern uint16 outUsbCount;
+  50:.\Interrupts.c **** extern uint16 outUsbShadow;
+  51:.\Interrupts.c **** 
+  52:.\Interrupts.c **** extern volatile uint8 USBFS_device;
+  53:.\Interrupts.c **** 
+  54:.\Interrupts.c **** #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+  55:.\Interrupts.c **** extern CYBIT inPlaying;
+  56:.\Interrupts.c **** #endif
+  57:.\Interrupts.c **** 
+  58:.\Interrupts.c **** #ifndef ENABLE_DIGITAL_AUDIO_IN_ONLY
+  59:.\Interrupts.c **** extern CYBIT outPlaying;
+  60:.\Interrupts.c **** #endif
+  61:.\Interrupts.c **** 
+  62:.\Interrupts.c **** /*******************************************************************************
+  63:.\Interrupts.c **** * Function Name: InDMADone_Interrupt
+  64:.\Interrupts.c **** ********************************************************************************
+  65:.\Interrupts.c **** * Summary:
+  66:.\Interrupts.c **** *   The Interrupt Service Routine for isr_InDMADone. Arms USB Audio In end-point
+  67:.\Interrupts.c **** * 	for USB host to receive audio data.
+  68:.\Interrupts.c **** *
+  69:.\Interrupts.c **** * Parameters:  
+  70:.\Interrupts.c **** *	InDMADone interrupt vector
+  71:.\Interrupts.c **** *
+  72:.\Interrupts.c **** * Return:
+  73:.\Interrupts.c **** *   void.
+  74:.\Interrupts.c **** *
+  75:.\Interrupts.c **** *******************************************************************************/
+  76:.\Interrupts.c **** CY_ISR(InDMADone_Interrupt)
+  77:.\Interrupts.c **** {
+  27              		.loc 1 77 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 7, -8
+  34              		.cfi_offset 14, -4
+  35 0002 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  78:.\Interrupts.c ****     #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 3
+
+
+  79:.\Interrupts.c ****     /* Parameters to this API Call CHANGES DEPENDING ON DATA ENDPOINT MEMORY MODE */
+  80:.\Interrupts.c ****     USBFS_LoadInEP(AUDIO_IN_ENDPOINT, USBFS_NULL, inCnt);
+  37              		.loc 1 80 0
+  38 0004 034B     		ldr	r3, .L2
+  39 0006 1B88     		ldrh	r3, [r3]
+  40 0008 0220     		movs	r0, #2
+  41 000a 0021     		movs	r1, #0
+  42 000c 1A46     		mov	r2, r3
+  43 000e FFF7FEFF 		bl	USBFS_LoadInEP
+  81:.\Interrupts.c **** 	#endif
+  82:.\Interrupts.c ****     
+  83:.\Interrupts.c ****     /* USER_CODE: [Audio IN EP loaded] This ISR is triggered once the required audio IN data for th
+  84:.\Interrupts.c ****      * transfer is made available at the USB audio IN endpoint memory */
+  85:.\Interrupts.c **** }
+  44              		.loc 1 85 0
+  45 0012 80BD     		pop	{r7, pc}
+  46              	.L3:
+  47              		.align	2
+  48              	.L2:
+  49 0014 00000000 		.word	inCnt
+  50              		.cfi_endproc
+  51              	.LFE56:
+  52              		.size	InDMADone_Interrupt, .-InDMADone_Interrupt
+  53              		.section	.text.RxDMADone_Interrupt,"ax",%progbits
+  54              		.align	2
+  55              		.global	RxDMADone_Interrupt
+  56              		.thumb
+  57              		.thumb_func
+  58              		.type	RxDMADone_Interrupt, %function
+  59              	RxDMADone_Interrupt:
+  60              	.LFB57:
+  86:.\Interrupts.c **** 
+  87:.\Interrupts.c **** /*******************************************************************************
+  88:.\Interrupts.c **** * Function Name: RxDMADone_Interrupt
+  89:.\Interrupts.c **** ********************************************************************************
+  90:.\Interrupts.c **** * Summary:
+  91:.\Interrupts.c **** *   The Interrupt Service Routine for isr_RxDMADone. This handles the AUDIO In
+  92:.\Interrupts.c **** *	buffer pointers and detects overflow of the buffer to stop AUDIO In. 
+  93:.\Interrupts.c **** *
+  94:.\Interrupts.c **** * Parameters:  
+  95:.\Interrupts.c **** *	RxDMADone interrupt vector
+  96:.\Interrupts.c **** *
+  97:.\Interrupts.c **** * Return:
+  98:.\Interrupts.c **** *   void.
+  99:.\Interrupts.c **** *
+ 100:.\Interrupts.c **** *******************************************************************************/
+ 101:.\Interrupts.c **** CY_ISR(RxDMADone_Interrupt)
+ 102:.\Interrupts.c **** {
+  61              		.loc 1 102 0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 8
+  64              		@ frame_needed = 1, uses_anonymous_args = 0
+  65 0000 80B5     		push	{r7, lr}
+  66              		.cfi_def_cfa_offset 8
+  67              		.cfi_offset 7, -8
+  68              		.cfi_offset 14, -4
+  69 0002 82B0     		sub	sp, sp, #8
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 4
+
+
+  70              		.cfi_def_cfa_offset 16
+  71 0004 00AF     		add	r7, sp, #0
+  72              		.cfi_def_cfa_register 7
+ 103:.\Interrupts.c ****     #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY 
+ 104:.\Interrupts.c ****     uint16 removed;
+ 105:.\Interrupts.c **** 	
+ 106:.\Interrupts.c **** 	/* Note: Care must be taken in the application code to update inUsbCount atomically */
+ 107:.\Interrupts.c **** 	removed = inUsbCount - inUsbShadow;
+  73              		.loc 1 107 0
+  74 0006 114B     		ldr	r3, .L7
+  75 0008 1A88     		ldrh	r2, [r3]
+  76 000a 114B     		ldr	r3, .L7+4
+  77 000c 1B88     		ldrh	r3, [r3]
+  78 000e D31A     		subs	r3, r2, r3
+  79 0010 FB80     		strh	r3, [r7, #6]	@ movhi
+ 108:.\Interrupts.c **** 	inLevel -= removed;
+  80              		.loc 1 108 0
+  81 0012 104B     		ldr	r3, .L7+8
+  82 0014 1A88     		ldrh	r2, [r3]
+  83 0016 FB88     		ldrh	r3, [r7, #6]	@ movhi
+  84 0018 D31A     		subs	r3, r2, r3
+  85 001a 9AB2     		uxth	r2, r3
+  86 001c 0D4B     		ldr	r3, .L7+8
+  87 001e 1A80     		strh	r2, [r3]	@ movhi
+ 109:.\Interrupts.c ****     
+ 110:.\Interrupts.c ****     #if 0
+ 111:.\Interrupts.c **** 	if (inLevel <= IN_TRANS_SIZE) 
+ 112:.\Interrupts.c **** 		for(;;) ;		/* Underflow should not happen */
+ 113:.\Interrupts.c ****     #endif
+ 114:.\Interrupts.c ****     
+ 115:.\Interrupts.c **** 	inUsbShadow = inUsbCount;
+  88              		.loc 1 115 0
+  89 0020 0A4B     		ldr	r3, .L7
+  90 0022 1A88     		ldrh	r2, [r3]
+  91 0024 0A4B     		ldr	r3, .L7+4
+  92 0026 1A80     		strh	r2, [r3]	@ movhi
+ 116:.\Interrupts.c **** 		
+ 117:.\Interrupts.c **** 	if (inLevel >= IN_BUFSIZE) 
+  93              		.loc 1 117 0
+  94 0028 0A4B     		ldr	r3, .L7+8
+  95 002a 1B88     		ldrh	r3, [r3]
+  96 002c B3F5407F 		cmp	r3, #768
+  97 0030 02D3     		bcc	.L5
+ 118:.\Interrupts.c ****     {
+ 119:.\Interrupts.c ****        Stop_PDM_InPath();
+  98              		.loc 1 119 0
+  99 0032 FFF7FEFF 		bl	Stop_PDM_InPath
+ 100 0036 05E0     		b	.L4
+ 101              	.L5:
+ 120:.\Interrupts.c **** 	}
+ 121:.\Interrupts.c **** 	else 
+ 122:.\Interrupts.c ****     {
+ 123:.\Interrupts.c **** 		inLevel += IN_TRANS_SIZE;
+ 102              		.loc 1 123 0
+ 103 0038 064B     		ldr	r3, .L7+8
+ 104 003a 1B88     		ldrh	r3, [r3]
+ 105 003c 6033     		adds	r3, r3, #96
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 5
+
+
+ 106 003e 9AB2     		uxth	r2, r3
+ 107 0040 044B     		ldr	r3, .L7+8
+ 108 0042 1A80     		strh	r2, [r3]	@ movhi
+ 109              	.L4:
+ 124:.\Interrupts.c **** 	}
+ 125:.\Interrupts.c ****     #endif
+ 126:.\Interrupts.c ****     
+ 127:.\Interrupts.c ****     /* USER_CODE: [Audio IN buffer pointers] ISR triggered by audio IN data transfer DMA (see TopDe
+ 128:.\Interrupts.c ****      * the audio IN buffer pointers */
+ 129:.\Interrupts.c **** }
+ 110              		.loc 1 129 0
+ 111 0044 0837     		adds	r7, r7, #8
+ 112              		.cfi_def_cfa_offset 8
+ 113 0046 BD46     		mov	sp, r7
+ 114              		.cfi_def_cfa_register 13
+ 115              		@ sp needed
+ 116 0048 80BD     		pop	{r7, pc}
+ 117              	.L8:
+ 118 004a 00BF     		.align	2
+ 119              	.L7:
+ 120 004c 00000000 		.word	inUsbCount
+ 121 0050 00000000 		.word	inUsbShadow
+ 122 0054 00000000 		.word	inLevel
+ 123              		.cfi_endproc
+ 124              	.LFE57:
+ 125              		.size	RxDMADone_Interrupt, .-RxDMADone_Interrupt
+ 126              		.section	.text.Tick_Interrupt,"ax",%progbits
+ 127              		.align	2
+ 128              		.global	Tick_Interrupt
+ 129              		.thumb
+ 130              		.thumb_func
+ 131              		.type	Tick_Interrupt, %function
+ 132              	Tick_Interrupt:
+ 133              	.LFB58:
+ 130:.\Interrupts.c **** 
+ 131:.\Interrupts.c **** /*******************************************************************************
+ 132:.\Interrupts.c **** * Function Name: Tick_Interrupt
+ 133:.\Interrupts.c **** ********************************************************************************
+ 134:.\Interrupts.c **** * Summary:
+ 135:.\Interrupts.c **** *   The Interrupt Service Routine for isr_Tick. Sets flag for the timer function
+ 136:.\Interrupts.c **** *	to manage all counting operations
+ 137:.\Interrupts.c **** *
+ 138:.\Interrupts.c **** * Parameters:  
+ 139:.\Interrupts.c **** *	Sleep Timer tick interrupt vector
+ 140:.\Interrupts.c **** *
+ 141:.\Interrupts.c **** * Return:
+ 142:.\Interrupts.c **** *   void.
+ 143:.\Interrupts.c **** *
+ 144:.\Interrupts.c **** *******************************************************************************/
+ 145:.\Interrupts.c **** CY_ISR(Tick_Interrupt)
+ 146:.\Interrupts.c **** {
+ 134              		.loc 1 146 0
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 0
+ 137              		@ frame_needed = 1, uses_anonymous_args = 0
+ 138              		@ link register save eliminated.
+ 139 0000 80B4     		push	{r7}
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 6
+
+
+ 140              		.cfi_def_cfa_offset 4
+ 141              		.cfi_offset 7, -4
+ 142 0002 00AF     		add	r7, sp, #0
+ 143              		.cfi_def_cfa_register 7
+ 147:.\Interrupts.c ****     applicationTimerTick = CY_PM_INT_SR_REG;	
+ 144              		.loc 1 147 0
+ 145 0004 054B     		ldr	r3, .L10
+ 146 0006 1B78     		ldrb	r3, [r3]
+ 147 0008 DAB2     		uxtb	r2, r3
+ 148 000a 054B     		ldr	r3, .L10+4
+ 149 000c 1A70     		strb	r2, [r3]
+ 148:.\Interrupts.c **** 	applicationTimerTick = TRUE;
+ 150              		.loc 1 148 0
+ 151 000e 044B     		ldr	r3, .L10+4
+ 152 0010 0122     		movs	r2, #1
+ 153 0012 1A70     		strb	r2, [r3]
+ 149:.\Interrupts.c **** }
+ 154              		.loc 1 149 0
+ 155 0014 BD46     		mov	sp, r7
+ 156              		.cfi_def_cfa_register 13
+ 157              		@ sp needed
+ 158 0016 5DF8047B 		ldr	r7, [sp], #4
+ 159              		.cfi_restore 7
+ 160              		.cfi_def_cfa_offset 0
+ 161 001a 7047     		bx	lr
+ 162              	.L11:
+ 163              		.align	2
+ 164              	.L10:
+ 165 001c 90430040 		.word	1073759120
+ 166 0020 00000000 		.word	applicationTimerTick
+ 167              		.cfi_endproc
+ 168              	.LFE58:
+ 169              		.size	Tick_Interrupt, .-Tick_Interrupt
+ 170              		.section	.text.TxDMADone_Interrupt,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	TxDMADone_Interrupt
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.type	TxDMADone_Interrupt, %function
+ 176              	TxDMADone_Interrupt:
+ 177              	.LFB59:
+ 150:.\Interrupts.c **** 
+ 151:.\Interrupts.c **** /*******************************************************************************
+ 152:.\Interrupts.c **** * Function Name: TxDMADone_Interrupt
+ 153:.\Interrupts.c **** ********************************************************************************
+ 154:.\Interrupts.c **** * Summary:
+ 155:.\Interrupts.c **** *   The Interrupt Service Routine for isr_TxDMADone. This handles the AUDIO Out
+ 156:.\Interrupts.c **** *	buffer pointers and detects underflow of the buffer to stop AUDIO out.
+ 157:.\Interrupts.c **** *
+ 158:.\Interrupts.c **** * Parameters:  
+ 159:.\Interrupts.c **** *	TxDMADone interrupt vector
+ 160:.\Interrupts.c **** *
+ 161:.\Interrupts.c **** * Return:
+ 162:.\Interrupts.c **** *   void.
+ 163:.\Interrupts.c **** *
+ 164:.\Interrupts.c **** *******************************************************************************/
+ 165:.\Interrupts.c **** CY_ISR(TxDMADone_Interrupt)
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 7
+
+
+ 166:.\Interrupts.c **** {
+ 178              		.loc 1 166 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 8
+ 181              		@ frame_needed = 1, uses_anonymous_args = 0
+ 182 0000 80B5     		push	{r7, lr}
+ 183              		.cfi_def_cfa_offset 8
+ 184              		.cfi_offset 7, -8
+ 185              		.cfi_offset 14, -4
+ 186 0002 82B0     		sub	sp, sp, #8
+ 187              		.cfi_def_cfa_offset 16
+ 188 0004 00AF     		add	r7, sp, #0
+ 189              		.cfi_def_cfa_register 7
+ 167:.\Interrupts.c ****     #ifndef ENABLE_DIGITAL_AUDIO_IN_ONLY 
+ 168:.\Interrupts.c **** 	uint16 added;
+ 169:.\Interrupts.c **** 
+ 170:.\Interrupts.c **** 	/* Note: Care must be taken in the application code to update outUsbCount atomically
+ 171:.\Interrupts.c **** 	 * Code is currently implemented with both updaters of this value in interrupts that are
+ 172:.\Interrupts.c **** 	 * the same priority so the code will not execute at the same time, but the code
+ 173:.\Interrupts.c **** 	 * has been written so that this is not a requirement. */
+ 174:.\Interrupts.c ****     
+ 175:.\Interrupts.c **** 	added = outUsbCount - outUsbShadow;
+ 190              		.loc 1 175 0
+ 191 0006 114B     		ldr	r3, .L15
+ 192 0008 1A88     		ldrh	r2, [r3]
+ 193 000a 114B     		ldr	r3, .L15+4
+ 194 000c 1B88     		ldrh	r3, [r3]
+ 195 000e D31A     		subs	r3, r2, r3
+ 196 0010 FB80     		strh	r3, [r7, #6]	@ movhi
+ 176:.\Interrupts.c **** 	outLevel += added;
+ 197              		.loc 1 176 0
+ 198 0012 104B     		ldr	r3, .L15+8
+ 199 0014 1A88     		ldrh	r2, [r3]
+ 200 0016 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 201 0018 1344     		add	r3, r3, r2
+ 202 001a 9AB2     		uxth	r2, r3
+ 203 001c 0D4B     		ldr	r3, .L15+8
+ 204 001e 1A80     		strh	r2, [r3]	@ movhi
+ 177:.\Interrupts.c ****     
+ 178:.\Interrupts.c ****     #if 0
+ 179:.\Interrupts.c **** 	if (outLevel > OUT_BUFSIZE) 
+ 180:.\Interrupts.c **** 		for(;;) ;		/* Overflow should not happen */
+ 181:.\Interrupts.c ****     #endif
+ 182:.\Interrupts.c ****     
+ 183:.\Interrupts.c **** 	outUsbShadow = outUsbCount;
+ 205              		.loc 1 183 0
+ 206 0020 0A4B     		ldr	r3, .L15
+ 207 0022 1A88     		ldrh	r2, [r3]
+ 208 0024 0A4B     		ldr	r3, .L15+4
+ 209 0026 1A80     		strh	r2, [r3]	@ movhi
+ 184:.\Interrupts.c **** 	
+ 185:.\Interrupts.c **** 	if (outLevel <= OUT_AUDIOMAXPKT) 
+ 210              		.loc 1 185 0
+ 211 0028 0A4B     		ldr	r3, .L15+8
+ 212 002a 1B88     		ldrh	r3, [r3]
+ 213 002c B3F5907F 		cmp	r3, #288
+ 214 0030 02D8     		bhi	.L13
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 8
+
+
+ 186:.\Interrupts.c **** 	{
+ 187:.\Interrupts.c **** 		/* Underflow, so disable the DMA, mute and tell the main task to reset all its structures Stop DM
+ 188:.\Interrupts.c **** 		Stop_I2S_Tx();
+ 215              		.loc 1 188 0
+ 216 0032 FFF7FEFF 		bl	Stop_I2S_Tx
+ 217 0036 05E0     		b	.L12
+ 218              	.L13:
+ 189:.\Interrupts.c **** 	}
+ 190:.\Interrupts.c **** 	else
+ 191:.\Interrupts.c **** 	{
+ 192:.\Interrupts.c **** 		outLevel -= OUT_TRANS_SIZE;
+ 219              		.loc 1 192 0
+ 220 0038 064B     		ldr	r3, .L15+8
+ 221 003a 1B88     		ldrh	r3, [r3]
+ 222 003c 903B     		subs	r3, r3, #144
+ 223 003e 9AB2     		uxth	r2, r3
+ 224 0040 044B     		ldr	r3, .L15+8
+ 225 0042 1A80     		strh	r2, [r3]	@ movhi
+ 226              	.L12:
+ 193:.\Interrupts.c **** 	}
+ 194:.\Interrupts.c ****     #endif
+ 195:.\Interrupts.c ****     
+ 196:.\Interrupts.c ****     /* USER_CODE: [Audio OUT buffer pointers] ISR triggered by audio OUT data transfer DMA (see Top
+ 197:.\Interrupts.c ****      * the audio OUT buffer pointers */
+ 198:.\Interrupts.c **** }
+ 227              		.loc 1 198 0
+ 228 0044 0837     		adds	r7, r7, #8
+ 229              		.cfi_def_cfa_offset 8
+ 230 0046 BD46     		mov	sp, r7
+ 231              		.cfi_def_cfa_register 13
+ 232              		@ sp needed
+ 233 0048 80BD     		pop	{r7, pc}
+ 234              	.L16:
+ 235 004a 00BF     		.align	2
+ 236              	.L15:
+ 237 004c 00000000 		.word	outUsbCount
+ 238 0050 00000000 		.word	outUsbShadow
+ 239 0054 00000000 		.word	outLevel
+ 240              		.cfi_endproc
+ 241              	.LFE59:
+ 242              		.size	TxDMADone_Interrupt, .-TxDMADone_Interrupt
+ 243              		.section	.text.cicOverflow_Interrupt,"ax",%progbits
+ 244              		.align	2
+ 245              		.global	cicOverflow_Interrupt
+ 246              		.thumb
+ 247              		.thumb_func
+ 248              		.type	cicOverflow_Interrupt, %function
+ 249              	cicOverflow_Interrupt:
+ 250              	.LFB60:
+ 199:.\Interrupts.c **** 
+ 200:.\Interrupts.c **** /*******************************************************************************
+ 201:.\Interrupts.c **** * Function Name: cicOverflow_Interrupt
+ 202:.\Interrupts.c **** ********************************************************************************
+ 203:.\Interrupts.c **** *
+ 204:.\Interrupts.c **** * Summary:
+ 205:.\Interrupts.c **** *  ISR for the PDM CIC FIFO OVerflow interrupt
+ 206:.\Interrupts.c **** *
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 9
+
+
+ 207:.\Interrupts.c **** * Parameters:
+ 208:.\Interrupts.c **** *  None
+ 209:.\Interrupts.c **** *
+ 210:.\Interrupts.c **** * Return:
+ 211:.\Interrupts.c **** *  None
+ 212:.\Interrupts.c **** *
+ 213:.\Interrupts.c **** * Global Variables:
+ 214:.\Interrupts.c **** *  None
+ 215:.\Interrupts.c **** *******************************************************************************/
+ 216:.\Interrupts.c **** CY_ISR(cicOverflow_Interrupt)
+ 217:.\Interrupts.c **** {
+ 251              		.loc 1 217 0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 8
+ 254              		@ frame_needed = 1, uses_anonymous_args = 0
+ 255 0000 80B5     		push	{r7, lr}
+ 256              		.cfi_def_cfa_offset 8
+ 257              		.cfi_offset 7, -8
+ 258              		.cfi_offset 14, -4
+ 259 0002 82B0     		sub	sp, sp, #8
+ 260              		.cfi_def_cfa_offset 16
+ 261 0004 00AF     		add	r7, sp, #0
+ 262              		.cfi_def_cfa_register 7
+ 218:.\Interrupts.c **** 	uint8 cic_overflow_status;	
+ 219:.\Interrupts.c **** 	
+ 220:.\Interrupts.c **** 	/* Read the status register to know the cause and clear the interrupt */
+ 221:.\Interrupts.c **** 	cic_overflow_status = PDM_CIC_ReadInterruptStatus(); 
+ 263              		.loc 1 221 0
+ 264 0006 FFF7FEFF 		bl	PDM_CIC_ReadInterruptStatus
+ 265 000a 0346     		mov	r3, r0
+ 266 000c FB71     		strb	r3, [r7, #7]
+ 222:.\Interrupts.c **** 
+ 223:.\Interrupts.c **** 	/* USER CODE: Add your code to be executed when the overflow occurs */	
+ 224:.\Interrupts.c **** }
+ 267              		.loc 1 224 0
+ 268 000e 0837     		adds	r7, r7, #8
+ 269              		.cfi_def_cfa_offset 8
+ 270 0010 BD46     		mov	sp, r7
+ 271              		.cfi_def_cfa_register 13
+ 272              		@ sp needed
+ 273 0012 80BD     		pop	{r7, pc}
+ 274              		.cfi_endproc
+ 275              	.LFE60:
+ 276              		.size	cicOverflow_Interrupt, .-cicOverflow_Interrupt
+ 277              		.text
+ 278              	.Letext0:
+ 279              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 280              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 281              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 282              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 283              		.section	.debug_info,"",%progbits
+ 284              	.Ldebug_info0:
+ 285 0000 B7010000 		.4byte	0x1b7
+ 286 0004 0400     		.2byte	0x4
+ 287 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 288 000a 04       		.byte	0x4
+ 289 000b 01       		.uleb128 0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 10
+
+
+ 290 000c 06010000 		.4byte	.LASF35
+ 291 0010 01       		.byte	0x1
+ 292 0011 F8010000 		.4byte	.LASF36
+ 293 0015 00000000 		.4byte	.LASF37
+ 294 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 295 001d 00000000 		.4byte	0
+ 296 0021 00000000 		.4byte	.Ldebug_line0
+ 297 0025 02       		.uleb128 0x2
+ 298 0026 01       		.byte	0x1
+ 299 0027 06       		.byte	0x6
+ 300 0028 4E020000 		.4byte	.LASF0
+ 301 002c 02       		.uleb128 0x2
+ 302 002d 01       		.byte	0x1
+ 303 002e 08       		.byte	0x8
+ 304 002f AD000000 		.4byte	.LASF1
+ 305 0033 02       		.uleb128 0x2
+ 306 0034 02       		.byte	0x2
+ 307 0035 05       		.byte	0x5
+ 308 0036 20020000 		.4byte	.LASF2
+ 309 003a 02       		.uleb128 0x2
+ 310 003b 02       		.byte	0x2
+ 311 003c 07       		.byte	0x7
+ 312 003d E6000000 		.4byte	.LASF3
+ 313 0041 03       		.uleb128 0x3
+ 314 0042 5E000000 		.4byte	.LASF9
+ 315 0046 02       		.byte	0x2
+ 316 0047 3F       		.byte	0x3f
+ 317 0048 4C000000 		.4byte	0x4c
+ 318 004c 02       		.uleb128 0x2
+ 319 004d 04       		.byte	0x4
+ 320 004e 05       		.byte	0x5
+ 321 004f 45020000 		.4byte	.LASF4
+ 322 0053 02       		.uleb128 0x2
+ 323 0054 04       		.byte	0x4
+ 324 0055 07       		.byte	0x7
+ 325 0056 D4000000 		.4byte	.LASF5
+ 326 005a 02       		.uleb128 0x2
+ 327 005b 08       		.byte	0x8
+ 328 005c 05       		.byte	0x5
+ 329 005d EA010000 		.4byte	.LASF6
+ 330 0061 02       		.uleb128 0x2
+ 331 0062 08       		.byte	0x8
+ 332 0063 07       		.byte	0x7
+ 333 0064 C2010000 		.4byte	.LASF7
+ 334 0068 04       		.uleb128 0x4
+ 335 0069 04       		.byte	0x4
+ 336 006a 05       		.byte	0x5
+ 337 006b 696E7400 		.ascii	"int\000"
+ 338 006f 02       		.uleb128 0x2
+ 339 0070 04       		.byte	0x4
+ 340 0071 07       		.byte	0x7
+ 341 0072 B5010000 		.4byte	.LASF8
+ 342 0076 03       		.uleb128 0x3
+ 343 0077 D9010000 		.4byte	.LASF10
+ 344 007b 03       		.byte	0x3
+ 345 007c 2C       		.byte	0x2c
+ 346 007d 41000000 		.4byte	0x41
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 11
+
+
+ 347 0081 03       		.uleb128 0x3
+ 348 0082 3F020000 		.4byte	.LASF11
+ 349 0086 04       		.byte	0x4
+ 350 0087 5B       		.byte	0x5b
+ 351 0088 2C000000 		.4byte	0x2c
+ 352 008c 03       		.uleb128 0x3
+ 353 008d A8010000 		.4byte	.LASF12
+ 354 0091 04       		.byte	0x4
+ 355 0092 5C       		.byte	0x5c
+ 356 0093 3A000000 		.4byte	0x3a
+ 357 0097 02       		.uleb128 0x2
+ 358 0098 04       		.byte	0x4
+ 359 0099 04       		.byte	0x4
+ 360 009a A7000000 		.4byte	.LASF13
+ 361 009e 02       		.uleb128 0x2
+ 362 009f 08       		.byte	0x8
+ 363 00a0 04       		.byte	0x4
+ 364 00a1 94010000 		.4byte	.LASF14
+ 365 00a5 02       		.uleb128 0x2
+ 366 00a6 01       		.byte	0x1
+ 367 00a7 08       		.byte	0x8
+ 368 00a8 07020000 		.4byte	.LASF15
+ 369 00ac 03       		.uleb128 0x3
+ 370 00ad CF000000 		.4byte	.LASF16
+ 371 00b1 04       		.byte	0x4
+ 372 00b2 F0       		.byte	0xf0
+ 373 00b3 B7000000 		.4byte	0xb7
+ 374 00b7 05       		.uleb128 0x5
+ 375 00b8 81000000 		.4byte	0x81
+ 376 00bc 02       		.uleb128 0x2
+ 377 00bd 04       		.byte	0x4
+ 378 00be 07       		.byte	0x7
+ 379 00bf E1010000 		.4byte	.LASF17
+ 380 00c3 06       		.uleb128 0x6
+ 381 00c4 BB000000 		.4byte	.LASF18
+ 382 00c8 01       		.byte	0x1
+ 383 00c9 4C       		.byte	0x4c
+ 384 00ca 00000000 		.4byte	.LFB56
+ 385 00ce 18000000 		.4byte	.LFE56-.LFB56
+ 386 00d2 01       		.uleb128 0x1
+ 387 00d3 9C       		.byte	0x9c
+ 388 00d4 07       		.uleb128 0x7
+ 389 00d5 0C020000 		.4byte	.LASF20
+ 390 00d9 01       		.byte	0x1
+ 391 00da 65       		.byte	0x65
+ 392 00db 00000000 		.4byte	.LFB57
+ 393 00df 58000000 		.4byte	.LFE57-.LFB57
+ 394 00e3 01       		.uleb128 0x1
+ 395 00e4 9C       		.byte	0x9c
+ 396 00e5 F8000000 		.4byte	0xf8
+ 397 00e9 08       		.uleb128 0x8
+ 398 00ea 93000000 		.4byte	.LASF22
+ 399 00ee 01       		.byte	0x1
+ 400 00ef 68       		.byte	0x68
+ 401 00f0 8C000000 		.4byte	0x8c
+ 402 00f4 02       		.uleb128 0x2
+ 403 00f5 91       		.byte	0x91
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 12
+
+
+ 404 00f6 76       		.sleb128 -10
+ 405 00f7 00       		.byte	0
+ 406 00f8 09       		.uleb128 0x9
+ 407 00f9 68000000 		.4byte	.LASF19
+ 408 00fd 01       		.byte	0x1
+ 409 00fe 91       		.byte	0x91
+ 410 00ff 00000000 		.4byte	.LFB58
+ 411 0103 24000000 		.4byte	.LFE58-.LFB58
+ 412 0107 01       		.uleb128 0x1
+ 413 0108 9C       		.byte	0x9c
+ 414 0109 07       		.uleb128 0x7
+ 415 010a 66020000 		.4byte	.LASF21
+ 416 010e 01       		.byte	0x1
+ 417 010f A5       		.byte	0xa5
+ 418 0110 00000000 		.4byte	.LFB59
+ 419 0114 58000000 		.4byte	.LFE59-.LFB59
+ 420 0118 01       		.uleb128 0x1
+ 421 0119 9C       		.byte	0x9c
+ 422 011a 2D010000 		.4byte	0x12d
+ 423 011e 08       		.uleb128 0x8
+ 424 011f AF010000 		.4byte	.LASF23
+ 425 0123 01       		.byte	0x1
+ 426 0124 A8       		.byte	0xa8
+ 427 0125 8C000000 		.4byte	0x8c
+ 428 0129 02       		.uleb128 0x2
+ 429 012a 91       		.byte	0x91
+ 430 012b 76       		.sleb128 -10
+ 431 012c 00       		.byte	0
+ 432 012d 07       		.uleb128 0x7
+ 433 012e 85020000 		.4byte	.LASF24
+ 434 0132 01       		.byte	0x1
+ 435 0133 D8       		.byte	0xd8
+ 436 0134 00000000 		.4byte	.LFB60
+ 437 0138 14000000 		.4byte	.LFE60-.LFB60
+ 438 013c 01       		.uleb128 0x1
+ 439 013d 9C       		.byte	0x9c
+ 440 013e 51010000 		.4byte	0x151
+ 441 0142 08       		.uleb128 0x8
+ 442 0143 7F000000 		.4byte	.LASF25
+ 443 0147 01       		.byte	0x1
+ 444 0148 DA       		.byte	0xda
+ 445 0149 81000000 		.4byte	0x81
+ 446 014d 02       		.uleb128 0x2
+ 447 014e 91       		.byte	0x91
+ 448 014f 77       		.sleb128 -9
+ 449 0150 00       		.byte	0
+ 450 0151 0A       		.uleb128 0xa
+ 451 0152 F9000000 		.4byte	.LASF26
+ 452 0156 05       		.byte	0x5
+ 453 0157 1606     		.2byte	0x616
+ 454 0159 5D010000 		.4byte	0x15d
+ 455 015d 05       		.uleb128 0x5
+ 456 015e 76000000 		.4byte	0x76
+ 457 0162 0B       		.uleb128 0xb
+ 458 0163 58000000 		.4byte	.LASF27
+ 459 0167 01       		.byte	0x1
+ 460 0168 2B       		.byte	0x2b
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 13
+
+
+ 461 0169 8C000000 		.4byte	0x8c
+ 462 016d 0B       		.uleb128 0xb
+ 463 016e 77000000 		.4byte	.LASF28
+ 464 0172 01       		.byte	0x1
+ 465 0173 2C       		.byte	0x2c
+ 466 0174 8C000000 		.4byte	0x8c
+ 467 0178 0B       		.uleb128 0xb
+ 468 0179 7A020000 		.4byte	.LASF29
+ 469 017d 01       		.byte	0x1
+ 470 017e 2D       		.byte	0x2d
+ 471 017f 8C000000 		.4byte	0x8c
+ 472 0183 0B       		.uleb128 0xb
+ 473 0184 5A020000 		.4byte	.LASF30
+ 474 0188 01       		.byte	0x1
+ 475 0189 2E       		.byte	0x2e
+ 476 018a 8C000000 		.4byte	0x8c
+ 477 018e 0B       		.uleb128 0xb
+ 478 018f 2A020000 		.4byte	.LASF31
+ 479 0193 01       		.byte	0x1
+ 480 0194 2F       		.byte	0x2f
+ 481 0195 81000000 		.4byte	0x81
+ 482 0199 0B       		.uleb128 0xb
+ 483 019a 9B020000 		.4byte	.LASF32
+ 484 019e 01       		.byte	0x1
+ 485 019f 30       		.byte	0x30
+ 486 01a0 8C000000 		.4byte	0x8c
+ 487 01a4 0B       		.uleb128 0xb
+ 488 01a5 9B000000 		.4byte	.LASF33
+ 489 01a9 01       		.byte	0x1
+ 490 01aa 31       		.byte	0x31
+ 491 01ab 8C000000 		.4byte	0x8c
+ 492 01af 0B       		.uleb128 0xb
+ 493 01b0 9B010000 		.4byte	.LASF34
+ 494 01b4 01       		.byte	0x1
+ 495 01b5 32       		.byte	0x32
+ 496 01b6 8C000000 		.4byte	0x8c
+ 497 01ba 00       		.byte	0
+ 498              		.section	.debug_abbrev,"",%progbits
+ 499              	.Ldebug_abbrev0:
+ 500 0000 01       		.uleb128 0x1
+ 501 0001 11       		.uleb128 0x11
+ 502 0002 01       		.byte	0x1
+ 503 0003 25       		.uleb128 0x25
+ 504 0004 0E       		.uleb128 0xe
+ 505 0005 13       		.uleb128 0x13
+ 506 0006 0B       		.uleb128 0xb
+ 507 0007 03       		.uleb128 0x3
+ 508 0008 0E       		.uleb128 0xe
+ 509 0009 1B       		.uleb128 0x1b
+ 510 000a 0E       		.uleb128 0xe
+ 511 000b 55       		.uleb128 0x55
+ 512 000c 17       		.uleb128 0x17
+ 513 000d 11       		.uleb128 0x11
+ 514 000e 01       		.uleb128 0x1
+ 515 000f 10       		.uleb128 0x10
+ 516 0010 17       		.uleb128 0x17
+ 517 0011 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 14
+
+
+ 518 0012 00       		.byte	0
+ 519 0013 02       		.uleb128 0x2
+ 520 0014 24       		.uleb128 0x24
+ 521 0015 00       		.byte	0
+ 522 0016 0B       		.uleb128 0xb
+ 523 0017 0B       		.uleb128 0xb
+ 524 0018 3E       		.uleb128 0x3e
+ 525 0019 0B       		.uleb128 0xb
+ 526 001a 03       		.uleb128 0x3
+ 527 001b 0E       		.uleb128 0xe
+ 528 001c 00       		.byte	0
+ 529 001d 00       		.byte	0
+ 530 001e 03       		.uleb128 0x3
+ 531 001f 16       		.uleb128 0x16
+ 532 0020 00       		.byte	0
+ 533 0021 03       		.uleb128 0x3
+ 534 0022 0E       		.uleb128 0xe
+ 535 0023 3A       		.uleb128 0x3a
+ 536 0024 0B       		.uleb128 0xb
+ 537 0025 3B       		.uleb128 0x3b
+ 538 0026 0B       		.uleb128 0xb
+ 539 0027 49       		.uleb128 0x49
+ 540 0028 13       		.uleb128 0x13
+ 541 0029 00       		.byte	0
+ 542 002a 00       		.byte	0
+ 543 002b 04       		.uleb128 0x4
+ 544 002c 24       		.uleb128 0x24
+ 545 002d 00       		.byte	0
+ 546 002e 0B       		.uleb128 0xb
+ 547 002f 0B       		.uleb128 0xb
+ 548 0030 3E       		.uleb128 0x3e
+ 549 0031 0B       		.uleb128 0xb
+ 550 0032 03       		.uleb128 0x3
+ 551 0033 08       		.uleb128 0x8
+ 552 0034 00       		.byte	0
+ 553 0035 00       		.byte	0
+ 554 0036 05       		.uleb128 0x5
+ 555 0037 35       		.uleb128 0x35
+ 556 0038 00       		.byte	0
+ 557 0039 49       		.uleb128 0x49
+ 558 003a 13       		.uleb128 0x13
+ 559 003b 00       		.byte	0
+ 560 003c 00       		.byte	0
+ 561 003d 06       		.uleb128 0x6
+ 562 003e 2E       		.uleb128 0x2e
+ 563 003f 00       		.byte	0
+ 564 0040 3F       		.uleb128 0x3f
+ 565 0041 19       		.uleb128 0x19
+ 566 0042 03       		.uleb128 0x3
+ 567 0043 0E       		.uleb128 0xe
+ 568 0044 3A       		.uleb128 0x3a
+ 569 0045 0B       		.uleb128 0xb
+ 570 0046 3B       		.uleb128 0x3b
+ 571 0047 0B       		.uleb128 0xb
+ 572 0048 27       		.uleb128 0x27
+ 573 0049 19       		.uleb128 0x19
+ 574 004a 11       		.uleb128 0x11
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 15
+
+
+ 575 004b 01       		.uleb128 0x1
+ 576 004c 12       		.uleb128 0x12
+ 577 004d 06       		.uleb128 0x6
+ 578 004e 40       		.uleb128 0x40
+ 579 004f 18       		.uleb128 0x18
+ 580 0050 9642     		.uleb128 0x2116
+ 581 0052 19       		.uleb128 0x19
+ 582 0053 00       		.byte	0
+ 583 0054 00       		.byte	0
+ 584 0055 07       		.uleb128 0x7
+ 585 0056 2E       		.uleb128 0x2e
+ 586 0057 01       		.byte	0x1
+ 587 0058 3F       		.uleb128 0x3f
+ 588 0059 19       		.uleb128 0x19
+ 589 005a 03       		.uleb128 0x3
+ 590 005b 0E       		.uleb128 0xe
+ 591 005c 3A       		.uleb128 0x3a
+ 592 005d 0B       		.uleb128 0xb
+ 593 005e 3B       		.uleb128 0x3b
+ 594 005f 0B       		.uleb128 0xb
+ 595 0060 27       		.uleb128 0x27
+ 596 0061 19       		.uleb128 0x19
+ 597 0062 11       		.uleb128 0x11
+ 598 0063 01       		.uleb128 0x1
+ 599 0064 12       		.uleb128 0x12
+ 600 0065 06       		.uleb128 0x6
+ 601 0066 40       		.uleb128 0x40
+ 602 0067 18       		.uleb128 0x18
+ 603 0068 9642     		.uleb128 0x2116
+ 604 006a 19       		.uleb128 0x19
+ 605 006b 01       		.uleb128 0x1
+ 606 006c 13       		.uleb128 0x13
+ 607 006d 00       		.byte	0
+ 608 006e 00       		.byte	0
+ 609 006f 08       		.uleb128 0x8
+ 610 0070 34       		.uleb128 0x34
+ 611 0071 00       		.byte	0
+ 612 0072 03       		.uleb128 0x3
+ 613 0073 0E       		.uleb128 0xe
+ 614 0074 3A       		.uleb128 0x3a
+ 615 0075 0B       		.uleb128 0xb
+ 616 0076 3B       		.uleb128 0x3b
+ 617 0077 0B       		.uleb128 0xb
+ 618 0078 49       		.uleb128 0x49
+ 619 0079 13       		.uleb128 0x13
+ 620 007a 02       		.uleb128 0x2
+ 621 007b 18       		.uleb128 0x18
+ 622 007c 00       		.byte	0
+ 623 007d 00       		.byte	0
+ 624 007e 09       		.uleb128 0x9
+ 625 007f 2E       		.uleb128 0x2e
+ 626 0080 00       		.byte	0
+ 627 0081 3F       		.uleb128 0x3f
+ 628 0082 19       		.uleb128 0x19
+ 629 0083 03       		.uleb128 0x3
+ 630 0084 0E       		.uleb128 0xe
+ 631 0085 3A       		.uleb128 0x3a
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 16
+
+
+ 632 0086 0B       		.uleb128 0xb
+ 633 0087 3B       		.uleb128 0x3b
+ 634 0088 0B       		.uleb128 0xb
+ 635 0089 27       		.uleb128 0x27
+ 636 008a 19       		.uleb128 0x19
+ 637 008b 11       		.uleb128 0x11
+ 638 008c 01       		.uleb128 0x1
+ 639 008d 12       		.uleb128 0x12
+ 640 008e 06       		.uleb128 0x6
+ 641 008f 40       		.uleb128 0x40
+ 642 0090 18       		.uleb128 0x18
+ 643 0091 9742     		.uleb128 0x2117
+ 644 0093 19       		.uleb128 0x19
+ 645 0094 00       		.byte	0
+ 646 0095 00       		.byte	0
+ 647 0096 0A       		.uleb128 0xa
+ 648 0097 34       		.uleb128 0x34
+ 649 0098 00       		.byte	0
+ 650 0099 03       		.uleb128 0x3
+ 651 009a 0E       		.uleb128 0xe
+ 652 009b 3A       		.uleb128 0x3a
+ 653 009c 0B       		.uleb128 0xb
+ 654 009d 3B       		.uleb128 0x3b
+ 655 009e 05       		.uleb128 0x5
+ 656 009f 49       		.uleb128 0x49
+ 657 00a0 13       		.uleb128 0x13
+ 658 00a1 3F       		.uleb128 0x3f
+ 659 00a2 19       		.uleb128 0x19
+ 660 00a3 3C       		.uleb128 0x3c
+ 661 00a4 19       		.uleb128 0x19
+ 662 00a5 00       		.byte	0
+ 663 00a6 00       		.byte	0
+ 664 00a7 0B       		.uleb128 0xb
+ 665 00a8 34       		.uleb128 0x34
+ 666 00a9 00       		.byte	0
+ 667 00aa 03       		.uleb128 0x3
+ 668 00ab 0E       		.uleb128 0xe
+ 669 00ac 3A       		.uleb128 0x3a
+ 670 00ad 0B       		.uleb128 0xb
+ 671 00ae 3B       		.uleb128 0x3b
+ 672 00af 0B       		.uleb128 0xb
+ 673 00b0 49       		.uleb128 0x49
+ 674 00b1 13       		.uleb128 0x13
+ 675 00b2 3F       		.uleb128 0x3f
+ 676 00b3 19       		.uleb128 0x19
+ 677 00b4 3C       		.uleb128 0x3c
+ 678 00b5 19       		.uleb128 0x19
+ 679 00b6 00       		.byte	0
+ 680 00b7 00       		.byte	0
+ 681 00b8 00       		.byte	0
+ 682              		.section	.debug_aranges,"",%progbits
+ 683 0000 3C000000 		.4byte	0x3c
+ 684 0004 0200     		.2byte	0x2
+ 685 0006 00000000 		.4byte	.Ldebug_info0
+ 686 000a 04       		.byte	0x4
+ 687 000b 00       		.byte	0
+ 688 000c 0000     		.2byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 17
+
+
+ 689 000e 0000     		.2byte	0
+ 690 0010 00000000 		.4byte	.LFB56
+ 691 0014 18000000 		.4byte	.LFE56-.LFB56
+ 692 0018 00000000 		.4byte	.LFB57
+ 693 001c 58000000 		.4byte	.LFE57-.LFB57
+ 694 0020 00000000 		.4byte	.LFB58
+ 695 0024 24000000 		.4byte	.LFE58-.LFB58
+ 696 0028 00000000 		.4byte	.LFB59
+ 697 002c 58000000 		.4byte	.LFE59-.LFB59
+ 698 0030 00000000 		.4byte	.LFB60
+ 699 0034 14000000 		.4byte	.LFE60-.LFB60
+ 700 0038 00000000 		.4byte	0
+ 701 003c 00000000 		.4byte	0
+ 702              		.section	.debug_ranges,"",%progbits
+ 703              	.Ldebug_ranges0:
+ 704 0000 00000000 		.4byte	.LFB56
+ 705 0004 18000000 		.4byte	.LFE56
+ 706 0008 00000000 		.4byte	.LFB57
+ 707 000c 58000000 		.4byte	.LFE57
+ 708 0010 00000000 		.4byte	.LFB58
+ 709 0014 24000000 		.4byte	.LFE58
+ 710 0018 00000000 		.4byte	.LFB59
+ 711 001c 58000000 		.4byte	.LFE59
+ 712 0020 00000000 		.4byte	.LFB60
+ 713 0024 14000000 		.4byte	.LFE60
+ 714 0028 00000000 		.4byte	0
+ 715 002c 00000000 		.4byte	0
+ 716              		.section	.debug_line,"",%progbits
+ 717              	.Ldebug_line0:
+ 718 0000 BC010000 		.section	.debug_str,"MS",%progbits,1
+ 718      02004F01 
+ 718      00000201 
+ 718      FB0E0D00 
+ 718      01010101 
+ 719              	.LASF37:
+ 720 0000 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 720      73657273 
+ 720      5C6C756B 
+ 720      61735C44 
+ 720      65736B74 
+ 721 002f 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 721      73746572 
+ 721      5C50696F 
+ 721      6E656572 
+ 721      4B69745F 
+ 722              	.LASF27:
+ 723 0058 696E436E 		.ascii	"inCnt\000"
+ 723      7400
+ 724              	.LASF9:
+ 725 005e 5F5F696E 		.ascii	"__int32_t\000"
+ 725      7433325F 
+ 725      7400
+ 726              	.LASF19:
+ 727 0068 5469636B 		.ascii	"Tick_Interrupt\000"
+ 727      5F496E74 
+ 727      65727275 
+ 727      707400
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 18
+
+
+ 728              	.LASF28:
+ 729 0077 696E4C65 		.ascii	"inLevel\000"
+ 729      76656C00 
+ 730              	.LASF25:
+ 731 007f 6369635F 		.ascii	"cic_overflow_status\000"
+ 731      6F766572 
+ 731      666C6F77 
+ 731      5F737461 
+ 731      74757300 
+ 732              	.LASF22:
+ 733 0093 72656D6F 		.ascii	"removed\000"
+ 733      76656400 
+ 734              	.LASF33:
+ 735 009b 6F757455 		.ascii	"outUsbCount\000"
+ 735      7362436F 
+ 735      756E7400 
+ 736              	.LASF13:
+ 737 00a7 666C6F61 		.ascii	"float\000"
+ 737      7400
+ 738              	.LASF1:
+ 739 00ad 756E7369 		.ascii	"unsigned char\000"
+ 739      676E6564 
+ 739      20636861 
+ 739      7200
+ 740              	.LASF18:
+ 741 00bb 496E444D 		.ascii	"InDMADone_Interrupt\000"
+ 741      41446F6E 
+ 741      655F496E 
+ 741      74657272 
+ 741      75707400 
+ 742              	.LASF16:
+ 743 00cf 72656738 		.ascii	"reg8\000"
+ 743      00
+ 744              	.LASF5:
+ 745 00d4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 745      20756E73 
+ 745      69676E65 
+ 745      6420696E 
+ 745      7400
+ 746              	.LASF3:
+ 747 00e6 73686F72 		.ascii	"short unsigned int\000"
+ 747      7420756E 
+ 747      7369676E 
+ 747      65642069 
+ 747      6E7400
+ 748              	.LASF26:
+ 749 00f9 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 749      52784275 
+ 749      66666572 
+ 749      00
+ 750              	.LASF35:
+ 751 0106 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 751      4320342E 
+ 751      392E3320 
+ 751      32303135 
+ 751      30333033 
+ 752 0139 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 19
+
+
+ 752      20726576 
+ 752      6973696F 
+ 752      6E203232 
+ 752      31323230 
+ 753 016c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 753      66756E63 
+ 753      74696F6E 
+ 753      2D736563 
+ 753      74696F6E 
+ 754              	.LASF14:
+ 755 0194 646F7562 		.ascii	"double\000"
+ 755      6C6500
+ 756              	.LASF34:
+ 757 019b 6F757455 		.ascii	"outUsbShadow\000"
+ 757      73625368 
+ 757      61646F77 
+ 757      00
+ 758              	.LASF12:
+ 759 01a8 75696E74 		.ascii	"uint16\000"
+ 759      313600
+ 760              	.LASF23:
+ 761 01af 61646465 		.ascii	"added\000"
+ 761      6400
+ 762              	.LASF8:
+ 763 01b5 756E7369 		.ascii	"unsigned int\000"
+ 763      676E6564 
+ 763      20696E74 
+ 763      00
+ 764              	.LASF7:
+ 765 01c2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 765      206C6F6E 
+ 765      6720756E 
+ 765      7369676E 
+ 765      65642069 
+ 766              	.LASF10:
+ 767 01d9 696E7433 		.ascii	"int32_t\000"
+ 767      325F7400 
+ 768              	.LASF17:
+ 769 01e1 73697A65 		.ascii	"sizetype\000"
+ 769      74797065 
+ 769      00
+ 770              	.LASF6:
+ 771 01ea 6C6F6E67 		.ascii	"long long int\000"
+ 771      206C6F6E 
+ 771      6720696E 
+ 771      7400
+ 772              	.LASF36:
+ 773 01f8 2E5C496E 		.ascii	".\\Interrupts.c\000"
+ 773      74657272 
+ 773      75707473 
+ 773      2E6300
+ 774              	.LASF15:
+ 775 0207 63686172 		.ascii	"char\000"
+ 775      00
+ 776              	.LASF20:
+ 777 020c 5278444D 		.ascii	"RxDMADone_Interrupt\000"
+ 777      41446F6E 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccORRIGj.s 			page 20
+
+
+ 777      655F496E 
+ 777      74657272 
+ 777      75707400 
+ 778              	.LASF2:
+ 779 0220 73686F72 		.ascii	"short int\000"
+ 779      7420696E 
+ 779      7400
+ 780              	.LASF31:
+ 781 022a 6170706C 		.ascii	"applicationTimerTick\000"
+ 781      69636174 
+ 781      696F6E54 
+ 781      696D6572 
+ 781      5469636B 
+ 782              	.LASF11:
+ 783 023f 75696E74 		.ascii	"uint8\000"
+ 783      3800
+ 784              	.LASF4:
+ 785 0245 6C6F6E67 		.ascii	"long int\000"
+ 785      20696E74 
+ 785      00
+ 786              	.LASF0:
+ 787 024e 7369676E 		.ascii	"signed char\000"
+ 787      65642063 
+ 787      68617200 
+ 788              	.LASF30:
+ 789 025a 696E5573 		.ascii	"inUsbShadow\000"
+ 789      62536861 
+ 789      646F7700 
+ 790              	.LASF21:
+ 791 0266 5478444D 		.ascii	"TxDMADone_Interrupt\000"
+ 791      41446F6E 
+ 791      655F496E 
+ 791      74657272 
+ 791      75707400 
+ 792              	.LASF29:
+ 793 027a 696E5573 		.ascii	"inUsbCount\000"
+ 793      62436F75 
+ 793      6E7400
+ 794              	.LASF24:
+ 795 0285 6369634F 		.ascii	"cicOverflow_Interrupt\000"
+ 795      76657266 
+ 795      6C6F775F 
+ 795      496E7465 
+ 795      72727570 
+ 796              	.LASF32:
+ 797 029b 6F75744C 		.ascii	"outLevel\000"
+ 797      6576656C 
+ 797      00
+ 798              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

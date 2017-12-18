@@ -1,0 +1,629 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Timer.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	applicationTimerTick
+  19              		.bss
+  20              		.type	applicationTimerTick, %object
+  21              		.size	applicationTimerTick, 1
+  22              	applicationTimerTick:
+  23 0000 00       		.space	1
+  24              		.section	.text.HandleApplicationTimerTick,"ax",%progbits
+  25              		.align	2
+  26              		.global	HandleApplicationTimerTick
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	HandleApplicationTimerTick, %function
+  30              	HandleApplicationTimerTick:
+  31              	.LFB56:
+  32              		.file 1 ".\\Timer.c"
+   1:.\Timer.c     **** /*******************************************************************************
+   2:.\Timer.c     **** * File Name: Timer.c
+   3:.\Timer.c     **** *
+   4:.\Timer.c     **** * Version 1.0
+   5:.\Timer.c     **** *
+   6:.\Timer.c     **** * Description: This file contains the system timer tick event updates
+   7:.\Timer.c     **** *
+   8:.\Timer.c     **** ********************************************************************************
+   9:.\Timer.c     **** * Copyright (2008-2013), Cypress Semiconductor Corporation.
+  10:.\Timer.c     **** ********************************************************************************
+  11:.\Timer.c     **** * This software is owned by Cypress Semiconductor Corporation (Cypress) and is
+  12:.\Timer.c     **** * protected by and subject to worldwide patent protection (United States and
+  13:.\Timer.c     **** * foreign), United States copyright laws and international treaty provisions.
+  14:.\Timer.c     **** * Cypress hereby grants to licensee a personal, non-exclusive, non-transferable
+  15:.\Timer.c     **** * license to copy, use, modify, create derivative works of, and compile the
+  16:.\Timer.c     **** * Cypress Source Code and derivative works for the sole purpose of creating
+  17:.\Timer.c     **** * custom software in support of licensee product to be used only in conjunction
+  18:.\Timer.c     **** * with a Cypress integrated circuit as specified in the applicable agreement.
+  19:.\Timer.c     **** * Any reproduction, modification, translation, compilation, or representation of
+  20:.\Timer.c     **** * this software except as specified above is prohibited without the express
+  21:.\Timer.c     **** * written permission of Cypress.
+  22:.\Timer.c     **** *
+  23:.\Timer.c     **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH
+  24:.\Timer.c     **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  25:.\Timer.c     **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 2
+
+
+  26:.\Timer.c     **** * Cypress reserves the right to make changes without further notice to the
+  27:.\Timer.c     **** * materials described herein. Cypress does not assume any liability arising out
+  28:.\Timer.c     **** * of the application or use of any product or circuit described herein. Cypress
+  29:.\Timer.c     **** * does not authorize its products for use as critical components in life-support
+  30:.\Timer.c     **** * systems where a malfunction or failure may reasonably be expected to result in
+  31:.\Timer.c     **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  32:.\Timer.c     **** * support systems application implies that the manufacturer assumes all risk of
+  33:.\Timer.c     **** * such use and in doing so indemnifies Cypress against all charges. Use may be
+  34:.\Timer.c     **** * limited by and subject to the applicable Cypress software license agreement.
+  35:.\Timer.c     **** *******************************************************************************/
+  36:.\Timer.c     **** #include <Application.h>
+  37:.\Timer.c     **** #include <Configuration.h>
+  38:.\Timer.c     **** #include <device.h>
+  39:.\Timer.c     **** #include <VolumeControl.h>
+  40:.\Timer.c     **** #include <USBInterface.h>
+  41:.\Timer.c     **** 
+  42:.\Timer.c     **** extern uint8 switchDebounceTimer;
+  43:.\Timer.c     **** 
+  44:.\Timer.c     **** extern CYPDATA uint8 clockSwitchTimer;
+  45:.\Timer.c     **** 
+  46:.\Timer.c     **** extern uint8 USBFS_device;
+  47:.\Timer.c     **** 
+  48:.\Timer.c     **** CYBIT applicationTimerTick = FALSE;
+  49:.\Timer.c     **** 
+  50:.\Timer.c     **** /*******************************************************************************
+  51:.\Timer.c     **** * Function Name: HandleApplicationTimerTick
+  52:.\Timer.c     **** ********************************************************************************
+  53:.\Timer.c     **** * Summary:
+  54:.\Timer.c     **** *       This function updates all the Application layer timers based on sleep
+  55:.\Timer.c     **** *       timer tick event.
+  56:.\Timer.c     **** *
+  57:.\Timer.c     **** * Parameters:
+  58:.\Timer.c     **** *  void
+  59:.\Timer.c     **** *
+  60:.\Timer.c     **** * Return:
+  61:.\Timer.c     **** *  void
+  62:.\Timer.c     **** *
+  63:.\Timer.c     **** *******************************************************************************/
+  64:.\Timer.c     **** void HandleApplicationTimerTick(void)
+  65:.\Timer.c     **** {
+  33              		.loc 1 65 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  66:.\Timer.c     ****     if(applicationTimerTick)
+  43              		.loc 1 66 0
+  44 0004 0E4B     		ldr	r3, .L5
+  45 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  46 0008 002B     		cmp	r3, #0
+  47 000a 18D0     		beq	.L1
+  67:.\Timer.c     ****     {
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 3
+
+
+  68:.\Timer.c     ****         
+  69:.\Timer.c     **** 		#ifdef HANDLE_USB_SUSPEND
+  70:.\Timer.c     ****         ServiceUSBSuspend();          /*Check for USB Suspend event*/
+  48              		.loc 1 70 0
+  49 000c FFF7FEFF 		bl	ServiceUSBSuspend
+  71:.\Timer.c     ****         #endif
+  72:.\Timer.c     ****            
+  73:.\Timer.c     ****         if(switchDebounceTimer)
+  50              		.loc 1 73 0
+  51 0010 0C4B     		ldr	r3, .L5+4
+  52 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  53 0014 002B     		cmp	r3, #0
+  54 0016 05D0     		beq	.L3
+  74:.\Timer.c     ****         {
+  75:.\Timer.c     ****             switchDebounceTimer--;
+  55              		.loc 1 75 0
+  56 0018 0A4B     		ldr	r3, .L5+4
+  57 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  58 001c 013B     		subs	r3, r3, #1
+  59 001e DAB2     		uxtb	r2, r3
+  60 0020 084B     		ldr	r3, .L5+4
+  61 0022 1A70     		strb	r2, [r3]
+  62              	.L3:
+  76:.\Timer.c     ****         }
+  77:.\Timer.c     ****         
+  78:.\Timer.c     ****         if(clockSwitchTimer)
+  63              		.loc 1 78 0
+  64 0024 084B     		ldr	r3, .L5+8
+  65 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  66 0028 002B     		cmp	r3, #0
+  67 002a 05D0     		beq	.L4
+  79:.\Timer.c     ****         {
+  80:.\Timer.c     ****             clockSwitchTimer--;
+  68              		.loc 1 80 0
+  69 002c 064B     		ldr	r3, .L5+8
+  70 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  71 0030 013B     		subs	r3, r3, #1
+  72 0032 DAB2     		uxtb	r2, r3
+  73 0034 044B     		ldr	r3, .L5+8
+  74 0036 1A70     		strb	r2, [r3]
+  75              	.L4:
+  81:.\Timer.c     ****         }
+  82:.\Timer.c     **** 		     
+  83:.\Timer.c     ****         /* USER_CODE: [System tick timer] Placeholder for adding additional timers for custom user 
+  84:.\Timer.c     ****          * routine is executed approximately at every 8ms */
+  85:.\Timer.c     ****         
+  86:.\Timer.c     ****         applicationTimerTick = FALSE;
+  76              		.loc 1 86 0
+  77 0038 014B     		ldr	r3, .L5
+  78 003a 0022     		movs	r2, #0
+  79 003c 1A70     		strb	r2, [r3]
+  80              	.L1:
+  87:.\Timer.c     ****     }
+  88:.\Timer.c     **** }
+  81              		.loc 1 88 0
+  82 003e 80BD     		pop	{r7, pc}
+  83              	.L6:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 4
+
+
+  84              		.align	2
+  85              	.L5:
+  86 0040 00000000 		.word	applicationTimerTick
+  87 0044 00000000 		.word	switchDebounceTimer
+  88 0048 00000000 		.word	clockSwitchTimer
+  89              		.cfi_endproc
+  90              	.LFE56:
+  91              		.size	HandleApplicationTimerTick, .-HandleApplicationTimerTick
+  92              		.text
+  93              	.Letext0:
+  94              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  95              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  96              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+  97              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+  98              		.section	.debug_info,"",%progbits
+  99              	.Ldebug_info0:
+ 100 0000 EE000000 		.4byte	0xee
+ 101 0004 0400     		.2byte	0x4
+ 102 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 103 000a 04       		.byte	0x4
+ 104 000b 01       		.uleb128 0x1
+ 105 000c A1000000 		.4byte	.LASF20
+ 106 0010 01       		.byte	0x1
+ 107 0011 C0010000 		.4byte	.LASF21
+ 108 0015 5E010000 		.4byte	.LASF22
+ 109 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 110 001d 00000000 		.4byte	0
+ 111 0021 00000000 		.4byte	.Ldebug_line0
+ 112 0025 02       		.uleb128 0x2
+ 113 0026 01       		.byte	0x1
+ 114 0027 06       		.byte	0x6
+ 115 0028 52010000 		.4byte	.LASF0
+ 116 002c 02       		.uleb128 0x2
+ 117 002d 01       		.byte	0x1
+ 118 002e 08       		.byte	0x8
+ 119 002f 73000000 		.4byte	.LASF1
+ 120 0033 02       		.uleb128 0x2
+ 121 0034 02       		.byte	0x2
+ 122 0035 05       		.byte	0x5
+ 123 0036 D0010000 		.4byte	.LASF2
+ 124 003a 02       		.uleb128 0x2
+ 125 003b 02       		.byte	0x2
+ 126 003c 07       		.byte	0x7
+ 127 003d 0E000000 		.4byte	.LASF3
+ 128 0041 03       		.uleb128 0x3
+ 129 0042 B6010000 		.4byte	.LASF9
+ 130 0046 02       		.byte	0x2
+ 131 0047 3F       		.byte	0x3f
+ 132 0048 4C000000 		.4byte	0x4c
+ 133 004c 02       		.uleb128 0x2
+ 134 004d 04       		.byte	0x4
+ 135 004e 05       		.byte	0x5
+ 136 004f 3C010000 		.4byte	.LASF4
+ 137 0053 02       		.uleb128 0x2
+ 138 0054 04       		.byte	0x4
+ 139 0055 07       		.byte	0x7
+ 140 0056 4A000000 		.4byte	.LASF5
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 5
+
+
+ 141 005a 02       		.uleb128 0x2
+ 142 005b 08       		.byte	0x8
+ 143 005c 05       		.byte	0x5
+ 144 005d 00000000 		.4byte	.LASF6
+ 145 0061 02       		.uleb128 0x2
+ 146 0062 08       		.byte	0x8
+ 147 0063 07       		.byte	0x7
+ 148 0064 5C000000 		.4byte	.LASF7
+ 149 0068 04       		.uleb128 0x4
+ 150 0069 04       		.byte	0x4
+ 151 006a 05       		.byte	0x5
+ 152 006b 696E7400 		.ascii	"int\000"
+ 153 006f 02       		.uleb128 0x2
+ 154 0070 04       		.byte	0x4
+ 155 0071 07       		.byte	0x7
+ 156 0072 21000000 		.4byte	.LASF8
+ 157 0076 03       		.uleb128 0x3
+ 158 0077 42000000 		.4byte	.LASF10
+ 159 007b 03       		.byte	0x3
+ 160 007c 2C       		.byte	0x2c
+ 161 007d 41000000 		.4byte	0x41
+ 162 0081 03       		.uleb128 0x3
+ 163 0082 36010000 		.4byte	.LASF11
+ 164 0086 04       		.byte	0x4
+ 165 0087 5B       		.byte	0x5b
+ 166 0088 2C000000 		.4byte	0x2c
+ 167 008c 02       		.uleb128 0x2
+ 168 008d 04       		.byte	0x4
+ 169 008e 04       		.byte	0x4
+ 170 008f CA010000 		.4byte	.LASF12
+ 171 0093 02       		.uleb128 0x2
+ 172 0094 08       		.byte	0x8
+ 173 0095 04       		.byte	0x4
+ 174 0096 2F010000 		.4byte	.LASF13
+ 175 009a 02       		.uleb128 0x2
+ 176 009b 01       		.byte	0x1
+ 177 009c 08       		.byte	0x8
+ 178 009d 81000000 		.4byte	.LASF14
+ 179 00a1 02       		.uleb128 0x2
+ 180 00a2 04       		.byte	0x4
+ 181 00a3 07       		.byte	0x7
+ 182 00a4 EB010000 		.4byte	.LASF15
+ 183 00a8 05       		.uleb128 0x5
+ 184 00a9 86000000 		.4byte	.LASF23
+ 185 00ad 01       		.byte	0x1
+ 186 00ae 40       		.byte	0x40
+ 187 00af 00000000 		.4byte	.LFB56
+ 188 00b3 4C000000 		.4byte	.LFE56-.LFB56
+ 189 00b7 01       		.uleb128 0x1
+ 190 00b8 9C       		.byte	0x9c
+ 191 00b9 06       		.uleb128 0x6
+ 192 00ba 45010000 		.4byte	.LASF16
+ 193 00be 05       		.byte	0x5
+ 194 00bf 1606     		.2byte	0x616
+ 195 00c1 C5000000 		.4byte	0xc5
+ 196 00c5 07       		.uleb128 0x7
+ 197 00c6 76000000 		.4byte	0x76
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 6
+
+
+ 198 00ca 08       		.uleb128 0x8
+ 199 00cb 2E000000 		.4byte	.LASF17
+ 200 00cf 01       		.byte	0x1
+ 201 00d0 2A       		.byte	0x2a
+ 202 00d1 81000000 		.4byte	0x81
+ 203 00d5 08       		.uleb128 0x8
+ 204 00d6 DA010000 		.4byte	.LASF18
+ 205 00da 01       		.byte	0x1
+ 206 00db 2C       		.byte	0x2c
+ 207 00dc 81000000 		.4byte	0x81
+ 208 00e0 09       		.uleb128 0x9
+ 209 00e1 F4010000 		.4byte	.LASF19
+ 210 00e5 01       		.byte	0x1
+ 211 00e6 30       		.byte	0x30
+ 212 00e7 81000000 		.4byte	0x81
+ 213 00eb 05       		.uleb128 0x5
+ 214 00ec 03       		.byte	0x3
+ 215 00ed 00000000 		.4byte	applicationTimerTick
+ 216 00f1 00       		.byte	0
+ 217              		.section	.debug_abbrev,"",%progbits
+ 218              	.Ldebug_abbrev0:
+ 219 0000 01       		.uleb128 0x1
+ 220 0001 11       		.uleb128 0x11
+ 221 0002 01       		.byte	0x1
+ 222 0003 25       		.uleb128 0x25
+ 223 0004 0E       		.uleb128 0xe
+ 224 0005 13       		.uleb128 0x13
+ 225 0006 0B       		.uleb128 0xb
+ 226 0007 03       		.uleb128 0x3
+ 227 0008 0E       		.uleb128 0xe
+ 228 0009 1B       		.uleb128 0x1b
+ 229 000a 0E       		.uleb128 0xe
+ 230 000b 55       		.uleb128 0x55
+ 231 000c 17       		.uleb128 0x17
+ 232 000d 11       		.uleb128 0x11
+ 233 000e 01       		.uleb128 0x1
+ 234 000f 10       		.uleb128 0x10
+ 235 0010 17       		.uleb128 0x17
+ 236 0011 00       		.byte	0
+ 237 0012 00       		.byte	0
+ 238 0013 02       		.uleb128 0x2
+ 239 0014 24       		.uleb128 0x24
+ 240 0015 00       		.byte	0
+ 241 0016 0B       		.uleb128 0xb
+ 242 0017 0B       		.uleb128 0xb
+ 243 0018 3E       		.uleb128 0x3e
+ 244 0019 0B       		.uleb128 0xb
+ 245 001a 03       		.uleb128 0x3
+ 246 001b 0E       		.uleb128 0xe
+ 247 001c 00       		.byte	0
+ 248 001d 00       		.byte	0
+ 249 001e 03       		.uleb128 0x3
+ 250 001f 16       		.uleb128 0x16
+ 251 0020 00       		.byte	0
+ 252 0021 03       		.uleb128 0x3
+ 253 0022 0E       		.uleb128 0xe
+ 254 0023 3A       		.uleb128 0x3a
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 7
+
+
+ 255 0024 0B       		.uleb128 0xb
+ 256 0025 3B       		.uleb128 0x3b
+ 257 0026 0B       		.uleb128 0xb
+ 258 0027 49       		.uleb128 0x49
+ 259 0028 13       		.uleb128 0x13
+ 260 0029 00       		.byte	0
+ 261 002a 00       		.byte	0
+ 262 002b 04       		.uleb128 0x4
+ 263 002c 24       		.uleb128 0x24
+ 264 002d 00       		.byte	0
+ 265 002e 0B       		.uleb128 0xb
+ 266 002f 0B       		.uleb128 0xb
+ 267 0030 3E       		.uleb128 0x3e
+ 268 0031 0B       		.uleb128 0xb
+ 269 0032 03       		.uleb128 0x3
+ 270 0033 08       		.uleb128 0x8
+ 271 0034 00       		.byte	0
+ 272 0035 00       		.byte	0
+ 273 0036 05       		.uleb128 0x5
+ 274 0037 2E       		.uleb128 0x2e
+ 275 0038 00       		.byte	0
+ 276 0039 3F       		.uleb128 0x3f
+ 277 003a 19       		.uleb128 0x19
+ 278 003b 03       		.uleb128 0x3
+ 279 003c 0E       		.uleb128 0xe
+ 280 003d 3A       		.uleb128 0x3a
+ 281 003e 0B       		.uleb128 0xb
+ 282 003f 3B       		.uleb128 0x3b
+ 283 0040 0B       		.uleb128 0xb
+ 284 0041 27       		.uleb128 0x27
+ 285 0042 19       		.uleb128 0x19
+ 286 0043 11       		.uleb128 0x11
+ 287 0044 01       		.uleb128 0x1
+ 288 0045 12       		.uleb128 0x12
+ 289 0046 06       		.uleb128 0x6
+ 290 0047 40       		.uleb128 0x40
+ 291 0048 18       		.uleb128 0x18
+ 292 0049 9642     		.uleb128 0x2116
+ 293 004b 19       		.uleb128 0x19
+ 294 004c 00       		.byte	0
+ 295 004d 00       		.byte	0
+ 296 004e 06       		.uleb128 0x6
+ 297 004f 34       		.uleb128 0x34
+ 298 0050 00       		.byte	0
+ 299 0051 03       		.uleb128 0x3
+ 300 0052 0E       		.uleb128 0xe
+ 301 0053 3A       		.uleb128 0x3a
+ 302 0054 0B       		.uleb128 0xb
+ 303 0055 3B       		.uleb128 0x3b
+ 304 0056 05       		.uleb128 0x5
+ 305 0057 49       		.uleb128 0x49
+ 306 0058 13       		.uleb128 0x13
+ 307 0059 3F       		.uleb128 0x3f
+ 308 005a 19       		.uleb128 0x19
+ 309 005b 3C       		.uleb128 0x3c
+ 310 005c 19       		.uleb128 0x19
+ 311 005d 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 8
+
+
+ 312 005e 00       		.byte	0
+ 313 005f 07       		.uleb128 0x7
+ 314 0060 35       		.uleb128 0x35
+ 315 0061 00       		.byte	0
+ 316 0062 49       		.uleb128 0x49
+ 317 0063 13       		.uleb128 0x13
+ 318 0064 00       		.byte	0
+ 319 0065 00       		.byte	0
+ 320 0066 08       		.uleb128 0x8
+ 321 0067 34       		.uleb128 0x34
+ 322 0068 00       		.byte	0
+ 323 0069 03       		.uleb128 0x3
+ 324 006a 0E       		.uleb128 0xe
+ 325 006b 3A       		.uleb128 0x3a
+ 326 006c 0B       		.uleb128 0xb
+ 327 006d 3B       		.uleb128 0x3b
+ 328 006e 0B       		.uleb128 0xb
+ 329 006f 49       		.uleb128 0x49
+ 330 0070 13       		.uleb128 0x13
+ 331 0071 3F       		.uleb128 0x3f
+ 332 0072 19       		.uleb128 0x19
+ 333 0073 3C       		.uleb128 0x3c
+ 334 0074 19       		.uleb128 0x19
+ 335 0075 00       		.byte	0
+ 336 0076 00       		.byte	0
+ 337 0077 09       		.uleb128 0x9
+ 338 0078 34       		.uleb128 0x34
+ 339 0079 00       		.byte	0
+ 340 007a 03       		.uleb128 0x3
+ 341 007b 0E       		.uleb128 0xe
+ 342 007c 3A       		.uleb128 0x3a
+ 343 007d 0B       		.uleb128 0xb
+ 344 007e 3B       		.uleb128 0x3b
+ 345 007f 0B       		.uleb128 0xb
+ 346 0080 49       		.uleb128 0x49
+ 347 0081 13       		.uleb128 0x13
+ 348 0082 3F       		.uleb128 0x3f
+ 349 0083 19       		.uleb128 0x19
+ 350 0084 02       		.uleb128 0x2
+ 351 0085 18       		.uleb128 0x18
+ 352 0086 00       		.byte	0
+ 353 0087 00       		.byte	0
+ 354 0088 00       		.byte	0
+ 355              		.section	.debug_aranges,"",%progbits
+ 356 0000 1C000000 		.4byte	0x1c
+ 357 0004 0200     		.2byte	0x2
+ 358 0006 00000000 		.4byte	.Ldebug_info0
+ 359 000a 04       		.byte	0x4
+ 360 000b 00       		.byte	0
+ 361 000c 0000     		.2byte	0
+ 362 000e 0000     		.2byte	0
+ 363 0010 00000000 		.4byte	.LFB56
+ 364 0014 4C000000 		.4byte	.LFE56-.LFB56
+ 365 0018 00000000 		.4byte	0
+ 366 001c 00000000 		.4byte	0
+ 367              		.section	.debug_ranges,"",%progbits
+ 368              	.Ldebug_ranges0:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 9
+
+
+ 369 0000 00000000 		.4byte	.LFB56
+ 370 0004 4C000000 		.4byte	.LFE56
+ 371 0008 00000000 		.4byte	0
+ 372 000c 00000000 		.4byte	0
+ 373              		.section	.debug_line,"",%progbits
+ 374              	.Ldebug_line0:
+ 375 0000 68010000 		.section	.debug_str,"MS",%progbits,1
+ 375      02004A01 
+ 375      00000201 
+ 375      FB0E0D00 
+ 375      01010101 
+ 376              	.LASF6:
+ 377 0000 6C6F6E67 		.ascii	"long long int\000"
+ 377      206C6F6E 
+ 377      6720696E 
+ 377      7400
+ 378              	.LASF3:
+ 379 000e 73686F72 		.ascii	"short unsigned int\000"
+ 379      7420756E 
+ 379      7369676E 
+ 379      65642069 
+ 379      6E7400
+ 380              	.LASF8:
+ 381 0021 756E7369 		.ascii	"unsigned int\000"
+ 381      676E6564 
+ 381      20696E74 
+ 381      00
+ 382              	.LASF17:
+ 383 002e 73776974 		.ascii	"switchDebounceTimer\000"
+ 383      63684465 
+ 383      626F756E 
+ 383      63655469 
+ 383      6D657200 
+ 384              	.LASF10:
+ 385 0042 696E7433 		.ascii	"int32_t\000"
+ 385      325F7400 
+ 386              	.LASF5:
+ 387 004a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 387      20756E73 
+ 387      69676E65 
+ 387      6420696E 
+ 387      7400
+ 388              	.LASF7:
+ 389 005c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 389      206C6F6E 
+ 389      6720756E 
+ 389      7369676E 
+ 389      65642069 
+ 390              	.LASF1:
+ 391 0073 756E7369 		.ascii	"unsigned char\000"
+ 391      676E6564 
+ 391      20636861 
+ 391      7200
+ 392              	.LASF14:
+ 393 0081 63686172 		.ascii	"char\000"
+ 393      00
+ 394              	.LASF23:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 10
+
+
+ 395 0086 48616E64 		.ascii	"HandleApplicationTimerTick\000"
+ 395      6C654170 
+ 395      706C6963 
+ 395      6174696F 
+ 395      6E54696D 
+ 396              	.LASF20:
+ 397 00a1 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 397      4320342E 
+ 397      392E3320 
+ 397      32303135 
+ 397      30333033 
+ 398 00d4 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 398      20726576 
+ 398      6973696F 
+ 398      6E203232 
+ 398      31323230 
+ 399 0107 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 399      66756E63 
+ 399      74696F6E 
+ 399      2D736563 
+ 399      74696F6E 
+ 400              	.LASF13:
+ 401 012f 646F7562 		.ascii	"double\000"
+ 401      6C6500
+ 402              	.LASF11:
+ 403 0136 75696E74 		.ascii	"uint8\000"
+ 403      3800
+ 404              	.LASF4:
+ 405 013c 6C6F6E67 		.ascii	"long int\000"
+ 405      20696E74 
+ 405      00
+ 406              	.LASF16:
+ 407 0145 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 407      52784275 
+ 407      66666572 
+ 407      00
+ 408              	.LASF0:
+ 409 0152 7369676E 		.ascii	"signed char\000"
+ 409      65642063 
+ 409      68617200 
+ 410              	.LASF22:
+ 411 015e 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 411      73657273 
+ 411      5C6C756B 
+ 411      61735C44 
+ 411      65736B74 
+ 412 018d 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 412      73746572 
+ 412      5C50696F 
+ 412      6E656572 
+ 412      4B69745F 
+ 413              	.LASF9:
+ 414 01b6 5F5F696E 		.ascii	"__int32_t\000"
+ 414      7433325F 
+ 414      7400
+ 415              	.LASF21:
+ 416 01c0 2E5C5469 		.ascii	".\\Timer.c\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\cc1wXjv1.s 			page 11
+
+
+ 416      6D65722E 
+ 416      6300
+ 417              	.LASF12:
+ 418 01ca 666C6F61 		.ascii	"float\000"
+ 418      7400
+ 419              	.LASF2:
+ 420 01d0 73686F72 		.ascii	"short int\000"
+ 420      7420696E 
+ 420      7400
+ 421              	.LASF18:
+ 422 01da 636C6F63 		.ascii	"clockSwitchTimer\000"
+ 422      6B537769 
+ 422      74636854 
+ 422      696D6572 
+ 422      00
+ 423              	.LASF15:
+ 424 01eb 73697A65 		.ascii	"sizetype\000"
+ 424      74797065 
+ 424      00
+ 425              	.LASF19:
+ 426 01f4 6170706C 		.ascii	"applicationTimerTick\000"
+ 426      69636174 
+ 426      696F6E54 
+ 426      696D6572 
+ 426      5469636B 
+ 427              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

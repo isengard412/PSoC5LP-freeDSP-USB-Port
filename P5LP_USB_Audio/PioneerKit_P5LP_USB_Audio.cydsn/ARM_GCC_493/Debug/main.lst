@@ -1,0 +1,555 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.main,"ax",%progbits
+  19              		.align	2
+  20              		.global	main
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	main, %function
+  24              	main:
+  25              	.LFB56:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** *
+   4:.\main.c      **** * Version 1.0
+   5:.\main.c      **** *
+   6:.\main.c      **** * Description: This file contains the entry point for the application and 
+   7:.\main.c      **** *              handles the USB audio configuration, audio event handling and 
+   8:.\main.c      **** *              communication with USB hosts (Mac/Win PC/BeagleBoneBlack/RaspberryPi
+   9:.\main.c      **** *              /Android etc).
+  10:.\main.c      **** *
+  11:.\main.c      **** ********************************************************************************
+  12:.\main.c      **** * Copyright (2008-2013), Cypress Semiconductor Corporation.
+  13:.\main.c      **** ********************************************************************************
+  14:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation (Cypress) and is
+  15:.\main.c      **** * protected by and subject to worldwide patent protection (United States and
+  16:.\main.c      **** * foreign), United States copyright laws and international treaty provisions.
+  17:.\main.c      **** * Cypress hereby grants to licensee a personal, non-exclusive, non-transferable
+  18:.\main.c      **** * license to copy, use, modify, create derivative works of, and compile the
+  19:.\main.c      **** * Cypress Source Code and derivative works for the sole purpose of creating
+  20:.\main.c      **** * custom software in support of licensee product to be used only in conjunction
+  21:.\main.c      **** * with a Cypress integrated circuit as specified in the applicable agreement.
+  22:.\main.c      **** * Any reproduction, modification, translation, compilation, or representation of
+  23:.\main.c      **** * this software except as specified above is prohibited without the express
+  24:.\main.c      **** * written permission of Cypress.
+  25:.\main.c      **** *
+  26:.\main.c      **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH
+  27:.\main.c      **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  28:.\main.c      **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  29:.\main.c      **** * Cypress reserves the right to make changes without further notice to the
+  30:.\main.c      **** * materials described herein. Cypress does not assume any liability arising out
+  31:.\main.c      **** * of the application or use of any product or circuit described herein. Cypress
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 2
+
+
+  32:.\main.c      **** * does not authorize its products for use as critical components in life-support
+  33:.\main.c      **** * systems where a malfunction or failure may reasonably be expected to result in
+  34:.\main.c      **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  35:.\main.c      **** * support systems application implies that the manufacturer assumes all risk of
+  36:.\main.c      **** * such use and in doing so indemnifies Cypress against all charges. Use may be
+  37:.\main.c      **** * limited by and subject to the applicable Cypress software license agreement.
+  38:.\main.c      **** *******************************************************************************/
+  39:.\main.c      **** #include <Application.h>
+  40:.\main.c      **** #include <AudioControl.h>
+  41:.\main.c      **** #include <Configuration.h>
+  42:.\main.c      **** #include <USBInterface.h>
+  43:.\main.c      **** 
+  44:.\main.c      **** /*******************************************************************************
+  45:.\main.c      **** * Function Name: main
+  46:.\main.c      **** ********************************************************************************
+  47:.\main.c      **** * Summary:
+  48:.\main.c      **** *        Main routine does following tasks.
+  49:.\main.c      **** *        - Initializes all the components for digital audio 
+  50:.\main.c      **** *        - Initializes all the components for user interface and other system functions
+  51:.\main.c      **** *        - Handles hot plug of USB host - Mac/PC/(any USB Host)
+  52:.\main.c      **** *		 - Handles USB host disconnection events
+  53:.\main.c      **** *        - Handles dynamic sample rate change, audio stream start/stop events
+  54:.\main.c      **** *        
+  55:.\main.c      **** * Parameters:
+  56:.\main.c      **** *  void
+  57:.\main.c      **** *
+  58:.\main.c      **** * Return:
+  59:.\main.c      **** *  void
+  60:.\main.c      **** *
+  61:.\main.c      **** *******************************************************************************/
+  62:.\main.c      **** void main(void)
+  63:.\main.c      **** {
+  27              		.loc 1 63 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 7, -8
+  34              		.cfi_offset 14, -4
+  35 0002 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  64:.\main.c      ****     PWR_LED_Write(0u);
+  37              		.loc 1 64 0
+  38 0004 0020     		movs	r0, #0
+  39 0006 FFF7FEFF 		bl	PWR_LED_Write
+  65:.\main.c      **** 	/* Setup the Audio pipe from USB to I2S. After the call to this API, the system clock architecture
+  66:.\main.c      ****       * from start up mode to idle mode. System clocks such as PLL are shutdown. Any of the applica
+  67:.\main.c      **** 	  * layer components which are using PLL as the source of clock would seize to function after this
+  68:.\main.c      ****       * The clocks are shutdown to minimize idle mode current consumption. The clocks are turned ba
+  69:.\main.c      **** 	  *	Audio Input or Output stream becomes active. Details of all the system clocks in idle mode
+  70:.\main.c      ****       * are shown in "Idle Mode Clock Info" page of the TopDesign. */
+  71:.\main.c      ****     ConfigureAudioPath();
+  40              		.loc 1 71 0
+  41 000a FFF7FEFF 		bl	ConfigureAudioPath
+  72:.\main.c      ****     
+  73:.\main.c      ****     /* Initialize the components other than audio components such as system timer and watchdog. 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 3
+
+
+  74:.\main.c      **** 	 * Also configure the clock sources of all these components such that these components work in bot
+  75:.\main.c      **** 	 * Details of all the system clocks in idle mode are shown in "Idle Mode Clock Info" page of the T
+  76:.\main.c      ****     ConfigureApplication();
+  42              		.loc 1 76 0
+  43 000e FFF7FEFF 		bl	ConfigureApplication
+  44              	.L3:
+  77:.\main.c      ****   
+  78:.\main.c      **** 	/* USER_CODE: Placeholder for users to add any other application specific initialization code.
+  79:.\main.c      ****      * CAUTION: System will be in Idle mode at this point, which means some of the clocks are not a
+  80:.\main.c      **** 	 * Details of all the system clocks in idle mode are shown in "Idle Mode Clock Info" page of the T
+  81:.\main.c      **** 
+  82:.\main.c      **** 	while(FOREVER)
+  83:.\main.c      ****     {
+  84:.\main.c      ****         
+  85:.\main.c      ****         /* Check for USB enumeration with USB host */
+  86:.\main.c      ****         if(IsUSBConfigured() != FALSE)
+  45              		.loc 1 86 0
+  46 0012 FFF7FEFF 		bl	USBFS_GetConfiguration
+  47 0016 0346     		mov	r3, r0
+  48 0018 002B     		cmp	r3, #0
+  49 001a 05D0     		beq	.L2
+  87:.\main.c      ****         {
+  88:.\main.c      ****             /* Accessory initialization routine after USB enumeration completion 
+  89:.\main.c      **** 			 * Also loads the EP's when audio playback/recording starts */
+  90:.\main.c      **** 			ServiceUSB();  
+  50              		.loc 1 90 0
+  51 001c FFF7FEFF 		bl	ServiceUSB
+  91:.\main.c      ****             
+  92:.\main.c      ****             /* Enter low power mode if Audio stream is inactive. In low power mode all the audio co
+  93:.\main.c      ****              * (e.g., I2S) and some of the system clocks such as PLL are shutdown. 
+  94:.\main.c      **** 			 * Details of all the system clocks in idle mode are shown in "Idle Mode Clock Info" page of the
+  95:.\main.c      **** 			 * Details of all the system clocks in active mode are shown in "Active Mode Clock 44.1/48 kHz" 
+  96:.\main.c      **** 			HandleDigitalAudioLowPowerMode(); 
+  52              		.loc 1 96 0
+  53 0020 FFF7FEFF 		bl	HandleDigitalAudioLowPowerMode
+  97:.\main.c      ****             
+  98:.\main.c      ****             /* USB audio sampling frequency change handler.
+  99:.\main.c      **** 			 * Checks whether host has changed audio sampling rate.
+ 100:.\main.c      **** 			 * Configures AudioClkGen to generate a clock synchonized to new audio sampling rate. 
+ 101:.\main.c      **** 			 * Note: Change the I2C address of codec in Codec.h file, according to Codec used in your design
+ 102:.\main.c      ****              * Currently, codec I2C address is set to Cirrus codec (CS42L51) address. */
+ 103:.\main.c      ****             HandleSamplingFrequencyChangeRequest(); 
+  54              		.loc 1 103 0
+  55 0024 FFF7FEFF 		bl	HandleSamplingFrequencyChangeRequest
+  56              	.L2:
+ 104:.\main.c      ****         }
+ 105:.\main.c      ****         
+ 106:.\main.c      ****         HandleApplicationInterface();  /* Handles all the audio playback/record related application
+  57              		.loc 1 106 0
+  58 0028 FFF7FEFF 		bl	HandleApplicationInterface
+ 107:.\main.c      **** 			
+ 108:.\main.c      **** 		HandleUSBHostInterface();     /* Check for PC/Mac USB Audio device connection */
+  59              		.loc 1 108 0
+  60 002c FFF7FEFF 		bl	HandleUSBHostInterface
+ 109:.\main.c      **** 		                
+ 110:.\main.c      ****         HandleApplicationTimerTick();      /* Handle all the timeout events */
+  61              		.loc 1 110 0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 4
+
+
+  62 0030 FFF7FEFF 		bl	HandleApplicationTimerTick
+ 111:.\main.c      ****         
+ 112:.\main.c      ****         #ifdef ENABLE_WATCHDOG
+ 113:.\main.c      ****         CyWdtClear();                      /* Service watchdog timer */
+  63              		.loc 1 113 0
+  64 0034 FFF7FEFF 		bl	CyWdtClear
+ 114:.\main.c      ****         #endif
+ 115:.\main.c      ****                 
+ 116:.\main.c      ****         #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ 117:.\main.c      ****         HandleAudioInBuffer();             /* Clear audio IN buffer when IN stream is stopped */
+  65              		.loc 1 117 0
+  66 0038 FFF7FEFF 		bl	HandleAudioInBuffer
+ 118:.\main.c      ****         #endif
+ 119:.\main.c      ****     }
+  67              		.loc 1 119 0
+  68 003c E9E7     		b	.L3
+  69              		.cfi_endproc
+  70              	.LFE56:
+  71              		.size	main, .-main
+  72 003e 00BF     		.text
+  73              	.Letext0:
+  74              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  75              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  76              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+  77              		.section	.debug_info,"",%progbits
+  78              	.Ldebug_info0:
+  79 0000 BC000000 		.4byte	0xbc
+  80 0004 0400     		.2byte	0x4
+  81 0006 00000000 		.4byte	.Ldebug_abbrev0
+  82 000a 04       		.byte	0x4
+  83 000b 01       		.uleb128 0x1
+  84 000c 78000000 		.4byte	.LASF15
+  85 0010 01       		.byte	0x1
+  86 0011 06010000 		.4byte	.LASF16
+  87 0015 2F010000 		.4byte	.LASF17
+  88 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  89 001d 00000000 		.4byte	0
+  90 0021 00000000 		.4byte	.Ldebug_line0
+  91 0025 02       		.uleb128 0x2
+  92 0026 01       		.byte	0x1
+  93 0027 06       		.byte	0x6
+  94 0028 23010000 		.4byte	.LASF0
+  95 002c 02       		.uleb128 0x2
+  96 002d 01       		.byte	0x1
+  97 002e 08       		.byte	0x8
+  98 002f 5C000000 		.4byte	.LASF1
+  99 0033 02       		.uleb128 0x2
+ 100 0034 02       		.byte	0x2
+ 101 0035 05       		.byte	0x5
+ 102 0036 97010000 		.4byte	.LASF2
+ 103 003a 02       		.uleb128 0x2
+ 104 003b 02       		.byte	0x2
+ 105 003c 07       		.byte	0x7
+ 106 003d 0E000000 		.4byte	.LASF3
+ 107 0041 03       		.uleb128 0x3
+ 108 0042 87010000 		.4byte	.LASF9
+ 109 0046 02       		.byte	0x2
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 5
+
+
+ 110 0047 3F       		.byte	0x3f
+ 111 0048 4C000000 		.4byte	0x4c
+ 112 004c 02       		.uleb128 0x2
+ 113 004d 04       		.byte	0x4
+ 114 004e 05       		.byte	0x5
+ 115 004f 6F000000 		.4byte	.LASF4
+ 116 0053 02       		.uleb128 0x2
+ 117 0054 04       		.byte	0x4
+ 118 0055 07       		.byte	0x7
+ 119 0056 33000000 		.4byte	.LASF5
+ 120 005a 02       		.uleb128 0x2
+ 121 005b 08       		.byte	0x8
+ 122 005c 05       		.byte	0x5
+ 123 005d 00000000 		.4byte	.LASF6
+ 124 0061 02       		.uleb128 0x2
+ 125 0062 08       		.byte	0x8
+ 126 0063 07       		.byte	0x7
+ 127 0064 45000000 		.4byte	.LASF7
+ 128 0068 04       		.uleb128 0x4
+ 129 0069 04       		.byte	0x4
+ 130 006a 05       		.byte	0x5
+ 131 006b 696E7400 		.ascii	"int\000"
+ 132 006f 02       		.uleb128 0x2
+ 133 0070 04       		.byte	0x4
+ 134 0071 07       		.byte	0x7
+ 135 0072 21000000 		.4byte	.LASF8
+ 136 0076 03       		.uleb128 0x3
+ 137 0077 A1010000 		.4byte	.LASF10
+ 138 007b 03       		.byte	0x3
+ 139 007c 2C       		.byte	0x2c
+ 140 007d 41000000 		.4byte	0x41
+ 141 0081 02       		.uleb128 0x2
+ 142 0082 04       		.byte	0x4
+ 143 0083 04       		.byte	0x4
+ 144 0084 91010000 		.4byte	.LASF11
+ 145 0088 02       		.uleb128 0x2
+ 146 0089 08       		.byte	0x8
+ 147 008a 04       		.byte	0x4
+ 148 008b 0F010000 		.4byte	.LASF12
+ 149 008f 02       		.uleb128 0x2
+ 150 0090 01       		.byte	0x1
+ 151 0091 08       		.byte	0x8
+ 152 0092 6A000000 		.4byte	.LASF13
+ 153 0096 02       		.uleb128 0x2
+ 154 0097 04       		.byte	0x4
+ 155 0098 07       		.byte	0x7
+ 156 0099 A9010000 		.4byte	.LASF14
+ 157 009d 05       		.uleb128 0x5
+ 158 009e 2E000000 		.4byte	.LASF18
+ 159 00a2 01       		.byte	0x1
+ 160 00a3 3E       		.byte	0x3e
+ 161 00a4 00000000 		.4byte	.LFB56
+ 162 00a8 3E000000 		.4byte	.LFE56-.LFB56
+ 163 00ac 01       		.uleb128 0x1
+ 164 00ad 9C       		.byte	0x9c
+ 165 00ae 06       		.uleb128 0x6
+ 166 00af 16010000 		.4byte	.LASF19
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 6
+
+
+ 167 00b3 04       		.byte	0x4
+ 168 00b4 1606     		.2byte	0x616
+ 169 00b6 BA000000 		.4byte	0xba
+ 170 00ba 07       		.uleb128 0x7
+ 171 00bb 76000000 		.4byte	0x76
+ 172 00bf 00       		.byte	0
+ 173              		.section	.debug_abbrev,"",%progbits
+ 174              	.Ldebug_abbrev0:
+ 175 0000 01       		.uleb128 0x1
+ 176 0001 11       		.uleb128 0x11
+ 177 0002 01       		.byte	0x1
+ 178 0003 25       		.uleb128 0x25
+ 179 0004 0E       		.uleb128 0xe
+ 180 0005 13       		.uleb128 0x13
+ 181 0006 0B       		.uleb128 0xb
+ 182 0007 03       		.uleb128 0x3
+ 183 0008 0E       		.uleb128 0xe
+ 184 0009 1B       		.uleb128 0x1b
+ 185 000a 0E       		.uleb128 0xe
+ 186 000b 55       		.uleb128 0x55
+ 187 000c 17       		.uleb128 0x17
+ 188 000d 11       		.uleb128 0x11
+ 189 000e 01       		.uleb128 0x1
+ 190 000f 10       		.uleb128 0x10
+ 191 0010 17       		.uleb128 0x17
+ 192 0011 00       		.byte	0
+ 193 0012 00       		.byte	0
+ 194 0013 02       		.uleb128 0x2
+ 195 0014 24       		.uleb128 0x24
+ 196 0015 00       		.byte	0
+ 197 0016 0B       		.uleb128 0xb
+ 198 0017 0B       		.uleb128 0xb
+ 199 0018 3E       		.uleb128 0x3e
+ 200 0019 0B       		.uleb128 0xb
+ 201 001a 03       		.uleb128 0x3
+ 202 001b 0E       		.uleb128 0xe
+ 203 001c 00       		.byte	0
+ 204 001d 00       		.byte	0
+ 205 001e 03       		.uleb128 0x3
+ 206 001f 16       		.uleb128 0x16
+ 207 0020 00       		.byte	0
+ 208 0021 03       		.uleb128 0x3
+ 209 0022 0E       		.uleb128 0xe
+ 210 0023 3A       		.uleb128 0x3a
+ 211 0024 0B       		.uleb128 0xb
+ 212 0025 3B       		.uleb128 0x3b
+ 213 0026 0B       		.uleb128 0xb
+ 214 0027 49       		.uleb128 0x49
+ 215 0028 13       		.uleb128 0x13
+ 216 0029 00       		.byte	0
+ 217 002a 00       		.byte	0
+ 218 002b 04       		.uleb128 0x4
+ 219 002c 24       		.uleb128 0x24
+ 220 002d 00       		.byte	0
+ 221 002e 0B       		.uleb128 0xb
+ 222 002f 0B       		.uleb128 0xb
+ 223 0030 3E       		.uleb128 0x3e
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 7
+
+
+ 224 0031 0B       		.uleb128 0xb
+ 225 0032 03       		.uleb128 0x3
+ 226 0033 08       		.uleb128 0x8
+ 227 0034 00       		.byte	0
+ 228 0035 00       		.byte	0
+ 229 0036 05       		.uleb128 0x5
+ 230 0037 2E       		.uleb128 0x2e
+ 231 0038 00       		.byte	0
+ 232 0039 3F       		.uleb128 0x3f
+ 233 003a 19       		.uleb128 0x19
+ 234 003b 03       		.uleb128 0x3
+ 235 003c 0E       		.uleb128 0xe
+ 236 003d 3A       		.uleb128 0x3a
+ 237 003e 0B       		.uleb128 0xb
+ 238 003f 3B       		.uleb128 0x3b
+ 239 0040 0B       		.uleb128 0xb
+ 240 0041 27       		.uleb128 0x27
+ 241 0042 19       		.uleb128 0x19
+ 242 0043 11       		.uleb128 0x11
+ 243 0044 01       		.uleb128 0x1
+ 244 0045 12       		.uleb128 0x12
+ 245 0046 06       		.uleb128 0x6
+ 246 0047 40       		.uleb128 0x40
+ 247 0048 18       		.uleb128 0x18
+ 248 0049 9642     		.uleb128 0x2116
+ 249 004b 19       		.uleb128 0x19
+ 250 004c 00       		.byte	0
+ 251 004d 00       		.byte	0
+ 252 004e 06       		.uleb128 0x6
+ 253 004f 34       		.uleb128 0x34
+ 254 0050 00       		.byte	0
+ 255 0051 03       		.uleb128 0x3
+ 256 0052 0E       		.uleb128 0xe
+ 257 0053 3A       		.uleb128 0x3a
+ 258 0054 0B       		.uleb128 0xb
+ 259 0055 3B       		.uleb128 0x3b
+ 260 0056 05       		.uleb128 0x5
+ 261 0057 49       		.uleb128 0x49
+ 262 0058 13       		.uleb128 0x13
+ 263 0059 3F       		.uleb128 0x3f
+ 264 005a 19       		.uleb128 0x19
+ 265 005b 3C       		.uleb128 0x3c
+ 266 005c 19       		.uleb128 0x19
+ 267 005d 00       		.byte	0
+ 268 005e 00       		.byte	0
+ 269 005f 07       		.uleb128 0x7
+ 270 0060 35       		.uleb128 0x35
+ 271 0061 00       		.byte	0
+ 272 0062 49       		.uleb128 0x49
+ 273 0063 13       		.uleb128 0x13
+ 274 0064 00       		.byte	0
+ 275 0065 00       		.byte	0
+ 276 0066 00       		.byte	0
+ 277              		.section	.debug_aranges,"",%progbits
+ 278 0000 1C000000 		.4byte	0x1c
+ 279 0004 0200     		.2byte	0x2
+ 280 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 8
+
+
+ 281 000a 04       		.byte	0x4
+ 282 000b 00       		.byte	0
+ 283 000c 0000     		.2byte	0
+ 284 000e 0000     		.2byte	0
+ 285 0010 00000000 		.4byte	.LFB56
+ 286 0014 3E000000 		.4byte	.LFE56-.LFB56
+ 287 0018 00000000 		.4byte	0
+ 288 001c 00000000 		.4byte	0
+ 289              		.section	.debug_ranges,"",%progbits
+ 290              	.Ldebug_ranges0:
+ 291 0000 00000000 		.4byte	.LFB56
+ 292 0004 3E000000 		.4byte	.LFE56
+ 293 0008 00000000 		.4byte	0
+ 294 000c 00000000 		.4byte	0
+ 295              		.section	.debug_line,"",%progbits
+ 296              	.Ldebug_line0:
+ 297 0000 60010000 		.section	.debug_str,"MS",%progbits,1
+ 297      02003C01 
+ 297      00000201 
+ 297      FB0E0D00 
+ 297      01010101 
+ 298              	.LASF6:
+ 299 0000 6C6F6E67 		.ascii	"long long int\000"
+ 299      206C6F6E 
+ 299      6720696E 
+ 299      7400
+ 300              	.LASF3:
+ 301 000e 73686F72 		.ascii	"short unsigned int\000"
+ 301      7420756E 
+ 301      7369676E 
+ 301      65642069 
+ 301      6E7400
+ 302              	.LASF8:
+ 303 0021 756E7369 		.ascii	"unsigned int\000"
+ 303      676E6564 
+ 303      20696E74 
+ 303      00
+ 304              	.LASF18:
+ 305 002e 6D61696E 		.ascii	"main\000"
+ 305      00
+ 306              	.LASF5:
+ 307 0033 6C6F6E67 		.ascii	"long unsigned int\000"
+ 307      20756E73 
+ 307      69676E65 
+ 307      6420696E 
+ 307      7400
+ 308              	.LASF7:
+ 309 0045 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 309      206C6F6E 
+ 309      6720756E 
+ 309      7369676E 
+ 309      65642069 
+ 310              	.LASF1:
+ 311 005c 756E7369 		.ascii	"unsigned char\000"
+ 311      676E6564 
+ 311      20636861 
+ 311      7200
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 9
+
+
+ 312              	.LASF13:
+ 313 006a 63686172 		.ascii	"char\000"
+ 313      00
+ 314              	.LASF4:
+ 315 006f 6C6F6E67 		.ascii	"long int\000"
+ 315      20696E74 
+ 315      00
+ 316              	.LASF15:
+ 317 0078 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 317      4320342E 
+ 317      392E3320 
+ 317      32303135 
+ 317      30333033 
+ 318 00ab 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 318      20726576 
+ 318      6973696F 
+ 318      6E203232 
+ 318      31323230 
+ 319 00de 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 319      66756E63 
+ 319      74696F6E 
+ 319      2D736563 
+ 319      74696F6E 
+ 320              	.LASF16:
+ 321 0106 2E5C6D61 		.ascii	".\\main.c\000"
+ 321      696E2E63 
+ 321      00
+ 322              	.LASF12:
+ 323 010f 646F7562 		.ascii	"double\000"
+ 323      6C6500
+ 324              	.LASF19:
+ 325 0116 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 325      52784275 
+ 325      66666572 
+ 325      00
+ 326              	.LASF0:
+ 327 0123 7369676E 		.ascii	"signed char\000"
+ 327      65642063 
+ 327      68617200 
+ 328              	.LASF17:
+ 329 012f 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 329      73657273 
+ 329      5C6C756B 
+ 329      61735C44 
+ 329      65736B74 
+ 330 015e 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 330      73746572 
+ 330      5C50696F 
+ 330      6E656572 
+ 330      4B69745F 
+ 331              	.LASF9:
+ 332 0187 5F5F696E 		.ascii	"__int32_t\000"
+ 332      7433325F 
+ 332      7400
+ 333              	.LASF11:
+ 334 0191 666C6F61 		.ascii	"float\000"
+ 334      7400
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccdAHUhn.s 			page 10
+
+
+ 335              	.LASF2:
+ 336 0197 73686F72 		.ascii	"short int\000"
+ 336      7420696E 
+ 336      7400
+ 337              	.LASF10:
+ 338 01a1 696E7433 		.ascii	"int32_t\000"
+ 338      325F7400 
+ 339              	.LASF14:
+ 340 01a9 73697A65 		.ascii	"sizetype\000"
+ 340      74797065 
+ 340      00
+ 341              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

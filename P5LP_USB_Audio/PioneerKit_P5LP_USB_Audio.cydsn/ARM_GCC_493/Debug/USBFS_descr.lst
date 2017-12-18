@@ -1,0 +1,1934 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBFS_descr.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	USBFS_DEVICE0_DESCR
+  19              		.section	.rodata
+  20              		.align	2
+  21              		.type	USBFS_DEVICE0_DESCR, %object
+  22              		.size	USBFS_DEVICE0_DESCR, 18
+  23              	USBFS_DEVICE0_DESCR:
+  24 0000 12       		.byte	18
+  25 0001 01       		.byte	1
+  26 0002 00       		.byte	0
+  27 0003 02       		.byte	2
+  28 0004 00       		.byte	0
+  29 0005 00       		.byte	0
+  30 0006 00       		.byte	0
+  31 0007 08       		.byte	8
+  32 0008 A1       		.byte	-95
+  33 0009 0A       		.byte	10
+  34 000a 11       		.byte	17
+  35 000b 11       		.byte	17
+  36 000c 00       		.byte	0
+  37 000d 10       		.byte	16
+  38 000e 0D       		.byte	13
+  39 000f 0E       		.byte	14
+  40 0010 80       		.byte	-128
+  41 0011 01       		.byte	1
+  42              		.global	USBFS_DEVICE0_CONFIGURATION0_DESCR
+  43 0012 0000     		.align	2
+  44              		.type	USBFS_DEVICE0_CONFIGURATION0_DESCR, %object
+  45              		.size	USBFS_DEVICE0_CONFIGURATION0_DESCR, 270
+  46              	USBFS_DEVICE0_CONFIGURATION0_DESCR:
+  47 0014 09       		.byte	9
+  48 0015 02       		.byte	2
+  49 0016 0E       		.byte	14
+  50 0017 01       		.byte	1
+  51 0018 04       		.byte	4
+  52 0019 01       		.byte	1
+  53 001a 0A       		.byte	10
+  54 001b 80       		.byte	-128
+  55 001c 32       		.byte	50
+  56 001d 09       		.byte	9
+  57 001e 04       		.byte	4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 2
+
+
+  58 001f 00       		.byte	0
+  59 0020 00       		.byte	0
+  60 0021 01       		.byte	1
+  61 0022 01       		.byte	1
+  62 0023 01       		.byte	1
+  63 0024 00       		.byte	0
+  64 0025 0E       		.byte	14
+  65 0026 0A       		.byte	10
+  66 0027 24       		.byte	36
+  67 0028 01       		.byte	1
+  68 0029 00       		.byte	0
+  69 002a 01       		.byte	1
+  70 002b 3E       		.byte	62
+  71 002c 00       		.byte	0
+  72 002d 02       		.byte	2
+  73 002e 01       		.byte	1
+  74 002f 02       		.byte	2
+  75 0030 0A       		.byte	10
+  76 0031 24       		.byte	36
+  77 0032 06       		.byte	6
+  78 0033 02       		.byte	2
+  79 0034 01       		.byte	1
+  80 0035 01       		.byte	1
+  81 0036 02       		.byte	2
+  82 0037 02       		.byte	2
+  83 0038 02       		.byte	2
+  84 0039 00       		.byte	0
+  85 003a 0C       		.byte	12
+  86 003b 24       		.byte	36
+  87 003c 02       		.byte	2
+  88 003d 01       		.byte	1
+  89 003e 01       		.byte	1
+  90 003f 01       		.byte	1
+  91 0040 00       		.byte	0
+  92 0041 02       		.byte	2
+  93 0042 03       		.byte	3
+  94 0043 00       		.byte	0
+  95 0044 00       		.byte	0
+  96 0045 06       		.byte	6
+  97 0046 09       		.byte	9
+  98 0047 24       		.byte	36
+  99 0048 03       		.byte	3
+ 100 0049 03       		.byte	3
+ 101 004a 01       		.byte	1
+ 102 004b 03       		.byte	3
+ 103 004c 00       		.byte	0
+ 104 004d 02       		.byte	2
+ 105 004e 05       		.byte	5
+ 106 004f 0C       		.byte	12
+ 107 0050 24       		.byte	36
+ 108 0051 02       		.byte	2
+ 109 0052 04       		.byte	4
+ 110 0053 01       		.byte	1
+ 111 0054 02       		.byte	2
+ 112 0055 00       		.byte	0
+ 113 0056 02       		.byte	2
+ 114 0057 03       		.byte	3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 3
+
+
+ 115 0058 00       		.byte	0
+ 116 0059 00       		.byte	0
+ 117 005a 04       		.byte	4
+ 118 005b 09       		.byte	9
+ 119 005c 24       		.byte	36
+ 120 005d 03       		.byte	3
+ 121 005e 05       		.byte	5
+ 122 005f 01       		.byte	1
+ 123 0060 01       		.byte	1
+ 124 0061 00       		.byte	0
+ 125 0062 04       		.byte	4
+ 126 0063 06       		.byte	6
+ 127 0064 09       		.byte	9
+ 128 0065 05       		.byte	5
+ 129 0066 86       		.byte	-122
+ 130 0067 03       		.byte	3
+ 131 0068 02       		.byte	2
+ 132 0069 00       		.byte	0
+ 133 006a 1E       		.byte	30
+ 134 006b 00       		.byte	0
+ 135 006c 00       		.byte	0
+ 136 006d 09       		.byte	9
+ 137 006e 04       		.byte	4
+ 138 006f 01       		.byte	1
+ 139 0070 00       		.byte	0
+ 140 0071 00       		.byte	0
+ 141 0072 01       		.byte	1
+ 142 0073 02       		.byte	2
+ 143 0074 00       		.byte	0
+ 144 0075 0E       		.byte	14
+ 145 0076 09       		.byte	9
+ 146 0077 04       		.byte	4
+ 147 0078 01       		.byte	1
+ 148 0079 01       		.byte	1
+ 149 007a 01       		.byte	1
+ 150 007b 01       		.byte	1
+ 151 007c 02       		.byte	2
+ 152 007d 00       		.byte	0
+ 153 007e 08       		.byte	8
+ 154 007f 07       		.byte	7
+ 155 0080 24       		.byte	36
+ 156 0081 01       		.byte	1
+ 157 0082 01       		.byte	1
+ 158 0083 01       		.byte	1
+ 159 0084 01       		.byte	1
+ 160 0085 00       		.byte	0
+ 161 0086 0E       		.byte	14
+ 162 0087 24       		.byte	36
+ 163 0088 02       		.byte	2
+ 164 0089 01       		.byte	1
+ 165 008a 02       		.byte	2
+ 166 008b 02       		.byte	2
+ 167 008c 10       		.byte	16
+ 168 008d 02       		.byte	2
+ 169 008e 44       		.byte	68
+ 170 008f AC       		.byte	-84
+ 171 0090 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 4
+
+
+ 172 0091 80       		.byte	-128
+ 173 0092 BB       		.byte	-69
+ 174 0093 00       		.byte	0
+ 175 0094 09       		.byte	9
+ 176 0095 05       		.byte	5
+ 177 0096 01       		.byte	1
+ 178 0097 01       		.byte	1
+ 179 0098 C0       		.byte	-64
+ 180 0099 00       		.byte	0
+ 181 009a 01       		.byte	1
+ 182 009b 00       		.byte	0
+ 183 009c 00       		.byte	0
+ 184 009d 07       		.byte	7
+ 185 009e 25       		.byte	37
+ 186 009f 01       		.byte	1
+ 187 00a0 01       		.byte	1
+ 188 00a1 01       		.byte	1
+ 189 00a2 01       		.byte	1
+ 190 00a3 00       		.byte	0
+ 191 00a4 09       		.byte	9
+ 192 00a5 04       		.byte	4
+ 193 00a6 01       		.byte	1
+ 194 00a7 02       		.byte	2
+ 195 00a8 01       		.byte	1
+ 196 00a9 01       		.byte	1
+ 197 00aa 02       		.byte	2
+ 198 00ab 00       		.byte	0
+ 199 00ac 09       		.byte	9
+ 200 00ad 07       		.byte	7
+ 201 00ae 24       		.byte	36
+ 202 00af 01       		.byte	1
+ 203 00b0 01       		.byte	1
+ 204 00b1 01       		.byte	1
+ 205 00b2 01       		.byte	1
+ 206 00b3 00       		.byte	0
+ 207 00b4 0E       		.byte	14
+ 208 00b5 24       		.byte	36
+ 209 00b6 02       		.byte	2
+ 210 00b7 01       		.byte	1
+ 211 00b8 02       		.byte	2
+ 212 00b9 03       		.byte	3
+ 213 00ba 18       		.byte	24
+ 214 00bb 02       		.byte	2
+ 215 00bc 44       		.byte	68
+ 216 00bd AC       		.byte	-84
+ 217 00be 00       		.byte	0
+ 218 00bf 80       		.byte	-128
+ 219 00c0 BB       		.byte	-69
+ 220 00c1 00       		.byte	0
+ 221 00c2 09       		.byte	9
+ 222 00c3 05       		.byte	5
+ 223 00c4 01       		.byte	1
+ 224 00c5 0D       		.byte	13
+ 225 00c6 20       		.byte	32
+ 226 00c7 01       		.byte	1
+ 227 00c8 01       		.byte	1
+ 228 00c9 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 5
+
+
+ 229 00ca 00       		.byte	0
+ 230 00cb 07       		.byte	7
+ 231 00cc 25       		.byte	37
+ 232 00cd 01       		.byte	1
+ 233 00ce 01       		.byte	1
+ 234 00cf 01       		.byte	1
+ 235 00d0 01       		.byte	1
+ 236 00d1 00       		.byte	0
+ 237 00d2 09       		.byte	9
+ 238 00d3 04       		.byte	4
+ 239 00d4 02       		.byte	2
+ 240 00d5 00       		.byte	0
+ 241 00d6 00       		.byte	0
+ 242 00d7 01       		.byte	1
+ 243 00d8 02       		.byte	2
+ 244 00d9 00       		.byte	0
+ 245 00da 0E       		.byte	14
+ 246 00db 09       		.byte	9
+ 247 00dc 04       		.byte	4
+ 248 00dd 02       		.byte	2
+ 249 00de 01       		.byte	1
+ 250 00df 01       		.byte	1
+ 251 00e0 01       		.byte	1
+ 252 00e1 02       		.byte	2
+ 253 00e2 00       		.byte	0
+ 254 00e3 08       		.byte	8
+ 255 00e4 07       		.byte	7
+ 256 00e5 24       		.byte	36
+ 257 00e6 01       		.byte	1
+ 258 00e7 05       		.byte	5
+ 259 00e8 01       		.byte	1
+ 260 00e9 01       		.byte	1
+ 261 00ea 00       		.byte	0
+ 262 00eb 0E       		.byte	14
+ 263 00ec 24       		.byte	36
+ 264 00ed 02       		.byte	2
+ 265 00ee 01       		.byte	1
+ 266 00ef 02       		.byte	2
+ 267 00f0 02       		.byte	2
+ 268 00f1 10       		.byte	16
+ 269 00f2 02       		.byte	2
+ 270 00f3 44       		.byte	68
+ 271 00f4 AC       		.byte	-84
+ 272 00f5 00       		.byte	0
+ 273 00f6 80       		.byte	-128
+ 274 00f7 BB       		.byte	-69
+ 275 00f8 00       		.byte	0
+ 276 00f9 09       		.byte	9
+ 277 00fa 05       		.byte	5
+ 278 00fb 82       		.byte	-126
+ 279 00fc 0D       		.byte	13
+ 280 00fd C0       		.byte	-64
+ 281 00fe 00       		.byte	0
+ 282 00ff 01       		.byte	1
+ 283 0100 00       		.byte	0
+ 284 0101 00       		.byte	0
+ 285 0102 07       		.byte	7
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 6
+
+
+ 286 0103 25       		.byte	37
+ 287 0104 01       		.byte	1
+ 288 0105 01       		.byte	1
+ 289 0106 01       		.byte	1
+ 290 0107 01       		.byte	1
+ 291 0108 00       		.byte	0
+ 292 0109 09       		.byte	9
+ 293 010a 04       		.byte	4
+ 294 010b 03       		.byte	3
+ 295 010c 00       		.byte	0
+ 296 010d 01       		.byte	1
+ 297 010e 03       		.byte	3
+ 298 010f 00       		.byte	0
+ 299 0110 00       		.byte	0
+ 300 0111 0B       		.byte	11
+ 301 0112 09       		.byte	9
+ 302 0113 21       		.byte	33
+ 303 0114 11       		.byte	17
+ 304 0115 01       		.byte	1
+ 305 0116 00       		.byte	0
+ 306 0117 01       		.byte	1
+ 307 0118 22       		.byte	34
+ 308 0119 17       		.byte	23
+ 309 011a 00       		.byte	0
+ 310 011b 07       		.byte	7
+ 311 011c 05       		.byte	5
+ 312 011d 84       		.byte	-124
+ 313 011e 03       		.byte	3
+ 314 011f 01       		.byte	1
+ 315 0120 00       		.byte	0
+ 316 0121 28       		.byte	40
+ 317              		.global	USBFS_STRING_DESCRIPTORS
+ 318 0122 0000     		.align	2
+ 319              		.type	USBFS_STRING_DESCRIPTORS, %object
+ 320              		.size	USBFS_STRING_DESCRIPTORS, 403
+ 321              	USBFS_STRING_DESCRIPTORS:
+ 322 0124 04       		.byte	4
+ 323 0125 03       		.byte	3
+ 324 0126 09       		.byte	9
+ 325 0127 04       		.byte	4
+ 326 0128 2C       		.byte	44
+ 327 0129 03       		.byte	3
+ 328 012a 43       		.byte	67
+ 329 012b 00       		.byte	0
+ 330 012c 79       		.byte	121
+ 331 012d 00       		.byte	0
+ 332 012e 70       		.byte	112
+ 333 012f 00       		.byte	0
+ 334 0130 72       		.byte	114
+ 335 0131 00       		.byte	0
+ 336 0132 65       		.byte	101
+ 337 0133 00       		.byte	0
+ 338 0134 73       		.byte	115
+ 339 0135 00       		.byte	0
+ 340 0136 73       		.byte	115
+ 341 0137 00       		.byte	0
+ 342 0138 20       		.byte	32
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 7
+
+
+ 343 0139 00       		.byte	0
+ 344 013a 53       		.byte	83
+ 345 013b 00       		.byte	0
+ 346 013c 65       		.byte	101
+ 347 013d 00       		.byte	0
+ 348 013e 6D       		.byte	109
+ 349 013f 00       		.byte	0
+ 350 0140 69       		.byte	105
+ 351 0141 00       		.byte	0
+ 352 0142 63       		.byte	99
+ 353 0143 00       		.byte	0
+ 354 0144 6F       		.byte	111
+ 355 0145 00       		.byte	0
+ 356 0146 6E       		.byte	110
+ 357 0147 00       		.byte	0
+ 358 0148 64       		.byte	100
+ 359 0149 00       		.byte	0
+ 360 014a 75       		.byte	117
+ 361 014b 00       		.byte	0
+ 362 014c 63       		.byte	99
+ 363 014d 00       		.byte	0
+ 364 014e 74       		.byte	116
+ 365 014f 00       		.byte	0
+ 366 0150 6F       		.byte	111
+ 367 0151 00       		.byte	0
+ 368 0152 72       		.byte	114
+ 369 0153 00       		.byte	0
+ 370 0154 28       		.byte	40
+ 371 0155 03       		.byte	3
+ 372 0156 43       		.byte	67
+ 373 0157 00       		.byte	0
+ 374 0158 79       		.byte	121
+ 375 0159 00       		.byte	0
+ 376 015a 70       		.byte	112
+ 377 015b 00       		.byte	0
+ 378 015c 72       		.byte	114
+ 379 015d 00       		.byte	0
+ 380 015e 65       		.byte	101
+ 381 015f 00       		.byte	0
+ 382 0160 73       		.byte	115
+ 383 0161 00       		.byte	0
+ 384 0162 73       		.byte	115
+ 385 0163 00       		.byte	0
+ 386 0164 41       		.byte	65
+ 387 0165 00       		.byte	0
+ 388 0166 75       		.byte	117
+ 389 0167 00       		.byte	0
+ 390 0168 64       		.byte	100
+ 391 0169 00       		.byte	0
+ 392 016a 69       		.byte	105
+ 393 016b 00       		.byte	0
+ 394 016c 6F       		.byte	111
+ 395 016d 00       		.byte	0
+ 396 016e 43       		.byte	67
+ 397 016f 00       		.byte	0
+ 398 0170 6F       		.byte	111
+ 399 0171 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 8
+
+
+ 400 0172 6E       		.byte	110
+ 401 0173 00       		.byte	0
+ 402 0174 74       		.byte	116
+ 403 0175 00       		.byte	0
+ 404 0176 72       		.byte	114
+ 405 0177 00       		.byte	0
+ 406 0178 6F       		.byte	111
+ 407 0179 00       		.byte	0
+ 408 017a 6C       		.byte	108
+ 409 017b 00       		.byte	0
+ 410 017c 1C       		.byte	28
+ 411 017d 03       		.byte	3
+ 412 017e 5A       		.byte	90
+ 413 017f 00       		.byte	0
+ 414 0180 65       		.byte	101
+ 415 0181 00       		.byte	0
+ 416 0182 72       		.byte	114
+ 417 0183 00       		.byte	0
+ 418 0184 6F       		.byte	111
+ 419 0185 00       		.byte	0
+ 420 0186 42       		.byte	66
+ 421 0187 00       		.byte	0
+ 422 0188 61       		.byte	97
+ 423 0189 00       		.byte	0
+ 424 018a 6E       		.byte	110
+ 425 018b 00       		.byte	0
+ 426 018c 64       		.byte	100
+ 427 018d 00       		.byte	0
+ 428 018e 77       		.byte	119
+ 429 018f 00       		.byte	0
+ 430 0190 69       		.byte	105
+ 431 0191 00       		.byte	0
+ 432 0192 64       		.byte	100
+ 433 0193 00       		.byte	0
+ 434 0194 74       		.byte	116
+ 435 0195 00       		.byte	0
+ 436 0196 68       		.byte	104
+ 437 0197 00       		.byte	0
+ 438 0198 16       		.byte	22
+ 439 0199 03       		.byte	3
+ 440 019a 4D       		.byte	77
+ 441 019b 00       		.byte	0
+ 442 019c 69       		.byte	105
+ 443 019d 00       		.byte	0
+ 444 019e 63       		.byte	99
+ 445 019f 00       		.byte	0
+ 446 01a0 72       		.byte	114
+ 447 01a1 00       		.byte	0
+ 448 01a2 6F       		.byte	111
+ 449 01a3 00       		.byte	0
+ 450 01a4 70       		.byte	112
+ 451 01a5 00       		.byte	0
+ 452 01a6 68       		.byte	104
+ 453 01a7 00       		.byte	0
+ 454 01a8 6F       		.byte	111
+ 455 01a9 00       		.byte	0
+ 456 01aa 6E       		.byte	110
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 9
+
+
+ 457 01ab 00       		.byte	0
+ 458 01ac 65       		.byte	101
+ 459 01ad 00       		.byte	0
+ 460 01ae 10       		.byte	16
+ 461 01af 03       		.byte	3
+ 462 01b0 53       		.byte	83
+ 463 01b1 00       		.byte	0
+ 464 01b2 70       		.byte	112
+ 465 01b3 00       		.byte	0
+ 466 01b4 65       		.byte	101
+ 467 01b5 00       		.byte	0
+ 468 01b6 61       		.byte	97
+ 469 01b7 00       		.byte	0
+ 470 01b8 6B       		.byte	107
+ 471 01b9 00       		.byte	0
+ 472 01ba 65       		.byte	101
+ 473 01bb 00       		.byte	0
+ 474 01bc 72       		.byte	114
+ 475 01bd 00       		.byte	0
+ 476 01be 1C       		.byte	28
+ 477 01bf 03       		.byte	3
+ 478 01c0 55       		.byte	85
+ 479 01c1 00       		.byte	0
+ 480 01c2 53       		.byte	83
+ 481 01c3 00       		.byte	0
+ 482 01c4 42       		.byte	66
+ 483 01c5 00       		.byte	0
+ 484 01c6 20       		.byte	32
+ 485 01c7 00       		.byte	0
+ 486 01c8 53       		.byte	83
+ 487 01c9 00       		.byte	0
+ 488 01ca 74       		.byte	116
+ 489 01cb 00       		.byte	0
+ 490 01cc 72       		.byte	114
+ 491 01cd 00       		.byte	0
+ 492 01ce 65       		.byte	101
+ 493 01cf 00       		.byte	0
+ 494 01d0 61       		.byte	97
+ 495 01d1 00       		.byte	0
+ 496 01d2 6D       		.byte	109
+ 497 01d3 00       		.byte	0
+ 498 01d4 69       		.byte	105
+ 499 01d5 00       		.byte	0
+ 500 01d6 6E       		.byte	110
+ 501 01d7 00       		.byte	0
+ 502 01d8 67       		.byte	103
+ 503 01d9 00       		.byte	0
+ 504 01da 0E       		.byte	14
+ 505 01db 03       		.byte	3
+ 506 01dc 41       		.byte	65
+ 507 01dd 00       		.byte	0
+ 508 01de 63       		.byte	99
+ 509 01df 00       		.byte	0
+ 510 01e0 74       		.byte	116
+ 511 01e1 00       		.byte	0
+ 512 01e2 69       		.byte	105
+ 513 01e3 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 10
+
+
+ 514 01e4 76       		.byte	118
+ 515 01e5 00       		.byte	0
+ 516 01e6 65       		.byte	101
+ 517 01e7 00       		.byte	0
+ 518 01e8 1C       		.byte	28
+ 519 01e9 03       		.byte	3
+ 520 01ea 41       		.byte	65
+ 521 01eb 00       		.byte	0
+ 522 01ec 63       		.byte	99
+ 523 01ed 00       		.byte	0
+ 524 01ee 74       		.byte	116
+ 525 01ef 00       		.byte	0
+ 526 01f0 69       		.byte	105
+ 527 01f1 00       		.byte	0
+ 528 01f2 76       		.byte	118
+ 529 01f3 00       		.byte	0
+ 530 01f4 65       		.byte	101
+ 531 01f5 00       		.byte	0
+ 532 01f6 20       		.byte	32
+ 533 01f7 00       		.byte	0
+ 534 01f8 31       		.byte	49
+ 535 01f9 00       		.byte	0
+ 536 01fa 36       		.byte	54
+ 537 01fb 00       		.byte	0
+ 538 01fc 20       		.byte	32
+ 539 01fd 00       		.byte	0
+ 540 01fe 62       		.byte	98
+ 541 01ff 00       		.byte	0
+ 542 0200 69       		.byte	105
+ 543 0201 00       		.byte	0
+ 544 0202 74       		.byte	116
+ 545 0203 00       		.byte	0
+ 546 0204 1C       		.byte	28
+ 547 0205 03       		.byte	3
+ 548 0206 41       		.byte	65
+ 549 0207 00       		.byte	0
+ 550 0208 63       		.byte	99
+ 551 0209 00       		.byte	0
+ 552 020a 74       		.byte	116
+ 553 020b 00       		.byte	0
+ 554 020c 69       		.byte	105
+ 555 020d 00       		.byte	0
+ 556 020e 76       		.byte	118
+ 557 020f 00       		.byte	0
+ 558 0210 65       		.byte	101
+ 559 0211 00       		.byte	0
+ 560 0212 20       		.byte	32
+ 561 0213 00       		.byte	0
+ 562 0214 32       		.byte	50
+ 563 0215 00       		.byte	0
+ 564 0216 34       		.byte	52
+ 565 0217 00       		.byte	0
+ 566 0218 20       		.byte	32
+ 567 0219 00       		.byte	0
+ 568 021a 62       		.byte	98
+ 569 021b 00       		.byte	0
+ 570 021c 69       		.byte	105
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 11
+
+
+ 571 021d 00       		.byte	0
+ 572 021e 74       		.byte	116
+ 573 021f 00       		.byte	0
+ 574 0220 08       		.byte	8
+ 575 0221 03       		.byte	3
+ 576 0222 4D       		.byte	77
+ 577 0223 00       		.byte	0
+ 578 0224 61       		.byte	97
+ 579 0225 00       		.byte	0
+ 580 0226 63       		.byte	99
+ 581 0227 00       		.byte	0
+ 582 0228 20       		.byte	32
+ 583 0229 03       		.byte	3
+ 584 022a 50       		.byte	80
+ 585 022b 00       		.byte	0
+ 586 022c 6C       		.byte	108
+ 587 022d 00       		.byte	0
+ 588 022e 61       		.byte	97
+ 589 022f 00       		.byte	0
+ 590 0230 79       		.byte	121
+ 591 0231 00       		.byte	0
+ 592 0232 6C       		.byte	108
+ 593 0233 00       		.byte	0
+ 594 0234 69       		.byte	105
+ 595 0235 00       		.byte	0
+ 596 0236 73       		.byte	115
+ 597 0237 00       		.byte	0
+ 598 0238 74       		.byte	116
+ 599 0239 00       		.byte	0
+ 600 023a 43       		.byte	67
+ 601 023b 00       		.byte	0
+ 602 023c 6F       		.byte	111
+ 603 023d 00       		.byte	0
+ 604 023e 6E       		.byte	110
+ 605 023f 00       		.byte	0
+ 606 0240 74       		.byte	116
+ 607 0241 00       		.byte	0
+ 608 0242 72       		.byte	114
+ 609 0243 00       		.byte	0
+ 610 0244 6F       		.byte	111
+ 611 0245 00       		.byte	0
+ 612 0246 6C       		.byte	108
+ 613 0247 00       		.byte	0
+ 614 0248 34       		.byte	52
+ 615 0249 03       		.byte	3
+ 616 024a 43       		.byte	67
+ 617 024b 00       		.byte	0
+ 618 024c 79       		.byte	121
+ 619 024d 00       		.byte	0
+ 620 024e 70       		.byte	112
+ 621 024f 00       		.byte	0
+ 622 0250 72       		.byte	114
+ 623 0251 00       		.byte	0
+ 624 0252 65       		.byte	101
+ 625 0253 00       		.byte	0
+ 626 0254 73       		.byte	115
+ 627 0255 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 12
+
+
+ 628 0256 73       		.byte	115
+ 629 0257 00       		.byte	0
+ 630 0258 20       		.byte	32
+ 631 0259 00       		.byte	0
+ 632 025a 44       		.byte	68
+ 633 025b 00       		.byte	0
+ 634 025c 69       		.byte	105
+ 635 025d 00       		.byte	0
+ 636 025e 67       		.byte	103
+ 637 025f 00       		.byte	0
+ 638 0260 69       		.byte	105
+ 639 0261 00       		.byte	0
+ 640 0262 74       		.byte	116
+ 641 0263 00       		.byte	0
+ 642 0264 61       		.byte	97
+ 643 0265 00       		.byte	0
+ 644 0266 6C       		.byte	108
+ 645 0267 00       		.byte	0
+ 646 0268 20       		.byte	32
+ 647 0269 00       		.byte	0
+ 648 026a 41       		.byte	65
+ 649 026b 00       		.byte	0
+ 650 026c 75       		.byte	117
+ 651 026d 00       		.byte	0
+ 652 026e 64       		.byte	100
+ 653 026f 00       		.byte	0
+ 654 0270 69       		.byte	105
+ 655 0271 00       		.byte	0
+ 656 0272 6F       		.byte	111
+ 657 0273 00       		.byte	0
+ 658 0274 20       		.byte	32
+ 659 0275 00       		.byte	0
+ 660 0276 44       		.byte	68
+ 661 0277 00       		.byte	0
+ 662 0278 56       		.byte	86
+ 663 0279 00       		.byte	0
+ 664 027a 4B       		.byte	75
+ 665 027b 00       		.byte	0
+ 666 027c 22       		.byte	34
+ 667 027d 03       		.byte	3
+ 668 027e 4C       		.byte	76
+ 669 027f 00       		.byte	0
+ 670 0280 75       		.byte	117
+ 671 0281 00       		.byte	0
+ 672 0282 6B       		.byte	107
+ 673 0283 00       		.byte	0
+ 674 0284 61       		.byte	97
+ 675 0285 00       		.byte	0
+ 676 0286 73       		.byte	115
+ 677 0287 00       		.byte	0
+ 678 0288 20       		.byte	32
+ 679 0289 00       		.byte	0
+ 680 028a 43       		.byte	67
+ 681 028b 00       		.byte	0
+ 682 028c 72       		.byte	114
+ 683 028d 00       		.byte	0
+ 684 028e 65       		.byte	101
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 13
+
+
+ 685 028f 00       		.byte	0
+ 686 0290 75       		.byte	117
+ 687 0291 00       		.byte	0
+ 688 0292 74       		.byte	116
+ 689 0293 00       		.byte	0
+ 690 0294 7A       		.byte	122
+ 691 0295 00       		.byte	0
+ 692 0296 62       		.byte	98
+ 693 0297 00       		.byte	0
+ 694 0298 75       		.byte	117
+ 695 0299 00       		.byte	0
+ 696 029a 72       		.byte	114
+ 697 029b 00       		.byte	0
+ 698 029c 67       		.byte	103
+ 699 029d 00       		.byte	0
+ 700 029e 18       		.byte	24
+ 701 029f 03       		.byte	3
+ 702 02a0 46       		.byte	70
+ 703 02a1 00       		.byte	0
+ 704 02a2 72       		.byte	114
+ 705 02a3 00       		.byte	0
+ 706 02a4 65       		.byte	101
+ 707 02a5 00       		.byte	0
+ 708 02a6 65       		.byte	101
+ 709 02a7 00       		.byte	0
+ 710 02a8 44       		.byte	68
+ 711 02a9 00       		.byte	0
+ 712 02aa 53       		.byte	83
+ 713 02ab 00       		.byte	0
+ 714 02ac 50       		.byte	80
+ 715 02ad 00       		.byte	0
+ 716 02ae 20       		.byte	32
+ 717 02af 00       		.byte	0
+ 718 02b0 55       		.byte	85
+ 719 02b1 00       		.byte	0
+ 720 02b2 53       		.byte	83
+ 721 02b3 00       		.byte	0
+ 722 02b4 42       		.byte	66
+ 723 02b5 00       		.byte	0
+ 724 02b6 00       		.byte	0
+ 725              		.global	USBFS_SN_STRING_DESCRIPTOR
+ 726 02b7 00       		.align	2
+ 727              		.type	USBFS_SN_STRING_DESCRIPTOR, %object
+ 728              		.size	USBFS_SN_STRING_DESCRIPTOR, 2
+ 729              	USBFS_SN_STRING_DESCRIPTOR:
+ 730 02b8 02       		.byte	2
+ 731 02b9 03       		.byte	3
+ 732              		.global	USBFS_HIDREPORT_DESCRIPTOR1
+ 733 02ba 0000     		.align	2
+ 734              		.type	USBFS_HIDREPORT_DESCRIPTOR1, %object
+ 735              		.size	USBFS_HIDREPORT_DESCRIPTOR1, 27
+ 736              	USBFS_HIDREPORT_DESCRIPTOR1:
+ 737 02bc 17       		.byte	23
+ 738 02bd 00       		.byte	0
+ 739 02be 05       		.byte	5
+ 740 02bf 0C       		.byte	12
+ 741 02c0 09       		.byte	9
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 14
+
+
+ 742 02c1 01       		.byte	1
+ 743 02c2 A1       		.byte	-95
+ 744 02c3 01       		.byte	1
+ 745 02c4 15       		.byte	21
+ 746 02c5 00       		.byte	0
+ 747 02c6 25       		.byte	37
+ 748 02c7 01       		.byte	1
+ 749 02c8 75       		.byte	117
+ 750 02c9 01       		.byte	1
+ 751 02ca 95       		.byte	-107
+ 752 02cb 01       		.byte	1
+ 753 02cc 09       		.byte	9
+ 754 02cd CD       		.byte	-51
+ 755 02ce 81       		.byte	-127
+ 756 02cf 02       		.byte	2
+ 757 02d0 95       		.byte	-107
+ 758 02d1 07       		.byte	7
+ 759 02d2 81       		.byte	-127
+ 760 02d3 01       		.byte	1
+ 761 02d4 C0       		.byte	-64
+ 762 02d5 00       		.byte	0
+ 763 02d6 00       		.byte	0
+ 764              		.comm	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_SCB,4,4
+ 765              		.comm	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_BUF,2,4
+ 766              		.global	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_TABLE
+ 767 02d7 00       		.align	2
+ 768              		.type	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_TABLE, %object
+ 769              		.size	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_TABLE, 12
+ 770              	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_TABLE:
+ 771 02d8 0200     		.short	2
+ 772 02da 0000     		.space	2
+ 773 02dc 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_BUF
+ 774 02e0 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_SCB
+ 775              		.global	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_TABLE
+ 776              		.align	2
+ 777              		.type	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_TABLE, %object
+ 778              		.size	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_TABLE, 40
+ 779              	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_TABLE:
+ 780 02e4 00       		.byte	0
+ 781 02e5 000000   		.space	3
+ 782 02e8 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_TABLE
+ 783 02ec 00       		.byte	0
+ 784 02ed 000000   		.space	3
+ 785 02f0 00000000 		.word	0
+ 786 02f4 00       		.byte	0
+ 787 02f5 000000   		.space	3
+ 788 02f8 00000000 		.word	0
+ 789 02fc 01       		.byte	1
+ 790 02fd 000000   		.space	3
+ 791 0300 00000000 		.word	USBFS_HIDREPORT_DESCRIPTOR1
+ 792 0304 01       		.byte	1
+ 793 0305 000000   		.space	3
+ 794 0308 FE000000 		.word	USBFS_DEVICE0_CONFIGURATION0_DESCR+254
+ 795              		.global	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_TABLE
+ 796              		.align	2
+ 797              		.type	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_TABLE, %object
+ 798              		.size	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_TABLE, 8
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 15
+
+
+ 799              	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_TABLE:
+ 800 030c 01       		.byte	1
+ 801 030d 000000   		.space	3
+ 802 0310 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_TABLE
+ 803              		.global	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+ 804              		.align	2
+ 805              		.type	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE, %object
+ 806              		.size	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE, 40
+ 807              	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE:
+ 808 0314 00       		.byte	0
+ 809 0315 00       		.byte	0
+ 810 0316 86       		.byte	-122
+ 811 0317 03       		.byte	3
+ 812 0318 0200     		.short	2
+ 813 031a 01       		.byte	1
+ 814 031b 00       		.space	1
+ 815 031c 01       		.byte	1
+ 816 031d 01       		.byte	1
+ 817 031e 01       		.byte	1
+ 818 031f 01       		.byte	1
+ 819 0320 C000     		.short	192
+ 820 0322 01       		.byte	1
+ 821 0323 00       		.space	1
+ 822 0324 01       		.byte	1
+ 823 0325 02       		.byte	2
+ 824 0326 01       		.byte	1
+ 825 0327 0D       		.byte	13
+ 826 0328 2001     		.short	288
+ 827 032a 01       		.byte	1
+ 828 032b 00       		.space	1
+ 829 032c 02       		.byte	2
+ 830 032d 01       		.byte	1
+ 831 032e 82       		.byte	-126
+ 832 032f 0D       		.byte	13
+ 833 0330 C000     		.short	192
+ 834 0332 01       		.byte	1
+ 835 0333 00       		.space	1
+ 836 0334 03       		.byte	3
+ 837 0335 00       		.byte	0
+ 838 0336 84       		.byte	-124
+ 839 0337 03       		.byte	3
+ 840 0338 0100     		.short	1
+ 841 033a 03       		.byte	3
+ 842 033b 00       		.space	1
+ 843              		.global	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+ 844              		.align	2
+ 845              		.type	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS, %object
+ 846              		.size	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS, 4
+ 847              	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS:
+ 848 033c 01       		.byte	1
+ 849 033d 01       		.byte	1
+ 850 033e 01       		.byte	1
+ 851 033f 03       		.byte	3
+ 852              		.global	USBFS_DEVICE0_CONFIGURATION0_TABLE
+ 853              		.align	2
+ 854              		.type	USBFS_DEVICE0_CONFIGURATION0_TABLE, %object
+ 855              		.size	USBFS_DEVICE0_CONFIGURATION0_TABLE, 56
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 16
+
+
+ 856              	USBFS_DEVICE0_CONFIGURATION0_TABLE:
+ 857 0340 01       		.byte	1
+ 858 0341 000000   		.space	3
+ 859 0344 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_DESCR
+ 860 0348 05       		.byte	5
+ 861 0349 000000   		.space	3
+ 862 034c 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+ 863 0350 00       		.byte	0
+ 864 0351 000000   		.space	3
+ 865 0354 00000000 		.word	0
+ 866 0358 00       		.byte	0
+ 867 0359 000000   		.space	3
+ 868 035c 00000000 		.word	0
+ 869 0360 00       		.byte	0
+ 870 0361 000000   		.space	3
+ 871 0364 00000000 		.word	0
+ 872 0368 01       		.byte	1
+ 873 0369 000000   		.space	3
+ 874 036c 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_TABLE
+ 875 0370 00       		.byte	0
+ 876 0371 000000   		.space	3
+ 877 0374 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+ 878              		.global	USBFS_DEVICE0_TABLE
+ 879              		.align	2
+ 880              		.type	USBFS_DEVICE0_TABLE, %object
+ 881              		.size	USBFS_DEVICE0_TABLE, 16
+ 882              	USBFS_DEVICE0_TABLE:
+ 883 0378 01       		.byte	1
+ 884 0379 000000   		.space	3
+ 885 037c 00000000 		.word	USBFS_DEVICE0_DESCR
+ 886 0380 01       		.byte	1
+ 887 0381 000000   		.space	3
+ 888 0384 00000000 		.word	USBFS_DEVICE0_CONFIGURATION0_TABLE
+ 889              		.global	USBFS_TABLE
+ 890              		.align	2
+ 891              		.type	USBFS_TABLE, %object
+ 892              		.size	USBFS_TABLE, 8
+ 893              	USBFS_TABLE:
+ 894 0388 01       		.byte	1
+ 895 0389 000000   		.space	3
+ 896 038c 00000000 		.word	USBFS_DEVICE0_TABLE
+ 897              		.text
+ 898              	.Letext0:
+ 899              		.file 1 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 900              		.file 2 ".\\Generated_Source\\PSoC5\\USBFS.h"
+ 901              		.file 3 ".\\Generated_Source\\PSoC5\\USBFS_descr.c"
+ 902              		.section	.debug_info,"",%progbits
+ 903              	.Ldebug_info0:
+ 904 0000 AE030000 		.4byte	0x3ae
+ 905 0004 0400     		.2byte	0x4
+ 906 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 907 000a 04       		.byte	0x4
+ 908 000b 01       		.uleb128 0x1
+ 909 000c 36020000 		.4byte	.LASF50
+ 910 0010 01       		.byte	0x1
+ 911 0011 EC030000 		.4byte	.LASF51
+ 912 0015 00000000 		.4byte	.LASF52
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 17
+
+
+ 913 0019 00000000 		.4byte	.Ldebug_line0
+ 914 001d 02       		.uleb128 0x2
+ 915 001e 01       		.byte	0x1
+ 916 001f 06       		.byte	0x6
+ 917 0020 9A040000 		.4byte	.LASF0
+ 918 0024 02       		.uleb128 0x2
+ 919 0025 01       		.byte	0x1
+ 920 0026 08       		.byte	0x8
+ 921 0027 B6030000 		.4byte	.LASF1
+ 922 002b 02       		.uleb128 0x2
+ 923 002c 02       		.byte	0x2
+ 924 002d 05       		.byte	0x5
+ 925 002e 1E040000 		.4byte	.LASF2
+ 926 0032 02       		.uleb128 0x2
+ 927 0033 02       		.byte	0x2
+ 928 0034 07       		.byte	0x7
+ 929 0035 B8000000 		.4byte	.LASF3
+ 930 0039 02       		.uleb128 0x2
+ 931 003a 04       		.byte	0x4
+ 932 003b 05       		.byte	0x5
+ 933 003c 91040000 		.4byte	.LASF4
+ 934 0040 02       		.uleb128 0x2
+ 935 0041 04       		.byte	0x4
+ 936 0042 07       		.byte	0x7
+ 937 0043 45030000 		.4byte	.LASF5
+ 938 0047 02       		.uleb128 0x2
+ 939 0048 08       		.byte	0x8
+ 940 0049 05       		.byte	0x5
+ 941 004a CD030000 		.4byte	.LASF6
+ 942 004e 02       		.uleb128 0x2
+ 943 004f 08       		.byte	0x8
+ 944 0050 07       		.byte	0x7
+ 945 0051 64030000 		.4byte	.LASF7
+ 946 0055 03       		.uleb128 0x3
+ 947 0056 04       		.byte	0x4
+ 948 0057 05       		.byte	0x5
+ 949 0058 696E7400 		.ascii	"int\000"
+ 950 005c 02       		.uleb128 0x2
+ 951 005d 04       		.byte	0x4
+ 952 005e 07       		.byte	0x7
+ 953 005f 57030000 		.4byte	.LASF8
+ 954 0063 04       		.uleb128 0x4
+ 955 0064 44040000 		.4byte	.LASF9
+ 956 0068 01       		.byte	0x1
+ 957 0069 5B       		.byte	0x5b
+ 958 006a 24000000 		.4byte	0x24
+ 959 006e 04       		.uleb128 0x4
+ 960 006f CB020000 		.4byte	.LASF10
+ 961 0073 01       		.byte	0x1
+ 962 0074 5C       		.byte	0x5c
+ 963 0075 32000000 		.4byte	0x32
+ 964 0079 02       		.uleb128 0x2
+ 965 007a 04       		.byte	0x4
+ 966 007b 04       		.byte	0x4
+ 967 007c FE000000 		.4byte	.LASF11
+ 968 0080 02       		.uleb128 0x2
+ 969 0081 08       		.byte	0x8
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 18
+
+
+ 970 0082 04       		.byte	0x4
+ 971 0083 C4020000 		.4byte	.LASF12
+ 972 0087 02       		.uleb128 0x2
+ 973 0088 01       		.byte	0x1
+ 974 0089 08       		.byte	0x8
+ 975 008a E7030000 		.4byte	.LASF13
+ 976 008e 05       		.uleb128 0x5
+ 977 008f 63000000 		.4byte	0x63
+ 978 0093 02       		.uleb128 0x2
+ 979 0094 04       		.byte	0x4
+ 980 0095 07       		.byte	0x7
+ 981 0096 C4030000 		.4byte	.LASF14
+ 982 009a 06       		.uleb128 0x6
+ 983 009b 04       		.byte	0x4
+ 984 009c 07       		.uleb128 0x7
+ 985 009d 01030000 		.4byte	.LASF22
+ 986 00a1 08       		.byte	0x8
+ 987 00a2 02       		.byte	0x2
+ 988 00a3 86       		.byte	0x86
+ 989 00a4 F1000000 		.4byte	0xf1
+ 990 00a8 08       		.uleb128 0x8
+ 991 00a9 87040000 		.4byte	.LASF15
+ 992 00ad 02       		.byte	0x2
+ 993 00ae 88       		.byte	0x88
+ 994 00af 63000000 		.4byte	0x63
+ 995 00b3 00       		.byte	0
+ 996 00b4 08       		.uleb128 0x8
+ 997 00b5 04010000 		.4byte	.LASF16
+ 998 00b9 02       		.byte	0x2
+ 999 00ba 89       		.byte	0x89
+ 1000 00bb 63000000 		.4byte	0x63
+ 1001 00bf 01       		.byte	0x1
+ 1002 00c0 08       		.uleb128 0x8
+ 1003 00c1 AB010000 		.4byte	.LASF17
+ 1004 00c5 02       		.byte	0x2
+ 1005 00c6 8A       		.byte	0x8a
+ 1006 00c7 63000000 		.4byte	0x63
+ 1007 00cb 02       		.byte	0x2
+ 1008 00cc 08       		.uleb128 0x8
+ 1009 00cd 3F010000 		.4byte	.LASF18
+ 1010 00d1 02       		.byte	0x2
+ 1011 00d2 8B       		.byte	0x8b
+ 1012 00d3 63000000 		.4byte	0x63
+ 1013 00d7 03       		.byte	0x3
+ 1014 00d8 08       		.uleb128 0x8
+ 1015 00d9 13040000 		.4byte	.LASF19
+ 1016 00dd 02       		.byte	0x2
+ 1017 00de 8C       		.byte	0x8c
+ 1018 00df 6E000000 		.4byte	0x6e
+ 1019 00e3 04       		.byte	0x4
+ 1020 00e4 08       		.uleb128 0x8
+ 1021 00e5 FA040000 		.4byte	.LASF20
+ 1022 00e9 02       		.byte	0x2
+ 1023 00ea 8D       		.byte	0x8d
+ 1024 00eb 63000000 		.4byte	0x63
+ 1025 00ef 06       		.byte	0x6
+ 1026 00f0 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 19
+
+
+ 1027 00f1 04       		.uleb128 0x4
+ 1028 00f2 82030000 		.4byte	.LASF21
+ 1029 00f6 02       		.byte	0x2
+ 1030 00f7 8E       		.byte	0x8e
+ 1031 00f8 9C000000 		.4byte	0x9c
+ 1032 00fc 07       		.uleb128 0x7
+ 1033 00fd 28010000 		.4byte	.LASF23
+ 1034 0101 04       		.byte	0x4
+ 1035 0102 02       		.byte	0x2
+ 1036 0103 90       		.byte	0x90
+ 1037 0104 21010000 		.4byte	0x121
+ 1038 0108 08       		.uleb128 0x8
+ 1039 0109 E6000000 		.4byte	.LASF24
+ 1040 010d 02       		.byte	0x2
+ 1041 010e 92       		.byte	0x92
+ 1042 010f 63000000 		.4byte	0x63
+ 1043 0113 00       		.byte	0
+ 1044 0114 08       		.uleb128 0x8
+ 1045 0115 E8040000 		.4byte	.LASF25
+ 1046 0119 02       		.byte	0x2
+ 1047 011a 93       		.byte	0x93
+ 1048 011b 6E000000 		.4byte	0x6e
+ 1049 011f 02       		.byte	0x2
+ 1050 0120 00       		.byte	0
+ 1051 0121 04       		.uleb128 0x4
+ 1052 0122 9C030000 		.4byte	.LASF26
+ 1053 0126 02       		.byte	0x2
+ 1054 0127 94       		.byte	0x94
+ 1055 0128 FC000000 		.4byte	0xfc
+ 1056 012c 07       		.uleb128 0x7
+ 1057 012d 3B030000 		.4byte	.LASF27
+ 1058 0131 0C       		.byte	0xc
+ 1059 0132 02       		.byte	0x2
+ 1060 0133 96       		.byte	0x96
+ 1061 0134 5D010000 		.4byte	0x15d
+ 1062 0138 08       		.uleb128 0x8
+ 1063 0139 B2000000 		.4byte	.LASF28
+ 1064 013d 02       		.byte	0x2
+ 1065 013e 98       		.byte	0x98
+ 1066 013f 6E000000 		.4byte	0x6e
+ 1067 0143 00       		.byte	0
+ 1068 0144 08       		.uleb128 0x8
+ 1069 0145 ED000000 		.4byte	.LASF29
+ 1070 0149 02       		.byte	0x2
+ 1071 014a 99       		.byte	0x99
+ 1072 014b 5D010000 		.4byte	0x15d
+ 1073 014f 04       		.byte	0x4
+ 1074 0150 08       		.uleb128 0x8
+ 1075 0151 6C000000 		.4byte	.LASF30
+ 1076 0155 02       		.byte	0x2
+ 1077 0156 9A       		.byte	0x9a
+ 1078 0157 63010000 		.4byte	0x163
+ 1079 015b 08       		.byte	0x8
+ 1080 015c 00       		.byte	0
+ 1081 015d 09       		.uleb128 0x9
+ 1082 015e 04       		.byte	0x4
+ 1083 015f 8E000000 		.4byte	0x8e
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 20
+
+
+ 1084 0163 09       		.uleb128 0x9
+ 1085 0164 04       		.byte	0x4
+ 1086 0165 21010000 		.4byte	0x121
+ 1087 0169 04       		.uleb128 0x4
+ 1088 016a F3000000 		.4byte	.LASF31
+ 1089 016e 02       		.byte	0x2
+ 1090 016f 9B       		.byte	0x9b
+ 1091 0170 2C010000 		.4byte	0x12c
+ 1092 0174 07       		.uleb128 0x7
+ 1093 0175 EF040000 		.4byte	.LASF32
+ 1094 0179 08       		.byte	0x8
+ 1095 017a 02       		.byte	0x2
+ 1096 017b 9D       		.byte	0x9d
+ 1097 017c 97010000 		.4byte	0x197
+ 1098 0180 0A       		.uleb128 0xa
+ 1099 0181 6300     		.ascii	"c\000"
+ 1100 0183 02       		.byte	0x2
+ 1101 0184 9F       		.byte	0x9f
+ 1102 0185 63000000 		.4byte	0x63
+ 1103 0189 00       		.byte	0
+ 1104 018a 08       		.uleb128 0x8
+ 1105 018b 7B030000 		.4byte	.LASF33
+ 1106 018f 02       		.byte	0x2
+ 1107 0190 A0       		.byte	0xa0
+ 1108 0191 9A000000 		.4byte	0x9a
+ 1109 0195 04       		.byte	0x4
+ 1110 0196 00       		.byte	0
+ 1111 0197 04       		.uleb128 0x4
+ 1112 0198 DB030000 		.4byte	.LASF34
+ 1113 019c 02       		.byte	0x2
+ 1114 019d A1       		.byte	0xa1
+ 1115 019e 74010000 		.4byte	0x174
+ 1116 01a2 0B       		.uleb128 0xb
+ 1117 01a3 63000000 		.4byte	0x63
+ 1118 01a7 B2010000 		.4byte	0x1b2
+ 1119 01ab 0C       		.uleb128 0xc
+ 1120 01ac 93000000 		.4byte	0x93
+ 1121 01b0 11       		.byte	0x11
+ 1122 01b1 00       		.byte	0
+ 1123 01b2 0D       		.uleb128 0xd
+ 1124 01b3 58000000 		.4byte	.LASF35
+ 1125 01b7 03       		.byte	0x3
+ 1126 01b8 26       		.byte	0x26
+ 1127 01b9 C3010000 		.4byte	0x1c3
+ 1128 01bd 05       		.uleb128 0x5
+ 1129 01be 03       		.byte	0x3
+ 1130 01bf 00000000 		.4byte	USBFS_DEVICE0_DESCR
+ 1131 01c3 0E       		.uleb128 0xe
+ 1132 01c4 A2010000 		.4byte	0x1a2
+ 1133 01c8 0B       		.uleb128 0xb
+ 1134 01c9 63000000 		.4byte	0x63
+ 1135 01cd D9010000 		.4byte	0x1d9
+ 1136 01d1 0F       		.uleb128 0xf
+ 1137 01d2 93000000 		.4byte	0x93
+ 1138 01d6 0D01     		.2byte	0x10d
+ 1139 01d8 00       		.byte	0
+ 1140 01d9 0D       		.uleb128 0xd
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 21
+
+
+ 1141 01da 18030000 		.4byte	.LASF36
+ 1142 01de 03       		.byte	0x3
+ 1143 01df 39       		.byte	0x39
+ 1144 01e0 EA010000 		.4byte	0x1ea
+ 1145 01e4 05       		.uleb128 0x5
+ 1146 01e5 03       		.byte	0x3
+ 1147 01e6 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_DESCR
+ 1148 01ea 0E       		.uleb128 0xe
+ 1149 01eb C8010000 		.4byte	0x1c8
+ 1150 01ef 0B       		.uleb128 0xb
+ 1151 01f0 63000000 		.4byte	0x63
+ 1152 01f4 00020000 		.4byte	0x200
+ 1153 01f8 0F       		.uleb128 0xf
+ 1154 01f9 93000000 		.4byte	0x93
+ 1155 01fd 9201     		.2byte	0x192
+ 1156 01ff 00       		.byte	0
+ 1157 0200 10       		.uleb128 0x10
+ 1158 0201 0F010000 		.4byte	.LASF37
+ 1159 0205 03       		.byte	0x3
+ 1160 0206 7F01     		.2byte	0x17f
+ 1161 0208 12020000 		.4byte	0x212
+ 1162 020c 05       		.uleb128 0x5
+ 1163 020d 03       		.byte	0x3
+ 1164 020e 00000000 		.4byte	USBFS_STRING_DESCRIPTORS
+ 1165 0212 0E       		.uleb128 0xe
+ 1166 0213 EF010000 		.4byte	0x1ef
+ 1167 0217 0B       		.uleb128 0xb
+ 1168 0218 63000000 		.4byte	0x63
+ 1169 021c 27020000 		.4byte	0x227
+ 1170 0220 0C       		.uleb128 0xc
+ 1171 0221 93000000 		.4byte	0x93
+ 1172 0225 01       		.byte	0x1
+ 1173 0226 00       		.byte	0
+ 1174 0227 10       		.uleb128 0x10
+ 1175 0228 CB000000 		.4byte	.LASF38
+ 1176 022c 03       		.byte	0x3
+ 1177 022d ED01     		.2byte	0x1ed
+ 1178 022f 39020000 		.4byte	0x239
+ 1179 0233 05       		.uleb128 0x5
+ 1180 0234 03       		.byte	0x3
+ 1181 0235 00000000 		.4byte	USBFS_SN_STRING_DESCRIPTOR
+ 1182 0239 0E       		.uleb128 0xe
+ 1183 023a 17020000 		.4byte	0x217
+ 1184 023e 0B       		.uleb128 0xb
+ 1185 023f 63000000 		.4byte	0x63
+ 1186 0243 4E020000 		.4byte	0x24e
+ 1187 0247 0C       		.uleb128 0xc
+ 1188 0248 93000000 		.4byte	0x93
+ 1189 024c 1A       		.byte	0x1a
+ 1190 024d 00       		.byte	0
+ 1191 024e 10       		.uleb128 0x10
+ 1192 024f 28040000 		.4byte	.LASF39
+ 1193 0253 03       		.byte	0x3
+ 1194 0254 F501     		.2byte	0x1f5
+ 1195 0256 60020000 		.4byte	0x260
+ 1196 025a 05       		.uleb128 0x5
+ 1197 025b 03       		.byte	0x3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 22
+
+
+ 1198 025c 00000000 		.4byte	USBFS_HIDREPORT_DESCRIPTOR1
+ 1199 0260 0E       		.uleb128 0xe
+ 1200 0261 3E020000 		.4byte	0x23e
+ 1201 0265 10       		.uleb128 0x10
+ 1202 0266 A6040000 		.4byte	.LASF40
+ 1203 026a 03       		.byte	0x3
+ 1204 026b 0C02     		.2byte	0x20c
+ 1205 026d 21010000 		.4byte	0x121
+ 1206 0271 05       		.uleb128 0x5
+ 1207 0272 03       		.byte	0x3
+ 1208 0273 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_SCB
+ 1209 0277 10       		.uleb128 0x10
+ 1210 0278 4A010000 		.4byte	.LASF41
+ 1211 027c 03       		.byte	0x3
+ 1212 027d 0D02     		.2byte	0x20d
+ 1213 027f 17020000 		.4byte	0x217
+ 1214 0283 05       		.uleb128 0x5
+ 1215 0284 03       		.byte	0x3
+ 1216 0285 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_BUF
+ 1217 0289 0B       		.uleb128 0xb
+ 1218 028a 69010000 		.4byte	0x169
+ 1219 028e 99020000 		.4byte	0x299
+ 1220 0292 0C       		.uleb128 0xc
+ 1221 0293 93000000 		.4byte	0x93
+ 1222 0297 00       		.byte	0
+ 1223 0298 00       		.byte	0
+ 1224 0299 10       		.uleb128 0x10
+ 1225 029a F2010000 		.4byte	.LASF42
+ 1226 029e 03       		.byte	0x3
+ 1227 029f 1302     		.2byte	0x213
+ 1228 02a1 AB020000 		.4byte	0x2ab
+ 1229 02a5 05       		.uleb128 0x5
+ 1230 02a6 03       		.byte	0x3
+ 1231 02a7 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_IN_RPT_TABLE
+ 1232 02ab 0E       		.uleb128 0xe
+ 1233 02ac 89020000 		.4byte	0x289
+ 1234 02b0 0B       		.uleb128 0xb
+ 1235 02b1 97010000 		.4byte	0x197
+ 1236 02b5 C0020000 		.4byte	0x2c0
+ 1237 02b9 0C       		.uleb128 0xc
+ 1238 02ba 93000000 		.4byte	0x93
+ 1239 02be 04       		.byte	0x4
+ 1240 02bf 00       		.byte	0
+ 1241 02c0 10       		.uleb128 0x10
+ 1242 02c1 4A040000 		.4byte	.LASF43
+ 1243 02c5 03       		.byte	0x3
+ 1244 02c6 2002     		.2byte	0x220
+ 1245 02c8 D2020000 		.4byte	0x2d2
+ 1246 02cc 05       		.uleb128 0x5
+ 1247 02cd 03       		.byte	0x3
+ 1248 02ce 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_HID_TABLE
+ 1249 02d2 0E       		.uleb128 0xe
+ 1250 02d3 B0020000 		.4byte	0x2b0
+ 1251 02d7 0B       		.uleb128 0xb
+ 1252 02d8 97010000 		.4byte	0x197
+ 1253 02dc E7020000 		.4byte	0x2e7
+ 1254 02e0 0C       		.uleb128 0xc
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 23
+
+
+ 1255 02e1 93000000 		.4byte	0x93
+ 1256 02e5 00       		.byte	0
+ 1257 02e6 00       		.byte	0
+ 1258 02e7 10       		.uleb128 0x10
+ 1259 02e8 C4010000 		.4byte	.LASF44
+ 1260 02ec 03       		.byte	0x3
+ 1261 02ed 2C02     		.2byte	0x22c
+ 1262 02ef F9020000 		.4byte	0x2f9
+ 1263 02f3 05       		.uleb128 0x5
+ 1264 02f4 03       		.byte	0x3
+ 1265 02f5 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_TABLE
+ 1266 02f9 0E       		.uleb128 0xe
+ 1267 02fa D7020000 		.4byte	0x2d7
+ 1268 02fe 0B       		.uleb128 0xb
+ 1269 02ff F1000000 		.4byte	0xf1
+ 1270 0303 0E030000 		.4byte	0x30e
+ 1271 0307 0C       		.uleb128 0xc
+ 1272 0308 93000000 		.4byte	0x93
+ 1273 030c 04       		.byte	0x4
+ 1274 030d 00       		.byte	0
+ 1275 030e 10       		.uleb128 0x10
+ 1276 030f D2020000 		.4byte	.LASF45
+ 1277 0313 03       		.byte	0x3
+ 1278 0314 3702     		.2byte	0x237
+ 1279 0316 20030000 		.4byte	0x320
+ 1280 031a 05       		.uleb128 0x5
+ 1281 031b 03       		.byte	0x3
+ 1282 031c 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+ 1283 0320 0E       		.uleb128 0xe
+ 1284 0321 FE020000 		.4byte	0x2fe
+ 1285 0325 0B       		.uleb128 0xb
+ 1286 0326 63000000 		.4byte	0x63
+ 1287 032a 35030000 		.4byte	0x335
+ 1288 032e 0C       		.uleb128 0xc
+ 1289 032f 93000000 		.4byte	0x93
+ 1290 0333 03       		.byte	0x3
+ 1291 0334 00       		.byte	0
+ 1292 0335 10       		.uleb128 0x10
+ 1293 0336 79000000 		.4byte	.LASF46
+ 1294 033a 03       		.byte	0x3
+ 1295 033b 3F02     		.2byte	0x23f
+ 1296 033d 47030000 		.4byte	0x347
+ 1297 0341 05       		.uleb128 0x5
+ 1298 0342 03       		.byte	0x3
+ 1299 0343 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+ 1300 0347 0E       		.uleb128 0xe
+ 1301 0348 25030000 		.4byte	0x325
+ 1302 034c 0B       		.uleb128 0xb
+ 1303 034d 97010000 		.4byte	0x197
+ 1304 0351 5C030000 		.4byte	0x35c
+ 1305 0355 0C       		.uleb128 0xc
+ 1306 0356 93000000 		.4byte	0x93
+ 1307 035a 06       		.byte	0x6
+ 1308 035b 00       		.byte	0
+ 1309 035c 10       		.uleb128 0x10
+ 1310 035d 88010000 		.4byte	.LASF47
+ 1311 0361 03       		.byte	0x3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 24
+
+
+ 1312 0362 4702     		.2byte	0x247
+ 1313 0364 6E030000 		.4byte	0x36e
+ 1314 0368 05       		.uleb128 0x5
+ 1315 0369 03       		.byte	0x3
+ 1316 036a 00000000 		.4byte	USBFS_DEVICE0_CONFIGURATION0_TABLE
+ 1317 036e 0E       		.uleb128 0xe
+ 1318 036f 4C030000 		.4byte	0x34c
+ 1319 0373 0B       		.uleb128 0xb
+ 1320 0374 97010000 		.4byte	0x197
+ 1321 0378 83030000 		.4byte	0x383
+ 1322 037c 0C       		.uleb128 0xc
+ 1323 037d 93000000 		.4byte	0x93
+ 1324 0381 01       		.byte	0x1
+ 1325 0382 00       		.byte	0
+ 1326 0383 10       		.uleb128 0x10
+ 1327 0384 B0010000 		.4byte	.LASF48
+ 1328 0388 03       		.byte	0x3
+ 1329 0389 5402     		.2byte	0x254
+ 1330 038b 95030000 		.4byte	0x395
+ 1331 038f 05       		.uleb128 0x5
+ 1332 0390 03       		.byte	0x3
+ 1333 0391 00000000 		.4byte	USBFS_DEVICE0_TABLE
+ 1334 0395 0E       		.uleb128 0xe
+ 1335 0396 73030000 		.4byte	0x373
+ 1336 039a 10       		.uleb128 0x10
+ 1337 039b A6000000 		.4byte	.LASF49
+ 1338 039f 03       		.byte	0x3
+ 1339 03a0 5B02     		.2byte	0x25b
+ 1340 03a2 AC030000 		.4byte	0x3ac
+ 1341 03a6 05       		.uleb128 0x5
+ 1342 03a7 03       		.byte	0x3
+ 1343 03a8 00000000 		.4byte	USBFS_TABLE
+ 1344 03ac 0E       		.uleb128 0xe
+ 1345 03ad D7020000 		.4byte	0x2d7
+ 1346 03b1 00       		.byte	0
+ 1347              		.section	.debug_abbrev,"",%progbits
+ 1348              	.Ldebug_abbrev0:
+ 1349 0000 01       		.uleb128 0x1
+ 1350 0001 11       		.uleb128 0x11
+ 1351 0002 01       		.byte	0x1
+ 1352 0003 25       		.uleb128 0x25
+ 1353 0004 0E       		.uleb128 0xe
+ 1354 0005 13       		.uleb128 0x13
+ 1355 0006 0B       		.uleb128 0xb
+ 1356 0007 03       		.uleb128 0x3
+ 1357 0008 0E       		.uleb128 0xe
+ 1358 0009 1B       		.uleb128 0x1b
+ 1359 000a 0E       		.uleb128 0xe
+ 1360 000b 10       		.uleb128 0x10
+ 1361 000c 17       		.uleb128 0x17
+ 1362 000d 00       		.byte	0
+ 1363 000e 00       		.byte	0
+ 1364 000f 02       		.uleb128 0x2
+ 1365 0010 24       		.uleb128 0x24
+ 1366 0011 00       		.byte	0
+ 1367 0012 0B       		.uleb128 0xb
+ 1368 0013 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 25
+
+
+ 1369 0014 3E       		.uleb128 0x3e
+ 1370 0015 0B       		.uleb128 0xb
+ 1371 0016 03       		.uleb128 0x3
+ 1372 0017 0E       		.uleb128 0xe
+ 1373 0018 00       		.byte	0
+ 1374 0019 00       		.byte	0
+ 1375 001a 03       		.uleb128 0x3
+ 1376 001b 24       		.uleb128 0x24
+ 1377 001c 00       		.byte	0
+ 1378 001d 0B       		.uleb128 0xb
+ 1379 001e 0B       		.uleb128 0xb
+ 1380 001f 3E       		.uleb128 0x3e
+ 1381 0020 0B       		.uleb128 0xb
+ 1382 0021 03       		.uleb128 0x3
+ 1383 0022 08       		.uleb128 0x8
+ 1384 0023 00       		.byte	0
+ 1385 0024 00       		.byte	0
+ 1386 0025 04       		.uleb128 0x4
+ 1387 0026 16       		.uleb128 0x16
+ 1388 0027 00       		.byte	0
+ 1389 0028 03       		.uleb128 0x3
+ 1390 0029 0E       		.uleb128 0xe
+ 1391 002a 3A       		.uleb128 0x3a
+ 1392 002b 0B       		.uleb128 0xb
+ 1393 002c 3B       		.uleb128 0x3b
+ 1394 002d 0B       		.uleb128 0xb
+ 1395 002e 49       		.uleb128 0x49
+ 1396 002f 13       		.uleb128 0x13
+ 1397 0030 00       		.byte	0
+ 1398 0031 00       		.byte	0
+ 1399 0032 05       		.uleb128 0x5
+ 1400 0033 35       		.uleb128 0x35
+ 1401 0034 00       		.byte	0
+ 1402 0035 49       		.uleb128 0x49
+ 1403 0036 13       		.uleb128 0x13
+ 1404 0037 00       		.byte	0
+ 1405 0038 00       		.byte	0
+ 1406 0039 06       		.uleb128 0x6
+ 1407 003a 0F       		.uleb128 0xf
+ 1408 003b 00       		.byte	0
+ 1409 003c 0B       		.uleb128 0xb
+ 1410 003d 0B       		.uleb128 0xb
+ 1411 003e 00       		.byte	0
+ 1412 003f 00       		.byte	0
+ 1413 0040 07       		.uleb128 0x7
+ 1414 0041 13       		.uleb128 0x13
+ 1415 0042 01       		.byte	0x1
+ 1416 0043 03       		.uleb128 0x3
+ 1417 0044 0E       		.uleb128 0xe
+ 1418 0045 0B       		.uleb128 0xb
+ 1419 0046 0B       		.uleb128 0xb
+ 1420 0047 3A       		.uleb128 0x3a
+ 1421 0048 0B       		.uleb128 0xb
+ 1422 0049 3B       		.uleb128 0x3b
+ 1423 004a 0B       		.uleb128 0xb
+ 1424 004b 01       		.uleb128 0x1
+ 1425 004c 13       		.uleb128 0x13
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 26
+
+
+ 1426 004d 00       		.byte	0
+ 1427 004e 00       		.byte	0
+ 1428 004f 08       		.uleb128 0x8
+ 1429 0050 0D       		.uleb128 0xd
+ 1430 0051 00       		.byte	0
+ 1431 0052 03       		.uleb128 0x3
+ 1432 0053 0E       		.uleb128 0xe
+ 1433 0054 3A       		.uleb128 0x3a
+ 1434 0055 0B       		.uleb128 0xb
+ 1435 0056 3B       		.uleb128 0x3b
+ 1436 0057 0B       		.uleb128 0xb
+ 1437 0058 49       		.uleb128 0x49
+ 1438 0059 13       		.uleb128 0x13
+ 1439 005a 38       		.uleb128 0x38
+ 1440 005b 0B       		.uleb128 0xb
+ 1441 005c 00       		.byte	0
+ 1442 005d 00       		.byte	0
+ 1443 005e 09       		.uleb128 0x9
+ 1444 005f 0F       		.uleb128 0xf
+ 1445 0060 00       		.byte	0
+ 1446 0061 0B       		.uleb128 0xb
+ 1447 0062 0B       		.uleb128 0xb
+ 1448 0063 49       		.uleb128 0x49
+ 1449 0064 13       		.uleb128 0x13
+ 1450 0065 00       		.byte	0
+ 1451 0066 00       		.byte	0
+ 1452 0067 0A       		.uleb128 0xa
+ 1453 0068 0D       		.uleb128 0xd
+ 1454 0069 00       		.byte	0
+ 1455 006a 03       		.uleb128 0x3
+ 1456 006b 08       		.uleb128 0x8
+ 1457 006c 3A       		.uleb128 0x3a
+ 1458 006d 0B       		.uleb128 0xb
+ 1459 006e 3B       		.uleb128 0x3b
+ 1460 006f 0B       		.uleb128 0xb
+ 1461 0070 49       		.uleb128 0x49
+ 1462 0071 13       		.uleb128 0x13
+ 1463 0072 38       		.uleb128 0x38
+ 1464 0073 0B       		.uleb128 0xb
+ 1465 0074 00       		.byte	0
+ 1466 0075 00       		.byte	0
+ 1467 0076 0B       		.uleb128 0xb
+ 1468 0077 01       		.uleb128 0x1
+ 1469 0078 01       		.byte	0x1
+ 1470 0079 49       		.uleb128 0x49
+ 1471 007a 13       		.uleb128 0x13
+ 1472 007b 01       		.uleb128 0x1
+ 1473 007c 13       		.uleb128 0x13
+ 1474 007d 00       		.byte	0
+ 1475 007e 00       		.byte	0
+ 1476 007f 0C       		.uleb128 0xc
+ 1477 0080 21       		.uleb128 0x21
+ 1478 0081 00       		.byte	0
+ 1479 0082 49       		.uleb128 0x49
+ 1480 0083 13       		.uleb128 0x13
+ 1481 0084 2F       		.uleb128 0x2f
+ 1482 0085 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 27
+
+
+ 1483 0086 00       		.byte	0
+ 1484 0087 00       		.byte	0
+ 1485 0088 0D       		.uleb128 0xd
+ 1486 0089 34       		.uleb128 0x34
+ 1487 008a 00       		.byte	0
+ 1488 008b 03       		.uleb128 0x3
+ 1489 008c 0E       		.uleb128 0xe
+ 1490 008d 3A       		.uleb128 0x3a
+ 1491 008e 0B       		.uleb128 0xb
+ 1492 008f 3B       		.uleb128 0x3b
+ 1493 0090 0B       		.uleb128 0xb
+ 1494 0091 49       		.uleb128 0x49
+ 1495 0092 13       		.uleb128 0x13
+ 1496 0093 3F       		.uleb128 0x3f
+ 1497 0094 19       		.uleb128 0x19
+ 1498 0095 02       		.uleb128 0x2
+ 1499 0096 18       		.uleb128 0x18
+ 1500 0097 00       		.byte	0
+ 1501 0098 00       		.byte	0
+ 1502 0099 0E       		.uleb128 0xe
+ 1503 009a 26       		.uleb128 0x26
+ 1504 009b 00       		.byte	0
+ 1505 009c 49       		.uleb128 0x49
+ 1506 009d 13       		.uleb128 0x13
+ 1507 009e 00       		.byte	0
+ 1508 009f 00       		.byte	0
+ 1509 00a0 0F       		.uleb128 0xf
+ 1510 00a1 21       		.uleb128 0x21
+ 1511 00a2 00       		.byte	0
+ 1512 00a3 49       		.uleb128 0x49
+ 1513 00a4 13       		.uleb128 0x13
+ 1514 00a5 2F       		.uleb128 0x2f
+ 1515 00a6 05       		.uleb128 0x5
+ 1516 00a7 00       		.byte	0
+ 1517 00a8 00       		.byte	0
+ 1518 00a9 10       		.uleb128 0x10
+ 1519 00aa 34       		.uleb128 0x34
+ 1520 00ab 00       		.byte	0
+ 1521 00ac 03       		.uleb128 0x3
+ 1522 00ad 0E       		.uleb128 0xe
+ 1523 00ae 3A       		.uleb128 0x3a
+ 1524 00af 0B       		.uleb128 0xb
+ 1525 00b0 3B       		.uleb128 0x3b
+ 1526 00b1 05       		.uleb128 0x5
+ 1527 00b2 49       		.uleb128 0x49
+ 1528 00b3 13       		.uleb128 0x13
+ 1529 00b4 3F       		.uleb128 0x3f
+ 1530 00b5 19       		.uleb128 0x19
+ 1531 00b6 02       		.uleb128 0x2
+ 1532 00b7 18       		.uleb128 0x18
+ 1533 00b8 00       		.byte	0
+ 1534 00b9 00       		.byte	0
+ 1535 00ba 00       		.byte	0
+ 1536              		.section	.debug_aranges,"",%progbits
+ 1537 0000 14000000 		.4byte	0x14
+ 1538 0004 0200     		.2byte	0x2
+ 1539 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 28
+
+
+ 1540 000a 04       		.byte	0x4
+ 1541 000b 00       		.byte	0
+ 1542 000c 0000     		.2byte	0
+ 1543 000e 0000     		.2byte	0
+ 1544 0010 00000000 		.4byte	0
+ 1545 0014 00000000 		.4byte	0
+ 1546              		.section	.debug_line,"",%progbits
+ 1547              	.Ldebug_line0:
+ 1548 0000 5B000000 		.section	.debug_str,"MS",%progbits,1
+ 1548      02005500 
+ 1548      00000201 
+ 1548      FB0E0D00 
+ 1548      01010101 
+ 1549              	.LASF52:
+ 1550 0000 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 1550      73657273 
+ 1550      5C6C756B 
+ 1550      61735C44 
+ 1550      65736B74 
+ 1551 002f 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 1551      73746572 
+ 1551      5C50696F 
+ 1551      6E656572 
+ 1551      4B69745F 
+ 1552              	.LASF35:
+ 1553 0058 55534246 		.ascii	"USBFS_DEVICE0_DESCR\000"
+ 1553      535F4445 
+ 1553      56494345 
+ 1553      305F4445 
+ 1553      53435200 
+ 1554              	.LASF30:
+ 1555 006c 70537461 		.ascii	"pStatusBlock\000"
+ 1555      74757342 
+ 1555      6C6F636B 
+ 1555      00
+ 1556              	.LASF46:
+ 1557 0079 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_INTERFACE_CLASS\000"
+ 1557      535F4445 
+ 1557      56494345 
+ 1557      305F434F 
+ 1557      4E464947 
+ 1558              	.LASF49:
+ 1559 00a6 55534246 		.ascii	"USBFS_TABLE\000"
+ 1559      535F5441 
+ 1559      424C4500 
+ 1560              	.LASF28:
+ 1561 00b2 636F756E 		.ascii	"count\000"
+ 1561      7400
+ 1562              	.LASF3:
+ 1563 00b8 73686F72 		.ascii	"short unsigned int\000"
+ 1563      7420756E 
+ 1563      7369676E 
+ 1563      65642069 
+ 1563      6E7400
+ 1564              	.LASF38:
+ 1565 00cb 55534246 		.ascii	"USBFS_SN_STRING_DESCRIPTOR\000"
+ 1565      535F534E 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 29
+
+
+ 1565      5F535452 
+ 1565      494E475F 
+ 1565      44455343 
+ 1566              	.LASF24:
+ 1567 00e6 73746174 		.ascii	"status\000"
+ 1567      757300
+ 1568              	.LASF29:
+ 1569 00ed 70446174 		.ascii	"pData\000"
+ 1569      6100
+ 1570              	.LASF31:
+ 1571 00f3 545F5553 		.ascii	"T_USBFS_TD\000"
+ 1571      4246535F 
+ 1571      544400
+ 1572              	.LASF11:
+ 1573 00fe 666C6F61 		.ascii	"float\000"
+ 1573      7400
+ 1574              	.LASF16:
+ 1575 0104 616C7453 		.ascii	"altSetting\000"
+ 1575      65747469 
+ 1575      6E6700
+ 1576              	.LASF37:
+ 1577 010f 55534246 		.ascii	"USBFS_STRING_DESCRIPTORS\000"
+ 1577      535F5354 
+ 1577      52494E47 
+ 1577      5F444553 
+ 1577      43524950 
+ 1578              	.LASF23:
+ 1579 0128 5F555342 		.ascii	"_USBFS_XferStatusBlock\000"
+ 1579      46535F58 
+ 1579      66657253 
+ 1579      74617475 
+ 1579      73426C6F 
+ 1580              	.LASF18:
+ 1581 013f 61747472 		.ascii	"attributes\000"
+ 1581      69627574 
+ 1581      657300
+ 1582              	.LASF41:
+ 1583 014a 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_"
+ 1583      535F4445 
+ 1583      56494345 
+ 1583      305F434F 
+ 1583      4E464947 
+ 1584 017d 4849445F 		.ascii	"HID_IN_BUF\000"
+ 1584      494E5F42 
+ 1584      554600
+ 1585              	.LASF47:
+ 1586 0188 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_TABLE\000"
+ 1586      535F4445 
+ 1586      56494345 
+ 1586      305F434F 
+ 1586      4E464947 
+ 1587              	.LASF17:
+ 1588 01ab 61646472 		.ascii	"addr\000"
+ 1588      00
+ 1589              	.LASF48:
+ 1590 01b0 55534246 		.ascii	"USBFS_DEVICE0_TABLE\000"
+ 1590      535F4445 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 30
+
+
+ 1590      56494345 
+ 1590      305F5441 
+ 1590      424C4500 
+ 1591              	.LASF44:
+ 1592 01c4 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_TABLE\000"
+ 1592      535F4445 
+ 1592      56494345 
+ 1592      305F434F 
+ 1592      4E464947 
+ 1593              	.LASF42:
+ 1594 01f2 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_"
+ 1594      535F4445 
+ 1594      56494345 
+ 1594      305F434F 
+ 1594      4E464947 
+ 1595 0225 4849445F 		.ascii	"HID_IN_RPT_TABLE\000"
+ 1595      494E5F52 
+ 1595      50545F54 
+ 1595      41424C45 
+ 1595      00
+ 1596              	.LASF50:
+ 1597 0236 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1597      4320342E 
+ 1597      392E3320 
+ 1597      32303135 
+ 1597      30333033 
+ 1598 0269 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1598      20726576 
+ 1598      6973696F 
+ 1598      6E203232 
+ 1598      31323230 
+ 1599 029c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1599      66756E63 
+ 1599      74696F6E 
+ 1599      2D736563 
+ 1599      74696F6E 
+ 1600              	.LASF12:
+ 1601 02c4 646F7562 		.ascii	"double\000"
+ 1601      6C6500
+ 1602              	.LASF10:
+ 1603 02cb 75696E74 		.ascii	"uint16\000"
+ 1603      313600
+ 1604              	.LASF45:
+ 1605 02d2 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE\000"
+ 1605      535F4445 
+ 1605      56494345 
+ 1605      305F434F 
+ 1605      4E464947 
+ 1606              	.LASF22:
+ 1607 0301 5F555342 		.ascii	"_USBFS_EpSettingsBlock\000"
+ 1607      46535F45 
+ 1607      70536574 
+ 1607      74696E67 
+ 1607      73426C6F 
+ 1608              	.LASF36:
+ 1609 0318 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_DESCR\000"
+ 1609      535F4445 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 31
+
+
+ 1609      56494345 
+ 1609      305F434F 
+ 1609      4E464947 
+ 1610              	.LASF27:
+ 1611 033b 5F555342 		.ascii	"_USBFS_Td\000"
+ 1611      46535F54 
+ 1611      6400
+ 1612              	.LASF5:
+ 1613 0345 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1613      20756E73 
+ 1613      69676E65 
+ 1613      6420696E 
+ 1613      7400
+ 1614              	.LASF8:
+ 1615 0357 756E7369 		.ascii	"unsigned int\000"
+ 1615      676E6564 
+ 1615      20696E74 
+ 1615      00
+ 1616              	.LASF7:
+ 1617 0364 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1617      206C6F6E 
+ 1617      6720756E 
+ 1617      7369676E 
+ 1617      65642069 
+ 1618              	.LASF33:
+ 1619 037b 705F6C69 		.ascii	"p_list\000"
+ 1619      737400
+ 1620              	.LASF21:
+ 1621 0382 545F5553 		.ascii	"T_USBFS_EP_SETTINGS_BLOCK\000"
+ 1621      4246535F 
+ 1621      45505F53 
+ 1621      45545449 
+ 1621      4E47535F 
+ 1622              	.LASF26:
+ 1623 039c 545F5553 		.ascii	"T_USBFS_XFER_STATUS_BLOCK\000"
+ 1623      4246535F 
+ 1623      58464552 
+ 1623      5F535441 
+ 1623      5455535F 
+ 1624              	.LASF1:
+ 1625 03b6 756E7369 		.ascii	"unsigned char\000"
+ 1625      676E6564 
+ 1625      20636861 
+ 1625      7200
+ 1626              	.LASF14:
+ 1627 03c4 73697A65 		.ascii	"sizetype\000"
+ 1627      74797065 
+ 1627      00
+ 1628              	.LASF6:
+ 1629 03cd 6C6F6E67 		.ascii	"long long int\000"
+ 1629      206C6F6E 
+ 1629      6720696E 
+ 1629      7400
+ 1630              	.LASF34:
+ 1631 03db 545F5553 		.ascii	"T_USBFS_LUT\000"
+ 1631      4246535F 
+ 1631      4C555400 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 32
+
+
+ 1632              	.LASF13:
+ 1633 03e7 63686172 		.ascii	"char\000"
+ 1633      00
+ 1634              	.LASF51:
+ 1635 03ec 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\USBFS_descr.c\000"
+ 1635      6E657261 
+ 1635      7465645F 
+ 1635      536F7572 
+ 1635      63655C50 
+ 1636              	.LASF19:
+ 1637 0413 62756666 		.ascii	"bufferSize\000"
+ 1637      65725369 
+ 1637      7A6500
+ 1638              	.LASF2:
+ 1639 041e 73686F72 		.ascii	"short int\000"
+ 1639      7420696E 
+ 1639      7400
+ 1640              	.LASF39:
+ 1641 0428 55534246 		.ascii	"USBFS_HIDREPORT_DESCRIPTOR1\000"
+ 1641      535F4849 
+ 1641      44524550 
+ 1641      4F52545F 
+ 1641      44455343 
+ 1642              	.LASF9:
+ 1643 0444 75696E74 		.ascii	"uint8\000"
+ 1643      3800
+ 1644              	.LASF43:
+ 1645 044a 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_"
+ 1645      535F4445 
+ 1645      56494345 
+ 1645      305F434F 
+ 1645      4E464947 
+ 1646 047d 4849445F 		.ascii	"HID_TABLE\000"
+ 1646      5441424C 
+ 1646      4500
+ 1647              	.LASF15:
+ 1648 0487 696E7465 		.ascii	"interface\000"
+ 1648      72666163 
+ 1648      6500
+ 1649              	.LASF4:
+ 1650 0491 6C6F6E67 		.ascii	"long int\000"
+ 1650      20696E74 
+ 1650      00
+ 1651              	.LASF0:
+ 1652 049a 7369676E 		.ascii	"signed char\000"
+ 1652      65642063 
+ 1652      68617200 
+ 1653              	.LASF40:
+ 1654 04a6 55534246 		.ascii	"USBFS_DEVICE0_CONFIGURATION0_INTERFACE3_ALTERNATE0_"
+ 1654      535F4445 
+ 1654      56494345 
+ 1654      305F434F 
+ 1654      4E464947 
+ 1655 04d9 4849445F 		.ascii	"HID_IN_RPT_SCB\000"
+ 1655      494E5F52 
+ 1655      50545F53 
+ 1655      434200
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccybkOFa.s 			page 33
+
+
+ 1656              	.LASF25:
+ 1657 04e8 6C656E67 		.ascii	"length\000"
+ 1657      746800
+ 1658              	.LASF32:
+ 1659 04ef 5F555342 		.ascii	"_USBFS_Lut\000"
+ 1659      46535F4C 
+ 1659      757400
+ 1660              	.LASF20:
+ 1661 04fa 624D6973 		.ascii	"bMisc\000"
+ 1661      6300
+ 1662              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

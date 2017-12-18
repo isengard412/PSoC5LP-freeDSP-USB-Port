@@ -1,0 +1,1935 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBFS_audio.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	USBFS_currentSampleFrequency,27,4
+  19              		.comm	USBFS_frequencyChanged,1,1
+  20              		.comm	USBFS_currentMute,1,1
+  21              		.comm	USBFS_currentVolume,2,4
+  22              		.global	USBFS_minimumVolume
+  23              		.data
+  24              		.align	2
+  25              		.type	USBFS_minimumVolume, %object
+  26              		.size	USBFS_minimumVolume, 2
+  27              	USBFS_minimumVolume:
+  28 0000 01       		.byte	1
+  29 0001 80       		.byte	-128
+  30              		.global	USBFS_maximumVolume
+  31 0002 0000     		.align	2
+  32              		.type	USBFS_maximumVolume, %object
+  33              		.size	USBFS_maximumVolume, 2
+  34              	USBFS_maximumVolume:
+  35 0004 FF       		.byte	-1
+  36 0005 7F       		.byte	127
+  37              		.global	USBFS_resolutionVolume
+  38 0006 0000     		.align	2
+  39              		.type	USBFS_resolutionVolume, %object
+  40              		.size	USBFS_resolutionVolume, 2
+  41              	USBFS_resolutionVolume:
+  42 0008 01       		.byte	1
+  43 0009 00       		.byte	0
+  44              		.comm	USBFS_currentCH1InputVolume,2,4
+  45              		.comm	USBFS_currentCH2InputVolume,2,4
+  46              		.comm	USBFS_currentTmpCH1InputVolume,2,4
+  47              		.comm	USBFS_currentTmpCH2InputVolume,2,4
+  48              		.comm	USB_inputMute,1,1
+  49              		.comm	USB_inputVolume,2,4
+  50 000a 0000     		.section	.text.USBFS_DispatchAUDIOClassRqst,"ax",%progbits
+  51              		.align	2
+  52              		.global	USBFS_DispatchAUDIOClassRqst
+  53              		.thumb
+  54              		.thumb_func
+  55              		.type	USBFS_DispatchAUDIOClassRqst, %function
+  56              	USBFS_DispatchAUDIOClassRqst:
+  57              	.LFB56:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 2
+
+
+  58              		.file 1 ".\\Generated_Source\\PSoC5\\USBFS_audio.c"
+   1:.\Generated_Source\PSoC5/USBFS_audio.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/USBFS_audio.c **** * File Name: USBFS_audio.c
+   3:.\Generated_Source\PSoC5/USBFS_audio.c **** * Version 2.50
+   4:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+   5:.\Generated_Source\PSoC5/USBFS_audio.c **** * Description:
+   6:.\Generated_Source\PSoC5/USBFS_audio.c **** *  USB AUDIO Class request handler.
+   7:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+   8:.\Generated_Source\PSoC5/USBFS_audio.c **** * Note:
+   9:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+  10:.\Generated_Source\PSoC5/USBFS_audio.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/USBFS_audio.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/USBFS_audio.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/USBFS_audio.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/USBFS_audio.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/USBFS_audio.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  17:.\Generated_Source\PSoC5/USBFS_audio.c **** #include "USBFS.h"
+  18:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  19:.\Generated_Source\PSoC5/USBFS_audio.c **** #if defined(USBFS_ENABLE_AUDIO_CLASS)
+  20:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  21:.\Generated_Source\PSoC5/USBFS_audio.c **** #include "USBFS_audio.h"
+  22:.\Generated_Source\PSoC5/USBFS_audio.c **** #include "USBFS_midi.h"
+  23:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  24:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  25:.\Generated_Source\PSoC5/USBFS_audio.c **** /***************************************
+  26:.\Generated_Source\PSoC5/USBFS_audio.c **** *    AUDIO Variables
+  27:.\Generated_Source\PSoC5/USBFS_audio.c **** ***************************************/
+  28:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  29:.\Generated_Source\PSoC5/USBFS_audio.c **** #if defined(USBFS_ENABLE_AUDIO_STREAMING)
+  30:.\Generated_Source\PSoC5/USBFS_audio.c ****     volatile uint8 USBFS_currentSampleFrequency[USBFS_MAX_EP][USBFS_SAMPLE_FREQ_LEN];
+  31:.\Generated_Source\PSoC5/USBFS_audio.c ****     volatile uint8 USBFS_frequencyChanged;
+  32:.\Generated_Source\PSoC5/USBFS_audio.c ****     volatile uint8 USBFS_currentMute;
+  33:.\Generated_Source\PSoC5/USBFS_audio.c ****     volatile uint8 USBFS_currentVolume[USBFS_VOLUME_LEN];
+  34:.\Generated_Source\PSoC5/USBFS_audio.c ****     volatile uint8 USBFS_minimumVolume[] = {0x01, 0x80};
+  35:.\Generated_Source\PSoC5/USBFS_audio.c ****     volatile uint8 USBFS_maximumVolume[] = {0xFF, 0x7F};
+  36:.\Generated_Source\PSoC5/USBFS_audio.c ****     volatile uint8 USBFS_resolutionVolume[] = {0x01, 0x00};
+  37:.\Generated_Source\PSoC5/USBFS_audio.c **** #endif /* End USBFS_ENABLE_AUDIO_STREAMING */
+  38:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  39:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  40:.\Generated_Source\PSoC5/USBFS_audio.c **** /***************************************
+  41:.\Generated_Source\PSoC5/USBFS_audio.c **** * Custom Declarations
+  42:.\Generated_Source\PSoC5/USBFS_audio.c **** ***************************************/
+  43:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  44:.\Generated_Source\PSoC5/USBFS_audio.c **** /* `#START CUSTOM_DECLARATIONS` Place your declaration here */
+  45:.\Generated_Source\PSoC5/USBFS_audio.c **** #include "Application.h"
+  46:.\Generated_Source\PSoC5/USBFS_audio.c **** extern uint8 volumeUpdateReceived;
+  47:.\Generated_Source\PSoC5/USBFS_audio.c **** #define OUTPUT_VOLUME_FEATURE_UNIT   0x02
+  48:.\Generated_Source\PSoC5/USBFS_audio.c **** #define INPUT_VOLUME_FEATURE_UNIT    0x06
+  49:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  50:.\Generated_Source\PSoC5/USBFS_audio.c **** volatile uint8 USBFS_currentCH1InputVolume[USBFS_VOLUME_LEN];
+  51:.\Generated_Source\PSoC5/USBFS_audio.c **** volatile uint8 USBFS_currentCH2InputVolume[USBFS_VOLUME_LEN];
+  52:.\Generated_Source\PSoC5/USBFS_audio.c **** volatile uint8 USBFS_currentTmpCH1InputVolume[USBFS_VOLUME_LEN];
+  53:.\Generated_Source\PSoC5/USBFS_audio.c **** volatile uint8 USBFS_currentTmpCH2InputVolume[USBFS_VOLUME_LEN];
+  54:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  55:.\Generated_Source\PSoC5/USBFS_audio.c **** #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+  56:.\Generated_Source\PSoC5/USBFS_audio.c **** volatile uint8 USB_inputMute;
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 3
+
+
+  57:.\Generated_Source\PSoC5/USBFS_audio.c **** volatile uint8 USB_inputVolume[USBFS_VOLUME_LEN];
+  58:.\Generated_Source\PSoC5/USBFS_audio.c **** #endif 
+  59:.\Generated_Source\PSoC5/USBFS_audio.c **** /* `#END` */
+  60:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  61:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  62:.\Generated_Source\PSoC5/USBFS_audio.c **** /***************************************
+  63:.\Generated_Source\PSoC5/USBFS_audio.c **** *    External references
+  64:.\Generated_Source\PSoC5/USBFS_audio.c **** ***************************************/
+  65:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  66:.\Generated_Source\PSoC5/USBFS_audio.c **** uint8 USBFS_InitControlRead(void) ;
+  67:.\Generated_Source\PSoC5/USBFS_audio.c **** uint8 USBFS_InitControlWrite(void) ;
+  68:.\Generated_Source\PSoC5/USBFS_audio.c **** uint8 USBFS_InitNoDataControlTransfer(void) ;
+  69:.\Generated_Source\PSoC5/USBFS_audio.c **** uint8 USBFS_InitZeroLengthControlTransfer(void)
+  70:.\Generated_Source\PSoC5/USBFS_audio.c ****                                                 ;
+  71:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  72:.\Generated_Source\PSoC5/USBFS_audio.c **** extern volatile T_USBFS_EP_CTL_BLOCK USBFS_EP[];
+  73:.\Generated_Source\PSoC5/USBFS_audio.c **** extern volatile T_USBFS_TD USBFS_currentTD;
+  74:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  75:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  76:.\Generated_Source\PSoC5/USBFS_audio.c **** /***************************************
+  77:.\Generated_Source\PSoC5/USBFS_audio.c **** *    Private function prototypes
+  78:.\Generated_Source\PSoC5/USBFS_audio.c **** ***************************************/
+  79:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  80:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+  81:.\Generated_Source\PSoC5/USBFS_audio.c **** /*******************************************************************************
+  82:.\Generated_Source\PSoC5/USBFS_audio.c **** * Function Name: USBFS_DispatchAUDIOClassRqst
+  83:.\Generated_Source\PSoC5/USBFS_audio.c **** ********************************************************************************
+  84:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+  85:.\Generated_Source\PSoC5/USBFS_audio.c **** * Summary:
+  86:.\Generated_Source\PSoC5/USBFS_audio.c **** *  This routine dispatches class requests
+  87:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+  88:.\Generated_Source\PSoC5/USBFS_audio.c **** * Parameters:
+  89:.\Generated_Source\PSoC5/USBFS_audio.c **** *  None.
+  90:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+  91:.\Generated_Source\PSoC5/USBFS_audio.c **** * Return:
+  92:.\Generated_Source\PSoC5/USBFS_audio.c **** *  requestHandled
+  93:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+  94:.\Generated_Source\PSoC5/USBFS_audio.c **** * Global variables:
+  95:.\Generated_Source\PSoC5/USBFS_audio.c **** *   USBFS_currentSampleFrequency: Contains the current audio Sample
+  96:.\Generated_Source\PSoC5/USBFS_audio.c **** *       Frequency. It is set by the Host using SET_CUR request to the endpoint.
+  97:.\Generated_Source\PSoC5/USBFS_audio.c **** *   USBFS_frequencyChanged: This variable is used as a flag for the
+  98:.\Generated_Source\PSoC5/USBFS_audio.c **** *       user code, to be aware that Host has been sent request for changing
+  99:.\Generated_Source\PSoC5/USBFS_audio.c **** *       Sample Frequency. Sample frequency will be sent on the next OUT
+ 100:.\Generated_Source\PSoC5/USBFS_audio.c **** *       transaction. It is contains endpoint address when set. The following
+ 101:.\Generated_Source\PSoC5/USBFS_audio.c **** *       code is recommended for detecting new Sample Frequency in main code:
+ 102:.\Generated_Source\PSoC5/USBFS_audio.c **** *       if((USBFS_frequencyChanged != 0) &&
+ 103:.\Generated_Source\PSoC5/USBFS_audio.c **** *       (USBFS_transferState == USBFS_TRANS_STATE_IDLE))
+ 104:.\Generated_Source\PSoC5/USBFS_audio.c **** *       {
+ 105:.\Generated_Source\PSoC5/USBFS_audio.c **** *          USBFS_frequencyChanged = 0;
+ 106:.\Generated_Source\PSoC5/USBFS_audio.c **** *       }
+ 107:.\Generated_Source\PSoC5/USBFS_audio.c **** *       USBFS_transferState variable is checked to be sure that
+ 108:.\Generated_Source\PSoC5/USBFS_audio.c **** *             transfer completes.
+ 109:.\Generated_Source\PSoC5/USBFS_audio.c **** *   USBFS_currentMute: Contains mute configuration set by Host.
+ 110:.\Generated_Source\PSoC5/USBFS_audio.c **** *   USBFS_currentVolume: Contains volume level set by Host.
+ 111:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+ 112:.\Generated_Source\PSoC5/USBFS_audio.c **** * Reentrant:
+ 113:.\Generated_Source\PSoC5/USBFS_audio.c **** *  No.
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 4
+
+
+ 114:.\Generated_Source\PSoC5/USBFS_audio.c **** *
+ 115:.\Generated_Source\PSoC5/USBFS_audio.c **** *******************************************************************************/
+ 116:.\Generated_Source\PSoC5/USBFS_audio.c **** uint8 USBFS_DispatchAUDIOClassRqst() 
+ 117:.\Generated_Source\PSoC5/USBFS_audio.c **** {
+  59              		.loc 1 117 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 8
+  62              		@ frame_needed = 1, uses_anonymous_args = 0
+  63 0000 80B5     		push	{r7, lr}
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 7, -8
+  66              		.cfi_offset 14, -4
+  67 0002 82B0     		sub	sp, sp, #8
+  68              		.cfi_def_cfa_offset 16
+  69 0004 00AF     		add	r7, sp, #0
+  70              		.cfi_def_cfa_register 7
+ 118:.\Generated_Source\PSoC5/USBFS_audio.c ****     uint8 requestHandled = USBFS_FALSE;
+  71              		.loc 1 118 0
+  72 0006 0023     		movs	r3, #0
+  73 0008 FB71     		strb	r3, [r7, #7]
+ 119:.\Generated_Source\PSoC5/USBFS_audio.c ****     
+ 120:.\Generated_Source\PSoC5/USBFS_audio.c ****     #if defined(USBFS_ENABLE_AUDIO_STREAMING)
+ 121:.\Generated_Source\PSoC5/USBFS_audio.c ****         uint8 epNumber;
+ 122:.\Generated_Source\PSoC5/USBFS_audio.c ****         epNumber = CY_GET_REG8(USBFS_wIndexLo) & USBFS_DIR_UNUSED;
+  74              		.loc 1 122 0
+  75 000a 9F4B     		ldr	r3, .L49
+  76 000c 1B78     		ldrb	r3, [r3]
+  77 000e DBB2     		uxtb	r3, r3
+  78 0010 03F07F03 		and	r3, r3, #127
+  79 0014 BB71     		strb	r3, [r7, #6]
+ 123:.\Generated_Source\PSoC5/USBFS_audio.c ****     #endif /* End USBFS_ENABLE_AUDIO_STREAMING */
+ 124:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 125:.\Generated_Source\PSoC5/USBFS_audio.c ****     if ((CY_GET_REG8(USBFS_bmRequestType) & USBFS_RQST_DIR_MASK) == USBFS_RQST_DIR_D2H)
+  80              		.loc 1 125 0
+  81 0016 9D4B     		ldr	r3, .L49+4
+  82 0018 1B78     		ldrb	r3, [r3]
+  83 001a DBB2     		uxtb	r3, r3
+  84 001c DBB2     		uxtb	r3, r3
+  85 001e 5BB2     		sxtb	r3, r3
+  86 0020 002B     		cmp	r3, #0
+  87 0022 80F2B880 		bge	.L2
+ 126:.\Generated_Source\PSoC5/USBFS_audio.c ****     {
+ 127:.\Generated_Source\PSoC5/USBFS_audio.c ****         /* Control Read */
+ 128:.\Generated_Source\PSoC5/USBFS_audio.c ****         if((CY_GET_REG8(USBFS_bmRequestType) & USBFS_RQST_RCPT_MASK) == \
+  88              		.loc 1 128 0
+  89 0026 994B     		ldr	r3, .L49+4
+  90 0028 1B78     		ldrb	r3, [r3]
+  91 002a DBB2     		uxtb	r3, r3
+  92 002c 03F00303 		and	r3, r3, #3
+  93 0030 022B     		cmp	r3, #2
+  94 0032 1CD1     		bne	.L3
+ 129:.\Generated_Source\PSoC5/USBFS_audio.c ****                                                                                     USBFS_RQST_RCPT
+ 130:.\Generated_Source\PSoC5/USBFS_audio.c ****         {
+ 131:.\Generated_Source\PSoC5/USBFS_audio.c ****             /* Endpoint */
+ 132:.\Generated_Source\PSoC5/USBFS_audio.c ****             switch (CY_GET_REG8(USBFS_bRequest))
+  95              		.loc 1 132 0
+  96 0034 964B     		ldr	r3, .L49+8
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 5
+
+
+  97 0036 1B78     		ldrb	r3, [r3]
+  98 0038 DBB2     		uxtb	r3, r3
+  99 003a 812B     		cmp	r3, #129
+ 100 003c 00D0     		beq	.L5
+ 133:.\Generated_Source\PSoC5/USBFS_audio.c ****             {
+ 134:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_CUR:
+ 135:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #if defined(USBFS_ENABLE_AUDIO_STREAMING)
+ 136:.\Generated_Source\PSoC5/USBFS_audio.c ****                     if(CY_GET_REG8(USBFS_wValueHi) == USBFS_SAMPLING_FREQ_CONTROL)
+ 137:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 138:.\Generated_Source\PSoC5/USBFS_audio.c ****                          /* Endpoint Control Selector is Sampling Frequency */
+ 139:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_SAMPLE_FREQ_LEN;
+ 140:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = USBFS_currentSampleFrequency[epNumber];
+ 141:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 142:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 143:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #endif /* End USBFS_ENABLE_AUDIO_STREAMING */
+ 144:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 145:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#START AUDIO_READ_REQUESTS` Place other request handler here */
+ 146:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 147:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#END` */
+ 148:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 149:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 150:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 101              		.loc 1 150 0
+ 102 003e 15E0     		b	.L7
+ 103              	.L5:
+ 136:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 104              		.loc 1 136 0
+ 105 0040 944B     		ldr	r3, .L49+12
+ 106 0042 1B78     		ldrb	r3, [r3]
+ 107 0044 DBB2     		uxtb	r3, r3
+ 108 0046 012B     		cmp	r3, #1
+ 109 0048 0FD1     		bne	.L6
+ 139:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = USBFS_currentSampleFrequency[epNumber];
+ 110              		.loc 1 139 0
+ 111 004a 934B     		ldr	r3, .L49+16
+ 112 004c 0322     		movs	r2, #3
+ 113 004e 1A80     		strh	r2, [r3]	@ movhi
+ 140:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 114              		.loc 1 140 0
+ 115 0050 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 116 0052 1346     		mov	r3, r2
+ 117 0054 5B00     		lsls	r3, r3, #1
+ 118 0056 1344     		add	r3, r3, r2
+ 119 0058 904A     		ldr	r2, .L49+20
+ 120 005a 1344     		add	r3, r3, r2
+ 121 005c 8E4A     		ldr	r2, .L49+16
+ 122 005e 5360     		str	r3, [r2, #4]
+ 141:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 123              		.loc 1 141 0
+ 124 0060 FFF7FEFF 		bl	USBFS_InitControlRead
+ 125 0064 0346     		mov	r3, r0
+ 126 0066 FB71     		strb	r3, [r7, #7]
+ 148:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 127              		.loc 1 148 0
+ 128 0068 FFE7     		b	.L46
+ 129              	.L6:
+ 130              	.L46:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 6
+
+
+ 131 006a 00BF     		nop
+ 132              	.L7:
+ 133 006c 40E1     		b	.L8
+ 134              	.L3:
+ 151:.\Generated_Source\PSoC5/USBFS_audio.c ****             }
+ 152:.\Generated_Source\PSoC5/USBFS_audio.c ****         }
+ 153:.\Generated_Source\PSoC5/USBFS_audio.c ****         else if((CY_GET_REG8(USBFS_bmRequestType) & USBFS_RQST_RCPT_MASK) == \
+ 135              		.loc 1 153 0
+ 136 006e 874B     		ldr	r3, .L49+4
+ 137 0070 1B78     		ldrb	r3, [r3]
+ 138 0072 DBB2     		uxtb	r3, r3
+ 139 0074 03F00303 		and	r3, r3, #3
+ 140 0078 012B     		cmp	r3, #1
+ 141 007a 40F03981 		bne	.L8
+ 154:.\Generated_Source\PSoC5/USBFS_audio.c ****                                                                                     USBFS_RQST_RCPT
+ 155:.\Generated_Source\PSoC5/USBFS_audio.c ****         {
+ 156:.\Generated_Source\PSoC5/USBFS_audio.c ****             /* Interface or Entity ID */
+ 157:.\Generated_Source\PSoC5/USBFS_audio.c ****             switch (CY_GET_REG8(USBFS_bRequest))
+ 142              		.loc 1 157 0
+ 143 007e 844B     		ldr	r3, .L49+8
+ 144 0080 1B78     		ldrb	r3, [r3]
+ 145 0082 DBB2     		uxtb	r3, r3
+ 146 0084 832B     		cmp	r3, #131
+ 147 0086 5BD0     		beq	.L10
+ 148 0088 832B     		cmp	r3, #131
+ 149 008a 04DC     		bgt	.L11
+ 150 008c 812B     		cmp	r3, #129
+ 151 008e 07D0     		beq	.L12
+ 152 0090 822B     		cmp	r3, #130
+ 153 0092 44D0     		beq	.L13
+ 158:.\Generated_Source\PSoC5/USBFS_audio.c ****             {
+ 159:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_CUR:
+ 160:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #if defined(USBFS_ENABLE_AUDIO_STREAMING)
+ 161:.\Generated_Source\PSoC5/USBFS_audio.c ****                     if(CY_GET_REG8(USBFS_wValueHi) == USBFS_MUTE_CONTROL)
+ 162:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 163:.\Generated_Source\PSoC5/USBFS_audio.c ****                          /* Entity ID Control Selector is MUTE */
+ 164:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = 1;
+ 165:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_currentMute;
+ 166:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 167:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 168:.\Generated_Source\PSoC5/USBFS_audio.c ****                     else if(CY_GET_REG8(USBFS_wValueHi) == USBFS_VOLUME_CONTROL)
+ 169:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 170:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* `#START VOLUME_CONTROL_GET_REQUEST` Place multi-channel handler here */
+ 171:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ 172:.\Generated_Source\PSoC5/USBFS_audio.c ****                             USBFS_currentTD.wCount = USBFS_VOLUME_LEN;
+ 173:.\Generated_Source\PSoC5/USBFS_audio.c ****     						switch(CY_GET_REG8(USBFS_wIndexHi))
+ 174:.\Generated_Source\PSoC5/USBFS_audio.c ****     	                    {
+ 175:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 case INPUT_VOLUME_FEATURE_UNIT:
+ 176:.\Generated_Source\PSoC5/USBFS_audio.c **** 	                            USBFS_currentTD.pData  = USB_inputVolume;
+ 177:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 if(CY_GET_REG8(USBFS_wValueLo) == 1)	/* channel 1 input volume upda
+ 178:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 179:.\Generated_Source\PSoC5/USBFS_audio.c ****                             		USBFS_currentTD.pData  = &USBFS_currentCH1InputVolume[0];							
+ 180:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ 181:.\Generated_Source\PSoC5/USBFS_audio.c ****     							else if(CY_GET_REG8(USBFS_wValueLo) == 2)	/* channel 2 input volume update to host */
+ 182:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 183:.\Generated_Source\PSoC5/USBFS_audio.c ****                             		USBFS_currentTD.pData  = &USBFS_currentCH2InputVolume[0];							
+ 184:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 7
+
+
+ 185:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 break;
+ 186:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 
+ 187:.\Generated_Source\PSoC5/USBFS_audio.c ****     							case OUTPUT_VOLUME_FEATURE_UNIT:
+ 188:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 USBFS_currentTD.pData  = USBFS_currentVolume;
+ 189:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 break;
+ 190:.\Generated_Source\PSoC5/USBFS_audio.c ****                             }
+ 191:.\Generated_Source\PSoC5/USBFS_audio.c ****                             requestHandled   = USBFS_InitControlRead();
+ 192:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;
+ 193:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #endif
+ 194:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* `#END` */
+ 195:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 196:.\Generated_Source\PSoC5/USBFS_audio.c ****                          /* Entity ID Control Selector is VOLUME, */
+ 197:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_VOLUME_LEN;
+ 198:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = USBFS_currentVolume;
+ 199:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 200:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 201:.\Generated_Source\PSoC5/USBFS_audio.c ****                     else
+ 202:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 203:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 204:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 205:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_MIN:    /* GET_MIN */
+ 206:.\Generated_Source\PSoC5/USBFS_audio.c ****                     if(CY_GET_REG8(USBFS_wValueHi) == USBFS_VOLUME_CONTROL)
+ 207:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 208:.\Generated_Source\PSoC5/USBFS_audio.c ****                          /* Entity ID Control Selector is VOLUME, */
+ 209:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_VOLUME_LEN;
+ 210:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_minimumVolume[0];
+ 211:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 212:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 213:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 214:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_MAX:    /* GET_MAX */
+ 215:.\Generated_Source\PSoC5/USBFS_audio.c ****                     if(CY_GET_REG8(USBFS_wValueHi) == USBFS_VOLUME_CONTROL)
+ 216:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 217:.\Generated_Source\PSoC5/USBFS_audio.c ****                              /* Entity ID Control Selector is VOLUME, */
+ 218:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_VOLUME_LEN;
+ 219:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_maximumVolume[0];
+ 220:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 221:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 222:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 223:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_RES:    /* GET_RES */
+ 224:.\Generated_Source\PSoC5/USBFS_audio.c ****                     if(CY_GET_REG8(USBFS_wValueHi) == USBFS_VOLUME_CONTROL)
+ 225:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 226:.\Generated_Source\PSoC5/USBFS_audio.c ****                          /* Entity ID Control Selector is VOLUME, */
+ 227:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_VOLUME_LEN;
+ 228:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_resolutionVolume[0];
+ 229:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 230:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 231:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 232:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* The contents of the status message is reserved for future use.
+ 233:.\Generated_Source\PSoC5/USBFS_audio.c ****                 *  For the time being, a null packet should be returned in the data stage of the 
+ 234:.\Generated_Source\PSoC5/USBFS_audio.c ****                 *  control transfer, and the received null packet should be ACKed.
+ 235:.\Generated_Source\PSoC5/USBFS_audio.c ****                 */
+ 236:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_STAT:
+ 237:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = 0;
+ 238:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 239:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 240:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #endif /* End USBFS_ENABLE_AUDIO_STREAMING */
+ 241:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 8
+
+
+ 242:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#START AUDIO_WRITE_REQUESTS` Place other request handler here */
+ 243:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 244:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#END` */
+ 245:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 246:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 247:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 154              		.loc 1 247 0
+ 155 0094 7EE0     		b	.L23
+ 156              	.L11:
+ 157:.\Generated_Source\PSoC5/USBFS_audio.c ****             {
+ 157              		.loc 1 157 0
+ 158 0096 842B     		cmp	r3, #132
+ 159 0098 63D0     		beq	.L14
+ 160 009a FF2B     		cmp	r3, #255
+ 161 009c 72D0     		beq	.L15
+ 162              		.loc 1 247 0
+ 163 009e 79E0     		b	.L23
+ 164              	.L12:
+ 161:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 165              		.loc 1 161 0
+ 166 00a0 7C4B     		ldr	r3, .L49+12
+ 167 00a2 1B78     		ldrb	r3, [r3]
+ 168 00a4 DBB2     		uxtb	r3, r3
+ 169 00a6 012B     		cmp	r3, #1
+ 170 00a8 0AD1     		bne	.L16
+ 164:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_currentMute;
+ 171              		.loc 1 164 0
+ 172 00aa 7B4B     		ldr	r3, .L49+16
+ 173 00ac 0122     		movs	r2, #1
+ 174 00ae 1A80     		strh	r2, [r3]	@ movhi
+ 165:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 175              		.loc 1 165 0
+ 176 00b0 794B     		ldr	r3, .L49+16
+ 177 00b2 7B4A     		ldr	r2, .L49+24
+ 178 00b4 5A60     		str	r2, [r3, #4]
+ 166:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 179              		.loc 1 166 0
+ 180 00b6 FFF7FEFF 		bl	USBFS_InitControlRead
+ 181 00ba 0346     		mov	r3, r0
+ 182 00bc FB71     		strb	r3, [r7, #7]
+ 183 00be 2DE0     		b	.L17
+ 184              	.L16:
+ 168:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 185              		.loc 1 168 0
+ 186 00c0 744B     		ldr	r3, .L49+12
+ 187 00c2 1B78     		ldrb	r3, [r3]
+ 188 00c4 DBB2     		uxtb	r3, r3
+ 189 00c6 022B     		cmp	r3, #2
+ 190 00c8 28D1     		bne	.L17
+ 172:.\Generated_Source\PSoC5/USBFS_audio.c ****     						switch(CY_GET_REG8(USBFS_wIndexHi))
+ 191              		.loc 1 172 0
+ 192 00ca 734B     		ldr	r3, .L49+16
+ 193 00cc 0222     		movs	r2, #2
+ 194 00ce 1A80     		strh	r2, [r3]	@ movhi
+ 173:.\Generated_Source\PSoC5/USBFS_audio.c ****     	                    {
+ 195              		.loc 1 173 0
+ 196 00d0 744B     		ldr	r3, .L49+28
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 9
+
+
+ 197 00d2 1B78     		ldrb	r3, [r3]
+ 198 00d4 DBB2     		uxtb	r3, r3
+ 199 00d6 022B     		cmp	r3, #2
+ 200 00d8 17D0     		beq	.L19
+ 201 00da 062B     		cmp	r3, #6
+ 202 00dc 19D1     		bne	.L18
+ 176:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 if(CY_GET_REG8(USBFS_wValueLo) == 1)	/* channel 1 input volume upda
+ 203              		.loc 1 176 0
+ 204 00de 6E4B     		ldr	r3, .L49+16
+ 205 00e0 714A     		ldr	r2, .L49+32
+ 206 00e2 5A60     		str	r2, [r3, #4]
+ 177:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 207              		.loc 1 177 0
+ 208 00e4 714B     		ldr	r3, .L49+36
+ 209 00e6 1B78     		ldrb	r3, [r3]
+ 210 00e8 DBB2     		uxtb	r3, r3
+ 211 00ea 012B     		cmp	r3, #1
+ 212 00ec 03D1     		bne	.L21
+ 179:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ 213              		.loc 1 179 0
+ 214 00ee 6A4B     		ldr	r3, .L49+16
+ 215 00f0 6F4A     		ldr	r2, .L49+40
+ 216 00f2 5A60     		str	r2, [r3, #4]
+ 217 00f4 08E0     		b	.L22
+ 218              	.L21:
+ 181:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 219              		.loc 1 181 0
+ 220 00f6 6D4B     		ldr	r3, .L49+36
+ 221 00f8 1B78     		ldrb	r3, [r3]
+ 222 00fa DBB2     		uxtb	r3, r3
+ 223 00fc 022B     		cmp	r3, #2
+ 224 00fe 03D1     		bne	.L22
+ 183:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ 225              		.loc 1 183 0
+ 226 0100 654B     		ldr	r3, .L49+16
+ 227 0102 6C4A     		ldr	r2, .L49+44
+ 228 0104 5A60     		str	r2, [r3, #4]
+ 185:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 
+ 229              		.loc 1 185 0
+ 230 0106 04E0     		b	.L18
+ 231              	.L22:
+ 232 0108 03E0     		b	.L18
+ 233              	.L19:
+ 188:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 break;
+ 234              		.loc 1 188 0
+ 235 010a 634B     		ldr	r3, .L49+16
+ 236 010c 6A4A     		ldr	r2, .L49+48
+ 237 010e 5A60     		str	r2, [r3, #4]
+ 189:.\Generated_Source\PSoC5/USBFS_audio.c ****                             }
+ 238              		.loc 1 189 0
+ 239 0110 00BF     		nop
+ 240              	.L18:
+ 191:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;
+ 241              		.loc 1 191 0
+ 242 0112 FFF7FEFF 		bl	USBFS_InitControlRead
+ 243 0116 0346     		mov	r3, r0
+ 244 0118 FB71     		strb	r3, [r7, #7]
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 10
+
+
+ 192:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #endif
+ 245              		.loc 1 192 0
+ 246 011a 3BE0     		b	.L23
+ 247              	.L17:
+ 204:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_MIN:    /* GET_MIN */
+ 248              		.loc 1 204 0
+ 249 011c 3AE0     		b	.L23
+ 250              	.L13:
+ 206:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 251              		.loc 1 206 0
+ 252 011e 5D4B     		ldr	r3, .L49+12
+ 253 0120 1B78     		ldrb	r3, [r3]
+ 254 0122 DBB2     		uxtb	r3, r3
+ 255 0124 022B     		cmp	r3, #2
+ 256 0126 0AD1     		bne	.L24
+ 209:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_minimumVolume[0];
+ 257              		.loc 1 209 0
+ 258 0128 5B4B     		ldr	r3, .L49+16
+ 259 012a 0222     		movs	r2, #2
+ 260 012c 1A80     		strh	r2, [r3]	@ movhi
+ 210:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 261              		.loc 1 210 0
+ 262 012e 5A4B     		ldr	r3, .L49+16
+ 263 0130 624A     		ldr	r2, .L49+52
+ 264 0132 5A60     		str	r2, [r3, #4]
+ 211:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 265              		.loc 1 211 0
+ 266 0134 FFF7FEFF 		bl	USBFS_InitControlRead
+ 267 0138 0346     		mov	r3, r0
+ 268 013a FB71     		strb	r3, [r7, #7]
+ 213:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_MAX:    /* GET_MAX */
+ 269              		.loc 1 213 0
+ 270 013c 2AE0     		b	.L23
+ 271              	.L24:
+ 213:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_MAX:    /* GET_MAX */
+ 272              		.loc 1 213 0 is_stmt 0 discriminator 5
+ 273 013e 29E0     		b	.L23
+ 274              	.L10:
+ 215:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 275              		.loc 1 215 0 is_stmt 1
+ 276 0140 544B     		ldr	r3, .L49+12
+ 277 0142 1B78     		ldrb	r3, [r3]
+ 278 0144 DBB2     		uxtb	r3, r3
+ 279 0146 022B     		cmp	r3, #2
+ 280 0148 0AD1     		bne	.L25
+ 218:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_maximumVolume[0];
+ 281              		.loc 1 218 0
+ 282 014a 534B     		ldr	r3, .L49+16
+ 283 014c 0222     		movs	r2, #2
+ 284 014e 1A80     		strh	r2, [r3]	@ movhi
+ 219:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 285              		.loc 1 219 0
+ 286 0150 514B     		ldr	r3, .L49+16
+ 287 0152 5B4A     		ldr	r2, .L49+56
+ 288 0154 5A60     		str	r2, [r3, #4]
+ 220:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 289              		.loc 1 220 0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 11
+
+
+ 290 0156 FFF7FEFF 		bl	USBFS_InitControlRead
+ 291 015a 0346     		mov	r3, r0
+ 292 015c FB71     		strb	r3, [r7, #7]
+ 222:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_RES:    /* GET_RES */
+ 293              		.loc 1 222 0
+ 294 015e 19E0     		b	.L23
+ 295              	.L25:
+ 222:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_GET_RES:    /* GET_RES */
+ 296              		.loc 1 222 0 is_stmt 0 discriminator 6
+ 297 0160 18E0     		b	.L23
+ 298              	.L14:
+ 224:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 299              		.loc 1 224 0 is_stmt 1
+ 300 0162 4C4B     		ldr	r3, .L49+12
+ 301 0164 1B78     		ldrb	r3, [r3]
+ 302 0166 DBB2     		uxtb	r3, r3
+ 303 0168 022B     		cmp	r3, #2
+ 304 016a 0AD1     		bne	.L26
+ 227:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_resolutionVolume[0];
+ 305              		.loc 1 227 0
+ 306 016c 4A4B     		ldr	r3, .L49+16
+ 307 016e 0222     		movs	r2, #2
+ 308 0170 1A80     		strh	r2, [r3]	@ movhi
+ 228:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlRead();
+ 309              		.loc 1 228 0
+ 310 0172 494B     		ldr	r3, .L49+16
+ 311 0174 534A     		ldr	r2, .L49+60
+ 312 0176 5A60     		str	r2, [r3, #4]
+ 229:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 313              		.loc 1 229 0
+ 314 0178 FFF7FEFF 		bl	USBFS_InitControlRead
+ 315 017c 0346     		mov	r3, r0
+ 316 017e FB71     		strb	r3, [r7, #7]
+ 231:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* The contents of the status message is reserved for future use.
+ 317              		.loc 1 231 0
+ 318 0180 08E0     		b	.L23
+ 319              	.L26:
+ 231:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* The contents of the status message is reserved for future use.
+ 320              		.loc 1 231 0 is_stmt 0 discriminator 7
+ 321 0182 07E0     		b	.L23
+ 322              	.L15:
+ 237:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 323              		.loc 1 237 0 is_stmt 1
+ 324 0184 444B     		ldr	r3, .L49+16
+ 325 0186 0022     		movs	r2, #0
+ 326 0188 1A80     		strh	r2, [r3]	@ movhi
+ 238:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 327              		.loc 1 238 0
+ 328 018a FFF7FEFF 		bl	USBFS_InitControlWrite
+ 329 018e 0346     		mov	r3, r0
+ 330 0190 FB71     		strb	r3, [r7, #7]
+ 245:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 331              		.loc 1 245 0
+ 332 0192 00BF     		nop
+ 333              	.L23:
+ 334 0194 ACE0     		b	.L8
+ 335              	.L2:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 12
+
+
+ 248:.\Generated_Source\PSoC5/USBFS_audio.c ****             }
+ 249:.\Generated_Source\PSoC5/USBFS_audio.c ****         }
+ 250:.\Generated_Source\PSoC5/USBFS_audio.c ****         else
+ 251:.\Generated_Source\PSoC5/USBFS_audio.c ****         {   /* USBFS_RQST_RCPT_OTHER */
+ 252:.\Generated_Source\PSoC5/USBFS_audio.c ****         }
+ 253:.\Generated_Source\PSoC5/USBFS_audio.c ****     }
+ 254:.\Generated_Source\PSoC5/USBFS_audio.c ****     else if ((CY_GET_REG8(USBFS_bmRequestType) & USBFS_RQST_DIR_MASK) == \
+ 336              		.loc 1 254 0
+ 337 0196 3D4B     		ldr	r3, .L49+4
+ 338 0198 1B78     		ldrb	r3, [r3]
+ 339 019a DBB2     		uxtb	r3, r3
+ 340 019c DBB2     		uxtb	r3, r3
+ 341 019e 5BB2     		sxtb	r3, r3
+ 342 01a0 002B     		cmp	r3, #0
+ 343 01a2 C0F2A580 		blt	.L8
+ 255:.\Generated_Source\PSoC5/USBFS_audio.c ****                                                                                     USBFS_RQST_DIR_
+ 256:.\Generated_Source\PSoC5/USBFS_audio.c ****     {
+ 257:.\Generated_Source\PSoC5/USBFS_audio.c ****         /* Control Write */
+ 258:.\Generated_Source\PSoC5/USBFS_audio.c ****         if((CY_GET_REG8(USBFS_bmRequestType) & USBFS_RQST_RCPT_MASK) == \
+ 344              		.loc 1 258 0
+ 345 01a6 394B     		ldr	r3, .L49+4
+ 346 01a8 1B78     		ldrb	r3, [r3]
+ 347 01aa DBB2     		uxtb	r3, r3
+ 348 01ac 03F00303 		and	r3, r3, #3
+ 349 01b0 022B     		cmp	r3, #2
+ 350 01b2 1FD1     		bne	.L27
+ 259:.\Generated_Source\PSoC5/USBFS_audio.c ****                                                                                     USBFS_RQST_RCPT
+ 260:.\Generated_Source\PSoC5/USBFS_audio.c ****         {
+ 261:.\Generated_Source\PSoC5/USBFS_audio.c ****             /* Endpoint */
+ 262:.\Generated_Source\PSoC5/USBFS_audio.c ****             switch (CY_GET_REG8(USBFS_bRequest))
+ 351              		.loc 1 262 0
+ 352 01b4 364B     		ldr	r3, .L49+8
+ 353 01b6 1B78     		ldrb	r3, [r3]
+ 354 01b8 DBB2     		uxtb	r3, r3
+ 355 01ba 012B     		cmp	r3, #1
+ 356 01bc 00D0     		beq	.L29
+ 263:.\Generated_Source\PSoC5/USBFS_audio.c ****             {
+ 264:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_SET_CUR:
+ 265:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #if defined(USBFS_ENABLE_AUDIO_STREAMING)
+ 266:.\Generated_Source\PSoC5/USBFS_audio.c ****                     if(CY_GET_REG8(USBFS_wValueHi) == USBFS_SAMPLING_FREQ_CONTROL)
+ 267:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 268:.\Generated_Source\PSoC5/USBFS_audio.c ****                          /* Endpoint Control Selector is Sampling Frequency */
+ 269:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_SAMPLE_FREQ_LEN;
+ 270:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = USBFS_currentSampleFrequency[epNumber];
+ 271:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 272:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_frequencyChanged = epNumber;
+ 273:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 274:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #endif /* End USBFS_ENABLE_AUDIO_STREAMING */
+ 275:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 276:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#START AUDIO_SAMPLING_FREQ_REQUESTS` Place other request handler here */
+ 277:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 278:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#END` */
+ 279:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 280:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 281:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 357              		.loc 1 281 0
+ 358 01be 18E0     		b	.L31
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 13
+
+
+ 359              	.L29:
+ 266:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 360              		.loc 1 266 0
+ 361 01c0 344B     		ldr	r3, .L49+12
+ 362 01c2 1B78     		ldrb	r3, [r3]
+ 363 01c4 DBB2     		uxtb	r3, r3
+ 364 01c6 012B     		cmp	r3, #1
+ 365 01c8 12D1     		bne	.L30
+ 269:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = USBFS_currentSampleFrequency[epNumber];
+ 366              		.loc 1 269 0
+ 367 01ca 334B     		ldr	r3, .L49+16
+ 368 01cc 0322     		movs	r2, #3
+ 369 01ce 1A80     		strh	r2, [r3]	@ movhi
+ 270:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 370              		.loc 1 270 0
+ 371 01d0 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 372 01d2 1346     		mov	r3, r2
+ 373 01d4 5B00     		lsls	r3, r3, #1
+ 374 01d6 1344     		add	r3, r3, r2
+ 375 01d8 304A     		ldr	r2, .L49+20
+ 376 01da 1344     		add	r3, r3, r2
+ 377 01dc 2E4A     		ldr	r2, .L49+16
+ 378 01de 5360     		str	r3, [r2, #4]
+ 271:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_frequencyChanged = epNumber;
+ 379              		.loc 1 271 0
+ 380 01e0 FFF7FEFF 		bl	USBFS_InitControlWrite
+ 381 01e4 0346     		mov	r3, r0
+ 382 01e6 FB71     		strb	r3, [r7, #7]
+ 272:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 383              		.loc 1 272 0
+ 384 01e8 374A     		ldr	r2, .L49+64
+ 385 01ea BB79     		ldrb	r3, [r7, #6]
+ 386 01ec 1370     		strb	r3, [r2]
+ 279:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 387              		.loc 1 279 0
+ 388 01ee FFE7     		b	.L47
+ 389              	.L30:
+ 390              	.L47:
+ 391 01f0 00BF     		nop
+ 392              	.L31:
+ 393 01f2 7DE0     		b	.L8
+ 394              	.L27:
+ 282:.\Generated_Source\PSoC5/USBFS_audio.c ****             }
+ 283:.\Generated_Source\PSoC5/USBFS_audio.c ****         }
+ 284:.\Generated_Source\PSoC5/USBFS_audio.c ****         else if((CY_GET_REG8(USBFS_bmRequestType) & USBFS_RQST_RCPT_MASK) == \
+ 395              		.loc 1 284 0
+ 396 01f4 254B     		ldr	r3, .L49+4
+ 397 01f6 1B78     		ldrb	r3, [r3]
+ 398 01f8 DBB2     		uxtb	r3, r3
+ 399 01fa 03F00303 		and	r3, r3, #3
+ 400 01fe 012B     		cmp	r3, #1
+ 401 0200 76D1     		bne	.L8
+ 285:.\Generated_Source\PSoC5/USBFS_audio.c ****                                                                                     USBFS_RQST_RCPT
+ 286:.\Generated_Source\PSoC5/USBFS_audio.c ****         {
+ 287:.\Generated_Source\PSoC5/USBFS_audio.c ****             /* Interface or Entity ID */
+ 288:.\Generated_Source\PSoC5/USBFS_audio.c ****             switch (CY_GET_REG8(USBFS_bRequest))
+ 402              		.loc 1 288 0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 14
+
+
+ 403 0202 234B     		ldr	r3, .L49+8
+ 404 0204 1B78     		ldrb	r3, [r3]
+ 405 0206 DBB2     		uxtb	r3, r3
+ 406 0208 012B     		cmp	r3, #1
+ 407 020a 00D0     		beq	.L33
+ 289:.\Generated_Source\PSoC5/USBFS_audio.c ****             {
+ 290:.\Generated_Source\PSoC5/USBFS_audio.c ****                 case USBFS_SET_CUR:
+ 291:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #if defined(USBFS_ENABLE_AUDIO_STREAMING)
+ 292:.\Generated_Source\PSoC5/USBFS_audio.c ****                     if(CY_GET_REG8(USBFS_wValueHi) == USBFS_MUTE_CONTROL)
+ 293:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 294:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* `#START MUTE_SET_REQUEST` Place multi-channel handler here */
+ 295:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ 296:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = 1;
+ 297:.\Generated_Source\PSoC5/USBFS_audio.c ****                         switch(CY_GET_REG8(USBFS_wIndexHi))
+ 298:.\Generated_Source\PSoC5/USBFS_audio.c ****                         {
+ 299:.\Generated_Source\PSoC5/USBFS_audio.c ****     						case OUTPUT_VOLUME_FEATURE_UNIT:
+ 300:.\Generated_Source\PSoC5/USBFS_audio.c ****                                  /* Entity ID Control Selector is MUTE */
+ 301:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 USBFS_currentTD.pData  = &USBFS_currentMute;
+ 302:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;  
+ 303:.\Generated_Source\PSoC5/USBFS_audio.c ****                             
+ 304:.\Generated_Source\PSoC5/USBFS_audio.c ****                             case INPUT_VOLUME_FEATURE_UNIT:
+ 305:.\Generated_Source\PSoC5/USBFS_audio.c ****                                  /* Entity ID Control Selector is MUTE */
+ 306:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 USBFS_currentTD.pData  = &USB_inputMute;
+ 307:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;    
+ 308:.\Generated_Source\PSoC5/USBFS_audio.c ****                         }
+ 309:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 310:.\Generated_Source\PSoC5/USBFS_audio.c ****                         break;
+ 311:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #endif
+ 312:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* `#END` */
+ 313:.\Generated_Source\PSoC5/USBFS_audio.c ****                     
+ 314:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* Entity ID Control Selector is MUTE */
+ 315:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = 1;
+ 316:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = &USBFS_currentMute;
+ 317:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 318:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 319:.\Generated_Source\PSoC5/USBFS_audio.c ****                     else if(CY_GET_REG8(USBFS_wValueHi) == USBFS_VOLUME_CONTROL)
+ 320:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 321:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* `#START VOLUME_CONTROL_SET_REQUEST` Place multi-channel handler here */
+ 322:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ 323:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_VOLUME_LEN;
+ 324:.\Generated_Source\PSoC5/USBFS_audio.c ****                         switch(CY_GET_REG8(USBFS_wIndexHi))
+ 325:.\Generated_Source\PSoC5/USBFS_audio.c ****                         {
+ 326:.\Generated_Source\PSoC5/USBFS_audio.c ****     						case OUTPUT_VOLUME_FEATURE_UNIT:
+ 327:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 USBFS_currentTD.pData  = USBFS_currentVolume;
+ 328:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;  
+ 329:.\Generated_Source\PSoC5/USBFS_audio.c ****                             
+ 330:.\Generated_Source\PSoC5/USBFS_audio.c ****                             case INPUT_VOLUME_FEATURE_UNIT:
+ 331:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 USBFS_currentTD.pData  = USB_inputVolume;
+ 332:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 if(CY_GET_REG8(USBFS_wValueLo) == 1)	/* channel 1 input volume upda
+ 333:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 334:.\Generated_Source\PSoC5/USBFS_audio.c ****     		                        USBFS_currentTD.pData  = &USBFS_currentCH1InputVolume[0];							
+ 335:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ 336:.\Generated_Source\PSoC5/USBFS_audio.c ****     							else if(CY_GET_REG8(USBFS_wValueLo) == 2) /* channel 2 input volume update from host */
+ 337:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 338:.\Generated_Source\PSoC5/USBFS_audio.c ****     		                        USBFS_currentTD.pData  = &USBFS_currentCH2InputVolume[0];								
+ 339:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ 340:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;    
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 15
+
+
+ 341:.\Generated_Source\PSoC5/USBFS_audio.c ****                         }
+ 342:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 343:.\Generated_Source\PSoC5/USBFS_audio.c ****                         break;
+ 344:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #endif
+ 345:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* `#END` */
+ 346:.\Generated_Source\PSoC5/USBFS_audio.c ****                     
+ 347:.\Generated_Source\PSoC5/USBFS_audio.c ****                         /* Entity ID Control Selector is VOLUME */
+ 348:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.wCount = USBFS_VOLUME_LEN;
+ 349:.\Generated_Source\PSoC5/USBFS_audio.c ****                         USBFS_currentTD.pData  = USBFS_currentVolume;
+ 350:.\Generated_Source\PSoC5/USBFS_audio.c ****                         requestHandled   = USBFS_InitControlWrite();
+ 351:.\Generated_Source\PSoC5/USBFS_audio.c ****                     }
+ 352:.\Generated_Source\PSoC5/USBFS_audio.c ****                 #endif /* End USBFS_ENABLE_AUDIO_STREAMING */
+ 353:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 354:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#START AUDIO_CONTROL_SEL_REQUESTS` Place other request handler here */
+ 355:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 356:.\Generated_Source\PSoC5/USBFS_audio.c ****                 /* `#END` */
+ 357:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 358:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 359:.\Generated_Source\PSoC5/USBFS_audio.c ****                     break;
+ 408              		.loc 1 359 0
+ 409 020c 70E0     		b	.L38
+ 410              	.L33:
+ 292:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 411              		.loc 1 292 0
+ 412 020e 214B     		ldr	r3, .L49+12
+ 413 0210 1B78     		ldrb	r3, [r3]
+ 414 0212 DBB2     		uxtb	r3, r3
+ 415 0214 012B     		cmp	r3, #1
+ 416 0216 17D1     		bne	.L34
+ 296:.\Generated_Source\PSoC5/USBFS_audio.c ****                         switch(CY_GET_REG8(USBFS_wIndexHi))
+ 417              		.loc 1 296 0
+ 418 0218 1F4B     		ldr	r3, .L49+16
+ 419 021a 0122     		movs	r2, #1
+ 420 021c 1A80     		strh	r2, [r3]	@ movhi
+ 297:.\Generated_Source\PSoC5/USBFS_audio.c ****                         {
+ 421              		.loc 1 297 0
+ 422 021e 214B     		ldr	r3, .L49+28
+ 423 0220 1B78     		ldrb	r3, [r3]
+ 424 0222 DBB2     		uxtb	r3, r3
+ 425 0224 022B     		cmp	r3, #2
+ 426 0226 02D0     		beq	.L36
+ 427 0228 062B     		cmp	r3, #6
+ 428 022a 04D0     		beq	.L37
+ 429 022c 07E0     		b	.L35
+ 430              	.L36:
+ 301:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;  
+ 431              		.loc 1 301 0
+ 432 022e 1A4B     		ldr	r3, .L49+16
+ 433 0230 1B4A     		ldr	r2, .L49+24
+ 434 0232 5A60     		str	r2, [r3, #4]
+ 302:.\Generated_Source\PSoC5/USBFS_audio.c ****                             
+ 435              		.loc 1 302 0
+ 436 0234 03E0     		b	.L35
+ 437              	.L37:
+ 306:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;    
+ 438              		.loc 1 306 0
+ 439 0236 184B     		ldr	r3, .L49+16
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 16
+
+
+ 440 0238 244A     		ldr	r2, .L49+68
+ 441 023a 5A60     		str	r2, [r3, #4]
+ 307:.\Generated_Source\PSoC5/USBFS_audio.c ****                         }
+ 442              		.loc 1 307 0
+ 443 023c 00BF     		nop
+ 444              	.L35:
+ 309:.\Generated_Source\PSoC5/USBFS_audio.c ****                         break;
+ 445              		.loc 1 309 0
+ 446 023e FFF7FEFF 		bl	USBFS_InitControlWrite
+ 447 0242 0346     		mov	r3, r0
+ 448 0244 FB71     		strb	r3, [r7, #7]
+ 310:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #endif
+ 449              		.loc 1 310 0
+ 450 0246 53E0     		b	.L38
+ 451              	.L34:
+ 319:.\Generated_Source\PSoC5/USBFS_audio.c ****                     {
+ 452              		.loc 1 319 0
+ 453 0248 124B     		ldr	r3, .L49+12
+ 454 024a 1B78     		ldrb	r3, [r3]
+ 455 024c DBB2     		uxtb	r3, r3
+ 456 024e 022B     		cmp	r3, #2
+ 457 0250 4DD1     		bne	.L39
+ 323:.\Generated_Source\PSoC5/USBFS_audio.c ****                         switch(CY_GET_REG8(USBFS_wIndexHi))
+ 458              		.loc 1 323 0
+ 459 0252 114B     		ldr	r3, .L49+16
+ 460 0254 0222     		movs	r2, #2
+ 461 0256 1A80     		strh	r2, [r3]	@ movhi
+ 324:.\Generated_Source\PSoC5/USBFS_audio.c ****                         {
+ 462              		.loc 1 324 0
+ 463 0258 124B     		ldr	r3, .L49+28
+ 464 025a 1B78     		ldrb	r3, [r3]
+ 465 025c DBB2     		uxtb	r3, r3
+ 466 025e 022B     		cmp	r3, #2
+ 467 0260 02D0     		beq	.L41
+ 468 0262 062B     		cmp	r3, #6
+ 469 0264 04D0     		beq	.L42
+ 470 0266 3DE0     		b	.L40
+ 471              	.L41:
+ 327:.\Generated_Source\PSoC5/USBFS_audio.c ****                             break;  
+ 472              		.loc 1 327 0
+ 473 0268 0B4B     		ldr	r3, .L49+16
+ 474 026a 134A     		ldr	r2, .L49+48
+ 475 026c 5A60     		str	r2, [r3, #4]
+ 328:.\Generated_Source\PSoC5/USBFS_audio.c ****                             
+ 476              		.loc 1 328 0
+ 477 026e 39E0     		b	.L40
+ 478              	.L42:
+ 331:.\Generated_Source\PSoC5/USBFS_audio.c ****                                 if(CY_GET_REG8(USBFS_wValueLo) == 1)	/* channel 1 input volume upda
+ 479              		.loc 1 331 0
+ 480 0270 094B     		ldr	r3, .L49+16
+ 481 0272 0D4A     		ldr	r2, .L49+32
+ 482 0274 5A60     		str	r2, [r3, #4]
+ 332:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 483              		.loc 1 332 0
+ 484 0276 0D4B     		ldr	r3, .L49+36
+ 485 0278 1B78     		ldrb	r3, [r3]
+ 486 027a DBB2     		uxtb	r3, r3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 17
+
+
+ 487 027c 012B     		cmp	r3, #1
+ 488 027e 27D1     		bne	.L43
+ 334:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ 489              		.loc 1 334 0
+ 490 0280 054B     		ldr	r3, .L49+16
+ 491 0282 0B4A     		ldr	r2, .L49+40
+ 492 0284 5A60     		str	r2, [r3, #4]
+ 493 0286 2CE0     		b	.L44
+ 494              	.L50:
+ 495              		.align	2
+ 496              	.L49:
+ 497 0288 04600040 		.word	1073766404
+ 498 028c 00600040 		.word	1073766400
+ 499 0290 01600040 		.word	1073766401
+ 500 0294 03600040 		.word	1073766403
+ 501 0298 00000000 		.word	USBFS_currentTD
+ 502 029c 00000000 		.word	USBFS_currentSampleFrequency
+ 503 02a0 00000000 		.word	USBFS_currentMute
+ 504 02a4 05600040 		.word	1073766405
+ 505 02a8 00000000 		.word	USB_inputVolume
+ 506 02ac 02600040 		.word	1073766402
+ 507 02b0 00000000 		.word	USBFS_currentCH1InputVolume
+ 508 02b4 00000000 		.word	USBFS_currentCH2InputVolume
+ 509 02b8 00000000 		.word	USBFS_currentVolume
+ 510 02bc 00000000 		.word	USBFS_minimumVolume
+ 511 02c0 00000000 		.word	USBFS_maximumVolume
+ 512 02c4 00000000 		.word	USBFS_resolutionVolume
+ 513 02c8 00000000 		.word	USBFS_frequencyChanged
+ 514 02cc 00000000 		.word	USB_inputMute
+ 515              	.L43:
+ 336:.\Generated_Source\PSoC5/USBFS_audio.c ****     							{
+ 516              		.loc 1 336 0
+ 517 02d0 0A4B     		ldr	r3, .L51
+ 518 02d2 1B78     		ldrb	r3, [r3]
+ 519 02d4 DBB2     		uxtb	r3, r3
+ 520 02d6 022B     		cmp	r3, #2
+ 521 02d8 03D1     		bne	.L44
+ 338:.\Generated_Source\PSoC5/USBFS_audio.c ****     							}
+ 522              		.loc 1 338 0
+ 523 02da 094B     		ldr	r3, .L51+4
+ 524 02dc 094A     		ldr	r2, .L51+8
+ 525 02de 5A60     		str	r2, [r3, #4]
+ 340:.\Generated_Source\PSoC5/USBFS_audio.c ****                         }
+ 526              		.loc 1 340 0
+ 527 02e0 FFE7     		b	.L48
+ 528              	.L44:
+ 529              	.L48:
+ 530 02e2 00BF     		nop
+ 531              	.L40:
+ 342:.\Generated_Source\PSoC5/USBFS_audio.c ****                         break;
+ 532              		.loc 1 342 0
+ 533 02e4 FFF7FEFF 		bl	USBFS_InitControlWrite
+ 534 02e8 0346     		mov	r3, r0
+ 535 02ea FB71     		strb	r3, [r7, #7]
+ 343:.\Generated_Source\PSoC5/USBFS_audio.c ****                         #endif
+ 536              		.loc 1 343 0
+ 537 02ec 00E0     		b	.L38
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 18
+
+
+ 538              	.L39:
+ 357:.\Generated_Source\PSoC5/USBFS_audio.c ****                 default:
+ 539              		.loc 1 357 0
+ 540 02ee 00BF     		nop
+ 541              	.L38:
+ 542              	.L8:
+ 360:.\Generated_Source\PSoC5/USBFS_audio.c ****             }
+ 361:.\Generated_Source\PSoC5/USBFS_audio.c ****         }
+ 362:.\Generated_Source\PSoC5/USBFS_audio.c ****         else
+ 363:.\Generated_Source\PSoC5/USBFS_audio.c ****         {   /* USBFS_RQST_RCPT_OTHER */
+ 364:.\Generated_Source\PSoC5/USBFS_audio.c ****         }
+ 365:.\Generated_Source\PSoC5/USBFS_audio.c ****     }
+ 366:.\Generated_Source\PSoC5/USBFS_audio.c ****     else
+ 367:.\Generated_Source\PSoC5/USBFS_audio.c ****     {   /* requestHandled is initialezed as FALSE by default */
+ 368:.\Generated_Source\PSoC5/USBFS_audio.c ****     }
+ 369:.\Generated_Source\PSoC5/USBFS_audio.c **** 
+ 370:.\Generated_Source\PSoC5/USBFS_audio.c ****     return(requestHandled);
+ 543              		.loc 1 370 0
+ 544 02f0 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 371:.\Generated_Source\PSoC5/USBFS_audio.c **** }
+ 545              		.loc 1 371 0
+ 546 02f2 1846     		mov	r0, r3
+ 547 02f4 0837     		adds	r7, r7, #8
+ 548              		.cfi_def_cfa_offset 8
+ 549 02f6 BD46     		mov	sp, r7
+ 550              		.cfi_def_cfa_register 13
+ 551              		@ sp needed
+ 552 02f8 80BD     		pop	{r7, pc}
+ 553              	.L52:
+ 554 02fa 00BF     		.align	2
+ 555              	.L51:
+ 556 02fc 02600040 		.word	1073766402
+ 557 0300 00000000 		.word	USBFS_currentTD
+ 558 0304 00000000 		.word	USBFS_currentCH2InputVolume
+ 559              		.cfi_endproc
+ 560              	.LFE56:
+ 561              		.size	USBFS_DispatchAUDIOClassRqst, .-USBFS_DispatchAUDIOClassRqst
+ 562              		.text
+ 563              	.Letext0:
+ 564              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 565              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 566              		.file 4 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 567              		.file 5 ".\\Generated_Source\\PSoC5\\USBFS.h"
+ 568              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 569              		.section	.debug_info,"",%progbits
+ 570              	.Ldebug_info0:
+ 571 0000 C4020000 		.4byte	0x2c4
+ 572 0004 0400     		.2byte	0x4
+ 573 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 574 000a 04       		.byte	0x4
+ 575 000b 01       		.uleb128 0x1
+ 576 000c D6010000 		.4byte	.LASF44
+ 577 0010 01       		.byte	0x1
+ 578 0011 A5000000 		.4byte	.LASF45
+ 579 0015 00000000 		.4byte	.LASF46
+ 580 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 581 001d 00000000 		.4byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 19
+
+
+ 582 0021 00000000 		.4byte	.Ldebug_line0
+ 583 0025 02       		.uleb128 0x2
+ 584 0026 01       		.byte	0x1
+ 585 0027 06       		.byte	0x6
+ 586 0028 A2030000 		.4byte	.LASF0
+ 587 002c 02       		.uleb128 0x2
+ 588 002d 01       		.byte	0x1
+ 589 002e 08       		.byte	0x8
+ 590 002f 64010000 		.4byte	.LASF1
+ 591 0033 02       		.uleb128 0x2
+ 592 0034 02       		.byte	0x2
+ 593 0035 05       		.byte	0x5
+ 594 0036 49030000 		.4byte	.LASF2
+ 595 003a 02       		.uleb128 0x2
+ 596 003b 02       		.byte	0x2
+ 597 003c 07       		.byte	0x7
+ 598 003d B6010000 		.4byte	.LASF3
+ 599 0041 03       		.uleb128 0x3
+ 600 0042 EB000000 		.4byte	.LASF9
+ 601 0046 02       		.byte	0x2
+ 602 0047 3F       		.byte	0x3f
+ 603 0048 4C000000 		.4byte	0x4c
+ 604 004c 02       		.uleb128 0x2
+ 605 004d 04       		.byte	0x4
+ 606 004e 05       		.byte	0x5
+ 607 004f 99030000 		.4byte	.LASF4
+ 608 0053 02       		.uleb128 0x2
+ 609 0054 04       		.byte	0x4
+ 610 0055 07       		.byte	0x7
+ 611 0056 64020000 		.4byte	.LASF5
+ 612 005a 02       		.uleb128 0x2
+ 613 005b 08       		.byte	0x8
+ 614 005c 05       		.byte	0x5
+ 615 005d 14030000 		.4byte	.LASF6
+ 616 0061 02       		.uleb128 0x2
+ 617 0062 08       		.byte	0x8
+ 618 0063 07       		.byte	0x7
+ 619 0064 C5020000 		.4byte	.LASF7
+ 620 0068 04       		.uleb128 0x4
+ 621 0069 04       		.byte	0x4
+ 622 006a 05       		.byte	0x5
+ 623 006b 696E7400 		.ascii	"int\000"
+ 624 006f 02       		.uleb128 0x2
+ 625 0070 04       		.byte	0x4
+ 626 0071 07       		.byte	0x7
+ 627 0072 B8020000 		.4byte	.LASF8
+ 628 0076 03       		.uleb128 0x3
+ 629 0077 33010000 		.4byte	.LASF10
+ 630 007b 03       		.byte	0x3
+ 631 007c 2C       		.byte	0x2c
+ 632 007d 41000000 		.4byte	0x41
+ 633 0081 03       		.uleb128 0x3
+ 634 0082 5E010000 		.4byte	.LASF11
+ 635 0086 04       		.byte	0x4
+ 636 0087 5B       		.byte	0x5b
+ 637 0088 2C000000 		.4byte	0x2c
+ 638 008c 03       		.uleb128 0x3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 20
+
+
+ 639 008d A7020000 		.4byte	.LASF12
+ 640 0091 04       		.byte	0x4
+ 641 0092 5C       		.byte	0x5c
+ 642 0093 3A000000 		.4byte	0x3a
+ 643 0097 02       		.uleb128 0x2
+ 644 0098 04       		.byte	0x4
+ 645 0099 04       		.byte	0x4
+ 646 009a 58010000 		.4byte	.LASF13
+ 647 009e 02       		.uleb128 0x2
+ 648 009f 08       		.byte	0x8
+ 649 00a0 04       		.byte	0x4
+ 650 00a1 AE030000 		.4byte	.LASF14
+ 651 00a5 02       		.uleb128 0x2
+ 652 00a6 01       		.byte	0x1
+ 653 00a7 08       		.byte	0x8
+ 654 00a8 3E030000 		.4byte	.LASF15
+ 655 00ac 03       		.uleb128 0x3
+ 656 00ad 80010000 		.4byte	.LASF16
+ 657 00b1 04       		.byte	0x4
+ 658 00b2 F0       		.byte	0xf0
+ 659 00b3 B7000000 		.4byte	0xb7
+ 660 00b7 05       		.uleb128 0x5
+ 661 00b8 81000000 		.4byte	0x81
+ 662 00bc 02       		.uleb128 0x2
+ 663 00bd 04       		.byte	0x4
+ 664 00be 07       		.byte	0x7
+ 665 00bf 0B030000 		.4byte	.LASF17
+ 666 00c3 06       		.uleb128 0x6
+ 667 00c4 5C030000 		.4byte	.LASF21
+ 668 00c8 04       		.byte	0x4
+ 669 00c9 05       		.byte	0x5
+ 670 00ca 90       		.byte	0x90
+ 671 00cb E8000000 		.4byte	0xe8
+ 672 00cf 07       		.uleb128 0x7
+ 673 00d0 26010000 		.4byte	.LASF18
+ 674 00d4 05       		.byte	0x5
+ 675 00d5 92       		.byte	0x92
+ 676 00d6 81000000 		.4byte	0x81
+ 677 00da 00       		.byte	0
+ 678 00db 07       		.uleb128 0x7
+ 679 00dc B5030000 		.4byte	.LASF19
+ 680 00e0 05       		.byte	0x5
+ 681 00e1 93       		.byte	0x93
+ 682 00e2 8C000000 		.4byte	0x8c
+ 683 00e6 02       		.byte	0x2
+ 684 00e7 00       		.byte	0
+ 685 00e8 03       		.uleb128 0x3
+ 686 00e9 85010000 		.4byte	.LASF20
+ 687 00ed 05       		.byte	0x5
+ 688 00ee 94       		.byte	0x94
+ 689 00ef C3000000 		.4byte	0xc3
+ 690 00f3 06       		.uleb128 0x6
+ 691 00f4 AE020000 		.4byte	.LASF22
+ 692 00f8 0C       		.byte	0xc
+ 693 00f9 05       		.byte	0x5
+ 694 00fa 96       		.byte	0x96
+ 695 00fb 24010000 		.4byte	0x124
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 21
+
+
+ 696 00ff 07       		.uleb128 0x7
+ 697 0100 43030000 		.4byte	.LASF23
+ 698 0104 05       		.byte	0x5
+ 699 0105 98       		.byte	0x98
+ 700 0106 8C000000 		.4byte	0x8c
+ 701 010a 00       		.byte	0
+ 702 010b 07       		.uleb128 0x7
+ 703 010c 2D010000 		.4byte	.LASF24
+ 704 0110 05       		.byte	0x5
+ 705 0111 99       		.byte	0x99
+ 706 0112 24010000 		.4byte	0x124
+ 707 0116 04       		.byte	0x4
+ 708 0117 07       		.uleb128 0x7
+ 709 0118 58000000 		.4byte	.LASF25
+ 710 011c 05       		.byte	0x5
+ 711 011d 9A       		.byte	0x9a
+ 712 011e 2A010000 		.4byte	0x12a
+ 713 0122 08       		.byte	0x8
+ 714 0123 00       		.byte	0
+ 715 0124 08       		.uleb128 0x8
+ 716 0125 04       		.byte	0x4
+ 717 0126 B7000000 		.4byte	0xb7
+ 718 012a 08       		.uleb128 0x8
+ 719 012b 04       		.byte	0x4
+ 720 012c E8000000 		.4byte	0xe8
+ 721 0130 03       		.uleb128 0x3
+ 722 0131 4D010000 		.4byte	.LASF26
+ 723 0135 05       		.byte	0x5
+ 724 0136 9B       		.byte	0x9b
+ 725 0137 F3000000 		.4byte	0xf3
+ 726 013b 09       		.uleb128 0x9
+ 727 013c 09010000 		.4byte	.LASF47
+ 728 0140 01       		.byte	0x1
+ 729 0141 74       		.byte	0x74
+ 730 0142 81000000 		.4byte	0x81
+ 731 0146 00000000 		.4byte	.LFB56
+ 732 014a 08030000 		.4byte	.LFE56-.LFB56
+ 733 014e 01       		.uleb128 0x1
+ 734 014f 9C       		.byte	0x9c
+ 735 0150 71010000 		.4byte	0x171
+ 736 0154 0A       		.uleb128 0xa
+ 737 0155 73030000 		.4byte	.LASF27
+ 738 0159 01       		.byte	0x1
+ 739 015a 76       		.byte	0x76
+ 740 015b 81000000 		.4byte	0x81
+ 741 015f 02       		.uleb128 0x2
+ 742 0160 91       		.byte	0x91
+ 743 0161 77       		.sleb128 -9
+ 744 0162 0A       		.uleb128 0xa
+ 745 0163 53030000 		.4byte	.LASF28
+ 746 0167 01       		.byte	0x1
+ 747 0168 79       		.byte	0x79
+ 748 0169 81000000 		.4byte	0x81
+ 749 016d 02       		.uleb128 0x2
+ 750 016e 91       		.byte	0x91
+ 751 016f 76       		.sleb128 -10
+ 752 0170 00       		.byte	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 22
+
+
+ 753 0171 0B       		.uleb128 0xb
+ 754 0172 81000000 		.4byte	0x81
+ 755 0176 87010000 		.4byte	0x187
+ 756 017a 0C       		.uleb128 0xc
+ 757 017b BC000000 		.4byte	0xbc
+ 758 017f 08       		.byte	0x8
+ 759 0180 0C       		.uleb128 0xc
+ 760 0181 BC000000 		.4byte	0xbc
+ 761 0185 02       		.byte	0x2
+ 762 0186 00       		.byte	0
+ 763 0187 0D       		.uleb128 0xd
+ 764 0188 76020000 		.4byte	.LASF29
+ 765 018c 01       		.byte	0x1
+ 766 018d 1E       		.byte	0x1e
+ 767 018e 98010000 		.4byte	0x198
+ 768 0192 05       		.uleb128 0x5
+ 769 0193 03       		.byte	0x3
+ 770 0194 00000000 		.4byte	USBFS_currentSampleFrequency
+ 771 0198 05       		.uleb128 0x5
+ 772 0199 71010000 		.4byte	0x171
+ 773 019d 0D       		.uleb128 0xd
+ 774 019e 82030000 		.4byte	.LASF30
+ 775 01a2 01       		.byte	0x1
+ 776 01a3 1F       		.byte	0x1f
+ 777 01a4 B7000000 		.4byte	0xb7
+ 778 01a8 05       		.uleb128 0x5
+ 779 01a9 03       		.byte	0x3
+ 780 01aa 00000000 		.4byte	USBFS_frequencyChanged
+ 781 01ae 0D       		.uleb128 0xd
+ 782 01af 3B010000 		.4byte	.LASF31
+ 783 01b3 01       		.byte	0x1
+ 784 01b4 20       		.byte	0x20
+ 785 01b5 B7000000 		.4byte	0xb7
+ 786 01b9 05       		.uleb128 0x5
+ 787 01ba 03       		.byte	0x3
+ 788 01bb 00000000 		.4byte	USBFS_currentMute
+ 789 01bf 0B       		.uleb128 0xb
+ 790 01c0 81000000 		.4byte	0x81
+ 791 01c4 CF010000 		.4byte	0x1cf
+ 792 01c8 0C       		.uleb128 0xc
+ 793 01c9 BC000000 		.4byte	0xbc
+ 794 01cd 01       		.byte	0x1
+ 795 01ce 00       		.byte	0
+ 796 01cf 0D       		.uleb128 0xd
+ 797 01d0 65000000 		.4byte	.LASF32
+ 798 01d4 01       		.byte	0x1
+ 799 01d5 21       		.byte	0x21
+ 800 01d6 E0010000 		.4byte	0x1e0
+ 801 01da 05       		.uleb128 0x5
+ 802 01db 03       		.byte	0x3
+ 803 01dc 00000000 		.4byte	USBFS_currentVolume
+ 804 01e0 05       		.uleb128 0x5
+ 805 01e1 BF010000 		.4byte	0x1bf
+ 806 01e5 0D       		.uleb128 0xd
+ 807 01e6 F5000000 		.4byte	.LASF33
+ 808 01ea 01       		.byte	0x1
+ 809 01eb 22       		.byte	0x22
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 23
+
+
+ 810 01ec F6010000 		.4byte	0x1f6
+ 811 01f0 05       		.uleb128 0x5
+ 812 01f1 03       		.byte	0x3
+ 813 01f2 00000000 		.4byte	USBFS_minimumVolume
+ 814 01f6 05       		.uleb128 0x5
+ 815 01f7 BF010000 		.4byte	0x1bf
+ 816 01fb 0D       		.uleb128 0xd
+ 817 01fc 93020000 		.4byte	.LASF34
+ 818 0200 01       		.byte	0x1
+ 819 0201 23       		.byte	0x23
+ 820 0202 0C020000 		.4byte	0x20c
+ 821 0206 05       		.uleb128 0x5
+ 822 0207 03       		.byte	0x3
+ 823 0208 00000000 		.4byte	USBFS_maximumVolume
+ 824 020c 05       		.uleb128 0x5
+ 825 020d BF010000 		.4byte	0x1bf
+ 826 0211 0D       		.uleb128 0xd
+ 827 0212 9F010000 		.4byte	.LASF35
+ 828 0216 01       		.byte	0x1
+ 829 0217 24       		.byte	0x24
+ 830 0218 22020000 		.4byte	0x222
+ 831 021c 05       		.uleb128 0x5
+ 832 021d 03       		.byte	0x3
+ 833 021e 00000000 		.4byte	USBFS_resolutionVolume
+ 834 0222 05       		.uleb128 0x5
+ 835 0223 BF010000 		.4byte	0x1bf
+ 836 0227 0E       		.uleb128 0xe
+ 837 0228 C9010000 		.4byte	.LASF36
+ 838 022c 06       		.byte	0x6
+ 839 022d 1606     		.2byte	0x616
+ 840 022f 33020000 		.4byte	0x233
+ 841 0233 05       		.uleb128 0x5
+ 842 0234 76000000 		.4byte	0x76
+ 843 0238 0D       		.uleb128 0xd
+ 844 0239 79000000 		.4byte	.LASF37
+ 845 023d 01       		.byte	0x1
+ 846 023e 32       		.byte	0x32
+ 847 023f 49020000 		.4byte	0x249
+ 848 0243 05       		.uleb128 0x5
+ 849 0244 03       		.byte	0x3
+ 850 0245 00000000 		.4byte	USBFS_currentCH1InputVolume
+ 851 0249 05       		.uleb128 0x5
+ 852 024a BF010000 		.4byte	0x1bf
+ 853 024e 0D       		.uleb128 0xd
+ 854 024f 22030000 		.4byte	.LASF38
+ 855 0253 01       		.byte	0x1
+ 856 0254 33       		.byte	0x33
+ 857 0255 5F020000 		.4byte	0x25f
+ 858 0259 05       		.uleb128 0x5
+ 859 025a 03       		.byte	0x3
+ 860 025b 00000000 		.4byte	USBFS_currentCH2InputVolume
+ 861 025f 05       		.uleb128 0x5
+ 862 0260 BF010000 		.4byte	0x1bf
+ 863 0264 0D       		.uleb128 0xd
+ 864 0265 EC020000 		.4byte	.LASF39
+ 865 0269 01       		.byte	0x1
+ 866 026a 34       		.byte	0x34
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 24
+
+
+ 867 026b 75020000 		.4byte	0x275
+ 868 026f 05       		.uleb128 0x5
+ 869 0270 03       		.byte	0x3
+ 870 0271 00000000 		.4byte	USBFS_currentTmpCH1InputVolume
+ 871 0275 05       		.uleb128 0x5
+ 872 0276 BF010000 		.4byte	0x1bf
+ 873 027a 0D       		.uleb128 0xd
+ 874 027b CC000000 		.4byte	.LASF40
+ 875 027f 01       		.byte	0x1
+ 876 0280 35       		.byte	0x35
+ 877 0281 8B020000 		.4byte	0x28b
+ 878 0285 05       		.uleb128 0x5
+ 879 0286 03       		.byte	0x3
+ 880 0287 00000000 		.4byte	USBFS_currentTmpCH2InputVolume
+ 881 028b 05       		.uleb128 0x5
+ 882 028c BF010000 		.4byte	0x1bf
+ 883 0290 0D       		.uleb128 0xd
+ 884 0291 72010000 		.4byte	.LASF41
+ 885 0295 01       		.byte	0x1
+ 886 0296 38       		.byte	0x38
+ 887 0297 B7000000 		.4byte	0xb7
+ 888 029b 05       		.uleb128 0x5
+ 889 029c 03       		.byte	0x3
+ 890 029d 00000000 		.4byte	USB_inputMute
+ 891 02a1 0D       		.uleb128 0xd
+ 892 02a2 95000000 		.4byte	.LASF42
+ 893 02a6 01       		.byte	0x1
+ 894 02a7 39       		.byte	0x39
+ 895 02a8 B2020000 		.4byte	0x2b2
+ 896 02ac 05       		.uleb128 0x5
+ 897 02ad 03       		.byte	0x3
+ 898 02ae 00000000 		.4byte	USB_inputVolume
+ 899 02b2 05       		.uleb128 0x5
+ 900 02b3 BF010000 		.4byte	0x1bf
+ 901 02b7 0F       		.uleb128 0xf
+ 902 02b8 DC020000 		.4byte	.LASF43
+ 903 02bc 01       		.byte	0x1
+ 904 02bd 49       		.byte	0x49
+ 905 02be C2020000 		.4byte	0x2c2
+ 906 02c2 05       		.uleb128 0x5
+ 907 02c3 30010000 		.4byte	0x130
+ 908 02c7 00       		.byte	0
+ 909              		.section	.debug_abbrev,"",%progbits
+ 910              	.Ldebug_abbrev0:
+ 911 0000 01       		.uleb128 0x1
+ 912 0001 11       		.uleb128 0x11
+ 913 0002 01       		.byte	0x1
+ 914 0003 25       		.uleb128 0x25
+ 915 0004 0E       		.uleb128 0xe
+ 916 0005 13       		.uleb128 0x13
+ 917 0006 0B       		.uleb128 0xb
+ 918 0007 03       		.uleb128 0x3
+ 919 0008 0E       		.uleb128 0xe
+ 920 0009 1B       		.uleb128 0x1b
+ 921 000a 0E       		.uleb128 0xe
+ 922 000b 55       		.uleb128 0x55
+ 923 000c 17       		.uleb128 0x17
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 25
+
+
+ 924 000d 11       		.uleb128 0x11
+ 925 000e 01       		.uleb128 0x1
+ 926 000f 10       		.uleb128 0x10
+ 927 0010 17       		.uleb128 0x17
+ 928 0011 00       		.byte	0
+ 929 0012 00       		.byte	0
+ 930 0013 02       		.uleb128 0x2
+ 931 0014 24       		.uleb128 0x24
+ 932 0015 00       		.byte	0
+ 933 0016 0B       		.uleb128 0xb
+ 934 0017 0B       		.uleb128 0xb
+ 935 0018 3E       		.uleb128 0x3e
+ 936 0019 0B       		.uleb128 0xb
+ 937 001a 03       		.uleb128 0x3
+ 938 001b 0E       		.uleb128 0xe
+ 939 001c 00       		.byte	0
+ 940 001d 00       		.byte	0
+ 941 001e 03       		.uleb128 0x3
+ 942 001f 16       		.uleb128 0x16
+ 943 0020 00       		.byte	0
+ 944 0021 03       		.uleb128 0x3
+ 945 0022 0E       		.uleb128 0xe
+ 946 0023 3A       		.uleb128 0x3a
+ 947 0024 0B       		.uleb128 0xb
+ 948 0025 3B       		.uleb128 0x3b
+ 949 0026 0B       		.uleb128 0xb
+ 950 0027 49       		.uleb128 0x49
+ 951 0028 13       		.uleb128 0x13
+ 952 0029 00       		.byte	0
+ 953 002a 00       		.byte	0
+ 954 002b 04       		.uleb128 0x4
+ 955 002c 24       		.uleb128 0x24
+ 956 002d 00       		.byte	0
+ 957 002e 0B       		.uleb128 0xb
+ 958 002f 0B       		.uleb128 0xb
+ 959 0030 3E       		.uleb128 0x3e
+ 960 0031 0B       		.uleb128 0xb
+ 961 0032 03       		.uleb128 0x3
+ 962 0033 08       		.uleb128 0x8
+ 963 0034 00       		.byte	0
+ 964 0035 00       		.byte	0
+ 965 0036 05       		.uleb128 0x5
+ 966 0037 35       		.uleb128 0x35
+ 967 0038 00       		.byte	0
+ 968 0039 49       		.uleb128 0x49
+ 969 003a 13       		.uleb128 0x13
+ 970 003b 00       		.byte	0
+ 971 003c 00       		.byte	0
+ 972 003d 06       		.uleb128 0x6
+ 973 003e 13       		.uleb128 0x13
+ 974 003f 01       		.byte	0x1
+ 975 0040 03       		.uleb128 0x3
+ 976 0041 0E       		.uleb128 0xe
+ 977 0042 0B       		.uleb128 0xb
+ 978 0043 0B       		.uleb128 0xb
+ 979 0044 3A       		.uleb128 0x3a
+ 980 0045 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 26
+
+
+ 981 0046 3B       		.uleb128 0x3b
+ 982 0047 0B       		.uleb128 0xb
+ 983 0048 01       		.uleb128 0x1
+ 984 0049 13       		.uleb128 0x13
+ 985 004a 00       		.byte	0
+ 986 004b 00       		.byte	0
+ 987 004c 07       		.uleb128 0x7
+ 988 004d 0D       		.uleb128 0xd
+ 989 004e 00       		.byte	0
+ 990 004f 03       		.uleb128 0x3
+ 991 0050 0E       		.uleb128 0xe
+ 992 0051 3A       		.uleb128 0x3a
+ 993 0052 0B       		.uleb128 0xb
+ 994 0053 3B       		.uleb128 0x3b
+ 995 0054 0B       		.uleb128 0xb
+ 996 0055 49       		.uleb128 0x49
+ 997 0056 13       		.uleb128 0x13
+ 998 0057 38       		.uleb128 0x38
+ 999 0058 0B       		.uleb128 0xb
+ 1000 0059 00       		.byte	0
+ 1001 005a 00       		.byte	0
+ 1002 005b 08       		.uleb128 0x8
+ 1003 005c 0F       		.uleb128 0xf
+ 1004 005d 00       		.byte	0
+ 1005 005e 0B       		.uleb128 0xb
+ 1006 005f 0B       		.uleb128 0xb
+ 1007 0060 49       		.uleb128 0x49
+ 1008 0061 13       		.uleb128 0x13
+ 1009 0062 00       		.byte	0
+ 1010 0063 00       		.byte	0
+ 1011 0064 09       		.uleb128 0x9
+ 1012 0065 2E       		.uleb128 0x2e
+ 1013 0066 01       		.byte	0x1
+ 1014 0067 3F       		.uleb128 0x3f
+ 1015 0068 19       		.uleb128 0x19
+ 1016 0069 03       		.uleb128 0x3
+ 1017 006a 0E       		.uleb128 0xe
+ 1018 006b 3A       		.uleb128 0x3a
+ 1019 006c 0B       		.uleb128 0xb
+ 1020 006d 3B       		.uleb128 0x3b
+ 1021 006e 0B       		.uleb128 0xb
+ 1022 006f 49       		.uleb128 0x49
+ 1023 0070 13       		.uleb128 0x13
+ 1024 0071 11       		.uleb128 0x11
+ 1025 0072 01       		.uleb128 0x1
+ 1026 0073 12       		.uleb128 0x12
+ 1027 0074 06       		.uleb128 0x6
+ 1028 0075 40       		.uleb128 0x40
+ 1029 0076 18       		.uleb128 0x18
+ 1030 0077 9642     		.uleb128 0x2116
+ 1031 0079 19       		.uleb128 0x19
+ 1032 007a 01       		.uleb128 0x1
+ 1033 007b 13       		.uleb128 0x13
+ 1034 007c 00       		.byte	0
+ 1035 007d 00       		.byte	0
+ 1036 007e 0A       		.uleb128 0xa
+ 1037 007f 34       		.uleb128 0x34
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 27
+
+
+ 1038 0080 00       		.byte	0
+ 1039 0081 03       		.uleb128 0x3
+ 1040 0082 0E       		.uleb128 0xe
+ 1041 0083 3A       		.uleb128 0x3a
+ 1042 0084 0B       		.uleb128 0xb
+ 1043 0085 3B       		.uleb128 0x3b
+ 1044 0086 0B       		.uleb128 0xb
+ 1045 0087 49       		.uleb128 0x49
+ 1046 0088 13       		.uleb128 0x13
+ 1047 0089 02       		.uleb128 0x2
+ 1048 008a 18       		.uleb128 0x18
+ 1049 008b 00       		.byte	0
+ 1050 008c 00       		.byte	0
+ 1051 008d 0B       		.uleb128 0xb
+ 1052 008e 01       		.uleb128 0x1
+ 1053 008f 01       		.byte	0x1
+ 1054 0090 49       		.uleb128 0x49
+ 1055 0091 13       		.uleb128 0x13
+ 1056 0092 01       		.uleb128 0x1
+ 1057 0093 13       		.uleb128 0x13
+ 1058 0094 00       		.byte	0
+ 1059 0095 00       		.byte	0
+ 1060 0096 0C       		.uleb128 0xc
+ 1061 0097 21       		.uleb128 0x21
+ 1062 0098 00       		.byte	0
+ 1063 0099 49       		.uleb128 0x49
+ 1064 009a 13       		.uleb128 0x13
+ 1065 009b 2F       		.uleb128 0x2f
+ 1066 009c 0B       		.uleb128 0xb
+ 1067 009d 00       		.byte	0
+ 1068 009e 00       		.byte	0
+ 1069 009f 0D       		.uleb128 0xd
+ 1070 00a0 34       		.uleb128 0x34
+ 1071 00a1 00       		.byte	0
+ 1072 00a2 03       		.uleb128 0x3
+ 1073 00a3 0E       		.uleb128 0xe
+ 1074 00a4 3A       		.uleb128 0x3a
+ 1075 00a5 0B       		.uleb128 0xb
+ 1076 00a6 3B       		.uleb128 0x3b
+ 1077 00a7 0B       		.uleb128 0xb
+ 1078 00a8 49       		.uleb128 0x49
+ 1079 00a9 13       		.uleb128 0x13
+ 1080 00aa 3F       		.uleb128 0x3f
+ 1081 00ab 19       		.uleb128 0x19
+ 1082 00ac 02       		.uleb128 0x2
+ 1083 00ad 18       		.uleb128 0x18
+ 1084 00ae 00       		.byte	0
+ 1085 00af 00       		.byte	0
+ 1086 00b0 0E       		.uleb128 0xe
+ 1087 00b1 34       		.uleb128 0x34
+ 1088 00b2 00       		.byte	0
+ 1089 00b3 03       		.uleb128 0x3
+ 1090 00b4 0E       		.uleb128 0xe
+ 1091 00b5 3A       		.uleb128 0x3a
+ 1092 00b6 0B       		.uleb128 0xb
+ 1093 00b7 3B       		.uleb128 0x3b
+ 1094 00b8 05       		.uleb128 0x5
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 28
+
+
+ 1095 00b9 49       		.uleb128 0x49
+ 1096 00ba 13       		.uleb128 0x13
+ 1097 00bb 3F       		.uleb128 0x3f
+ 1098 00bc 19       		.uleb128 0x19
+ 1099 00bd 3C       		.uleb128 0x3c
+ 1100 00be 19       		.uleb128 0x19
+ 1101 00bf 00       		.byte	0
+ 1102 00c0 00       		.byte	0
+ 1103 00c1 0F       		.uleb128 0xf
+ 1104 00c2 34       		.uleb128 0x34
+ 1105 00c3 00       		.byte	0
+ 1106 00c4 03       		.uleb128 0x3
+ 1107 00c5 0E       		.uleb128 0xe
+ 1108 00c6 3A       		.uleb128 0x3a
+ 1109 00c7 0B       		.uleb128 0xb
+ 1110 00c8 3B       		.uleb128 0x3b
+ 1111 00c9 0B       		.uleb128 0xb
+ 1112 00ca 49       		.uleb128 0x49
+ 1113 00cb 13       		.uleb128 0x13
+ 1114 00cc 3F       		.uleb128 0x3f
+ 1115 00cd 19       		.uleb128 0x19
+ 1116 00ce 3C       		.uleb128 0x3c
+ 1117 00cf 19       		.uleb128 0x19
+ 1118 00d0 00       		.byte	0
+ 1119 00d1 00       		.byte	0
+ 1120 00d2 00       		.byte	0
+ 1121              		.section	.debug_aranges,"",%progbits
+ 1122 0000 1C000000 		.4byte	0x1c
+ 1123 0004 0200     		.2byte	0x2
+ 1124 0006 00000000 		.4byte	.Ldebug_info0
+ 1125 000a 04       		.byte	0x4
+ 1126 000b 00       		.byte	0
+ 1127 000c 0000     		.2byte	0
+ 1128 000e 0000     		.2byte	0
+ 1129 0010 00000000 		.4byte	.LFB56
+ 1130 0014 08030000 		.4byte	.LFE56-.LFB56
+ 1131 0018 00000000 		.4byte	0
+ 1132 001c 00000000 		.4byte	0
+ 1133              		.section	.debug_ranges,"",%progbits
+ 1134              	.Ldebug_ranges0:
+ 1135 0000 00000000 		.4byte	.LFB56
+ 1136 0004 08030000 		.4byte	.LFE56
+ 1137 0008 00000000 		.4byte	0
+ 1138 000c 00000000 		.4byte	0
+ 1139              		.section	.debug_line,"",%progbits
+ 1140              	.Ldebug_line0:
+ 1141 0000 1D020000 		.section	.debug_str,"MS",%progbits,1
+ 1141      02007201 
+ 1141      00000201 
+ 1141      FB0E0D00 
+ 1141      01010101 
+ 1142              	.LASF46:
+ 1143 0000 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 1143      73657273 
+ 1143      5C6C756B 
+ 1143      61735C44 
+ 1143      65736B74 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 29
+
+
+ 1144 002f 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 1144      73746572 
+ 1144      5C50696F 
+ 1144      6E656572 
+ 1144      4B69745F 
+ 1145              	.LASF25:
+ 1146 0058 70537461 		.ascii	"pStatusBlock\000"
+ 1146      74757342 
+ 1146      6C6F636B 
+ 1146      00
+ 1147              	.LASF32:
+ 1148 0065 55534246 		.ascii	"USBFS_currentVolume\000"
+ 1148      535F6375 
+ 1148      7272656E 
+ 1148      74566F6C 
+ 1148      756D6500 
+ 1149              	.LASF37:
+ 1150 0079 55534246 		.ascii	"USBFS_currentCH1InputVolume\000"
+ 1150      535F6375 
+ 1150      7272656E 
+ 1150      74434831 
+ 1150      496E7075 
+ 1151              	.LASF42:
+ 1152 0095 5553425F 		.ascii	"USB_inputVolume\000"
+ 1152      696E7075 
+ 1152      74566F6C 
+ 1152      756D6500 
+ 1153              	.LASF45:
+ 1154 00a5 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\USBFS_audio.c\000"
+ 1154      6E657261 
+ 1154      7465645F 
+ 1154      536F7572 
+ 1154      63655C50 
+ 1155              	.LASF40:
+ 1156 00cc 55534246 		.ascii	"USBFS_currentTmpCH2InputVolume\000"
+ 1156      535F6375 
+ 1156      7272656E 
+ 1156      74546D70 
+ 1156      43483249 
+ 1157              	.LASF9:
+ 1158 00eb 5F5F696E 		.ascii	"__int32_t\000"
+ 1158      7433325F 
+ 1158      7400
+ 1159              	.LASF33:
+ 1160 00f5 55534246 		.ascii	"USBFS_minimumVolume\000"
+ 1160      535F6D69 
+ 1160      6E696D75 
+ 1160      6D566F6C 
+ 1160      756D6500 
+ 1161              	.LASF47:
+ 1162 0109 55534246 		.ascii	"USBFS_DispatchAUDIOClassRqst\000"
+ 1162      535F4469 
+ 1162      73706174 
+ 1162      63684155 
+ 1162      44494F43 
+ 1163              	.LASF18:
+ 1164 0126 73746174 		.ascii	"status\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 30
+
+
+ 1164      757300
+ 1165              	.LASF24:
+ 1166 012d 70446174 		.ascii	"pData\000"
+ 1166      6100
+ 1167              	.LASF10:
+ 1168 0133 696E7433 		.ascii	"int32_t\000"
+ 1168      325F7400 
+ 1169              	.LASF31:
+ 1170 013b 55534246 		.ascii	"USBFS_currentMute\000"
+ 1170      535F6375 
+ 1170      7272656E 
+ 1170      744D7574 
+ 1170      6500
+ 1171              	.LASF26:
+ 1172 014d 545F5553 		.ascii	"T_USBFS_TD\000"
+ 1172      4246535F 
+ 1172      544400
+ 1173              	.LASF13:
+ 1174 0158 666C6F61 		.ascii	"float\000"
+ 1174      7400
+ 1175              	.LASF11:
+ 1176 015e 75696E74 		.ascii	"uint8\000"
+ 1176      3800
+ 1177              	.LASF1:
+ 1178 0164 756E7369 		.ascii	"unsigned char\000"
+ 1178      676E6564 
+ 1178      20636861 
+ 1178      7200
+ 1179              	.LASF41:
+ 1180 0172 5553425F 		.ascii	"USB_inputMute\000"
+ 1180      696E7075 
+ 1180      744D7574 
+ 1180      6500
+ 1181              	.LASF16:
+ 1182 0180 72656738 		.ascii	"reg8\000"
+ 1182      00
+ 1183              	.LASF20:
+ 1184 0185 545F5553 		.ascii	"T_USBFS_XFER_STATUS_BLOCK\000"
+ 1184      4246535F 
+ 1184      58464552 
+ 1184      5F535441 
+ 1184      5455535F 
+ 1185              	.LASF35:
+ 1186 019f 55534246 		.ascii	"USBFS_resolutionVolume\000"
+ 1186      535F7265 
+ 1186      736F6C75 
+ 1186      74696F6E 
+ 1186      566F6C75 
+ 1187              	.LASF3:
+ 1188 01b6 73686F72 		.ascii	"short unsigned int\000"
+ 1188      7420756E 
+ 1188      7369676E 
+ 1188      65642069 
+ 1188      6E7400
+ 1189              	.LASF36:
+ 1190 01c9 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1190      52784275 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 31
+
+
+ 1190      66666572 
+ 1190      00
+ 1191              	.LASF44:
+ 1192 01d6 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1192      4320342E 
+ 1192      392E3320 
+ 1192      32303135 
+ 1192      30333033 
+ 1193 0209 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1193      20726576 
+ 1193      6973696F 
+ 1193      6E203232 
+ 1193      31323230 
+ 1194 023c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1194      66756E63 
+ 1194      74696F6E 
+ 1194      2D736563 
+ 1194      74696F6E 
+ 1195              	.LASF5:
+ 1196 0264 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1196      20756E73 
+ 1196      69676E65 
+ 1196      6420696E 
+ 1196      7400
+ 1197              	.LASF29:
+ 1198 0276 55534246 		.ascii	"USBFS_currentSampleFrequency\000"
+ 1198      535F6375 
+ 1198      7272656E 
+ 1198      7453616D 
+ 1198      706C6546 
+ 1199              	.LASF34:
+ 1200 0293 55534246 		.ascii	"USBFS_maximumVolume\000"
+ 1200      535F6D61 
+ 1200      78696D75 
+ 1200      6D566F6C 
+ 1200      756D6500 
+ 1201              	.LASF12:
+ 1202 02a7 75696E74 		.ascii	"uint16\000"
+ 1202      313600
+ 1203              	.LASF22:
+ 1204 02ae 5F555342 		.ascii	"_USBFS_Td\000"
+ 1204      46535F54 
+ 1204      6400
+ 1205              	.LASF8:
+ 1206 02b8 756E7369 		.ascii	"unsigned int\000"
+ 1206      676E6564 
+ 1206      20696E74 
+ 1206      00
+ 1207              	.LASF7:
+ 1208 02c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1208      206C6F6E 
+ 1208      6720756E 
+ 1208      7369676E 
+ 1208      65642069 
+ 1209              	.LASF43:
+ 1210 02dc 55534246 		.ascii	"USBFS_currentTD\000"
+ 1210      535F6375 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 32
+
+
+ 1210      7272656E 
+ 1210      74544400 
+ 1211              	.LASF39:
+ 1212 02ec 55534246 		.ascii	"USBFS_currentTmpCH1InputVolume\000"
+ 1212      535F6375 
+ 1212      7272656E 
+ 1212      74546D70 
+ 1212      43483149 
+ 1213              	.LASF17:
+ 1214 030b 73697A65 		.ascii	"sizetype\000"
+ 1214      74797065 
+ 1214      00
+ 1215              	.LASF6:
+ 1216 0314 6C6F6E67 		.ascii	"long long int\000"
+ 1216      206C6F6E 
+ 1216      6720696E 
+ 1216      7400
+ 1217              	.LASF38:
+ 1218 0322 55534246 		.ascii	"USBFS_currentCH2InputVolume\000"
+ 1218      535F6375 
+ 1218      7272656E 
+ 1218      74434832 
+ 1218      496E7075 
+ 1219              	.LASF15:
+ 1220 033e 63686172 		.ascii	"char\000"
+ 1220      00
+ 1221              	.LASF23:
+ 1222 0343 636F756E 		.ascii	"count\000"
+ 1222      7400
+ 1223              	.LASF2:
+ 1224 0349 73686F72 		.ascii	"short int\000"
+ 1224      7420696E 
+ 1224      7400
+ 1225              	.LASF28:
+ 1226 0353 65704E75 		.ascii	"epNumber\000"
+ 1226      6D626572 
+ 1226      00
+ 1227              	.LASF21:
+ 1228 035c 5F555342 		.ascii	"_USBFS_XferStatusBlock\000"
+ 1228      46535F58 
+ 1228      66657253 
+ 1228      74617475 
+ 1228      73426C6F 
+ 1229              	.LASF27:
+ 1230 0373 72657175 		.ascii	"requestHandled\000"
+ 1230      65737448 
+ 1230      616E646C 
+ 1230      656400
+ 1231              	.LASF30:
+ 1232 0382 55534246 		.ascii	"USBFS_frequencyChanged\000"
+ 1232      535F6672 
+ 1232      65717565 
+ 1232      6E637943 
+ 1232      68616E67 
+ 1233              	.LASF4:
+ 1234 0399 6C6F6E67 		.ascii	"long int\000"
+ 1234      20696E74 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccRkU2qz.s 			page 33
+
+
+ 1234      00
+ 1235              	.LASF0:
+ 1236 03a2 7369676E 		.ascii	"signed char\000"
+ 1236      65642063 
+ 1236      68617200 
+ 1237              	.LASF14:
+ 1238 03ae 646F7562 		.ascii	"double\000"
+ 1238      6C6500
+ 1239              	.LASF19:
+ 1240 03b5 6C656E67 		.ascii	"length\000"
+ 1240      746800
+ 1241              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

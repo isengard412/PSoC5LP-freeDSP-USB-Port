@@ -1,0 +1,13 @@
+0 ICSigma100In1 O_C0_A0_P1_out Link0 O_C0_A0_P2_out Link2 O_C0_A0_P3_out Link7 O_C0_A0_P4_out Link8
+1 sin_lookupAlg19402 O_C46_A0_P1_out Link1
+2 GPIAlg1 O_C33_A0_P1_out Link6
+3 GPIAlg2 O_C35_A0_P1_out Link5
+4 ICSigma100Out1 I_C11_A0_P1_in Link0
+5 ICSigma100Out5 I_C48_A0_P1_in Link1
+6 ICSigma100Out2 I_C13_A0_P1_in Link2
+7 RotaryEncAlg1 I_C79_A0_P1_in Link6 I_C79_A0_P2_in Link5 O_C79_A0_P3_out Link3 O_C79_A0_P4_out Link4
+8 updownAlg_no_intf1 I_C84_A0_P1_in Link3 I_C84_A0_P2_in Link4 O_C84_A0_P3_out Link11
+9 LookupTableAlgNew1 I_C110_A0_P1_in Link11 O_C110_A0_P2_out Link12
+10 ExtSWGainDB1 I_C72_A0_P1_in Link12 I_C72_A0_P2_in Link7 I_C72_A0_P4_in Link8 O_C72_A0_P3_out Link9 O_C72_A0_P5_out Link10
+11 ICSigma100Out3 I_C15_A0_P1_in Link9
+12 ICSigma100Out4 I_C17_A0_P1_in Link10

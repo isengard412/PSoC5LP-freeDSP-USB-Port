@@ -1,0 +1,7 @@
+sin_lookupAlg19402mask_2 0
+sin_lookupAlg19402increment_2 1
+sin_lookupAlg19402ison_2 2
+RotaryEncAlg1countmax_8 3
+LookupTableAlgNew1maxindex_10 4
+LookupTableAlgNew1table_p0_10 5
+ExtSWGainDB1step_11 25

@@ -1,0 +1,835 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Droop_Filter_RAM_Data.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Droop_Filter_control
+  19              		.section	.rodata
+  20              		.align	2
+  21              		.type	Droop_Filter_control, %object
+  22              		.size	Droop_Filter_control, 256
+  23              	Droop_Filter_control:
+  24 0000 20130025 		.word	620761888
+  25 0004 61178026 		.word	645928801
+  26 0008 01008026 		.word	645922817
+  27 000c 01008026 		.word	645922817
+  28 0010 00048026 		.word	645923840
+  29 0014 65098026 		.word	645925221
+  30 0018 01008026 		.word	645922817
+  31 001c 00048026 		.word	645923840
+  32 0020 71098026 		.word	645925233
+  33 0024 01008026 		.word	645922817
+  34 0028 E00E8026 		.word	645926624
+  35 002c C20C8026 		.word	645926082
+  36 0030 02008006 		.word	109051906
+  37 0034 6587186D 		.word	1830324069
+  38 0038 2102187F 		.word	2132279841
+  39 003c 6409183E 		.word	1041762660
+  40 0040 00008026 		.word	645922816
+  41 0044 03008026 		.word	645922819
+  42 0048 20138026 		.word	645927712
+  43 004c C80C8026 		.word	645926088
+  44 0050 E60E8026 		.word	645926630
+  45 0054 AA0A8026 		.word	645925546
+  46 0058 61178026 		.word	645928801
+  47 005c 98088026 		.word	645925016
+  48 0060 7A06806D 		.word	1837106810
+  49 0064 7806802F 		.word	796919416
+  50 0068 2002106F 		.word	1863320096
+  51 006c 00808026 		.word	645955584
+  52 0070 2002806F 		.word	1870660128
+  53 0074 00808026 		.word	645955584
+  54 0078 2002806F 		.word	1870660128
+  55 007c 2002806F 		.word	1870660128
+  56 0080 211A40FE 		.word	-29353439
+  57 0084 00008626 		.word	646316032
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 2
+
+
+  58 0088 02221066 		.word	1712333314
+  59 008c 0080106E 		.word	1846575104
+  60 0090 01828026 		.word	645956097
+  61 0094 EC0E8026 		.word	645926636
+  62 0098 CE0C8026 		.word	645926094
+  63 009c 00008006 		.word	109051904
+  64 00a0 7187186D 		.word	1830324081
+  65 00a4 2102187F 		.word	2132279841
+  66 00a8 7009183E 		.word	1041762672
+  67 00ac 00008026 		.word	645922816
+  68 00b0 01008026 		.word	645922817
+  69 00b4 20138026 		.word	645927712
+  70 00b8 D40C8026 		.word	645926100
+  71 00bc F20E8026 		.word	645926642
+  72 00c0 B60A8026 		.word	645925558
+  73 00c4 61178026 		.word	645928801
+  74 00c8 98088026 		.word	645925016
+  75 00cc 7A06806D 		.word	1837106810
+  76 00d0 7806802F 		.word	796919416
+  77 00d4 2002106F 		.word	1863320096
+  78 00d8 00808026 		.word	645955584
+  79 00dc 2002806F 		.word	1870660128
+  80 00e0 00808026 		.word	645955584
+  81 00e4 2002806F 		.word	1870660128
+  82 00e8 2002806F 		.word	1870660128
+  83 00ec 211A40FE 		.word	-29353439
+  84 00f0 00008626 		.word	646316032
+  85 00f4 02221066 		.word	1712333314
+  86 00f8 0080106E 		.word	1846575104
+  87 00fc 01828026 		.word	645956097
+  88              		.global	Droop_Filter_data_a
+  89              		.align	2
+  90              		.type	Droop_Filter_data_a, %object
+  91              		.size	Droop_Filter_data_a, 512
+  92              	Droop_Filter_data_a:
+  93 0100 00000000 		.word	0
+  94 0104 00000000 		.word	0
+  95 0108 00000000 		.word	0
+  96 010c 00000000 		.word	0
+  97 0110 00000000 		.word	0
+  98 0114 00000000 		.word	0
+  99 0118 00000000 		.word	0
+ 100 011c 00000000 		.word	0
+ 101 0120 00000000 		.word	0
+ 102 0124 00000000 		.word	0
+ 103 0128 00000000 		.word	0
+ 104 012c 00000000 		.word	0
+ 105 0130 00000000 		.word	0
+ 106 0134 00000000 		.word	0
+ 107 0138 00000000 		.word	0
+ 108 013c 00000000 		.word	0
+ 109 0140 00000000 		.word	0
+ 110 0144 00000000 		.word	0
+ 111 0148 00000000 		.word	0
+ 112 014c 00000000 		.word	0
+ 113 0150 00000000 		.word	0
+ 114 0154 00000000 		.word	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 3
+
+
+ 115 0158 00000000 		.word	0
+ 116 015c 00000000 		.word	0
+ 117 0160 00000000 		.word	0
+ 118 0164 00000000 		.word	0
+ 119 0168 00000000 		.word	0
+ 120 016c 00000000 		.word	0
+ 121 0170 00000000 		.word	0
+ 122 0174 00000000 		.word	0
+ 123 0178 00000000 		.word	0
+ 124 017c 00000000 		.word	0
+ 125 0180 00000000 		.word	0
+ 126 0184 00000000 		.word	0
+ 127 0188 00000000 		.word	0
+ 128 018c 00000000 		.word	0
+ 129 0190 00000000 		.word	0
+ 130 0194 00000000 		.word	0
+ 131 0198 00000000 		.word	0
+ 132 019c 00000000 		.word	0
+ 133 01a0 00000000 		.word	0
+ 134 01a4 00000000 		.word	0
+ 135 01a8 00000000 		.word	0
+ 136 01ac 00000000 		.word	0
+ 137 01b0 00000000 		.word	0
+ 138 01b4 00000000 		.word	0
+ 139 01b8 00000000 		.word	0
+ 140 01bc 00000000 		.word	0
+ 141 01c0 00000000 		.word	0
+ 142 01c4 00000000 		.word	0
+ 143 01c8 00000000 		.word	0
+ 144 01cc 00000000 		.word	0
+ 145 01d0 00000000 		.word	0
+ 146 01d4 00000000 		.word	0
+ 147 01d8 00000000 		.word	0
+ 148 01dc 00000000 		.word	0
+ 149 01e0 00000000 		.word	0
+ 150 01e4 00000000 		.word	0
+ 151 01e8 00000000 		.word	0
+ 152 01ec 00000000 		.word	0
+ 153 01f0 00000000 		.word	0
+ 154 01f4 00000000 		.word	0
+ 155 01f8 00000000 		.word	0
+ 156 01fc 00000000 		.word	0
+ 157 0200 00000000 		.word	0
+ 158 0204 00000000 		.word	0
+ 159 0208 00000000 		.word	0
+ 160 020c 00000000 		.word	0
+ 161 0210 00000000 		.word	0
+ 162 0214 00000000 		.word	0
+ 163 0218 00000000 		.word	0
+ 164 021c 00000000 		.word	0
+ 165 0220 00000000 		.word	0
+ 166 0224 00000000 		.word	0
+ 167 0228 00000000 		.word	0
+ 168 022c 00000000 		.word	0
+ 169 0230 00000000 		.word	0
+ 170 0234 00000000 		.word	0
+ 171 0238 00000000 		.word	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 4
+
+
+ 172 023c 00000000 		.word	0
+ 173 0240 00000000 		.word	0
+ 174 0244 00000000 		.word	0
+ 175 0248 00000000 		.word	0
+ 176 024c 00000000 		.word	0
+ 177 0250 00000000 		.word	0
+ 178 0254 00000000 		.word	0
+ 179 0258 00000000 		.word	0
+ 180 025c 00000000 		.word	0
+ 181 0260 00000000 		.word	0
+ 182 0264 00000000 		.word	0
+ 183 0268 00000000 		.word	0
+ 184 026c 00000000 		.word	0
+ 185 0270 00000000 		.word	0
+ 186 0274 00000000 		.word	0
+ 187 0278 00000000 		.word	0
+ 188 027c 00000000 		.word	0
+ 189 0280 00000000 		.word	0
+ 190 0284 00000000 		.word	0
+ 191 0288 00000000 		.word	0
+ 192 028c 00000000 		.word	0
+ 193 0290 00000000 		.word	0
+ 194 0294 00000000 		.word	0
+ 195 0298 00000000 		.word	0
+ 196 029c 00000000 		.word	0
+ 197 02a0 00000000 		.word	0
+ 198 02a4 00000000 		.word	0
+ 199 02a8 00000000 		.word	0
+ 200 02ac 00000000 		.word	0
+ 201 02b0 00000000 		.word	0
+ 202 02b4 00000000 		.word	0
+ 203 02b8 00000000 		.word	0
+ 204 02bc 00000000 		.word	0
+ 205 02c0 00000000 		.word	0
+ 206 02c4 00000000 		.word	0
+ 207 02c8 00000000 		.word	0
+ 208 02cc 00000000 		.word	0
+ 209 02d0 00000000 		.word	0
+ 210 02d4 00000000 		.word	0
+ 211 02d8 00000000 		.word	0
+ 212 02dc 00000000 		.word	0
+ 213 02e0 00000000 		.word	0
+ 214 02e4 00000000 		.word	0
+ 215 02e8 00000000 		.word	0
+ 216 02ec 00000000 		.word	0
+ 217 02f0 00000000 		.word	0
+ 218 02f4 00000000 		.word	0
+ 219 02f8 00000000 		.word	0
+ 220 02fc 00080000 		.word	2048
+ 221              		.global	Droop_Filter_data_b
+ 222              		.align	2
+ 223              		.type	Droop_Filter_data_b, %object
+ 224              		.size	Droop_Filter_data_b, 512
+ 225              	Droop_Filter_data_b:
+ 226 0300 93F2FF00 		.word	16773779
+ 227 0304 AEEEFF00 		.word	16772782
+ 228 0308 F50C0000 		.word	3317
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 5
+
+
+ 229 030c 0D1B0000 		.word	6925
+ 230 0310 03EEFF00 		.word	16772611
+ 231 0314 9CD0FF00 		.word	16765084
+ 232 0318 6A190000 		.word	6506
+ 233 031c BD4A0000 		.word	19133
+ 234 0320 0CE0FF00 		.word	16769036
+ 235 0324 278EFF00 		.word	16748071
+ 236 0328 A9270000 		.word	10153
+ 237 032c 82A50000 		.word	42370
+ 238 0330 16D2FF00 		.word	16765462
+ 239 0334 0F15FF00 		.word	16717071
+ 240 0338 DE320000 		.word	13022
+ 241 033c A3460100 		.word	83619
+ 242 0340 2ECCFF00 		.word	16763950
+ 243 0344 953DFE00 		.word	16661909
+ 244 0348 132E0000 		.word	11795
+ 245 034c EA6D0200 		.word	159210
+ 246 0350 D2E5FF00 		.word	16770514
+ 247 0354 AB94FC00 		.word	16553131
+ 248 0358 39E6FF00 		.word	16770617
+ 249 035c 300C0500 		.word	330800
+ 250 0360 3FAC0000 		.word	44095
+ 251 0364 F0ADF700 		.word	16231920
+ 252 0368 B50EFD00 		.word	16584373
+ 253 036c 126C1200 		.word	1207314
+ 254 0370 04121F00 		.word	2036228
+ 255 0374 126C1200 		.word	1207314
+ 256 0378 B50EFD00 		.word	16584373
+ 257 037c F0ADF700 		.word	16231920
+ 258 0380 3FAC0000 		.word	44095
+ 259 0384 300C0500 		.word	330800
+ 260 0388 39E6FF00 		.word	16770617
+ 261 038c AB94FC00 		.word	16553131
+ 262 0390 D2E5FF00 		.word	16770514
+ 263 0394 EA6D0200 		.word	159210
+ 264 0398 132E0000 		.word	11795
+ 265 039c 953DFE00 		.word	16661909
+ 266 03a0 2ECCFF00 		.word	16763950
+ 267 03a4 A3460100 		.word	83619
+ 268 03a8 DE320000 		.word	13022
+ 269 03ac 0F15FF00 		.word	16717071
+ 270 03b0 16D2FF00 		.word	16765462
+ 271 03b4 82A50000 		.word	42370
+ 272 03b8 A9270000 		.word	10153
+ 273 03bc 278EFF00 		.word	16748071
+ 274 03c0 0CE0FF00 		.word	16769036
+ 275 03c4 BD4A0000 		.word	19133
+ 276 03c8 6A190000 		.word	6506
+ 277 03cc 9CD0FF00 		.word	16765084
+ 278 03d0 03EEFF00 		.word	16772611
+ 279 03d4 0D1B0000 		.word	6925
+ 280 03d8 F50C0000 		.word	3317
+ 281 03dc AEEEFF00 		.word	16772782
+ 282 03e0 93F2FF00 		.word	16773779
+ 283 03e4 1D074E00 		.word	5113629
+ 284 03e8 E3F8B100 		.word	11663587
+ 285 03ec 00000000 		.word	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 6
+
+
+ 286 03f0 DDDF3F00 		.word	4186077
+ 287 03f4 00000000 		.word	0
+ 288 03f8 93F2FF00 		.word	16773779
+ 289 03fc AEEEFF00 		.word	16772782
+ 290 0400 F50C0000 		.word	3317
+ 291 0404 0D1B0000 		.word	6925
+ 292 0408 03EEFF00 		.word	16772611
+ 293 040c 9CD0FF00 		.word	16765084
+ 294 0410 6A190000 		.word	6506
+ 295 0414 BD4A0000 		.word	19133
+ 296 0418 0CE0FF00 		.word	16769036
+ 297 041c 278EFF00 		.word	16748071
+ 298 0420 A9270000 		.word	10153
+ 299 0424 82A50000 		.word	42370
+ 300 0428 16D2FF00 		.word	16765462
+ 301 042c 0F15FF00 		.word	16717071
+ 302 0430 DE320000 		.word	13022
+ 303 0434 A3460100 		.word	83619
+ 304 0438 2ECCFF00 		.word	16763950
+ 305 043c 953DFE00 		.word	16661909
+ 306 0440 132E0000 		.word	11795
+ 307 0444 EA6D0200 		.word	159210
+ 308 0448 D2E5FF00 		.word	16770514
+ 309 044c AB94FC00 		.word	16553131
+ 310 0450 39E6FF00 		.word	16770617
+ 311 0454 300C0500 		.word	330800
+ 312 0458 3FAC0000 		.word	44095
+ 313 045c F0ADF700 		.word	16231920
+ 314 0460 B50EFD00 		.word	16584373
+ 315 0464 126C1200 		.word	1207314
+ 316 0468 04121F00 		.word	2036228
+ 317 046c 126C1200 		.word	1207314
+ 318 0470 B50EFD00 		.word	16584373
+ 319 0474 F0ADF700 		.word	16231920
+ 320 0478 3FAC0000 		.word	44095
+ 321 047c 300C0500 		.word	330800
+ 322 0480 39E6FF00 		.word	16770617
+ 323 0484 AB94FC00 		.word	16553131
+ 324 0488 D2E5FF00 		.word	16770514
+ 325 048c EA6D0200 		.word	159210
+ 326 0490 132E0000 		.word	11795
+ 327 0494 953DFE00 		.word	16661909
+ 328 0498 2ECCFF00 		.word	16763950
+ 329 049c A3460100 		.word	83619
+ 330 04a0 DE320000 		.word	13022
+ 331 04a4 0F15FF00 		.word	16717071
+ 332 04a8 16D2FF00 		.word	16765462
+ 333 04ac 82A50000 		.word	42370
+ 334 04b0 A9270000 		.word	10153
+ 335 04b4 278EFF00 		.word	16748071
+ 336 04b8 0CE0FF00 		.word	16769036
+ 337 04bc BD4A0000 		.word	19133
+ 338 04c0 6A190000 		.word	6506
+ 339 04c4 9CD0FF00 		.word	16765084
+ 340 04c8 03EEFF00 		.word	16772611
+ 341 04cc 0D1B0000 		.word	6925
+ 342 04d0 F50C0000 		.word	3317
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 7
+
+
+ 343 04d4 AEEEFF00 		.word	16772782
+ 344 04d8 93F2FF00 		.word	16773779
+ 345 04dc 1D074E00 		.word	5113629
+ 346 04e0 E3F8B100 		.word	11663587
+ 347 04e4 00000000 		.word	0
+ 348 04e8 DDDF3F00 		.word	4186077
+ 349 04ec 00000000 		.word	0
+ 350 04f0 00000000 		.word	0
+ 351 04f4 00000000 		.word	0
+ 352 04f8 00000000 		.word	0
+ 353 04fc 00080000 		.word	2048
+ 354              		.global	Droop_Filter_acu
+ 355              		.align	2
+ 356              		.type	Droop_Filter_acu, %object
+ 357              		.size	Droop_Filter_acu, 56
+ 358              	Droop_Filter_acu:
+ 359 0500 381C0000 		.word	7224
+ 360 0504 00000000 		.word	0
+ 361 0508 00000000 		.word	0
+ 362 050c BD1E0000 		.word	7869
+ 363 0510 B91C0000 		.word	7353
+ 364 0514 02010000 		.word	258
+ 365 0518 763B0000 		.word	15222
+ 366 051c 3E1F0000 		.word	7998
+ 367 0520 3E1F0000 		.word	7998
+ 368 0524 FB3D0000 		.word	15867
+ 369 0528 F73B0000 		.word	15351
+ 370 052c 02010000 		.word	258
+ 371 0530 7E3F0000 		.word	16254
+ 372 0534 FF3F0000 		.word	16383
+ 373              		.global	Droop_Filter_cfsm
+ 374              		.align	2
+ 375              		.type	Droop_Filter_cfsm, %object
+ 376              		.size	Droop_Filter_cfsm, 88
+ 377              	Droop_Filter_cfsm:
+ 378 0538 21F80501 		.word	17168417
+ 379 053c 421086C0 		.word	-1064955838
+ 380 0540 67F81501 		.word	18217063
+ 381 0544 8DF84B01 		.word	21756045
+ 382 0548 C5308EC0 		.word	-1064423227
+ 383 054c D3F81501 		.word	18217171
+ 384 0550 F4F84B01 		.word	21756148
+ 385 0554 43698801 		.word	25717059
+ 386 0558 C9719E21 		.word	564031945
+ 387 055c 4AF92501 		.word	19265866
+ 388 0560 6BF92F01 		.word	19921259
+ 389 0564 EC02C320 		.word	549651180
+ 390 0568 A6F91301 		.word	18086310
+ 391 056c A4448D01 		.word	26035364
+ 392 0570 2F4DD521 		.word	567627055
+ 393 0574 10FA5B01 		.word	22805008
+ 394 0578 31FA6501 		.word	23460401
+ 395 057c 52DEF920 		.word	553246290
+ 396 0580 01F80501 		.word	17168385
+ 397 0584 48699C01 		.word	27027784
+ 398 0588 AE44D301 		.word	30622894
+ 399 058c 00000000 		.word	0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 8
+
+
+ 400              		.text
+ 401              	.Letext0:
+ 402              		.file 1 ".\\Generated_Source\\PSoC5\\Droop_Filter_RAM_Data.c"
+ 403              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 404              		.section	.debug_info,"",%progbits
+ 405              	.Ldebug_info0:
+ 406 0000 35010000 		.4byte	0x135
+ 407 0004 0400     		.2byte	0x4
+ 408 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 409 000a 04       		.byte	0x4
+ 410 000b 01       		.uleb128 0x1
+ 411 000c D8000000 		.4byte	.LASF18
+ 412 0010 01       		.byte	0x1
+ 413 0011 8A000000 		.4byte	.LASF19
+ 414 0015 8C010000 		.4byte	.LASF20
+ 415 0019 00000000 		.4byte	.Ldebug_line0
+ 416 001d 02       		.uleb128 0x2
+ 417 001e 01       		.byte	0x1
+ 418 001f 06       		.byte	0x6
+ 419 0020 80010000 		.4byte	.LASF0
+ 420 0024 02       		.uleb128 0x2
+ 421 0025 01       		.byte	0x1
+ 422 0026 08       		.byte	0x8
+ 423 0027 65000000 		.4byte	.LASF1
+ 424 002b 02       		.uleb128 0x2
+ 425 002c 02       		.byte	0x2
+ 426 002d 05       		.byte	0x5
+ 427 002e 02020000 		.4byte	.LASF2
+ 428 0032 02       		.uleb128 0x2
+ 429 0033 02       		.byte	0x2
+ 430 0034 07       		.byte	0x7
+ 431 0035 6D010000 		.4byte	.LASF3
+ 432 0039 02       		.uleb128 0x2
+ 433 003a 04       		.byte	0x4
+ 434 003b 05       		.byte	0x5
+ 435 003c CF000000 		.4byte	.LASF4
+ 436 0040 02       		.uleb128 0x2
+ 437 0041 04       		.byte	0x4
+ 438 0042 07       		.byte	0x7
+ 439 0043 36000000 		.4byte	.LASF5
+ 440 0047 02       		.uleb128 0x2
+ 441 0048 08       		.byte	0x8
+ 442 0049 05       		.byte	0x5
+ 443 004a 00000000 		.4byte	.LASF6
+ 444 004e 02       		.uleb128 0x2
+ 445 004f 08       		.byte	0x8
+ 446 0050 07       		.byte	0x7
+ 447 0051 48000000 		.4byte	.LASF7
+ 448 0055 03       		.uleb128 0x3
+ 449 0056 04       		.byte	0x4
+ 450 0057 05       		.byte	0x5
+ 451 0058 696E7400 		.ascii	"int\000"
+ 452 005c 02       		.uleb128 0x2
+ 453 005d 04       		.byte	0x4
+ 454 005e 07       		.byte	0x7
+ 455 005f 29000000 		.4byte	.LASF8
+ 456 0063 04       		.uleb128 0x4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 9
+
+
+ 457 0064 0E000000 		.4byte	.LASF21
+ 458 0068 02       		.byte	0x2
+ 459 0069 5D       		.byte	0x5d
+ 460 006a 40000000 		.4byte	0x40
+ 461 006e 02       		.uleb128 0x2
+ 462 006f 04       		.byte	0x4
+ 463 0070 04       		.byte	0x4
+ 464 0071 5F000000 		.4byte	.LASF9
+ 465 0075 02       		.uleb128 0x2
+ 466 0076 08       		.byte	0x8
+ 467 0077 04       		.byte	0x4
+ 468 0078 66010000 		.4byte	.LASF10
+ 469 007c 02       		.uleb128 0x2
+ 470 007d 01       		.byte	0x1
+ 471 007e 08       		.byte	0x8
+ 472 007f 85000000 		.4byte	.LASF11
+ 473 0083 02       		.uleb128 0x2
+ 474 0084 04       		.byte	0x4
+ 475 0085 07       		.byte	0x7
+ 476 0086 F9010000 		.4byte	.LASF12
+ 477 008a 05       		.uleb128 0x5
+ 478 008b 63000000 		.4byte	0x63
+ 479 008f 9A000000 		.4byte	0x9a
+ 480 0093 06       		.uleb128 0x6
+ 481 0094 83000000 		.4byte	0x83
+ 482 0098 3F       		.byte	0x3f
+ 483 0099 00       		.byte	0
+ 484 009a 07       		.uleb128 0x7
+ 485 009b E4010000 		.4byte	.LASF13
+ 486 009f 01       		.byte	0x1
+ 487 00a0 04       		.byte	0x4
+ 488 00a1 AB000000 		.4byte	0xab
+ 489 00a5 05       		.uleb128 0x5
+ 490 00a6 03       		.byte	0x3
+ 491 00a7 00000000 		.4byte	Droop_Filter_control
+ 492 00ab 08       		.uleb128 0x8
+ 493 00ac 8A000000 		.4byte	0x8a
+ 494 00b0 05       		.uleb128 0x5
+ 495 00b1 63000000 		.4byte	0x63
+ 496 00b5 C0000000 		.4byte	0xc0
+ 497 00b9 06       		.uleb128 0x6
+ 498 00ba 83000000 		.4byte	0x83
+ 499 00be 7F       		.byte	0x7f
+ 500 00bf 00       		.byte	0
+ 501 00c0 07       		.uleb128 0x7
+ 502 00c1 15000000 		.4byte	.LASF14
+ 503 00c5 01       		.byte	0x1
+ 504 00c6 19       		.byte	0x19
+ 505 00c7 D1000000 		.4byte	0xd1
+ 506 00cb 05       		.uleb128 0x5
+ 507 00cc 03       		.byte	0x3
+ 508 00cd 00000000 		.4byte	Droop_Filter_data_a
+ 509 00d1 08       		.uleb128 0x8
+ 510 00d2 B0000000 		.4byte	0xb0
+ 511 00d6 07       		.uleb128 0x7
+ 512 00d7 BB000000 		.4byte	.LASF15
+ 513 00db 01       		.byte	0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 10
+
+
+ 514 00dc 3E       		.byte	0x3e
+ 515 00dd E7000000 		.4byte	0xe7
+ 516 00e1 05       		.uleb128 0x5
+ 517 00e2 03       		.byte	0x3
+ 518 00e3 00000000 		.4byte	Droop_Filter_data_b
+ 519 00e7 08       		.uleb128 0x8
+ 520 00e8 B0000000 		.4byte	0xb0
+ 521 00ec 05       		.uleb128 0x5
+ 522 00ed 63000000 		.4byte	0x63
+ 523 00f1 FC000000 		.4byte	0xfc
+ 524 00f5 06       		.uleb128 0x6
+ 525 00f6 83000000 		.4byte	0x83
+ 526 00fa 15       		.byte	0x15
+ 527 00fb 00       		.byte	0
+ 528 00fc 07       		.uleb128 0x7
+ 529 00fd 73000000 		.4byte	.LASF16
+ 530 0101 01       		.byte	0x1
+ 531 0102 6B       		.byte	0x6b
+ 532 0103 0D010000 		.4byte	0x10d
+ 533 0107 05       		.uleb128 0x5
+ 534 0108 03       		.byte	0x3
+ 535 0109 00000000 		.4byte	Droop_Filter_cfsm
+ 536 010d 08       		.uleb128 0x8
+ 537 010e EC000000 		.4byte	0xec
+ 538 0112 05       		.uleb128 0x5
+ 539 0113 63000000 		.4byte	0x63
+ 540 0117 22010000 		.4byte	0x122
+ 541 011b 06       		.uleb128 0x6
+ 542 011c 83000000 		.4byte	0x83
+ 543 0120 0D       		.byte	0xd
+ 544 0121 00       		.byte	0
+ 545 0122 07       		.uleb128 0x7
+ 546 0123 0C020000 		.4byte	.LASF17
+ 547 0127 01       		.byte	0x1
+ 548 0128 63       		.byte	0x63
+ 549 0129 33010000 		.4byte	0x133
+ 550 012d 05       		.uleb128 0x5
+ 551 012e 03       		.byte	0x3
+ 552 012f 00000000 		.4byte	Droop_Filter_acu
+ 553 0133 08       		.uleb128 0x8
+ 554 0134 12010000 		.4byte	0x112
+ 555 0138 00       		.byte	0
+ 556              		.section	.debug_abbrev,"",%progbits
+ 557              	.Ldebug_abbrev0:
+ 558 0000 01       		.uleb128 0x1
+ 559 0001 11       		.uleb128 0x11
+ 560 0002 01       		.byte	0x1
+ 561 0003 25       		.uleb128 0x25
+ 562 0004 0E       		.uleb128 0xe
+ 563 0005 13       		.uleb128 0x13
+ 564 0006 0B       		.uleb128 0xb
+ 565 0007 03       		.uleb128 0x3
+ 566 0008 0E       		.uleb128 0xe
+ 567 0009 1B       		.uleb128 0x1b
+ 568 000a 0E       		.uleb128 0xe
+ 569 000b 10       		.uleb128 0x10
+ 570 000c 17       		.uleb128 0x17
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 11
+
+
+ 571 000d 00       		.byte	0
+ 572 000e 00       		.byte	0
+ 573 000f 02       		.uleb128 0x2
+ 574 0010 24       		.uleb128 0x24
+ 575 0011 00       		.byte	0
+ 576 0012 0B       		.uleb128 0xb
+ 577 0013 0B       		.uleb128 0xb
+ 578 0014 3E       		.uleb128 0x3e
+ 579 0015 0B       		.uleb128 0xb
+ 580 0016 03       		.uleb128 0x3
+ 581 0017 0E       		.uleb128 0xe
+ 582 0018 00       		.byte	0
+ 583 0019 00       		.byte	0
+ 584 001a 03       		.uleb128 0x3
+ 585 001b 24       		.uleb128 0x24
+ 586 001c 00       		.byte	0
+ 587 001d 0B       		.uleb128 0xb
+ 588 001e 0B       		.uleb128 0xb
+ 589 001f 3E       		.uleb128 0x3e
+ 590 0020 0B       		.uleb128 0xb
+ 591 0021 03       		.uleb128 0x3
+ 592 0022 08       		.uleb128 0x8
+ 593 0023 00       		.byte	0
+ 594 0024 00       		.byte	0
+ 595 0025 04       		.uleb128 0x4
+ 596 0026 16       		.uleb128 0x16
+ 597 0027 00       		.byte	0
+ 598 0028 03       		.uleb128 0x3
+ 599 0029 0E       		.uleb128 0xe
+ 600 002a 3A       		.uleb128 0x3a
+ 601 002b 0B       		.uleb128 0xb
+ 602 002c 3B       		.uleb128 0x3b
+ 603 002d 0B       		.uleb128 0xb
+ 604 002e 49       		.uleb128 0x49
+ 605 002f 13       		.uleb128 0x13
+ 606 0030 00       		.byte	0
+ 607 0031 00       		.byte	0
+ 608 0032 05       		.uleb128 0x5
+ 609 0033 01       		.uleb128 0x1
+ 610 0034 01       		.byte	0x1
+ 611 0035 49       		.uleb128 0x49
+ 612 0036 13       		.uleb128 0x13
+ 613 0037 01       		.uleb128 0x1
+ 614 0038 13       		.uleb128 0x13
+ 615 0039 00       		.byte	0
+ 616 003a 00       		.byte	0
+ 617 003b 06       		.uleb128 0x6
+ 618 003c 21       		.uleb128 0x21
+ 619 003d 00       		.byte	0
+ 620 003e 49       		.uleb128 0x49
+ 621 003f 13       		.uleb128 0x13
+ 622 0040 2F       		.uleb128 0x2f
+ 623 0041 0B       		.uleb128 0xb
+ 624 0042 00       		.byte	0
+ 625 0043 00       		.byte	0
+ 626 0044 07       		.uleb128 0x7
+ 627 0045 34       		.uleb128 0x34
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 12
+
+
+ 628 0046 00       		.byte	0
+ 629 0047 03       		.uleb128 0x3
+ 630 0048 0E       		.uleb128 0xe
+ 631 0049 3A       		.uleb128 0x3a
+ 632 004a 0B       		.uleb128 0xb
+ 633 004b 3B       		.uleb128 0x3b
+ 634 004c 0B       		.uleb128 0xb
+ 635 004d 49       		.uleb128 0x49
+ 636 004e 13       		.uleb128 0x13
+ 637 004f 3F       		.uleb128 0x3f
+ 638 0050 19       		.uleb128 0x19
+ 639 0051 02       		.uleb128 0x2
+ 640 0052 18       		.uleb128 0x18
+ 641 0053 00       		.byte	0
+ 642 0054 00       		.byte	0
+ 643 0055 08       		.uleb128 0x8
+ 644 0056 26       		.uleb128 0x26
+ 645 0057 00       		.byte	0
+ 646 0058 49       		.uleb128 0x49
+ 647 0059 13       		.uleb128 0x13
+ 648 005a 00       		.byte	0
+ 649 005b 00       		.byte	0
+ 650 005c 00       		.byte	0
+ 651              		.section	.debug_aranges,"",%progbits
+ 652 0000 14000000 		.4byte	0x14
+ 653 0004 0200     		.2byte	0x2
+ 654 0006 00000000 		.4byte	.Ldebug_info0
+ 655 000a 04       		.byte	0x4
+ 656 000b 00       		.byte	0
+ 657 000c 0000     		.2byte	0
+ 658 000e 0000     		.2byte	0
+ 659 0010 00000000 		.4byte	0
+ 660 0014 00000000 		.4byte	0
+ 661              		.section	.debug_line,"",%progbits
+ 662              	.Ldebug_line0:
+ 663 0000 5A000000 		.section	.debug_str,"MS",%progbits,1
+ 663      02005400 
+ 663      00000201 
+ 663      FB0E0D00 
+ 663      01010101 
+ 664              	.LASF6:
+ 665 0000 6C6F6E67 		.ascii	"long long int\000"
+ 665      206C6F6E 
+ 665      6720696E 
+ 665      7400
+ 666              	.LASF21:
+ 667 000e 75696E74 		.ascii	"uint32\000"
+ 667      333200
+ 668              	.LASF14:
+ 669 0015 44726F6F 		.ascii	"Droop_Filter_data_a\000"
+ 669      705F4669 
+ 669      6C746572 
+ 669      5F646174 
+ 669      615F6100 
+ 670              	.LASF8:
+ 671 0029 756E7369 		.ascii	"unsigned int\000"
+ 671      676E6564 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 13
+
+
+ 671      20696E74 
+ 671      00
+ 672              	.LASF5:
+ 673 0036 6C6F6E67 		.ascii	"long unsigned int\000"
+ 673      20756E73 
+ 673      69676E65 
+ 673      6420696E 
+ 673      7400
+ 674              	.LASF7:
+ 675 0048 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 675      206C6F6E 
+ 675      6720756E 
+ 675      7369676E 
+ 675      65642069 
+ 676              	.LASF9:
+ 677 005f 666C6F61 		.ascii	"float\000"
+ 677      7400
+ 678              	.LASF1:
+ 679 0065 756E7369 		.ascii	"unsigned char\000"
+ 679      676E6564 
+ 679      20636861 
+ 679      7200
+ 680              	.LASF16:
+ 681 0073 44726F6F 		.ascii	"Droop_Filter_cfsm\000"
+ 681      705F4669 
+ 681      6C746572 
+ 681      5F636673 
+ 681      6D00
+ 682              	.LASF11:
+ 683 0085 63686172 		.ascii	"char\000"
+ 683      00
+ 684              	.LASF19:
+ 685 008a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Droop_Filter_RAM_Data.c"
+ 685      6E657261 
+ 685      7465645F 
+ 685      536F7572 
+ 685      63655C50 
+ 686 00ba 00       		.ascii	"\000"
+ 687              	.LASF15:
+ 688 00bb 44726F6F 		.ascii	"Droop_Filter_data_b\000"
+ 688      705F4669 
+ 688      6C746572 
+ 688      5F646174 
+ 688      615F6200 
+ 689              	.LASF4:
+ 690 00cf 6C6F6E67 		.ascii	"long int\000"
+ 690      20696E74 
+ 690      00
+ 691              	.LASF18:
+ 692 00d8 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 692      4320342E 
+ 692      392E3320 
+ 692      32303135 
+ 692      30333033 
+ 693 010b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 693      20726576 
+ 693      6973696F 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccOn9DBz.s 			page 14
+
+
+ 693      6E203232 
+ 693      31323230 
+ 694 013e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 694      66756E63 
+ 694      74696F6E 
+ 694      2D736563 
+ 694      74696F6E 
+ 695              	.LASF10:
+ 696 0166 646F7562 		.ascii	"double\000"
+ 696      6C6500
+ 697              	.LASF3:
+ 698 016d 73686F72 		.ascii	"short unsigned int\000"
+ 698      7420756E 
+ 698      7369676E 
+ 698      65642069 
+ 698      6E7400
+ 699              	.LASF0:
+ 700 0180 7369676E 		.ascii	"signed char\000"
+ 700      65642063 
+ 700      68617200 
+ 701              	.LASF20:
+ 702 018c 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 702      73657273 
+ 702      5C6C756B 
+ 702      61735C44 
+ 702      65736B74 
+ 703 01bb 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 703      73746572 
+ 703      5C50696F 
+ 703      6E656572 
+ 703      4B69745F 
+ 704              	.LASF13:
+ 705 01e4 44726F6F 		.ascii	"Droop_Filter_control\000"
+ 705      705F4669 
+ 705      6C746572 
+ 705      5F636F6E 
+ 705      74726F6C 
+ 706              	.LASF12:
+ 707 01f9 73697A65 		.ascii	"sizetype\000"
+ 707      74797065 
+ 707      00
+ 708              	.LASF2:
+ 709 0202 73686F72 		.ascii	"short int\000"
+ 709      7420696E 
+ 709      7400
+ 710              	.LASF17:
+ 711 020c 44726F6F 		.ascii	"Droop_Filter_acu\000"
+ 711      705F4669 
+ 711      6C746572 
+ 711      5F616375 
+ 711      00
+ 712              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

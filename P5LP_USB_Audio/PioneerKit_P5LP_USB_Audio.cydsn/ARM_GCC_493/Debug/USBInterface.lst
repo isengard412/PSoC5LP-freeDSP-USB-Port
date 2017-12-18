@@ -1,0 +1,1581 @@
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBInterface.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	usbActivityCounter
+  19              		.bss
+  20              		.type	usbActivityCounter, %object
+  21              		.size	usbActivityCounter, 1
+  22              	usbActivityCounter:
+  23 0000 00       		.space	1
+  24              		.global	usbMiniBActive
+  25              		.type	usbMiniBActive, %object
+  26              		.size	usbMiniBActive, 1
+  27              	usbMiniBActive:
+  28 0001 00       		.space	1
+  29              		.global	USBDeviceState
+  30              		.type	USBDeviceState, %object
+  31              		.size	USBDeviceState, 1
+  32              	USBDeviceState:
+  33 0002 00       		.space	1
+  34              		.comm	outRam,288,4
+  35              		.comm	inRam,192,4
+  36              		.comm	inCnt,2,2
+  37              		.global	altSetting
+  38              		.data
+  39              		.align	2
+  40              		.type	altSetting, %object
+  41              		.size	altSetting, 2
+  42              	altSetting:
+  43 0000 FF       		.byte	-1
+  44 0001 FF       		.byte	-1
+  45 0002 0000     		.section	.text.ServiceUSB,"ax",%progbits
+  46              		.align	2
+  47              		.global	ServiceUSB
+  48              		.thumb
+  49              		.thumb_func
+  50              		.type	ServiceUSB, %function
+  51              	ServiceUSB:
+  52              	.LFB56:
+  53              		.file 1 ".\\USBInterface.c"
+   1:.\USBInterface.c **** /*******************************************************************************
+   2:.\USBInterface.c **** * File Name: USBInterface.c
+   3:.\USBInterface.c **** *
+   4:.\USBInterface.c **** * Version 1.0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 2
+
+
+   5:.\USBInterface.c **** *
+   6:.\USBInterface.c **** * Description: This file contains routines for handling PC/Mac/any USB Host
+   7:.\USBInterface.c **** *              USB interface requests.
+   8:.\USBInterface.c **** *
+   9:.\USBInterface.c **** ********************************************************************************
+  10:.\USBInterface.c **** * Copyright (2008-2013), Cypress Semiconductor Corporation.
+  11:.\USBInterface.c **** ********************************************************************************
+  12:.\USBInterface.c **** * This software is owned by Cypress Semiconductor Corporation (Cypress) and is
+  13:.\USBInterface.c **** * protected by and subject to worldwide patent protection (United States and
+  14:.\USBInterface.c **** * foreign), United States copyright laws and international treaty provisions.
+  15:.\USBInterface.c **** * Cypress hereby grants to licensee a personal, non-exclusive, non-transferable
+  16:.\USBInterface.c **** * license to copy, use, modify, create derivative works of, and compile the
+  17:.\USBInterface.c **** * Cypress Source Code and derivative works for the sole purpose of creating
+  18:.\USBInterface.c **** * custom software in support of licensee product to be used only in conjunction
+  19:.\USBInterface.c **** * with a Cypress integrated circuit as specified in the applicable agreement.
+  20:.\USBInterface.c **** * Any reproduction, modification, translation, compilation, or representation of
+  21:.\USBInterface.c **** * this software except as specified above is prohibited without the express
+  22:.\USBInterface.c **** * written permission of Cypress.
+  23:.\USBInterface.c **** *
+  24:.\USBInterface.c **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH
+  25:.\USBInterface.c **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  26:.\USBInterface.c **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  27:.\USBInterface.c **** * Cypress reserves the right to make changes without further notice to the
+  28:.\USBInterface.c **** * materials described herein. Cypress does not assume any liability arising out
+  29:.\USBInterface.c **** * of the application or use of any product or circuit described herein. Cypress
+  30:.\USBInterface.c **** * does not authorize its products for use as critical components in life-support
+  31:.\USBInterface.c **** * systems where a malfunction or failure may reasonably be expected to result in
+  32:.\USBInterface.c **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  33:.\USBInterface.c **** * support systems application implies that the manufacturer assumes all risk of
+  34:.\USBInterface.c **** * such use and in doing so indemnifies Cypress against all charges. Use may be
+  35:.\USBInterface.c **** * limited by and subject to the applicable Cypress software license agreement.
+  36:.\USBInterface.c **** *******************************************************************************/
+  37:.\USBInterface.c **** #include <Application.h>
+  38:.\USBInterface.c **** #include <AudioControl.h>
+  39:.\USBInterface.c **** #include <Configuration.h>
+  40:.\USBInterface.c **** #include <device.h>
+  41:.\USBInterface.c **** #include <USBInterface.h>
+  42:.\USBInterface.c **** extern volatile uint8 USBFS_interfaceSetting[];
+  43:.\USBInterface.c **** extern CYBIT lowPowerIdle;
+  44:.\USBInterface.c **** 
+  45:.\USBInterface.c **** extern uint8 USBFS_initVar;
+  46:.\USBInterface.c **** extern uint8 playlistControlReport;
+  47:.\USBInterface.c **** extern CYBIT outPlaying;
+  48:.\USBInterface.c **** extern CYBIT inPlaying;
+  49:.\USBInterface.c **** 
+  50:.\USBInterface.c **** #ifdef WINDOWS7_WORKAROUND
+  51:.\USBInterface.c **** extern volatile uint8 USBFS_configurationChanged;
+  52:.\USBInterface.c **** void USBFS_Config(uint8 clearAltSetting) CYREENTRANT;
+  53:.\USBInterface.c **** #endif
+  54:.\USBInterface.c **** 
+  55:.\USBInterface.c **** extern CYBIT codecInit;  
+  56:.\USBInterface.c **** 
+  57:.\USBInterface.c **** uint8 usbActivityCounter = 0;
+  58:.\USBInterface.c **** CYBIT usbMiniBActive = FALSE;
+  59:.\USBInterface.c **** uint8 USBDeviceState = USB_INTERFACE_INACTIVE;
+  60:.\USBInterface.c **** 
+  61:.\USBInterface.c **** #if(USBFS_EP_MM == USBFS__EP_DMAAUTO) 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 3
+
+
+  62:.\USBInterface.c ****     #ifndef ENABLE_DIGITAL_AUDIO_IN_ONLY
+  63:.\USBInterface.c ****     uint8 outRam[OUT_AUDIOMAXPKT];
+  64:.\USBInterface.c ****     #endif
+  65:.\USBInterface.c ****   
+  66:.\USBInterface.c ****     #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+  67:.\USBInterface.c ****     uint8 inRam[IN_AUDIOMAXPKT];
+  68:.\USBInterface.c ****     uint16 inCnt;
+  69:.\USBInterface.c ****     #endif
+  70:.\USBInterface.c **** #endif
+  71:.\USBInterface.c **** 
+  72:.\USBInterface.c **** uint8 altSetting[NO_OF_AUDIO_STREAM_INTERFACE] = {0xFF, 0xFF};
+  73:.\USBInterface.c **** 
+  74:.\USBInterface.c **** /*******************************************************************************
+  75:.\USBInterface.c **** * Function Name: ServiceUSB
+  76:.\USBInterface.c **** ********************************************************************************
+  77:.\USBInterface.c **** * Summary: This routine performs tasks that should be done soon after USB 
+  78:.\USBInterface.c **** *          enumeration is completed (configure DMA, initialize state machine etc).
+  79:.\USBInterface.c **** *          When the USB configuration is changed, this routine reinitializes all
+  80:.\USBInterface.c **** *          the USB endpoints as required by the application.       
+  81:.\USBInterface.c **** *
+  82:.\USBInterface.c **** * Parameters:
+  83:.\USBInterface.c **** *  void
+  84:.\USBInterface.c **** *
+  85:.\USBInterface.c **** * Return:
+  86:.\USBInterface.c **** *  void
+  87:.\USBInterface.c **** *
+  88:.\USBInterface.c **** *******************************************************************************/
+  89:.\USBInterface.c **** void ServiceUSB(void)
+  90:.\USBInterface.c **** {
+  54              		.loc 1 90 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 8
+  57              		@ frame_needed = 1, uses_anonymous_args = 0
+  58 0000 90B5     		push	{r4, r7, lr}
+  59              		.cfi_def_cfa_offset 12
+  60              		.cfi_offset 4, -12
+  61              		.cfi_offset 7, -8
+  62              		.cfi_offset 14, -4
+  63 0002 83B0     		sub	sp, sp, #12
+  64              		.cfi_def_cfa_offset 24
+  65 0004 00AF     		add	r7, sp, #0
+  66              		.cfi_def_cfa_register 7
+  91:.\USBInterface.c ****     
+  92:.\USBInterface.c **** 	if(USB_INTERFACE_INACTIVE == USBDeviceState)
+  67              		.loc 1 92 0
+  68 0006 4D4B     		ldr	r3, .L13
+  69 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  70 000a 002B     		cmp	r3, #0
+  71 000c 02D1     		bne	.L2
+  93:.\USBInterface.c ****     {
+  94:.\USBInterface.c ****         USBDeviceState = USB_INIT_AFTER_ENUMERATION_REQUIRED;
+  72              		.loc 1 94 0
+  73 000e 4B4B     		ldr	r3, .L13
+  74 0010 0122     		movs	r2, #1
+  75 0012 1A70     		strb	r2, [r3]
+  76              	.L2:
+  95:.\USBInterface.c ****     }
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 4
+
+
+  96:.\USBInterface.c **** 	
+  97:.\USBInterface.c **** 	/* Initialization sequence for every USB host enumeration event */
+  98:.\USBInterface.c ****     if(USBDeviceState == USB_INIT_AFTER_ENUMERATION_REQUIRED)
+  77              		.loc 1 98 0
+  78 0014 494B     		ldr	r3, .L13
+  79 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  80 0018 012B     		cmp	r3, #1
+  81 001a 22D1     		bne	.L3
+  82              	.LBB2:
+  99:.\USBInterface.c ****     {
+ 100:.\USBInterface.c ****         uint16 index = 0;
+  83              		.loc 1 100 0
+  84 001c 0023     		movs	r3, #0
+  85 001e FB80     		strh	r3, [r7, #6]	@ movhi
+ 101:.\USBInterface.c ****         
+ 102:.\USBInterface.c ****         USBDeviceState = USB_INIT_AFTER_ENUMERATION_COMPLETED;
+  86              		.loc 1 102 0
+  87 0020 464B     		ldr	r3, .L13
+  88 0022 0222     		movs	r2, #2
+  89 0024 1A70     		strb	r2, [r3]
+ 103:.\USBInterface.c ****         
+ 104:.\USBInterface.c ****         #if(USBFS_EP_MM == USBFS__EP_DMAAUTO)
+ 105:.\USBInterface.c ****             
+ 106:.\USBInterface.c **** 			for(index=0; index< OUT_AUDIOMAXPKT; index++)
+  90              		.loc 1 106 0
+  91 0026 0023     		movs	r3, #0
+  92 0028 FB80     		strh	r3, [r7, #6]	@ movhi
+  93 002a 06E0     		b	.L4
+  94              	.L5:
+ 107:.\USBInterface.c ****             {
+ 108:.\USBInterface.c ****                 #ifndef ENABLE_DIGITAL_AUDIO_IN_ONLY
+ 109:.\USBInterface.c ****                 outRam[index] = 0;
+  95              		.loc 1 109 0 discriminator 3
+  96 002c FB88     		ldrh	r3, [r7, #6]
+  97 002e 444A     		ldr	r2, .L13+4
+  98 0030 0021     		movs	r1, #0
+  99 0032 D154     		strb	r1, [r2, r3]
+ 106:.\USBInterface.c ****             {
+ 100              		.loc 1 106 0 discriminator 3
+ 101 0034 FB88     		ldrh	r3, [r7, #6]
+ 102 0036 0133     		adds	r3, r3, #1
+ 103 0038 FB80     		strh	r3, [r7, #6]	@ movhi
+ 104              	.L4:
+ 106:.\USBInterface.c ****             {
+ 105              		.loc 1 106 0 is_stmt 0 discriminator 1
+ 106 003a FB88     		ldrh	r3, [r7, #6]
+ 107 003c B3F5907F 		cmp	r3, #288
+ 108 0040 F4D3     		bcc	.L5
+ 110:.\USBInterface.c ****                 #endif
+ 111:.\USBInterface.c ****             }
+ 112:.\USBInterface.c **** 			
+ 113:.\USBInterface.c **** 			for(index=0; index< IN_AUDIOMAXPKT; index++)
+ 109              		.loc 1 113 0 is_stmt 1
+ 110 0042 0023     		movs	r3, #0
+ 111 0044 FB80     		strh	r3, [r7, #6]	@ movhi
+ 112 0046 06E0     		b	.L6
+ 113              	.L7:
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 5
+
+
+ 114:.\USBInterface.c ****             {
+ 115:.\USBInterface.c ****                 #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ 116:.\USBInterface.c ****                 inRam[index] = 0;
+ 114              		.loc 1 116 0 discriminator 3
+ 115 0048 FB88     		ldrh	r3, [r7, #6]
+ 116 004a 3E4A     		ldr	r2, .L13+8
+ 117 004c 0021     		movs	r1, #0
+ 118 004e D154     		strb	r1, [r2, r3]
+ 113:.\USBInterface.c ****             {
+ 119              		.loc 1 113 0 discriminator 3
+ 120 0050 FB88     		ldrh	r3, [r7, #6]
+ 121 0052 0133     		adds	r3, r3, #1
+ 122 0054 FB80     		strh	r3, [r7, #6]	@ movhi
+ 123              	.L6:
+ 113:.\USBInterface.c ****             {
+ 124              		.loc 1 113 0 is_stmt 0 discriminator 1
+ 125 0056 FB88     		ldrh	r3, [r7, #6]
+ 126 0058 BF2B     		cmp	r3, #191
+ 127 005a F5D9     		bls	.L7
+ 117:.\USBInterface.c ****                 #endif                
+ 118:.\USBInterface.c ****             }
+ 119:.\USBInterface.c ****             
+ 120:.\USBInterface.c **** 			#ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ 121:.\USBInterface.c ****             inCnt = IN_AUDIOMAXPKT;
+ 128              		.loc 1 121 0 is_stmt 1
+ 129 005c 3A4B     		ldr	r3, .L13+12
+ 130 005e C022     		movs	r2, #192
+ 131 0060 1A80     		strh	r2, [r3]	@ movhi
+ 132              	.L3:
+ 133              	.LBE2:
+ 122:.\USBInterface.c ****             #endif
+ 123:.\USBInterface.c ****         #endif
+ 124:.\USBInterface.c ****         
+ 125:.\USBInterface.c **** 		/* USER_CODE: [USB enumeration] placeholder for initializing custom user code after the USB host 
+ 126:.\USBInterface.c ****          * accessory. This routine will be called once per accessory connection after the host issu
+ 127:.\USBInterface.c ****          * request */
+ 128:.\USBInterface.c ****     }
+ 129:.\USBInterface.c ****     
+ 130:.\USBInterface.c ****    
+ 131:.\USBInterface.c ****     /* USBFS_IsConfigurationChanged() is a clear on read status update therefore, only one read of 
+ 132:.\USBInterface.c ****      * USBFS_IsConfigurationChanged() should ever exist in user code */
+ 133:.\USBInterface.c ****     if(USBFS_IsConfigurationChanged())
+ 134              		.loc 1 133 0
+ 135 0062 FFF7FEFF 		bl	USBFS_IsConfigurationChanged
+ 136 0066 0346     		mov	r3, r0
+ 137 0068 002B     		cmp	r3, #0
+ 138 006a 63D0     		beq	.L1
+ 134:.\USBInterface.c ****     {
+ 135:.\USBInterface.c ****         
+ 136:.\USBInterface.c **** 		#ifndef ENABLE_DIGITAL_AUDIO_IN_ONLY    
+ 137:.\USBInterface.c ****         /* Get Alternate setting */
+ 138:.\USBInterface.c ****         altSetting[AUDIO_OUT_INTERFACE_INDEX] = USBFS_GetInterfaceSetting(1); 
+ 139              		.loc 1 138 0
+ 140 006c 0120     		movs	r0, #1
+ 141 006e FFF7FEFF 		bl	USBFS_GetInterfaceSetting
+ 142 0072 0346     		mov	r3, r0
+ 143 0074 1A46     		mov	r2, r3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 6
+
+
+ 144 0076 354B     		ldr	r3, .L13+16
+ 145 0078 1A70     		strb	r2, [r3]
+ 139:.\USBInterface.c ****         
+ 140:.\USBInterface.c ****         /* ByteSwap control register bit is set to 1 if alt setting 2 is selected so that  
+ 141:.\USBInterface.c ****          * Byte swap digital logic processes data as 16 bits. ByteSwap control register is set to 0
+ 142:.\USBInterface.c ****          * if alt setting 1 is selected and byte swap processes data as 24 bits */
+ 143:.\USBInterface.c ****         if (altSetting[AUDIO_OUT_INTERFACE_INDEX]==ALT_SETTING_ACTIVE_24_BIT)
+ 146              		.loc 1 143 0
+ 147 007a 344B     		ldr	r3, .L13+16
+ 148 007c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 149 007e 022B     		cmp	r3, #2
+ 150 0080 08D1     		bne	.L9
+ 144:.\USBInterface.c ****         {
+ 145:.\USBInterface.c ****             
+ 146:.\USBInterface.c ****             ByteSwap_Tx_CONTROL_REG = ByteSwap_Tx_CONTROL_REG & (~ByteSwap_Tx_RES_CTRL_16);  
+ 151              		.loc 1 146 0
+ 152 0082 334A     		ldr	r2, .L13+20
+ 153 0084 324B     		ldr	r3, .L13+20
+ 154 0086 1B78     		ldrb	r3, [r3]
+ 155 0088 DBB2     		uxtb	r3, r3
+ 156 008a 23F00203 		bic	r3, r3, #2
+ 157 008e DBB2     		uxtb	r3, r3
+ 158 0090 1370     		strb	r3, [r2]
+ 159 0092 0BE0     		b	.L10
+ 160              	.L9:
+ 147:.\USBInterface.c ****         }
+ 148:.\USBInterface.c ****         else if (altSetting[AUDIO_OUT_INTERFACE_INDEX]==ALT_SETTING_ACTIVE_16_BIT)
+ 161              		.loc 1 148 0
+ 162 0094 2D4B     		ldr	r3, .L13+16
+ 163 0096 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 164 0098 012B     		cmp	r3, #1
+ 165 009a 07D1     		bne	.L10
+ 149:.\USBInterface.c ****         {
+ 150:.\USBInterface.c ****             
+ 151:.\USBInterface.c ****             ByteSwap_Tx_CONTROL_REG = ByteSwap_Tx_CONTROL_REG | ByteSwap_Tx_RES_CTRL_16;           
+ 166              		.loc 1 151 0
+ 167 009c 2C4A     		ldr	r2, .L13+20
+ 168 009e 2C4B     		ldr	r3, .L13+20
+ 169 00a0 1B78     		ldrb	r3, [r3]
+ 170 00a2 DBB2     		uxtb	r3, r3
+ 171 00a4 43F00203 		orr	r3, r3, #2
+ 172 00a8 DBB2     		uxtb	r3, r3
+ 173 00aa 1370     		strb	r3, [r2]
+ 174              	.L10:
+ 152:.\USBInterface.c ****         }
+ 153:.\USBInterface.c ****         
+ 154:.\USBInterface.c ****         /* Arming the audio out EP if it is not zero bandwidth alt setting */
+ 155:.\USBInterface.c ****         if (altSetting[AUDIO_OUT_INTERFACE_INDEX]!= ALT_SETTING_ZERO_BANDWIDTH && 
+ 175              		.loc 1 155 0
+ 176 00ac 274B     		ldr	r3, .L13+16
+ 177 00ae 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 178 00b0 002B     		cmp	r3, #0
+ 179 00b2 0FD0     		beq	.L11
+ 156:.\USBInterface.c ****             (CY_GET_REG8(USBFS_SIE_EP1_CR0_PTR + ((AUDIO_OUT_ENDPOINT - USBFS_EP1) << USBFS_EPX_CNT
+ 180              		.loc 1 156 0 discriminator 1
+ 181 00b4 274B     		ldr	r3, .L13+24
+ 182 00b6 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 7
+
+
+ 183 00b8 DBB2     		uxtb	r3, r3
+ 184 00ba 03F00F03 		and	r3, r3, #15
+ 155:.\USBInterface.c ****             (CY_GET_REG8(USBFS_SIE_EP1_CR0_PTR + ((AUDIO_OUT_ENDPOINT - USBFS_EP1) << USBFS_EPX_CNT
+ 185              		.loc 1 155 0 discriminator 1
+ 186 00be 012B     		cmp	r3, #1
+ 187 00c0 08D1     		bne	.L11
+ 157:.\USBInterface.c ****                                                                                     == USBFS_MODE_N
+ 158:.\USBInterface.c ****         {
+ 159:.\USBInterface.c ****             /* Init DMA configurations for audio OUT EP */
+ 160:.\USBInterface.c ****             USBFS_ReadOutEP(AUDIO_OUT_ENDPOINT, &outRam[0], OUT_AUDIOMAXPKT);
+ 188              		.loc 1 160 0
+ 189 00c2 0120     		movs	r0, #1
+ 190 00c4 1E49     		ldr	r1, .L13+4
+ 191 00c6 4FF49072 		mov	r2, #288
+ 192 00ca FFF7FEFF 		bl	USBFS_ReadOutEP
+ 161:.\USBInterface.c ****             USBFS_EnableOutEP(AUDIO_OUT_ENDPOINT);
+ 193              		.loc 1 161 0
+ 194 00ce 0120     		movs	r0, #1
+ 195 00d0 FFF7FEFF 		bl	USBFS_EnableOutEP
+ 196              	.L11:
+ 162:.\USBInterface.c ****         }
+ 163:.\USBInterface.c ****         #endif
+ 164:.\USBInterface.c ****         
+ 165:.\USBInterface.c ****         #ifndef ENABLE_DIGITAL_AUDIO_OUT_ONLY
+ 166:.\USBInterface.c ****             #ifndef ENABLE_DIGITAL_AUDIO_IN_ONLY 
+ 167:.\USBInterface.c ****             if(altSetting[AUDIO_IN_INTERFACE_INDEX] != USBFS_GetInterfaceSetting(2))
+ 197              		.loc 1 167 0
+ 198 00d4 1D4B     		ldr	r3, .L13+16
+ 199 00d6 5C78     		ldrb	r4, [r3, #1]	@ zero_extendqisi2
+ 200 00d8 0220     		movs	r0, #2
+ 201 00da FFF7FEFF 		bl	USBFS_GetInterfaceSetting
+ 202 00de 0346     		mov	r3, r0
+ 203 00e0 9C42     		cmp	r4, r3
+ 204 00e2 22D0     		beq	.L12
+ 168:.\USBInterface.c ****         {
+ 169:.\USBInterface.c ****                   altSetting[AUDIO_IN_INTERFACE_INDEX] = USBFS_GetInterfaceSetting(2);
+ 205              		.loc 1 169 0
+ 206 00e4 0220     		movs	r0, #2
+ 207 00e6 FFF7FEFF 		bl	USBFS_GetInterfaceSetting
+ 208 00ea 0346     		mov	r3, r0
+ 209 00ec 1A46     		mov	r2, r3
+ 210 00ee 174B     		ldr	r3, .L13+16
+ 211 00f0 5A70     		strb	r2, [r3, #1]
+ 170:.\USBInterface.c ****             #else
+ 171:.\USBInterface.c ****             if(altSetting[AUDIO_IN_INTERFACE_INDEX] != USBFS_GetInterfaceSetting(1))	
+ 172:.\USBInterface.c ****         {
+ 173:.\USBInterface.c ****                   altSetting[AUDIO_IN_INTERFACE_INDEX] = USBFS_GetInterfaceSetting(1);	
+ 174:.\USBInterface.c ****             #endif
+ 175:.\USBInterface.c ****             
+ 176:.\USBInterface.c ****             /* Arming the audio in EP if it is not zero bandwidth alt setting */
+ 177:.\USBInterface.c ****             if (altSetting[AUDIO_IN_INTERFACE_INDEX]!= ALT_SETTING_ZERO_BANDWIDTH &&
+ 212              		.loc 1 177 0
+ 213 00f2 164B     		ldr	r3, .L13+16
+ 214 00f4 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 215 00f6 002B     		cmp	r3, #0
+ 216 00f8 17D0     		beq	.L12
+ 178:.\USBInterface.c ****                 (CY_GET_REG8(USBFS_SIE_EP1_CR0_PTR + ((AUDIO_IN_ENDPOINT - USBFS_EP1) << USBFS_EPX_
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 8
+
+
+ 217              		.loc 1 178 0 discriminator 1
+ 218 00fa 174B     		ldr	r3, .L13+28
+ 219 00fc 1B78     		ldrb	r3, [r3]
+ 220 00fe DBB2     		uxtb	r3, r3
+ 221 0100 03F00F03 		and	r3, r3, #15
+ 177:.\USBInterface.c ****                 (CY_GET_REG8(USBFS_SIE_EP1_CR0_PTR + ((AUDIO_IN_ENDPOINT - USBFS_EP1) << USBFS_EPX_
+ 222              		.loc 1 177 0 discriminator 1
+ 223 0104 012B     		cmp	r3, #1
+ 224 0106 10D1     		bne	.L12
+ 179:.\USBInterface.c ****                                                                                         == USBFS_MO
+ 180:.\USBInterface.c ****             {
+ 181:.\USBInterface.c ****                 /* Init DMA configurations for audio IN EP */  
+ 182:.\USBInterface.c ****                 inCnt = IN_AUDIOMAXPKT;
+ 225              		.loc 1 182 0
+ 226 0108 0F4B     		ldr	r3, .L13+12
+ 227 010a C022     		movs	r2, #192
+ 228 010c 1A80     		strh	r2, [r3]	@ movhi
+ 183:.\USBInterface.c ****                 USBFS_LoadInEP(AUDIO_IN_ENDPOINT, &inRam[0], inCnt);
+ 229              		.loc 1 183 0
+ 230 010e 0E4B     		ldr	r3, .L13+12
+ 231 0110 1B88     		ldrh	r3, [r3]
+ 232 0112 0220     		movs	r0, #2
+ 233 0114 0B49     		ldr	r1, .L13+8
+ 234 0116 1A46     		mov	r2, r3
+ 235 0118 FFF7FEFF 		bl	USBFS_LoadInEP
+ 184:.\USBInterface.c ****                 /* Pre-arm first audio IN request */
+ 185:.\USBInterface.c ****                 USBFS_LoadInEP(AUDIO_IN_ENDPOINT, USBFS_NULL, inCnt);
+ 236              		.loc 1 185 0
+ 237 011c 0A4B     		ldr	r3, .L13+12
+ 238 011e 1B88     		ldrh	r3, [r3]
+ 239 0120 0220     		movs	r0, #2
+ 240 0122 0021     		movs	r1, #0
+ 241 0124 1A46     		mov	r2, r3
+ 242 0126 FFF7FEFF 		bl	USBFS_LoadInEP
+ 243              	.L12:
+ 186:.\USBInterface.c ****             }
+ 187:.\USBInterface.c ****         }
+ 188:.\USBInterface.c ****         #endif
+ 189:.\USBInterface.c ****         
+ 190:.\USBInterface.c ****         /* Configure the HID input endpoint buffer for Mac/PC playlist control */
+ 191:.\USBInterface.c ****         USBFS_LoadInEP(MAC_PC_HID_CONTROL_ENDPOINT, &playlistControlReport, sizeof(playlistControlR
+ 244              		.loc 1 191 0
+ 245 012a 0420     		movs	r0, #4
+ 246 012c 0B49     		ldr	r1, .L13+32
+ 247 012e 0122     		movs	r2, #1
+ 248 0130 FFF7FEFF 		bl	USBFS_LoadInEP
+ 249              	.L1:
+ 192:.\USBInterface.c ****         
+ 193:.\USBInterface.c ****         /* USER_CODE: [USB configuration changed] Placeholder for adding additional USB endpoint in
+ 194:.\USBInterface.c ****          * when the host issues either a SET_INTERFACE or SET_CONFIGURATION request to the accessor
+ 195:.\USBInterface.c ****          * a SET_INTERFACE request from the host, the endpoint belonging to the alternate setting b
+ 196:.\USBInterface.c ****          * by the USB host is reset and must be reinitialized here for proper operation of the USB 
+ 197:.\USBInterface.c ****     }
+ 198:.\USBInterface.c **** }
+ 250              		.loc 1 198 0
+ 251 0134 0C37     		adds	r7, r7, #12
+ 252              		.cfi_def_cfa_offset 12
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 9
+
+
+ 253 0136 BD46     		mov	sp, r7
+ 254              		.cfi_def_cfa_register 13
+ 255              		@ sp needed
+ 256 0138 90BD     		pop	{r4, r7, pc}
+ 257              	.L14:
+ 258 013a 00BF     		.align	2
+ 259              	.L13:
+ 260 013c 00000000 		.word	USBDeviceState
+ 261 0140 00000000 		.word	outRam
+ 262 0144 00000000 		.word	inRam
+ 263 0148 00000000 		.word	inCnt
+ 264 014c 00000000 		.word	altSetting
+ 265 0150 72640040 		.word	1073767538
+ 266 0154 0E600040 		.word	1073766414
+ 267 0158 1E600040 		.word	1073766430
+ 268 015c 00000000 		.word	playlistControlReport
+ 269              		.cfi_endproc
+ 270              	.LFE56:
+ 271              		.size	ServiceUSB, .-ServiceUSB
+ 272              		.section	.text.ServiceUSBSuspend,"ax",%progbits
+ 273              		.align	2
+ 274              		.global	ServiceUSBSuspend
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.type	ServiceUSBSuspend, %function
+ 278              	ServiceUSBSuspend:
+ 279              	.LFB57:
+ 199:.\USBInterface.c **** 
+ 200:.\USBInterface.c **** /*******************************************************************************
+ 201:.\USBInterface.c **** * Function Name: ServiceUSBSuspend
+ 202:.\USBInterface.c **** ********************************************************************************
+ 203:.\USBInterface.c **** * Summary:
+ 204:.\USBInterface.c **** *       This function handles USB suspend event from USB host and forces PSoC 5LP 
+ 205:.\USBInterface.c **** *       to enter low power mode. Once the USB resume event is detected, PSoC 5LP 
+ 206:.\USBInterface.c **** *       wakes up and starts operating in normal mode.
+ 207:.\USBInterface.c **** *
+ 208:.\USBInterface.c **** * Parameters:
+ 209:.\USBInterface.c **** *  void
+ 210:.\USBInterface.c **** *
+ 211:.\USBInterface.c **** * Return:
+ 212:.\USBInterface.c **** *  void
+ 213:.\USBInterface.c **** *
+ 214:.\USBInterface.c **** *******************************************************************************/
+ 215:.\USBInterface.c **** #ifdef  HANDLE_USB_SUSPEND
+ 216:.\USBInterface.c **** void ServiceUSBSuspend(void)
+ 217:.\USBInterface.c **** {
+ 280              		.loc 1 217 0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 8
+ 283              		@ frame_needed = 1, uses_anonymous_args = 0
+ 284 0000 80B5     		push	{r7, lr}
+ 285              		.cfi_def_cfa_offset 8
+ 286              		.cfi_offset 7, -8
+ 287              		.cfi_offset 14, -4
+ 288 0002 82B0     		sub	sp, sp, #8
+ 289              		.cfi_def_cfa_offset 16
+ 290 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 10
+
+
+ 291              		.cfi_def_cfa_register 7
+ 218:.\USBInterface.c ****     uint8 ledBlinkCnt = STATUS_LED_BLINK_COUNT;	
+ 292              		.loc 1 218 0
+ 293 0006 0423     		movs	r3, #4
+ 294 0008 FB71     		strb	r3, [r7, #7]
+ 219:.\USBInterface.c **** 	
+ 220:.\USBInterface.c **** 	if(! USBFS_initVar)
+ 295              		.loc 1 220 0
+ 296 000a 2E4B     		ldr	r3, .L24
+ 297 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 298 000e 002B     		cmp	r3, #0
+ 299 0010 00D1     		bne	.L16
+ 221:.\USBInterface.c ****     {
+ 222:.\USBInterface.c ****       return;
+ 300              		.loc 1 222 0
+ 301 0012 54E0     		b	.L15
+ 302              	.L16:
+ 223:.\USBInterface.c ****     }
+ 224:.\USBInterface.c ****   
+ 225:.\USBInterface.c ****     /* Check if the host is active */
+ 226:.\USBInterface.c ****     if(USBFS_bCheckActivity() != 0 ) 
+ 303              		.loc 1 226 0
+ 304 0014 FFF7FEFF 		bl	USBFS_CheckActivity
+ 305 0018 0346     		mov	r3, r0
+ 306 001a 002B     		cmp	r3, #0
+ 307 001c 03D0     		beq	.L18
+ 227:.\USBInterface.c ****     {
+ 228:.\USBInterface.c ****       usbActivityCounter = 0;
+ 308              		.loc 1 228 0
+ 309 001e 2A4B     		ldr	r3, .L24+4
+ 310 0020 0022     		movs	r2, #0
+ 311 0022 1A70     		strb	r2, [r3]
+ 312 0024 05E0     		b	.L19
+ 313              	.L18:
+ 229:.\USBInterface.c ****     } 
+ 230:.\USBInterface.c ****     else 
+ 231:.\USBInterface.c ****     {
+ 232:.\USBInterface.c ****       usbActivityCounter++;
+ 314              		.loc 1 232 0
+ 315 0026 284B     		ldr	r3, .L24+4
+ 316 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 317 002a 0133     		adds	r3, r3, #1
+ 318 002c DAB2     		uxtb	r2, r3
+ 319 002e 264B     		ldr	r3, .L24+4
+ 320 0030 1A70     		strb	r2, [r3]
+ 321              	.L19:
+ 233:.\USBInterface.c ****     }
+ 234:.\USBInterface.c ****         
+ 235:.\USBInterface.c ****     /* USB Suspend event is lack of greater than 3 consecutive SOF's */
+ 236:.\USBInterface.c ****     if(usbActivityCounter > USB_SUSPEND_TIME_TICKS )
+ 322              		.loc 1 236 0
+ 323 0032 254B     		ldr	r3, .L24+4
+ 324 0034 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 325 0036 052B     		cmp	r3, #5
+ 326 0038 41D9     		bls	.L15
+ 237:.\USBInterface.c ****     {
+ 238:.\USBInterface.c ****         /* The debounce delay is taken care by increasing the suspend time to 40ms (5 * 8ms) */    
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 11
+
+
+ 239:.\USBInterface.c ****         if(IsUSBConfigured()) 
+ 327              		.loc 1 239 0
+ 328 003a FFF7FEFF 		bl	USBFS_GetConfiguration
+ 329 003e 0346     		mov	r3, r0
+ 330 0040 002B     		cmp	r3, #0
+ 331 0042 39D0     		beq	.L20
+ 240:.\USBInterface.c ****         {  
+ 241:.\USBInterface.c ****             /* USER_CODE: [USB suspend] Placeholder for configuring ALL the additional components a
+ 242:.\USBInterface.c ****              * sleep mode before calling USB suspend/PSoC 3 sleep API */
+ 243:.\USBInterface.c ****                       
+ 244:.\USBInterface.c ****             /* If the accessory is not in low power mode, enter low power mode on seeing a USB susp
+ 245:.\USBInterface.c ****             if(!lowPowerIdle) 
+ 332              		.loc 1 245 0
+ 333 0044 214B     		ldr	r3, .L24+8
+ 334 0046 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 335 0048 002B     		cmp	r3, #0
+ 336 004a 04D1     		bne	.L21
+ 246:.\USBInterface.c ****             {
+ 247:.\USBInterface.c ****                 lowPowerIdle = TRUE;
+ 337              		.loc 1 247 0
+ 338 004c 1F4B     		ldr	r3, .L24+8
+ 339 004e 0122     		movs	r2, #1
+ 340 0050 1A70     		strb	r2, [r3]
+ 248:.\USBInterface.c ****                 StopAudioComponents();             /* Changes to 24 MHz IMO for USB */             
+ 341              		.loc 1 248 0
+ 342 0052 FFF7FEFF 		bl	StopAudioComponents
+ 343              	.L21:
+ 249:.\USBInterface.c ****             }
+ 250:.\USBInterface.c ****             
+ 251:.\USBInterface.c **** 			#ifdef ENABLE_PDM 	
+ 252:.\USBInterface.c **** 		        PDM_CIC_Sleep();
+ 344              		.loc 1 252 0
+ 345 0056 FFF7FEFF 		bl	PDM_CIC_Sleep
+ 253:.\USBInterface.c **** 				Droop_Filter_ModifiedSleep();	
+ 346              		.loc 1 253 0
+ 347 005a FFF7FEFF 		bl	Droop_Filter_ModifiedSleep
+ 254:.\USBInterface.c **** 			#endif
+ 255:.\USBInterface.c **** 			
+ 256:.\USBInterface.c **** 			/* Blink the STATUS LED twice before entering suspend mode */
+ 257:.\USBInterface.c **** 			while(ledBlinkCnt)					   		
+ 348              		.loc 1 257 0
+ 349 005e 0DE0     		b	.L22
+ 350              	.L23:
+ 258:.\USBInterface.c **** 			{
+ 259:.\USBInterface.c **** 				CyDelay(100);
+ 351              		.loc 1 259 0
+ 352 0060 6420     		movs	r0, #100
+ 353 0062 FFF7FEFF 		bl	CyDelay
+ 260:.\USBInterface.c **** 				PSOC_STATUS_LED_Write(~PSOC_STATUS_LED_Read());
+ 354              		.loc 1 260 0
+ 355 0066 FFF7FEFF 		bl	PSOC_STATUS_LED_Read
+ 356 006a 0346     		mov	r3, r0
+ 357 006c DB43     		mvns	r3, r3
+ 358 006e DBB2     		uxtb	r3, r3
+ 359 0070 1846     		mov	r0, r3
+ 360 0072 FFF7FEFF 		bl	PSOC_STATUS_LED_Write
+ 261:.\USBInterface.c **** 				ledBlinkCnt--;
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 12
+
+
+ 361              		.loc 1 261 0
+ 362 0076 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 363 0078 013B     		subs	r3, r3, #1
+ 364 007a FB71     		strb	r3, [r7, #7]
+ 365              	.L22:
+ 257:.\USBInterface.c **** 			{
+ 366              		.loc 1 257 0
+ 367 007c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 368 007e 002B     		cmp	r3, #0
+ 369 0080 EED1     		bne	.L23
+ 262:.\USBInterface.c **** 			}
+ 263:.\USBInterface.c **** 			
+ 264:.\USBInterface.c **** 			/* Turn off the regulator to reduce suspend mode current */    
+ 265:.\USBInterface.c **** //            CyPins_ClearPin(PSOC_CODEC_PWR_0);     /* Uncomment this line only if PSOC_CODEC_PWR 
+ 266:.\USBInterface.c ****    						
+ 267:.\USBInterface.c ****             USBFS_Suspend();
+ 370              		.loc 1 267 0
+ 371 0082 FFF7FEFF 		bl	USBFS_Suspend
+ 268:.\USBInterface.c **** 			
+ 269:.\USBInterface.c **** 			#ifdef CODEC_I2C_SUPPORTED
+ 270:.\USBInterface.c **** 			I2C_Master_Sleep();                /* Configure I2C master block in sleep mode */ 
+ 271:.\USBInterface.c ****             #endif
+ 272:.\USBInterface.c **** 			
+ 273:.\USBInterface.c ****             CyPmSaveClocks();            
+ 372              		.loc 1 273 0
+ 373 0086 FFF7FEFF 		bl	CyPmSaveClocks
+ 274:.\USBInterface.c ****             CyPmSleep(PM_SLEEP_TIME_NONE, PM_SLEEP_SRC_PICU); /* PSoC 3 is in sleep mode */
+ 374              		.loc 1 274 0
+ 375 008a 0020     		movs	r0, #0
+ 376 008c 4021     		movs	r1, #64
+ 377 008e FFF7FEFF 		bl	CyPmSleep
+ 275:.\USBInterface.c ****             CyPmRestoreClocks();
+ 378              		.loc 1 275 0
+ 379 0092 FFF7FEFF 		bl	CyPmRestoreClocks
+ 276:.\USBInterface.c **** 			
+ 277:.\USBInterface.c **** 			USBFS_Resume();
+ 380              		.loc 1 277 0
+ 381 0096 FFF7FEFF 		bl	USBFS_Resume
+ 278:.\USBInterface.c **** 			
+ 279:.\USBInterface.c **** 			#ifdef ENABLE_PDM 		
+ 280:.\USBInterface.c **** 		    	PDM_CIC_Wakeup();
+ 382              		.loc 1 280 0
+ 383 009a FFF7FEFF 		bl	PDM_CIC_Wakeup
+ 281:.\USBInterface.c **** 				Droop_Filter_ModifiedWakeup();
+ 384              		.loc 1 281 0
+ 385 009e FFF7FEFF 		bl	Droop_Filter_ModifiedWakeup
+ 282:.\USBInterface.c **** 			#endif
+ 283:.\USBInterface.c **** 			
+ 284:.\USBInterface.c **** 			#ifdef CODEC_I2C_SUPPORTED
+ 285:.\USBInterface.c **** 			I2C_Master_Wakeup();
+ 286:.\USBInterface.c **** 			#endif
+ 287:.\USBInterface.c **** 			
+ 288:.\USBInterface.c **** 			/* Turn ON the CODEC regulator after wake up */	
+ 289:.\USBInterface.c **** //            CyPins_SetPin(PSOC_CODEC_PWR_0);      /* Uncomment this line only if PSOC_CODEC_PWR p
+ 290:.\USBInterface.c ****            
+ 291:.\USBInterface.c ****             #ifdef WINDOWS7_WORKAROUND		
+ 292:.\USBInterface.c ****             if(USBFS_GetConfiguration() != 0)
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 13
+
+
+ 386              		.loc 1 292 0
+ 387 00a2 FFF7FEFF 		bl	USBFS_GetConfiguration
+ 388 00a6 0346     		mov	r3, r0
+ 389 00a8 002B     		cmp	r3, #0
+ 390 00aa 05D0     		beq	.L20
+ 293:.\USBInterface.c ****             {
+ 294:.\USBInterface.c ****                 USBFS_configurationChanged = USBFS_TRUE;
+ 391              		.loc 1 294 0
+ 392 00ac 084B     		ldr	r3, .L24+12
+ 393 00ae 0122     		movs	r2, #1
+ 394 00b0 1A70     		strb	r2, [r3]
+ 295:.\USBInterface.c ****                 USBFS_Config(USBFS_FALSE);
+ 395              		.loc 1 295 0
+ 396 00b2 0020     		movs	r0, #0
+ 397 00b4 FFF7FEFF 		bl	USBFS_Config
+ 398              	.L20:
+ 296:.\USBInterface.c ****             }
+ 297:.\USBInterface.c ****             #endif
+ 298:.\USBInterface.c ****      
+ 299:.\USBInterface.c ****             /* USER_CODE: [USB wakeup] Placeholder for re-configuring ALL the additional components
+ 300:.\USBInterface.c ****              * wakeup mode after calling USB wakeup */
+ 301:.\USBInterface.c ****         }
+ 302:.\USBInterface.c ****         usbActivityCounter = 0;
+ 399              		.loc 1 302 0
+ 400 00b8 034B     		ldr	r3, .L24+4
+ 401 00ba 0022     		movs	r2, #0
+ 402 00bc 1A70     		strb	r2, [r3]
+ 403              	.L15:
+ 303:.\USBInterface.c **** 		/* After coming out of USB suspend, MIDI end point should be re-initialized */
+ 304:.\USBInterface.c ****     }
+ 305:.\USBInterface.c **** }
+ 404              		.loc 1 305 0
+ 405 00be 0837     		adds	r7, r7, #8
+ 406              		.cfi_def_cfa_offset 8
+ 407 00c0 BD46     		mov	sp, r7
+ 408              		.cfi_def_cfa_register 13
+ 409              		@ sp needed
+ 410 00c2 80BD     		pop	{r7, pc}
+ 411              	.L25:
+ 412              		.align	2
+ 413              	.L24:
+ 414 00c4 00000000 		.word	USBFS_initVar
+ 415 00c8 00000000 		.word	usbActivityCounter
+ 416 00cc 00000000 		.word	lowPowerIdle
+ 417 00d0 00000000 		.word	USBFS_configurationChanged
+ 418              		.cfi_endproc
+ 419              	.LFE57:
+ 420              		.size	ServiceUSBSuspend, .-ServiceUSBSuspend
+ 421              		.section	.text.HandleUSBHostInterface,"ax",%progbits
+ 422              		.align	2
+ 423              		.global	HandleUSBHostInterface
+ 424              		.thumb
+ 425              		.thumb_func
+ 426              		.type	HandleUSBHostInterface, %function
+ 427              	HandleUSBHostInterface:
+ 428              	.LFB58:
+ 306:.\USBInterface.c **** #endif
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 14
+
+
+ 307:.\USBInterface.c **** 
+ 308:.\USBInterface.c **** /****************f***************************************************************
+ 309:.\USBInterface.c **** * Function Name: HandleUSBHostInterface
+ 310:.\USBInterface.c **** ********************************************************************************
+ 311:.\USBInterface.c **** * Summary: Checks if USB Host is connected/disconnected and start the USB component
+ 312:.\USBInterface.c **** *
+ 313:.\USBInterface.c **** * Parameters:
+ 314:.\USBInterface.c **** *  void
+ 315:.\USBInterface.c **** *
+ 316:.\USBInterface.c **** * Return:
+ 317:.\USBInterface.c **** *  void
+ 318:.\USBInterface.c **** *
+ 319:.\USBInterface.c **** *******************************************************************************/
+ 320:.\USBInterface.c **** void HandleUSBHostInterface(void)
+ 321:.\USBInterface.c **** {
+ 429              		.loc 1 321 0
+ 430              		.cfi_startproc
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 1, uses_anonymous_args = 0
+ 433 0000 80B5     		push	{r7, lr}
+ 434              		.cfi_def_cfa_offset 8
+ 435              		.cfi_offset 7, -8
+ 436              		.cfi_offset 14, -4
+ 437 0002 00AF     		add	r7, sp, #0
+ 438              		.cfi_def_cfa_register 7
+ 322:.\USBInterface.c ****     
+ 323:.\USBInterface.c ****     if(!USBFS_initVar)
+ 439              		.loc 1 323 0
+ 440 0004 074B     		ldr	r3, .L28
+ 441 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 442 0008 002B     		cmp	r3, #0
+ 443 000a 09D1     		bne	.L26
+ 324:.\USBInterface.c ****     {  
+ 325:.\USBInterface.c ****         
+ 326:.\USBInterface.c **** 		/* Start the USB component when PC/Mac is connected */
+ 327:.\USBInterface.c ****         USBFS_Start(PC_MAC_AUDIO_WITH_VOLUME_DEVICE, USBFS_DWR_VDDD_OPERATION);
+ 444              		.loc 1 327 0
+ 445 000c 0020     		movs	r0, #0
+ 446 000e 0221     		movs	r1, #2
+ 447 0010 FFF7FEFF 		bl	USBFS_Start
+ 328:.\USBInterface.c ****         USBDeviceState = USB_INIT_AFTER_ENUMERATION_REQUIRED;
+ 448              		.loc 1 328 0
+ 449 0014 044B     		ldr	r3, .L28+4
+ 450 0016 0122     		movs	r2, #1
+ 451 0018 1A70     		strb	r2, [r3]
+ 329:.\USBInterface.c ****         usbMiniBActive = TRUE;
+ 452              		.loc 1 329 0
+ 453 001a 044B     		ldr	r3, .L28+8
+ 454 001c 0122     		movs	r2, #1
+ 455 001e 1A70     		strb	r2, [r3]
+ 456              	.L26:
+ 330:.\USBInterface.c ****         
+ 331:.\USBInterface.c ****         /* USER_CODE: [USB Host connection] Placeholder for initializing components or external per
+ 332:.\USBInterface.c ****          * accessory is plugged into a USB Host (USB VBus = High) */
+ 333:.\USBInterface.c ****     }
+ 334:.\USBInterface.c **** 	
+ 335:.\USBInterface.c **** 		
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 15
+
+
+ 336:.\USBInterface.c **** }
+ 457              		.loc 1 336 0
+ 458 0020 80BD     		pop	{r7, pc}
+ 459              	.L29:
+ 460 0022 00BF     		.align	2
+ 461              	.L28:
+ 462 0024 00000000 		.word	USBFS_initVar
+ 463 0028 00000000 		.word	USBDeviceState
+ 464 002c 00000000 		.word	usbMiniBActive
+ 465              		.cfi_endproc
+ 466              	.LFE58:
+ 467              		.size	HandleUSBHostInterface, .-HandleUSBHostInterface
+ 468              		.text
+ 469              	.Letext0:
+ 470              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 471              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 472              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 473              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 474              		.section	.debug_info,"",%progbits
+ 475              	.Ldebug_info0:
+ 476 0000 09020000 		.4byte	0x209
+ 477 0004 0400     		.2byte	0x4
+ 478 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 479 000a 04       		.byte	0x4
+ 480 000b 01       		.uleb128 0x1
+ 481 000c 92000000 		.4byte	.LASF34
+ 482 0010 01       		.byte	0x1
+ 483 0011 4A010000 		.4byte	.LASF35
+ 484 0015 00000000 		.4byte	.LASF36
+ 485 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 486 001d 00000000 		.4byte	0
+ 487 0021 00000000 		.4byte	.Ldebug_line0
+ 488 0025 02       		.uleb128 0x2
+ 489 0026 01       		.byte	0x1
+ 490 0027 06       		.byte	0x6
+ 491 0028 9C020000 		.4byte	.LASF0
+ 492 002c 02       		.uleb128 0x2
+ 493 002d 01       		.byte	0x1
+ 494 002e 08       		.byte	0x8
+ 495 002f 66010000 		.4byte	.LASF1
+ 496 0033 02       		.uleb128 0x2
+ 497 0034 02       		.byte	0x2
+ 498 0035 05       		.byte	0x5
+ 499 0036 6C020000 		.4byte	.LASF2
+ 500 003a 02       		.uleb128 0x2
+ 501 003b 02       		.byte	0x2
+ 502 003c 07       		.byte	0x7
+ 503 003d 91010000 		.4byte	.LASF3
+ 504 0041 03       		.uleb128 0x3
+ 505 0042 6D000000 		.4byte	.LASF9
+ 506 0046 02       		.byte	0x2
+ 507 0047 3F       		.byte	0x3f
+ 508 0048 4C000000 		.4byte	0x4c
+ 509 004c 02       		.uleb128 0x2
+ 510 004d 04       		.byte	0x4
+ 511 004e 05       		.byte	0x5
+ 512 004f 93020000 		.4byte	.LASF4
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 16
+
+
+ 513 0053 02       		.uleb128 0x2
+ 514 0054 04       		.byte	0x4
+ 515 0055 07       		.byte	0x7
+ 516 0056 7F010000 		.4byte	.LASF5
+ 517 005a 02       		.uleb128 0x2
+ 518 005b 08       		.byte	0x8
+ 519 005c 05       		.byte	0x5
+ 520 005d 23020000 		.4byte	.LASF6
+ 521 0061 02       		.uleb128 0x2
+ 522 0062 08       		.byte	0x8
+ 523 0063 07       		.byte	0x7
+ 524 0064 FB010000 		.4byte	.LASF7
+ 525 0068 04       		.uleb128 0x4
+ 526 0069 04       		.byte	0x4
+ 527 006a 05       		.byte	0x5
+ 528 006b 696E7400 		.ascii	"int\000"
+ 529 006f 02       		.uleb128 0x2
+ 530 0070 04       		.byte	0x4
+ 531 0071 07       		.byte	0x7
+ 532 0072 E2010000 		.4byte	.LASF8
+ 533 0076 03       		.uleb128 0x3
+ 534 0077 12020000 		.4byte	.LASF10
+ 535 007b 03       		.byte	0x3
+ 536 007c 2C       		.byte	0x2c
+ 537 007d 41000000 		.4byte	0x41
+ 538 0081 03       		.uleb128 0x3
+ 539 0082 8D020000 		.4byte	.LASF11
+ 540 0086 04       		.byte	0x4
+ 541 0087 5B       		.byte	0x5b
+ 542 0088 2C000000 		.4byte	0x2c
+ 543 008c 03       		.uleb128 0x3
+ 544 008d DB010000 		.4byte	.LASF12
+ 545 0091 04       		.byte	0x4
+ 546 0092 5C       		.byte	0x5c
+ 547 0093 3A000000 		.4byte	0x3a
+ 548 0097 02       		.uleb128 0x2
+ 549 0098 04       		.byte	0x4
+ 550 0099 04       		.byte	0x4
+ 551 009a 44010000 		.4byte	.LASF13
+ 552 009e 02       		.uleb128 0x2
+ 553 009f 08       		.byte	0x8
+ 554 00a0 04       		.byte	0x4
+ 555 00a1 20010000 		.4byte	.LASF14
+ 556 00a5 02       		.uleb128 0x2
+ 557 00a6 01       		.byte	0x1
+ 558 00a7 08       		.byte	0x8
+ 559 00a8 44020000 		.4byte	.LASF15
+ 560 00ac 03       		.uleb128 0x3
+ 561 00ad 7A010000 		.4byte	.LASF16
+ 562 00b1 04       		.byte	0x4
+ 563 00b2 F0       		.byte	0xf0
+ 564 00b3 B7000000 		.4byte	0xb7
+ 565 00b7 05       		.uleb128 0x5
+ 566 00b8 81000000 		.4byte	0x81
+ 567 00bc 02       		.uleb128 0x2
+ 568 00bd 04       		.byte	0x4
+ 569 00be 07       		.byte	0x7
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 17
+
+
+ 570 00bf 1A020000 		.4byte	.LASF17
+ 571 00c3 06       		.uleb128 0x6
+ 572 00c4 C3010000 		.4byte	.LASF18
+ 573 00c8 01       		.byte	0x1
+ 574 00c9 59       		.byte	0x59
+ 575 00ca 00000000 		.4byte	.LFB56
+ 576 00ce 60010000 		.4byte	.LFE56-.LFB56
+ 577 00d2 01       		.uleb128 0x1
+ 578 00d3 9C       		.byte	0x9c
+ 579 00d4 F1000000 		.4byte	0xf1
+ 580 00d8 07       		.uleb128 0x7
+ 581 00d9 1C000000 		.4byte	.LBB2
+ 582 00dd 46000000 		.4byte	.LBE2-.LBB2
+ 583 00e1 08       		.uleb128 0x8
+ 584 00e2 49020000 		.4byte	.LASF20
+ 585 00e6 01       		.byte	0x1
+ 586 00e7 64       		.byte	0x64
+ 587 00e8 8C000000 		.4byte	0x8c
+ 588 00ec 02       		.uleb128 0x2
+ 589 00ed 91       		.byte	0x91
+ 590 00ee 6E       		.sleb128 -18
+ 591 00ef 00       		.byte	0
+ 592 00f0 00       		.byte	0
+ 593 00f1 06       		.uleb128 0x6
+ 594 00f2 B1010000 		.4byte	.LASF19
+ 595 00f6 01       		.byte	0x1
+ 596 00f7 D8       		.byte	0xd8
+ 597 00f8 00000000 		.4byte	.LFB57
+ 598 00fc D4000000 		.4byte	.LFE57-.LFB57
+ 599 0100 01       		.uleb128 0x1
+ 600 0101 9C       		.byte	0x9c
+ 601 0102 15010000 		.4byte	0x115
+ 602 0106 08       		.uleb128 0x8
+ 603 0107 EF010000 		.4byte	.LASF21
+ 604 010b 01       		.byte	0x1
+ 605 010c DA       		.byte	0xda
+ 606 010d 81000000 		.4byte	0x81
+ 607 0111 02       		.uleb128 0x2
+ 608 0112 91       		.byte	0x91
+ 609 0113 77       		.sleb128 -9
+ 610 0114 00       		.byte	0
+ 611 0115 09       		.uleb128 0x9
+ 612 0116 76020000 		.4byte	.LASF37
+ 613 011a 01       		.byte	0x1
+ 614 011b 4001     		.2byte	0x140
+ 615 011d 00000000 		.4byte	.LFB58
+ 616 0121 30000000 		.4byte	.LFE58-.LFB58
+ 617 0125 01       		.uleb128 0x1
+ 618 0126 9C       		.byte	0x9c
+ 619 0127 0A       		.uleb128 0xa
+ 620 0128 A4010000 		.4byte	.LASF22
+ 621 012c 05       		.byte	0x5
+ 622 012d 1606     		.2byte	0x616
+ 623 012f 33010000 		.4byte	0x133
+ 624 0133 05       		.uleb128 0x5
+ 625 0134 76000000 		.4byte	0x76
+ 626 0138 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 18
+
+
+ 627 0139 35010000 		.4byte	.LASF23
+ 628 013d 01       		.byte	0x1
+ 629 013e 3A       		.byte	0x3a
+ 630 013f 81000000 		.4byte	0x81
+ 631 0143 05       		.uleb128 0x5
+ 632 0144 03       		.byte	0x3
+ 633 0145 00000000 		.4byte	usbMiniBActive
+ 634 0149 0B       		.uleb128 0xb
+ 635 014a 5E000000 		.4byte	.LASF24
+ 636 014e 01       		.byte	0x1
+ 637 014f 3B       		.byte	0x3b
+ 638 0150 81000000 		.4byte	0x81
+ 639 0154 05       		.uleb128 0x5
+ 640 0155 03       		.byte	0x3
+ 641 0156 00000000 		.4byte	USBDeviceState
+ 642 015a 0C       		.uleb128 0xc
+ 643 015b CE010000 		.4byte	.LASF25
+ 644 015f 01       		.byte	0x1
+ 645 0160 2B       		.byte	0x2b
+ 646 0161 81000000 		.4byte	0x81
+ 647 0165 0C       		.uleb128 0xc
+ 648 0166 27010000 		.4byte	.LASF26
+ 649 016a 01       		.byte	0x1
+ 650 016b 2D       		.byte	0x2d
+ 651 016c 81000000 		.4byte	0x81
+ 652 0170 0C       		.uleb128 0xc
+ 653 0171 56020000 		.4byte	.LASF27
+ 654 0175 01       		.byte	0x1
+ 655 0176 2E       		.byte	0x2e
+ 656 0177 81000000 		.4byte	0x81
+ 657 017b 0C       		.uleb128 0xc
+ 658 017c 77000000 		.4byte	.LASF28
+ 659 0180 01       		.byte	0x1
+ 660 0181 33       		.byte	0x33
+ 661 0182 B7000000 		.4byte	0xb7
+ 662 0186 0B       		.uleb128 0xb
+ 663 0187 31020000 		.4byte	.LASF29
+ 664 018b 01       		.byte	0x1
+ 665 018c 39       		.byte	0x39
+ 666 018d 81000000 		.4byte	0x81
+ 667 0191 05       		.uleb128 0x5
+ 668 0192 03       		.byte	0x3
+ 669 0193 00000000 		.4byte	usbActivityCounter
+ 670 0197 0D       		.uleb128 0xd
+ 671 0198 81000000 		.4byte	0x81
+ 672 019c A8010000 		.4byte	0x1a8
+ 673 01a0 0E       		.uleb128 0xe
+ 674 01a1 BC000000 		.4byte	0xbc
+ 675 01a5 1F01     		.2byte	0x11f
+ 676 01a7 00       		.byte	0
+ 677 01a8 0B       		.uleb128 0xb
+ 678 01a9 4F020000 		.4byte	.LASF30
+ 679 01ad 01       		.byte	0x1
+ 680 01ae 3F       		.byte	0x3f
+ 681 01af 97010000 		.4byte	0x197
+ 682 01b3 05       		.uleb128 0x5
+ 683 01b4 03       		.byte	0x3
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 19
+
+
+ 684 01b5 00000000 		.4byte	outRam
+ 685 01b9 0D       		.uleb128 0xd
+ 686 01ba 81000000 		.4byte	0x81
+ 687 01be C9010000 		.4byte	0x1c9
+ 688 01c2 0F       		.uleb128 0xf
+ 689 01c3 BC000000 		.4byte	0xbc
+ 690 01c7 BF       		.byte	0xbf
+ 691 01c8 00       		.byte	0
+ 692 01c9 0B       		.uleb128 0xb
+ 693 01ca 74010000 		.4byte	.LASF31
+ 694 01ce 01       		.byte	0x1
+ 695 01cf 43       		.byte	0x43
+ 696 01d0 B9010000 		.4byte	0x1b9
+ 697 01d4 05       		.uleb128 0x5
+ 698 01d5 03       		.byte	0x3
+ 699 01d6 00000000 		.4byte	inRam
+ 700 01da 0B       		.uleb128 0xb
+ 701 01db 58000000 		.4byte	.LASF32
+ 702 01df 01       		.byte	0x1
+ 703 01e0 44       		.byte	0x44
+ 704 01e1 8C000000 		.4byte	0x8c
+ 705 01e5 05       		.uleb128 0x5
+ 706 01e6 03       		.byte	0x3
+ 707 01e7 00000000 		.4byte	inCnt
+ 708 01eb 0D       		.uleb128 0xd
+ 709 01ec 81000000 		.4byte	0x81
+ 710 01f0 FB010000 		.4byte	0x1fb
+ 711 01f4 0F       		.uleb128 0xf
+ 712 01f5 BC000000 		.4byte	0xbc
+ 713 01f9 01       		.byte	0x1
+ 714 01fa 00       		.byte	0
+ 715 01fb 0B       		.uleb128 0xb
+ 716 01fc 5B010000 		.4byte	.LASF33
+ 717 0200 01       		.byte	0x1
+ 718 0201 48       		.byte	0x48
+ 719 0202 EB010000 		.4byte	0x1eb
+ 720 0206 05       		.uleb128 0x5
+ 721 0207 03       		.byte	0x3
+ 722 0208 00000000 		.4byte	altSetting
+ 723 020c 00       		.byte	0
+ 724              		.section	.debug_abbrev,"",%progbits
+ 725              	.Ldebug_abbrev0:
+ 726 0000 01       		.uleb128 0x1
+ 727 0001 11       		.uleb128 0x11
+ 728 0002 01       		.byte	0x1
+ 729 0003 25       		.uleb128 0x25
+ 730 0004 0E       		.uleb128 0xe
+ 731 0005 13       		.uleb128 0x13
+ 732 0006 0B       		.uleb128 0xb
+ 733 0007 03       		.uleb128 0x3
+ 734 0008 0E       		.uleb128 0xe
+ 735 0009 1B       		.uleb128 0x1b
+ 736 000a 0E       		.uleb128 0xe
+ 737 000b 55       		.uleb128 0x55
+ 738 000c 17       		.uleb128 0x17
+ 739 000d 11       		.uleb128 0x11
+ 740 000e 01       		.uleb128 0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 20
+
+
+ 741 000f 10       		.uleb128 0x10
+ 742 0010 17       		.uleb128 0x17
+ 743 0011 00       		.byte	0
+ 744 0012 00       		.byte	0
+ 745 0013 02       		.uleb128 0x2
+ 746 0014 24       		.uleb128 0x24
+ 747 0015 00       		.byte	0
+ 748 0016 0B       		.uleb128 0xb
+ 749 0017 0B       		.uleb128 0xb
+ 750 0018 3E       		.uleb128 0x3e
+ 751 0019 0B       		.uleb128 0xb
+ 752 001a 03       		.uleb128 0x3
+ 753 001b 0E       		.uleb128 0xe
+ 754 001c 00       		.byte	0
+ 755 001d 00       		.byte	0
+ 756 001e 03       		.uleb128 0x3
+ 757 001f 16       		.uleb128 0x16
+ 758 0020 00       		.byte	0
+ 759 0021 03       		.uleb128 0x3
+ 760 0022 0E       		.uleb128 0xe
+ 761 0023 3A       		.uleb128 0x3a
+ 762 0024 0B       		.uleb128 0xb
+ 763 0025 3B       		.uleb128 0x3b
+ 764 0026 0B       		.uleb128 0xb
+ 765 0027 49       		.uleb128 0x49
+ 766 0028 13       		.uleb128 0x13
+ 767 0029 00       		.byte	0
+ 768 002a 00       		.byte	0
+ 769 002b 04       		.uleb128 0x4
+ 770 002c 24       		.uleb128 0x24
+ 771 002d 00       		.byte	0
+ 772 002e 0B       		.uleb128 0xb
+ 773 002f 0B       		.uleb128 0xb
+ 774 0030 3E       		.uleb128 0x3e
+ 775 0031 0B       		.uleb128 0xb
+ 776 0032 03       		.uleb128 0x3
+ 777 0033 08       		.uleb128 0x8
+ 778 0034 00       		.byte	0
+ 779 0035 00       		.byte	0
+ 780 0036 05       		.uleb128 0x5
+ 781 0037 35       		.uleb128 0x35
+ 782 0038 00       		.byte	0
+ 783 0039 49       		.uleb128 0x49
+ 784 003a 13       		.uleb128 0x13
+ 785 003b 00       		.byte	0
+ 786 003c 00       		.byte	0
+ 787 003d 06       		.uleb128 0x6
+ 788 003e 2E       		.uleb128 0x2e
+ 789 003f 01       		.byte	0x1
+ 790 0040 3F       		.uleb128 0x3f
+ 791 0041 19       		.uleb128 0x19
+ 792 0042 03       		.uleb128 0x3
+ 793 0043 0E       		.uleb128 0xe
+ 794 0044 3A       		.uleb128 0x3a
+ 795 0045 0B       		.uleb128 0xb
+ 796 0046 3B       		.uleb128 0x3b
+ 797 0047 0B       		.uleb128 0xb
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 21
+
+
+ 798 0048 27       		.uleb128 0x27
+ 799 0049 19       		.uleb128 0x19
+ 800 004a 11       		.uleb128 0x11
+ 801 004b 01       		.uleb128 0x1
+ 802 004c 12       		.uleb128 0x12
+ 803 004d 06       		.uleb128 0x6
+ 804 004e 40       		.uleb128 0x40
+ 805 004f 18       		.uleb128 0x18
+ 806 0050 9642     		.uleb128 0x2116
+ 807 0052 19       		.uleb128 0x19
+ 808 0053 01       		.uleb128 0x1
+ 809 0054 13       		.uleb128 0x13
+ 810 0055 00       		.byte	0
+ 811 0056 00       		.byte	0
+ 812 0057 07       		.uleb128 0x7
+ 813 0058 0B       		.uleb128 0xb
+ 814 0059 01       		.byte	0x1
+ 815 005a 11       		.uleb128 0x11
+ 816 005b 01       		.uleb128 0x1
+ 817 005c 12       		.uleb128 0x12
+ 818 005d 06       		.uleb128 0x6
+ 819 005e 00       		.byte	0
+ 820 005f 00       		.byte	0
+ 821 0060 08       		.uleb128 0x8
+ 822 0061 34       		.uleb128 0x34
+ 823 0062 00       		.byte	0
+ 824 0063 03       		.uleb128 0x3
+ 825 0064 0E       		.uleb128 0xe
+ 826 0065 3A       		.uleb128 0x3a
+ 827 0066 0B       		.uleb128 0xb
+ 828 0067 3B       		.uleb128 0x3b
+ 829 0068 0B       		.uleb128 0xb
+ 830 0069 49       		.uleb128 0x49
+ 831 006a 13       		.uleb128 0x13
+ 832 006b 02       		.uleb128 0x2
+ 833 006c 18       		.uleb128 0x18
+ 834 006d 00       		.byte	0
+ 835 006e 00       		.byte	0
+ 836 006f 09       		.uleb128 0x9
+ 837 0070 2E       		.uleb128 0x2e
+ 838 0071 00       		.byte	0
+ 839 0072 3F       		.uleb128 0x3f
+ 840 0073 19       		.uleb128 0x19
+ 841 0074 03       		.uleb128 0x3
+ 842 0075 0E       		.uleb128 0xe
+ 843 0076 3A       		.uleb128 0x3a
+ 844 0077 0B       		.uleb128 0xb
+ 845 0078 3B       		.uleb128 0x3b
+ 846 0079 05       		.uleb128 0x5
+ 847 007a 27       		.uleb128 0x27
+ 848 007b 19       		.uleb128 0x19
+ 849 007c 11       		.uleb128 0x11
+ 850 007d 01       		.uleb128 0x1
+ 851 007e 12       		.uleb128 0x12
+ 852 007f 06       		.uleb128 0x6
+ 853 0080 40       		.uleb128 0x40
+ 854 0081 18       		.uleb128 0x18
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 22
+
+
+ 855 0082 9642     		.uleb128 0x2116
+ 856 0084 19       		.uleb128 0x19
+ 857 0085 00       		.byte	0
+ 858 0086 00       		.byte	0
+ 859 0087 0A       		.uleb128 0xa
+ 860 0088 34       		.uleb128 0x34
+ 861 0089 00       		.byte	0
+ 862 008a 03       		.uleb128 0x3
+ 863 008b 0E       		.uleb128 0xe
+ 864 008c 3A       		.uleb128 0x3a
+ 865 008d 0B       		.uleb128 0xb
+ 866 008e 3B       		.uleb128 0x3b
+ 867 008f 05       		.uleb128 0x5
+ 868 0090 49       		.uleb128 0x49
+ 869 0091 13       		.uleb128 0x13
+ 870 0092 3F       		.uleb128 0x3f
+ 871 0093 19       		.uleb128 0x19
+ 872 0094 3C       		.uleb128 0x3c
+ 873 0095 19       		.uleb128 0x19
+ 874 0096 00       		.byte	0
+ 875 0097 00       		.byte	0
+ 876 0098 0B       		.uleb128 0xb
+ 877 0099 34       		.uleb128 0x34
+ 878 009a 00       		.byte	0
+ 879 009b 03       		.uleb128 0x3
+ 880 009c 0E       		.uleb128 0xe
+ 881 009d 3A       		.uleb128 0x3a
+ 882 009e 0B       		.uleb128 0xb
+ 883 009f 3B       		.uleb128 0x3b
+ 884 00a0 0B       		.uleb128 0xb
+ 885 00a1 49       		.uleb128 0x49
+ 886 00a2 13       		.uleb128 0x13
+ 887 00a3 3F       		.uleb128 0x3f
+ 888 00a4 19       		.uleb128 0x19
+ 889 00a5 02       		.uleb128 0x2
+ 890 00a6 18       		.uleb128 0x18
+ 891 00a7 00       		.byte	0
+ 892 00a8 00       		.byte	0
+ 893 00a9 0C       		.uleb128 0xc
+ 894 00aa 34       		.uleb128 0x34
+ 895 00ab 00       		.byte	0
+ 896 00ac 03       		.uleb128 0x3
+ 897 00ad 0E       		.uleb128 0xe
+ 898 00ae 3A       		.uleb128 0x3a
+ 899 00af 0B       		.uleb128 0xb
+ 900 00b0 3B       		.uleb128 0x3b
+ 901 00b1 0B       		.uleb128 0xb
+ 902 00b2 49       		.uleb128 0x49
+ 903 00b3 13       		.uleb128 0x13
+ 904 00b4 3F       		.uleb128 0x3f
+ 905 00b5 19       		.uleb128 0x19
+ 906 00b6 3C       		.uleb128 0x3c
+ 907 00b7 19       		.uleb128 0x19
+ 908 00b8 00       		.byte	0
+ 909 00b9 00       		.byte	0
+ 910 00ba 0D       		.uleb128 0xd
+ 911 00bb 01       		.uleb128 0x1
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 23
+
+
+ 912 00bc 01       		.byte	0x1
+ 913 00bd 49       		.uleb128 0x49
+ 914 00be 13       		.uleb128 0x13
+ 915 00bf 01       		.uleb128 0x1
+ 916 00c0 13       		.uleb128 0x13
+ 917 00c1 00       		.byte	0
+ 918 00c2 00       		.byte	0
+ 919 00c3 0E       		.uleb128 0xe
+ 920 00c4 21       		.uleb128 0x21
+ 921 00c5 00       		.byte	0
+ 922 00c6 49       		.uleb128 0x49
+ 923 00c7 13       		.uleb128 0x13
+ 924 00c8 2F       		.uleb128 0x2f
+ 925 00c9 05       		.uleb128 0x5
+ 926 00ca 00       		.byte	0
+ 927 00cb 00       		.byte	0
+ 928 00cc 0F       		.uleb128 0xf
+ 929 00cd 21       		.uleb128 0x21
+ 930 00ce 00       		.byte	0
+ 931 00cf 49       		.uleb128 0x49
+ 932 00d0 13       		.uleb128 0x13
+ 933 00d1 2F       		.uleb128 0x2f
+ 934 00d2 0B       		.uleb128 0xb
+ 935 00d3 00       		.byte	0
+ 936 00d4 00       		.byte	0
+ 937 00d5 00       		.byte	0
+ 938              		.section	.debug_aranges,"",%progbits
+ 939 0000 2C000000 		.4byte	0x2c
+ 940 0004 0200     		.2byte	0x2
+ 941 0006 00000000 		.4byte	.Ldebug_info0
+ 942 000a 04       		.byte	0x4
+ 943 000b 00       		.byte	0
+ 944 000c 0000     		.2byte	0
+ 945 000e 0000     		.2byte	0
+ 946 0010 00000000 		.4byte	.LFB56
+ 947 0014 60010000 		.4byte	.LFE56-.LFB56
+ 948 0018 00000000 		.4byte	.LFB57
+ 949 001c D4000000 		.4byte	.LFE57-.LFB57
+ 950 0020 00000000 		.4byte	.LFB58
+ 951 0024 30000000 		.4byte	.LFE58-.LFB58
+ 952 0028 00000000 		.4byte	0
+ 953 002c 00000000 		.4byte	0
+ 954              		.section	.debug_ranges,"",%progbits
+ 955              	.Ldebug_ranges0:
+ 956 0000 00000000 		.4byte	.LFB56
+ 957 0004 60010000 		.4byte	.LFE56
+ 958 0008 00000000 		.4byte	.LFB57
+ 959 000c D4000000 		.4byte	.LFE57
+ 960 0010 00000000 		.4byte	.LFB58
+ 961 0014 30000000 		.4byte	.LFE58
+ 962 0018 00000000 		.4byte	0
+ 963 001c 00000000 		.4byte	0
+ 964              		.section	.debug_line,"",%progbits
+ 965              	.Ldebug_line0:
+ 966 0000 FF010000 		.section	.debug_str,"MS",%progbits,1
+ 966      02005101 
+ 966      00000201 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 24
+
+
+ 966      FB0E0D00 
+ 966      01010101 
+ 967              	.LASF36:
+ 968 0000 433A5C55 		.ascii	"C:\\Users\\lukas\\Desktop\\PioneerKit_P5LP_USB_Audi"
+ 968      73657273 
+ 968      5C6C756B 
+ 968      61735C44 
+ 968      65736B74 
+ 969 002f 6F2D6D61 		.ascii	"o-master\\PioneerKit_P5LP_USB_Audio.cydsn\000"
+ 969      73746572 
+ 969      5C50696F 
+ 969      6E656572 
+ 969      4B69745F 
+ 970              	.LASF32:
+ 971 0058 696E436E 		.ascii	"inCnt\000"
+ 971      7400
+ 972              	.LASF24:
+ 973 005e 55534244 		.ascii	"USBDeviceState\000"
+ 973      65766963 
+ 973      65537461 
+ 973      746500
+ 974              	.LASF9:
+ 975 006d 5F5F696E 		.ascii	"__int32_t\000"
+ 975      7433325F 
+ 975      7400
+ 976              	.LASF28:
+ 977 0077 55534246 		.ascii	"USBFS_configurationChanged\000"
+ 977      535F636F 
+ 977      6E666967 
+ 977      75726174 
+ 977      696F6E43 
+ 978              	.LASF34:
+ 979 0092 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 979      4320342E 
+ 979      392E3320 
+ 979      32303135 
+ 979      30333033 
+ 980 00c5 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 980      20726576 
+ 980      6973696F 
+ 980      6E203232 
+ 980      31323230 
+ 981 00f8 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 981      66756E63 
+ 981      74696F6E 
+ 981      2D736563 
+ 981      74696F6E 
+ 982              	.LASF14:
+ 983 0120 646F7562 		.ascii	"double\000"
+ 983      6C6500
+ 984              	.LASF26:
+ 985 0127 55534246 		.ascii	"USBFS_initVar\000"
+ 985      535F696E 
+ 985      69745661 
+ 985      7200
+ 986              	.LASF23:
+ 987 0135 7573624D 		.ascii	"usbMiniBActive\000"
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 25
+
+
+ 987      696E6942 
+ 987      41637469 
+ 987      766500
+ 988              	.LASF13:
+ 989 0144 666C6F61 		.ascii	"float\000"
+ 989      7400
+ 990              	.LASF35:
+ 991 014a 2E5C5553 		.ascii	".\\USBInterface.c\000"
+ 991      42496E74 
+ 991      65726661 
+ 991      63652E63 
+ 991      00
+ 992              	.LASF33:
+ 993 015b 616C7453 		.ascii	"altSetting\000"
+ 993      65747469 
+ 993      6E6700
+ 994              	.LASF1:
+ 995 0166 756E7369 		.ascii	"unsigned char\000"
+ 995      676E6564 
+ 995      20636861 
+ 995      7200
+ 996              	.LASF31:
+ 997 0174 696E5261 		.ascii	"inRam\000"
+ 997      6D00
+ 998              	.LASF16:
+ 999 017a 72656738 		.ascii	"reg8\000"
+ 999      00
+ 1000              	.LASF5:
+ 1001 017f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1001      20756E73 
+ 1001      69676E65 
+ 1001      6420696E 
+ 1001      7400
+ 1002              	.LASF3:
+ 1003 0191 73686F72 		.ascii	"short unsigned int\000"
+ 1003      7420756E 
+ 1003      7369676E 
+ 1003      65642069 
+ 1003      6E7400
+ 1004              	.LASF22:
+ 1005 01a4 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1005      52784275 
+ 1005      66666572 
+ 1005      00
+ 1006              	.LASF19:
+ 1007 01b1 53657276 		.ascii	"ServiceUSBSuspend\000"
+ 1007      69636555 
+ 1007      53425375 
+ 1007      7370656E 
+ 1007      6400
+ 1008              	.LASF18:
+ 1009 01c3 53657276 		.ascii	"ServiceUSB\000"
+ 1009      69636555 
+ 1009      534200
+ 1010              	.LASF25:
+ 1011 01ce 6C6F7750 		.ascii	"lowPowerIdle\000"
+ 1011      6F776572 
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 26
+
+
+ 1011      49646C65 
+ 1011      00
+ 1012              	.LASF12:
+ 1013 01db 75696E74 		.ascii	"uint16\000"
+ 1013      313600
+ 1014              	.LASF8:
+ 1015 01e2 756E7369 		.ascii	"unsigned int\000"
+ 1015      676E6564 
+ 1015      20696E74 
+ 1015      00
+ 1016              	.LASF21:
+ 1017 01ef 6C656442 		.ascii	"ledBlinkCnt\000"
+ 1017      6C696E6B 
+ 1017      436E7400 
+ 1018              	.LASF7:
+ 1019 01fb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1019      206C6F6E 
+ 1019      6720756E 
+ 1019      7369676E 
+ 1019      65642069 
+ 1020              	.LASF10:
+ 1021 0212 696E7433 		.ascii	"int32_t\000"
+ 1021      325F7400 
+ 1022              	.LASF17:
+ 1023 021a 73697A65 		.ascii	"sizetype\000"
+ 1023      74797065 
+ 1023      00
+ 1024              	.LASF6:
+ 1025 0223 6C6F6E67 		.ascii	"long long int\000"
+ 1025      206C6F6E 
+ 1025      6720696E 
+ 1025      7400
+ 1026              	.LASF29:
+ 1027 0231 75736241 		.ascii	"usbActivityCounter\000"
+ 1027      63746976 
+ 1027      69747943 
+ 1027      6F756E74 
+ 1027      657200
+ 1028              	.LASF15:
+ 1029 0244 63686172 		.ascii	"char\000"
+ 1029      00
+ 1030              	.LASF20:
+ 1031 0249 696E6465 		.ascii	"index\000"
+ 1031      7800
+ 1032              	.LASF30:
+ 1033 024f 6F757452 		.ascii	"outRam\000"
+ 1033      616D00
+ 1034              	.LASF27:
+ 1035 0256 706C6179 		.ascii	"playlistControlReport\000"
+ 1035      6C697374 
+ 1035      436F6E74 
+ 1035      726F6C52 
+ 1035      65706F72 
+ 1036              	.LASF2:
+ 1037 026c 73686F72 		.ascii	"short int\000"
+ 1037      7420696E 
+ 1037      7400
+ARM GAS  C:\USERS\LUKAS\APPDATA\LOCAL\TEMP\ccLWzfrc.s 			page 27
+
+
+ 1038              	.LASF37:
+ 1039 0276 48616E64 		.ascii	"HandleUSBHostInterface\000"
+ 1039      6C655553 
+ 1039      42486F73 
+ 1039      74496E74 
+ 1039      65726661 
+ 1040              	.LASF11:
+ 1041 028d 75696E74 		.ascii	"uint8\000"
+ 1041      3800
+ 1042              	.LASF4:
+ 1043 0293 6C6F6E67 		.ascii	"long int\000"
+ 1043      20696E74 
+ 1043      00
+ 1044              	.LASF0:
+ 1045 029c 7369676E 		.ascii	"signed char\000"
+ 1045      65642063 
+ 1045      68617200 
+ 1046              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
